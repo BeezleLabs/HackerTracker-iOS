@@ -17,12 +17,23 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = UIImage(named: "map-hotel.png")!
-        imageView = UIImageView(image: image)
+        let image:UIImage
+        
+        let path = NSBundle.mainBundle().pathForResource("map-hotel", ofType: "png")
+        if (path != nil) {
+            image = UIImage(contentsOfFile: path!)!
+            imageView = UIImageView(image: image)
+            imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size:image.size)
+            scrollview.addSubview(imageView)
+            
+            scrollview.contentSize = image.size
+        }
+        //let image = UIImage(named: "map-hotel.png")!
+        /*imageView = UIImageView(image: image)
         imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size:image.size)
         scrollview.addSubview(imageView)
         
-        scrollview.contentSize = image.size
+        scrollview.contentSize = image.size*/
         
         var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
         doubleTapRecognizer.numberOfTapsRequired = 2

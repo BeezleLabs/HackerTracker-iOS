@@ -23,6 +23,7 @@ class HTUpdatesViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         let fr:NSFetchRequest = NSFetchRequest(entityName:"Message")
+        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         var err:NSError? = nil
         self.messages = context.executeFetchRequest(fr, error: &err) as! [Message]
