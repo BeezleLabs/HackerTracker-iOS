@@ -19,14 +19,15 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDetailTextView: UITextView!
     @IBOutlet weak var eventStarredButton: UIBarButtonItem!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var demoImage: UIImageView!
     @IBOutlet weak var exploitImage: UIImageView!
     @IBOutlet weak var toolImage: UIImageView!
     
     var event: Event!
     
-    let starredButtonTitle = "-"
-    let unstarredButtonTitle = "+"
+    let starredButtonTitle = "REMOVE"
+    let unstarredButtonTitle = "ADD"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,10 @@ class HTEventDetailViewController: UIViewController {
             df2.dateFormat = "EEEE, MMMM dd"
             
             eventDateLabel.text = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
+            if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
+                eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+                doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            }
         } else {
             NSLog("HTEventDetailViewController: Event is nil")
         }

@@ -26,12 +26,20 @@ class HTScheduleTableViewController: UITableViewController, UITableViewDelegate,
     @IBOutlet weak var sundayButton: UIBarButtonItem!
     var isSun:Bool = false
     @IBOutlet weak var allButton: UIBarButtonItem!
-    @IBOutlet weak var backButton: UIToolbar!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var highlightColor = UIColor(red: 175.0, green: 236.0, blue: 68.0, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
+            doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            thursdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            fridayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            saturdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            sundayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            allButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -57,10 +65,6 @@ class HTScheduleTableViewController: UITableViewController, UITableViewDelegate,
             //NSLog("Getting schedule for \(self.searchTerm)")
             fr.predicate = NSPredicate(format: "type = %@", argumentArray: [self.searchTerm])
             self.events = context.executeFetchRequest(fr, error: &err)!
-        
-            if let font = UIFont(name: "System", size: 6.0) {
-                UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
-            }
         
             self.tableView.reloadData()
         }
@@ -167,10 +171,6 @@ class HTScheduleTableViewController: UITableViewController, UITableViewDelegate,
         deHighlightAll()
         allButton.tintColor = UIColor.greenColor()
         self.tableView.reloadData()
-    }
-    
-    func highlight(button:UIBarButtonItem) {
-        button.tintColor = backButton.tintColor
     }
     
     func deHighlightAll() {

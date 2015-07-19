@@ -14,8 +14,13 @@ class HTMyScheduleTableViewController: UITableViewController, UITableViewDelegat
     var events:NSArray = []
     var selectedEvent : Event?
 
+    @IBOutlet weak var clearButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
+            clearButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -50,6 +55,38 @@ class HTMyScheduleTableViewController: UITableViewController, UITableViewDelegat
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func clearSchedule(sender: AnyObject) {
+        var alert : UIAlertController = UIAlertController(title: "Clear Schedule", message: "Do you want to clear your entire schedule?", preferredStyle: UIAlertControllerStyle.Alert)
+        var yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {
+            (action:UIAlertAction!) in
+            var myEv:Event
+            let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = delegate.managedObjectContext!
+            for ev in self.events {
+                myEv = ev as! Event
+                myEv.starred = false
+            }
+            var err :NSError?
+            context.save(&err)
+            if err != nil {
+                NSLog("%@",err!)
+            }
+            self.events = []
+            self.tableView.reloadData()
+            
+        })
+        var noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: {
+            (action:UIAlertAction!) in
+            NSLog("No")
+            //self.tabBarController.selectedIndex = 0
+        })
+        
+        alert.addAction(yesItem)
+        alert.addAction(noItem)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

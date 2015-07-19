@@ -29,7 +29,7 @@ class HTUpdatesViewController: UIViewController {
         self.messages = context.executeFetchRequest(fr, error: &err) as! [Message]
         
         let df = NSDateFormatter()
-        df.dateFormat = "dd/MM/yy"
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var fullText: String = ""
         for message in messages {
             //var fullDate = df.stringFromDate(message.date)
@@ -39,9 +39,35 @@ class HTUpdatesViewController: UIViewController {
         updatesTextView.text = fullText
         updatesTextView.textColor = UIColor.whiteColor()
         
-        //self.updatesTextView.text = "Test test test test test"
-        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updatesTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+    }
+    
+    func updateMessages() {
+        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
+        let fr:NSFetchRequest = NSFetchRequest(entityName:"Message")
+        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+        var err:NSError? = nil
+        self.messages = context.executeFetchRequest(fr, error: &err) as! [Message]
+        
+        let df = NSDateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        var fullText: String = ""
+        for message in messages {
+            //var fullDate = df.stringFromDate(message.date)
+            fullText = "\(fullText)\(df.stringFromDate(message.date))\n\(message.msg)\n\n"
+        }
+        
+        updatesTextView.text = fullText
+        updatesTextView.textColor = UIColor.whiteColor()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,10 +127,28 @@ class HTUpdatesViewController: UIViewController {
     }
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        
+        let df = NSDateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
         var failedAlert : UIAlertController = UIAlertController(title: "Connection Failed", message: "Connection to info.defcon.org failed. Please attempt to sync data later.", preferredStyle: UIAlertControllerStyle.Alert)
         var okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
             (action:UIAlertAction!) in
-            NSLog("Failed connection to info.defcon.org. Check network settings.")
+                var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+                message2.date = NSDate()
+                let synctime = df.stringFromDate(message2.date)
+                message2.msg = "Update failed."
+                var err:NSError? = nil
+                context.save(&err)
+            
+                if err != nil {
+                    NSLog("%@",err!)
+                }
+                NSLog("Failed connection to info.defcon.org. Check network settings.")
+                self.updateMessages()
             })
         failedAlert.addAction(okItem)
         self.presentViewController(failedAlert, animated: true, completion: nil)
@@ -136,7 +180,7 @@ class HTUpdatesViewController: UIViewController {
             
             var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message2.date = syncDate
-            message2.msg = "Updated \(updateDate) \(updateTime)"
+            message2.msg = "Schedule succesfully updated."
             let schedule = json["schedule"].array!
             
             NSLog("Total events: \(schedule.count)")
@@ -183,6 +227,8 @@ class HTUpdatesViewController: UIViewController {
             if err != nil {
                 NSLog("%@",err!)
             }
+            
+            self.updateMessages()
 
             NSLog("Schedule Updated")
         } else {
