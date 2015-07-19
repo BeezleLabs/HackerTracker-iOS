@@ -47,11 +47,11 @@ class HTInitViewController: UIViewController {
             
             var message1 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message1.date = first_status.lastsync
-            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email me at seth@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS. Thanks!"
+            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email me at info@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS. Thanks!"
             
             var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message2.date = first_status.lastsync
-            message2.msg = "Updated \(updateDate) \(updateTime)"
+            message2.msg = "\(updateDate) \(updateTime) - Initial schedule only has talks imported. Sync with defcon.org during the con for other events."
             
             let schedule = json["schedule"].array!
             
