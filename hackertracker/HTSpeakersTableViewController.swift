@@ -103,7 +103,25 @@ class HTSpeakersTableViewController: UITableViewController, UITableViewDelegate,
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        isFiltered = true
+        let searchText = searchBar.text
+        if (count(searchText) == 0) {
+            isFiltered = false
+        } else {
+            isFiltered = true
+        }
+        
+        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
+        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+        fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR who contains[cd] %@", argumentArray: [searchText,searchText,searchText])
+        var err:NSError? = nil
+        self.filteredEvents = context.executeFetchRequest(fr, error: &err)!
+        
+        self.tableView.reloadData()
+        
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
@@ -111,7 +129,24 @@ class HTSpeakersTableViewController: UITableViewController, UITableViewDelegate,
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        isFiltered = false
+        let searchText = searchBar.text
+        if (count(searchText) == 0) {
+            isFiltered = false
+        } else {
+            isFiltered = true
+        }
+        
+        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
+        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+        fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR who contains[cd] %@", argumentArray: [searchText,searchText,searchText])
+        var err:NSError? = nil
+        self.filteredEvents = context.executeFetchRequest(fr, error: &err)!
+        
+        self.tableView.reloadData()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {

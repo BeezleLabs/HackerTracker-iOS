@@ -19,6 +19,9 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDetailTextView: UITextView!
     @IBOutlet weak var eventStarredButton: UIBarButtonItem!
+    @IBOutlet weak var demoImage: UIImageView!
+    @IBOutlet weak var exploitImage: UIImageView!
+    @IBOutlet weak var toolImage: UIImageView!
     
     var event: Event!
     
@@ -37,13 +40,24 @@ class HTEventDetailViewController: UIViewController {
             eventStartTimeLabel.text = df.stringFromDate(event.begin)
             eventStopTimeLabel.text = df.stringFromDate(event.end)
             eventLocationLabel.text = event.location
-            eventDetailTextView.text = event.details //.stringByReplacingOccurrencesOfString("<.*?>", withString: "", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
-            //eventDetailTextView.text.stringByReplacingOccurrencesOfString("\n", withString: <#String#>, options: <#NSStringCompareOptions#>, range: <#Range<String.Index>?#>)
+            eventDetailTextView.text = event.details
             
             if (event.starred) {
                 eventStarredButton.title = starredButtonTitle
             } else {
                 eventStarredButton.title = unstarredButtonTitle
+            }
+            
+            if (event.tool) {
+                toolImage.alpha = 1.0
+            }
+            
+            if event.demo {
+                demoImage.alpha = 1.0
+            }
+            
+            if event.exploit {
+                exploitImage.alpha = 1.0
             }
             
             var df2 : NSDateFormatter = NSDateFormatter()
