@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../hackertracker/HTEventDetailViewController.swift">
-   </FileRef>
-   <FileRef
       location = "self:hackertracker.xcodeproj">
    </FileRef>
 </Workspace>

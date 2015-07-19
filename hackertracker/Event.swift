@@ -12,13 +12,18 @@ import CoreData
 @objc(Event)
 class Event: NSManagedObject {
 
+    @NSManaged var id: Int32
     @NSManaged var title: String
-    @NSManaged var start_time: String
-    @NSManaged var end_time: String
-    @NSManaged var date: NSDate
+    @NSManaged var begin: NSDate
+    @NSManaged var end: NSDate
     @NSManaged var location: String
     @NSManaged var details: String
-    @NSManaged var name: String
-    @NSManaged var starred: NSNumber
+    @NSManaged var who: String
+    @NSManaged var type: String
+    @NSManaged var link: String
+    @NSManaged var demo: Bool
+    @NSManaged var tool: Bool
+    @NSManaged var exploit: Bool
+    @NSManaged var starred: Bool
 
 }

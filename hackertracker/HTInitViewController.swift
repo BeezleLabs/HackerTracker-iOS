@@ -24,61 +24,63 @@ class HTInitViewController: UIViewController {
         var status : NSArray = context.executeFetchRequest(fr, error: &error)!
         
         if status.count < 1 {
-            // First time setup. Let's drop some filler data into the DB for testing. Phase 2: Ask the user to query the DC web service for initial data load.
+            // First time setup. Load pre-con JSON file included from DCIB.
             
-            var now = NSDate()
+            let df = NSDateFormatter()
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            NSLog("Database not setup, preloading with initial schedule")
+
+            let path = NSBundle.mainBundle().pathForResource("schedule-full", ofType: "json")
+            NSLog("Path : \(path!)")
             
-            NSLog("Database not setup, preloading with test data")
+            let content = NSString(contentsOfFile: path!, encoding: NSASCIIStringEncoding, error: nil)
+            //NSLog("Content: \(content)")
+            let dataFromString = content?.dataUsingEncoding(NSUTF8StringEncoding)
+            let json = JSON(data: dataFromString!, options: NSJSONReadingOptions.AllowFragments, error: nil)
+
+            let updateTime = json["updateTime"].string!
+            let updateDate = json["updateDate"].string!
+            NSLog("schedule last updated at \(updateDate) \(updateTime)")
             var first_status = NSEntityDescription.insertNewObjectForEntityForName("Status", inManagedObjectContext: context) as! Status
-            first_status.lastsync = now
+            let syncDate = df.dateFromString("\(updateDate) \(updateTime)")
+            first_status.lastsync = syncDate!
             
             var message1 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
-            message1.date = now
-            message1.value = "Welcome to HackerTracker iOS version 2015"
+            message1.date = first_status.lastsync
+            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email me at seth@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Thanks!"
             
             var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
-            message2.date = now
-            message2.value = "Now with internal CoreData functionality. Rejoice, oh ye of little faith!"
+            message2.date = first_status.lastsync
+            message2.msg = "Updated \(updateDate) \(updateTime)"
             
-            var event1 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-            event1.date = now
-            event1.name = "Hacker 1"
-            event1.title = "Hack all the things"
-            event1.details = "How a hacker goes about hacking all the things.\n\nHacker 1 is 31337."
-            event1.location = "Track 1"
-            event1.starred = false
-            event1.start_time = "08:00"
-            event1.end_time = "09:00"
+            let schedule = json["schedule"].array!
             
-            var event2 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-            event2.date = now
-            event2.name = "Defender 1"
-            event2.title = "Defending a Django Bango app "
-            event2.details = "How to think like a defend and stop a hacker from stealing information out of your glossy new Django app.\nDefender 1 works for the DoD."
-            event2.location = "Track 2"
-            event2.starred = false
-            event2.start_time = "08:00"
-            event2.end_time = "09:00"
+            NSLog("Total events: \(schedule.count)")
             
-            var event3 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-            event3.date = now
-            event3.name = "Defender 2"
-            event3.title = "Defending a Rails app "
-            event3.details = "How to think like a defende and stop a hacker from stealing information out of your outdated Rails app."
-            event3.location = "Track 2"
-            event3.starred = false
-            event3.start_time = "09:00"
-            event3.end_time = "10:00"
+            var mySched : [Event] = []
             
-            var event4 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-            event4.date = now
-            event4.name = "Hacker 2"
-            event4.title = "Hack the IoT"
-            event4.details = "How a hacker goes about hacking the new Internet of things.\n\nHacker 2 is a network savont."
-            event4.location = "Track 1"
-            event4.starred = false
-            event4.start_time = "09:00"
-            event4.end_time = "10:00"
+            df.dateFormat = "yyyy-MM-dd HH:mm"
+            
+            for item in schedule {
+                var te: Event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+                te.who = item["who"].string!
+                let d = item["date"].string!
+                let b = item["begin"].string!
+                let e = item["end"].string!
+                te.begin = df.dateFromString("\(d) \(b)")!
+                te.end = df.dateFromString("\(d) \(e)")!
+                te.location = item["location"].string!
+                te.title = item["title"].string!
+                te.details = item["description"].string!
+                te.link = item["link"].string!
+                te.type = item["type"].string!
+                te.demo = item["demo"].boolValue
+                te.tool = item["tool"].boolValue
+                te.exploit = item["exploit"].boolValue
+                te.id = item["id"].int32Value
+                te.starred = false
+                mySched.append(te)
+            }
             
             var err:NSError? = nil
             context.save(&err)

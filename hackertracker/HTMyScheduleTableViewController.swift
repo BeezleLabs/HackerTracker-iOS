@@ -31,6 +31,7 @@ class HTMyScheduleTableViewController: UITableViewController, UITableViewDelegat
         let context = delegate.managedObjectContext!
         
         let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
         fr.predicate = NSPredicate(format: "starred == YES", argumentArray: nil)
         var err:NSError? = nil
@@ -68,8 +69,14 @@ class HTMyScheduleTableViewController: UITableViewController, UITableViewDelegat
         let cell = tableView.dequeueReusableCellWithIdentifier("myEventCell", forIndexPath: indexPath) as! UITableViewCell
 
         var event : Event = self.events.objectAtIndex(indexPath.row) as! Event
+        let df = NSDateFormatter()
+        df.dateFormat = "EE HH:mm"
+        let beginDate = df.stringFromDate(event.begin)
+        df.dateFormat = "HH:mm"
+        let endDate = df.stringFromDate(event.end)
+        
         cell.textLabel!.text = event.title
-        cell.detailTextLabel!.text = "\(event.location) : \(event.name)"
+        cell.detailTextLabel!.text = "\(beginDate)-\(endDate) (\(event.location))"
 
         return cell
     }

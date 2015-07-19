@@ -13,6 +13,6 @@ import CoreData
 class Message: NSManagedObject {
 
     @NSManaged var date: NSDate
-    @NSManaged var value: String
+    @NSManaged var msg: String
 
 }
