@@ -32,7 +32,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="y3B-Cv-pxi" kind="showDetail" identifier="HTHomeSegue" id="qGQ-dt-DrD"/>
+                        <segue destination="y3B-Cv-pxi" kind="showDetail" identifier="HTHomeSegue" id="uZ9-MX-kjF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -14,7 +14,6 @@
 		5D3A94451AD6C6F30076F544 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94441AD6C6F30076F544 /* Event.swift */; };
 		5D3A94471AD6C6F40076F544 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94461AD6C6F40076F544 /* Status.swift */; };
 		5D3A94491AD6C6F40076F544 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94481AD6C6F40076F544 /* Message.swift */; };
-		5D7B48E21B43A22900A4C979 /* HTWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B48E11B43A22900A4C979 /* HTWebViewController.swift */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
@@ -64,7 +63,6 @@
 		5D3A94441AD6C6F30076F544 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5D3A94461AD6C6F40076F544 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		5D3A94481AD6C6F40076F544 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		5D7B48E11B43A22900A4C979 /* HTWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTWebViewController.swift; path = hackertracker/HTWebViewController.swift; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsTableViewController.swift; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +106,6 @@
 		5DD642501AC3C62300ED3256 = {
 			isa = PBXGroup;
 			children = (
-				5D7B48E11B43A22900A4C979 /* HTWebViewController.swift */,
 				5DD6425B1AC3C62300ED3256 /* hackertracker */,
 				5DD642741AC3C62300ED3256 /* hackertrackerTests */,
 				5DD6425A1AC3C62300ED3256 /* Products */,
@@ -298,7 +295,6 @@
 				5DFB87C91B3A188E0083604C /* HTSpeakersTableViewController.swift in Sources */,
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */,
-				5D7B48E21B43A22900A4C979 /* HTWebViewController.swift in Sources */,
 				5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 			);

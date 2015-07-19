@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>URL</key>
-	<string>http://dcib.melloman.net/schedule-full.json</string>
+	<string>http://info.defcon.org/schedule-full.json</string>
 </dict>
 </plist>

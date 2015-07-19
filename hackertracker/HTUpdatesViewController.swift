@@ -49,9 +49,9 @@ class HTUpdatesViewController: UIViewController {
     }
     
     @IBAction func syncDatabase(sender: AnyObject) {
-        NSLog("syncDatabase")
+        //NSLog("syncDatabase")
         
-        var alert : UIAlertController = UIAlertController(title: "Connection Request", message: "Connect to defcon.org for schedule updates?", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert : UIAlertController = UIAlertController(title: "Connection Request", message: "Connect to info.defcon.org for schedule updates?", preferredStyle: UIAlertControllerStyle.Alert)
         var yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {
             (action:UIAlertAction!) in
             var envPlist = NSBundle.mainBundle().pathForResource("Connections", ofType: "plist")
@@ -60,7 +60,7 @@ class HTUpdatesViewController: UIViewController {
             var err:NSError? = nil
             
             var tURL = envs.valueForKey("URL") as! String
-            NSLog("Connecting to \(tURL)")
+            //NSLog("Connecting to \(tURL)")
             var URL = NSURL(string: tURL)
             
             var request = NSMutableURLRequest(URL: URL!)
@@ -97,6 +97,16 @@ class HTUpdatesViewController: UIViewController {
         
         updateSchedule(dataFromString!)
         
+    }
+    
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        var failedAlert : UIAlertController = UIAlertController(title: "Connection Failed", message: "Connection to info.defcon.org failed. Please attempt to sync data later.", preferredStyle: UIAlertControllerStyle.Alert)
+        var okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+            (action:UIAlertAction!) in
+            NSLog("Failed connection to info.defcon.org. Check network settings.")
+            })
+        failedAlert.addAction(okItem)
+        self.presentViewController(failedAlert, animated: true, completion: nil)
     }
     
     func updateSchedule(data: NSData) {

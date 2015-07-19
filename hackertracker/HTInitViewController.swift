@@ -47,7 +47,7 @@ class HTInitViewController: UIViewController {
             
             var message1 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message1.date = first_status.lastsync
-            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email me at seth@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Thanks!"
+            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email me at seth@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS. Thanks!"
             
             var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message2.date = first_status.lastsync
@@ -91,7 +91,9 @@ class HTInitViewController: UIViewController {
 
         }
 
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(2), target: self, selector: Selector("go"), userInfo: nil, repeats: false)
+        //self.performSegueWithIdentifier("HTHomeSegue", sender: self)
+        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1), target: self, selector: Selector("go"), userInfo: nil, repeats: false)
+        
         // Do any additional setup after loading the view.
     }
 

@@ -101,13 +101,8 @@ class HTEventDetailViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        //NSLog("Segue to WV (\(event.link))")
-        var dv = segue.destinationViewController as! HTWebViewController
-        dv.url = event.link
-        // Get the new view controller using segue.destinationViewController.
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Pass the selected object to the new view controller.
-    }
+    }*/
 
 }
