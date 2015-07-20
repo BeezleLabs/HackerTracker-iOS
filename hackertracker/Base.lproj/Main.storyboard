@@ -320,9 +320,43 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
+                                <barButtonItem title="ALL" id="Uyf-0m-2FX">
+                                    <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="filterAll:" destination="oIR-Ov-nyS" id="gik-pd-3sY"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="bBb-FT-otm"/>
+                                <barButtonItem title="THURSDAY" id="9aY-M6-fvZ">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <action selector="filterThursday:" destination="oIR-Ov-nyS" id="LQZ-Cl-dak"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="chV-tn-k1d"/>
+                                <barButtonItem title="FRIDAY" id="1ph-cl-1qY">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <action selector="filterFriday:" destination="oIR-Ov-nyS" id="Ff1-id-NXi"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="1Ha-IW-XGA"/>
+                                <barButtonItem title="SATURDAY" id="rfe-2l-Dx1">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <action selector="filterSaturday:" destination="oIR-Ov-nyS" id="cLT-aK-Uqe"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="owV-wb-tTW"/>
+                                <barButtonItem title="SUNDAY" id="YNd-0C-Snv">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <action selector="filterSunday:" destination="oIR-Ov-nyS" id="yBF-I4-KnP"/>
+                                    </connections>
+                                </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="EA1-RH-nvu"/>
                                 <barButtonItem title="CLEAR" id="YbC-Cz-Iz2">
-                                    <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="clearSchedule:" destination="oIR-Ov-nyS" id="DYh-sB-viZ"/>
                                     </connections>
@@ -370,14 +404,19 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" tag="2" title="My Schedule" image="calendar-done-30x30" id="1nj-eO-kSJ"/>
                     <connections>
+                        <outlet property="allButton" destination="Uyf-0m-2FX" id="sMn-YQ-9Cc"/>
                         <outlet property="clearButton" destination="YbC-Cz-Iz2" id="xms-Pt-NWn"/>
+                        <outlet property="fridayButton" destination="1ph-cl-1qY" id="4qP-V4-iEf"/>
+                        <outlet property="saturdayButton" destination="rfe-2l-Dx1" id="GSA-hb-Emm"/>
+                        <outlet property="sundayButton" destination="YNd-0C-Snv" id="g17-IE-qxW"/>
+                        <outlet property="thursdayButton" destination="9aY-M6-fvZ" id="stT-74-2Oy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I06-2I-SrF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="742" y="1288"/>
         </scene>
-        <!--Maps-->
+        <!--Map-->
         <scene sceneID="vGq-Yq-Bvy">
             <objects>
                 <viewController id="9uk-jY-kfH" customClass="HTMapsViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -406,7 +445,7 @@
                             <constraint firstItem="cPU-zm-LNJ" firstAttribute="bottom" secondItem="7p2-Nj-us7" secondAttribute="top" id="y4J-rn-qC8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Maps" image="location-map-30x30" id="y4S-VP-rad"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="location-map-30x30" id="y4S-VP-rad"/>
                     <connections>
                         <outlet property="scrollview" destination="cPU-zm-LNJ" id="toH-Kb-Ah5"/>
                     </connections>

@@ -31,7 +31,7 @@ class HTInitViewController: UIViewController {
             NSLog("Database not setup, preloading with initial schedule")
 
             let path = NSBundle.mainBundle().pathForResource("schedule-full", ofType: "json")
-            NSLog("Path : \(path!)")
+            //NSLog("Path : \(path!)")
             
             let content = NSString(contentsOfFile: path!, encoding: NSASCIIStringEncoding, error: nil)
             //NSLog("Content: \(content)")
@@ -40,18 +40,18 @@ class HTInitViewController: UIViewController {
 
             let updateTime = json["updateTime"].string!
             let updateDate = json["updateDate"].string!
-            NSLog("schedule last updated at \(updateDate) \(updateTime)")
+            NSLog("Schedule last updated at \(updateDate) \(updateTime)")
             var first_status = NSEntityDescription.insertNewObjectForEntityForName("Status", inManagedObjectContext: context) as! Status
             let syncDate = df.dateFromString("\(updateDate) \(updateTime)")
             first_status.lastsync = syncDate!
             
             var message1 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message1.date = first_status.lastsync
-            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email me at info@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS. Thanks!"
+            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
             
             var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message2.date = first_status.lastsync
-            message2.msg = "UPDATE: Initial schedule only has talks. Sync with defcon.org during DEF CON for other events."
+            message2.msg = "ATTENTION: The initial schedule only has the talks. Sync with defcon.org during DEF CON for other events."
             
             let schedule = json["schedule"].array!
             

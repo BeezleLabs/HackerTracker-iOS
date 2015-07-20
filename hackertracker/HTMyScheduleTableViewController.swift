@@ -14,12 +14,26 @@ class HTMyScheduleTableViewController: UITableViewController, UITableViewDelegat
     var events:NSArray = []
     var selectedEvent : Event?
 
+    @IBOutlet weak var allButton: UIBarButtonItem!
+    @IBOutlet weak var thursdayButton: UIBarButtonItem!
+    var isThu:Bool = false
+    @IBOutlet weak var fridayButton: UIBarButtonItem!
+    var isFri:Bool = false
+    @IBOutlet weak var saturdayButton: UIBarButtonItem!
+    var isSat:Bool = false
+    @IBOutlet weak var sundayButton: UIBarButtonItem!
+    var isSun:Bool = false
     @IBOutlet weak var clearButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
             clearButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            allButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            thursdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            fridayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            saturdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            sundayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
         }
 
         // Uncomment the following line to preserve selection between presentations
@@ -32,17 +46,29 @@ class HTMyScheduleTableViewController: UITableViewController, UITableViewDelegat
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
+        if self.isThu {
+            filterDay("2015-08-06",button: thursdayButton)
+        } else if self.isFri {
+            filterDay("2015-08-07",button: fridayButton)
+        } else if self.isSat {
+            filterDay("2015-08-08",button: saturdayButton)
+        } else if self.isSun {
+            filterDay("2015-08-09",button: sundayButton)
+        } else {
+
+            let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = delegate.managedObjectContext!
+            
+            let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+            fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+            fr.returnsObjectsAsFaults = false
+            fr.predicate = NSPredicate(format: "starred == YES", argumentArray: nil)
+            var err:NSError? = nil
+            self.events = context.executeFetchRequest(fr, error: &err)!
+            
+            self.tableView.reloadData()
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-        fr.predicate = NSPredicate(format: "starred == YES", argumentArray: nil)
-        var err:NSError? = nil
-        self.events = context.executeFetchRequest(fr, error: &err)!
-        
-        self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,9 +80,96 @@ class HTMyScheduleTableViewController: UITableViewController, UITableViewDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func filterThursday(sender: AnyObject) {
+        var dateString = "2015-08-06"
+        isThu = true
+        isFri = false
+        isSat = false
+        isSun = false
+        filterDay(dateString,button: thursdayButton)
+    }
+    @IBAction func filterFriday(sender: AnyObject) {
+        var dateString = "2015-08-07"
+        isThu = false
+        isFri = true
+        isSat = false
+        isSun = false
+        filterDay(dateString,button: fridayButton)
+    }
+    @IBAction func filterSaturday(sender: AnyObject) {
+        var dateString = "2015-08-08"
+        isThu = false
+        isFri = false
+        isSat = true
+        isSun = false
+        filterDay(dateString,button: saturdayButton)
+    }
+    @IBAction func filterSunday(sender: AnyObject) {
+        var dateString = "2015-08-09"
+        isThu = false
+        isFri = false
+        isSat = false
+        isSun = true
+        filterDay(dateString,button: sundayButton)
+    }
+    
+    @IBAction func filterAll(sender: AnyObject) {
+        
+        isThu = false
+        isFri = false
+        isSat = false
+        isSun = false
+        
+        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
+        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        fr.predicate = NSPredicate(format: "starred == YES", argumentArray: nil)
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+        var err:NSError? = nil
+        self.events = context.executeFetchRequest(fr, error: &err)!
+        
+        deHighlightAll()
+        allButton.tintColor = UIColor.greenColor()
+        self.tableView.reloadData()
+    }
+
+    
+    func deHighlightAll() {
+        thursdayButton.tintColor = UIColor.whiteColor()
+        fridayButton.tintColor = UIColor.whiteColor()
+        saturdayButton.tintColor = UIColor.whiteColor()
+        sundayButton.tintColor = UIColor.whiteColor()
+        allButton.tintColor = UIColor.whiteColor()
+    }
+    
+    func filterDay(dateString: String,button:UIBarButtonItem) {
+        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
+        let df = NSDateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        var startofDay: NSDate = df.dateFromString("\(dateString) 00:00:00")!
+        var endofDay: NSDate = df.dateFromString("\(dateString) 23:59:59")!
+        
+        //NSLog("Getting schedule for \(self.searchTerm)")
+        
+        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        fr.predicate = NSPredicate(format: "starred == YES AND begin >= %@ AND end <= %@", argumentArray: [startofDay, endofDay])
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+        var err:NSError? = nil
+        self.events = context.executeFetchRequest(fr, error: &err)!
+        
+        deHighlightAll()
+        button.tintColor = UIColor.greenColor()
+        self.tableView.reloadData()
+    }
 
     @IBAction func clearSchedule(sender: AnyObject) {
-        var alert : UIAlertController = UIAlertController(title: "Clear Schedule", message: "Do you want to clear your entire schedule?", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert : UIAlertController = UIAlertController(title: "Clear Schedule", message: "Do you want to clear the viewed events from your schedule?", preferredStyle: UIAlertControllerStyle.Alert)
         var yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {
             (action:UIAlertAction!) in
             var myEv:Event
