@@ -51,7 +51,7 @@ class HTInitViewController: UIViewController {
             
             var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message2.date = first_status.lastsync
-            message2.msg = "ATTENTION: The initial schedule only has the talks. Sync with defcon.org during DEF CON for other events."
+            message2.msg = "ATTENTION: The initial schedule only has the talks. Sync with defcon.org during DEF CON for an updated schedule of events."
             
             let schedule = json["schedule"].array!
             
