@@ -15,6 +15,7 @@ class HTUpdatesViewController: UIViewController {
     
     var messages: [Message] = []
     var data = NSMutableData()
+    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .Alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,7 @@ class HTUpdatesViewController: UIViewController {
         let fr:NSFetchRequest = NSFetchRequest(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
-        var err:NSError? = nil
-        self.messages = context.executeFetchRequest(fr, error: &err) as! [Message]
+        self.messages = (try! context.executeFetchRequest(fr)) as! [Message]
         
         let df = NSDateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -54,8 +54,7 @@ class HTUpdatesViewController: UIViewController {
         let fr:NSFetchRequest = NSFetchRequest(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
-        var err:NSError? = nil
-        self.messages = context.executeFetchRequest(fr, error: &err) as! [Message]
+        self.messages = (try! context.executeFetchRequest(fr)) as! [Message]
         
         let df = NSDateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -78,26 +77,33 @@ class HTUpdatesViewController: UIViewController {
     @IBAction func syncDatabase(sender: AnyObject) {
         //NSLog("syncDatabase")
         
-        var alert : UIAlertController = UIAlertController(title: "Connection Request", message: "Connect to info.defcon.org for schedule updates?", preferredStyle: UIAlertControllerStyle.Alert)
-        var yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {
-            (action:UIAlertAction!) in
-            var envPlist = NSBundle.mainBundle().pathForResource("Connections", ofType: "plist")
-            var envs = NSDictionary(contentsOfFile: envPlist!)!
+        let alert : UIAlertController = UIAlertController(title: "Connection Request", message: "Connect to defcon-api for updates?", preferredStyle: UIAlertControllerStyle.Alert)
+        let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {
+            (action:UIAlertAction) in
+            let envPlist = NSBundle.mainBundle().pathForResource("Connections", ofType: "plist")
+            let envs = NSDictionary(contentsOfFile: envPlist!)!
             
-            var err:NSError? = nil
+            self.syncAlert.view.tintColor = UIColor.blackColor()
+            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            loadingIndicator.startAnimating();
             
-            var tURL = envs.valueForKey("URL") as! String
+            self.syncAlert.view.addSubview(loadingIndicator)
+            self.presentViewController(self.syncAlert, animated: true, completion: nil)
+            
+            let tURL = envs.valueForKey("URL") as! String
             //NSLog("Connecting to \(tURL)")
-            var URL = NSURL(string: tURL)
+            let URL = NSURL(string: tURL)
             
-            var request = NSMutableURLRequest(URL: URL!)
+            let request = NSMutableURLRequest(URL: URL!)
             request.HTTPMethod = "GET"
             
             var queue = NSOperationQueue()
             var con = NSURLConnection(request: request, delegate: self, startImmediately: true)
         })
-        var noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: {
-            (action:UIAlertAction!) in
+        let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: {
+            (action:UIAlertAction) in
             NSLog("No")
             //self.tabBarController.selectedIndex = 0
         })
@@ -116,12 +122,13 @@ class HTUpdatesViewController: UIViewController {
     func connectionDidFinishLoading(con: NSURLConnection!) {
         //NSLog("connectionDidFinishLoading")
         
-        var resStr = NSString(data: self.data, encoding: NSASCIIStringEncoding)
+        let resStr = NSString(data: self.data, encoding: NSASCIIStringEncoding)
         
         //NSLog("response: \(resStr)")
 
         let dataFromString = resStr!.dataUsingEncoding(NSUTF8StringEncoding)
         
+        self.dismissViewControllerAnimated(false, completion: nil)
         updateSchedule(dataFromString!)
         
     }
@@ -134,20 +141,28 @@ class HTUpdatesViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        var failedAlert : UIAlertController = UIAlertController(title: "Connection Failed", message: "Connection to info.defcon.org failed. Please attempt to sync data later.", preferredStyle: UIAlertControllerStyle.Alert)
-        var okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
-            (action:UIAlertAction!) in
-                var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+        self.dismissViewControllerAnimated(false, completion: nil)
+        
+        let failedAlert : UIAlertController = UIAlertController(title: "Connection Failed", message: "Connection to defcon-api failed. Please attempt to sync data later.", preferredStyle: UIAlertControllerStyle.Alert)
+        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+            (action:UIAlertAction) in
+                let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
                 message2.date = NSDate()
                 let synctime = df.stringFromDate(message2.date)
                 message2.msg = "Update failed."
                 var err:NSError? = nil
-                context.save(&err)
+                do {
+                    try context.save()
+                } catch let error as NSError {
+                    err = error
+                } catch {
+                    fatalError()
+                }
             
                 if err != nil {
                     NSLog("%@",err!)
                 }
-                NSLog("Failed connection to info.defcon.org. Check network settings.")
+                NSLog("Failed connection to defcon-api. Check network settings.")
                 self.updateMessages()
             })
         failedAlert.addAction(okItem)
@@ -169,30 +184,32 @@ class HTUpdatesViewController: UIViewController {
         NSLog("schedule updated at \(updateDate) \(updateTime)")
         
         let fr:NSFetchRequest = NSFetchRequest(entityName:"Status")
-        var status: Status = context.executeFetchRequest(fr, error: nil)![0] as! Status
+        let status: Status = (try! context.executeFetchRequest(fr))[0] as! Status
         
         let syncDate = df.dateFromString("\(updateDate) \(updateTime)")! as NSDate
         NSLog("syncDate: \(df.stringFromDate(syncDate)), lastSync: \(df.stringFromDate(status.lastsync))")
+        
+        var popUpMessage = ""
         
         if ( syncDate.compare(status.lastsync) == NSComparisonResult.OrderedDescending) {
             
             status.lastsync = syncDate
             
-            var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+            let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message2.date = syncDate
-            message2.msg = "Schedule succesfully updated."
+            message2.msg = "Schedule successfully updated."
             let schedule = json["schedule"].array!
             
             NSLog("Total events: \(schedule.count)")
             
             var mySched : [Event] = []
             
-            df.dateFormat = "yyyy-MM-dd HH:mm"
+            df.dateFormat = "yyyy-MM-dd HH:mm z"
             
             for item in schedule {
                 let fre:NSFetchRequest = NSFetchRequest(entityName:"Event")
                 fre.predicate = NSPredicate(format: "id = %@", argumentArray: [item["id"].stringValue])
-                var events = context.executeFetchRequest(fre, error: nil)!
+                var events = try! context.executeFetchRequest(fre)
                 var te: Event
                 if events.count > 0 {
                     te = events[0] as! Event
@@ -202,11 +219,22 @@ class HTUpdatesViewController: UIViewController {
                 }
                 
                 te.who = item["who"].string!
-                let d = item["date"].string!
+                var d = item["date"].string!
                 let b = item["begin"].string!
                 let e = item["end"].string!
-                te.begin = df.dateFromString("\(d) \(b)")!
-                te.end = df.dateFromString("\(d) \(e)")!
+                if ( d == "" ) {
+                    d = "2016-08-04"
+                }
+                if ( b != "" ) {
+                    te.begin = df.dateFromString("\(d) \(b) PDT")!
+                } else {
+                    te.begin = df.dateFromString("\(d) 00:00 PDT")!
+                }
+                if ( e != "" ) {
+                    te.end = df.dateFromString("\(d) \(e) PDT")!
+                } else {
+                    te.end = df.dateFromString("\(d) 23:59 PDT")!
+                }
                 te.location = item["location"].string!
                 te.title = item["title"].string!
                 if item["description"] != "" {
@@ -222,7 +250,11 @@ class HTUpdatesViewController: UIViewController {
             }
             
             var err:NSError? = nil
-            context.save(&err)
+            do {
+                try context.save()
+            } catch let error as NSError {
+                err = error
+            }
             
             if err != nil {
                 NSLog("%@",err!)
@@ -231,10 +263,17 @@ class HTUpdatesViewController: UIViewController {
             self.updateMessages()
 
             NSLog("Schedule Updated")
+            popUpMessage = "Schedule updated"
         } else {
             NSLog("Schedule is up to date")
+            popUpMessage = "Schedule is up to date"
         }
 
+        let updatedAlert : UIAlertController = UIAlertController(title: nil, message: popUpMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+        updatedAlert.addAction(okItem)
+        self.presentViewController(updatedAlert, animated: true, completion: nil)
+        
         self.data = NSMutableData()
         
     }

@@ -20,20 +20,20 @@ class HTInitViewController: UIViewController {
         let fr:NSFetchRequest = NSFetchRequest(entityName:"Status")
         fr.returnsObjectsAsFaults = false
         
-        var error:NSError? = nil
-        var status : NSArray = context.executeFetchRequest(fr, error: &error)!
+        let status : NSArray = try! context.executeFetchRequest(fr)
         
         if status.count < 1 {
             // First time setup. Load pre-con JSON file included from DCIB.
             
             let df = NSDateFormatter()
             df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            df.timeZone = NSTimeZone(name: "PDT")
             NSLog("Database not setup, preloading with initial schedule")
 
             let path = NSBundle.mainBundle().pathForResource("schedule-full", ofType: "json")
             //NSLog("Path : \(path!)")
             
-            let content = NSString(contentsOfFile: path!, encoding: NSASCIIStringEncoding, error: nil)
+            let content = try? NSString(contentsOfFile: path!, encoding: NSASCIIStringEncoding)
             //NSLog("Content: \(content)")
             let dataFromString = content?.dataUsingEncoding(NSUTF8StringEncoding)
             let json = JSON(data: dataFromString!, options: NSJSONReadingOptions.AllowFragments, error: nil)
@@ -41,17 +41,17 @@ class HTInitViewController: UIViewController {
             let updateTime = json["updateTime"].string!
             let updateDate = json["updateDate"].string!
             NSLog("Schedule last updated at \(updateDate) \(updateTime)")
-            var first_status = NSEntityDescription.insertNewObjectForEntityForName("Status", inManagedObjectContext: context) as! Status
+            let first_status = NSEntityDescription.insertNewObjectForEntityForName("Status", inManagedObjectContext: context) as! Status
             let syncDate = df.dateFromString("\(updateDate) \(updateTime)")
             first_status.lastsync = syncDate!
             
-            var message1 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+            let message1 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message1.date = first_status.lastsync
-            message1.msg = "Welcome to HackerTracker iOS version 2015. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. We are working directly with the DEF CON information booth this year, so you can now sync the schedule with the online official database. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
+            message1.msg = "Welcome to HackerTracker iOS version 2016. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. We are working directly with DEF CON this year to provide updates to the schedule with the official website. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
             
-            var message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
-            message2.date = first_status.lastsync
-            message2.msg = "ATTENTION: The initial schedule only has the talks. Sync with defcon.org during DEF CON for an updated schedule of events."
+            //let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+            //message2.date = first_status.lastsync
+            //message2.msg = "ATTENTION: The initial schedule only has the talks. Sync with defcon.org during DEF CON for an updated schedule of events."
             
             let schedule = json["schedule"].array!
             
@@ -59,16 +59,12 @@ class HTInitViewController: UIViewController {
             
             var mySched : [Event] = []
             
-            df.dateFormat = "yyyy-MM-dd HH:mm"
+            df.dateFormat = "yyyy-MM-dd HH:mm z"
             
             for item in schedule {
-                var te: Event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+                let te: Event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
                 te.who = item["who"].string!
-                let d = item["date"].string!
-                let b = item["begin"].string!
-                let e = item["end"].string!
-                te.begin = df.dateFromString("\(d) \(b)")!
-                te.end = df.dateFromString("\(d) \(e)")!
+                var d = item["date"].string!
                 te.location = item["location"].string!
                 te.title = item["title"].string!
                 te.details = item["description"].string!
@@ -78,12 +74,34 @@ class HTInitViewController: UIViewController {
                 te.tool = item["tool"].boolValue
                 te.exploit = item["exploit"].boolValue
                 te.id = item["id"].int32Value
+                
+                //NSLog("Adding Item - id: \(te.id) type \(te.type) who: \(te.who) date: \(d)")
+                let b = item["begin"].string!
+                let e = item["end"].string!
+                if ( d == "" ) {
+                    d = "2016-08-04"
+                }
+                if ( b != "" ) {
+                    te.begin = df.dateFromString("\(d) \(b) PDT")!
+                } else {
+                    te.begin = df.dateFromString("\(d) 00:00 PDT")!
+                }
+                if ( e != "" ) {
+                    te.end = df.dateFromString("\(d) \(e) PDT")!
+                } else {
+                    te.end = df.dateFromString("\(d) 23:59 PDT")!
+                }
+                
                 te.starred = false
                 mySched.append(te)
             }
             
             var err:NSError? = nil
-            context.save(&err)
+            do {
+                try context.save()
+            } catch let error as NSError {
+                err = error
+            }
             
             if err != nil {
                 NSLog("%@",err!)
@@ -92,7 +110,7 @@ class HTInitViewController: UIViewController {
         }
 
         //self.performSegueWithIdentifier("HTHomeSegue", sender: self)
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1), target: self, selector: Selector("go"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1), target: self, selector: #selector(HTInitViewController.go), userInfo: nil, repeats: false)
         
         // Do any additional setup after loading the view.
     }

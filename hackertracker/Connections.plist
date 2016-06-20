@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>URL</key>
-	<string>http://info.defcon.org/schedule-full.json</string>
+	<string>https://s3.amazonaws.com/defcon-api/schedule-full.json</string>
 </dict>
 </plist>

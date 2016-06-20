@@ -22,12 +22,14 @@ class HTEventsTableViewController: UITableViewController {
     }
     
     var eventTypes: NSMutableArray = [
-        eventType(n: "Contests", i: "contest-30x30", d: "Contest"),
-        eventType(n: "Events", i: "calendar-30x30", d: "Event"),
-        eventType(n: "Kids", i: "kids-30x30", d: "Kids"),
-        eventType(n: "Parties", i: "party-30x30", d: "Party"),
-        eventType(n: "Skytalks", i: "cloud-30x30", d: "Skytalks"),
-        eventType(n: "Talks", i: "user-30x30", d: "Official"),
+        eventType(n: "CONTESTS", i: "contest-30x30", d: "Contest"),
+        eventType(n: "EVENTS", i: "calendar-30x30", d: "Event"),
+        eventType(n: "PARTIES", i: "party-30x30", d: "Party"),
+        eventType(n: "SKYTALKS", i: "cloud-30x30", d: "Skytalks"),
+        eventType(n: "TALKS", i: "user-30x30", d: "Official"),
+        eventType(n: "VILLAGES", i: "user-30x30", d: "Villages"),
+        eventType(n: "WORKSHOPS", i:"user-30x30", d:"Workshop")
+
     ]
         //{ name="Contest";img="Contest.png";dbName="Contest" }] //, "Kids", "Official", "Party", "Skytalks", "Event"]
 
@@ -68,7 +70,7 @@ class HTEventsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) 
 
         var event : eventType
         event = self.eventTypes.objectAtIndex(indexPath.row) as! eventType
@@ -125,9 +127,9 @@ class HTEventsTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "eventSegue") {
-            var sv : HTScheduleTableViewController = segue.destinationViewController as! HTScheduleTableViewController
+            let sv : HTScheduleTableViewController = segue.destinationViewController as! HTScheduleTableViewController
             let indexPath: NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
-            var ev = self.eventTypes.objectAtIndex(indexPath.row) as! eventType
+            let ev = self.eventTypes.objectAtIndex(indexPath.row) as! eventType
             sv.searchTerm = ev.dbName
         }
         // Get the new view controller using [segue destinationViewController].

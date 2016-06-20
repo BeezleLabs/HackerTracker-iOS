@@ -35,6 +35,7 @@ class HTEventDetailViewController: UIViewController {
         if (event != nil) {
             let df = NSDateFormatter()
             df.dateFormat = "HH:mm"
+            df.timeZone = NSTimeZone(abbreviation: "PDT")
             
             eventTitleLabel.text = event.title
             eventNameButton.setTitle(event.who, forState: UIControlState.Normal)
@@ -61,7 +62,8 @@ class HTEventDetailViewController: UIViewController {
                 exploitImage.alpha = 1.0
             }
             
-            var df2 : NSDateFormatter = NSDateFormatter()
+            let df2 : NSDateFormatter = NSDateFormatter()
+            df2.timeZone = NSTimeZone(abbreviation: "PDT")
             df2.dateFormat = "EEEE, MMMM dd"
             
             eventDateLabel.text = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
@@ -89,7 +91,7 @@ class HTEventDetailViewController: UIViewController {
     
     @IBAction func toggleMySchedule(sender: AnyObject) {
         //NSLog("toggleMySchedule \(event.starred)")
-        var button = sender as! UIBarButtonItem
+        let button = sender as! UIBarButtonItem
         if (event.starred) {
             event.starred = false
             button.title = unstarredButtonTitle
@@ -106,7 +108,11 @@ class HTEventDetailViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         var err :NSError?
-        context.save(&err)
+        do {
+            try context.save()
+        } catch let error as NSError {
+            err = error
+        }
         if err != nil {
             NSLog("%@",err!)
         }

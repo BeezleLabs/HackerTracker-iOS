@@ -10,17 +10,17 @@
 		5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D00AA2B1B0C3BE600916EAC /* schedule-full.json */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
-		5D35F8C31B4CA6DC0005E619 /* dc-23-speakers.html in Resources */ = {isa = PBXBuildFile; fileRef = 5D35F8C21B4CA6DC0005E619 /* dc-23-speakers.html */; };
 		5D3A94451AD6C6F30076F544 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94441AD6C6F30076F544 /* Event.swift */; };
 		5D3A94471AD6C6F40076F544 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94461AD6C6F40076F544 /* Status.swift */; };
 		5D3A94491AD6C6F40076F544 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94481AD6C6F40076F544 /* Message.swift */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
+		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */; };
+		5DBA212D1D18B55F00A8EFE3 /* dc-24-fp-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBA212C1D18B55F00A8EFE3 /* dc-24-fp-final.png */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642601AC3C62300ED3256 /* hackertracker.xcdatamodeld */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
 		5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642681AC3C62300ED3256 /* Images.xcassets */; };
-		5DD6426C1AC3C62300ED3256 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD6426A1AC3C62300ED3256 /* LaunchScreen.xib */; };
 		5DD642781AC3C62300ED3256 /* hackertrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642771AC3C62300ED3256 /* hackertrackerTests.swift */; };
 		5DDD506F1B28D60D001AE8E1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD506E1B28D60D001AE8E1 /* SwiftyJSON.swift */; };
 		5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */; };
@@ -28,7 +28,6 @@
 		5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */; };
 		5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */; };
 		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
-		5DFB87C51B38CBD90083604C /* map-hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87C41B38CBD90083604C /* map-hotel.png */; };
 		5DFB87C91B3A188E0083604C /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,19 +58,19 @@
 		5D00AA2B1B0C3BE600916EAC /* schedule-full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedule-full.json"; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
-		5D35F8C21B4CA6DC0005E619 /* dc-23-speakers.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "dc-23-speakers.html"; sourceTree = "<group>"; };
 		5D3A94441AD6C6F30076F544 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5D3A94461AD6C6F40076F544 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		5D3A94481AD6C6F40076F544 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
+		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsTableViewController.swift; sourceTree = "<group>"; };
+		5DBA212C1D18B55F00A8EFE3 /* dc-24-fp-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dc-24-fp-final.png"; path = "../../../../Downloads/dc-24-fp-final.png"; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD6425D1AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DD642611AC3C62300ED3256 /* hackertracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hackertracker.xcdatamodel; sourceTree = "<group>"; };
 		5DD642661AC3C62300ED3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DD642681AC3C62300ED3256 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5DD6426B1AC3C62300ED3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5DD642711AC3C62300ED3256 /* hackertrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hackertrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD642761AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DD642771AC3C62300ED3256 /* hackertrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hackertrackerTests.swift; sourceTree = "<group>"; };
@@ -81,7 +80,6 @@
 		5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTHomeTabBarController.swift; sourceTree = "<group>"; };
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
 		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
-		5DFB87C41B38CBD90083604C /* map-hotel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-hotel.png"; sourceTree = "<group>"; };
 		5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,13 +134,13 @@
 				5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */,
 				5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */,
 				5DD642681AC3C62300ED3256 /* Images.xcassets */,
-				5DD6426A1AC3C62300ED3256 /* LaunchScreen.xib */,
 				5DD642601AC3C62300ED3256 /* hackertracker.xcdatamodeld */,
 				5D3A94481AD6C6F40076F544 /* Message.swift */,
 				5D3A94461AD6C6F40076F544 /* Status.swift */,
 				5D3A94441AD6C6F30076F544 /* Event.swift */,
 				5DDD506E1B28D60D001AE8E1 /* SwiftyJSON.swift */,
 				5DD6425C1AC3C62300ED3256 /* Supporting Files */,
+				5DA268531D06006400249C63 /* LaunchScreen.storyboard */,
 			);
 			path = hackertracker;
 			sourceTree = "<group>";
@@ -150,8 +148,7 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5D35F8C21B4CA6DC0005E619 /* dc-23-speakers.html */,
-				5DFB87C41B38CBD90083604C /* map-hotel.png */,
+				5DBA212C1D18B55F00A8EFE3 /* dc-24-fp-final.png */,
 				5D00AA2B1B0C3BE600916EAC /* schedule-full.json */,
 				5DD6425D1AC3C62300ED3256 /* Info.plist */,
 				5DFB87BE1B30BBF10083604C /* Connections.plist */,
@@ -221,7 +218,9 @@
 		5DD642511AC3C62300ED3256 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Beezle Labs";
 				TargetAttributes = {
 					5DD642581AC3C62300ED3256 = {
@@ -258,11 +257,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DFB87C51B38CBD90083604C /* map-hotel.png in Resources */,
-				5D35F8C31B4CA6DC0005E619 /* dc-23-speakers.html in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
-				5DD6426C1AC3C62300ED3256 /* LaunchScreen.xib in Resources */,
+				5DBA212D1D18B55F00A8EFE3 /* dc-24-fp-final.png in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
+				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 				5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */,
 			);
@@ -327,14 +325,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		5DD6426A1AC3C62300ED3256 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5DD6426B1AC3C62300ED3256 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -358,6 +348,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -422,10 +413,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -434,10 +429,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -456,6 +455,7 @@
 				INFOPLIST_FILE = hackertrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hackertracker.app/hackertracker";
 			};
@@ -472,6 +472,7 @@
 				INFOPLIST_FILE = hackertrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hackertracker.app/hackertracker";
 			};
