@@ -448,7 +448,7 @@
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.30980392159999998" green="0.29411764709999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cPU-zm-LNJ" firstAttribute="top" secondItem="ta4-tB-Y16" secondAttribute="top" id="1or-92-hWk"/>
@@ -769,7 +769,7 @@
         <image name="sync-30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OFe-c6-w0G"/>
+        <segue reference="1NK-lp-euB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.30980392156862746" green="0.29411764705882354" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
 </document>
