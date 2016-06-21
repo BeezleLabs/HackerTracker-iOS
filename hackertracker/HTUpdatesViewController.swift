@@ -29,6 +29,7 @@ class HTUpdatesViewController: UIViewController {
         self.messages = (try! context.executeFetchRequest(fr)) as! [Message]
         
         let df = NSDateFormatter()
+        df.timeZone = NSTimeZone(abbreviation: "PDT")
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var fullText: String = ""
         for message in messages {
@@ -36,6 +37,7 @@ class HTUpdatesViewController: UIViewController {
             fullText = "\(fullText)\(df.stringFromDate(message.date))\n\(message.msg)\n\n"
         }
         
+        updatesTextView.font = UIFont(name: "Courier New", size: 14.0)
         updatesTextView.text = fullText
         updatesTextView.textColor = UIColor.whiteColor()
         

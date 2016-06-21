@@ -33,7 +33,7 @@ class HTScheduleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
+        if let font = UIFont(name: "Courier New", size: 12.0) {
             doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             thursdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             fridayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)

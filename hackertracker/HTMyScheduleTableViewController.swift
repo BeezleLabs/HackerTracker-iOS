@@ -31,7 +31,7 @@ class HTMyScheduleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
+        if let font = UIFont(name: "Courier New", size: 12.0) {
             clearButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             allButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             thursdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)

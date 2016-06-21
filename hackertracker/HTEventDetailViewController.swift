@@ -67,7 +67,7 @@ class HTEventDetailViewController: UIViewController {
             df2.dateFormat = "EEEE, MMMM dd"
             
             eventDateLabel.text = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
-            if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
+            if let font = UIFont(name: "Courier New", size: 12.0) {
                 eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
                 doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             }
