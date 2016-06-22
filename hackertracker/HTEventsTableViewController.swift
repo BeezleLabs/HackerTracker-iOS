@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HTEventsTableViewController: UITableViewController {
     
@@ -14,27 +15,43 @@ class HTEventsTableViewController: UITableViewController {
         var name:String
         var img:String
         var dbName:String
-        init(n:String,i:String,d:String) {
+        var count:Int
+        init(n:String,i:String,d:String,c:Int) {
             self.name = n
             self.img = i
             self.dbName = d
+            self.count = c
         }
     }
     
     var eventTypes: NSMutableArray = [
-        eventType(n: "CONTESTS", i: "contest-30x30", d: "Contest"),
-        eventType(n: "EVENTS", i: "calendar-30x30", d: "Event"),
-        eventType(n: "PARTIES", i: "party-30x30", d: "Party"),
-        eventType(n: "SKYTALKS", i: "cloud-30x30", d: "Skytalks"),
-        eventType(n: "TALKS", i: "user-30x30", d: "Official"),
-        eventType(n: "VILLAGES", i: "user-30x30", d: "Villages"),
-        eventType(n: "WORKSHOPS", i:"user-30x30", d:"Workshop")
+        eventType(n: "CONTESTS", i: "contest-30x30", d: "Contest", c: 0),
+        eventType(n: "EVENTS", i: "calendar-30x30", d: "Event", c: 0),
+        eventType(n: "PARTIES", i: "party-30x30", d: "Party", c: 0),
+        eventType(n: "KIDS", i: "party-30x30", d: "Kids", c: 0),
+        eventType(n: "SKYTALKS", i: "cloud-30x30", d: "Skytalks", c: 0),
+        eventType(n: "TALKS", i: "user-30x30", d: "Official", c: 0),
+        eventType(n: "VILLAGES", i: "user-30x30", d: "Villages", c: 0),
+        eventType(n: "WORKSHOPS", i:"user-30x30", d:"Workshop", c: 0)
 
     ]
         //{ name="Contest";img="Contest.png";dbName="Contest" }] //, "Kids", "Official", "Party", "Skytalks", "Event"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+        
+        let eventArray = self.eventTypes as AnyObject as! [eventType]
+        for e:eventType in eventArray {
+            fr.predicate = NSPredicate(format: "type = %@", argumentArray: [e.dbName])
+            _ = try! context.executeFetchRequest(fr)
+            e.count = context.countForFetchRequest(fr, error: nil)
+        }
         
         self.tableView.reloadData()
 
