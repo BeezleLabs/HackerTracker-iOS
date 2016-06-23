@@ -39,8 +39,8 @@ class HTEventDetailViewController: UIViewController {
             
             eventTitleLabel.text = event.title
             eventNameButton.setTitle(event.who, forState: UIControlState.Normal)
-            eventStartTimeLabel.text = df.stringFromDate(event.begin)
-            eventStopTimeLabel.text = df.stringFromDate(event.end)
+            //eventStartTimeLabel.text = df.stringFromDate(event.begin)
+            //eventStopTimeLabel.text = df.stringFromDate(event.end)
             eventLocationLabel.text = event.location
             eventDetailTextView.text = event.details
             
@@ -64,13 +64,16 @@ class HTEventDetailViewController: UIViewController {
             
             let df2 : NSDateFormatter = NSDateFormatter()
             df2.timeZone = NSTimeZone(abbreviation: "PDT")
-            df2.dateFormat = "EEEE, MMMM dd"
+            df2.dateFormat = "EEEE, MMMM dd HH:mm"
             
-            eventDateLabel.text = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
+            let eventLabel = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
+            let eventEnd = df.stringFromDate(event.end)
+            eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
             if let font = UIFont(name: "Courier New", size: 12.0) {
                 eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
                 doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             }
+            
         } else {
             NSLog("HTEventDetailViewController: Event is nil")
         }
@@ -81,6 +84,7 @@ class HTEventDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        //contentInset.top = 22
         
     }
 
