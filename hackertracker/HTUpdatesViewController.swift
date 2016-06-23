@@ -250,6 +250,7 @@ class HTUpdatesViewController: UIViewController {
                 te.starred = false
                 mySched.append(te)
             }
+
             
             var err:NSError? = nil
             do {

@@ -30,7 +30,7 @@ class HTEventsTableViewController: UITableViewController {
         eventType(n: "PARTIES", i: "party-30x30", d: "Party", c: 0),
         eventType(n: "KIDS", i: "party-30x30", d: "Kids", c: 0),
         eventType(n: "SKYTALKS", i: "cloud-30x30", d: "Skytalks", c: 0),
-        eventType(n: "TALKS", i: "user-30x30", d: "Official", c: 0),
+        eventType(n: "TALKS", i: "user-30x30", d: "Speaker", c: 0),
         eventType(n: "VILLAGES", i: "user-30x30", d: "Villages", c: 0),
         eventType(n: "WORKSHOPS", i:"user-30x30", d:"Workshop", c: 0)
 
