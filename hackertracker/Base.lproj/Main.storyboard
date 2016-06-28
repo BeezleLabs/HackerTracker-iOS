@@ -71,7 +71,7 @@
                                         </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
                                     </textView>
@@ -84,10 +84,7 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-GI-bkP">
                                         <rect key="frame" x="8" y="0.0" width="30" height="30"/>
-                                        <state key="normal" image="search-30x30">
-                                            <color key="titleColor" red="0.68627450980000004" green="0.92549019610000005" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <state key="normal" image="search"/>
                                         <connections>
                                             <segue destination="iF5-Ag-ncp" kind="presentation" id="a2c-ne-VJs"/>
                                         </connections>
@@ -151,17 +148,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G3S-4e-f2Z">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G3S-4e-f2Z">
                                             <rect key="frame" x="15" y="0.0" width="570" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="9LO-P7-sTl" kind="presentation" identifier="eventSegue" id="XIj-Yg-l7d"/>
                                 </connections>
@@ -172,7 +170,7 @@
                             <outlet property="delegate" destination="lZi-jq-jTm" id="ez4-iq-hak"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Events" image="calendar-30x30" id="roC-pj-9m6"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="event" id="roC-pj-9m6"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="sfo-tD-kdr"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ws-6l-NPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,18 +243,18 @@
                                 <rect key="frame" x="0.0" y="66" width="600" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eBk-GU-qoK" id="scH-01-kbQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="48.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="Kb5-KV-rsP">
-                                            <rect key="frame" x="15" y="7" width="60.5" height="23"/>
+                                            <rect key="frame" x="15" y="6" width="61" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W5X-mC-sxS">
-                                            <rect key="frame" x="15" y="30" width="53" height="12.5"/>
+                                            <rect key="frame" x="15" y="29" width="53" height="13"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Subtitle">
@@ -374,18 +372,18 @@
                                 <rect key="frame" x="0.0" y="66" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSO-jz-ubz" id="eiW-1a-LHt">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jam-JR-FLG">
-                                            <rect key="frame" x="15" y="7" width="60.5" height="23"/>
+                                            <rect key="frame" x="15" y="7" width="61" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AuQ-0c-OAH">
-                                            <rect key="frame" x="15" y="30" width="53" height="12.5"/>
+                                            <rect key="frame" x="15" y="30" width="53" height="13"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Subtitle">
@@ -413,7 +411,7 @@
                             <outlet property="delegate" destination="oIR-Ov-nyS" id="6VR-sg-6TA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="2" title="My Schedule" image="calendar-done-30x30" id="1nj-eO-kSJ"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="My Schedule" image="star" id="1nj-eO-kSJ"/>
                     <connections>
                         <outlet property="allButton" destination="Uyf-0m-2FX" id="sMn-YQ-9Cc"/>
                         <outlet property="clearButton" destination="YbC-Cz-Iz2" id="xms-Pt-NWn"/>
@@ -457,7 +455,7 @@
                             <constraint firstItem="cPU-zm-LNJ" firstAttribute="bottom" secondItem="7p2-Nj-us7" secondAttribute="top" id="y4J-rn-qC8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="location-map-30x30" id="y4S-VP-rad"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="y4S-VP-rad"/>
                     <connections>
                         <outlet property="scrollview" destination="cPU-zm-LNJ" id="toH-Kb-Ah5"/>
                     </connections>
@@ -519,7 +517,7 @@
                                         </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
@@ -547,17 +545,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffv-Fv-Vgw">
                                         <rect key="frame" x="247" y="542" width="106" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_demo" translatesAutoresizingMaskIntoConstraints="NO" id="GlD-WK-o3c">
+                                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_demo" translatesAutoresizingMaskIntoConstraints="NO" id="GlD-WK-o3c">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="GDE-4N-Dj6"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_exploit" translatesAutoresizingMaskIntoConstraints="NO" id="M1D-kR-NYb">
+                                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_exploit" translatesAutoresizingMaskIntoConstraints="NO" id="M1D-kR-NYb">
                                                 <rect key="frame" x="38" y="0.0" width="30" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tool" translatesAutoresizingMaskIntoConstraints="NO" id="XIC-0I-9aJ">
+                                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tool" translatesAutoresizingMaskIntoConstraints="NO" id="XIC-0I-9aJ">
                                                 <rect key="frame" x="76" y="0.0" width="30" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -696,18 +697,18 @@
                                 <rect key="frame" x="0.0" y="66" width="600" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eXN-7O-4YQ" id="t44-ac-54s">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="56"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W4n-uj-d9T">
-                                            <rect key="frame" x="15" y="11" width="60.5" height="23"/>
+                                            <rect key="frame" x="15" y="10" width="61" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iCR-8b-CP5">
-                                            <rect key="frame" x="15" y="34" width="53" height="12.5"/>
+                                            <rect key="frame" x="15" y="33" width="53" height="13"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -741,21 +742,22 @@
     </scenes>
     <resources>
         <image name="calendar-30x30" width="30" height="30"/>
-        <image name="calendar-done-30x30" width="30" height="30"/>
-        <image name="icon_demo" width="44" height="44"/>
-        <image name="icon_exploit" width="44" height="44"/>
-        <image name="icon_tool" width="44" height="44"/>
-        <image name="location-map-30x30" width="30" height="30"/>
+        <image name="event" width="30" height="30"/>
+        <image name="icon_demo" width="30" height="30"/>
+        <image name="icon_exploit" width="30" height="30"/>
+        <image name="icon_tool" width="30" height="30"/>
+        <image name="map" width="30" height="30"/>
         <image name="promo24" width="1024" height="500"/>
-        <image name="search-30x30" width="30" height="30"/>
-        <image name="skull-tabbar" width="30" height="26"/>
-        <image name="skull_lg" width="300" height="300"/>
+        <image name="search" width="30" height="30"/>
+        <image name="skull-tabbar" width="30" height="30"/>
+        <image name="skull_lg" width="200" height="200"/>
         <image name="speaker-30x30" width="30" height="30"/>
         <image name="splash24" width="2960" height="5268"/>
+        <image name="star" width="30" height="30"/>
         <image name="sync-30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pbn-jW-yxw"/>
+        <segue reference="OFe-c6-w0G"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.30980392156862746" green="0.29411764705882354" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
 </document>

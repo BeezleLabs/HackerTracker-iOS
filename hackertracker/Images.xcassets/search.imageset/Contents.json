@@ -2,20 +2,25 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "search.png"
+      "filename" : "search-30x30.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "search-60x60.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "search-90x90.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

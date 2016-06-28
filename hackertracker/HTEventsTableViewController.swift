@@ -25,14 +25,14 @@ class HTEventsTableViewController: UITableViewController {
     }
     
     var eventTypes: NSMutableArray = [
-        eventType(n: "CONTESTS", i: "contest-30x30", d: "Contest", c: 0),
-        eventType(n: "EVENTS", i: "calendar-30x30", d: "Event", c: 0),
-        eventType(n: "PARTIES", i: "party-30x30", d: "Party", c: 0),
-        eventType(n: "KIDS", i: "party-30x30", d: "Kids", c: 0),
-        eventType(n: "SKYTALKS", i: "cloud-30x30", d: "Skytalks", c: 0),
-        eventType(n: "TALKS", i: "user-30x30", d: "Speaker", c: 0),
-        eventType(n: "VILLAGES", i: "user-30x30", d: "Villages", c: 0),
-        eventType(n: "WORKSHOPS", i:"user-30x30", d:"Workshop", c: 0)
+        eventType(n: "CONTESTS", i: "contest", d: "Contest", c: 0),
+        eventType(n: "EVENTS", i: "event", d: "Event", c: 0),
+        eventType(n: "PARTIES", i: "party", d: "Party", c: 0),
+        eventType(n: "KIDS", i: "kids", d: "Kids", c: 0),
+        eventType(n: "SKYTALKS", i: "cloud", d: "Skytalks", c: 0),
+        eventType(n: "TALKS", i: "speaker", d: "Speaker", c: 0),
+        eventType(n: "VILLAGES", i: "village", d: "Villages", c: 0),
+        eventType(n: "WORKSHOPS", i:"workshop", d:"Workshop", c: 0)
 
     ]
         //{ name="Contest";img="Contest.png";dbName="Contest" }] //, "Kids", "Official", "Party", "Skytalks", "Event"]
@@ -93,10 +93,7 @@ class HTEventsTableViewController: UITableViewController {
         event = self.eventTypes.objectAtIndex(indexPath.row) as! eventType
         
         cell.textLabel!.text = event.name
-        let path = NSBundle.mainBundle().pathForResource(event.img, ofType: "png")
-        if (path != nil) {
-            cell.imageView?.image = UIImage(contentsOfFile: path!)
-        }
+        cell.imageView?.image = UIImage(named: event.img)
         
         //NSLog("built cell for \(event.name)")
 
