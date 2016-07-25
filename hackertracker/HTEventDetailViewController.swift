@@ -19,7 +19,6 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDetailTextView: UITextView!
     @IBOutlet weak var eventStarredButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var demoImage: UIImageView!
     @IBOutlet weak var exploitImage: UIImageView!
     @IBOutlet weak var toolImage: UIImageView!
@@ -36,7 +35,7 @@ class HTEventDetailViewController: UIViewController {
             let df = NSDateFormatter()
             df.dateFormat = "HH:mm"
             df.timeZone = NSTimeZone(abbreviation: "PDT")
-            
+            title = event.title
             eventTitleLabel.text = event.title
             eventNameButton.setTitle(event.who, forState: UIControlState.Normal)
             //eventStartTimeLabel.text = df.stringFromDate(event.begin)
@@ -71,11 +70,10 @@ class HTEventDetailViewController: UIViewController {
             eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
             if let font = UIFont(name: "Courier New", size: 12.0) {
                 eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
-                doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             }
             
         } else {
-            NSLog("HTEventDetailViewController: Event is nil")
+            print("HTEventDetailViewController: Event is nil")
         }
 
         // Do any additional setup after loading the view.
@@ -118,7 +116,7 @@ class HTEventDetailViewController: UIViewController {
             err = error
         }
         if err != nil {
-            NSLog("%@",err!)
+            print(err)
         }
     }
     

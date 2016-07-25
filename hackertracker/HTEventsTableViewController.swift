@@ -61,11 +61,6 @@ class HTEventsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.contentInset.top = 22
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -148,6 +143,10 @@ class HTEventsTableViewController: UITableViewController {
         }
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0
     }
 
 }

@@ -26,15 +26,14 @@ class HTScheduleTableViewController: UITableViewController {
     @IBOutlet weak var sundayButton: UIBarButtonItem!
     var isSun:Bool = false
     @IBOutlet weak var allButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     let highlightColor = UIColor(red: 120/255.0, green: 114/255.0, blue: 255/255.0, alpha: 1)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = searchTerm
         if let font = UIFont(name: "Courier New", size: 12.0) {
-            doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             thursdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             fridayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             saturdayButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
@@ -73,11 +72,6 @@ class HTScheduleTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.contentInset.top = 22
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -188,7 +182,6 @@ class HTScheduleTableViewController: UITableViewController {
     }
     
     func deHighlightAll() {
-        doneButton.tintColor = UIColor.whiteColor()
         thursdayButton.tintColor = UIColor.whiteColor()
         fridayButton.tintColor = UIColor.whiteColor()
         saturdayButton.tintColor = UIColor.whiteColor()
