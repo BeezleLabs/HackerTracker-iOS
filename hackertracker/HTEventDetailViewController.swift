@@ -35,11 +35,12 @@ class HTEventDetailViewController: UIViewController {
         if (event != nil) {
             let df = NSDateFormatter()
             df.dateFormat = "HH:mm"
+            df.timeZone = NSTimeZone(abbreviation: "PDT")
             
             eventTitleLabel.text = event.title
             eventNameButton.setTitle(event.who, forState: UIControlState.Normal)
-            eventStartTimeLabel.text = df.stringFromDate(event.begin)
-            eventStopTimeLabel.text = df.stringFromDate(event.end)
+            //eventStartTimeLabel.text = df.stringFromDate(event.begin)
+            //eventStopTimeLabel.text = df.stringFromDate(event.end)
             eventLocationLabel.text = event.location
             eventDetailTextView.text = event.details
             
@@ -61,14 +62,19 @@ class HTEventDetailViewController: UIViewController {
                 exploitImage.alpha = 1.0
             }
             
-            var df2 : NSDateFormatter = NSDateFormatter()
-            df2.dateFormat = "EEEE, MMMM dd"
+            let df2 : NSDateFormatter = NSDateFormatter()
+            df2.timeZone = NSTimeZone(abbreviation: "PDT")
+            df2.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            df2.dateFormat = "EEEE, MMMM dd HH:mm"
             
-            eventDateLabel.text = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
-            if let font = UIFont(name: "Helvetica Neue", size: 12.0) {
+            let eventLabel = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
+            let eventEnd = df.stringFromDate(event.end)
+            eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
+            if let font = UIFont(name: "Courier New", size: 12.0) {
                 eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
                 doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             }
+            
         } else {
             NSLog("HTEventDetailViewController: Event is nil")
         }
@@ -76,11 +82,12 @@ class HTEventDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    /*override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        //contentInset.top = 22
         
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -89,7 +96,7 @@ class HTEventDetailViewController: UIViewController {
     
     @IBAction func toggleMySchedule(sender: AnyObject) {
         //NSLog("toggleMySchedule \(event.starred)")
-        var button = sender as! UIBarButtonItem
+        let button = sender as! UIBarButtonItem
         if (event.starred) {
             event.starred = false
             button.title = unstarredButtonTitle
@@ -106,7 +113,11 @@ class HTEventDetailViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         var err :NSError?
-        context.save(&err)
+        do {
+            try context.save()
+        } catch let error as NSError {
+            err = error
+        }
         if err != nil {
             NSLog("%@",err!)
         }

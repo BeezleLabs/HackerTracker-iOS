@@ -19,7 +19,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         
         let image:UIImage
         
-        let path = NSBundle.mainBundle().pathForResource("map-hotel", ofType: "png")
+        let path = NSBundle.mainBundle().pathForResource("dc-24-fp-final", ofType: "png")
         if (path != nil) {
             image = UIImage(contentsOfFile: path!)!
             imageView = UIImageView(image: image)
@@ -35,7 +35,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         
         scrollview.contentSize = image.size*/
         
-        var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(HTMapsViewController.scrollViewDoubleTapped(_:)))
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.numberOfTouchesRequired = 1
         scrollview.addGestureRecognizer(doubleTapRecognizer)
