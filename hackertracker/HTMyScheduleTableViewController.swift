@@ -31,6 +31,7 @@ class HTMyScheduleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "My Schedule"
         if let font = UIFont(name: "Courier New", size: 12.0) {
             clearButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             allButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
@@ -75,11 +76,6 @@ class HTMyScheduleTableViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.contentInset.top = 22
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

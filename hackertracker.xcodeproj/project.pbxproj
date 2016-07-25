@@ -16,7 +16,6 @@
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */; };
-		5DBA212D1D18B55F00A8EFE3 /* dc-24-fp-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBA212C1D18B55F00A8EFE3 /* dc-24-fp-final.png */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642601AC3C62300ED3256 /* hackertracker.xcdatamodeld */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
@@ -258,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
-				5DBA212D1D18B55F00A8EFE3 /* dc-24-fp-final.png in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
