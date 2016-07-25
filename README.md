@@ -3,7 +3,7 @@ HackerTracker iOS
 
 HackerTracker iOS is a re-implementation/re-imagining of HackerTracker as created by shortstack in Swift for use on iOS devices.
 
-HackerTracker iOS is an information guide for DEF CON 23.
+HackerTracker iOS is an information guide for DEF CON (http://www.defcon.org).
 
 Speakers, events, contests, vendors, parties and other con info at your fingertips (and on your Apple Watch).
 
