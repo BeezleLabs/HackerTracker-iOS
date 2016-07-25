@@ -30,6 +30,7 @@ class HTInitViewController: UIViewController {
             let df = NSDateFormatter()
             df.timeZone = NSTimeZone(abbreviation: "PDT")
             df.dateFormat = "yyyy-MM-dd HH:mm:ss z"
+            df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
             let startofYear: NSDate = df.dateFromString("2016-01-01 00:00:01 PDT")!
             
             let fre:NSFetchRequest = NSFetchRequest(entityName:"Event")
@@ -81,6 +82,7 @@ class HTInitViewController: UIViewController {
         let df = NSDateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         df.timeZone = NSTimeZone(name: "PDT")
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         
         let path = NSBundle.mainBundle().pathForResource("schedule-full", ofType: "json")
         //NSLog("Path : \(path!)")
@@ -88,7 +90,7 @@ class HTInitViewController: UIViewController {
         let content = try? NSString(contentsOfFile: path!, encoding: NSASCIIStringEncoding)
         //NSLog("Content: \(content)")
         let dataFromString = content?.dataUsingEncoding(NSUTF8StringEncoding)
-        let json = JSON(data: dataFromString!, options: NSJSONReadingOptions.AllowFragments, error: nil)
+        let json = JSON(data: dataFromString!, options: NSJSONReadingOptions.MutableLeaves, error: nil)
         
         let updateTime = json["updateTime"].string!
         let updateDate = json["updateDate"].string!
@@ -103,7 +105,7 @@ class HTInitViewController: UIViewController {
         
         let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
         message2.date = first_status.lastsync
-        message2.msg = "The initial schedule contains the official talks, workshops, villages, parties, etc. Sync with defcon-api (click the button on this screen) before or during DEF CON for an updated schedule of events."
+        message2.msg = "The initial schedule contains official talks, workshops, villages, parties, etc. Sync with defcon-api (click the button on this screen) before or during DEF CON for an updated schedule of events."
         
         let schedule = json["schedule"].array!
         

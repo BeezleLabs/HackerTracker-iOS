@@ -64,6 +64,7 @@ class HTEventDetailViewController: UIViewController {
             
             let df2 : NSDateFormatter = NSDateFormatter()
             df2.timeZone = NSTimeZone(abbreviation: "PDT")
+            df2.locale = NSLocale(localeIdentifier: "en_US_POSIX")
             df2.dateFormat = "EEEE, MMMM dd HH:mm"
             
             let eventLabel = NSString(format: "%@",df2.stringFromDate(event.begin)) as String
@@ -81,12 +82,12 @@ class HTEventDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    /*override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         //contentInset.top = 22
         
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -156,6 +156,8 @@ class HTMyScheduleTableViewController: UITableViewController {
         let df = NSDateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss z"
         df.timeZone = NSTimeZone(abbreviation: "PDT")
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+
         let startofDay: NSDate = df.dateFromString("\(dateString) 00:00:00 PDT")!
         let endofDay: NSDate = df.dateFromString("\(dateString) 23:59:59 PDT")!
         
@@ -232,6 +234,8 @@ class HTMyScheduleTableViewController: UITableViewController {
         let df = NSDateFormatter()
         df.dateFormat = "EE HH:mm"
         df.timeZone = NSTimeZone(abbreviation: "PDT")
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+
         let beginDate = df.stringFromDate(event.begin)
         df.dateFormat = "HH:mm"
         let endDate = df.stringFromDate(event.end)

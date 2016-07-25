@@ -73,10 +73,10 @@ class HTScheduleTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    /*override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.contentInset.top = 22
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -105,6 +105,7 @@ class HTScheduleTableViewController: UITableViewController {
         let event : Event = self.events.objectAtIndex(indexPath.row) as! Event
         let df = NSDateFormatter()
         df.timeZone = NSTimeZone(abbreviation: "PDT")
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         df.dateFormat = "EE HH:mm"
         let beginDate = df.stringFromDate(event.begin)
         df.dateFormat = "HH:mm"
@@ -203,6 +204,8 @@ class HTScheduleTableViewController: UITableViewController {
         let df = NSDateFormatter()
         df.timeZone = NSTimeZone(abbreviation: "PDT")
         df.dateFormat = "yyyy-MM-dd HH:mm:ss z"
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+
         let startofDay: NSDate = df.dateFromString("\(dateString) 00:00:00 PDT")!
         let endofDay: NSDate = df.dateFromString("\(dateString) 23:59:59 PDT")!
         

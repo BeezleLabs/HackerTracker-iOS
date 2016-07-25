@@ -31,6 +31,7 @@ class HTUpdatesViewController: UIViewController {
         let df = NSDateFormatter()
         df.timeZone = NSTimeZone(abbreviation: "PDT")
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
         var fullText: String = ""
         for message in messages {
             //var fullDate = df.stringFromDate(message.date)
@@ -139,6 +140,7 @@ class HTUpdatesViewController: UIViewController {
         
         let df = NSDateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         
         let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = delegate.managedObjectContext!
@@ -176,10 +178,12 @@ class HTUpdatesViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let json = JSON(data: data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+        let json = JSON(data: data, options: NSJSONReadingOptions.MutableLeaves, error: nil)
+        //let json = JSON(data: data, options: NSJSONReadingOptions.All, error: nil)
         
         let df = NSDateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         
         let updateTime = json["updateTime"].string!
         let updateDate = json["updateDate"].string!
@@ -199,8 +203,8 @@ class HTUpdatesViewController: UIViewController {
             
             let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
             message2.date = syncDate
-            message2.msg = "Schedule successfully updated."
             let schedule = json["schedule"].array!
+            message2.msg = "Schedule updated with \(schedule.count) events."
             
             NSLog("Total events: \(schedule.count)")
             
@@ -218,6 +222,7 @@ class HTUpdatesViewController: UIViewController {
                 } else {
                     te = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
                     te.id = item["id"].int32Value
+                    te.starred = false
                 }
                 
                 te.who = item["who"].string!
@@ -247,7 +252,6 @@ class HTUpdatesViewController: UIViewController {
                 te.demo = item["demo"].boolValue
                 te.tool = item["tool"].boolValue
                 te.exploit = item["exploit"].boolValue
-                te.starred = false
                 mySched.append(te)
             }
 

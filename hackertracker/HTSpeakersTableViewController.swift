@@ -44,10 +44,10 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    /*override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.contentInset.top = 22
-    }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,6 +86,8 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
         let df = NSDateFormatter()
         df.dateFormat = "EE HH:mm"
         df.timeZone = NSTimeZone(abbreviation: "PDT")
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+
         let beginDate = df.stringFromDate(event.begin)
         df.dateFormat = "HH:mm"
         let endDate = df.stringFromDate(event.end)

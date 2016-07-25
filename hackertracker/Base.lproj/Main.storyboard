@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -55,10 +55,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKK-IO-sfh">
                                         <rect key="frame" x="562" y="0.0" width="30" height="30"/>
-                                        <state key="normal" image="sync-30x30">
-                                            <color key="titleColor" red="0.68627450980000004" green="0.92549019610000005" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <state key="normal" image="sync-30x30"/>
                                         <connections>
                                             <action selector="syncDatabase:" destination="Snx-g6-3Uk" eventType="touchUpInside" id="H7i-nr-dbm"/>
                                         </connections>
@@ -177,7 +174,7 @@
             </objects>
             <point key="canvasLocation" x="747" y="584"/>
         </scene>
-        <!--Events-->
+        <!--Schedule Table View Controller-->
         <scene sceneID="plL-wp-CvI">
             <objects>
                 <tableViewController id="9LO-P7-sTl" customClass="HTScheduleTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -283,7 +280,6 @@
                             <outlet property="delegate" destination="9LO-P7-sTl" id="fFo-14-Wr2"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="3" title="Events" image="calendar-30x30" id="KXh-Xw-jdI"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -672,7 +668,7 @@
             </objects>
             <point key="canvasLocation" x="-425" y="894"/>
         </scene>
-        <!--Speakers-->
+        <!--Speakers Table View Controller-->
         <scene sceneID="ncf-MQ-TpN">
             <objects>
                 <tableViewController id="iF5-Ag-ncp" customClass="HTSpeakersTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -730,7 +726,6 @@
                             <outlet property="delegate" destination="iF5-Ag-ncp" id="SL0-AG-z76"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="1" title="Speakers" image="speaker-30x30" id="seB-y8-xtn"/>
                     <connections>
                         <outlet property="eventSearchBar" destination="Ymw-ng-JHs" id="zUs-tD-b4J"/>
                     </connections>
@@ -741,7 +736,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar-30x30" width="30" height="30"/>
         <image name="event" width="30" height="30"/>
         <image name="icon_demo" width="30" height="30"/>
         <image name="icon_exploit" width="30" height="30"/>
@@ -751,13 +745,12 @@
         <image name="search" width="30" height="30"/>
         <image name="skull-tabbar" width="30" height="30"/>
         <image name="skull_lg" width="200" height="200"/>
-        <image name="speaker-30x30" width="30" height="30"/>
         <image name="splash24" width="2960" height="5268"/>
         <image name="star" width="30" height="30"/>
         <image name="sync-30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OFe-c6-w0G"/>
+        <segue reference="Pbn-jW-yxw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.30980392156862746" green="0.29411764705882354" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
 </document>
