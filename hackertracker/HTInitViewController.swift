@@ -130,17 +130,41 @@ class HTInitViewController: UIViewController {
             te.id = item["id"].int32Value
             
             //NSLog("Adding Item - id: \(te.id) type \(te.type) who: \(te.who) date: \(d)")
-            let b = item["begin"].string!
-            let e = item["end"].string!
+            var b = item["begin"].string!
+            var e = item["end"].string!
             if ( d == "" ) {
                 d = "2016-08-04"
             }
             if ( b != "" ) {
+                if ( b == "24:00") {
+                    b = "00:00"
+                    if ( d == "2016-08-04" ) {
+                        d = "2016-08-05"
+                    } else if ( d == "2016-08-05" ) {
+                        d = "2016-08-06"
+                    } else if ( d == "2016-08-06" ) {
+                        d = "2016-08-07"
+                    } else if ( d == "2016-08-07" ) {
+                        d = "2016-08-08"
+                    }
+                }
                 te.begin = df.dateFromString("\(d) \(b) PDT")!
             } else {
                 te.begin = df.dateFromString("\(d) 00:00 PDT")!
             }
             if ( e != "" ) {
+                if ( e == "24:00") {
+                    e = "00:00"
+                    if ( d == "2016-08-04" ) {
+                        d = "2016-08-05"
+                    } else if ( d == "2016-08-05" ) {
+                        d = "2016-08-06"
+                    } else if ( d == "2016-08-06" ) {
+                        d = "2016-08-07"
+                    } else if ( d == "2016-08-07" ) {
+                        d = "2016-08-08"
+                    }
+                }
                 te.end = df.dateFromString("\(d) \(e) PDT")!
             } else {
                 te.end = df.dateFromString("\(d) 23:59 PDT")!

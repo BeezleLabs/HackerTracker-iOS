@@ -73,10 +73,10 @@ class HTScheduleTableViewController: UITableViewController {
         
     }
     
-    /*override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.contentInset.top = 22
-    }*/
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

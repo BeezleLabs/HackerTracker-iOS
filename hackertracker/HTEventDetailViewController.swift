@@ -82,12 +82,12 @@ class HTEventDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    /*override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         //contentInset.top = 22
         
-    }*/
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
