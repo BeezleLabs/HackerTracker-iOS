@@ -266,16 +266,37 @@ class HTUpdatesViewController: UIViewController {
                 } else {
                     te.end = df.dateFromString("\(d) 23:59 PDT")!
                 }
-                te.location = item["location"].string!
-                te.title = item["title"].string!
+                
+                if (item["location"] != "") {
+                    te.location = item["location"].string!
+                }
+
+                if (item["title"] != "") {
+                    te.title = item["title"].string!
+                }
                 if item["description"] != "" {
                     te.details = item["description"].string!
                 }
-                te.link = item["link"].string!
-                te.type = item["type"].string!
-                te.demo = item["demo"].boolValue
-                te.tool = item["tool"].boolValue
-                te.exploit = item["exploit"].boolValue
+                //NSLog("\(te.id): \(te.title) \(item["link"])")
+                if ( item["link"] != nil) {
+                    te.link = item["link"].string!
+                }
+            
+                if (item["type"] != "") {
+                    te.type = item["type"].string!
+                }
+                
+                if (item["demo"] != "") {
+                    te.demo = item["demo"].boolValue
+                }
+                
+                if (item["tool"] != "") {
+                    te.tool = item["tool"].boolValue
+                }
+                
+                if (item["exploit"] != "" ) {
+                    te.exploit = item["exploit"].boolValue
+                }
                 mySched.append(te)
             }
 
