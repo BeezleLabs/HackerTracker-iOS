@@ -19,7 +19,8 @@ class HTUpdatesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.translucent = false
+
         let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
@@ -34,15 +35,12 @@ class HTUpdatesViewController: UIViewController {
         
         var fullText: String = ""
         for message in messages {
-            //var fullDate = df.stringFromDate(message.date)
             fullText = "\(fullText)\(df.stringFromDate(message.date))\n\(message.msg)\n\n"
         }
         
         updatesTextView.font = UIFont(name: "Courier New", size: 14.0)
         updatesTextView.text = fullText
         updatesTextView.textColor = UIColor.whiteColor()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -108,7 +106,6 @@ class HTUpdatesViewController: UIViewController {
         let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: {
             (action:UIAlertAction) in
             NSLog("No")
-            //self.tabBarController.selectedIndex = 0
         })
         
         alert.addAction(yesItem)
