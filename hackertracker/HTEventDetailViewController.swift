@@ -19,7 +19,6 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDetailTextView: UITextView!
     @IBOutlet weak var eventStarredButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var demoImage: UIImageView!
     @IBOutlet weak var exploitImage: UIImageView!
     @IBOutlet weak var toolImage: UIImageView!
@@ -72,7 +71,6 @@ class HTEventDetailViewController: UIViewController {
             eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
             if let font = UIFont(name: "Courier New", size: 12.0) {
                 eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
-                doneButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             }
             
         } else {
@@ -85,26 +83,17 @@ class HTEventDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-        //contentInset.top = 22
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func toggleMySchedule(sender: AnyObject) {
-        //NSLog("toggleMySchedule \(event.starred)")
         let button = sender as! UIBarButtonItem
         if (event.starred) {
             event.starred = false
             button.title = unstarredButtonTitle
-            //sender.setTitle(unstarredButtonTitle, forState: UIControlState.Normal)
         } else {
             event.starred = true
             button.title = starredButtonTitle
-            //sender.setTitle(starredButtonTitle, forState: UIControlState.Normal)
         }
         self.saveContext()
     }
@@ -126,13 +115,4 @@ class HTEventDetailViewController: UIViewController {
     @IBAction func closeEvent(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Pass the selected object to the new view controller.
-    }*/
-
 }
