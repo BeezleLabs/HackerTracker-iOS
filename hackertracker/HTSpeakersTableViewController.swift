@@ -24,19 +24,19 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
         //NSLog("Getting full schedule")
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.predicate = NSPredicate(format: "type = 'Official' AND who != ''", argumentArray: nil)
         fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
-        self.events = try! context.executeFetchRequest(fr)
+        self.events = try! context.fetch(fr) as NSArray
         
         self.tableView.reloadData()
         eventSearchBar.showsCancelButton = true
@@ -44,7 +44,7 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.contentInset.top = 22
     }
@@ -56,13 +56,13 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         // NSLog("have \(self.events.count) events to display")
@@ -74,23 +74,23 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) 
         
         var event : Event
         if (isFiltered) {
-            event = self.filteredEvents.objectAtIndex(indexPath.row) as! Event
+            event = self.filteredEvents.object(at: indexPath.row) as! Event
         } else {
-            event = self.events.objectAtIndex(indexPath.row) as! Event
+            event = self.events.object(at: indexPath.row) as! Event
         }
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "EE HH:mm"
-        df.timeZone = NSTimeZone(abbreviation: "PDT")
-        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        df.timeZone = TimeZone(abbreviation: "PDT")
+        df.locale = Locale(identifier: "en_US_POSIX")
 
-        let beginDate = df.stringFromDate(event.begin)
+        let beginDate = df.string(from: event.begin as Date)
         df.dateFormat = "HH:mm"
-        let endDate = df.stringFromDate(event.end)
+        let endDate = df.string(from: event.end as Date)
         
         if (event.starred) {
             //NSLog("\(event.title) is starred!")
@@ -98,7 +98,7 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
             cell.textLabel!.textColor = self.highlightColor
         } else {
             cell.textLabel!.text = event.title
-            cell.textLabel!.textColor = UIColor.whiteColor()
+            cell.textLabel!.textColor = UIColor.white
         }
         cell.detailTextLabel!.text = "\(beginDate)-\(endDate) (\(event.location)) "
         
@@ -109,11 +109,11 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
     
     // MARK: - Search Bar Functions
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isFiltered = true;
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         let searchText = searchBar.text
         if (searchText!.characters.count == 0) {
             isFiltered = false
@@ -121,24 +121,24 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
             isFiltered = true
         }
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
         fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR who contains[cd] %@", argumentArray: [searchText!,searchText!,searchText!])
-        self.filteredEvents = try! context.executeFetchRequest(fr)
+        self.filteredEvents = try! context.fetch(fr) as NSArray
         
         self.tableView.reloadData()
         
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchText = searchBar.text
         if (searchText!.characters.count == 0) {
             isFiltered = false
@@ -146,33 +146,33 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
             isFiltered = true
         }
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
         fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR who contains[cd] %@", argumentArray: [searchText!,searchText!,searchText!])
-        self.filteredEvents = try! context.executeFetchRequest(fr)
+        self.filteredEvents = try! context.fetch(fr) as NSArray
         
         self.tableView.reloadData()
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if (searchText.characters.count == 0) {
             isFiltered = false
         } else {
             isFiltered = true
             
-            let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = delegate.managedObjectContext!
             
-            let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+            let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
             fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
             fr.returnsObjectsAsFaults = false
             fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR who contains[cd] %@", argumentArray: [searchText,searchText,searchText])
-            self.filteredEvents = try! context.executeFetchRequest(fr)
+            self.filteredEvents = try! context.fetch(fr) as NSArray
             
             self.tableView.reloadData()
             
@@ -180,15 +180,15 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //NSLog("Segue to speaker detail")
         if (segue.identifier == "searchDetailSegue") {
-            let dv : HTEventDetailViewController = segue.destinationViewController as! HTEventDetailViewController
-            let indexPath : NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+            let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
+            let indexPath : IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
             if isFiltered {
-                dv.event = self.filteredEvents.objectAtIndex(indexPath.row) as! Event
+                dv.event = self.filteredEvents.object(at: indexPath.row) as! Event
             } else {
-                dv.event = self.events.objectAtIndex(indexPath.row) as! Event
+                dv.event = self.events.object(at: indexPath.row) as! Event
             }
         }
     }

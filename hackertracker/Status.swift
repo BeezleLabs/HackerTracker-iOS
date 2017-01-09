@@ -12,6 +12,6 @@ import CoreData
 @objc(Status)
 class Status: NSManagedObject {
 
-    @NSManaged var lastsync: NSDate
+    @NSManaged var lastsync: Date
 
 }

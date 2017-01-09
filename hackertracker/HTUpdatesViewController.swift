@@ -15,58 +15,58 @@ class HTUpdatesViewController: UIViewController {
     
     var messages: [Message] = []
     var data = NSMutableData()
-    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .Alert)
+    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
 
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Message")
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
-        self.messages = (try! context.executeFetchRequest(fr)) as! [Message]
+        self.messages = (try! context.fetch(fr)) as! [Message]
         
-        let df = NSDateFormatter()
-        df.timeZone = NSTimeZone(abbreviation: "PDT")
+        let df = DateFormatter()
+        df.timeZone = TimeZone(abbreviation: "PDT")
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         var fullText: String = ""
         for message in messages {
-            fullText = "\(fullText)\(df.stringFromDate(message.date))\n\(message.msg)\n\n"
+            fullText = "\(fullText)\(df.string(from: message.date as Date))\n\(message.msg)\n\n"
         }
         
         updatesTextView.font = UIFont(name: "Courier New", size: 14.0)
         updatesTextView.text = fullText
-        updatesTextView.textColor = UIColor.whiteColor()
+        updatesTextView.textColor = UIColor.white
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.updatesTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
     func updateMessages() {
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Message")
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
-        self.messages = (try! context.executeFetchRequest(fr)) as! [Message]
+        self.messages = (try! context.fetch(fr)) as! [Message]
         
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var fullText: String = ""
         for message in messages {
             //var fullDate = df.stringFromDate(message.date)
-            fullText = "\(fullText)\(df.stringFromDate(message.date))\n\(message.msg)\n\n"
+            fullText = "\(fullText)\(df.string(from: message.date as Date))\n\(message.msg)\n\n"
         }
         
         updatesTextView.text = fullText
-        updatesTextView.textColor = UIColor.whiteColor()
+        updatesTextView.textColor = UIColor.white
         
     }
 
@@ -75,35 +75,35 @@ class HTUpdatesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func syncDatabase(sender: AnyObject) {
+    @IBAction func syncDatabase(_ sender: AnyObject) {
         //NSLog("syncDatabase")
         
-        let alert : UIAlertController = UIAlertController(title: "Connection Request", message: "Connect to defcon-api for updates?", preferredStyle: UIAlertControllerStyle.Alert)
-        let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {
+        let alert : UIAlertController = UIAlertController(title: "Connection Request", message: "Connect to defcon-api for updates?", preferredStyle: UIAlertControllerStyle.alert)
+        let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
             (action:UIAlertAction) in
-            let envPlist = NSBundle.mainBundle().pathForResource("Connections", ofType: "plist")
+            let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
             let envs = NSDictionary(contentsOfFile: envPlist!)!
             
-            self.syncAlert.view.tintColor = UIColor.blackColor()
-            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+            self.syncAlert.view.tintColor = UIColor.black
+            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50)) as UIActivityIndicatorView
             loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
             loadingIndicator.startAnimating();
             
             self.syncAlert.view.addSubview(loadingIndicator)
-            self.presentViewController(self.syncAlert, animated: true, completion: nil)
+            self.present(self.syncAlert, animated: true, completion: nil)
             
-            let tURL = envs.valueForKey("URL") as! String
+            let tURL = envs.value(forKey: "URL") as! String
             //NSLog("Connecting to \(tURL)")
-            let URL = NSURL(string: tURL)
+            let URL = Foundation.URL(string: tURL)
             
-            let request = NSMutableURLRequest(URL: URL!)
-            request.HTTPMethod = "GET"
+            let request = NSMutableURLRequest(url: URL!)
+            request.httpMethod = "GET"
             
-            var queue = NSOperationQueue()
-            var con = NSURLConnection(request: request, delegate: self, startImmediately: true)
+            var queue = OperationQueue()
+            var con = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: true)
         })
-        let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: {
+        let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {
             (action:UIAlertAction) in
             NSLog("No")
         })
@@ -111,45 +111,45 @@ class HTUpdatesViewController: UIViewController {
         alert.addAction(yesItem)
         alert.addAction(noItem)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func connection(con: NSURLConnection!, didReceiveData _data:NSData!) {
+    func connection(_ con: NSURLConnection!, didReceiveData _data:Data!) {
         //NSLog("didReceiveData")
-        self.data.appendData(_data)
+        self.data.append(_data)
     }
     
-    func connectionDidFinishLoading(con: NSURLConnection!) {
+    func connectionDidFinishLoading(_ con: NSURLConnection!) {
         //NSLog("connectionDidFinishLoading")
         
-        let resStr = NSString(data: self.data, encoding: NSASCIIStringEncoding)
+        let resStr = NSString(data: self.data as Data, encoding: String.Encoding.ascii.rawValue)
         
         //NSLog("response: \(resStr)")
 
-        let dataFromString = resStr!.dataUsingEncoding(NSUTF8StringEncoding)
+        let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
         
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
         updateSchedule(dataFromString!)
         
     }
     
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+    func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
         
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        df.locale = Locale(identifier: "en_US_POSIX")
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
         
-        let failedAlert : UIAlertController = UIAlertController(title: "Connection Failed", message: "Connection to defcon-api failed. Please attempt to sync data later.", preferredStyle: UIAlertControllerStyle.Alert)
-        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+        let failedAlert : UIAlertController = UIAlertController(title: "Connection Failed", message: "Connection to defcon-api failed. Please attempt to sync data later.", preferredStyle: UIAlertControllerStyle.alert)
+        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {
             (action:UIAlertAction) in
-                let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
-                message2.date = NSDate()
-                let synctime = df.stringFromDate(message2.date)
+                let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+                message2.date = Date()
+                let synctime = df.string(from: message2.date as Date)
                 message2.msg = "Update failed."
                 var err:NSError? = nil
                 do {
@@ -167,38 +167,38 @@ class HTUpdatesViewController: UIViewController {
                 self.updateMessages()
             })
         failedAlert.addAction(okItem)
-        self.presentViewController(failedAlert, animated: true, completion: nil)
+        self.present(failedAlert, animated: true, completion: nil)
     }
     
-    func updateSchedule(data: NSData) {
+    func updateSchedule(_ data: Data) {
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let json = JSON(data: data, options: NSJSONReadingOptions.MutableLeaves, error: nil)
+        let json = JSON(data: data, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
         //let json = JSON(data: data, options: NSJSONReadingOptions.All, error: nil)
         
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        df.locale = Locale(identifier: "en_US_POSIX")
         
         let updateTime = json["updateTime"].string!
         let updateDate = json["updateDate"].string!
         NSLog("schedule updated at \(updateDate) \(updateTime)")
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Status")
-        let status: Status = (try! context.executeFetchRequest(fr))[0] as! Status
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
+        let status = ((try! context.fetch(fr)) as NSArray)[0] as! Status
         
-        let syncDate = df.dateFromString("\(updateDate) \(updateTime)")! as NSDate
-        NSLog("syncDate: \(df.stringFromDate(syncDate)), lastSync: \(df.stringFromDate(status.lastsync))")
+        let syncDate = df.date(from: "\(updateDate) \(updateTime)")! as Date
+        NSLog("syncDate: \(df.string(from: syncDate)), lastSync: \(df.string(from: status.lastsync))")
         
         var popUpMessage = ""
         
-        if ( syncDate.compare(status.lastsync) == NSComparisonResult.OrderedDescending) {
+        if ( syncDate.compare(status.lastsync) == ComparisonResult.orderedDescending) {
             
             status.lastsync = syncDate
             
-            let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+            let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
             message2.date = syncDate
             let schedule = json["schedule"].array!
             message2.msg = "Schedule updated with \(schedule.count) events."
@@ -210,14 +210,14 @@ class HTUpdatesViewController: UIViewController {
             df.dateFormat = "yyyy-MM-dd HH:mm z"
             
             for item in schedule {
-                let fre:NSFetchRequest = NSFetchRequest(entityName:"Event")
+                let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
                 fre.predicate = NSPredicate(format: "id = %@", argumentArray: [item["id"].stringValue])
-                var events = try! context.executeFetchRequest(fre)
+                var events = try! context.fetch(fre)
                 var te: Event
                 if events.count > 0 {
                     te = events[0] as! Event
                 } else {
-                    te = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+                    te = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
                     te.id = item["id"].int32Value
                     te.starred = false
                 }
@@ -242,9 +242,9 @@ class HTUpdatesViewController: UIViewController {
                             d = "2016-08-08"
                         }
                     }
-                    te.begin = df.dateFromString("\(d) \(b) PDT")!
+                    te.begin = df.date(from: "\(d) \(b) PDT")!
                 } else {
-                    te.begin = df.dateFromString("\(d) 00:00 PDT")!
+                    te.begin = df.date(from: "\(d) 00:00 PDT")!
                 }
                 if ( e != "" ) {
                     if ( e == "24:00") {
@@ -259,9 +259,9 @@ class HTUpdatesViewController: UIViewController {
                             d = "2016-08-08"
                         }
                     }
-                    te.end = df.dateFromString("\(d) \(e) PDT")!
+                    te.end = df.date(from: "\(d) \(e) PDT")!
                 } else {
-                    te.end = df.dateFromString("\(d) 23:59 PDT")!
+                    te.end = df.date(from: "\(d) 23:59 PDT")!
                 }
                 
                 if (item["location"] != "") {
@@ -318,10 +318,10 @@ class HTUpdatesViewController: UIViewController {
             popUpMessage = "Schedule is up to date"
         }
 
-        let updatedAlert : UIAlertController = UIAlertController(title: nil, message: popUpMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+        let updatedAlert : UIAlertController = UIAlertController(title: nil, message: popUpMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
         updatedAlert.addAction(okItem)
-        self.presentViewController(updatedAlert, animated: true, completion: nil)
+        self.present(updatedAlert, animated: true, completion: nil)
         
         self.data = NSMutableData()
         
