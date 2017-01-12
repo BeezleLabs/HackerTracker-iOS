@@ -14,48 +14,48 @@ class HTInitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Status")
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
         
-        let status : NSArray = try! context.executeFetchRequest(fr)
+        let status = try! context.fetch(fr) as NSArray
         
         if status.count < 1 {
             // First time setup. Load pre-con JSON file included from DCIB.
             NSLog("Database not setup, preloading with initial schedule")
             self.loadData()
         } else {
-            let df = NSDateFormatter()
-            df.timeZone = NSTimeZone(abbreviation: "PDT")
+            let df = DateFormatter()
+            df.timeZone = TimeZone(abbreviation: "PDT")
             df.dateFormat = "yyyy-MM-dd HH:mm:ss z"
-            df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            let startofYear: NSDate = df.dateFromString("2016-01-01 00:00:01 PDT")!
+            df.locale = Locale(identifier: "en_US_POSIX")
+            let startofYear: Date = df.date(from: "2016-01-01 00:00:01 PDT")!
             
-            let fre:NSFetchRequest = NSFetchRequest(entityName:"Event")
+            let fre = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
             fre.predicate = NSPredicate(format: "begin < %@", argumentArray: [startofYear])
             
-            let frm:NSFetchRequest = NSFetchRequest(entityName:"Message")
+            let frm = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
             frm.predicate = NSPredicate(format: "date < %@", argumentArray: [startofYear])
             
             var updated = false
             
             do {
-                let events = try! context.executeFetchRequest(fre)
+                let events = try! context.fetch(fre)
                 if events.count > 0 {
-                    for res: AnyObject in events {
-                        context.deleteObject(res as! NSManagedObject)
+                    for res in events {
+                        context.delete(res as! NSManagedObject)
                     }
                     updated = true
                     try context.save()
                     NSLog("Deleted \(events.count) events.")
                 }
                 
-                let messages = try! context.executeFetchRequest(frm)
+                let messages = try! context.fetch(frm)
                 if messages.count > 0 {
-                    for res: AnyObject in events {
-                        context.deleteObject(res as! NSManagedObject)
+                    for res in events {
+                        context.delete(res as! NSManagedObject)
                     }
                     updated = true
                     try context.save()
@@ -70,40 +70,40 @@ class HTInitViewController: UIViewController {
         }
 
         //self.performSegueWithIdentifier("HTHomeSegue", sender: self)
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1), target: self, selector: #selector(HTInitViewController.go), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(HTInitViewController.go), userInfo: nil, repeats: false)
         
         // Do any additional setup after loading the view.
     }
     
     func loadData() {
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        df.timeZone = NSTimeZone(name: "PDT")
-        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        df.timeZone = TimeZone(identifier: "PDT")
+        df.locale = Locale(identifier: "en_US_POSIX")
         
-        let path = NSBundle.mainBundle().pathForResource("schedule-full", ofType: "json")
+        let path = Bundle.main.path(forResource: "schedule-full", ofType: "json")
         //NSLog("Path : \(path!)")
         
-        let content = try? NSString(contentsOfFile: path!, encoding: NSASCIIStringEncoding)
+        let content = try? NSString(contentsOfFile: path!, encoding: String.Encoding.ascii.rawValue)
         //NSLog("Content: \(content)")
-        let dataFromString = content?.dataUsingEncoding(NSUTF8StringEncoding)
-        let json = JSON(data: dataFromString!, options: NSJSONReadingOptions.MutableLeaves, error: nil)
+        let dataFromString = content?.data(using: String.Encoding.utf8.rawValue)
+        let json = JSON(data: dataFromString!, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
         
         let updateTime = json["updateTime"].string!
         let updateDate = json["updateDate"].string!
         NSLog("Schedule last updated at \(updateDate) \(updateTime)")
-        let first_status = NSEntityDescription.insertNewObjectForEntityForName("Status", inManagedObjectContext: context) as! Status
-        let syncDate = df.dateFromString("\(updateDate) \(updateTime)")
+        let first_status = NSEntityDescription.insertNewObject(forEntityName: "Status", into: context) as! Status
+        let syncDate = df.date(from: "\(updateDate) \(updateTime)")
         first_status.lastsync = syncDate!
         
-        let message1 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+        let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         message1.date = first_status.lastsync
         message1.msg = "Welcome to HackerTracker iOS version DEF CON 24. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. The HackerTracker team (@sethlaw and @shortxstack) are working directly with DEF CON this year to provide updates to the schedule. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
         
-        let message2 = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+        let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         message2.date = first_status.lastsync
         message2.msg = "The initial schedule contains official talks, workshops, villages, parties, etc. Sync with defcon-api (click the button on this screen) before or during DEF CON for an updated schedule of events."
         
@@ -116,7 +116,7 @@ class HTInitViewController: UIViewController {
         df.dateFormat = "yyyy-MM-dd HH:mm z"
         
         for item in schedule {
-            let te: Event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+            let te: Event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
             te.who = item["who"].string!
             var d = item["date"].string!
             te.location = item["location"].string!
@@ -148,9 +148,9 @@ class HTInitViewController: UIViewController {
                         d = "2016-08-08"
                     }
                 }
-                te.begin = df.dateFromString("\(d) \(b) PDT")!
+                te.begin = df.date(from: "\(d) \(b) PDT")!
             } else {
-                te.begin = df.dateFromString("\(d) 00:00 PDT")!
+                te.begin = df.date(from: "\(d) 00:00 PDT")!
             }
             if ( e != "" ) {
                 if ( e == "24:00") {
@@ -165,9 +165,9 @@ class HTInitViewController: UIViewController {
                         d = "2016-08-08"
                     }
                 }
-                te.end = df.dateFromString("\(d) \(e) PDT")!
+                te.end = df.date(from: "\(d) \(e) PDT")!
             } else {
-                te.end = df.dateFromString("\(d) 23:59 PDT")!
+                te.end = df.date(from: "\(d) 23:59 PDT")!
             }
             
             te.starred = false
@@ -193,7 +193,7 @@ class HTInitViewController: UIViewController {
     }
     
     func go() {
-        self.performSegueWithIdentifier("HTHomeSegue", sender: self)
+        self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
     }
     
     /*

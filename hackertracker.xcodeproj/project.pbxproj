@@ -226,9 +226,11 @@
 					5DD642581AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = MJ97FDMT75;
+						LastSwiftMigration = 0820;
 					};
 					5DD642701AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = 5DD642581AC3C62300ED3256;
 					};
 				};
@@ -422,6 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -439,6 +442,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -459,6 +463,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hackertracker.app/hackertracker";
 			};
 			name = Debug;
@@ -476,6 +481,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hackertracker.app/hackertracker";
 			};
 			name = Release;

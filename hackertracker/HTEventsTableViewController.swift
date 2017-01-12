@@ -40,37 +40,42 @@ class HTEventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
         automaticallyAdjustsScrollViewInsets = true
         
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
         
         for e:eventType in eventTypes {
             fr.predicate = NSPredicate(format: "type = %@", argumentArray: [e.dbName])
-            _ = try! context.executeFetchRequest(fr)
+            _ = try! context.fetch(fr)
             
             var mutableE = e
-            mutableE.count = context.countForFetchRequest(fr, error: nil)
+
+            do {
+                mutableE.count = try context.count(for: fr)
+            } catch {
+                fatalError("Failed to retrieve count")
+            }
         }
         
         self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.eventTypes.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) 
 
         var event : eventType
         event = self.eventTypes[indexPath.row]
@@ -82,10 +87,10 @@ class HTEventsTableViewController: UITableViewController {
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventSegue") {
-            let sv : HTScheduleTableViewController = segue.destinationViewController as! HTScheduleTableViewController
-            let indexPath: NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+            let sv : HTScheduleTableViewController = segue.destination as! HTScheduleTableViewController
+            let indexPath: IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
             let ev = self.eventTypes[indexPath.row]
             sv.eType = ev
         }

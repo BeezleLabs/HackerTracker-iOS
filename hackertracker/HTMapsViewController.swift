@@ -19,7 +19,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         
         let image:UIImage
         
-        let path = NSBundle.mainBundle().pathForResource("dc-24-fp-final", ofType: "png")
+        let path = Bundle.main.path(forResource: "dc-24-fp-final", ofType: "png")
         if (path != nil) {
             image = UIImage(contentsOfFile: path!)!
             imageView = UIImageView(image: image)
@@ -77,8 +77,8 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         imageView.frame = contentsFrame
     }
     
-    func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
-        let pointInView = recognizer.locationInView(imageView)
+    func scrollViewDoubleTapped(_ recognizer: UITapGestureRecognizer) {
+        let pointInView = recognizer.location(in: imageView)
         
         var newZoomScale = scrollview.zoomScale * 1.5
         newZoomScale = min(newZoomScale, scrollview.maximumZoomScale)
@@ -89,16 +89,16 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         let x = pointInView.x - (w / 2.0)
         let y = pointInView.y - (h / 2.0)
         
-        let rectToZoomTo = CGRectMake(x, y, w, h);
+        let rectToZoomTo = CGRect(x: x, y: y, width: w, height: h);
         
-        scrollview.zoomToRect(rectToZoomTo, animated: true)
+        scrollview.zoom(to: rectToZoomTo, animated: true)
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
         centerScrollViewContents()
     }
     

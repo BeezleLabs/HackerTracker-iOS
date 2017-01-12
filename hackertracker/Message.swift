@@ -12,7 +12,7 @@ import CoreData
 @objc(Message)
 class Message: NSManagedObject {
 
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var msg: String
 
 }

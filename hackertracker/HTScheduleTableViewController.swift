@@ -19,14 +19,14 @@ class HTScheduleTableViewController: UITableViewController {
     
     let highlightColor = UIColor(red: 120/255.0, green: 114/255.0, blue: 255/255.0, alpha: 1)
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         reloadEvents()
         
         self.title = eType.name
     }
     
-    private func reloadEvents() {
+    fileprivate func reloadEvents() {
         for day in days {
             eventSections.append(RetrieveEventsForDay(day).map { (object) -> Event in
                 return object as! Event
@@ -37,11 +37,11 @@ class HTScheduleTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return days.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard eventSections.count > section else {
             return 0;
@@ -51,17 +51,17 @@ class HTScheduleTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) 
 
         let event : Event = self.eventSections[indexPath.section][indexPath.row]
-        let df = NSDateFormatter()
-        df.timeZone = NSTimeZone(abbreviation: "PDT")
-        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let df = DateFormatter()
+        df.timeZone = TimeZone(abbreviation: "PDT")
+        df.locale = Locale(identifier: "en_US_POSIX")
         df.dateFormat = "EE HH:mm"
-        let beginDate = df.stringFromDate(event.begin)
+        let beginDate = df.string(from: event.begin as Date)
         df.dateFormat = "HH:mm"
-        let endDate = df.stringFromDate(event.end)
+        let endDate = df.string(from: event.end as Date)
         
         cell.textLabel!.text = event.title
         
@@ -70,7 +70,7 @@ class HTScheduleTableViewController: UITableViewController {
             cell.textLabel!.textColor = self.highlightColor
         } else {
             cell.textLabel!.text = event.title
-            cell.textLabel!.textColor = UIColor.whiteColor()
+            cell.textLabel!.textColor = UIColor.white
         }
         
         cell.detailTextLabel!.text = "\(beginDate)-\(endDate) (\(event.location))"
@@ -78,40 +78,40 @@ class HTScheduleTableViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func goBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func goBack(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func RetrieveEventsForDay(dateString: String) -> [AnyObject] {
-        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    func RetrieveEventsForDay(_ dateString: String) -> [AnyObject] {
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let df = NSDateFormatter()
-        df.timeZone = NSTimeZone(abbreviation: "PDT")
+        let df = DateFormatter()
+        df.timeZone = TimeZone(abbreviation: "PDT")
         df.dateFormat = "yyyy-MM-dd HH:mm:ss z"
-        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        df.locale = Locale(identifier: "en_US_POSIX")
 
-        let startofDay: NSDate = df.dateFromString("\(dateString) 00:00:00 PDT")!
-        let endofDay: NSDate = df.dateFromString("\(dateString) 23:59:59 PDT")!
-                
-        let fr:NSFetchRequest = NSFetchRequest(entityName:"Event")
+        let startofDay: Date = df.date(from: "\(dateString) 00:00:00 PDT")!
+        let endofDay: Date = df.date(from: "\(dateString) 23:59:59 PDT")!
+
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.predicate = NSPredicate(format: "type = %@ AND begin >= %@ AND end <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
         fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
-        return try! context.executeFetchRequest(fr)
+        return try! context.fetch(fr)
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return days[section]
     }
     
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
-            let dv : HTEventDetailViewController = segue.destinationViewController as! HTEventDetailViewController
-            let indexPath : NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+            let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
+            let indexPath : IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
             dv.event = self.eventSections[indexPath.section][indexPath.row]
         }
     }

@@ -14,8 +14,8 @@ class Event: NSManagedObject {
 
     @NSManaged var id: Int32
     @NSManaged var title: String
-    @NSManaged var begin: NSDate
-    @NSManaged var end: NSDate
+    @NSManaged var begin: Date
+    @NSManaged var end: Date
     @NSManaged var location: String
     @NSManaged var details: String
     @NSManaged var who: String
