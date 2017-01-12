@@ -38,8 +38,6 @@ class HTEventDetailViewController: UIViewController {
             
             eventTitleLabel.text = event.title
             eventNameButton.setTitle(event.who, for: UIControlState())
-            //eventStartTimeLabel.text = df.stringFromDate(event.begin)
-            //eventStopTimeLabel.text = df.stringFromDate(event.end)
             eventLocationLabel.text = event.location
             eventDetailTextView.text = event.details
             

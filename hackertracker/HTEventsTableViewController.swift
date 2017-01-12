@@ -58,7 +58,7 @@ class HTEventsTableViewController: UITableViewController {
             do {
                 mutableE.count = try context.count(for: fr)
             } catch {
-                print("failed to retrieve count")
+                fatalError("Failed to retrieve count")
             }
         }
         
