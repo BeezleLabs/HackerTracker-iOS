@@ -23,59 +23,50 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var exploitImage: UIImageView!
     @IBOutlet weak var toolImage: UIImageView!
     
-    var event: Event!
+    var event: Event?
     
     let starredButtonTitle = "REMOVE"
     let unstarredButtonTitle = "ADD"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if (event != nil) {
-            let df = DateFormatter()
-            df.dateFormat = "HH:mm"
-            df.timeZone = TimeZone(abbreviation: "PDT")
-            
-            eventTitleLabel.text = event.title
-            eventNameButton.setTitle(event.who, for: UIControlState())
-            eventLocationLabel.text = event.location
-            eventDetailTextView.text = event.details
-            
-            if (event.starred) {
-                eventStarredButton.title = starredButtonTitle
-            } else {
-                eventStarredButton.title = unstarredButtonTitle
-            }
-            
-            if (event.tool) {
-                toolImage.alpha = 1.0
-            }
-            
-            if event.demo {
-                demoImage.alpha = 1.0
-            }
-            
-            if event.exploit {
-                exploitImage.alpha = 1.0
-            }
-            
-            let df2 : DateFormatter = DateFormatter()
-            df2.timeZone = TimeZone(abbreviation: "PDT")
-            df2.locale = Locale(identifier: "en_US_POSIX")
-            df2.dateFormat = "EEEE, MMMM dd HH:mm"
-            
-            let eventLabel = NSString(format: "%@",df2.string(from: event.begin as Date)) as String
-            let eventEnd = df.string(from: event.end as Date)
-            eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
-            if let font = UIFont(name: "Courier New", size: 12.0) {
-                eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState())
-            }
-            
-        } else {
-            NSLog("HTEventDetailViewController: Event is nil")
+
+        guard let event = event else {
+            print("HTEventDetailViewController: Event is nil")
+            return
         }
 
-        // Do any additional setup after loading the view.
+        eventTitleLabel.text = event.title
+        eventNameButton.setTitle(event.who, for: UIControlState())
+        eventLocationLabel.text = event.location
+        eventDetailTextView.text = event.details
+        
+        if (event.starred) {
+            eventStarredButton.title = starredButtonTitle
+        } else {
+            eventStarredButton.title = unstarredButtonTitle
+        }
+        
+        if (event.tool) {
+            toolImage.alpha = 1.0
+        }
+        
+        if event.demo {
+            demoImage.alpha = 1.0
+        }
+        
+        if event.exploit {
+            exploitImage.alpha = 1.0
+        }
+
+        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.begin as Date)
+        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end as Date)
+
+        eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
+
+        if let font = UIFont(name: "Courier New", size: 12.0) {
+            eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState())
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,6 +76,11 @@ class HTEventDetailViewController: UIViewController {
     }
     
     @IBAction func toggleMySchedule(_ sender: AnyObject) {
+        guard let event = event else {
+            print("HTEventDetailViewController: Event is nil")
+            return
+        }
+        
         let button = sender as! UIBarButtonItem
         if (event.starred) {
             event.starred = false

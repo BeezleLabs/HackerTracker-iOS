@@ -9,24 +9,24 @@
 import UIKit
 import CoreData
 
-class HTScheduleTableViewController: UITableViewController {
+class BaseScheduleTableViewController: UITableViewController {
     
     var eventSections : [[Event]] = []
-    
-    var eType : eventType!
-        
+
     var days = ["2016-08-04", "2016-08-05", "2016-08-06", "2016-08-07"];
-    
-    let highlightColor = UIColor(red: 120/255.0, green: 114/255.0, blue: 255/255.0, alpha: 1)
-    
+
+    override func viewDidLoad() {
+        tableView.register(EventCell.self, forCellReuseIdentifier: "Events")
+    }
+
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         reloadEvents()
-        
-        self.title = eType.name
     }
     
     fileprivate func reloadEvents() {
+        eventSections.removeAll()
+
         for day in days {
             eventSections.append(RetrieveEventsForDay(day).map { (object) -> Event in
                 return object as! Event
@@ -50,71 +50,87 @@ class HTScheduleTableViewController: UITableViewController {
         return self.eventSections[section].count
     }
 
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+    }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Events", for: indexPath) as! EventCell
         let event : Event = self.eventSections[indexPath.section][indexPath.row]
-        let df = DateFormatter()
-        df.timeZone = TimeZone(abbreviation: "PDT")
-        df.locale = Locale(identifier: "en_US_POSIX")
-        df.dateFormat = "EE HH:mm"
-        let beginDate = df.string(from: event.begin as Date)
-        df.dateFormat = "HH:mm"
-        let endDate = df.string(from: event.end as Date)
-        
-        cell.textLabel!.text = event.title
-        
-        if (event.starred) {
-            cell.textLabel!.text = "** \(event.title) **"
-            cell.textLabel!.textColor = self.highlightColor
-        } else {
-            cell.textLabel!.text = event.title
-            cell.textLabel!.textColor = UIColor.white
-        }
-        
-        cell.detailTextLabel!.text = "\(beginDate)-\(endDate) (\(event.location))"
+
+        cell.bind(event: event)
         
         return cell
     }
-    
-    @IBAction func goBack(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+
     func RetrieveEventsForDay(_ dateString: String) -> [AnyObject] {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        
-        let df = DateFormatter()
-        df.timeZone = TimeZone(abbreviation: "PDT")
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss z"
-        df.locale = Locale(identifier: "en_US_POSIX")
 
-        let startofDay: Date = df.date(from: "\(dateString) 00:00:00 PDT")!
-        let endofDay: Date = df.date(from: "\(dateString) 23:59:59 PDT")!
+        return try! context.fetch(fetchRequestForDay(dateString))
+    }
+
+    func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
+
+        let startofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
+        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "type = %@ AND begin >= %@ AND end <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
+        fr.predicate = NSPredicate(format: "begin >= %@ AND end <= %@", argumentArray: [ startofDay, endofDay])
         fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
-        return try! context.fetch(fr)
+        return fr
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return days[section]
     }
     
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
             let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
-            let indexPath : IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
+            let indexPath : IndexPath = sender as! IndexPath
             dv.event = self.eventSections[indexPath.section][indexPath.row]
         }
     }
-    
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { (action, indexpath) in
+
+        }
+        favorite.backgroundColor = UIColor(red: 0.0/255.0, green: 100.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+
+        return [favorite]
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+    }
 }
+
+class HTScheduleTableViewController: BaseScheduleTableViewController {
+    var eType : eventType!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = eType.name
+    }
+
+    override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
+        let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
+        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
+
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+        fr.predicate = NSPredicate(format: "type = %@ AND begin >= %@ AND end <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+
+        return fr
+    }
+}
+
+
+
