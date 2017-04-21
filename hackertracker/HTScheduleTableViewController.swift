@@ -13,6 +13,7 @@ class BaseScheduleTableViewController: UITableViewController {
     
     var eventSections : [[Event]] = []
 
+    // Update for DC 25
     var days = ["2016-08-04", "2016-08-05", "2016-08-06", "2016-08-07"];
 
     override func viewDidLoad() {

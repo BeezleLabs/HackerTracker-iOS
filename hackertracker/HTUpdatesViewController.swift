@@ -149,7 +149,7 @@ class HTUpdatesViewController: UIViewController {
             (action:UIAlertAction) in
                 let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
                 message2.date = Date()
-                let synctime = df.string(from: message2.date as Date)
+                //let synctime = df.string(from: message2.date as Date)
                 message2.msg = "Update failed."
                 var err:NSError? = nil
                 do {
@@ -275,7 +275,7 @@ class HTUpdatesViewController: UIViewController {
                     te.details = item["description"].string!
                 }
                 //NSLog("\(te.id): \(te.title) \(item["link"])")
-                if ( item["link"] != nil) {
+                if ( item["link"] != JSON.null) {
                     te.link = item["link"].string!
                 }
             

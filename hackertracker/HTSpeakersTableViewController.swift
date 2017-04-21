@@ -186,9 +186,9 @@ class HTSpeakersTableViewController: UITableViewController, UISearchBarDelegate 
             let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
             let indexPath : IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
             if isFiltered {
-                dv.event = self.filteredEvents.object(at: indexPath.row) as! Event
+                dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
             } else {
-                dv.event = self.events.object(at: indexPath.row) as! Event
+                dv.event = self.events.object(at: indexPath.row) as? Event
             }
         }
     }
