@@ -13,7 +13,7 @@ class BaseScheduleTableViewController: UITableViewController {
     
     var eventSections : [[Event]] = []
 
-    // Update for DC 25
+    // TODO: Update for DC 25
     var days = ["2016-08-04", "2016-08-05", "2016-08-06", "2016-08-07"];
 
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class BaseScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Events", for: indexPath) as! EventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
         let event : Event = self.eventSections[indexPath.section][indexPath.row]
 
         cell.bind(event: event)
@@ -92,7 +92,12 @@ class BaseScheduleTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
             let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
-            let indexPath : IndexPath = sender as! IndexPath
+            var indexPath: IndexPath
+            if let ec = sender as? EventCell {
+                indexPath = tableView.indexPath(for: ec)! as IndexPath
+            } else {
+                indexPath = sender as! IndexPath
+            }
             dv.event = self.eventSections[indexPath.section][indexPath.row]
         }
     }

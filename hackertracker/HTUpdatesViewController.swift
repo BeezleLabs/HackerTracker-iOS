@@ -19,8 +19,7 @@ class HTUpdatesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isTranslucent = false
-
+        //navigationController?.navigationBar.isTranslucent = false
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
@@ -32,15 +31,20 @@ class HTUpdatesViewController: UIViewController {
         let df = DateFormatter()
         df.timeZone = TimeZone(abbreviation: "PDT")
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    
+        let dzFont : UIFont = UIFont(name: "DefconZero", size: 18.0)!
+        let sfFont : UIFont = UIFont(name: "Helvetica Neue", size: 16.0)!
         
-        var fullText: String = ""
+        let fullText: NSMutableAttributedString = NSMutableAttributedString()
         for message in messages {
-            fullText = "\(fullText)\(df.string(from: message.date as Date))\n\(message.msg)\n\n"
+            fullText.append(NSMutableAttributedString(string: df.string(from: message.date as Date), attributes: [NSFontAttributeName:dzFont, NSForegroundColorAttributeName: UIColor.white]))
+            fullText.append(NSMutableAttributedString(string: "\n\(message.msg)\n\n", attributes: [NSFontAttributeName:sfFont, NSForegroundColorAttributeName: UIColor.white]))
+            //fullText = "\(fullText)\(attrDate))\n\(message.msg)\n\n"
         }
         
-        updatesTextView.font = UIFont(name: "Courier New", size: 14.0)
-        updatesTextView.text = fullText
-        updatesTextView.textColor = UIColor.white
+        updatesTextView.attributedText = fullText
+        /*updatesTextView.font = UIFont(name: "Courier New", size: 14.0)
+        updatesTextView.textColor = UIColor.white*/
     }
     
     override func viewDidAppear(_ animated: Bool) {

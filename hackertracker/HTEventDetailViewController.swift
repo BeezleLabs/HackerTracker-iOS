@@ -12,7 +12,8 @@ import CoreData
 class HTEventDetailViewController: UIViewController {
 
     @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventNameButton: UIButton!
+    @IBOutlet weak var eventNameButton2: UIButton!
+    @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventStartTimeLabel: UILabel!
     @IBOutlet weak var eventStopTimeLabel: UILabel!
@@ -24,10 +25,7 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var toolImage: UIImageView!
     
     var event: Event?
-    
-    let starredButtonTitle = "REMOVE"
-    let unstarredButtonTitle = "ADD"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,14 +35,14 @@ class HTEventDetailViewController: UIViewController {
         }
 
         eventTitleLabel.text = event.title
-        eventNameButton.setTitle(event.who, for: UIControlState())
+        eventNameLabel.text = event.who
         eventLocationLabel.text = event.location
         eventDetailTextView.text = event.details
         
         if (event.starred) {
-            eventStarredButton.title = starredButtonTitle
+            eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
         } else {
-            eventStarredButton.title = unstarredButtonTitle
+            eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         }
         
         if (event.tool) {
@@ -63,10 +61,6 @@ class HTEventDetailViewController: UIViewController {
         let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end as Date)
 
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
-
-        if let font = UIFont(name: "Courier New", size: 12.0) {
-            eventStarredButton.setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState())
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,13 +75,13 @@ class HTEventDetailViewController: UIViewController {
             return
         }
         
-        let button = sender as! UIBarButtonItem
+        let button = sender as! UIBarItem
         if (event.starred) {
             event.starred = false
-            button.title = unstarredButtonTitle
+            button.image = #imageLiteral(resourceName: "saved-inactive")
         } else {
             event.starred = true
-            button.title = starredButtonTitle
+            button.image = #imageLiteral(resourceName: "saved-active")
         }
         self.saveContext()
     }

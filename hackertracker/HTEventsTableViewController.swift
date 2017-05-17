@@ -27,7 +27,7 @@ class HTEventsTableViewController: UITableViewController {
     
     var eventTypes: [eventType] = [
         eventType(n: "CONTESTS", i: "contest", d: "Contest", c: 0),
-        eventType(n: "EVENTS", i: "event", d: "Event", c: 0),
+        eventType(n: "EVENTS", i: "calendar-active", d: "Event", c: 0),
         eventType(n: "PARTIES", i: "party", d: "Party", c: 0),
         eventType(n: "KIDS", i: "kids", d: "Kids", c: 0),
         eventType(n: "SKYTALKS", i: "cloud", d: "Skytalks", c: 0),

@@ -101,7 +101,7 @@ class HTInitViewController: UIViewController {
         
         let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         message1.date = first_status.lastsync
-        message1.msg = "Welcome to HackerTracker iOS version DEF CON 24. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. The HackerTracker team (@sethlaw and @shortxstack) are working directly with DEF CON this year to provide updates to the schedule. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
+        message1.msg = "Welcome to HackerTracker iOS for DEF CON 25. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. The HackerTracker team is now a part of the DEF CON Infobooth. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
         
         let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         message2.date = first_status.lastsync
