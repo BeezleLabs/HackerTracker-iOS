@@ -51,10 +51,6 @@ class BaseScheduleTableViewController: UITableViewController {
         return self.eventSections[section].count
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
         let event : Event = self.eventSections[indexPath.section][indexPath.row]
