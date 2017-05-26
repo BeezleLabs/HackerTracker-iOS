@@ -8,102 +8,26 @@
 
 import UIKit
 
-class HTMapsViewController: UIViewController, UIScrollViewDelegate {
+class HTMapsViewController: UIViewController {
 
-    @IBOutlet weak var scrollview: UIScrollView!
+
+    @IBOutlet weak var webview: UIWebView!
     
     var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image:UIImage
-        
-        let path = Bundle.main.path(forResource: "dc-24-fp-final", ofType: "png")
-        if (path != nil) {
-            image = UIImage(contentsOfFile: path!)!
-            imageView = UIImageView(image: image)
-            imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size:image.size)
-            scrollview.addSubview(imageView)
-            
-            scrollview.contentSize = image.size
+        let pdf = Bundle.main.url(forResource: "dc-25-floorplan-public", withExtension: "pdf")
+        if (pdf != nil) {
+            let req = NSURLRequest(url: pdf!)
+            webview.loadRequest(req as URLRequest)
         }
-        //let image = UIImage(named: "map-hotel.png")!
-        /*imageView = UIImageView(image: image)
-        imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size:image.size)
-        scrollview.addSubview(imageView)
-        
-        scrollview.contentSize = image.size*/
-        
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(HTMapsViewController.scrollViewDoubleTapped(_:)))
-        doubleTapRecognizer.numberOfTapsRequired = 2
-        doubleTapRecognizer.numberOfTouchesRequired = 1
-        scrollview.addGestureRecognizer(doubleTapRecognizer)
-        
-        let scrollViewFrame = scrollview.frame
-        let scaleWidth = scrollViewFrame.size.width / scrollview.contentSize.width
-        let scaleHeight = scrollViewFrame.size.height / scrollview.contentSize.height
-        let minScale = min(scaleWidth, scaleHeight);
-        scrollview.minimumZoomScale = minScale;
-        
-        scrollview.maximumZoomScale = 1.0
-        scrollview.zoomScale = minScale;
-        
-        centerScrollViewContents()
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    func centerScrollViewContents() {
-        let boundsSize = scrollview.bounds.size
-        var contentsFrame = imageView.frame
-        
-        if contentsFrame.size.width < boundsSize.width {
-            contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0
-        } else {
-            contentsFrame.origin.x = 0.0
-        }
-        
-        if contentsFrame.size.height < boundsSize.height {
-            contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0
-        } else {
-            contentsFrame.origin.y = 0.0
-        }
-        
-        imageView.frame = contentsFrame
-    }
-    
-    func scrollViewDoubleTapped(_ recognizer: UITapGestureRecognizer) {
-        let pointInView = recognizer.location(in: imageView)
-        
-        var newZoomScale = scrollview.zoomScale * 1.5
-        newZoomScale = min(newZoomScale, scrollview.maximumZoomScale)
-        
-        let scrollViewSize = scrollview.bounds.size
-        let w = scrollViewSize.width / newZoomScale
-        let h = scrollViewSize.height / newZoomScale
-        let x = pointInView.x - (w / 2.0)
-        let y = pointInView.y - (h / 2.0)
-        
-        let rectToZoomTo = CGRect(x: x, y: y, width: w, height: h);
-        
-        scrollview.zoom(to: rectToZoomTo, animated: true)
-    }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        centerScrollViewContents()
-    }
-    
-    
-    
 
     /*
     // MARK: - Navigation
