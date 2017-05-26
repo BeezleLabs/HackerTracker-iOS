@@ -75,14 +75,14 @@ class HTEventDetailViewController: UIViewController {
             return
         }
         
-        let button = sender as! UIBarItem
         if (event.starred) {
             event.starred = false
-            button.image = #imageLiteral(resourceName: "saved-inactive")
+            eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         } else {
             event.starred = true
-            button.image = #imageLiteral(resourceName: "saved-active")
+            eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
         }
+
         self.saveContext()
     }
     

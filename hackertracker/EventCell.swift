@@ -24,25 +24,12 @@ public class EventCell : UITableViewCell {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //fatalError("init(coder:) has not been implemented")
     }
 
     func bind(event : Event) {
-        let df = DateFormatter()
-        df.timeZone = TimeZone(abbreviation: "PDT")
-        df.dateFormat = "E"
-        df.locale = Locale(identifier: "en_US_POSIX")
+        let eventDay = DateFormatterUtility.partialDayOfWeekFormatter.string(from: event.begin as Date)
+        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.begin as Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end as Date)
         
-        let eventDay = df.string(from: event.begin as Date)
-        
-        df.dateFormat = "HH:mm"
-        let eventTime = df.string(from:event.begin as Date) + "-" + df.string(from: event.end as Date)
-
-        /*guard let title = textLabel, let subtitle = detailTextLabel else {
-            //This should only happen if the tableview cell style is changed
-            fatalError("Failed to load the textLabel and/or detailTextLabel")
-        }*/
-
         title.text = event.title
 
         if (event.starred) {
