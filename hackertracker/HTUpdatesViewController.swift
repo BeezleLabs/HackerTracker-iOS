@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 class HTUpdatesViewController: UIViewController {
-
-    @IBOutlet weak var updatesTextView: UITextView!
+    
+    @IBOutlet weak var updatesTableView: UITableView!
     
     var messages: [Message] = []
     var data = NSMutableData()
@@ -23,33 +23,18 @@ class HTUpdatesViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
+        updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
+        
+        updatesTableView.delegate = self
+        updatesTableView.dataSource = self
+        updatesTableView.backgroundColor = UIColor.clear
+        updatesTableView.contentInset = UIEdgeInsets(top: 296, left: 0, bottom: 0, right: 0)
+        
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.messages = (try! context.fetch(fr)) as! [Message]
         
-        let df = DateFormatter()
-        df.timeZone = TimeZone(abbreviation: "PDT")
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    
-        let dzFont : UIFont = UIFont(name: "DefconZero", size: 18.0)!
-        let sfFont : UIFont = UIFont(name: "Helvetica Neue", size: 16.0)!
-        
-        let fullText: NSMutableAttributedString = NSMutableAttributedString()
-        for message in messages {
-            fullText.append(NSMutableAttributedString(string: df.string(from: message.date as Date), attributes: [NSFontAttributeName:dzFont, NSForegroundColorAttributeName: UIColor.white]))
-            fullText.append(NSMutableAttributedString(string: "\n\(message.msg)\n\n", attributes: [NSFontAttributeName:sfFont, NSForegroundColorAttributeName: UIColor.white]))
-            //fullText = "\(fullText)\(attrDate))\n\(message.msg)\n\n"
-        }
-        
-        updatesTextView.attributedText = fullText
-        /*updatesTextView.font = UIFont(name: "Courier New", size: 14.0)
-        updatesTextView.textColor = UIColor.white*/
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.updatesTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
     func updateMessages() {
@@ -60,18 +45,8 @@ class HTUpdatesViewController: UIViewController {
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.messages = (try! context.fetch(fr)) as! [Message]
-        
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var fullText: String = ""
-        for message in messages {
-            //var fullDate = df.stringFromDate(message.date)
-            fullText = "\(fullText)\(df.string(from: message.date as Date))\n\(message.msg)\n\n"
-        }
-        
-        updatesTextView.text = fullText
-        updatesTextView.textColor = UIColor.white
-        
+       
+        updatesTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -341,4 +316,26 @@ class HTUpdatesViewController: UIViewController {
     }
     */
 
+}
+
+extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+        
+        cell.bind(message: messages[indexPath.row])
+        
+        return cell
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
+    }
 }

@@ -34,6 +34,8 @@
 		5DFB87C91B3A188E0083604C /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */; };
 		786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
+		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
+		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
 		786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = defconzero.ttf; path = "../../../ht-images/Fonts/defconzero.ttf"; sourceTree = "<group>"; };
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
+		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
+		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				49730E4A1E2929BC0029438C /* EventCell.swift */,
+				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
+				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 			files = (
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				5DD0D9161D467D6500747807 /* dc-24-fp-final.png in Resources */,
+				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
@@ -348,6 +355,7 @@
 				786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */,
 				5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
+				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

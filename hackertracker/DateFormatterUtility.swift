@@ -20,11 +20,21 @@ import Foundation
  */
 class DateFormatterUtility {
 
+    
     //Year-Month-Day time format
     static let yearMonthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "PDT")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss z"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    //Year-Month-Day time format
+    static let yearMonthDayNoTimeZoneTimeFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.dateFormat = "yyyy-M-d HH:mm:ss"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
@@ -53,6 +63,15 @@ class DateFormatterUtility {
         formatter.timeZone = TimeZone(abbreviation: "PDT")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEEE, MMMM dd HH:mm"
+        return formatter
+    }()
+    
+    //Partial Day of week Ex: Fri
+    static let partialDayOfWeekFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "E"
         return formatter
     }()
 
