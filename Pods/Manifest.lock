@@ -1,0 +1,21 @@
+PODS:
+  - WillowTreeScrollingTabController (0.1.0)
+
+DEPENDENCIES:
+  - WillowTreeScrollingTabController (from `https://github.com/willowtreeapps/WillowTreeScrollingTabController.git`)
+
+EXTERNAL SOURCES:
+  WillowTreeScrollingTabController:
+    :git: https://github.com/willowtreeapps/WillowTreeScrollingTabController.git
+
+CHECKOUT OPTIONS:
+  WillowTreeScrollingTabController:
+    :commit: c95c01325d05b1377065ec99ca0deb400e27bbfa
+    :git: https://github.com/willowtreeapps/WillowTreeScrollingTabController.git
+
+SPEC CHECKSUMS:
+  WillowTreeScrollingTabController: 3dfb5db1baebaf166b958bb1d441ba70a96e3151
+
+PODFILE CHECKSUM: e8eea685e29e27af73425e0c0636e2ab4a131cd2
+
+COCOAPODS: 1.2.1

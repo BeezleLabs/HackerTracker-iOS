@@ -17,6 +17,7 @@ class BaseScheduleTableViewController: UITableViewController {
     var days = ["2016-08-04", "2016-08-05", "2016-08-06", "2016-08-07"];
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.register(EventCell.self, forCellReuseIdentifier: "Events")
     }
 
