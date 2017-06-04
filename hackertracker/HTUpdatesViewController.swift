@@ -13,13 +13,19 @@ class HTUpdatesViewController: UIViewController {
     
     @IBOutlet weak var updatesTableView: UITableView!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     var messages: [Message] = []
     var data = NSMutableData()
     var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     
+    @IBOutlet weak var logoCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
+    
+    
+    let standardLogoHeight = CGFloat(118.0);
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationController?.navigationBar.isTranslucent = false
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
@@ -34,7 +40,13 @@ class HTUpdatesViewController: UIViewController {
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.messages = (try! context.fetch(fr)) as! [Message]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        updatesTableView.contentInset = UIEdgeInsets(top: backgroundImage.frame.size.height - 64, left: 0, bottom: 0, right: 0)
+
     }
     
     func updateMessages() {
@@ -94,17 +106,13 @@ class HTUpdatesViewController: UIViewController {
     }
     
     func connection(_ con: NSURLConnection!, didReceiveData _data:Data!) {
-        //NSLog("didReceiveData")
         self.data.append(_data)
     }
     
     func connectionDidFinishLoading(_ con: NSURLConnection!) {
-        //NSLog("connectionDidFinishLoading")
         
         let resStr = NSString(data: self.data as Data, encoding: String.Encoding.ascii.rawValue)
         
-        //NSLog("response: \(resStr)")
-
         let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
         
         self.dismiss(animated: false, completion: nil)
@@ -155,7 +163,6 @@ class HTUpdatesViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         let json = JSON(data: data, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
-        //let json = JSON(data: data, options: NSJSONReadingOptions.All, error: nil)
         
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -306,16 +313,6 @@ class HTUpdatesViewController: UIViewController {
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
@@ -327,9 +324,6 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         
         return cell
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -337,5 +331,13 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let minHeight = standardLogoHeight - 40
+        let percentage = min(1.0 + (scrollView.contentOffset.y / scrollView.contentInset.top), 1.0)
+        self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
+        self.logoCenterYConstraint.constant = -((self.backgroundImage.frame.height / 2) - 38) * percentage
+
     }
 }
