@@ -75,40 +75,62 @@ class HTEventDetailViewController: UIViewController {
             return
         }
         
-        let d_event = isDuplicateEvent(event)
-        if (d_event != nil) {
-            let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message: "Duplicate event(s):\n\(String(describing: d_event!))\n\nAdd \(event.title)\n to schedule?", preferredStyle: UIAlertControllerStyle.alert)
-            let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
-                (action:UIAlertAction) in
-                event.starred = true
-                self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
-            })
-            let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {
-                (action:UIAlertAction) in
-                NSLog("No")
-            })
-            
-            alert.addAction(yesItem)
-            alert.addAction(noItem)
-            
-            self.present(alert, animated: true, completion: nil)
-            
+        if (event.starred) {
+            event.starred = false
+            eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
+            saveContext()
         } else {
-        
-            if (event.starred) {
-                event.starred = false
-                eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
-            } else {
+            
+            let duplicates = duplicateEvents(event)
+            
+            if duplicates.count > 0
+            {
+                let duplicateTitles = duplicates.reduce("", { (result, event) -> String in
+                    if result == ""
+                    {
+                        return "•\'\(event.title)\'"
+                    }
+                    else
+                    {
+                        return result + "\n" + "•\'\(event.title)\'"
+                    }
+                    
+                })
+                
+                let alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(event.title)\'" + " to schedule?"
+                
+                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:alertBody, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
+                    (action:UIAlertAction) in
+                    event.starred = true
+                    self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
+                    self.saveContext()
+
+                })
+                
+                let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler:
+                {
+                    (action:UIAlertAction) in
+                    NSLog("No")
+                })
+                
+                alert.addAction(yesItem)
+                alert.addAction(noItem)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
                 event.starred = true
                 eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
+                saveContext()
             }
+            
         }
-
-        self.saveContext()
     }
     
-    func isDuplicateEvent(_ event: Event) -> String? {
-        var res: String? = nil
+    func duplicateEvents(_ event: Event) -> [Event] {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
@@ -117,18 +139,9 @@ class HTEventDetailViewController: UIViewController {
         fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
         fr.returnsObjectsAsFaults = false
         
-        let events = try! context.fetch(fr) as Array
-        var first = true
-        for e in events {
-            if (first) {
-                res = (e as! Event).title
-                first = false
-            } else {
-                res = "\(String(describing: res!)), \((e as! Event).title)"
-            }
-        }
+        let events = try! context.fetch(fr) as! [Event]
         
-        return res
+        return events
     }
     
     func saveContext() {
