@@ -75,15 +75,60 @@ class HTEventDetailViewController: UIViewController {
             return
         }
         
-        if (event.starred) {
-            event.starred = false
-            eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
+        let d_event = isDuplicateEvent(event)
+        if (d_event != nil) {
+            let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message: "Duplicate event(s):\n\(String(describing: d_event!))\n\nAdd \(event.title)\n to schedule?", preferredStyle: UIAlertControllerStyle.alert)
+            let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
+                (action:UIAlertAction) in
+                event.starred = true
+                self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
+            })
+            let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {
+                (action:UIAlertAction) in
+                NSLog("No")
+            })
+            
+            alert.addAction(yesItem)
+            alert.addAction(noItem)
+            
+            self.present(alert, animated: true, completion: nil)
+            
         } else {
-            event.starred = true
-            eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
+        
+            if (event.starred) {
+                event.starred = false
+                eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
+            } else {
+                event.starred = true
+                eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
+            }
         }
 
         self.saveContext()
+    }
+    
+    func isDuplicateEvent(_ event: Event) -> String? {
+        var res: String? = nil
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+        fr.predicate = NSPredicate(format: "begin >= %@ AND end <= %@ AND starred == YES", argumentArray: [event.begin, event.end])
+        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.returnsObjectsAsFaults = false
+        
+        let events = try! context.fetch(fr) as Array
+        var first = true
+        for e in events {
+            if (first) {
+                res = (e as! Event).title
+                first = false
+            } else {
+                res = "\(String(describing: res!)), \((e as! Event).title)"
+            }
+        }
+        
+        return res
     }
     
     func saveContext() {
