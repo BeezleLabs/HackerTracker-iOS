@@ -12,13 +12,64 @@ import CoreData
 class BaseScheduleTableViewController: UITableViewController {
     
     var eventSections : [[Event]] = []
+    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
+    var data = NSMutableData()
 
     // TODO: Update for DC 25
     var days = ["2016-08-04", "2016-08-05", "2016-08-06", "2016-08-07"];
+    
+    func sync(sender: AnyObject) {
+        
+        let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
+        let envs = NSDictionary(contentsOfFile: envPlist!)!
+        
+        let tURL = envs.value(forKey: "URL") as! String
+        //NSLog("Connecting to \(tURL)")
+        let URL = Foundation.URL(string: tURL)
+        
+        let request = NSMutableURLRequest(url: URL!)
+        request.httpMethod = "GET"
+        
+        var queue = OperationQueue()
+        var con = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: true)
+
+    }
+    
+    func connection(_ con: NSURLConnection!, didReceiveData _data:Data!) {
+        self.data.append(_data)
+    }
+    
+    func connectionDidFinishLoading(_ con: NSURLConnection!) {
+        
+        let resStr = NSString(data: self.data as Data, encoding: String.Encoding.ascii.rawValue)
+        
+        let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
+        
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM HH:mm"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        let n = df.string(from: Date())
+        let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+        
+        if (updateSchedule(dataFromString!)) {
+            refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+        } else {
+            refreshControl?.attributedTitle = NSAttributedString(string: "Sync at \(n)", attributes: attr)
+        }
+        
+        refreshControl?.endRefreshing()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(EventCell.self, forCellReuseIdentifier: "Events")
+        
+        refreshControl = UIRefreshControl()
+        let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+        refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
+        refreshControl?.tintColor = UIColor.gray
+        refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +88,7 @@ class BaseScheduleTableViewController: UITableViewController {
         
         tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return days.count

@@ -34,6 +34,7 @@
 		5DFB87C91B3A188E0083604C /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */; };
 		786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
+		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
 		83AAA5901EDF939B00139C1D /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAA58F1EDF939B00139C1D /* Map.m */; };
 		83AAA5951EDF942B00139C1D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AAA5941EDF942B00139C1D /* MapView.swift */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
@@ -100,6 +101,7 @@
 		5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
 		786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = defconzero.ttf; path = "../../../ht-images/Fonts/defconzero.ttf"; sourceTree = "<group>"; };
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
+		78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHelper.swift; sourceTree = "<group>"; };
 		7A0EDEDE86FED966C308674E /* Pods-hackertracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.debug.xcconfig"; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		83AAA58E1EDF939B00139C1D /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */,
 				5DDD506E1B28D60D001AE8E1 /* SwiftyJSON.swift */,
 				49730E4D1E2D1AB50029438C /* Theme.swift */,
+				78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				83AAA5951EDF942B00139C1D /* MapView.swift in Sources */,
 				5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */,
 				5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */,
+				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
 				5DDD506F1B28D60D001AE8E1 /* SwiftyJSON.swift in Sources */,
 				5D3A94491AD6C6F40076F544 /* Message.swift in Sources */,
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,

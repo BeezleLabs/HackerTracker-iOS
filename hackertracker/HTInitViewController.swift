@@ -80,8 +80,8 @@ class HTInitViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        df.timeZone = TimeZone(identifier: "PDT")
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        df.timeZone = TimeZone(identifier: "UTC")
         df.locale = Locale(identifier: "en_US_POSIX")
         
         let path = Bundle.main.path(forResource: "schedule-full", ofType: "json")
@@ -92,11 +92,11 @@ class HTInitViewController: UIViewController {
         let dataFromString = content?.data(using: String.Encoding.utf8.rawValue)
         let json = JSON(data: dataFromString!, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
         
-        let updateTime = json["updateTime"].string!
+        //let updateTime = json["updateTime"].string!
         let updateDate = json["updateDate"].string!
-        NSLog("Schedule last updated at \(updateDate) \(updateTime)")
+        NSLog("Schedule last updated at \(updateDate)")
         let first_status = NSEntityDescription.insertNewObject(forEntityName: "Status", into: context) as! Status
-        let syncDate = df.date(from: "\(updateDate) \(updateTime)")
+        let syncDate = df.date(from: updateDate)
         first_status.lastsync = syncDate!
         
         let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
