@@ -30,18 +30,20 @@ class BaseScheduleTableViewController: UITableViewController {
         var request = URLRequest(url: URL!)
         request.httpMethod = "GET"
         
-        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+        let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: NSURLSessionPinningDelegate(), delegateQueue: nil)
+        
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
             
             if let error = error {
-                NSLog("DataTsk error: " + error.localizedDescription)
+                NSLog("DataTask error: " + error.localizedDescription)
+                self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
             } else {
-                NSLog("Made it here")
                 let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
             
                 let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
-            
-                let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
-                let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
 
                 if (updateSchedule(dataFromString!)) {
                     self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
@@ -49,8 +51,9 @@ class BaseScheduleTableViewController: UITableViewController {
                     self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
                 }
             
-                self.refreshControl?.endRefreshing()
             }
+            
+            self.refreshControl?.endRefreshing()
         }).resume()
 
     }

@@ -32,6 +32,7 @@
 		5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */; };
 		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
 		5DFB87C91B3A188E0083604C /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */; };
+		7820245D1F05B7CE0092ED07 /* cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 7820245C1F05B7CE0092ED07 /* cert.der */; };
 		786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
 		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
@@ -99,6 +100,7 @@
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
 		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
 		5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
+		7820245C1F05B7CE0092ED07 /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
 		786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = defconzero.ttf; path = "../../../ht-images/Fonts/defconzero.ttf"; sourceTree = "<group>"; };
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
 		78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHelper.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7820245C1F05B7CE0092ED07 /* cert.der */,
 				5DD0D9151D467D6500747807 /* dc-24-fp-final.png */,
 				5D00AA2B1B0C3BE600916EAC /* schedule-full.json */,
 				5DD6425D1AC3C62300ED3256 /* Info.plist */,
@@ -369,6 +372,7 @@
 				786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
+				7820245D1F05B7CE0092ED07 /* cert.der in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 				5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */,
 			);
