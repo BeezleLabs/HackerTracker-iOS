@@ -27,10 +27,7 @@ class HTInitViewController: UIViewController {
             NSLog("Database not setup, preloading with initial schedule")
             self.loadData()
         } else {
-            let df = DateFormatter()
-            df.timeZone = TimeZone(abbreviation: "PDT")
-            df.dateFormat = "yyyy-MM-dd HH:mm:ss z"
-            df.locale = Locale(identifier: "en_US_POSIX")
+            let df = DateFormatterUtility.yearMonthDayTimeFormatter
             let startofYear: Date = df.date(from: "2016-01-01 00:00:01 PDT")!
             
             let fre = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
@@ -87,7 +84,6 @@ class HTInitViewController: UIViewController {
         let dataFromString = content?.data(using: String.Encoding.utf8.rawValue)
         let json = JSON(data: dataFromString!, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
         
-        //let updateTime = json["updateTime"].string!
         let updateDate = json["updateDate"].string!
         NSLog("Schedule last updated at \(updateDate)")
         let first_status = NSEntityDescription.insertNewObject(forEntityName: "Status", into: context) as! Status

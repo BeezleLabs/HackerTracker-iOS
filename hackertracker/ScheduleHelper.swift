@@ -44,7 +44,6 @@ func updateSchedule(_ data: Data) -> Bool {
         
         var mySched : [Event] = []
         
-        df.dateFormat = "yyyy-MM-dd HH:mm z"
         
         for item in schedule {
             let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
@@ -79,9 +78,9 @@ func updateSchedule(_ data: Data) -> Bool {
                         d = "2016-08-08"
                     }
                 }
-                te.begin = df.date(from: "\(d) \(b) PDT")!
+                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(b) PDT")!
             } else {
-                te.begin = df.date(from: "\(d) 00:00 PDT")!
+                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 00:00 PDT")!
             }
             if ( e != "" ) {
                 if ( e == "24:00") {
@@ -96,9 +95,9 @@ func updateSchedule(_ data: Data) -> Bool {
                         d = "2016-08-08"
                     }
                 }
-                te.end = df.date(from: "\(d) \(e) PDT")!
+                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(e) PDT")!
             } else {
-                te.end = df.date(from: "\(d) 23:59 PDT")!
+                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 23:59 PDT")!
             }
             
             if (item["location"] != "") {
