@@ -17,9 +17,7 @@ func updateSchedule(_ data: Data) -> Bool {
     
     let json = JSON(data: data, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
     
-    let df = DateFormatter()
-    df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    df.locale = Locale(identifier: "en_US_POSIX")
+    let df = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter
     
     let updateTime = json["updateTime"].string!
     let updateDate = json["updateDate"].string!
