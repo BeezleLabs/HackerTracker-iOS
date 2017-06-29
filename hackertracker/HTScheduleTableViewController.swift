@@ -52,35 +52,8 @@ class BaseScheduleTableViewController: UITableViewController {
                 self.refreshControl?.endRefreshing()
             }
         }).resume()
-        //var queue = OperationQueue()
-        //var con = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: true)
 
     }
-    
-    /*func connection(_ con: NSURLConnection!, didReceiveData _data:Data!) {
-        self.data.append(_data)
-    }
-    
-    func connectionDidFinishLoading(_ con: NSURLConnection!) {
-        
-        let resStr = NSString(data: self.data as Data, encoding: String.Encoding.ascii.rawValue)
-        
-        let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
-        
-        let df = DateFormatter()
-        df.dateFormat = "dd/MM HH:mm"
-        df.locale = Locale(identifier: "en_US_POSIX")
-        let n = df.string(from: Date())
-        let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
-        
-        if (updateSchedule(dataFromString!)) {
-            refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
-        } else {
-            refreshControl?.attributedTitle = NSAttributedString(string: "Sync at \(n)", attributes: attr)
-        }
-        
-        refreshControl?.endRefreshing()
-    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
