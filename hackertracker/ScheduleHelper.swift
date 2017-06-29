@@ -144,8 +144,8 @@ func updateSchedule(_ data: Data) -> Bool {
             err = error
         }
         
-        if err != nil {
-            NSLog("%@",err!)
+        if let error = err {
+            print(error)
         }
         
         NSLog("Schedule Updated")

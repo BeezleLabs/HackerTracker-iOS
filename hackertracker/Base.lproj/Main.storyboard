@@ -412,14 +412,14 @@
                         <viewControllerLayoutGuide type="bottom" id="MHn-qu-koF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gjc-If-XbW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.25000000000000006" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="PJq-ZJ-cvC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.75" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xR0-7q-1Ud">
-                                <rect key="frame" x="8" y="127" width="359" height="458"/>
+                                <rect key="frame" x="8" y="107" width="359" height="409"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -429,13 +429,13 @@
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZj-6h-XGH">
-                                <rect key="frame" x="8" y="93" width="359" height="17"/>
+                                <rect key="frame" x="8" y="73" width="359" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffv-Fv-Vgw" userLabel="Images View">
-                                <rect key="frame" x="134" y="585" width="106" height="30"/>
+                                <rect key="frame" x="134" y="516" width="106" height="30"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_demo" translatesAutoresizingMaskIntoConstraints="NO" id="GlD-WK-o3c">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -470,7 +470,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presenter Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqc-Jd-sAB">
-                                <rect key="frame" x="8" y="72" width="359" height="21"/>
+                                <rect key="frame" x="8" y="52" width="359" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="51m-xA-QJ0"/>
                                 </constraints>
@@ -479,7 +479,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title that is so long in could run over to another line." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJH-Fa-q94">
-                                <rect key="frame" x="8" y="20" width="359" height="52"/>
+                                <rect key="frame" x="8" y="0.0" width="359" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="Lj9-qA-rz0"/>
                                 </constraints>
@@ -488,7 +488,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, August 07 09:00-17:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKd-ci-QDo">
-                                <rect key="frame" x="8" y="110" width="359" height="17"/>
+                                <rect key="frame" x="8" y="90" width="359" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -721,7 +721,7 @@
         <image name="sync-30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pbn-jW-yxw"/>
+        <segue reference="jS8-KQ-LjK"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

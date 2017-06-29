@@ -27,15 +27,37 @@ class BaseScheduleTableViewController: UITableViewController {
         //NSLog("Connecting to \(tURL)")
         let URL = Foundation.URL(string: tURL)
         
-        let request = NSMutableURLRequest(url: URL!)
+        var request = URLRequest(url: URL!)
         request.httpMethod = "GET"
         
-        var queue = OperationQueue()
-        var con = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: true)
+        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            if let error = error {
+                NSLog("DataTsk error: " + error.localizedDescription)
+            } else {
+                NSLog("Made it here")
+                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+            
+                let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
+            
+                let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
+                let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+
+                if (updateSchedule(dataFromString!)) {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+                } else {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
+                }
+            
+                self.refreshControl?.endRefreshing()
+            }
+        }).resume()
+        //var queue = OperationQueue()
+        //var con = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: true)
 
     }
     
-    func connection(_ con: NSURLConnection!, didReceiveData _data:Data!) {
+    /*func connection(_ con: NSURLConnection!, didReceiveData _data:Data!) {
         self.data.append(_data)
     }
     
@@ -58,7 +80,7 @@ class BaseScheduleTableViewController: UITableViewController {
         }
         
         refreshControl?.endRefreshing()
-    }
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,8 +187,9 @@ class BaseScheduleTableViewController: UITableViewController {
     }
 }
 
-class HTScheduleTableViewController: BaseScheduleTableViewController {
+class HTScheduleTableViewController: BaseScheduleTableViewController, UISearchBarDelegate {
     var eType : eventType!
+    let searchBar = UISearchBar()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -79,11 +79,6 @@ class HTInitViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-        df.timeZone = TimeZone(identifier: "UTC")
-        df.locale = Locale(identifier: "en_US_POSIX")
-        
         let path = Bundle.main.path(forResource: "schedule-full", ofType: "json")
         //NSLog("Path : \(path!)")
         
@@ -96,7 +91,7 @@ class HTInitViewController: UIViewController {
         let updateDate = json["updateDate"].string!
         NSLog("Schedule last updated at \(updateDate)")
         let first_status = NSEntityDescription.insertNewObject(forEntityName: "Status", into: context) as! Status
-        let syncDate = df.date(from: updateDate)
+        let syncDate = DateFormatterUtility.iso8601Formatter.date(from: updateDate)
         first_status.lastsync = syncDate!
         
         let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
@@ -113,7 +108,7 @@ class HTInitViewController: UIViewController {
         
         var mySched : [Event] = []
         
-        df.dateFormat = "yyyy-MM-dd HH:mm z"
+        //df.dateFormat = "yyyy-MM-dd HH:mm z"
         
         for item in schedule {
             let te: Event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
@@ -148,9 +143,9 @@ class HTInitViewController: UIViewController {
                         d = "2016-08-08"
                     }
                 }
-                te.begin = df.date(from: "\(d) \(b) PDT")!
+                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(b) PDT")!
             } else {
-                te.begin = df.date(from: "\(d) 00:00 PDT")!
+                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 00:00 PDT")!
             }
             if ( e != "" ) {
                 if ( e == "24:00") {
@@ -165,9 +160,9 @@ class HTInitViewController: UIViewController {
                         d = "2016-08-08"
                     }
                 }
-                te.end = df.date(from: "\(d) \(e) PDT")!
+                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(e) PDT")!
             } else {
-                te.end = df.date(from: "\(d) 23:59 PDT")!
+                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 23:59 PDT")!
             }
             
             te.starred = false
