@@ -150,7 +150,7 @@ class HTUpdatesViewController: UIViewController {
                 if err != nil {
                     NSLog("%@",err!)
                 }
-                NSLog("Failed connection to defcon-api. Check network settings.")
+                NSLog("Failed connection to info.defcon.org. Check network settings.")
                 self.updateMessages()
             })
         failedAlert.addAction(okItem)

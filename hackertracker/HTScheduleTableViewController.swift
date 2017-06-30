@@ -12,13 +12,62 @@ import CoreData
 class BaseScheduleTableViewController: UITableViewController {
     
     var eventSections : [[Event]] = []
+    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
+    var data = NSMutableData()
 
     // TODO: Update for DC 25
     var days = ["2016-08-04", "2016-08-05", "2016-08-06", "2016-08-07"];
+    
+    func sync(sender: AnyObject) {
+        
+        let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
+        let envs = NSDictionary(contentsOfFile: envPlist!)!
+        
+        let tURL = envs.value(forKey: "URL") as! String
+        //NSLog("Connecting to \(tURL)")
+        let URL = Foundation.URL(string: tURL)
+        
+        var request = URLRequest(url: URL!)
+        request.httpMethod = "GET"
+        
+        let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: NSURLSessionPinningDelegate(), delegateQueue: nil)
+        
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
+            
+            if let error = error {
+                NSLog("DataTask error: " + error.localizedDescription)
+                self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+            } else {
+                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+            
+                let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
+
+                if (updateSchedule(dataFromString!)) {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+                } else {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
+                }
+            
+            }
+            
+            self.refreshControl?.endRefreshing()
+        }).resume()
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(EventCell.self, forCellReuseIdentifier: "Events")
+        
+        refreshControl = UIRefreshControl()
+        let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+        refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
+        refreshControl?.tintColor = UIColor.gray
+        refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +86,7 @@ class BaseScheduleTableViewController: UITableViewController {
         
         tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return days.count
@@ -114,8 +163,9 @@ class BaseScheduleTableViewController: UITableViewController {
     }
 }
 
-class HTScheduleTableViewController: BaseScheduleTableViewController {
+class HTScheduleTableViewController: BaseScheduleTableViewController, UISearchBarDelegate {
     var eType : eventType!
+    let searchBar = UISearchBar()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
