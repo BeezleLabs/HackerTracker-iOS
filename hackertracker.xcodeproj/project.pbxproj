@@ -31,8 +31,8 @@
 		5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */; };
 		5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */; };
 		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
-		5DFB87C91B3A188E0083604C /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */; };
 		7820245D1F05B7CE0092ED07 /* cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 7820245C1F05B7CE0092ED07 /* cert.der */; };
+		7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */; };
 		786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
 		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
@@ -99,8 +99,8 @@
 		5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTHomeTabBarController.swift; sourceTree = "<group>"; };
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
 		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
-		5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
 		7820245C1F05B7CE0092ED07 /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
+		7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSearchTableViewController.swift; sourceTree = "<group>"; };
 		786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = defconzero.ttf; path = "../../../ht-images/Fonts/defconzero.ttf"; sourceTree = "<group>"; };
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
 		78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHelper.swift; sourceTree = "<group>"; };
@@ -159,16 +159,16 @@
 		498AD73E1E2D2BC900DD5B56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */,
-				5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */,
-				5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */,
 				5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */,
-				5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */,
-				5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */,
-				5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */,
-				5DFB87C81B3A188E0083604C /* HTSpeakersTableViewController.swift */,
-				5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */,
 				786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */,
+				5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */,
+				5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */,
+				5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */,
+				5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */,
+				5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */,
+				5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */,
+				7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */,
+				5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */,
 				83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */,
 			);
 			name = ViewControllers;
@@ -498,7 +498,6 @@
 				5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */,
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
-				5DFB87C91B3A188E0083604C /* HTSpeakersTableViewController.swift in Sources */,
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
 				5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */,
@@ -508,6 +507,7 @@
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,
+				7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +579,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -619,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
