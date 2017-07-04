@@ -163,9 +163,8 @@ class BaseScheduleTableViewController: UITableViewController {
     }
 }
 
-class HTScheduleTableViewController: BaseScheduleTableViewController, UISearchBarDelegate {
+class HTScheduleTableViewController: BaseScheduleTableViewController {
     var eType : eventType!
-    let searchBar = UISearchBar()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
