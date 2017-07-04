@@ -18,18 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-                // Enable or disable features based on authorization.
-                if((error == nil)) {
-                    NSLog("Request authorization failed!")
-                } else {
-                    NSLog("Request authorization succeeded!")
-                    //self.showAlert()
-                }
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if((error == nil)) {
+                NSLog("Request authorization failed!")
+            } else {
+                NSLog("Request authorization succeeded!")
             }
-        } else {
-           NSLog("Notifications only on iOS 10+")
         }
 
         return true

@@ -80,10 +80,7 @@ class HTEventDetailViewController: UIViewController {
             event.starred = false
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
             saveContext()
-            if #available(iOS 10.0, *) {
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
-                //NSLog("Removed: hacketracker-\(event.id) notification")
-            }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
         } else {
             
             let duplicates = duplicateEvents(event)
@@ -142,26 +139,22 @@ class HTEventDetailViewController: UIViewController {
         let components = calendar.dateComponents(in: .current, from: date)
         let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
         
-        if #available(iOS 10.0, *) {
-            let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
 
         
-            let content = UNMutableNotificationContent()
-            content.title = "Upcoming Event"
-            content.body = "\(event.title) in \(event.location)"
-            content.sound = UNNotificationSound.default()
+        let content = UNMutableNotificationContent()
+        content.title = "Upcoming Event"
+        content.body = "\(event.title) in \(event.location)"
+        content.sound = UNNotificationSound.default()
         
-            let request = UNNotificationRequest(identifier: "hackertracker-\(event.id)", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "hackertracker-\(event.id)", content: content, trigger: trigger)
         
-            //UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            UNUserNotificationCenter.current().add(request) {(error) in
-                if let error = error {
-                    NSLog("Error: \(error)")
-                } else {
-                    //NSLog("Added: hacketracker-\(event.id) notification")
-                }
+        UNUserNotificationCenter.current().add(request) {(error) in
+            if let error = error {
+                NSLog("Error: \(error)")
             }
         }
+
     }
     
     func duplicateEvents(_ event: Event) -> [Event] {
