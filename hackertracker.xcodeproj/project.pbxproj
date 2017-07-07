@@ -36,8 +36,8 @@
 		786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
 		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
-		83AAA5901EDF939B00139C1D /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAA58F1EDF939B00139C1D /* Map.m */; };
-		83AAA5951EDF942B00139C1D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AAA5941EDF942B00139C1D /* MapView.swift */; };
+		8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */; };
+		8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
@@ -105,10 +105,10 @@
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
 		78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHelper.swift; sourceTree = "<group>"; };
 		7A0EDEDE86FED966C308674E /* Pods-hackertracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.debug.xcconfig"; sourceTree = "<group>"; };
+		8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "dc-25-floorplan-night.pdf"; sourceTree = "<group>"; };
+		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "dc-25-floorplan-v7.5-public.pdf"; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
-		83AAA58E1EDF939B00139C1D /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
-		83AAA58F1EDF939B00139C1D /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
-		83AAA5941EDF942B00139C1D /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 		B2E8240619E30EF7A3D6816A /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,9 +177,6 @@
 		498AD73F1E2D2C0400DD5B56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				83AAA58E1EDF939B00139C1D /* Map.h */,
-				83AAA58F1EDF939B00139C1D /* Map.m */,
-				83AAA5941EDF942B00139C1D /* MapView.swift */,
 				49730E4A1E2929BC0029438C /* EventCell.swift */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
@@ -229,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				7820245C1F05B7CE0092ED07 /* cert.der */,
+				8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */,
+				8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */,
 				5DD0D9151D467D6500747807 /* dc-24-fp-final.png */,
 				5D00AA2B1B0C3BE600916EAC /* schedule-full.json */,
 				5DD6425D1AC3C62300ED3256 /* Info.plist */,
@@ -257,6 +256,7 @@
 		5DF3D6ACCF616DD9F4C24179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8345F2CB1F0F0C81006761BE /* WebKit.framework */,
 				24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */,
 				031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */,
 			);
@@ -334,6 +334,7 @@
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = MJ97FDMT75;
 						LastSwiftMigration = 0830;
+						ProvisioningStyle = Manual;
 					};
 					5DD642701AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
@@ -367,6 +368,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
+				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
+				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
 				5DD0D9161D467D6500747807 /* dc-24-fp-final.png in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */,
@@ -488,7 +491,6 @@
 				5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */,
 				5D3A94471AD6C6F40076F544 /* Status.swift in Sources */,
 				5D3A94451AD6C6F30076F544 /* Event.swift in Sources */,
-				83AAA5951EDF942B00139C1D /* MapView.swift in Sources */,
 				5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */,
 				5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
@@ -501,7 +503,6 @@
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
 				5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */,
-				83AAA5901EDF939B00139C1D /* Map.m in Sources */,
 				786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */,
 				5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
@@ -637,13 +638,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = MJ97FDMT75;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c71fa435-adba-4f86-9960-dc2a55d13603";
+				PROVISIONING_PROFILE_SPECIFIER = org.beezle.hackertracker2;
 				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -659,13 +662,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

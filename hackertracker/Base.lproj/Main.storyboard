@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -363,46 +363,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" minimumZoomScale="0.0" maximumZoomScale="7" translatesAutoresizingMaskIntoConstraints="NO" id="DFL-XR-V7g">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0U8-iG-SKO" customClass="MapView" customModule="hackertracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hgl-sJ-e6x">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                </subviews>
-                            </scrollView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSu-xE-gf2" userLabel="Scroll View Blocker">
+                                <rect key="frame" x="67" y="245" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <webView hidden="YES" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MW8-Ig-jaP" userLabel="DayView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0om-4U-yZy">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.30980392159999998" green="0.29411764709999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="DFL-XR-V7g" secondAttribute="bottom" id="0Ix-wT-pyM"/>
-                            <constraint firstItem="DFL-XR-V7g" firstAttribute="top" secondItem="ta4-tB-Y16" secondAttribute="topMargin" id="3l2-v0-Op4"/>
-                            <constraint firstAttribute="trailing" secondItem="DFL-XR-V7g" secondAttribute="trailing" id="7fd-dy-2x6"/>
-                            <constraint firstItem="DFL-XR-V7g" firstAttribute="leading" secondItem="ta4-tB-Y16" secondAttribute="leading" id="aBb-1k-pCY"/>
+                            <constraint firstItem="0om-4U-yZy" firstAttribute="bottom" secondItem="MW8-Ig-jaP" secondAttribute="bottom" id="7iM-ah-0RZ"/>
+                            <constraint firstAttribute="trailing" secondItem="MW8-Ig-jaP" secondAttribute="trailing" id="8pp-0G-xiW"/>
+                            <constraint firstItem="MW8-Ig-jaP" firstAttribute="leading" secondItem="ta4-tB-Y16" secondAttribute="leading" id="MoY-W9-HaZ"/>
+                            <constraint firstItem="0om-4U-yZy" firstAttribute="top" secondItem="MW8-Ig-jaP" secondAttribute="top" id="RHm-AE-oUq"/>
+                            <constraint firstItem="0om-4U-yZy" firstAttribute="trailing" secondItem="MW8-Ig-jaP" secondAttribute="trailing" id="YSZ-mR-s9j"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="MW8-Ig-jaP" secondAttribute="bottom" id="ZFD-f3-j0f"/>
+                            <constraint firstItem="MW8-Ig-jaP" firstAttribute="top" secondItem="ta4-tB-Y16" secondAttribute="topMargin" constant="64" id="bkJ-Sp-hME"/>
+                            <constraint firstItem="0om-4U-yZy" firstAttribute="leading" secondItem="MW8-Ig-jaP" secondAttribute="leading" id="geF-FG-6ij"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="map-inactive" selectedImage="map-active" id="Qtr-7h-6Xo">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="eTb-OG-eb5"/>
+                    <navigationItem key="navigationItem" id="eTb-OG-eb5">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="VpL-dl-uug">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="DAY"/>
+                                <segment title="NIGHT"/>
+                            </segments>
+                            <connections>
+                                <action selector="mapTypeChanged:" destination="9uk-jY-kfH" eventType="valueChanged" id="QIk-7r-nIx"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="0U8-iG-SKO" id="3Rn-jr-COR"/>
-                        <outlet property="scrollView" destination="DFL-XR-V7g" id="VAU-77-ebB"/>
-                        <outlet property="sizingView" destination="Hgl-sJ-e6x" id="8vp-Po-vZL"/>
+                        <outlet property="dayView" destination="MW8-Ig-jaP" id="Adi-Fm-uNy"/>
+                        <outlet property="nightView" destination="0om-4U-yZy" id="PpD-85-tdv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5k-1E-Sh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="453.60000000000002" y="2067.6161919040483"/>
+            <point key="canvasLocation" x="716" y="1951.5742128935533"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="dcg-US-5Be">
@@ -566,7 +576,7 @@
                         <segue destination="Snx-g6-3Uk" kind="relationship" relationship="viewControllers" id="R6x-DZ-mTZ"/>
                         <segue destination="93J-Qg-h7Z" kind="relationship" relationship="viewControllers" id="qac-bt-9Jh"/>
                         <segue destination="wkl-G5-ofO" kind="relationship" relationship="viewControllers" id="hov-64-VB3"/>
-                        <segue destination="9uk-jY-kfH" kind="relationship" relationship="viewControllers" id="KBJ-z7-VSu"/>
+                        <segue destination="QWo-cS-Afi" kind="relationship" relationship="viewControllers" id="KBJ-z7-VSu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWd-bZ-9uM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -756,6 +766,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vd-bq-LOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="741.60000000000002" y="1287.7061469265368"/>
+        </scene>
+        <!--Events Nav View Controller-->
+        <scene sceneID="W6a-bK-zOb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QWo-cS-Afi" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <tabBarItem key="tabBarItem" title="" image="map-inactive" selectedImage="map-active" id="Qtr-7h-6Xo">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" id="Med-we-Ik4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9uk-jY-kfH" kind="relationship" relationship="rootViewController" id="Ryx-Ee-MVW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fW8-eN-buX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-223.19999999999999" y="1951.5742128935533"/>
         </scene>
     </scenes>
     <resources>
