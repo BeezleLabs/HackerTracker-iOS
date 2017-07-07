@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 
 func updateSchedule(_ data: Data) -> Bool {
     

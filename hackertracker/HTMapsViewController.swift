@@ -11,51 +11,39 @@ import UIKit
 class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
 
-    @IBOutlet weak var mapView: MapView!
-    @IBOutlet weak var sizingView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
-   
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
-    
-    var initialScale: CGFloat = 0.0
-    var currentScale: CGFloat = 1.0
 
-    var imageView: UIImageView!
+    @IBOutlet weak var dayView: UIWebView!
+    @IBOutlet weak var nightView: UIWebView!
+    
+    @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
+        dayView.isHidden = sender.selectedSegmentIndex != 0
+        nightView.isHidden = sender.selectedSegmentIndex != 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.delegate = self
+
+        let dayFile = Bundle.main.url(forResource: "dc-25-floorplan-v7.5-public", withExtension: "pdf")
+        let nightFile = Bundle.main.url(forResource: "dc-25-floorplan-night", withExtension: "pdf")
         
-        sizingView.frame = CGRect(x: 0, y: 0, width: 475, height: 535)
-        mapView.frame = CGRect(x: 0, y: 0, width: 475, height: 535)
+        dayView.loadRequest(URLRequest(url: dayFile!))
+        nightView.loadRequest(URLRequest(url: nightFile!))
         
-        sizingView.center = CGPoint(x:self.scrollView.bounds.midX, y: self.scrollView.bounds.midY)
-        mapView.center = sizingView.center
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        sizingView.center = CGPoint(x:self.scrollView.bounds.midX, y: self.scrollView.bounds.midY)
-        mapView.center = sizingView.center
+        dayView.isHidden = false
+        nightView.isHidden = true
         
-        scrollView.contentSize = sizingView.frame.size
-    }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return mapView;
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        mapView.setNeedsDisplay()
+        dayView.scrollView.delegate = self
+        nightView.scrollView.delegate = self
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.contentSize = mapView.frame.size
+      
+        let setterView = scrollView == dayView.scrollView ? nightView.scrollView : dayView.scrollView
+        let getterView = scrollView
         
-        if (scrollView.zoomScale < 1)
-        {
-            mapView.center = scrollView.center
-        }
+        setterView.zoomScale = getterView.zoomScale
+        setterView.contentOffset = getterView.contentOffset
+        
     }
-
+    
 }
