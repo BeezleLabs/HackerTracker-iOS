@@ -28,10 +28,10 @@ class HTInitViewController: UIViewController {
             self.loadData()
         } else {
             let df = DateFormatterUtility.yearMonthDayTimeFormatter
-            let startofYear: Date = df.date(from: "2016-01-01 00:00:01 PDT")!
+            let startofYear: Date = df.date(from: "2017-01-01 00:00:01 PDT")!
             
             let fre = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-            fre.predicate = NSPredicate(format: "begin < %@", argumentArray: [startofYear])
+            fre.predicate = NSPredicate(format: "start_date < %@", argumentArray: [startofYear])
             
             let frm = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
             frm.predicate = NSPredicate(format: "date < %@", argumentArray: [startofYear])
@@ -73,107 +73,35 @@ class HTInitViewController: UIViewController {
     }
     
     func loadData() {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
+        let context = getContext()
         
-        let path = Bundle.main.path(forResource: "schedule-full", ofType: "json")
-        //NSLog("Path : \(path!)")
+        let speakers_file = Bundle.main.path(forResource: "speakers", ofType: "json")
+        let speakers_content = try? String(contentsOfFile: speakers_file!)
+        let speakers_data = speakers_content?.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+        if (!updateSpeakers(speakers_data!)) {
+            NSLog("Failed to load speakers")
+        }
         
-        let content = try? NSString(contentsOfFile: path!, encoding: String.Encoding.ascii.rawValue)
-        //NSLog("Content: \(content)")
-        let dataFromString = content?.data(using: String.Encoding.utf8.rawValue)
-        let json = JSON(data: dataFromString!, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
+        let schedule_file = Bundle.main.path(forResource: "schedule-full", ofType: "json")
+        let schedule_content = try? NSString(contentsOfFile: schedule_file!, encoding: String.Encoding.ascii.rawValue)
+        let schedule_data = schedule_content?.data(using: String.Encoding.utf8.rawValue)
         
-        let updateDate = json["updateDate"].string!
-        NSLog("Schedule last updated at \(updateDate)")
-        let first_status = NSEntityDescription.insertNewObject(forEntityName: "Status", into: context) as! Status
-        let syncDate = DateFormatterUtility.iso8601Formatter.date(from: updateDate)
-        first_status.lastsync = syncDate!
+        if (!updateSchedule(schedule_data!)) {
+            NSLog("Failed to load schedule")
+        }
         
         let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-        message1.date = first_status.lastsync
+        message1.date = Date()
         message1.msg = "Welcome to HackerTracker iOS for DEF CON 25. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. The HackerTracker team is now a part of the DEF CON Infobooth. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
         
         let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-        message2.date = first_status.lastsync
-        message2.msg = "The initial schedule contains official talks, workshops, villages, parties, etc. Sync with defcon-api (click the button on this screen) before or during DEF CON for an updated schedule of events."
+        message2.date = Date()
+        message2.msg = "The initial schedule contains official talks, workshops, villages, parties, etc. Pull down on the schedule to update with info.defcon.org."
         
-        let schedule = json["schedule"].array!
-        
-        NSLog("Total events: \(schedule.count)")
-        
-        var mySched : [Event] = []
-        
-        //df.dateFormat = "yyyy-MM-dd HH:mm z"
-        
-        for item in schedule {
-            let te: Event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
-            te.who = item["who"].string!
-            var d = item["date"].string!
-            te.location = item["location"].string!
-            te.title = item["title"].string!
-            te.details = item["description"].string!
-            te.link = item["link"].string!
-            te.type = item["type"].string!
-            te.demo = item["demo"].boolValue
-            te.tool = item["tool"].boolValue
-            te.exploit = item["exploit"].boolValue
-            te.id = item["id"].int32Value
-            
-            //NSLog("Adding Item - id: \(te.id) type \(te.type) who: \(te.who) date: \(d)")
-            var b = item["begin"].string!
-            var e = item["end"].string!
-            if ( d == "" ) {
-                d = "2016-08-04"
-            }
-            if ( b != "" ) {
-                if ( b == "24:00") {
-                    b = "00:00"
-                    if ( d == "2016-08-04" ) {
-                        d = "2016-08-05"
-                    } else if ( d == "2016-08-05" ) {
-                        d = "2016-08-06"
-                    } else if ( d == "2016-08-06" ) {
-                        d = "2016-08-07"
-                    } else if ( d == "2016-08-07" ) {
-                        d = "2016-08-08"
-                    }
-                }
-                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(b) PDT")!
-            } else {
-                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 00:00 PDT")!
-            }
-            if ( e != "" ) {
-                if ( e == "24:00") {
-                    e = "00:00"
-                    if ( d == "2016-08-04" ) {
-                        d = "2016-08-05"
-                    } else if ( d == "2016-08-05" ) {
-                        d = "2016-08-06"
-                    } else if ( d == "2016-08-06" ) {
-                        d = "2016-08-07"
-                    } else if ( d == "2016-08-07" ) {
-                        d = "2016-08-08"
-                    }
-                }
-                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(e) PDT")!
-            } else {
-                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 23:59 PDT")!
-            }
-            
-            te.starred = false
-            mySched.append(te)
-        }
-        
-        var err:NSError? = nil
         do {
-            try context.save()
+            try getContext().save()
         } catch let error as NSError {
-            err = error
-        }
-        
-        if err != nil {
-            NSLog("%@",err!)
+            NSLog("error: \(error)")
         }
         
     }

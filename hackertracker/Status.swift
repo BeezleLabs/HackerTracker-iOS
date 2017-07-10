@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-@objc(Status)
 class Status: NSManagedObject {
 
     @NSManaged var lastsync: Date

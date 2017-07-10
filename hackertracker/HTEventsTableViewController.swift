@@ -32,7 +32,7 @@ class HTEventsScrollingTabController: ScrollingTabController {
         eventType(n: "PARTIES", i: "party", d: "Party", c: 0),
         eventType(n: "KIDS", i: "kids", d: "Kids", c: 0),
         eventType(n: "SKYTALKS", i: "cloud", d: "Skytalks", c: 0),
-        eventType(n: "TALKS", i: "speaker", d: "Speaker", c: 0),
+        eventType(n: "TALKS", i: "speaker", d: "Official", c: 0),
         eventType(n: "VILLAGES", i: "village", d: "Villages", c: 0),
         eventType(n: "WORKSHOPS", i:"workshop", d:"Workshop", c: 0)
 

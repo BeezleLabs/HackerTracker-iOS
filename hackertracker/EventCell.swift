@@ -27,8 +27,8 @@ public class EventCell : UITableViewCell {
     }
 
     func bind(event : Event) {
-        let eventDay = DateFormatterUtility.partialDayOfWeekFormatter.string(from: event.begin as Date)
-        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.begin as Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end as Date)
+        let eventDay = DateFormatterUtility.partialDayOfWeekFormatter.string(from: event.start_date as Date)
+        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
         
         title.text = event.title
 

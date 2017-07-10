@@ -55,6 +55,15 @@ class DateFormatterUtility {
         return formatter
     }()
     
+    //UTC iso8601 time format
+    static let iso8601pdtFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
     //Year-Month-Day time format
     static let yearMonthDayNoTimeZoneTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
