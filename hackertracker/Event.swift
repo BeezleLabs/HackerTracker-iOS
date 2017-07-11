@@ -27,5 +27,20 @@ class Event: NSManagedObject {
     
     @NSManaged var recommended: Bool
     @NSManaged var starred: Bool
+    
+    public func isTool() -> Bool
+    {
+        return includes.lowercased().contains("tool")
+    }
+    
+    public func isDemo() -> Bool
+    {
+        return includes.lowercased().contains("demo")
+    }
+    
+    public func isExploit() -> Bool
+    {
+        return includes.lowercased().contains("exploit")
+    }
 
 }
