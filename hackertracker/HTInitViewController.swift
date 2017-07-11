@@ -66,27 +66,26 @@ class HTInitViewController: UIViewController {
             }
         }
 
-        //self.performSegueWithIdentifier("HTHomeSegue", sender: self)
         Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(HTInitViewController.go), userInfo: nil, repeats: false)
-        
-        // Do any additional setup after loading the view.
     }
     
     func loadData() {
         let context = getContext()
         
-        let speakers_file = Bundle.main.path(forResource: "speakers", ofType: "json")
-        let speakers_content = try? String(contentsOfFile: speakers_file!)
-        let speakers_data = speakers_content?.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-        if (!updateSpeakers(speakers_data!)) {
+        let speakers_file = Bundle.main.path(forResource: "speakers", ofType: "json")!
+        let speakers_content = try! String(contentsOfFile: speakers_file)
+        let speakers_data = speakers_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+        
+        if (!updateSpeakers(speakers_data))
+        {
             NSLog("Failed to load speakers")
         }
         
-        let schedule_file = Bundle.main.path(forResource: "schedule-full", ofType: "json")
-        let schedule_content = try? NSString(contentsOfFile: schedule_file!, encoding: String.Encoding.ascii.rawValue)
-        let schedule_data = schedule_content?.data(using: String.Encoding.utf8.rawValue)
+        let schedule_file = Bundle.main.path(forResource: "schedule-full", ofType: "json")!
+        let schedule_content = try! NSString(contentsOfFile: schedule_file, encoding: String.Encoding.ascii.rawValue)
+        let schedule_data = schedule_content.data(using: String.Encoding.utf8.rawValue)!
         
-        if (!updateSchedule(schedule_data!)) {
+        if (!updateSchedule(schedule_data)) {
             NSLog("Failed to load schedule")
         }
         
@@ -105,24 +104,8 @@ class HTInitViewController: UIViewController {
         }
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func go() {
         self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

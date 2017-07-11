@@ -38,13 +38,19 @@ class HTEventDetailViewController: UIViewController {
         eventTitleLabel.text = event.title
         let speakers = getEventSpeakers(event.index)
         eventNameLabel.text = ""
-        var initial = true
+        
+        var eventNameText = ""
+        
         for s in speakers {
-            if (!initial) { eventNameLabel.text = eventNameLabel.text! + ", " }
-            else { initial = false }
-            eventNameLabel.text = eventNameLabel.text! + s.who
+            if (s != speakers.first) {
+                eventNameText = eventNameText + ", "
+            }
+            
+            eventNameText = eventNameText + s.who
         }
-        //eventNameLabel.text = event.who
+
+        eventNameLabel.text = eventNameText
+        
         eventLocationLabel.text = event.location
         eventDetailTextView.text = event.details
         
@@ -54,17 +60,9 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         }
         
-        if (event.includes.contains("Tool")) {
-            toolImage.alpha = 1.0
-        }
-        
-        if (event.includes.contains("Demo")) {
-            demoImage.alpha = 1.0
-        }
-        
-        if event.includes.contains("Exploit") {
-            exploitImage.alpha = 1.0
-        }
+        toolImage.alpha = event.isTool() ? 1.0 : 0.0
+        demoImage.alpha = event.isDemo() ? 1.0 : 0.0
+        exploitImage.alpha = event.isExploit() ? 1.0 : 0.0
 
         let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as Date)
         let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
