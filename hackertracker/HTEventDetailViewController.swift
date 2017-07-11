@@ -24,6 +24,7 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var demoImage: UIImageView!
     @IBOutlet weak var exploitImage: UIImageView!
     @IBOutlet weak var toolImage: UIImageView!
+    @IBOutlet weak var locationMapView: MapLocationView!
     
     var event: Event?
         
@@ -62,6 +63,12 @@ class HTEventDetailViewController: UIViewController {
         let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end as Date)
 
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
+        
+        locationMapView.currentLocation = Location.valueFromString(event.location)
+        
+        let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
+        touchGesture.minimumPressDuration = 0
+        locationMapView.addGestureRecognizer(touchGesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -182,6 +189,27 @@ class HTEventDetailViewController: UIViewController {
         }
         if err != nil {
             NSLog("%@",err!)
+        }
+    }
+    
+    func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)
+    {
+    
+        switch tapGesture.state {
+        case .began:
+            locationMapView.alpha = 0.5
+            break
+        case .ended:
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
+            let navigationController = HTEventsNavViewController(rootViewController: mapView)
+            self.present(navigationController, animated: true, completion: nil)
+            locationMapView.alpha = 1.0
+        case .cancelled, .failed:
+            locationMapView.alpha = 1.0
+            break
+        default:
+            break
         }
     }
     

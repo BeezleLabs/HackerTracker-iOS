@@ -22,7 +22,7 @@ class HTUpdatesViewController: UIViewController {
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     
     
-    let standardLogoHeight = CGFloat(118.0);
+    let standardLogoHeight = CGFloat(118.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +46,6 @@ class HTUpdatesViewController: UIViewController {
         super.viewWillAppear(animated)
         
         updatesTableView.contentInset = UIEdgeInsets(top: backgroundImage.frame.size.height - 64, left: 0, bottom: 0, right: 0)
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

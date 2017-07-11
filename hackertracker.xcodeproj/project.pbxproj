@@ -38,6 +38,7 @@
 		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
 		8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */; };
 		8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */; };
+		8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D21F1297D4006761BE /* MapLocationView.swift */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
@@ -108,6 +109,7 @@
 		8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "dc-25-floorplan-night.pdf"; sourceTree = "<group>"; };
 		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "dc-25-floorplan-v7.5-public.pdf"; sourceTree = "<group>"; };
+		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				49730E4A1E2929BC0029438C /* EventCell.swift */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
+				8345F2D21F1297D4006761BE /* MapLocationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
+				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,
 				5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */,
 				786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */,
 				5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */,

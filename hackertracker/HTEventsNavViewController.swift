@@ -13,7 +13,6 @@ class HTEventsNavViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "nav-header"), for: .default)
-        self.navigationBar.isOpaque = true
     }
 
 }
