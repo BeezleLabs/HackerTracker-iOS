@@ -9,21 +9,38 @@
 import Foundation
 import CoreData
 
-@objc(Event)
 class Event: NSManagedObject {
 
-    @NSManaged var id: Int32
+    @NSManaged var index: Int32
+    
+    @NSManaged var start_date: Date
+    @NSManaged var end_date: Date
+    @NSManaged var updated_at: Date
+
+    @NSManaged var id: String
     @NSManaged var title: String
-    @NSManaged var begin: Date
-    @NSManaged var end: Date
     @NSManaged var location: String
     @NSManaged var details: String
-    @NSManaged var who: String
-    @NSManaged var type: String
+    @NSManaged var entry_type: String
     @NSManaged var link: String
-    @NSManaged var demo: Bool
-    @NSManaged var tool: Bool
-    @NSManaged var exploit: Bool
+    @NSManaged var includes: String
+    
+    @NSManaged var recommended: Bool
     @NSManaged var starred: Bool
+    
+    public func isTool() -> Bool
+    {
+        return includes.lowercased().contains("tool")
+    }
+    
+    public func isDemo() -> Bool
+    {
+        return includes.lowercased().contains("demo")
+    }
+    
+    public func isExploit() -> Bool
+    {
+        return includes.lowercased().contains("exploit")
+    }
 
 }

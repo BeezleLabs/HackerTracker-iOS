@@ -16,8 +16,8 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
         let endofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "begin >= %@ AND end <= %@ AND starred == YES", argumentArray: [startofDay, endofDay])
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.predicate = NSPredicate(format: "start_date >= %@ AND end_date <= %@ AND starred == YES", argumentArray: [startofDay, endofDay])
+        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
         return fr

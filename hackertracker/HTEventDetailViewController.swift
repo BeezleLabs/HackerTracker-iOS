@@ -37,7 +37,21 @@ class HTEventDetailViewController: UIViewController {
         }
 
         eventTitleLabel.text = event.title
-        eventNameLabel.text = event.who
+        let speakers = getEventSpeakers(event.index)
+        eventNameLabel.text = ""
+        
+        var eventNameText = ""
+        
+        for s in speakers {
+            if (s != speakers.first) {
+                eventNameText = eventNameText + ", "
+            }
+            
+            eventNameText = eventNameText + s.who
+        }
+
+        eventNameLabel.text = eventNameText
+        
         eventLocationLabel.text = event.location
         eventDetailTextView.text = event.details
         
@@ -47,20 +61,12 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         }
         
-        if (event.tool) {
-            toolImage.alpha = 1.0
-        }
-        
-        if event.demo {
-            demoImage.alpha = 1.0
-        }
-        
-        if event.exploit {
-            exploitImage.alpha = 1.0
-        }
+        toolImage.alpha = event.isTool() ? 1.0 : 0.0
+        demoImage.alpha = event.isDemo() ? 1.0 : 0.0
+        exploitImage.alpha = event.isExploit() ? 1.0 : 0.0
 
-        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.begin as Date)
-        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end as Date)
+        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as Date)
+        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
 
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
@@ -115,7 +121,7 @@ class HTEventDetailViewController: UIViewController {
                     event.starred = true
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                     self.saveContext()
-                    self.scheduleNotification(at: event.begin.addingTimeInterval(-600),event)
+                    self.scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
 
                 })
                 
@@ -135,7 +141,7 @@ class HTEventDetailViewController: UIViewController {
                 event.starred = true
                 eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                 saveContext()
-                scheduleNotification(at: event.begin.addingTimeInterval(-600),event)
+                scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
             }
             
         }
@@ -169,8 +175,8 @@ class HTEventDetailViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "begin >= %@ AND end <= %@ AND starred == YES", argumentArray: [event.begin, event.end])
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.predicate = NSPredicate(format: "start_date >= %@ AND end_date <= %@ AND starred == YES", argumentArray: [event.start_date, event.end_date])
+        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         
         let events = try! context.fetch(fr) as! [Event]

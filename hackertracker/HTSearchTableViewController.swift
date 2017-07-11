@@ -31,7 +31,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         //NSLog("Getting full schedule")
         
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.events = try! context.fetch(fr) as NSArray
         
@@ -104,7 +104,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         let context = delegate.managedObjectContext!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR who contains[cd] %@", argumentArray: [searchText,searchText,searchText])
         self.filteredEvents = try! context.fetch(fr) as NSArray

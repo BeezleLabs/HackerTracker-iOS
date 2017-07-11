@@ -10,148 +10,347 @@ import Foundation
 import CoreData
 import UIKit
 
-func updateSchedule(_ data: Data) -> Bool {
-    
+func getContext() -> NSManagedObjectContext {
     let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    let context = delegate.managedObjectContext!
+    return delegate.managedObjectContext!
+    
+}
+
+func updateSpeakers(_ data: Data) -> Bool {
+    
+    let context = getContext()
     
     let json = JSON(data: data, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
     
-    let df = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter
+    let isodf = DateFormatterUtility.iso8601pdtFormatter
+    let lastsync = lastsyncDate()
+    let update_date = isodf.date(from: json["update_date"].stringValue)!
     
-    let updateTime = json["updateTime"].string!
-    let updateDate = json["updateDate"].string!
-    NSLog("schedule updated at \(updateDate) \(updateTime)")
+    if ( lastsync == nil || (update_date.compare(lastsync!) == ComparisonResult.orderedDescending)) {
+    
+        let speakers = json["speakers"].array!
+    
+        for speaker in speakers {
+        
+            if ( speaker["indexsp"] != JSON.null && speaker["last_update"] != JSON.null ) {
+                let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
+                fre.predicate = NSPredicate(format: "indexsp = %@", argumentArray: [speaker["indexsp"].stringValue])
+                let ret = try! context.fetch(fre)
+            
+                if ret.count > 0 {
+                    let s: Speaker = ret[0] as! Speaker
+                    if (s.last_update.compare(isodf.date(from: speaker["last_udpate"].stringValue)!) == ComparisonResult.orderedDescending) {
+                        if (!updateSpeaker(s,speaker)) {
+                            NSLog("Error updating speaker: \(s.who)")
+                            return false
+                        }
+                    }
+                } else {
+                    if (!addSpeaker(speaker)) {
+                        NSLog("Failed to add speaker: \(speaker["who"].stringValue)")
+                        return false
+                    }
+                }
+            
+            }
+        
+        }
+    }
+    
+    return true
+}
+
+func updateSpeaker(_ s: Speaker,_ speaker: JSON) -> Bool {
+    
+    if (speaker["who"] != JSON.null) {
+        s.who = speaker["who"].stringValue
+    } else {
+        s.who = "Mystery Speaker"
+    }
+    
+    if (speaker["sptitle"] != JSON.null) {
+        s.sptitle = speaker["sptitle"].stringValue
+    } else {
+        s.sptitle = ""
+    }
+    
+    if (speaker["media"] != JSON.null) {
+        s.media = speaker["media"].stringValue
+    } else {
+        s.media = ""
+    }
+    
+    if (speaker["bio"] != JSON.null) {
+        s.bio = speaker["bio"].stringValue
+    } else {
+        s.bio = ""
+    }
+    
+    if (speaker["last_update"] != JSON.null) {
+        s.last_update = DateFormatterUtility.iso8601pdtFormatter.date(from: speaker["last_update"].stringValue)!
+    } else {
+        s.last_update = Date()
+    }
+    
+    do {
+        try getContext().save()
+        return true
+    } catch let error as NSError {
+        NSLog("error: \(error)")
+        return false
+    }
+}
+
+func addSpeaker(_ speaker: JSON) -> Bool {
+    
+    let s = NSEntityDescription.insertNewObject(forEntityName: "Speaker", into: getContext()) as! Speaker
+    if (speaker["indexsp"] != JSON.null) {
+        s.indexsp = speaker["indexsp"].int32Value
+    }
+    
+    return updateSpeaker(s, speaker)
+    
+}
+
+func getSpeaker(_ indexsp: Int32) -> Speaker? {
+    
+    let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
+    fre.predicate = NSPredicate(format: "indexsp = %@", argumentArray: [indexsp])
+    let ret = try! getContext().fetch(fre)
+    
+    if (ret.count > 0) {
+        return ret[0] as? Speaker
+    } else {
+        return nil
+    }
+    
+}
+
+func getEventSpeakers(_ index: Int32) -> [Speaker] {
+    var speakers: [Speaker] = []
+    
+    let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
+    fre.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
+    let ret = try! getContext().fetch(fre)
+    
+    
+    for es in ret {
+        speakers.append(getSpeaker(((es as! EventSpeaker).indexsp))!)
+    }
+    
+    return speakers
+}
+
+func lastsyncDate() -> Date? {
+    let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
+    let ret = try! getContext().fetch(fr)
+    
+    if (ret.count > 0) {
+        return (ret[0] as! Status).lastsync
+    }
+    return nil
+}
+
+func setsyncDate(_ date: Date) -> Bool {
     
     let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
-    let status = ((try! context.fetch(fr)) as NSArray)[0] as! Status
+    let ret = try! getContext().fetch(fr)
     
-    let syncDate = df.date(from: "\(updateDate) \(updateTime)")! as Date
-    NSLog("syncDate: \(df.string(from: syncDate)), lastSync: \(df.string(from: status.lastsync))")
+    if (ret.count > 0) {
+        (ret[0] as! Status).lastsync = date
+    } else {
+        let status = NSEntityDescription.insertNewObject(forEntityName: "Status", into: getContext()) as! Status
+        status.lastsync = date
+    }
+    
+    do {
+        try getContext().save()
+        return true
+    } catch let error as NSError {
+        NSLog("error: \(error)")
+        return false
+    }
+}
+
+func updateSchedule(_ data: Data) -> Bool {
+    
+    let context = getContext()
+    
+    let json = JSON(data: data, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
+    
+    let df = DateFormatterUtility.iso8601pdtFormatter
+    
+    let lastsync = lastsyncDate()
+    
+    let update_date = df.date(from: json["update_date"].stringValue)!
     
     var retBool: Bool = true
     
-    if ( syncDate.compare(status.lastsync) == ComparisonResult.orderedDescending) {
+    if ( lastsync == nil || (update_date.compare(lastsync!) == ComparisonResult.orderedDescending)) {
         
-        status.lastsync = syncDate
-        
-        let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-        message2.date = syncDate
         let schedule = json["schedule"].array!
-        message2.msg = "Schedule updated with \(schedule.count) events."
         
-        NSLog("Total events: \(schedule.count)")
-        
-        var mySched : [Event] = []
-        
-        
-        for item in schedule {
-            let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-            fre.predicate = NSPredicate(format: "id = %@", argumentArray: [item["id"].stringValue])
-            var events = try! context.fetch(fre)
-            var te: Event
-            if events.count > 0 {
-                te = events[0] as! Event
-            } else {
-                te = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
-                te.id = item["id"].int32Value
-                te.starred = false
-            }
-            
-            te.who = item["who"].string!
-            var d = item["date"].string!
-            var b = item["begin"].string!
-            var e = item["end"].string!
-            if ( d == "" ) {
-                d = "2016-08-04"
-            }
-            if ( b != "" ) {
-                if ( b == "24:00") {
-                    b = "00:00"
-                    if ( d == "2016-08-04" ) {
-                        d = "2016-08-05"
-                    } else if ( d == "2016-08-05" ) {
-                        d = "2016-08-06"
-                    } else if ( d == "2016-08-06" ) {
-                        d = "2016-08-07"
-                    } else if ( d == "2016-08-07" ) {
-                        d = "2016-08-08"
+        for event in schedule {
+            if ( event["index"] != JSON.null && event["updated_at"] != JSON.null ) {
+                let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+                fre.predicate = NSPredicate(format: "index = %@", argumentArray: [event["index"].stringValue])
+                let ret = try! context.fetch(fre)
+                
+                if ret.count > 0 {
+                    let e: Event = ret[0] as! Event
+                    if (e.updated_at.compare(df.date(from: event["updated_at"].stringValue)!) == ComparisonResult.orderedDescending) {
+                        // Start here
+                        if (!updateEvent(e,event)) {
+                            NSLog("Error updating event: \(e.id)")
+                            retBool = false
+                        }
+                    }
+                } else {
+                    if (!addEvent(event)) {
+                        NSLog("Failed to add event: \(event["id"].stringValue)")
+                        retBool = false
                     }
                 }
-                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(b) PDT")!
-            } else {
-                te.begin = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 00:00 PDT")!
+                
             }
-            if ( e != "" ) {
-                if ( e == "24:00") {
-                    e = "00:00"
-                    if ( d == "2016-08-04" ) {
-                        d = "2016-08-05"
-                    } else if ( d == "2016-08-05" ) {
-                        d = "2016-08-06"
-                    } else if ( d == "2016-08-06" ) {
-                        d = "2016-08-07"
-                    } else if ( d == "2016-08-07" ) {
-                        d = "2016-08-08"
-                    }
-                }
-                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) \(e) PDT")!
-            } else {
-                te.end = DateFormatterUtility.yearMonthDayTimeNoSecondsFormatter.date(from: "\(d) 23:59 PDT")!
-            }
-            
-            if (item["location"] != "") {
-                te.location = item["location"].string!
-            }
-            
-            if (item["title"] != "") {
-                te.title = item["title"].string!
-            }
-            if item["description"] != "" {
-                te.details = item["description"].string!
-            }
-            //NSLog("\(te.id): \(te.title) \(item["link"])")
-            if ( item["link"] != JSON.null) {
-                te.link = item["link"].string!
-            }
-            
-            if (item["type"] != "") {
-                te.type = item["type"].string!
-            }
-            
-            if (item["demo"] != "") {
-                te.demo = item["demo"].boolValue
-            }
-            
-            if (item["tool"] != "") {
-                te.tool = item["tool"].boolValue
-            }
-            
-            if (item["exploit"] != "" ) {
-                te.exploit = item["exploit"].boolValue
-            }
-            mySched.append(te)
         }
         
+        _ = setsyncDate(update_date)
         
-        var err:NSError? = nil
+        let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+        message2.date = update_date
+        message2.msg = "Schedule updated with \(schedule.count) events."
+        NSLog(message2.msg)
+        
         do {
             try context.save()
         } catch let error as NSError {
-            err = error
+            NSLog("error: \(error)")
+            retBool = false
         }
-        
-        if let error = err {
-            print(error)
-        }
-        
-        NSLog("Schedule Updated")
+
     } else {
         NSLog("Schedule is up to date")
-        retBool = false
     }
     
     return retBool
+}
+
+func addEventSpeaker(_ index: Int32, _ indexsp: Int32) -> Bool {
+    
+    let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
+    fre.predicate = NSPredicate(format: "index = %@ AND indexsp = %@", argumentArray: [index,indexsp])
+    let ret = try! getContext().fetch(fre)
+    
+    if (ret.count < 1) {
+        let es = NSEntityDescription.insertNewObject(forEntityName: "EventSpeaker", into: getContext()) as! EventSpeaker
+        es.index = index
+        es.indexsp = indexsp
+    }
+    
+    do {
+        try getContext().save()
+        return true
+    } catch let error as NSError {
+        NSLog("error: \(error)")
+        return false
+    }
+    
+}
+
+func updateEvent(_ e: Event,_ event: JSON) -> Bool {
+    
+    if (event["who"] != JSON.null) {
+        for es in event["who"].array! {
+            _ = addEventSpeaker(e.index,es["indexsp"].int32Value)
+        }
+    }
+    
+    if (event["id"] != JSON.null) {
+        e.id = event["id"].stringValue
+    } else {
+        e.id = ""
+    }
+    
+    if (event["includes"] != JSON.null) {
+        e.includes = event["includes"].stringValue
+    } else {
+        e.includes = ""
+    }
+    
+    if (event["title"] != JSON.null) {
+        e.title = event["title"].stringValue
+    } else {
+        e.title = "TBD"
+    }
+    
+    if (event["link"] != JSON.null) {
+        e.link = event["link"].stringValue
+    } else {
+        e.link = ""
+    }
+    
+    if (event["location"] != JSON.null) {
+        e.location = event["location"].stringValue
+    } else {
+        e.location = ""
+    }
+    
+    if (event["entry_type"] != JSON.null) {
+        e.entry_type = event["entry_type"].stringValue
+    } else {
+        e.entry_type = ""
+    }
+    
+    if (event["description"] != JSON.null) {
+        e.details = event["description"].stringValue
+    } else {
+        e.details = ""
+    }
+    
+    if (event["start_date"] != JSON.null) {
+        e.start_date = DateFormatterUtility.iso8601pdtFormatter.date(from: event["start_date"].stringValue)!
+    } else {
+        e.start_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!
+    }
+    
+    if (event["end_date"] != JSON.null) {
+        e.end_date = DateFormatterUtility.iso8601pdtFormatter.date(from: event["end_date"].stringValue)!
+    } else {
+        e.end_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!
+    }
+    
+    if (event["last_update"] != JSON.null) {
+        e.updated_at = DateFormatterUtility.iso8601pdtFormatter.date(from: event["last_update"].stringValue)!
+    } else {
+        e.updated_at = Date()
+    }
+    
+    if (event["recommended"] != JSON.null) {
+        e.recommended = event["recommended"].boolValue
+    } else {
+        e.recommended = false
+    }
+    
+    do {
+        try getContext().save()
+        return true
+    } catch let error as NSError {
+        NSLog("error: \(error)")
+        return false
+    }
+}
+
+func addEvent(_ event: JSON) -> Bool {
+    
+    let e = NSEntityDescription.insertNewObject(forEntityName: "Event", into: getContext()) as! Event
+    if (event["index"] != JSON.null) {
+        e.index = event["index"].int32Value
+        e.starred = false
+    }
+    
+    return updateEvent(e, event)
+    
 }
 
 

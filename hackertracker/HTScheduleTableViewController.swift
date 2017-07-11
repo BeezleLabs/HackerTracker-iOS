@@ -15,8 +15,8 @@ class BaseScheduleTableViewController: UITableViewController {
     var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     var data = NSMutableData()
 
-    // TODO: Update for DC 25
-    var days = ["2016-08-04", "2016-08-05", "2016-08-06", "2016-08-07"];
+    // Dates for DC 25
+    var days = ["2017-07-27", "2017-07-28", "2017-07-29", "2017-07-30"];
     
     func sync(sender: AnyObject) {
         
@@ -123,8 +123,8 @@ class BaseScheduleTableViewController: UITableViewController {
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "begin >= %@ AND end <= %@", argumentArray: [ startofDay, endofDay])
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.predicate = NSPredicate(format: "start_date >= %@ AND end_date <= %@", argumentArray: [ startofDay, endofDay])
+        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
         return fr
@@ -176,8 +176,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "type = %@ AND begin >= %@ AND end <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
+        fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
+        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
         return fr
