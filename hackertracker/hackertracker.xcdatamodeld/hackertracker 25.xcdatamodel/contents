@@ -35,10 +35,10 @@
         <attribute name="lastsync" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-18" positionY="27" width="128" height="240"/>
-        <element name="Message" positionX="-54" positionY="-9" width="128" height="75"/>
-        <element name="Status" positionX="-63" positionY="-18" width="128" height="60"/>
-        <element name="Speaker" positionX="-36" positionY="99" width="128" height="135"/>
+        <element name="Event" positionX="-434" positionY="-3" width="128" height="238"/>
         <element name="EventSpeaker" positionX="-27" positionY="117" width="128" height="75"/>
+        <element name="Message" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="Speaker" positionX="-191" positionY="102" width="128" height="133"/>
+        <element name="Status" positionX="-63" positionY="-18" width="128" height="60"/>
     </elements>
 </model>
