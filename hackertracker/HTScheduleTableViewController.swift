@@ -42,14 +42,18 @@ class BaseScheduleTableViewController: UITableViewController {
             
             if let error = error {
                 NSLog("DataTask error: " + error.localizedDescription)
-                self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+                DispatchQueue.main.async() {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+                }
             } else {
                 let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
                 
                 let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
                 
-                if (updateSchedule(dataFromString!)) {
-                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated speakers \(n)", attributes: attr)
+                if (updateSpeakers(dataFromString!)) {
+                    DispatchQueue.main.async() {
+                        self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated speakers \(n)", attributes: attr)
+                    }
                 }
             }
             
@@ -65,21 +69,28 @@ class BaseScheduleTableViewController: UITableViewController {
             
             if let error = error {
                 NSLog("DataTask error: " + error.localizedDescription)
-                self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+                DispatchQueue.main.async() {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+                }
             } else {
                 let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
             
                 let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
 
                 if (updateSchedule(dataFromString!)) {
-                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+                    DispatchQueue.main.async() {
+                        self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+                    }
                 } else {
-                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
+                    DispatchQueue.main.async() {
+                        self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
+                    }
                 }
             
             }
-            
-            self.refreshControl?.endRefreshing()
+            DispatchQueue.main.async() {
+                self.refreshControl?.endRefreshing()
+            }
         }).resume()
 
     }
