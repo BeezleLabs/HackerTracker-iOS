@@ -126,6 +126,20 @@ func getSpeaker(_ indexsp: Int32) -> Speaker? {
     
 }
 
+func getEvent(_ index: Int32) -> Event? {
+    
+    let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+    fre.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
+    let ret = try! getContext().fetch(fre)
+    
+    if (ret.count > 0) {
+        return ret[0] as? Event
+    } else {
+        return nil
+    }
+    
+}
+
 func getEventSpeakers(_ index: Int32) -> [Speaker] {
     var speakers: [Speaker] = []
     
@@ -139,6 +153,21 @@ func getEventSpeakers(_ index: Int32) -> [Speaker] {
     }
     
     return speakers
+}
+
+func getEventfromSpeaker(_ indexsp: Int32) -> [Event] {
+    var events: [Event] = []
+    
+    let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
+    fre.predicate = NSPredicate(format: "indexsp = %@", argumentArray: [indexsp])
+    let ret = try! getContext().fetch(fre)
+    
+    
+    for es in ret {
+        events.append(getEvent(((es as! EventSpeaker).index))!)
+    }
+    
+    return events
 }
 
 func lastsyncDate() -> Date? {

@@ -100,14 +100,29 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func filterEvents(_ searchText: String) {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
+        let context = getContext()
+        
+        var currentEvents : Array<Event> = []
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
-        fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR who contains[cd] %@", argumentArray: [searchText,searchText,searchText])
-        self.filteredEvents = try! context.fetch(fr) as NSArray
+        fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@", argumentArray: [searchText,searchText])
+        currentEvents = try! context.fetch(fr) as! Array<Event>
+        
+        let frs = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
+        frs.returnsObjectsAsFaults = false
+        frs.predicate = NSPredicate(format: "who contains[cd] %@", argumentArray: [searchText])
+        let ret = try! context.fetch(frs) as NSArray
+        if (ret.count > 0) {
+            for s in ret {
+                for e in getEventfromSpeaker((s as! Speaker).indexsp) {
+                    currentEvents.append(e)
+                }
+            }
+        }
+        
+        self.filteredEvents = currentEvents as NSArray
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
