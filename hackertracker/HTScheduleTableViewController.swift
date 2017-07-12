@@ -23,14 +23,40 @@ class BaseScheduleTableViewController: UITableViewController {
         let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
         let envs = NSDictionary(contentsOfFile: envPlist!)!
         
-        let tURL = envs.value(forKey: "URL") as! String
+        var tURL = (envs.value(forKey: "base") as! String) + (envs.value(forKey: "schedule") as! String)
         //NSLog("Connecting to \(tURL)")
-        let URL = Foundation.URL(string: tURL)
+        let scheduleURL = Foundation.URL(string: tURL)
         
-        var request = URLRequest(url: URL!)
-        request.httpMethod = "GET"
+        tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "speakers") as! String)
+        let speakersURL = Foundation.URL(string: tURL)
         
         let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: NSURLSessionPinningDelegate(), delegateQueue: nil)
+
+        var request = URLRequest(url: speakersURL!)
+        request.httpMethod = "GET"
+        
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
+            
+            if let error = error {
+                NSLog("DataTask error: " + error.localizedDescription)
+                self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+            } else {
+                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+                
+                let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
+                
+                if (updateSchedule(dataFromString!)) {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated speakers \(n)", attributes: attr)
+                }
+            }
+            
+        }).resume()
+        
+        request = URLRequest(url: scheduleURL!)
+        request.httpMethod = "GET"
         
         session.dataTask(with: request, completionHandler: { (data, response, error) in
             
