@@ -10,10 +10,12 @@ import UIKit
 
 class Animation {
 
-    let pixelScaleFactor = 80.0
+    let pixelDuration = 0.5
+    let pixelScaleFactor = 70.0
     let startingPixelScale = 1.0
-    let pixelBarHeight: CGFloat = 300.0
-    let pixelBarAngle: CGFloat = 3.0 * CGFloat.pi / 2.0
+
+    let exposureIntensityScale = 2.0
+
     let context = CIContext(options: nil)
 
     var originalSplashImage: UIImage!
@@ -57,35 +59,24 @@ class Animation {
     }
 
     @objc func hackerAnimationTimerFired(displayLink: CADisplayLink) {
-        guard let extent = originalImageExtent,
-            let blackImage = blackImage else {
+        guard let extent = originalImageExtent else {
             image = originalSplashImage
             displayLink.invalidate()
             return
         }
 
-        let progress = min((CACurrentMediaTime() - transitionStartTime) / duration, 1.0)
+        var progress = min((CACurrentMediaTime() - transitionStartTime) / pixelDuration, 1.0)
+        if progress > 0.5 {
+            progress = 1.0 - progress
+        }
 
-        // 1. Calculate pixel effect.
+        // Calculate pixel effect.
         if let pixelImage = applyPixelFilter(progress: progress),
-            // 2. Create a black and white copy machine filter that will be used
-            // as a mask for the pixel effect.
-            let copyMachineImage = applyCopyMachineFilter(progress: min(progress, 0.5),
-                                                          startingImage: blackImage,
-                                                          endingImage: whiteImage!,
-                                                          extent: extent),
-            // 3. Mask the pixel effect so that only a bar of pixels is shown
-            let blendFilter = createBlendFilter(with: pixelImage,
-                                                backgroundImage: originalInputCIImage,
-                                                mask: copyMachineImage),
-            // 4. Get the output of the blended images.
-            let outputImage = blendFilter.outputImage?.clampingToExtent(),
-            // 5. Convert the final ciImage to cgImage to fix size issues...
-            let cgImage = context.createCGImage(outputImage, from: extent) {
+            let exposureImage = applyExposureFilter(progress: progress, on: pixelImage),
+            // Convert the final ciImage to cgImage to fix size issues...
+            let cgImage = context.createCGImage(exposureImage, from: extent) {
 
-            // Done! Update the new UIImage! whew!
             image = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
-
         }
 
         if progress >= 1.0 {
@@ -106,31 +97,16 @@ class Animation {
         return pixelFilter.outputImage?.clampingToExtent()
     }
 
-    private func applyCopyMachineFilter(progress: Double, startingImage: CIImage, endingImage: CIImage, extent: CGRect, inverted: Bool = false) -> CIImage? {
-        guard let copyMachineFilter = copyMachineFilter else {
-            print ("copyMachineFilter is nil")
+    private func applyExposureFilter(progress: Double, on image: CIImage) -> CIImage? {
+        guard let exposureFilter = exposureFilter else {
+            print ("exposureFilter is nil")
             return nil
         }
 
-        let extentVector = CIVector(x: extent.origin.x,
-                                    y: extent.origin.y,
-                                    z: extent.size.width,
-                                    w: extent.size.height)
+        exposureFilter.setValue((exposureIntensityScale * progress), forKey: kCIInputEVKey)
+        exposureFilter.setValue(image, forKey: kCIInputImageKey)
 
-        copyMachineFilter.setValue(extentVector, forKey: kCIInputExtentKey)
-        copyMachineFilter.setValue(startingImage, forKey: kCIInputImageKey)
-        copyMachineFilter.setValue(endingImage, forKey: kCIInputTargetImageKey)
-        copyMachineFilter.setValue(progress, forKey: kCIInputTimeKey)
-
-        if inverted {
-            copyMachineFilter.setValue(pixelBarAngle + CGFloat.pi, forKey: kCIInputAngleKey)
-            copyMachineFilter.setValue(0.0, forKey: kCIInputWidthKey)
-        } else {
-            copyMachineFilter.setValue(pixelBarAngle, forKey: kCIInputAngleKey)
-            copyMachineFilter.setValue(pixelBarHeight, forKey: kCIInputWidthKey)
-        }
-
-        return copyMachineFilter.outputImage?.clampingToExtent()
+        return exposureFilter.outputImage?.clampingToExtent()
     }
 
     lazy var pixelFilter: CIFilter? = {
@@ -140,39 +116,16 @@ class Animation {
         return pixelTransitionFilter
     }()
 
-    lazy var copyMachineFilter: CIFilter? = {
-        let copyMachineFilter = CIFilter(name: "CICopyMachineTransition")
-        copyMachineFilter?.setDefaults()
-        return copyMachineFilter
-    }()
-
-    lazy var blackImage: CIImage? = {
-        return self.coloredFilter(CIColor.black())?.outputImage?.clampingToExtent()
-    }()
-
-    lazy var whiteImage: CIImage? = {
-        return self.coloredFilter(CIColor.white())?.outputImage?.clampingToExtent()
+    lazy var exposureFilter: CIFilter? = {
+        let exposureFilter = CIFilter(name: "CIExposureAdjust")
+        exposureFilter?.setValue(self.coreImage, forKey: kCIInputImageKey)
+        exposureFilter?.setValue(self.coreImage, forKey: kCIInputEVKey)
+        return exposureFilter
     }()
 
     lazy var originalImageExtent: CGRect? = {
         return CIImage(image: self.image)?.extent
     }()
-
-    private func createBlendFilter(with inputImage: CIImage, backgroundImage: CIImage, mask: CIImage) -> CIFilter? {
-        let blendWithMaskFilter = CIFilter(name: "CIBlendWithMask")
-        blendWithMaskFilter?.setValue(inputImage, forKey: kCIInputImageKey)
-        blendWithMaskFilter?.setValue(backgroundImage, forKey: kCIInputBackgroundImageKey)
-        blendWithMaskFilter?.setValue(mask, forKey: kCIInputMaskImageKey)
-
-        return blendWithMaskFilter
-    }
-
-    private func coloredFilter(_ color: CIColor) -> CIFilter? {
-        let filter = CIFilter(name: "CIConstantColorGenerator")
-        filter?.setValue(color, forKey: kCIInputColorKey)
-        return filter
-    }
-
 
 }
 

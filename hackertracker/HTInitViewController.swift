@@ -12,7 +12,7 @@ import CoreData
 class HTInitViewController: UIViewController {
 
     @IBOutlet weak var splashView: UIImageView!
-    let hackerAnimationDuration = 2.0
+    let hackerAnimationDuration = 1.0
 
     private var timerUp = false
     private var importComplete = false
