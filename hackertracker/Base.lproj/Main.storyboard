@@ -41,6 +41,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="splashView" destination="au4-zG-Z3M" id="cqO-nV-SGo"/>
                         <segue destination="y3B-Cv-pxi" kind="showDetail" identifier="HTHomeSegue" id="uZ9-MX-kjF"/>
                     </connections>
                 </viewController>

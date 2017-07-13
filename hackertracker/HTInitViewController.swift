@@ -11,9 +11,12 @@ import CoreData
 
 class HTInitViewController: UIViewController {
 
+    @IBOutlet weak var splashView: UIImageView!
+    let hackerAnimationDuration = 10
+
     private var timerUp = false
     private var importComplete = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +27,12 @@ class HTInitViewController: UIViewController {
         fr.returnsObjectsAsFaults = false
         
         let status = try! context.fetch(fr) as NSArray
-        
+
+        // TODO: Only play animation on first launch.
+        var timeBeforeSegue = 1
+        timeBeforeSegue = hackerAnimationDuration
+        playAnimation()
+
         if status.count < 1 {
             NSLog("Database not setup, preloading with initial schedule")
             self.loadData()
@@ -81,18 +89,29 @@ class HTInitViewController: UIViewController {
                 self.go()
             }
         }
+
     }
     
     func timerComplete()
     {
         timerUp = true
         go()
+
     }
-    
+
+    func playAnimation() {
+        let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!) { (image) in
+            self.splashView.image = image
+        }
+
+        animation.startHackerAnimation()
+    }
+
     func go() {
         if importComplete && timerUp
         {
             self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
         }
     }
+
 }
