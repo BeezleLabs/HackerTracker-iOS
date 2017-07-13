@@ -27,7 +27,9 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var locationMapView: MapLocationView!
     
     var event: Event?
-        
+    
+    private let dataRequest = DataRequestManager(managedContext: getContext())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,9 +37,18 @@ class HTEventDetailViewController: UIViewController {
             print("HTEventDetailViewController: Event is nil")
             return
         }
-
+        
         eventTitleLabel.text = event.title
-        let speakers = getEventSpeakers(event.index)
+        
+        let speakers : [Speaker]
+        
+        if let retrievedSpeakers = dataRequest.getSpeakersForEvent(event.index)
+        {
+            speakers = retrievedSpeakers
+        } else {
+            speakers = []
+        }
+        
         eventNameLabel.text = ""
         
         var eventNameText = ""
@@ -48,6 +59,10 @@ class HTEventDetailViewController: UIViewController {
             }
             
             eventNameText = eventNameText + s.who
+        }
+        
+        if speakers.count == 0 {
+            eventNameText = "Mystery Speaker"
         }
 
         eventNameLabel.text = eventNameText
@@ -96,9 +111,9 @@ class HTEventDetailViewController: UIViewController {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
         } else {
             
-            let duplicates = duplicateEvents(event)
+            let _duplicates = dataRequest.findConflictingStarredEvents(event)
             
-            if duplicates.count > 0
+            if let duplicates = _duplicates, duplicates.count > 0
             {
                 let duplicateTitles = duplicates.reduce("", { (result, event) -> String in
                     if result == ""
@@ -170,20 +185,6 @@ class HTEventDetailViewController: UIViewController {
 
     }
     
-    func duplicateEvents(_ event: Event) -> [Event] {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "start_date >= %@ AND end_date <= %@ AND starred == YES", argumentArray: [event.start_date, event.end_date])
-        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-        
-        let events = try! context.fetch(fr) as! [Event]
-        
-        return events
-    }
-    
     func saveContext() {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
@@ -200,16 +201,22 @@ class HTEventDetailViewController: UIViewController {
     
     func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)
     {
-    
+        let touchPoint = tapGesture.location(in: tapGesture.view)
+        
+        let touchRect = CGRect(origin: touchPoint, size: CGSize(width:1, height:1))
+        
+        let intersecting = touchRect.intersects(locationMapView.bounds)
+        
+        locationMapView.alpha = intersecting ? 0.5 : 1.0
+        
         switch tapGesture.state {
-        case .began:
-            locationMapView.alpha = 0.5
-            break
         case .ended:
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
-            let navigationController = HTEventsNavViewController(rootViewController: mapView)
-            self.present(navigationController, animated: true, completion: nil)
+            if intersecting {
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
+                let navigationController = HTEventsNavViewController(rootViewController: mapView)
+                self.present(navigationController, animated: true, completion: nil)
+            }
             locationMapView.alpha = 1.0
         case .cancelled, .failed:
             locationMapView.alpha = 1.0

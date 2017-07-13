@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSLog("Request authorization succeeded!")
             }
         }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: self.backgroundManagedObjectContext, queue: OperationQueue.main) { (notifaction) in
+            self.managedObjectContext?.mergeChanges(fromContextDidSave: notifaction)
+        }
 
         return true
     }
@@ -86,6 +90,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return nil
         }
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = coordinator
+        return managedObjectContext
+    }()
+    
+    lazy var backgroundManagedObjectContext: NSManagedObjectContext? = {
+        let coordinator = self.persistentStoreCoordinator
+        if coordinator == nil {
+            return nil
+        }
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
