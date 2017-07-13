@@ -42,7 +42,7 @@
                     </view>
                     <connections>
                         <outlet property="splashView" destination="au4-zG-Z3M" id="cqO-nV-SGo"/>
-                        <segue destination="y3B-Cv-pxi" kind="showDetail" identifier="HTHomeSegue" id="uZ9-MX-kjF"/>
+                        <segue destination="y3B-Cv-pxi" kind="showDetail" identifier="HTHomeSegue" animates="NO" id="uZ9-MX-kjF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

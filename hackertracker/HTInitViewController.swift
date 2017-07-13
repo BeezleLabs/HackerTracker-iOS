@@ -12,7 +12,7 @@ import CoreData
 class HTInitViewController: UIViewController {
 
     @IBOutlet weak var splashView: UIImageView!
-    let hackerAnimationDuration = 4.0
+    let hackerAnimationDuration = 2.0
 
     private var timerUp = false
     private var importComplete = false
@@ -30,7 +30,7 @@ class HTInitViewController: UIViewController {
 
         // TODO: Only play animation on first launch.
         var timeBeforeSegue = 1.0
-        timeBeforeSegue = hackerAnimationDuration + 0.5
+        timeBeforeSegue = hackerAnimationDuration
         playAnimation()
 
         if status.count < 1 {
@@ -100,7 +100,10 @@ class HTInitViewController: UIViewController {
     }
 
     func playAnimation() {
-        let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!) { (image) in
+        let presentingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HTHome")
+        let presentingImage = renderImageFrom(presentingViewController.view, withSize: view.frame.size)!
+
+        let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!, presentingImage: presentingImage) { (image) in
             self.splashView.image = image
         }
 
@@ -112,6 +115,21 @@ class HTInitViewController: UIViewController {
         {
             self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
         }
+    }
+
+    func renderImageFrom(_ view: UIView, withSize size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        view.layer.render(in: context)
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return image
     }
 
 }
