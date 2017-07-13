@@ -12,7 +12,7 @@ import CoreData
 class HTInitViewController: UIViewController {
 
     @IBOutlet weak var splashView: UIImageView!
-    let hackerAnimationDuration = 10
+    let hackerAnimationDuration = 4.0
 
     private var timerUp = false
     private var importComplete = false
@@ -29,8 +29,8 @@ class HTInitViewController: UIViewController {
         let status = try! context.fetch(fr) as NSArray
 
         // TODO: Only play animation on first launch.
-        var timeBeforeSegue = 1
-        timeBeforeSegue = hackerAnimationDuration
+        var timeBeforeSegue = 1.0
+        timeBeforeSegue = hackerAnimationDuration + 0.5
         playAnimation()
 
         if status.count < 1 {
