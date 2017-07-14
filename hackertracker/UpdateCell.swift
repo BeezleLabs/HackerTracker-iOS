@@ -30,7 +30,7 @@ public class UpdateCell : UITableViewCell {
     func bind(message: Message) {
         titleLabel.text = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.date)
 
-        titleLabel.font = UIFont(name: "DefconZero", size: 18)
+        titleLabel.font = UIFont(name: "Furore", size: 18)
         descriptionLabel.text = message.msg
         descriptionLabel.font = UIFont(name: "MuseoSans-300", size: 14)
 

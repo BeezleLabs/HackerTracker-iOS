@@ -32,10 +32,10 @@
 		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
 		7820245D1F05B7CE0092ED07 /* cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 7820245C1F05B7CE0092ED07 /* cert.der */; };
 		7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */; };
-		786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
 		7896EB1A1F116403000D04C4 /* speakers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7896EB191F116403000D04C4 /* speakers.json */; };
 		7896EB2D1F1428F4000D04C4 /* EventSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7896EB2C1F1428F4000D04C4 /* EventSpeaker.swift */; };
+		78C72FAB1F1869F100AFC0B6 /* Furore.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78C72FAA1F1869F100AFC0B6 /* Furore.otf */; };
 		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
 		8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */; };
 		8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */; };
@@ -106,11 +106,11 @@
 		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
 		7820245C1F05B7CE0092ED07 /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
 		7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSearchTableViewController.swift; sourceTree = "<group>"; };
-		786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = defconzero.ttf; path = "../../../ht-images/Fonts/defconzero.ttf"; sourceTree = "<group>"; };
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
 		7896EB191F116403000D04C4 /* speakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = speakers.json; sourceTree = "<group>"; };
 		7896EB1B1F116692000D04C4 /* hackertracker 25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hackertracker 25.xcdatamodel"; sourceTree = "<group>"; };
 		7896EB2C1F1428F4000D04C4 /* EventSpeaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSpeaker.swift; sourceTree = "<group>"; };
+		78C72FAA1F1869F100AFC0B6 /* Furore.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Furore.otf; sourceTree = "<group>"; };
 		78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHelper.swift; sourceTree = "<group>"; };
 		7A0EDEDE86FED966C308674E /* Pods-hackertracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.debug.xcconfig"; sourceTree = "<group>"; };
 		8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "dc-25-floorplan-night.pdf"; sourceTree = "<group>"; };
@@ -226,7 +226,6 @@
 				8345F2D41F15BD7B006761BE /* Managers */,
 				5DD642651AC3C62300ED3256 /* Main.storyboard */,
 				5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */,
-				786FBC2F1EBC1DF3004F7A5F /* defconzero.ttf */,
 				498AD73E1E2D2BC900DD5B56 /* ViewControllers */,
 				498AD73D1E2D2AC600DD5B56 /* Models */,
 				49730E4C1E2D1A9F0029438C /* Utilities */,
@@ -242,6 +241,7 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				78C72FAA1F1869F100AFC0B6 /* Furore.otf */,
 				7896EB191F116403000D04C4 /* speakers.json */,
 				7820245C1F05B7CE0092ED07 /* cert.der */,
 				8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */,
@@ -394,12 +394,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C72FAB1F1869F100AFC0B6 /* Furore.otf in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
 				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
 				5DD0D9161D467D6500747807 /* dc-24-fp-final.png in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
-				786FBC301EBC1DF3004F7A5F /* defconzero.ttf in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				7896EB1A1F116403000D04C4 /* speakers.json in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
