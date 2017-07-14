@@ -14,9 +14,10 @@ class BaseScheduleTableViewController: UITableViewController {
     var eventSections : [[Event]] = []
     var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     var data = NSMutableData()
+    var emptyStateView : UIView?
 
     // Dates for DC 25
-    var days = ["2017-07-27", "2017-07-28", "2017-07-29", "2017-07-30"];
+    var days = ["2017-07-27", "2017-07-28", "2017-07-29", "2017-07-30"]
     
     func sync(sender: AnyObject) {
         
@@ -24,7 +25,6 @@ class BaseScheduleTableViewController: UITableViewController {
         let envs = NSDictionary(contentsOfFile: envPlist!)!
         
         var tURL = (envs.value(forKey: "base") as! String) + (envs.value(forKey: "schedule") as! String)
-        //NSLog("Connecting to \(tURL)")
         let scheduleURL = Foundation.URL(string: tURL)
         
         tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "speakers") as! String)
@@ -144,7 +144,7 @@ class BaseScheduleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(EventCell.self, forCellReuseIdentifier: "Events")
+        tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         
         refreshControl = UIRefreshControl()
         let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
@@ -157,36 +157,56 @@ class BaseScheduleTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadEvents()
+        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        tableView.layoutIfNeeded()
+        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
     }
     
     fileprivate func reloadEvents() {
         eventSections.removeAll()
 
         for day in days {
-            eventSections.append(RetrieveEventsForDay(day).map { (object) -> Event in
-                return object as! Event
-                })
+            let events = retrieveEventsForDay(day)
+            if events.count > 0 {
+                eventSections.append(retrieveEventsForDay(day))
+            }
         }
         
+        let emptyStateView = self.emptyStateView ?? emptyState()
+
+        self.emptyStateView = emptyStateView
+        emptyStateView.isHidden = eventSections.count != 0
+
         tableView.reloadData()
+    }
+    
+    public func emptyState() -> UIView {
+        if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
+            return emptyState
+        }
+        return UIView()
     }
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return days.count
+        return max(eventSections.count, 1)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard eventSections.count > section else {
-            return 0;
+            return 0
         }
         
         return self.eventSections[section].count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         let event : Event = self.eventSections[indexPath.section][indexPath.row]
 
         cell.bind(event: event)
@@ -194,11 +214,22 @@ class BaseScheduleTableViewController: UITableViewController {
         return cell
     }
 
-    func RetrieveEventsForDay(_ dateString: String) -> [AnyObject] {
+    func retrieveEventsForDay(_ dateString: String) -> [Event] {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-
-        return try! context.fetch(fetchRequestForDay(dateString))
+        
+        do {
+            if let eventsForDay = try context.fetch(fetchRequestForDay(dateString)) as? [Event] {
+                return eventsForDay
+            } else {
+                assert(false, "Failed to convert fetch response to events array")
+                return []
+            }
+        } catch {
+            assert(false, "Failed to fetch events.")
+        }
+        
+        return []
     }
 
     func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
@@ -214,8 +245,31 @@ class BaseScheduleTableViewController: UITableViewController {
         return fr
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return days[section]
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (eventSections.count == 0) {
+            return emptyStateView
+        }
+        
+        let dayText = days[section]
+        let date = DateFormatterUtility.yearMonthDayFormatter.date(from: dayText)
+        
+        let dateHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "EventHeader") as? EventDateHeaderView ?? EventDateHeaderView(reuseIdentifier: "EventHeader")
+        
+        dateHeader.bindToDate(date: date)
+        
+        return dateHeader
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (eventSections.count == 0) {
+            return tableView.frame.size.height
+        } else {
+            return 40
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
     }
     
     // MARK: - Navigation
@@ -231,19 +285,13 @@ class BaseScheduleTableViewController: UITableViewController {
             dv.event = self.eventSections[indexPath.section][indexPath.row]
         }
     }
-
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-
-        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { (action, indexpath) in
-
-        }
-        favorite.backgroundColor = UIColor(red: 0.0/255.0, green: 100.0/255.0, blue: 0.0/255.0, alpha: 1.0)
-
-        return [favorite]
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
 
@@ -252,7 +300,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = eType.name
+        title = eType.name
     }
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {

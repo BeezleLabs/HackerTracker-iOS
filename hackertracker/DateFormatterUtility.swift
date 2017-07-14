@@ -38,6 +38,16 @@ class DateFormatterUtility {
         return formatter
     }()
     
+    
+    //Yeat-Month-Day
+    static let yearMonthDayFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
     //UTC time format
     static let monthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
@@ -73,6 +83,16 @@ class DateFormatterUtility {
         return formatter
     }()
 
+    
+    //DOW format
+    static let dayOfWeekFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "EEEE"
+        return formatter
+    }()
+    
     //DOW Hour:Minute time format
     static let dayOfWeekTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()

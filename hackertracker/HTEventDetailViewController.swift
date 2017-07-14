@@ -68,6 +68,12 @@ class HTEventDetailViewController: UIViewController {
         eventNameLabel.text = eventNameText
         
         eventLocationLabel.text = event.location
+        
+        if (event.location.isEmpty) {
+            eventLocationLabel.isHidden = true
+            locationMapView.isHidden = true
+        }
+        
         eventDetailTextView.text = event.details
         
         if (event.starred) {
@@ -76,9 +82,10 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         }
         
-        toolImage.alpha = event.isTool() ? 1.0 : 0.0
-        demoImage.alpha = event.isDemo() ? 1.0 : 0.0
-        exploitImage.alpha = event.isExploit() ? 1.0 : 0.0
+        
+        toolImage.isHidden = !event.isTool()
+        demoImage.isHidden = !event.isDemo()
+        exploitImage.isHidden = !event.isExploit()
 
         let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as Date)
         let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
@@ -131,7 +138,7 @@ class HTEventDetailViewController: UIViewController {
                 
                 let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:alertBody, preferredStyle: UIAlertControllerStyle.alert)
                 
-                let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
+                let yesItem : UIAlertAction = UIAlertAction(title: "Add Anyway", style: UIAlertActionStyle.default, handler: {
                     (action:UIAlertAction) in
                     event.starred = true
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
@@ -140,7 +147,7 @@ class HTEventDetailViewController: UIViewController {
 
                 })
                 
-                let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler:
+                let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
                 {
                     (action:UIAlertAction) in
                     NSLog("No")

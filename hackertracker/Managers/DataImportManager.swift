@@ -227,7 +227,7 @@ class DataImportManager: NSObject {
             managedEvent.start_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!
         }
         
-        if let endDateString = event["start_date"] as? String, let endDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: endDateString) {
+        if let endDateString = event["end_date"] as? String, let endDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: endDateString) {
             managedEvent.end_date = endDate
         } else {
             managedEvent.end_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!

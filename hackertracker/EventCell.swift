@@ -13,7 +13,6 @@ public class EventCell : UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
-    @IBOutlet weak var day: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var color: UIView!
     
@@ -24,10 +23,10 @@ public class EventCell : UITableViewCell {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        backgroundColor = UIColor.backgroundGray
     }
 
     func bind(event : Event) {
-        let eventDay = DateFormatterUtility.partialDayOfWeekFormatter.string(from: event.start_date as Date)
         let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
         
         title.text = event.title
@@ -35,11 +34,10 @@ public class EventCell : UITableViewCell {
         if (event.starred) {
             color.backgroundColor = UIColor.deepPurple
         } else {
-            color.backgroundColor = UIColor.backgroundGray
+            color.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         }
 
         subtitle.text = event.location
-        day.text = eventDay
         time.text = eventTime
     }
 }
