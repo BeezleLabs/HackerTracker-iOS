@@ -29,8 +29,7 @@ class HTInitViewController: UIViewController {
         let status = try! context.fetch(fr) as NSArray
 
         // TODO: Only play animation on first launch.
-        var timeBeforeSegue = 1.0
-        timeBeforeSegue = hackerAnimationDuration
+        let timeBeforeSegue = hackerAnimationDuration
         playAnimation()
 
         if status.count < 1 {
@@ -40,7 +39,7 @@ class HTInitViewController: UIViewController {
             importComplete = true
         }
 
-        Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(HTInitViewController.timerComplete), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(HTInitViewController.timerComplete), userInfo: nil, repeats: false)
     }
     
     func loadData() {
