@@ -40,6 +40,8 @@ public enum Location
             return .capri
         case "modena room":
             return .capri
+        case "track 2":
+            return .track2
         default:
             return .unknown
         }

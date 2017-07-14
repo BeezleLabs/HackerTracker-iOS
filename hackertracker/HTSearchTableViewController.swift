@@ -104,9 +104,12 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         
         var currentEvents : Array<Event> = []
         
+        let dataRequest = DataRequestManager(managedContext: getContext())
+        
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
+
         fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@", argumentArray: [searchText,searchText])
         currentEvents = try! context.fetch(fr) as! Array<Event>
         
@@ -116,9 +119,16 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         let ret = try! context.fetch(frs) as NSArray
         if (ret.count > 0) {
             for s in ret {
-                for e in getEventfromSpeaker((s as! Speaker).indexsp) {
-                    currentEvents.append(e)
+                
+                do {
+                    let events = try dataRequest.getEventsFromSpeaker((s as! Speaker).indexsp)
+                    for e in events {
+                        currentEvents.append(e)
+                    }
+                } catch {
+                    
                 }
+                
             }
         }
         
