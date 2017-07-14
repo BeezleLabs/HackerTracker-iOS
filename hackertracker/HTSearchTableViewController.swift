@@ -20,6 +20,8 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,8 +29,6 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        
-        //NSLog("Getting full schedule")
         
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
@@ -41,20 +41,9 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
     
@@ -67,22 +56,28 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+       
         var event: Event
+        
         if (isFiltered) {
             event = self.filteredEvents.object(at: indexPath.row) as! Event
         } else {
             event = self.events.object(at: indexPath.row) as! Event
         }
+        
         cell.bind(event: event)
         
         return cell
     }
     
-    // MARK: - Search Bar Functions
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+    }
     
+    // MARK: - Search Bar Functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isFiltered = true;
+        isFiltered = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -166,11 +161,12 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
             let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
-            let indexPath : IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
-            if isFiltered {
-                dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
-            } else {
-                dv.event = self.events.object(at: indexPath.row) as? Event
+            if let indexPath = sender as? IndexPath {
+                if isFiltered {
+                    dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
+                } else {
+                    dv.event = self.events.object(at: indexPath.row) as? Event
+                }
             }
         }
     }
