@@ -10,7 +10,7 @@ import UIKit
 
 class Animation {
 
-    let pixelDuration = 0.5
+    let pixelDuration = 0.3
     let pixelScaleFactor = 70.0
     let startingPixelScale = 1.0
 
@@ -66,7 +66,8 @@ class Animation {
         }
 
         var progress = min((CACurrentMediaTime() - transitionStartTime) / pixelDuration, 1.0)
-        if progress > 0.5 {
+
+        if progress > 0.3 {
             progress = 1.0 - progress
         }
 
@@ -120,6 +121,7 @@ class Animation {
         let exposureFilter = CIFilter(name: "CIExposureAdjust")
         exposureFilter?.setValue(self.coreImage, forKey: kCIInputImageKey)
         exposureFilter?.setValue(self.coreImage, forKey: kCIInputEVKey)
+
         return exposureFilter
     }()
 
