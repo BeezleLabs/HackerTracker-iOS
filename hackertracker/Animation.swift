@@ -10,13 +10,17 @@ import UIKit
 
 class Animation {
 
-    let pixelDuration = 0.3
-    let pixelScaleFactor = 70.0
+    let context = CIContext(options: nil)
+
+    let pixelScaleFactor = 60.0
     let startingPixelScale = 1.0
 
     let exposureIntensityScale = 2.0
 
-    let context = CIContext(options: nil)
+    let stripeCutWidth = 25.0
+    let stripeMoveSpeed = 15.0
+    let stripeScaleBump = 50.0
+    var stripeXPostion = 0.0
 
     var originalSplashImage: UIImage!
     var transitionStartTime = CACurrentMediaTime()
@@ -35,11 +39,10 @@ class Animation {
 
     init(duration: Double, image: UIImage, presentingImage: UIImage, onImageUpdate: @escaping (UIImage) -> ()) {
         self.duration = duration
-        // Initialize onImageUpdate first because setting image will trigger
-        // onImageUpdate.
+        // Initialize onImageUpdate before image because setting image will trigger onImageUpdate.
         self.onImageUpdate = onImageUpdate
         self.image = image
-        self.presentingCoreImage = CIImage(image: presentingImage)?.clampingToExtent()
+        self.presentingCoreImage = presentingImage.ciImage?.clampingToExtent()
         coreImage = CIImage(image: self.image)?.clampingToExtent()
         if let coreImage = coreImage {
             originalInputCIImage = coreImage
@@ -60,28 +63,35 @@ class Animation {
 
     @objc func hackerAnimationTimerFired(displayLink: CADisplayLink) {
         guard let extent = originalImageExtent else {
+            print("originalImageExtent is nil")
             image = originalSplashImage
             displayLink.invalidate()
             return
         }
 
-        var progress = min((CACurrentMediaTime() - transitionStartTime) / pixelDuration, 1.0)
+        let progress = min((CACurrentMediaTime() - transitionStartTime) / duration, 1.0)
 
-        if progress > 0.3 {
-            progress = 1.0 - progress
+        var pixellation = 0.0
+
+        if progress > 0.3 && progress < 0.5 {
+            pixellation = 1.0 - progress
+        } else if progress > 0.7 {
+            pixellation = 1.0 - progress
         }
 
-        // Calculate pixel effect.
-        if let pixelImage = applyPixelFilter(progress: progress),
-            let exposureImage = applyExposureFilter(progress: progress, on: pixelImage),
-            // Convert the final ciImage to cgImage to fix size issues...
-            let cgImage = context.createCGImage(exposureImage, from: extent) {
+        if let stripedImage = applyStripeFilter(progress: progress),
+            let blendedStripes = applyBlendFilter(with: originalInputCIImage, backgroundImage: nil, mask: stripedImage),
+            let linearBumpedStripes = applyLinearBumpFilter(on: blendedStripes, progress: progress),
+
+            let pixelImage = applyPixelFilter(progress: pixellation),
+            let exposureImage = applyExposureFilter(progress: pixellation, on: pixelImage),
+            let combinedImage = applyBlendFilter(with: linearBumpedStripes, backgroundImage: exposureImage, mask: stripedImage),
+            let cgImage = context.createCGImage(combinedImage, from: extent) {
 
             image = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
         }
 
         if progress >= 1.0 {
-            //image = UIImage(ciImage: presentingCoreImage!, scale: UIScreen.main.scale, orientation: .up)
             displayLink.invalidate()
         }
     }
@@ -110,6 +120,35 @@ class Animation {
         return exposureFilter.outputImage?.clampingToExtent()
     }
 
+    func applyStripeFilter(progress: Double) -> CIImage? {
+        guard let stripeFilter = stripeFilter else {
+            print ("stripeFilter is nil")
+            return nil
+        }
+
+        let sign = sin(progress * .pi * 2 * drand48()) < 0.5 ? 1.0 : -1.0
+        stripeXPostion += drand48() * stripeMoveSpeed * sign
+
+        stripeFilter.setValue(self.stripeCutWidth + drand48() * sign * 2, forKey: kCIInputWidthKey)
+        stripeFilter.setValue(CIVector(x: CGFloat(stripeXPostion), y: 0), forKey: kCIInputCenterKey)
+
+        let output = stripeFilter.outputImage?.clampingToExtent()
+        return output?.applying(CGAffineTransform(rotationAngle: .pi / 2))
+            .applying(CGAffineTransform(translationX: CGFloat(stripeXPostion * 500), y: 0))
+    }
+
+    func applyLinearBumpFilter(on image: CIImage, progress: Double) -> CIImage? {
+        guard let linearBumpFilter = linearBumpFilter else {
+            print ("linearBumpFilter is nil")
+            return nil
+        }
+
+        linearBumpFilter.setValue(image, forKey: kCIInputImageKey)
+        linearBumpFilter.setValue(max(progress, 0.1) * stripeScaleBump + 1, forKey: kCIInputScaleKey)
+
+        return linearBumpFilter.outputImage?.clampingToExtent()
+    }
+
     lazy var pixelFilter: CIFilter? = {
         let pixelTransitionFilter = CIFilter(name: "CIPixellate")
         pixelTransitionFilter?.setValue(self.coreImage, forKey: kCIInputImageKey)
@@ -128,6 +167,30 @@ class Animation {
     lazy var originalImageExtent: CGRect? = {
         return CIImage(image: self.image)?.extent
     }()
+
+    lazy var stripeFilter: CIFilter? = {
+        let stripeFilter = CIFilter(name: "CIStripesGenerator")
+        stripeFilter?.setValue(self.stripeCutWidth, forKey: kCIInputWidthKey)
+        stripeFilter?.setValue(CIVector(x: CGFloat(self.stripeXPostion), y: 0), forKey: kCIInputCenterKey)
+
+        return stripeFilter
+    }()
+
+    lazy var linearBumpFilter: CIFilter? = {
+        let linearBumpFilter = CIFilter(name: "CIBumpDistortionLinear")
+        linearBumpFilter?.setValue(.pi / 2.0, forKey: kCIInputAngleKey)
+
+        return linearBumpFilter
+    }()
+
+    private func applyBlendFilter(with inputImage: CIImage, backgroundImage: CIImage?, mask: CIImage?) -> CIImage? {
+        let blendWithMaskFilter = CIFilter(name: "CIBlendWithMask")
+        blendWithMaskFilter?.setValue(inputImage, forKey: kCIInputImageKey)
+        blendWithMaskFilter?.setValue(backgroundImage, forKey: kCIInputBackgroundImageKey)
+        blendWithMaskFilter?.setValue(mask, forKey: kCIInputMaskImageKey)
+
+        return blendWithMaskFilter?.outputImage?.clampingToExtent()
+    }
 
 }
 

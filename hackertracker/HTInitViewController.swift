@@ -12,7 +12,7 @@ import CoreData
 class HTInitViewController: UIViewController {
 
     @IBOutlet weak var splashView: UIImageView!
-    let hackerAnimationDuration = 1.0
+    let hackerAnimationDuration = 2.0
 
     private var timerUp = false
     private var importComplete = false
@@ -101,7 +101,7 @@ class HTInitViewController: UIViewController {
 
     func playAnimation() {
         let presentingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HTHome")
-        let presentingImage = renderImageFrom(presentingViewController.view, withSize: view.frame.size)!
+        let presentingImage = renderImageFrom(presentingViewController.view, withSize: presentingViewController.view.frame.size)!
 
         let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!, presentingImage: presentingImage) { (image) in
             self.splashView.image = image
