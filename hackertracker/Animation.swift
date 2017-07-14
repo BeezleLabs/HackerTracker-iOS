@@ -12,10 +12,11 @@ class Animation {
 
     let context = CIContext(options: nil)
 
-    let pixelScaleFactor = 60.0
+    let pixelScaleFactor = 50.0
     let startingPixelScale = 1.0
 
     let exposureIntensityScale = 2.0
+    let maskedSplashImage = CIImage(image: #imageLiteral(resourceName: "splashMask"))?.clampingToExtent()
 
     let stripeCutWidth = 25.0
     let stripeMoveSpeed = 15.0
@@ -72,20 +73,27 @@ class Animation {
         let progress = min((CACurrentMediaTime() - transitionStartTime) / duration, 1.0)
 
         var pixellation = 0.0
+        var stripProgress = 0.0
 
-        if progress > 0.3 && progress < 0.5 {
+        if progress > 0.3 && progress < 0.4 {
             pixellation = 1.0 - progress
-        } else if progress > 0.7 {
+        } else if progress > 0.5 && progress < 0.7 {
+            stripProgress = progress
+        } else if progress > 0.6 && progress < 0.8 {
+            stripProgress = progress
             pixellation = 1.0 - progress
         }
 
-        if let stripedImage = applyStripeFilter(progress: progress),
-            let blendedStripes = applyBlendFilter(with: originalInputCIImage, backgroundImage: nil, mask: stripedImage),
-            let linearBumpedStripes = applyLinearBumpFilter(on: blendedStripes, progress: progress),
+        print("pixellation \(pixellation), stripProgress\(stripProgress)")
 
-            let pixelImage = applyPixelFilter(progress: pixellation),
-            let exposureImage = applyExposureFilter(progress: pixellation, on: pixelImage),
-            let combinedImage = applyBlendFilter(with: linearBumpedStripes, backgroundImage: exposureImage, mask: stripedImage),
+        if let stripedImage = applyStripeFilter(progress: stripProgress),
+            let blendedStripes = applyBlendFilter(with: originalInputCIImage, backgroundImage: nil, mask: stripedImage),
+            let linearBumpedStripes = applyLinearBumpFilter(on: blendedStripes, progress: stripProgress),
+
+            let pixelImage = applyPixelFilter(on: originalInputCIImage, progress: pixellation),
+            let exposureImage = applyExposureFilter(on: pixelImage, progress: pixellation),
+            let combinedMask = applyBlendFilter(with: stripedImage, backgroundImage: nil, mask: maskedSplashImage),
+            let combinedImage = applyBlendFilter(with: linearBumpedStripes, backgroundImage: exposureImage, mask: stripProgress > 0 ? combinedMask : nil),
             let cgImage = context.createCGImage(combinedImage, from: extent) {
 
             image = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
@@ -96,19 +104,19 @@ class Animation {
         }
     }
 
-    private func applyPixelFilter(progress: Double) -> CIImage? {
+    private func applyPixelFilter(on image: CIImage, progress: Double) -> CIImage? {
         guard let pixelFilter = pixelFilter else {
             print ("PixelFilter is nil")
             return nil
         }
 
+        pixelFilter.setValue(image, forKey: kCIInputImageKey)
         pixelFilter.setValue((pixelScaleFactor * progress) + startingPixelScale, forKey: kCIInputScaleKey)
-        pixelFilter.setValue(self.coreImage, forKey: kCIInputImageKey)
 
         return pixelFilter.outputImage?.clampingToExtent()
     }
 
-    private func applyExposureFilter(progress: Double, on image: CIImage) -> CIImage? {
+    private func applyExposureFilter(on image: CIImage, progress: Double) -> CIImage? {
         guard let exposureFilter = exposureFilter else {
             print ("exposureFilter is nil")
             return nil
@@ -126,11 +134,16 @@ class Animation {
             return nil
         }
 
+        guard progress > 0.0 else {
+            return whiteImage
+        }
+
         let sign = sin(progress * .pi * 2 * drand48()) < 0.5 ? 1.0 : -1.0
         stripeXPostion += drand48() * stripeMoveSpeed * sign
 
-        stripeFilter.setValue(self.stripeCutWidth + drand48() * sign * 2, forKey: kCIInputWidthKey)
         stripeFilter.setValue(CIVector(x: CGFloat(stripeXPostion), y: 0), forKey: kCIInputCenterKey)
+        stripeFilter.setValue(stripeCutWidth + drand48() * sign * 2, forKey: kCIInputWidthKey)
+
 
         let output = stripeFilter.outputImage?.clampingToExtent()
         return output?.applying(CGAffineTransform(rotationAngle: .pi / 2))
@@ -183,6 +196,10 @@ class Animation {
         return linearBumpFilter
     }()
 
+    lazy var whiteImage: CIImage? = {
+        return self.coloredFilter(CIColor.white())?.outputImage?.clampingToExtent()
+    }()
+
     private func applyBlendFilter(with inputImage: CIImage, backgroundImage: CIImage?, mask: CIImage?) -> CIImage? {
         let blendWithMaskFilter = CIFilter(name: "CIBlendWithMask")
         blendWithMaskFilter?.setValue(inputImage, forKey: kCIInputImageKey)
@@ -190,6 +207,12 @@ class Animation {
         blendWithMaskFilter?.setValue(mask, forKey: kCIInputMaskImageKey)
 
         return blendWithMaskFilter?.outputImage?.clampingToExtent()
+    }
+
+    private func coloredFilter(_ color: CIColor) -> CIFilter? {
+        let filter = CIFilter(name: "CIConstantColorGenerator")
+        filter?.setValue(color, forKey: kCIInputColorKey)
+        return filter
     }
 
 }
