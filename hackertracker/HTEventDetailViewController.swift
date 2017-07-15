@@ -27,6 +27,9 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var locationMapView: MapLocationView!
     @IBOutlet weak var eventTypeContainer: UIView!
     
+    var speakerBios = NSMutableAttributedString(string: "")
+    var speakerList = NSMutableAttributedString(string: "")
+    
     var event: Event?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
@@ -52,21 +55,57 @@ class HTEventDetailViewController: UIViewController {
         
         eventNameLabel.text = ""
         
-        var eventNameText = ""
-        
         for s in speakers {
             if (s != speakers.first) {
-                eventNameText = eventNameText + ", "
+                speakerList.append(NSAttributedString(string:", "))
             }
             
-            eventNameText = eventNameText + s.who
+            speakerList.append(NSAttributedString(string:s.who))
+            
+            let whoAttributedString = NSMutableAttributedString(string:s.who)
+            let whoParagraphStyle = NSMutableParagraphStyle()
+            whoParagraphStyle.alignment = .center
+            whoAttributedString.addAttribute(NSParagraphStyleAttributeName, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
+            
+            let titleAttributedString = NSMutableAttributedString(string:s.sptitle)
+            let titleParagraphStyle = NSMutableParagraphStyle()
+            titleParagraphStyle.alignment = .center
+            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            
+            let bioAttributedString = NSMutableAttributedString(string:s.bio)
+            let bioParagraphStyle = NSMutableParagraphStyle()
+            bioParagraphStyle.alignment = .justified
+            bioAttributedString.addAttribute(NSParagraphStyleAttributeName, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
+
+            
+            speakerBios.append(whoAttributedString)
+            speakerBios.append(NSAttributedString(string:"\n"))
+            speakerBios.append(titleAttributedString)
+            speakerBios.append(NSAttributedString(string:"\n\n"))
+            speakerBios.append(bioAttributedString)
+            speakerBios.append(NSAttributedString(string:"\n\n"))
         }
         
+        let textAttachment = NSTextAttachment()
+        textAttachment.image = UIImage(named: "speaker_carrot")
+        speakerList.append(NSAttributedString(string:" "))
+        speakerList.append(NSAttributedString(attachment:textAttachment))
+        
+        self.eventNameLabel.contentMode = UIViewContentMode.top
+        
         if speakers.count == 0 {
-            eventNameText = "Mystery Speaker"
+            speakerList = NSMutableAttributedString(string: "Mystery Speaker")
+        } else {
+            let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
+            eventNameLabel.isUserInteractionEnabled = true
+            eventNameLabel.addGestureRecognizer(touchSpeaker)
         }
 
-        eventNameLabel.text = eventNameText
+        eventNameLabel.attributedText = speakerList
         
         eventLocationLabel.text = event.location
         
@@ -98,7 +137,7 @@ class HTEventDetailViewController: UIViewController {
         locationMapView.currentLocation = Location.valueFromString(event.location)
         
         let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
-        touchGesture.minimumPressDuration = 0
+        touchGesture.minimumPressDuration = 0.1
         locationMapView.addGestureRecognizer(touchGesture)
     }
     
@@ -106,6 +145,18 @@ class HTEventDetailViewController: UIViewController {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         
+    }
+    
+    func expand() {
+        if self.eventNameLabel.attributedText == speakerList {
+            self.eventNameLabel.attributedText = speakerBios
+        } else {
+            self.eventNameLabel.attributedText = speakerList
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+           self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func toggleMySchedule(_ sender: AnyObject) {
@@ -223,6 +274,7 @@ class HTEventDetailViewController: UIViewController {
             if intersecting {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
+                mapView.mapLocation = locationMapView.currentLocation
                 let navigationController = HTEventsNavViewController(rootViewController: mapView)
                 self.present(navigationController, animated: true, completion: nil)
             }
