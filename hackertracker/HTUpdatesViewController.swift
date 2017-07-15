@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 class HTUpdatesViewController: UIViewController {
     
@@ -45,6 +46,7 @@ class HTUpdatesViewController: UIViewController {
             frame?.size.height = 360
             updatesTableView.frame = frame ?? CGRect.zero
             updatesTableView.tableFooterView = footer
+            footer.footerDelegate = self
             self.footer = footer
         }
         
@@ -94,6 +96,41 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         let percentage = min(1.0 + (scrollView.contentOffset.y / scrollView.contentInset.top), 1.0)
         self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
         self.logoCenterYConstraint.constant = -((self.backgroundImage.frame.height / 2) - 38) * percentage
+
+    }
+}
+
+extension HTUpdatesViewController : ContributorsFooterDelegate {
+    func linkTapped(link: LinkType) {
+        var url : URL? = nil
+        switch link {
+        case .chrismays94:
+            url = URL(string: "https://twitter.com/chrismays94")!
+        case .imachumphries:
+            url = URL(string: "https://twitter.com/imachumphries")!
+        case .macerameg:
+            url = URL(string: "https://twitter.com/macerameg")!
+            break
+        case .sethlaw:
+            url = URL(string: "https://twitter.com/sethlaw")!
+            break
+        case .willowtree:
+            let bundleIdentifier = "org.beezle.hackertracker"
+            let platform = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone ? "iphone" : "ipad"
+            let urlPath = "http://www.willowtreeapps.com/?utm_source=\(bundleIdentifier)&utm_medium=\(platform)&utm_campaign=attribution"
+            
+            if let unwrappedUrl = URL(string: urlPath) {
+                url = unwrappedUrl
+
+            }
+            
+            break
+        }
+        
+        if let url = url {
+            let safariVC = SFSafariViewController(url: url)
+            self.present(safariVC, animated: true, completion: nil)
+        }
 
     }
 }

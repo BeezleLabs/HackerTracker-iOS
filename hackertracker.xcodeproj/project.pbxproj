@@ -50,6 +50,7 @@
 		834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D51F1818240092C2FE /* EventDateHeaderView.swift */; };
 		83B0F83E1F1967AA006493A6 /* ContributorsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */; };
 		83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */; };
+		83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B0F8411F19A673006493A6 /* SafariServices.framework */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
@@ -134,6 +135,7 @@
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContributorsFooterView.swift; path = Views/ContributorsFooterView.swift; sourceTree = "<group>"; };
 		83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContributorsFooterView.xib; sourceTree = "<group>"; };
+		83B0F8411F19A673006493A6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 		B2E8240619E30EF7A3D6816A /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */,
 				E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +295,7 @@
 		5DF3D6ACCF616DD9F4C24179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83B0F8411F19A673006493A6 /* SafariServices.framework */,
 				8345F2CB1F0F0C81006761BE /* WebKit.framework */,
 				24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */,
 				031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */,
@@ -377,7 +381,7 @@
 				TargetAttributes = {
 					5DD642581AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = NG9QU5D84A;
+						DevelopmentTeam = MJ97FDMT75;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
@@ -695,15 +699,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NG9QU5D84A;
+				DEVELOPMENT_TEAM = MJ97FDMT75;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.purulentsoftware.hackertracker;
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dfb0eb8b-676b-4fd8-bf6f-879345b68815";
-				PROVISIONING_PROFILE_SPECIFIER = "App Development";
+				PROVISIONING_PROFILE = "c71fa435-adba-4f86-9960-dc2a55d13603";
+				PROVISIONING_PROFILE_SPECIFIER = org.beezle.hackertracker2;
 				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -724,7 +728,7 @@
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.purulentsoftware.hackertracker;
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c71fa435-adba-4f86-9960-dc2a55d13603";
 				PROVISIONING_PROFILE_SPECIFIER = org.beezle.hackertracker2;

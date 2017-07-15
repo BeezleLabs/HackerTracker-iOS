@@ -30,6 +30,9 @@
                             <state key="normal" title="Seth Law / @sethlaw">
                                 <color key="titleColor" red="0.49052229523658752" green="0.88387930393218994" blue="0.76865249872207642" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
+                            <connections>
+                                <action selector="sethLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="YNk-yk-c0R"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xE7-jb-hEL" userLabel="Developer">
                             <rect key="frame" x="0.0" y="33" width="335" height="17"/>
@@ -43,6 +46,9 @@
                             <state key="normal" title="Chris Mays  / @chrismays94">
                                 <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
+                            <connections>
+                                <action selector="chrisLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="3M9-g3-0WS"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxi-hm-ZJ1" userLabel="Developer">
                             <rect key="frame" x="0.0" y="83" width="335" height="17"/>
@@ -56,6 +62,9 @@
                             <state key="normal" title="Meghan Macera / @macerameg">
                                 <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
+                            <connections>
+                                <action selector="megLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="VE1-dv-gTe"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOF-ga-aRE" userLabel="Developer">
                             <rect key="frame" x="0.0" y="133" width="335" height="17"/>
@@ -69,6 +78,9 @@
                             <state key="normal" title="Ben Humphries / @iMacHumphries">
                                 <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
+                            <connections>
+                                <action selector="benLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="U5i-VJ-kTy"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGa-FO-ZSq" userLabel="Developer">
                             <rect key="frame" x="0.0" y="183" width="335" height="17"/>
@@ -81,6 +93,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIe-kk-wx2">
                     <rect key="frame" x="77" y="303" width="220" height="28"/>
                     <state key="normal" image="attribution"/>
+                    <connections>
+                        <action selector="willowTreeLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="NmS-Yj-kOb"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPr-g8-KBq">
                     <rect key="frame" x="20" y="0.0" width="355" height="1"/>

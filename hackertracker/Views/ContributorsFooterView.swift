@@ -8,9 +8,23 @@
 
 import UIKit
 
+enum LinkType {
+    case chrismays94
+    case imachumphries
+    case sethlaw
+    case macerameg
+    case willowtree
+}
+
+protocol ContributorsFooterDelegate : class {
+    func linkTapped(link : LinkType);
+}
+
 class ContributorsFooterView: UIView {
 
     @IBOutlet weak var contributorsHeaderLabel: UILabel!
+    
+    weak var footerDelegate : ContributorsFooterDelegate?
     
     public init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
@@ -32,5 +46,26 @@ class ContributorsFooterView: UIView {
         attributedContributer.append(attributedTributor)
         
         contributorsHeaderLabel.attributedText = attributedContributer
+    }
+    
+    @IBAction func sethLinkPressed(_ sender: Any) {
+        footerDelegate?.linkTapped(link: .sethlaw)
+    }
+    
+    @IBAction func chrisLinkPressed(_ sender: Any) {
+        footerDelegate?.linkTapped(link: .chrismays94)
+
+    }
+    
+    @IBAction func benLinkPressed(_ sender: Any) {
+        footerDelegate?.linkTapped(link: .imachumphries)
+    }
+    
+    @IBAction func megLinkPressed(_ sender: Any) {
+        footerDelegate?.linkTapped(link: .macerameg)
+    }
+    
+    @IBAction func willowTreeLinkPressed(_ sender: Any) {
+        footerDelegate?.linkTapped(link: .willowtree)
     }
 }

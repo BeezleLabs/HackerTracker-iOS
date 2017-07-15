@@ -37,22 +37,6 @@ class BaseScheduleTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
-        
-//        if !animated {
-//            var i = 0
-//            for eventSection in eventSections {
-//                let date = DateFormatterUtility.yearMonthDayFormatter.date(from: eventSection.date)
-//
-//                if let date = date, eventSection.date == "2017-07-28"{
-//                    if eventSections.count > 0 {
-//                        tableView.scrollToRow(at: IndexPath.init(row: 0, section: i), at: UITableViewScrollPosition.top, animated: true)
-//                        return
-//                    }
-//                }
-//                
-//                i = i + 1
-//            }
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
