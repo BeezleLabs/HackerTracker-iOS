@@ -90,7 +90,7 @@ open class ScrollingTabController: UIViewController, UIScrollViewDelegate, UICol
     
     /// The current scrolled percentage
     var scrolledPercentage: CGFloat {
-        guard tabControllersView.contentSize.width > 0 else {
+        guard tabControllersView != nil, tabControllersView.contentSize.width > 0 else {
             return 0
         }
 

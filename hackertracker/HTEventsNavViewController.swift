@@ -9,28 +9,52 @@
 import UIKit
 import CoreGraphics
 
-class HTEventsNavViewController: UINavigationController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+extension UIImage {
+    static func mainHeaderImage(scaledToWidth:CGFloat, visibleSize : CGSize? = nil) -> UIImage {
         let image = #imageLiteral(resourceName: "dc-25-wallpaper-blurred")
         
         var  transformScale : CGFloat = 1.0
         
-        if let windowSize = UIApplication.shared.keyWindow?.frame.size.width {
-            transformScale = windowSize/image.size.width
-        }
-        
+        transformScale = scaledToWidth/image.size.width
+    
         let size = image.size.applying(CGAffineTransform(scaleX: transformScale, y: transformScale))
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(width:size.width, height: 64), true, 0.0)
+        var cropSize = visibleSize ?? size
+        
+        cropSize.height = min(visibleSize?.height ?? CGFloat.infinity, size.height)
+        
+        UIGraphicsBeginImageContextWithOptions(cropSize, true, 0.0)
         image.draw(in: CGRect(origin: CGPoint.zero, size: size))
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.navigationBar.setBackgroundImage(scaledImage, for: .default)
+        return scaledImage ?? UIImage()
+    }
+}
+
+class HTEventsNavViewController: UINavigationController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let windowSize = UIApplication.shared.keyWindow?.frame.size {
+            setNavBarImage(screenSize: windowSize)
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { (context) in
+            self.setNavBarImage(screenSize: size)
+        }, completion: nil)
+        
     }
 
+    func setNavBarImage(screenSize : CGSize)
+    {
+        let image = UIImage.mainHeaderImage(scaledToWidth: screenSize.width, visibleSize:  CGSize(width:screenSize.width, height: 64))
+        self.navigationBar.setBackgroundImage(image, for: .default)
+    }
 }
