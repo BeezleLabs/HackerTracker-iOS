@@ -22,7 +22,8 @@ class HTUpdatesViewController: UIViewController {
     
     var footer = UIView()
     
-    @IBOutlet weak var logoCenterYConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var logoCenterToTopMargin: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var leadingImageConstraint: NSLayoutConstraint!
@@ -40,11 +41,13 @@ class HTUpdatesViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
+        backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleSize: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40))
         
         updatesTableView.delegate = self
         updatesTableView.dataSource = self
         updatesTableView.backgroundColor = UIColor.clear
-        updatesTableView.contentInset = UIEdgeInsets(top: 296, left: 0, bottom: 0, right: 0)
+        updatesTableView.contentInset = UIEdgeInsets(top: view.frame.size.height * 0.4, left: 0, bottom: 0, right: 0)
+       
         if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
             updatesTableView.tableFooterView = footer
             var frame = updatesTableView.tableFooterView?.frame
@@ -62,18 +65,35 @@ class HTUpdatesViewController: UIViewController {
         self.messages = (try! context.fetch(fr)) as! [Message]
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { (context) in
+            self.backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleSize: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40))
+            self.backgroundImage.sizeToFit()
+            let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
+            self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)
+            self.scrollViewDidScroll(self.updatesTableView)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.footer.frame.size.height = 360
         updatesTableView.tableFooterView = self.footer
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("\(self.updatesTableView.contentOffset)")
+        print("\(self.updatesTableView.contentInset)")
+        let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
+        self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)
+        print("\(self.updatesTableView.contentInset)")
+        print("\(self.updatesTableView.contentOffset)")
         
-        updatesTableView.contentInset = UIEdgeInsets(top: backgroundImage.frame.size.height - 64, left: 0, bottom: 0, right: 0)
+        scrollViewDidScroll(self.updatesTableView)
     }
     
 }
@@ -100,10 +120,11 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         let minHeight = standardLogoHeight - 40
         let percentage = min(1.0 + (scrollView.contentOffset.y / scrollView.contentInset.top), 1.0)
         self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
-        self.logoCenterYConstraint.constant = -((self.backgroundImage.frame.height / 2) - 38) * percentage
+     //   self.logoCenterYConstraint.constant = -((self.backgroundImage.frame.height / 2) - 38) * percentage
         
         //Only make the easter egg visible on top overscroll
         skullBackground.isHidden = scrollView.contentOffset.y > 0
+        logoCenterToTopMargin.constant =  ((updatesTableView.contentInset.top + 64) / 2.0) - ((((updatesTableView.contentInset.top + 64) / 2.0) - 37) * percentage)
     }
 }
 

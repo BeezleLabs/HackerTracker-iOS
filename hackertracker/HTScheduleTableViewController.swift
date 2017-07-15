@@ -43,6 +43,7 @@ class BaseScheduleTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.layoutIfNeeded()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        
     }
     
     fileprivate func reloadEvents() {
@@ -72,7 +73,25 @@ class BaseScheduleTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return max(eventSections.count, 1)
+        if eventSections.count == 0 {
+            if tableView.tableHeaderView  != emptyStateView {
+                emptyStateView?.frame.size.height = tableView.frame.size.height
+                tableView.tableHeaderView = emptyStateView
+            }
+        } else {
+            tableView.tableHeaderView = nil
+        }
+        return eventSections.count
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let tableHeader = tableView.tableHeaderView, let emptyState = emptyStateView,  tableView.tableHeaderView == emptyStateView {
+            if floor(emptyState.frame.size.height) != floor(tableHeader.frame.size.height) {
+                emptyStateView?.frame.size.height = floor(tableView.frame.size.height)
+                tableView.tableHeaderView = emptyStateView
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
