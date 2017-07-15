@@ -324,6 +324,14 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
         super.viewWillAppear(animated)
         title = eType.name
     }
+    
+    public override func emptyState() -> UIView {
+        if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
+            emptyState.bind(description: "No events for this category yet. Check back later.", image: #imageLiteral(resourceName: "skull-active"))
+            return emptyState
+        }
+        return UIView()
+    }
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
