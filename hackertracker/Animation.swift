@@ -36,14 +36,12 @@ class Animation {
 
     private var onImageUpdate: (UIImage) -> ()
     private var coreImage: CIImage?
-    private var presentingCoreImage: CIImage?
 
     init(duration: Double, image: UIImage, presentingImage: UIImage, onImageUpdate: @escaping (UIImage) -> ()) {
         self.duration = duration
         // Initialize onImageUpdate before image because setting image will trigger onImageUpdate.
         self.onImageUpdate = onImageUpdate
         self.image = image
-        self.presentingCoreImage = presentingImage.ciImage?.clampingToExtent()
         coreImage = CIImage(image: self.image)?.clampingToExtent()
         if let coreImage = coreImage {
             originalInputCIImage = coreImage
@@ -83,8 +81,6 @@ class Animation {
             stripProgress = progress
             pixellation = 1.0 - progress
         }
-
-        print("pixellation \(pixellation), stripProgress\(stripProgress)")
 
         if let stripedImage = applyStripeFilter(progress: stripProgress),
             let blendedStripes = applyBlendFilter(with: originalInputCIImage, backgroundImage: nil, mask: stripedImage),
