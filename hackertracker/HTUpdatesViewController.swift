@@ -14,6 +14,7 @@ class HTUpdatesViewController: UIViewController {
     
     @IBOutlet weak var updatesTableView: UITableView!
     
+    @IBOutlet weak var headerImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundImage: UIImageView!
     var messages: [Message] = []
     var data = NSMutableData()
@@ -23,6 +24,11 @@ class HTUpdatesViewController: UIViewController {
     
     @IBOutlet weak var logoCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var leadingImageConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var trailingImageConstraint: NSLayoutConstraint!
+    @IBOutlet weak var skullBackground: UIImageView!
     
     let footerView = ContributorsFooterView()
     
@@ -39,7 +45,6 @@ class HTUpdatesViewController: UIViewController {
         updatesTableView.dataSource = self
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 296, left: 0, bottom: 0, right: 0)
-        
         if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
             updatesTableView.tableFooterView = footer
             var frame = updatesTableView.tableFooterView?.frame
@@ -96,7 +101,9 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         let percentage = min(1.0 + (scrollView.contentOffset.y / scrollView.contentInset.top), 1.0)
         self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
         self.logoCenterYConstraint.constant = -((self.backgroundImage.frame.height / 2) - 38) * percentage
-
+        
+        //Only make the easter egg visible on top overscroll
+        skullBackground.isHidden = scrollView.contentOffset.y > 0
     }
 }
 
