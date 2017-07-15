@@ -98,10 +98,8 @@ class HTInitViewController: UIViewController {
     }
 
     func playAnimation() {
-        let presentingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HTHome")
-        let presentingImage = renderImageFrom(presentingViewController.view, withSize: presentingViewController.view.frame.size)!
 
-        let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!, presentingImage: presentingImage) { (image) in
+        let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!) { (image) in
             self.splashView.image = image
         }
 
@@ -113,21 +111,6 @@ class HTInitViewController: UIViewController {
         {
             self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
         }
-    }
-
-    func renderImageFrom(_ view: UIView, withSize size: CGSize) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, true, 0)
-
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return nil
-        }
-
-        view.layer.render(in: context)
-
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return image
     }
 
 }

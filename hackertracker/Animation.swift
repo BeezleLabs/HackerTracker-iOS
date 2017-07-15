@@ -37,7 +37,7 @@ class Animation {
     private var onImageUpdate: (UIImage) -> ()
     private var coreImage: CIImage?
 
-    init(duration: Double, image: UIImage, presentingImage: UIImage, onImageUpdate: @escaping (UIImage) -> ()) {
+    init(duration: Double, image: UIImage, onImageUpdate: @escaping (UIImage) -> ()) {
         self.duration = duration
         // Initialize onImageUpdate before image because setting image will trigger onImageUpdate.
         self.onImageUpdate = onImageUpdate
