@@ -44,68 +44,7 @@ class HTEventDetailViewController: UIViewController {
         
         eventTitleLabel.text = event.title
         
-        let speakers : [Speaker]
-        
-        if let retrievedSpeakers = dataRequest.getSpeakersForEvent(event.index)
-        {
-            speakers = retrievedSpeakers
-        } else {
-            speakers = []
-        }
-        
-        eventNameLabel.text = ""
-        
-        for s in speakers {
-            if (s != speakers.first) {
-                speakerList.append(NSAttributedString(string:", "))
-            }
-            
-            speakerList.append(NSAttributedString(string:s.who))
-            
-            let whoAttributedString = NSMutableAttributedString(string:s.who)
-            let whoParagraphStyle = NSMutableParagraphStyle()
-            whoParagraphStyle.alignment = .center
-            whoAttributedString.addAttribute(NSParagraphStyleAttributeName, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
-            
-            let titleAttributedString = NSMutableAttributedString(string:s.sptitle)
-            let titleParagraphStyle = NSMutableParagraphStyle()
-            titleParagraphStyle.alignment = .center
-            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            
-            let bioAttributedString = NSMutableAttributedString(string:s.bio)
-            let bioParagraphStyle = NSMutableParagraphStyle()
-            bioParagraphStyle.alignment = .justified
-            bioAttributedString.addAttribute(NSParagraphStyleAttributeName, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
-
-            
-            speakerBios.append(whoAttributedString)
-            speakerBios.append(NSAttributedString(string:"\n"))
-            speakerBios.append(titleAttributedString)
-            speakerBios.append(NSAttributedString(string:"\n\n"))
-            speakerBios.append(bioAttributedString)
-            speakerBios.append(NSAttributedString(string:"\n\n"))
-        }
-        
-        let textAttachment = NSTextAttachment()
-        textAttachment.image = UIImage(named: "speaker_carrot")
-        speakerList.append(NSAttributedString(string:" "))
-        speakerList.append(NSAttributedString(attachment:textAttachment))
-        
-        self.eventNameLabel.contentMode = UIViewContentMode.top
-        
-        if speakers.count == 0 {
-            speakerList = NSMutableAttributedString(string: "Mystery Speaker")
-        } else {
-            let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
-            eventNameLabel.isUserInteractionEnabled = true
-            eventNameLabel.addGestureRecognizer(touchSpeaker)
-        }
-
-        eventNameLabel.attributedText = speakerList
+        setupSpeakers(event: event)
         
         eventLocationLabel.text = event.location
         
@@ -145,6 +84,74 @@ class HTEventDetailViewController: UIViewController {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         
+    }
+    
+    func setupSpeakers(event : Event) {
+        eventNameLabel.textColor = UIColor(red: 79.0/255.0, green: 227.0/255.0, blue: 194.0/255.0, alpha: 1.0)
+        
+        let speakers : [Speaker]
+        
+        if let retrievedSpeakers = dataRequest.getSpeakersForEvent(event.index)
+        {
+            speakers = retrievedSpeakers
+        } else {
+            speakers = []
+        }
+        
+        eventNameLabel.text = ""
+        
+        for s in speakers {
+            if (s != speakers.first) {
+                speakerList.append(NSAttributedString(string:", "))
+            }
+            
+            speakerList.append(NSAttributedString(string:s.who))
+            
+            let whoAttributedString = NSMutableAttributedString(string:s.who)
+            let whoParagraphStyle = NSMutableParagraphStyle()
+            whoParagraphStyle.alignment = .center
+            whoAttributedString.addAttribute(NSParagraphStyleAttributeName, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
+            whoAttributedString.addAttribute(NSForegroundColorAttributeName, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (s.who as NSString).length))
+            
+            let titleAttributedString = NSMutableAttributedString(string:s.sptitle)
+            let titleParagraphStyle = NSMutableParagraphStyle()
+            titleParagraphStyle.alignment = .center
+            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            
+            let bioAttributedString = NSMutableAttributedString(string:s.bio)
+            let bioParagraphStyle = NSMutableParagraphStyle()
+            bioParagraphStyle.alignment = .justified
+            bioAttributedString.addAttribute(NSParagraphStyleAttributeName, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            
+            
+            speakerBios.append(whoAttributedString)
+            speakerBios.append(NSAttributedString(string:"\n"))
+            speakerBios.append(titleAttributedString)
+            speakerBios.append(NSAttributedString(string:"\n\n"))
+            speakerBios.append(bioAttributedString)
+            speakerBios.append(NSAttributedString(string:"\n\n"))
+        }
+        
+        let textAttachment = NSTextAttachment()
+        textAttachment.image = UIImage(named: "speaker_carrot")
+        speakerList.append(NSAttributedString(string:" "))
+        speakerList.append(NSAttributedString(attachment:textAttachment))
+        
+        self.eventNameLabel.contentMode = UIViewContentMode.top
+        
+        if speakers.count == 0 {
+            speakerList = NSMutableAttributedString(string: "Mystery Speaker")
+        } else {
+            let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
+            eventNameLabel.isUserInteractionEnabled = true
+            eventNameLabel.addGestureRecognizer(touchSpeaker)
+        }
+        
+        eventNameLabel.attributedText = speakerList
     }
     
     func expand() {
