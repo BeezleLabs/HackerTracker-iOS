@@ -25,6 +25,7 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var exploitImage: UIImageView!
     @IBOutlet weak var toolImage: UIImageView!
     @IBOutlet weak var locationMapView: MapLocationView!
+    @IBOutlet weak var eventTypeContainer: UIView!
     
     var event: Event?
     
@@ -87,6 +88,8 @@ class HTEventDetailViewController: UIViewController {
         demoImage.isHidden = !event.isDemo()
         exploitImage.isHidden = !event.isExploit()
 
+        eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden
+        
         let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as Date)
         let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
 
@@ -144,7 +147,6 @@ class HTEventDetailViewController: UIViewController {
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                     self.saveContext()
                     self.scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
-
                 })
                 
                 let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:

@@ -48,6 +48,9 @@
 		8345F2EE1F15D38D006761BE /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2EC1F15D38D006761BE /* Speaker.swift */; };
 		834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D31F17113C0092C2FE /* DataRequestManager.swift */; };
 		834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D51F1818240092C2FE /* EventDateHeaderView.swift */; };
+		83B0F83E1F1967AA006493A6 /* ContributorsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */; };
+		83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */; };
+		83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B0F8411F19A673006493A6 /* SafariServices.framework */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
@@ -131,6 +134,9 @@
 		834713D31F17113C0092C2FE /* DataRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestManager.swift; sourceTree = "<group>"; };
 		834713D51F1818240092C2FE /* EventDateHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDateHeaderView.swift; path = Views/EventDateHeaderView.swift; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContributorsFooterView.swift; path = Views/ContributorsFooterView.swift; sourceTree = "<group>"; };
+		83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContributorsFooterView.xib; sourceTree = "<group>"; };
+		83B0F8411F19A673006493A6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 		B2E8240619E30EF7A3D6816A /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */,
 				E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +218,8 @@
 				834713D51F1818240092C2FE /* EventDateHeaderView.swift */,
 				8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */,
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
+				83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */,
+				83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 		5DF3D6ACCF616DD9F4C24179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83B0F8411F19A673006493A6 /* SafariServices.framework */,
 				8345F2CB1F0F0C81006761BE /* WebKit.framework */,
 				24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */,
 				031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */,
@@ -413,6 +423,7 @@
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
+				83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */,
 				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
 				5DD0D9161D467D6500747807 /* dc-24-fp-final.png in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
@@ -562,6 +573,7 @@
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,
 				B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */,
 				7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */,
+				83B0F83E1F1967AA006493A6 /* ContributorsFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
