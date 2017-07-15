@@ -11,9 +11,12 @@ import CoreData
 
 class HTInitViewController: UIViewController {
 
+    @IBOutlet weak var splashView: UIImageView!
+    let hackerAnimationDuration = 2.0
+
     private var timerUp = false
     private var importComplete = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +27,10 @@ class HTInitViewController: UIViewController {
         fr.returnsObjectsAsFaults = false
         
         let status = try! context.fetch(fr) as NSArray
-        
+
+        let timeBeforeSegue = hackerAnimationDuration
+        playAnimation()
+
         if status.count < 1 {
             NSLog("Database not setup, preloading with initial schedule")
             self.loadData()
@@ -32,7 +38,7 @@ class HTInitViewController: UIViewController {
             importComplete = true
         }
 
-        Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(HTInitViewController.timerComplete), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(HTInitViewController.timerComplete), userInfo: nil, repeats: false)
     }
     
     func loadData() {
@@ -81,18 +87,47 @@ class HTInitViewController: UIViewController {
                 self.go()
             }
         }
+
     }
     
     func timerComplete()
     {
         timerUp = true
         go()
+
     }
-    
+
+    func playAnimation() {
+        let presentingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HTHome")
+        let presentingImage = renderImageFrom(presentingViewController.view, withSize: presentingViewController.view.frame.size)!
+
+        let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!, presentingImage: presentingImage) { (image) in
+            self.splashView.image = image
+        }
+
+        animation.startHackerAnimation()
+    }
+
     func go() {
         if importComplete && timerUp
         {
             self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
         }
     }
+
+    func renderImageFrom(_ view: UIView, withSize size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        view.layer.render(in: context)
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return image
+    }
+
 }
