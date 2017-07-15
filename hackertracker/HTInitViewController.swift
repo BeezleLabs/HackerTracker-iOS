@@ -28,7 +28,6 @@ class HTInitViewController: UIViewController {
         
         let status = try! context.fetch(fr) as NSArray
 
-        // TODO: Only play animation on first launch.
         let timeBeforeSegue = hackerAnimationDuration
         playAnimation()
 
