@@ -16,12 +16,11 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     var events:NSArray = []
     var filteredEvents:NSArray = []
     var selectedEvent:Event?
-    var isFiltered:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
          tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
+        eventSearchBar.placeholder = "Search Events"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,7 +47,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (isFiltered) {
+        if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
             return self.filteredEvents.count
         } else {
             return self.events.count
@@ -60,7 +59,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
        
         var event: Event
         
-        if (isFiltered) {
+        if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
             event = self.filteredEvents.object(at: indexPath.row) as! Event
         } else {
             event = self.events.object(at: indexPath.row) as! Event
@@ -75,18 +74,20 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     // MARK: - Search Bar Functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isFiltered = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         let searchText = searchBar.text
-        if (searchText!.characters.count == 0) {
-            isFiltered = false
-        } else {
-            isFiltered = true
-        }
         
         filterEvents(searchText!)
         
@@ -132,11 +133,6 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchText = searchBar.text
-        if (searchText!.characters.count == 0) {
-            isFiltered = false
-        } else {
-            isFiltered = true
-        }
         
         filterEvents(searchText!)
         
@@ -145,15 +141,12 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if (searchText.characters.count == 0) {
-            isFiltered = false
-        } else {
-            isFiltered = true
-            
+        if (searchText.characters.count > 0) {
             filterEvents(searchText)
             
             self.tableView.reloadData()
-            
+        } else {
+            self.tableView.reloadData()
         }
     }
     
@@ -162,7 +155,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         if (segue.identifier == "eventDetailSegue") {
             let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
             if let indexPath = sender as? IndexPath {
-                if isFiltered {
+                if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
                     dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
                 } else {
                     dv.event = self.events.object(at: indexPath.row) as? Event

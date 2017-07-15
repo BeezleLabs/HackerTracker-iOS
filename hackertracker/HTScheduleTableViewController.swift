@@ -11,7 +11,9 @@ import CoreData
 
 class BaseScheduleTableViewController: UITableViewController {
     
-    var eventSections : [[Event]] = []
+    typealias EventSection = (date: String, events: [Event])
+    
+    var eventSections : [EventSection] = []
     var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     var data = NSMutableData()
     var emptyStateView : UIView?
@@ -19,129 +21,6 @@ class BaseScheduleTableViewController: UITableViewController {
     // Dates for DC 25
     var days = ["2017-07-27", "2017-07-28", "2017-07-29", "2017-07-30"]
     
-    func sync(sender: AnyObject) {
-        
-        let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
-        let envs = NSDictionary(contentsOfFile: envPlist!)!
-        
-        var tURL = (envs.value(forKey: "base") as! String) + (envs.value(forKey: "schedule") as! String)
-        let scheduleURL = Foundation.URL(string: tURL)
-        
-        tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "speakers") as! String)
-        let speakersURL = Foundation.URL(string: tURL)
-        
-        let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: NSURLSessionPinningDelegate(), delegateQueue: nil)
-
-        var request = URLRequest(url: speakersURL!)
-        request.httpMethod = "GET"
-        
-        let eventSpeakerDownloadGroup = DispatchGroup()
-        
-        eventSpeakerDownloadGroup.enter()
-        
-        session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
-            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
-            
-            if let error = error {
-                NSLog("DataTask error: " + error.localizedDescription)
-                DispatchQueue.main.async() {
-                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
-                    eventSpeakerDownloadGroup.leave()
-                }
-            } else {
-                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
-                
-                if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-                    let context = getBackgroundContext()
-                    
-                    context.perform {
-                        
-                        let dataManager = DataImportManager(managedContext: context)
-                        
-                        do {
-                            try dataManager.importSpeakers(speakerData: data)
-                        } catch {
-                            
-                        }
-                            DispatchQueue.main.async() {
-                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated speakers \(n)", attributes: attr)
-                                DispatchQueue.main.async() {
-                                    eventSpeakerDownloadGroup.leave()
-                                }
-                            }
-                        
-                    }
-                } else {
-                    DispatchQueue.main.async() {
-                        eventSpeakerDownloadGroup.leave()
-                    }
-                }
-            }
-            
-        }).resume()
-        
-        request = URLRequest(url: scheduleURL!)
-        request.httpMethod = "GET"
-        
-        eventSpeakerDownloadGroup.enter()
-
-        session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
-            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
-            
-            if let error = error {
-                NSLog("DataTask error: " + error.localizedDescription)
-                DispatchQueue.main.async() {
-                    eventSpeakerDownloadGroup.leave()
-                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
-                }
-            } else {
-                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
-            
-                if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-
-                    let context = getBackgroundContext()
-                    
-                    context.perform {
-                        
-                        let dataManager = DataImportManager(managedContext: context)
-
-                        do {
-                            try dataManager.importEvents(eventData: data)
-                            DispatchQueue.main.async() {
-                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
-                            }
-                        } catch {
-                            DispatchQueue.main.async() {
-                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
-                            }
-                        }
-                            
-                        DispatchQueue.main.async() {
-                            DispatchQueue.main.async() {
-                                eventSpeakerDownloadGroup.leave()
-                            }
-                        }
-                
-                    }
-                
-                } else {
-                     DispatchQueue.main.async() {
-                        eventSpeakerDownloadGroup.leave()
-                    }
-                }
-            }
-        }).resume()
-
-        eventSpeakerDownloadGroup.notify(queue: DispatchQueue.main) { 
-            self.refreshControl?.endRefreshing()
-            self.reloadEvents()
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
@@ -158,6 +37,22 @@ class BaseScheduleTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        
+//        if !animated {
+//            var i = 0
+//            for eventSection in eventSections {
+//                let date = DateFormatterUtility.yearMonthDayFormatter.date(from: eventSection.date)
+//
+//                if let date = date, eventSection.date == "2017-07-28"{
+//                    if eventSections.count > 0 {
+//                        tableView.scrollToRow(at: IndexPath.init(row: 0, section: i), at: UITableViewScrollPosition.top, animated: true)
+//                        return
+//                    }
+//                }
+//                
+//                i = i + 1
+//            }
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -172,7 +67,7 @@ class BaseScheduleTableViewController: UITableViewController {
         for day in days {
             let events = retrieveEventsForDay(day)
             if events.count > 0 {
-                eventSections.append(retrieveEventsForDay(day))
+                eventSections.append((date: day, events: events))
             }
         }
         
@@ -202,12 +97,12 @@ class BaseScheduleTableViewController: UITableViewController {
             return 0
         }
         
-        return self.eventSections[section].count
+        return self.eventSections[section].events.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-        let event : Event = self.eventSections[indexPath.section][indexPath.row]
+        let event : Event = self.eventSections[indexPath.section].events[indexPath.row]
 
         cell.bind(event: event)
         
@@ -282,7 +177,7 @@ class BaseScheduleTableViewController: UITableViewController {
             } else {
                 indexPath = sender as! IndexPath
             }
-            dv.event = self.eventSections[indexPath.section][indexPath.row]
+            dv.event = self.eventSections[indexPath.section].events[indexPath.row]
         }
     }
     
@@ -293,6 +188,130 @@ class BaseScheduleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
+    func sync(sender: AnyObject) {
+        
+        let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
+        let envs = NSDictionary(contentsOfFile: envPlist!)!
+        
+        var tURL = (envs.value(forKey: "base") as! String) + (envs.value(forKey: "schedule") as! String)
+        let scheduleURL = Foundation.URL(string: tURL)
+        
+        tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "speakers") as! String)
+        let speakersURL = Foundation.URL(string: tURL)
+        
+        let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: NSURLSessionPinningDelegate(), delegateQueue: nil)
+        
+        var request = URLRequest(url: speakersURL!)
+        request.httpMethod = "GET"
+        
+        let eventSpeakerDownloadGroup = DispatchGroup()
+        
+        eventSpeakerDownloadGroup.enter()
+        
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
+            
+            if let error = error {
+                NSLog("DataTask error: " + error.localizedDescription)
+                DispatchQueue.main.async() {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+                    eventSpeakerDownloadGroup.leave()
+                }
+            } else {
+                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+                
+                if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
+                    let context = getBackgroundContext()
+                    
+                    context.perform {
+                        
+                        let dataManager = DataImportManager(managedContext: context)
+                        
+                        do {
+                            try dataManager.importSpeakers(speakerData: data)
+                        } catch {
+                            
+                        }
+                        DispatchQueue.main.async() {
+                            self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated speakers \(n)", attributes: attr)
+                            DispatchQueue.main.async() {
+                                eventSpeakerDownloadGroup.leave()
+                            }
+                        }
+                        
+                    }
+                } else {
+                    DispatchQueue.main.async() {
+                        eventSpeakerDownloadGroup.leave()
+                    }
+                }
+            }
+            
+        }).resume()
+        
+        request = URLRequest(url: scheduleURL!)
+        request.httpMethod = "GET"
+        
+        eventSpeakerDownloadGroup.enter()
+        
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
+            
+            if let error = error {
+                NSLog("DataTask error: " + error.localizedDescription)
+                DispatchQueue.main.async() {
+                    eventSpeakerDownloadGroup.leave()
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+                }
+            } else {
+                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+                
+                if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
+                    
+                    let context = getBackgroundContext()
+                    
+                    context.perform {
+                        
+                        let dataManager = DataImportManager(managedContext: context)
+                        
+                        do {
+                            try dataManager.importEvents(eventData: data)
+                            DispatchQueue.main.async() {
+                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+                            }
+                        } catch {
+                            DispatchQueue.main.async() {
+                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
+                            }
+                        }
+                        
+                        DispatchQueue.main.async() {
+                            DispatchQueue.main.async() {
+                                eventSpeakerDownloadGroup.leave()
+                            }
+                        }
+                        
+                    }
+                    
+                } else {
+                    DispatchQueue.main.async() {
+                        eventSpeakerDownloadGroup.leave()
+                    }
+                }
+            }
+        }).resume()
+        
+        eventSpeakerDownloadGroup.notify(queue: DispatchQueue.main) {
+            self.refreshControl?.endRefreshing()
+            self.reloadEvents()
+        }
+    }
+
 }
 
 class HTScheduleTableViewController: BaseScheduleTableViewController {

@@ -48,6 +48,8 @@
 		8345F2EE1F15D38D006761BE /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2EC1F15D38D006761BE /* Speaker.swift */; };
 		834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D31F17113C0092C2FE /* DataRequestManager.swift */; };
 		834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D51F1818240092C2FE /* EventDateHeaderView.swift */; };
+		83B0F83E1F1967AA006493A6 /* ContributorsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */; };
+		83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
@@ -130,6 +132,8 @@
 		834713D31F17113C0092C2FE /* DataRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestManager.swift; sourceTree = "<group>"; };
 		834713D51F1818240092C2FE /* EventDateHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDateHeaderView.swift; path = Views/EventDateHeaderView.swift; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContributorsFooterView.swift; path = Views/ContributorsFooterView.swift; sourceTree = "<group>"; };
+		83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContributorsFooterView.xib; sourceTree = "<group>"; };
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 		B2E8240619E30EF7A3D6816A /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				834713D51F1818240092C2FE /* EventDateHeaderView.swift */,
 				8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */,
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
+				83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */,
+				83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -371,7 +377,7 @@
 				TargetAttributes = {
 					5DD642581AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = MJ97FDMT75;
+						DevelopmentTeam = NG9QU5D84A;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
@@ -410,6 +416,7 @@
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
+				83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */,
 				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
 				5DD0D9161D467D6500747807 /* dc-24-fp-final.png in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
@@ -558,6 +565,7 @@
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,
 				7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */,
+				83B0F83E1F1967AA006493A6 /* ContributorsFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,15 +695,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = MJ97FDMT75;
+				DEVELOPMENT_TEAM = NG9QU5D84A;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.purulentsoftware.hackertracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c71fa435-adba-4f86-9960-dc2a55d13603";
-				PROVISIONING_PROFILE_SPECIFIER = org.beezle.hackertracker2;
+				PROVISIONING_PROFILE = "dfb0eb8b-676b-4fd8-bf6f-879345b68815";
+				PROVISIONING_PROFILE_SPECIFIER = "App Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -716,7 +724,7 @@
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.purulentsoftware.hackertracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c71fa435-adba-4f86-9960-dc2a55d13603";
 				PROVISIONING_PROFILE_SPECIFIER = org.beezle.hackertracker2;

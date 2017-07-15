@@ -18,9 +18,12 @@ class HTUpdatesViewController: UIViewController {
     var data = NSMutableData()
     var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     
+    var footer = UIView()
+    
     @IBOutlet weak var logoCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     
+    let footerView = ContributorsFooterView()
     
     let standardLogoHeight = CGFloat(118.0)
     
@@ -36,10 +39,28 @@ class HTUpdatesViewController: UIViewController {
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 296, left: 0, bottom: 0, right: 0)
         
+        if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
+            updatesTableView.tableFooterView = footer
+            var frame = updatesTableView.tableFooterView?.frame
+            frame?.size.height = 360
+            updatesTableView.frame = frame ?? CGRect.zero
+            updatesTableView.tableFooterView = footer
+            self.footer = footer
+        }
+        
+
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.messages = (try! context.fetch(fr)) as! [Message]
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.footer.frame.size.height = 360
+        updatesTableView.tableFooterView = self.footer
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
