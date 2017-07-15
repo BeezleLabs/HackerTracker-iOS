@@ -90,15 +90,12 @@ class HTInitViewController: UIViewController {
 
     }
     
-    func timerComplete()
-    {
+    func timerComplete() {
         timerUp = true
         go()
-
     }
 
     func playAnimation() {
-
         let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!) { (image) in
             self.splashView.image = image
         }
@@ -107,8 +104,7 @@ class HTInitViewController: UIViewController {
     }
 
     func go() {
-        if importComplete && timerUp
-        {
+        if importComplete && timerUp {
             self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
         }
     }
