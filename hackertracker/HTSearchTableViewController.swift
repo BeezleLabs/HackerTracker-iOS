@@ -153,14 +153,23 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
-            let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
-            if let indexPath = sender as? IndexPath {
-                if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
-                    dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
-                } else {
-                    dv.event = self.events.object(at: indexPath.row) as? Event
-                }
+
+            let dv : HTEventDetailViewController
+
+            if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
+                dv = _dv
+            } else {
+                dv = segue.destination as! HTEventDetailViewController
             }
+
+            var indexPath: IndexPath
+            if let ec = sender as? EventCell {
+                indexPath = tableView.indexPath(for: ec)! as IndexPath
+            } else {
+                indexPath = sender as! IndexPath
+            }
+
+            dv.event = self.events.object(at: indexPath.row) as? Event
         }
     }
 }
