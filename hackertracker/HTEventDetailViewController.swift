@@ -171,6 +171,12 @@ class HTEventDetailViewController: UIViewController {
             print("HTEventDetailViewController: Event is nil")
             return
         }
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if let error = error {
+                print("Request authorization error: \(error.localizedDescription)")
+            }
+        }
         
         if (event.starred) {
             event.starred = false
