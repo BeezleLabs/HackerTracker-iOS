@@ -62,7 +62,7 @@ class HTEventsScrollingTabController: ScrollingTabController {
 
         tabView.selectionIndicator.tintColor = UIColor.white.withAlphaComponent(0.75)
         
-         tabTheme = CellTheme(font: UIFont(name: "Furore", size: 12)!, defaultColor: UIColor.white.withAlphaComponent(0.75), selectedColor: UIColor.white)
+        tabTheme = CellTheme(font: UIFont(name: "Furore", size: 12)!, defaultColor: UIColor.white.withAlphaComponent(0.75), selectedColor: UIColor.white)
         
         self.viewControllers = eventControllers
         
