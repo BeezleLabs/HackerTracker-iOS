@@ -150,8 +150,45 @@ class HTEventDetailViewController: UIViewController {
             eventNameLabel.isUserInteractionEnabled = true
             eventNameLabel.addGestureRecognizer(touchSpeaker)
         }
-        
+
         eventNameLabel.attributedText = speakerList
+        
+        eventLocationLabel.text = event.location
+        
+        if (event.location.isEmpty) {
+            eventLocationLabel.isHidden = true
+            locationMapView.isHidden = true
+        }
+        
+        eventDetailTextView.text = event.details
+        
+        if (event.starred) {
+            eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
+        } else {
+            eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
+        }
+
+        toolImage.isHidden = !event.isTool()
+        demoImage.isHidden = !event.isDemo()
+        exploitImage.isHidden = !event.isExploit()
+
+        eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden
+        
+        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as Date)
+        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
+
+        eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
+        
+        locationMapView.currentLocation = Location.valueFromString(event.location)
+        
+        let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
+        touchGesture.minimumPressDuration = 0.1
+        locationMapView.addGestureRecognizer(touchGesture)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
     func expand() {
@@ -170,6 +207,12 @@ class HTEventDetailViewController: UIViewController {
         guard let event = event else {
             print("HTEventDetailViewController: Event is nil")
             return
+        }
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if let error = error {
+                print("Request authorization error: \(error.localizedDescription)")
+            }
         }
         
         if (event.starred) {
@@ -249,7 +292,6 @@ class HTEventDetailViewController: UIViewController {
                 NSLog("Error: \(error)")
             }
         }
-
     }
     
     func saveContext() {
