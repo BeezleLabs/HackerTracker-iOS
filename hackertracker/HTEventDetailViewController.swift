@@ -182,7 +182,8 @@ class HTEventDetailViewController: UIViewController {
         locationMapView.currentLocation = Location.valueFromString(event.location)
         
         let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
-        touchGesture.minimumPressDuration = 0.1
+        touchGesture.minimumPressDuration = 0.0
+        touchGesture.cancelsTouchesInView = false
         locationMapView.addGestureRecognizer(touchGesture)
     }
     
