@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BaseScheduleTableViewController: UITableViewController {
+class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate {
     
     typealias EventSection = (date: String, events: [Event])
     
@@ -46,7 +46,7 @@ class BaseScheduleTableViewController: UITableViewController {
         
     }
     
-    fileprivate func reloadEvents() {
+    func reloadEvents() {
         eventSections.removeAll()
 
         for day in days {
@@ -173,14 +173,24 @@ class BaseScheduleTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
-            let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
+
+            let dv : HTEventDetailViewController
+
+            if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
+                dv = _dv
+            } else {
+                dv = segue.destination as! HTEventDetailViewController
+            }
+
             var indexPath: IndexPath
             if let ec = sender as? EventCell {
                 indexPath = tableView.indexPath(for: ec)! as IndexPath
             } else {
                 indexPath = sender as! IndexPath
             }
+
             dv.event = self.eventSections[indexPath.section].events[indexPath.row]
+            dv.delegate = self
         }
     }
     

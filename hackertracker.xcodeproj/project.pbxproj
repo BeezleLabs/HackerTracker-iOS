@@ -61,6 +61,8 @@
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
+		B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */; };
+		B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */; };
 		B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9F7521F17307800EDC6FE /* Animation.swift */; };
 		E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */; };
 /* End PBXBuildFile section */
@@ -160,6 +162,8 @@
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 		B2E8240619E30EF7A3D6816A /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
+		B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEmptyDetailViewController.swift; sourceTree = "<group>"; };
+		B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSplitViewController.swift; sourceTree = "<group>"; };
 		B5A9F7521F17307800EDC6FE /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		ED397C5AF8CCBCF2CEDCFB65 /* Pods-hackertrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackertrackerTests/Pods-hackertrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,6 +217,7 @@
 		498AD73E1E2D2BC900DD5B56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */,
 				5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */,
 				786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */,
 				5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */,
@@ -223,6 +228,7 @@
 				5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */,
 				7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */,
 				5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */,
+				B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */,
 				83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */,
 			);
 			name = ViewControllers;
@@ -590,6 +596,7 @@
 				5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */,
 				834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */,
 				7896EB2D1F1428F4000D04C4 /* EventSpeaker.swift in Sources */,
+				B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */,
 				5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
 				5DDD506F1B28D60D001AE8E1 /* SwiftyJSON.swift in Sources */,
@@ -603,6 +610,7 @@
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
+				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
 				8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */,
 				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,
 				8345F2ED1F15D38D006761BE /* Event.swift in Sources */,

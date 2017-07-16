@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
+class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, EventDetailDelegate {
     
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
@@ -21,23 +21,25 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
          tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         eventSearchBar.placeholder = "Search Events"
+        eventSearchBar.delegate = self
+        self.title = "SEARCH"
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadEvents()
+    }
+
+    func reloadEvents() {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        
+
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.events = try! context.fetch(fr) as NSArray
-        
+
         self.tableView.reloadData()
-        eventSearchBar.delegate = self
-        self.title = "SEARCH"
-        
     }
     
     // MARK: - Table view data source
@@ -92,7 +94,6 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         filterEvents(searchText!)
         
         self.tableView.reloadData()
-        
     }
     
     func filterEvents(_ searchText: String) {
@@ -153,14 +154,24 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
-            let dv : HTEventDetailViewController = segue.destination as! HTEventDetailViewController
-            if let indexPath = sender as? IndexPath {
-                if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
-                    dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
-                } else {
-                    dv.event = self.events.object(at: indexPath.row) as? Event
-                }
+
+            let dv : HTEventDetailViewController
+
+            if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
+                dv = _dv
+            } else {
+                dv = segue.destination as! HTEventDetailViewController
             }
+
+            var indexPath: IndexPath
+            if let ec = sender as? EventCell {
+                indexPath = tableView.indexPath(for: ec)! as IndexPath
+            } else {
+                indexPath = sender as! IndexPath
+            }
+
+            dv.event = self.events.object(at: indexPath.row) as? Event
+            dv.delegate = self
         }
     }
 }

@@ -96,7 +96,7 @@ class HTUpdatesViewController: UIViewController {
         
         scrollViewDidScroll(self.updatesTableView)
     }
-    
+
 }
 
 extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
