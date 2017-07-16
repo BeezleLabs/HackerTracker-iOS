@@ -201,12 +201,7 @@ class HTEventDetailViewController: UIViewController {
         touchGesture.cancelsTouchesInView = false
         locationMapView.addGestureRecognizer(touchGesture)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-    }
-    
+
     func expand() {
         if self.eventNameLabel.attributedText == speakerList {
             self.eventNameLabel.attributedText = speakerBios
