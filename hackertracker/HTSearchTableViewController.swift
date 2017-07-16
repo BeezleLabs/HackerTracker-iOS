@@ -21,18 +21,13 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         super.viewDidLoad()
          tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         eventSearchBar.placeholder = "Search Events"
+        eventSearchBar.delegate = self
+        self.title = "SEARCH"
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadEvents()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        eventSearchBar.delegate = self
-        self.title = "SEARCH"
     }
 
     func reloadEvents() {
