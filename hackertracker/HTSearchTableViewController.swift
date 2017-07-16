@@ -170,7 +170,11 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                 indexPath = sender as! IndexPath
             }
 
-            dv.event = self.events.object(at: indexPath.row) as? Event
+            if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
+                dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
+            } else {
+                dv.event = self.events.object(at: indexPath.row) as? Event
+            }
             dv.delegate = self
         }
     }
