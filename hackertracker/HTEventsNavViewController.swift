@@ -10,7 +10,7 @@ import UIKit
 import CoreGraphics
 
 extension UIImage {
-    static func mainHeaderImage(scaledToWidth:CGFloat, visibleSize : CGSize? = nil) -> UIImage {
+    static func mainHeaderImage(scaledToWidth:CGFloat, visibleRect : CGRect? = nil) -> UIImage {
         let image = #imageLiteral(resourceName: "dc-25-wallpaper-blurred")
         
         var  transformScale : CGFloat = 1.0
@@ -19,12 +19,12 @@ extension UIImage {
     
         let size = image.size.applying(CGAffineTransform(scaleX: transformScale, y: transformScale))
         
-        var cropSize = visibleSize ?? size
+        var cropRect = visibleRect ?? CGRect(x: 0, y: 0, width: size.width, height: size.height)
         
-        cropSize.height = min(visibleSize?.height ?? CGFloat.infinity, size.height)
+        cropRect.size.height = min(visibleRect?.size.height ?? CGFloat.infinity, size.height)
         
-        UIGraphicsBeginImageContextWithOptions(cropSize, true, 0.0)
-        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        UIGraphicsBeginImageContextWithOptions(cropRect.size, true, 0.0)
+        image.draw(in: CGRect(origin: CGPoint(x:-cropRect.origin.x, y:-cropRect.origin.y), size: size))
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -51,10 +51,17 @@ class HTEventsNavViewController: UINavigationController {
         }, completion: nil)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let windowSize = UIApplication.shared.keyWindow?.frame.size {
+            setNavBarImage(screenSize: windowSize)
+        }
+    }
 
     func setNavBarImage(screenSize : CGSize)
     {
-        let image = UIImage.mainHeaderImage(scaledToWidth: screenSize.width, visibleSize:  CGSize(width:screenSize.width, height: 64))
+        let image = UIImage.mainHeaderImage(scaledToWidth: screenSize.width, visibleRect: CGRect(x:self.view.frame.origin.x, y:self.view.frame.origin.y, width:self.view.frame.size.width, height: 64))
         self.navigationBar.setBackgroundImage(image, for: .default)
     }
 }

@@ -41,7 +41,7 @@ class HTUpdatesViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
-        backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleSize: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40))
+        backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleRect:CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40)))
         
         updatesTableView.delegate = self
         updatesTableView.dataSource = self
@@ -69,7 +69,8 @@ class HTUpdatesViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         
         coordinator.animate(alongsideTransition: { (context) in
-            self.backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleSize: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40))
+            self.backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleRect:CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40)))
+
             self.backgroundImage.sizeToFit()
             let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
             self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)
