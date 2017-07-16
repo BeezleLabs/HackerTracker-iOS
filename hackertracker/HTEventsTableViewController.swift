@@ -27,7 +27,6 @@ struct eventType {
 class HTEventsScrollingTabController: ScrollingTabController {
     
     var eventTypes: [eventType] = [
-        // "entry_type != 'Official' AND entry_type != 'Contest' AND entry_type != 'Event' AND entry_type != 'Party' AND entry_type != 'Workshop' AND entry_type != 'Kids' AND entry_type != 'Villages' AND entry_type != 'Skytalks'
         eventType(n: "TALKS", i: "speaker", d: "Official", c: 0),
         eventType(n: "CONTESTS", i: "contest", d: "Contest", c: 0),
         eventType(n: "EVENTS", i: "calendar-active", d: "Event", c: 0),
