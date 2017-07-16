@@ -17,37 +17,31 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     var dayMapView : ReaderContentView?
     var nightMapView : ReaderContentView?
 
-    private var zoomScale : CGFloat?
-    private var contentOffset : CGPoint?
+    var roomDimensions : CGRect?
 
     var mapLocation : Location = .unknown {
         didSet {
             switch mapLocation {
             case .track_101, .track1_101:
-                zoomScale = 3.02224430930721
-                contentOffset = CGPoint(x:2549.66666666667, y:2324.33333333333)
+                roomDimensions = CGRect(x: 853, y: 767, width: 116, height: 222)
+                break
             case .track2, .track2_101:
-                zoomScale = 2.71027146283724
-                contentOffset = CGPoint(x:2120.33333333333, y:664.333333333333)
+                roomDimensions = CGRect(x: 787, y: 255, width: 135, height: 235)
+                break
             case .track3:
-                zoomScale = 3.25491527203501
-                contentOffset = CGPoint(x:681.666666666667, y:1070.66666666667)
+                roomDimensions = CGRect(x: 212, y: 332, width: 112, height: 187)
                 break
             case .track4:
-                zoomScale = 3.25491527203501
-                contentOffset = CGPoint(x:984.0, y:1058.66666666667)
+                roomDimensions = CGRect(x: 315, y: 332, width: 90, height: 187)
                 break
             case .capri:
-                zoomScale = 5.54773869346734
-                contentOffset = CGPoint(x:2592.66666666667, y:5041.66666666667)
+                roomDimensions = CGRect(x: 483, y: 947, width: 38, height: 49)
                 break
             case .modena:
-                zoomScale = 5.54773869346734
-                contentOffset = CGPoint(x:2840.66666666667, y:3623.0)
+                roomDimensions = CGRect(x: 530, y: 688, width: 38, height: 36)
                 break
             case .trevi:
-                zoomScale = 5.54773869346734
-                contentOffset = CGPoint(x:2871.66666666667, y:3158.0)
+                roomDimensions = CGRect(x: 532, y: 604, width: 44, height: 35)
                 break
             case .unknown:
                 break
@@ -86,6 +80,8 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         nightMapView?.mapScrollViewDelegate = self
         nightMapView?.backgroundColor = UIColor.backgroundGray
         nightMapView?.isHidden = true
+        dayMapView?.maximumZoomScale = 8
+        nightMapView?.maximumZoomScale = 8
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,11 +93,39 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             doneButton.tintColor = .white
             navigationItem.rightBarButtonItem = doneButton
         }
-        
-        if let zoomScale = zoomScale, let contentOffset = contentOffset {
-            dayMapView?.zoomScale = zoomScale
-            dayMapView?.contentOffset = contentOffset
+
+        guard let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0  else {
+            return
         }
+        
+        let size = self.view.frame.size
+        
+        if roomDimensions.width == 0, roomDimensions.height == 0 {
+            return
+        }
+        
+        let widthScale = size.width/roomDimensions.width
+        let heightScale = size.height/roomDimensions.height
+        
+        let maxZoom : CGFloat = dayMapView?.maximumZoomScale ?? 4
+        
+        let scale : CGFloat
+        
+        if widthScale * roomDimensions.height < size.height
+        {
+            scale = min(maxZoom, widthScale)
+        } else {
+            scale = min(maxZoom, heightScale)
+        }
+        
+        dayMapView?.zoomScale = scale
+        
+        let roomCorner = CGPoint(x: roomDimensions.origin.x * scale, y: roomDimensions.origin.y * scale)
+        let roomSize = CGSize(width: roomDimensions.size.width * scale, height: roomDimensions.size.height * scale)
+
+        let roomCenter = CGPoint(x: roomCorner.x + (roomSize.width / 2), y: roomCorner.y + (roomSize.height / 2))
+        
+        dayMapView?.contentOffset = CGPoint(x: roomCenter.x - (size.width/2), y: roomCenter.y - (size.height/2))
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

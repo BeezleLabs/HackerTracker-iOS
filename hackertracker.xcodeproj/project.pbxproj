@@ -18,7 +18,6 @@
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */; };
-		5DD0D9161D467D6500747807 /* dc-24-fp-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD0D9151D467D6500747807 /* dc-24-fp-final.png */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642601AC3C62300ED3256 /* hackertracker.xcdatamodeld */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
@@ -104,7 +103,6 @@
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsTableViewController.swift; sourceTree = "<group>"; };
-		5DD0D9151D467D6500747807 /* dc-24-fp-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dc-24-fp-final.png"; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD6425D1AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 				7820245C1F05B7CE0092ED07 /* cert.der */,
 				8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */,
 				8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */,
-				5DD0D9151D467D6500747807 /* dc-24-fp-final.png */,
 				5D00AA2B1B0C3BE600916EAC /* schedule-full.json */,
 				5DD6425D1AC3C62300ED3256 /* Info.plist */,
 				5DFB87BE1B30BBF10083604C /* Connections.plist */,
@@ -470,7 +467,6 @@
 				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
 				83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */,
 				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
-				5DD0D9161D467D6500747807 /* dc-24-fp-final.png in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
