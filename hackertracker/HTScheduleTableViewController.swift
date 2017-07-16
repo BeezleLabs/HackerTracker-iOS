@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BaseScheduleTableViewController: UITableViewController {
+class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate {
     
     typealias EventSection = (date: String, events: [Event])
     
@@ -46,7 +46,7 @@ class BaseScheduleTableViewController: UITableViewController {
         
     }
     
-    fileprivate func reloadEvents() {
+    func reloadEvents() {
         eventSections.removeAll()
 
         for day in days {
@@ -188,7 +188,9 @@ class BaseScheduleTableViewController: UITableViewController {
             } else {
                 indexPath = sender as! IndexPath
             }
+
             dv.event = self.eventSections[indexPath.section].events[indexPath.row]
+            dv.delegate = self
         }
     }
     

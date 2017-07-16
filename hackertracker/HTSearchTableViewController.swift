@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
+class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, EventDetailDelegate {
     
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
@@ -22,22 +22,29 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
          tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         eventSearchBar.placeholder = "Search Events"
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadEvents()
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
+        eventSearchBar.delegate = self
+        self.title = "SEARCH"
+    }
+
+    func reloadEvents() {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        
+
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.events = try! context.fetch(fr) as NSArray
-        
+
         self.tableView.reloadData()
-        eventSearchBar.delegate = self
-        self.title = "SEARCH"
-        
     }
     
     // MARK: - Table view data source
@@ -92,7 +99,6 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
         filterEvents(searchText!)
         
         self.tableView.reloadData()
-        
     }
     
     func filterEvents(_ searchText: String) {
@@ -170,6 +176,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate {
             }
 
             dv.event = self.events.object(at: indexPath.row) as? Event
+            dv.delegate = self
         }
     }
 }

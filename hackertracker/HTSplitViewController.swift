@@ -15,6 +15,7 @@ class HTSplitViewController: UISplitViewController, UISplitViewControllerDelegat
 
         self.extendedLayoutIncludesOpaqueBars = true
         self.delegate = self
+        self.preferredDisplayMode = .allVisible
     }
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
@@ -37,5 +38,5 @@ class HTSplitViewController: UISplitViewController, UISplitViewControllerDelegat
         }
         
     }
-    
+
 }

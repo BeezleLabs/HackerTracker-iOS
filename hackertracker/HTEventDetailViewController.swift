@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 import UserNotifications
 
+protocol EventDetailDelegate {
+    func reloadEvents()
+}
+
 class HTEventDetailViewController: UIViewController {
 
     @IBOutlet weak var eventTitleLabel: UILabel!
@@ -29,7 +33,8 @@ class HTEventDetailViewController: UIViewController {
     
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
-    
+
+    var delegate: EventDetailDelegate?
     var event: Event?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
@@ -60,8 +65,7 @@ class HTEventDetailViewController: UIViewController {
         } else {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         }
-        
-        
+
         toolImage.isHidden = !event.isTool()
         demoImage.isHidden = !event.isDemo()
         exploitImage.isHidden = !event.isExploit()
@@ -83,7 +87,6 @@ class HTEventDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-        
     }
     
     func setupSpeakers(event : Event) {
@@ -249,6 +252,10 @@ class HTEventDetailViewController: UIViewController {
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                     self.saveContext()
                     self.scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
+                    
+                    if let delegate = self.delegate {
+                        delegate.reloadEvents()
+                    }
                 })
                 
                 let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
@@ -269,10 +276,14 @@ class HTEventDetailViewController: UIViewController {
                 saveContext()
                 scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
             }
-            
+
+        }
+
+        if let delegate = delegate {
+            delegate.reloadEvents()
         }
     }
-    
+
     func scheduleNotification(at date: Date,_ event:Event) {
         let calendar = Calendar(identifier: .gregorian)
         let components = calendar.dateComponents(in: .current, from: date)
