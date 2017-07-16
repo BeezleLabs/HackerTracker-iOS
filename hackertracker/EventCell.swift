@@ -60,7 +60,6 @@ public class EventCell : UITableViewCell {
                     color.backgroundColor = UIColor.white
                     break
             }
-            //color.backgroundColor = UIColor.deepPurple
         } else {
             color.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         }
