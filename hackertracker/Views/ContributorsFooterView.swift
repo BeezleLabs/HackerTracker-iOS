@@ -54,7 +54,6 @@ class ContributorsFooterView: UIView {
     
     @IBAction func chrisLinkPressed(_ sender: Any) {
         footerDelegate?.linkTapped(link: .chrismays94)
-
     }
     
     @IBAction func benLinkPressed(_ sender: Any) {
