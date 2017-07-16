@@ -30,13 +30,7 @@ class HTSplitViewController: UISplitViewController, UISplitViewControllerDelegat
             return true
         }
 
-        if eventDetailController.event == nil {
-            // There is no event in this HTEventDetailViewController, so collapse the empty detail view controller.
-            return true
-        } else {
-            return false
-        }
-        
+        return eventDetailController.event == nil        
     }
 
 }
