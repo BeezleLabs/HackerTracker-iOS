@@ -120,7 +120,6 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         let minHeight = standardLogoHeight - 40
         let percentage = min(1.0 + (scrollView.contentOffset.y / scrollView.contentInset.top), 1.0)
         self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
-     //   self.logoCenterYConstraint.constant = -((self.backgroundImage.frame.height / 2) - 38) * percentage
         
         //Only make the easter egg visible on top overscroll
         skullBackground.isHidden = scrollView.contentOffset.y > 0
