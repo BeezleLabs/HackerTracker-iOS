@@ -32,7 +32,34 @@ public class EventCell : UITableViewCell {
         title.text = event.title
 
         if (event.starred) {
-            color.backgroundColor = UIColor.deepPurple
+            switch(event.entry_type) {
+                case "Official":
+                    color.backgroundColor = UIColor.deepPurple
+                    break
+                case "Contest":
+                    color.backgroundColor = UIColor.blue
+                    break
+                case "Event":
+                    color.backgroundColor = UIColor.red
+                    break
+                case "Party":
+                    color.backgroundColor = UIColor.cyan
+                    break
+                case "Kids":
+                    color.backgroundColor = UIColor.green
+                    break
+                case "Skytalks":
+                    color.backgroundColor = UIColor.orange
+                    break
+                case "Villages":
+                    color.backgroundColor = UIColor.yellow
+                    break
+                case "Workshop":
+                    color.backgroundColor = UIColor.purple
+                default:
+                    color.backgroundColor = UIColor.white
+                    break
+            }
         } else {
             color.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         }

@@ -346,9 +346,14 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
-
+        
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
+        if eType.dbName.contains("Other") {
+            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Contest' AND entry_type != 'Event' AND entry_type != 'Party' AND entry_type != 'Workshop' AND entry_type != 'Kids' AND entry_type != 'Villages' AND entry_type != 'Skytalks' AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
+        } else {
+            fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
+        }
+        
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
