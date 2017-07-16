@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ScheduleEmptyStateView" customModule="hackertracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="164"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It appears you don't have any events scheduled. Save some events and come back." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqM-0k-vBg">
+                    <rect key="frame" x="20" y="16" width="341" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar-active" translatesAutoresizingMaskIntoConstraints="NO" id="2qS-YA-vRW">
+                    <rect key="frame" x="170" y="87" width="40" height="40"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <constraints>
+                <constraint firstItem="cqM-0k-vBg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="JWt-z1-eYP"/>
+                <constraint firstAttribute="trailing" secondItem="cqM-0k-vBg" secondAttribute="trailing" constant="20" id="UOp-8I-2xQ"/>
+                <constraint firstItem="cqM-0k-vBg" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-5" id="bzP-6R-X1l"/>
+                <constraint firstItem="2qS-YA-vRW" firstAttribute="centerX" secondItem="cqM-0k-vBg" secondAttribute="centerX" id="kOA-Ja-OWe"/>
+                <constraint firstItem="2qS-YA-vRW" firstAttribute="top" secondItem="cqM-0k-vBg" secondAttribute="bottom" constant="10" id="z9S-OV-FJ7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="descriptionIcon" destination="2qS-YA-vRW" id="GT1-8g-gbX"/>
+                <outlet property="descriptionLabel" destination="cqM-0k-vBg" id="dn7-cW-dxk"/>
+            </connections>
+            <point key="canvasLocation" x="-10" y="-176"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendar-active" width="40" height="40"/>
+    </resources>
+</document>

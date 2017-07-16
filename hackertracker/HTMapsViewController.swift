@@ -10,109 +10,139 @@ import UIKit
 
 class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var dayView: UIWebView!
+    @IBOutlet weak var nightView: UIWebView!
+    @IBOutlet weak var dayTimeSwitch: UISegmentedControl!
     
-    var imageView: UIImageView!
+    var dayMapView : ReaderContentView?
+    var nightMapView : ReaderContentView?
+
+    var roomDimensions : CGRect?
+
+    var mapLocation : Location = .unknown {
+        didSet {
+            switch mapLocation {
+            case .track_101, .track1_101:
+                roomDimensions = CGRect(x: 853, y: 767, width: 116, height: 222)
+                break
+            case .track2, .track2_101:
+                roomDimensions = CGRect(x: 787, y: 255, width: 135, height: 235)
+                break
+            case .track3:
+                roomDimensions = CGRect(x: 212, y: 332, width: 112, height: 187)
+                break
+            case .track4:
+                roomDimensions = CGRect(x: 315, y: 332, width: 90, height: 187)
+                break
+            case .capri:
+                roomDimensions = CGRect(x: 483, y: 947, width: 38, height: 49)
+                break
+            case .modena:
+                roomDimensions = CGRect(x: 530, y: 688, width: 38, height: 36)
+                break
+            case .trevi:
+                roomDimensions = CGRect(x: 532, y: 604, width: 44, height: 35)
+                break
+            case .unknown:
+                break
+            }
+        }
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    func configure(contentOffset : CGPoint, zoom : CGFloat, timeOfDay : TimeOfDay)
+    {
+        dayTimeSwitch.selectedSegmentIndex = timeOfDay == .day  ? 0 : 1
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let image:UIImage
-        
-        let path = Bundle.main.path(forResource: "dc-24-fp-final", ofType: "png")
-        if (path != nil) {
-            image = UIImage(contentsOfFile: path!)!
-            imageView = UIImageView(image: image)
-            imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size:image.size)
-            scrollview.addSubview(imageView)
-            
-            scrollview.contentSize = image.size
-        }
-        //let image = UIImage(named: "map-hotel.png")!
-        /*imageView = UIImageView(image: image)
-        imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size:image.size)
-        scrollview.addSubview(imageView)
-        
-        scrollview.contentSize = image.size*/
-        
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(HTMapsViewController.scrollViewDoubleTapped(_:)))
-        doubleTapRecognizer.numberOfTapsRequired = 2
-        doubleTapRecognizer.numberOfTouchesRequired = 1
-        scrollview.addGestureRecognizer(doubleTapRecognizer)
-        
-        let scrollViewFrame = scrollview.frame
-        let scaleWidth = scrollViewFrame.size.width / scrollview.contentSize.width
-        let scaleHeight = scrollViewFrame.size.height / scrollview.contentSize.height
-        let minScale = min(scaleWidth, scaleHeight);
-        scrollview.minimumZoomScale = minScale;
-        
-        scrollview.maximumZoomScale = 1.0
-        scrollview.zoomScale = minScale;
-        
-        centerScrollViewContents()
-        
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        automaticallyAdjustsScrollViewInsets = false
+        
+        let dayFile = Bundle.main.url(forResource: "dc-25-floorplan-v7.5-public", withExtension: "pdf")
+        let nightFile = Bundle.main.url(forResource: "dc-25-floorplan-night", withExtension: "pdf")
+
+        dayMapView = ReaderContentView(frame: self.view.frame, fileURL: dayFile!, page: 0, password: "")
+        view.addSubview(dayMapView!)
+        
+        dayMapView?.mapScrollViewDelegate = self
+        dayMapView?.backgroundColor = UIColor.backgroundGray
+
+        nightMapView = ReaderContentView(frame: self.view.frame, fileURL: nightFile!, page: 0, password: "")
+        view.addSubview(nightMapView!)
+        
+        nightMapView?.mapScrollViewDelegate = self
+        nightMapView?.backgroundColor = UIColor.backgroundGray
+        nightMapView?.isHidden = true
+        dayMapView?.maximumZoomScale = 8
+        nightMapView?.maximumZoomScale = 8
     }
     
-    func centerScrollViewContents() {
-        let boundsSize = scrollview.bounds.size
-        var contentsFrame = imageView.frame
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if contentsFrame.size.width < boundsSize.width {
-            contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0
+        if self.tabBarController == nil
+        {
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+            doneButton.tintColor = .white
+            navigationItem.rightBarButtonItem = doneButton
+        }
+
+        guard let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0  else {
+            return
+        }
+        
+        let size = self.view.frame.size
+        
+        if roomDimensions.width == 0, roomDimensions.height == 0 {
+            return
+        }
+        
+        let widthScale = size.width/roomDimensions.width
+        let heightScale = size.height/roomDimensions.height
+        
+        let maxZoom : CGFloat = dayMapView?.maximumZoomScale ?? 4
+        
+        let scale : CGFloat
+        
+        if widthScale * roomDimensions.height < size.height
+        {
+            scale = min(maxZoom, widthScale)
         } else {
-            contentsFrame.origin.x = 0.0
+            scale = min(maxZoom, heightScale)
         }
         
-        if contentsFrame.size.height < boundsSize.height {
-            contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0
-        } else {
-            contentsFrame.origin.y = 0.0
-        }
+        dayMapView?.zoomScale = scale
         
-        imageView.frame = contentsFrame
-    }
-    
-    func scrollViewDoubleTapped(_ recognizer: UITapGestureRecognizer) {
-        let pointInView = recognizer.location(in: imageView)
-        
-        var newZoomScale = scrollview.zoomScale * 1.5
-        newZoomScale = min(newZoomScale, scrollview.maximumZoomScale)
-        
-        let scrollViewSize = scrollview.bounds.size
-        let w = scrollViewSize.width / newZoomScale
-        let h = scrollViewSize.height / newZoomScale
-        let x = pointInView.x - (w / 2.0)
-        let y = pointInView.y - (h / 2.0)
-        
-        let rectToZoomTo = CGRect(x: x, y: y, width: w, height: h);
-        
-        scrollview.zoom(to: rectToZoomTo, animated: true)
-    }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        centerScrollViewContents()
-    }
-    
-    
-    
+        let roomCorner = CGPoint(x: roomDimensions.origin.x * scale, y: roomDimensions.origin.y * scale)
+        let roomSize = CGSize(width: roomDimensions.size.width * scale, height: roomDimensions.size.height * scale)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let roomCenter = CGPoint(x: roomCorner.x + (roomSize.width / 2), y: roomCorner.y + (roomSize.height / 2))
+        
+        dayMapView?.contentOffset = CGPoint(x: roomCenter.x - (size.width/2), y: roomCenter.y - (size.height/2))
     }
-    */
-
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+      
+        let setterView = scrollView == dayMapView ? nightMapView : dayMapView
+        let getterView = scrollView
+        
+        setterView?.zoomScale = getterView.zoomScale
+        setterView?.contentOffset = getterView.contentOffset
+    }
+    
+    @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
+        dayMapView?.isHidden = sender.selectedSegmentIndex != 0
+        nightMapView?.isHidden = sender.selectedSegmentIndex != 1
+    }
+    
+    func doneButtonPressed() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

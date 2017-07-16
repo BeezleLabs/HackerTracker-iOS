@@ -8,333 +8,157 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 class HTUpdatesViewController: UIViewController {
-
-    @IBOutlet weak var updatesTextView: UITextView!
     
+    @IBOutlet weak var updatesTableView: UITableView!
+    
+    @IBOutlet weak var headerImageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundImage: UIImageView!
     var messages: [Message] = []
     var data = NSMutableData()
     var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     
+    var footer = UIView()
+    
+
+    @IBOutlet weak var logoCenterToTopMargin: NSLayoutConstraint!
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var leadingImageConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var trailingImageConstraint: NSLayoutConstraint!
+    @IBOutlet weak var skullBackground: UIImageView!
+    
+    let footerView = ContributorsFooterView()
+    
+    let standardLogoHeight = CGFloat(118.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isTranslucent = false
-
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
+        updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
+        backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleRect:CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40)))
+        
+        updatesTableView.delegate = self
+        updatesTableView.dataSource = self
+        updatesTableView.backgroundColor = UIColor.clear
+        updatesTableView.contentInset = UIEdgeInsets(top: view.frame.size.height * 0.4, left: 0, bottom: 0, right: 0)
+       
+        if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
+            updatesTableView.tableFooterView = footer
+            var frame = updatesTableView.tableFooterView?.frame
+            frame?.size.height = 360
+            updatesTableView.frame = frame ?? CGRect.zero
+            updatesTableView.tableFooterView = footer
+            footer.footerDelegate = self
+            self.footer = footer
+        }
+        
+
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.messages = (try! context.fetch(fr)) as! [Message]
-        
-        let df = DateFormatter()
-        df.timeZone = TimeZone(abbreviation: "PDT")
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        var fullText: String = ""
-        for message in messages {
-            fullText = "\(fullText)\(df.string(from: message.date as Date))\n\(message.msg)\n\n"
-        }
-        
-        updatesTextView.font = UIFont(name: "Courier New", size: 14.0)
-        updatesTextView.text = fullText
-        updatesTextView.textColor = UIColor.white
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.updatesTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { (context) in
+            self.backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleRect:CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40)))
+
+            self.backgroundImage.sizeToFit()
+            let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
+            self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)
+            self.scrollViewDidScroll(self.updatesTableView)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
-    func updateMessages() {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.footer.frame.size.height = 360
+        updatesTableView.tableFooterView = self.footer
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("\(self.updatesTableView.contentOffset)")
+        print("\(self.updatesTableView.contentInset)")
+        let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
+        self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)
+        print("\(self.updatesTableView.contentInset)")
+        print("\(self.updatesTableView.contentOffset)")
         
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
-        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-        self.messages = (try! context.fetch(fr)) as! [Message]
-        
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var fullText: String = ""
-        for message in messages {
-            //var fullDate = df.stringFromDate(message.date)
-            fullText = "\(fullText)\(df.string(from: message.date as Date))\n\(message.msg)\n\n"
-        }
-        
-        updatesTextView.text = fullText
-        updatesTextView.textColor = UIColor.white
-        
+        scrollViewDidScroll(self.updatesTableView)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func syncDatabase(_ sender: AnyObject) {
-        //NSLog("syncDatabase")
-        
-        let alert : UIAlertController = UIAlertController(title: "Connection Request", message: "Connect to defcon-api for updates?", preferredStyle: UIAlertControllerStyle.alert)
-        let yesItem : UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
-            (action:UIAlertAction) in
-            let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
-            let envs = NSDictionary(contentsOfFile: envPlist!)!
-            
-            self.syncAlert.view.tintColor = UIColor.black
-            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50)) as UIActivityIndicatorView
-            loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            loadingIndicator.startAnimating();
-            
-            self.syncAlert.view.addSubview(loadingIndicator)
-            self.present(self.syncAlert, animated: true, completion: nil)
-            
-            let tURL = envs.value(forKey: "URL") as! String
-            //NSLog("Connecting to \(tURL)")
-            let URL = Foundation.URL(string: tURL)
-            
-            let request = NSMutableURLRequest(url: URL!)
-            request.httpMethod = "GET"
-            
-            var queue = OperationQueue()
-            var con = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: true)
-        })
-        let noItem : UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {
-            (action:UIAlertAction) in
-            NSLog("No")
-        })
-        
-        alert.addAction(yesItem)
-        alert.addAction(noItem)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func connection(_ con: NSURLConnection!, didReceiveData _data:Data!) {
-        //NSLog("didReceiveData")
-        self.data.append(_data)
-    }
-    
-    func connectionDidFinishLoading(_ con: NSURLConnection!) {
-        //NSLog("connectionDidFinishLoading")
-        
-        let resStr = NSString(data: self.data as Data, encoding: String.Encoding.ascii.rawValue)
-        
-        //NSLog("response: \(resStr)")
+}
 
-        let dataFromString = resStr!.data(using: String.Encoding.utf8.rawValue)
+extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
         
-        self.dismiss(animated: false, completion: nil)
-        updateSchedule(dataFromString!)
+        cell.bind(message: messages[indexPath.row])
         
+        return cell
     }
     
-    func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
-        
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        df.locale = Locale(identifier: "en_US_POSIX")
-        
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        
-        self.dismiss(animated: false, completion: nil)
-        
-        let failedAlert : UIAlertController = UIAlertController(title: "Connection Failed", message: "Connection to defcon-api failed. Please attempt to sync data later.", preferredStyle: UIAlertControllerStyle.alert)
-        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {
-            (action:UIAlertAction) in
-                let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-                message2.date = Date()
-                let synctime = df.string(from: message2.date as Date)
-                message2.msg = "Update failed."
-                var err:NSError? = nil
-                do {
-                    try context.save()
-                } catch let error as NSError {
-                    err = error
-                } catch {
-                    fatalError()
-                }
-            
-                if err != nil {
-                    NSLog("%@",err!)
-                }
-                NSLog("Failed connection to defcon-api. Check network settings.")
-                self.updateMessages()
-            })
-        failedAlert.addAction(okItem)
-        self.present(failedAlert, animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
     }
     
-    func updateSchedule(_ data: Data) {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let minHeight = standardLogoHeight - 40
+        let percentage = min(1.0 + (scrollView.contentOffset.y / scrollView.contentInset.top), 1.0)
+        self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
         
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        
-        let json = JSON(data: data, options: JSONSerialization.ReadingOptions.mutableLeaves, error: nil)
-        //let json = JSON(data: data, options: NSJSONReadingOptions.All, error: nil)
-        
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        df.locale = Locale(identifier: "en_US_POSIX")
-        
-        let updateTime = json["updateTime"].string!
-        let updateDate = json["updateDate"].string!
-        NSLog("schedule updated at \(updateDate) \(updateTime)")
-        
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
-        let status = ((try! context.fetch(fr)) as NSArray)[0] as! Status
-        
-        let syncDate = df.date(from: "\(updateDate) \(updateTime)")! as Date
-        NSLog("syncDate: \(df.string(from: syncDate)), lastSync: \(df.string(from: status.lastsync))")
-        
-        var popUpMessage = ""
-        
-        if ( syncDate.compare(status.lastsync) == ComparisonResult.orderedDescending) {
-            
-            status.lastsync = syncDate
-            
-            let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-            message2.date = syncDate
-            let schedule = json["schedule"].array!
-            message2.msg = "Schedule updated with \(schedule.count) events."
-            
-            NSLog("Total events: \(schedule.count)")
-            
-            var mySched : [Event] = []
-            
-            df.dateFormat = "yyyy-MM-dd HH:mm z"
-            
-            for item in schedule {
-                let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-                fre.predicate = NSPredicate(format: "id = %@", argumentArray: [item["id"].stringValue])
-                var events = try! context.fetch(fre)
-                var te: Event
-                if events.count > 0 {
-                    te = events[0] as! Event
-                } else {
-                    te = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
-                    te.id = item["id"].int32Value
-                    te.starred = false
-                }
-                
-                te.who = item["who"].string!
-                var d = item["date"].string!
-                var b = item["begin"].string!
-                var e = item["end"].string!
-                if ( d == "" ) {
-                    d = "2016-08-04"
-                }
-                if ( b != "" ) {
-                    if ( b == "24:00") {
-                        b = "00:00"
-                        if ( d == "2016-08-04" ) {
-                            d = "2016-08-05"
-                        } else if ( d == "2016-08-05" ) {
-                            d = "2016-08-06"
-                        } else if ( d == "2016-08-06" ) {
-                            d = "2016-08-07"
-                        } else if ( d == "2016-08-07" ) {
-                            d = "2016-08-08"
-                        }
-                    }
-                    te.begin = df.date(from: "\(d) \(b) PDT")!
-                } else {
-                    te.begin = df.date(from: "\(d) 00:00 PDT")!
-                }
-                if ( e != "" ) {
-                    if ( e == "24:00") {
-                        e = "00:00"
-                        if ( d == "2016-08-04" ) {
-                            d = "2016-08-05"
-                        } else if ( d == "2016-08-05" ) {
-                            d = "2016-08-06"
-                        } else if ( d == "2016-08-06" ) {
-                            d = "2016-08-07"
-                        } else if ( d == "2016-08-07" ) {
-                            d = "2016-08-08"
-                        }
-                    }
-                    te.end = df.date(from: "\(d) \(e) PDT")!
-                } else {
-                    te.end = df.date(from: "\(d) 23:59 PDT")!
-                }
-                
-                if (item["location"] != "") {
-                    te.location = item["location"].string!
-                }
+        //Only make the easter egg visible on top overscroll
+        skullBackground.isHidden = scrollView.contentOffset.y > 0
+        logoCenterToTopMargin.constant =  ((updatesTableView.contentInset.top + 64) / 2.0) - ((((updatesTableView.contentInset.top + 64) / 2.0) - 37) * percentage)
+    }
+}
 
-                if (item["title"] != "") {
-                    te.title = item["title"].string!
-                }
-                if item["description"] != "" {
-                    te.details = item["description"].string!
-                }
-                //NSLog("\(te.id): \(te.title) \(item["link"])")
-                if ( item["link"] != nil) {
-                    te.link = item["link"].string!
-                }
+extension HTUpdatesViewController : ContributorsFooterDelegate {
+    func linkTapped(link: LinkType) {
+        var url : URL? = nil
+        switch link {
+        case .chrismays94:
+            url = URL(string: "https://twitter.com/chrismays94")!
+        case .imachumphries:
+            url = URL(string: "https://twitter.com/imachumphries")!
+        case .macerameg:
+            url = URL(string: "https://twitter.com/macerameg")!
+            break
+        case .sethlaw:
+            url = URL(string: "https://twitter.com/sethlaw")!
+            break
+        case .willowtree:
+            let bundleIdentifier = "org.beezle.hackertracker"
+            let platform = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone ? "iphone" : "ipad"
+            let urlPath = "http://www.willowtreeapps.com/?utm_source=\(bundleIdentifier)&utm_medium=\(platform)&utm_campaign=attribution"
             
-                if (item["type"] != "") {
-                    te.type = item["type"].string!
-                }
-                
-                if (item["demo"] != "") {
-                    te.demo = item["demo"].boolValue
-                }
-                
-                if (item["tool"] != "") {
-                    te.tool = item["tool"].boolValue
-                }
-                
-                if (item["exploit"] != "" ) {
-                    te.exploit = item["exploit"].boolValue
-                }
-                mySched.append(te)
-            }
+            if let unwrappedUrl = URL(string: urlPath) {
+                url = unwrappedUrl
 
-            
-            var err:NSError? = nil
-            do {
-                try context.save()
-            } catch let error as NSError {
-                err = error
             }
             
-            if err != nil {
-                NSLog("%@",err!)
-            }
-            
-            self.updateMessages()
-
-            NSLog("Schedule Updated")
-            popUpMessage = "Schedule updated"
-        } else {
-            NSLog("Schedule is up to date")
-            popUpMessage = "Schedule is up to date"
+            break
+        }
+        
+        if let url = url {
+            let safariVC = SFSafariViewController(url: url)
+            self.present(safariVC, animated: true, completion: nil)
         }
 
-        let updatedAlert : UIAlertController = UIAlertController(title: nil, message: popUpMessage, preferredStyle: UIAlertControllerStyle.alert)
-        let okItem : UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
-        updatedAlert.addAction(okItem)
-        self.present(updatedAlert, animated: true, completion: nil)
-        
-        self.data = NSMutableData()
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

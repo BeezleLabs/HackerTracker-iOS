@@ -20,7 +20,7 @@ import Foundation
  */
 class DateFormatterUtility {
 
-    //Year-Month-Day time format
+    //UTC time format
     static let yearMonthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "PDT")
@@ -28,7 +28,71 @@ class DateFormatterUtility {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
+    
+    //UTC time format
+    static let yearMonthDayTimeNoSecondsFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.dateFormat = "yyyy-MM-dd HH:mm z"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    
+    //Yeat-Month-Day
+    static let yearMonthDayFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    //UTC time format
+    static let monthDayTimeFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd HH:mm"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    //UTC iso8601 time format
+    static let iso8601Formatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    //UTC iso8601 time format
+    static let iso8601pdtFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    //Year-Month-Day time format
+    static let yearMonthDayNoTimeZoneTimeFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.dateFormat = "yyyy-M-d HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
 
+    
+    //DOW format
+    static let dayOfWeekFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "EEEE"
+        return formatter
+    }()
+    
     //DOW Hour:Minute time format
     static let dayOfWeekTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
@@ -53,6 +117,15 @@ class DateFormatterUtility {
         formatter.timeZone = TimeZone(abbreviation: "PDT")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEEE, MMMM dd HH:mm"
+        return formatter
+    }()
+    
+    //Partial Day of week Ex: Fri
+    static let partialDayOfWeekFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "E"
         return formatter
     }()
 

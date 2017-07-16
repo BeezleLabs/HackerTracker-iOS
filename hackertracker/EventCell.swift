@@ -11,35 +11,60 @@ import UIKit
 
 public class EventCell : UITableViewCell {
 
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var color: UIView!
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor.backgroundGray
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        backgroundColor = UIColor.backgroundGray
     }
 
     func bind(event : Event) {
-        let beginDate = DateFormatterUtility.dayOfWeekTimeFormatter.string(from: event.begin as Date)
-        let endDate = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end as Date)
-
-        guard let textLabel = textLabel, let detailTextLabel = detailTextLabel else {
-            //This should only happen if the tableview cell style is changed
-            fatalError("Failed to load the textLabel and/or detailTextLabel")
-        }
-
-        textLabel.text = event.title
+        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
+        
+        title.text = event.title
 
         if (event.starred) {
-            textLabel.text = "** \(event.title) **"
-            textLabel.textColor = UIColor.deepPurple
+            switch(event.entry_type) {
+                case "Official":
+                    color.backgroundColor = UIColor.deepPurple
+                    break
+                case "Contest":
+                    color.backgroundColor = UIColor.blue
+                    break
+                case "Event":
+                    color.backgroundColor = UIColor.red
+                    break
+                case "Party":
+                    color.backgroundColor = UIColor.cyan
+                    break
+                case "Kids":
+                    color.backgroundColor = UIColor.green
+                    break
+                case "Skytalks":
+                    color.backgroundColor = UIColor.orange
+                    break
+                case "Villages":
+                    color.backgroundColor = UIColor.yellow
+                    break
+                case "Workshop":
+                    color.backgroundColor = UIColor.purple
+                default:
+                    color.backgroundColor = UIColor.white
+                    break
+            }
         } else {
-            textLabel.text = event.title
-            textLabel.textColor = UIColor.white
+            color.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         }
 
-        detailTextLabel.text = "\(beginDate)-\(endDate) (\(event.location))"
-        detailTextLabel.textColor = UIColor.init(colorLiteralRed: 170.0/255.0, green: 170.0/255.0, blue: 170.0/255.0, alpha: 1.0)
+        subtitle.text = event.location
+        time.text = eventTime
     }
 }

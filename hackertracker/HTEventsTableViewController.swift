@@ -1,5 +1,5 @@
 //
-//  HTEventsTableViewController.swift
+//  ScrollingTabController.swift
 //  hackertracker
 //
 //  Created by Seth Law on 6/27/15.
@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import WillowTreeScrollingTabController
 
 struct eventType {
     var name:String
@@ -23,79 +24,73 @@ struct eventType {
     }
 }
 
-class HTEventsTableViewController: UITableViewController {
+class HTEventsScrollingTabController: ScrollingTabController {
     
     var eventTypes: [eventType] = [
+        eventType(n: "TALKS", i: "speaker", d: "Official", c: 0),
         eventType(n: "CONTESTS", i: "contest", d: "Contest", c: 0),
-        eventType(n: "EVENTS", i: "event", d: "Event", c: 0),
+        eventType(n: "EVENTS", i: "calendar-active", d: "Event", c: 0),
         eventType(n: "PARTIES", i: "party", d: "Party", c: 0),
         eventType(n: "KIDS", i: "kids", d: "Kids", c: 0),
         eventType(n: "SKYTALKS", i: "cloud", d: "Skytalks", c: 0),
-        eventType(n: "TALKS", i: "speaker", d: "Speaker", c: 0),
         eventType(n: "VILLAGES", i: "village", d: "Villages", c: 0),
-        eventType(n: "WORKSHOPS", i:"workshop", d:"Workshop", c: 0)
+        eventType(n: "WORKSHOPS", i:"workshop", d:"Workshop", c: 0),
+        eventType(n: "OTHER", i:"other", d:"Other", c:0)
 
     ]
+    
+    let leftFadedView = UIView()
+    let rightFadedView = UIView()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        numToPreload = eventTypes.count + 2
+        
+        var eventControllers = [HTScheduleTableViewController]()
+        
+        for eventType in eventTypes
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let schedule = storyboard.instantiateViewController(withIdentifier: "ScheduleTableViewController") as! HTScheduleTableViewController
+            schedule.eType = eventType;
+            schedule.tabBarItem.title = eventType.name
+            eventControllers.append(schedule)
+        }
+
+        tabView.selectionIndicator.tintColor = UIColor.white.withAlphaComponent(0.75)
+        tabView.selectionIndicator.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+
+        tabView.selectionIndicator.tintColor = UIColor.white.withAlphaComponent(0.75)
+        
+        tabTheme = CellTheme(font: UIFont(name: "Furore", size: 12)!, defaultColor: UIColor.white.withAlphaComponent(0.75), selectedColor: UIColor.white)
+        
+        self.viewControllers = eventControllers
+        
+        leftFadedView.backgroundColor = UIColor.backgroundGray
+        rightFadedView.backgroundColor = UIColor.backgroundGray
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .black
         navigationController?.navigationBar.isTranslucent = false
         automaticallyAdjustsScrollViewInsets = true
         
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: true)]
-        fr.returnsObjectsAsFaults = false
+        tabSizing = .fixedSize(110)
         
-        for e:eventType in eventTypes {
-            fr.predicate = NSPredicate(format: "type = %@", argumentArray: [e.dbName])
-            _ = try! context.fetch(fr)
-            
-            var mutableE = e
-
-            do {
-                mutableE.count = try context.count(for: fr)
-            } catch {
-                fatalError("Failed to retrieve count")
-            }
-        }
+        tabBarHeight = 40
+        tabView.backgroundColor = .backgroundGray
+        tabView.centerSelectTabs = true
+        tabView.collectionView.reloadData()
         
-        self.tableView.reloadData()
+        selectTab(atIndex: 0, animated: false)
     }
     
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        selectTab(atIndex: currentPage, animated: false)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.eventTypes.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) 
-
-        var event : eventType
-        event = self.eventTypes[indexPath.row]
-        
-        cell.textLabel!.text = event.name
-        cell.imageView?.image = UIImage(named: event.img)
-
-        return cell
-    }
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "eventSegue") {
-            let sv : HTScheduleTableViewController = segue.destination as! HTScheduleTableViewController
-            let indexPath: IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
-            let ev = self.eventTypes[indexPath.row]
-            sv.eType = ev
-        }
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-
 }
