@@ -35,6 +35,8 @@ extension UIImage {
 
 class HTEventsNavViewController: UINavigationController {
 
+    var lastSize : CGSize = CGSize.zero
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,15 +49,21 @@ class HTEventsNavViewController: UINavigationController {
         super.viewWillTransition(to: size, with: coordinator)
         
         coordinator.animate(alongsideTransition: { (context) in
-            self.setNavBarImage(screenSize: size)
+            if let windowSize = UIApplication.shared.keyWindow?.frame.size {
+                self.setNavBarImage(screenSize: windowSize)
+            }
         }, completion: nil)
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let windowSize = UIApplication.shared.keyWindow?.frame.size {
-            setNavBarImage(screenSize: windowSize)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if self.view.frame.size.width != lastSize.width {
+            lastSize = self.view.frame.size
+            if let windowSize = UIApplication.shared.keyWindow?.frame.size {
+                setNavBarImage(screenSize: windowSize)
+            }
         }
     }
 
