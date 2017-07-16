@@ -16,7 +16,7 @@ class Animation {
     }()
 
     let pixelScaleFactor = 50.0
-    let startingPixelScale = 1.0
+    var startingPixelScale = 1.0
 
     let exposureIntensityScale = 2.0
     let maskedSplashImage = CIImage(image: #imageLiteral(resourceName: "splashMask"))?.clampingToExtent()
@@ -48,6 +48,46 @@ class Animation {
         coreImage = CIImage(image: self.image)?.clampingToExtent()
         if let coreImage = coreImage {
             originalInputCIImage = coreImage
+        }
+    }
+
+    func startPixelAnimation() {
+        startingPixelScale = 50.0
+        let displayLink = CADisplayLink(
+            target: self,
+            selector: #selector(pixelAnimationTimerFired(displayLink:))
+        )
+
+        originalSplashImage = image
+        transitionStartTime = CACurrentMediaTime()
+
+        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+    }
+
+    @objc func pixelAnimationTimerFired(displayLink: CADisplayLink) {
+        guard let extent = originalImageExtent else {
+            print("originalImageExtent is nil")
+            image = originalSplashImage
+            displayLink.invalidate()
+            return
+        }
+
+        let progress = min((CACurrentMediaTime() - transitionStartTime) / duration, 1.0)
+
+        var pixellation = progress
+
+        if progress > 0.7 {
+            pixellation = 1.0 - progress
+        }
+
+        if let pixelImage = applyPixelFilter(on: originalInputCIImage, progress: pixellation),
+            let cgImage = context.createCGImage(pixelImage, from: extent) {
+            image = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
+        }
+
+        if progress >= 1.0 {
+            image = originalSplashImage
+            displayLink.invalidate()
         }
     }
 
