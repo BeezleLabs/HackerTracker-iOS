@@ -30,6 +30,7 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var toolImage: UIImageView!
     @IBOutlet weak var locationMapView: MapLocationView!
     @IBOutlet weak var eventTypeContainer: UIView!
+    @IBOutlet weak var bottomPaddingConstraint: NSLayoutConstraint!
     
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
@@ -38,7 +39,7 @@ class HTEventDetailViewController: UIViewController {
     var event: Event?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -83,7 +84,18 @@ class HTEventDetailViewController: UIViewController {
         touchGesture.minimumPressDuration = 0.0
         locationMapView.addGestureRecognizer(touchGesture)
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let splitViewController = self.splitViewController,
+            splitViewController.isCollapsed {
+            bottomPaddingConstraint.constant = 20
+        } else {
+            bottomPaddingConstraint.constant = 80
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
