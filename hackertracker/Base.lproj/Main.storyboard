@@ -48,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1935" y="894"/>
+            <point key="canvasLocation" x="-1998" y="843"/>
         </scene>
         <!--Updates View Controller-->
         <scene sceneID="o5z-Zp-Lcx">
@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWF-fe-EhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="-550"/>
+            <point key="canvasLocation" x="1849" y="-576"/>
         </scene>
         <!--Schedule Table View Controller-->
         <scene sceneID="plL-wp-CvI">
@@ -262,7 +262,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agy-pQ-LU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4294" y="1489"/>
+            <point key="canvasLocation" x="5278" y="-43"/>
         </scene>
         <!--SCHEDULE-->
         <scene sceneID="x1L-ac-RFe">
@@ -356,7 +356,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I06-2I-SrF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3057" y="1488"/>
+            <point key="canvasLocation" x="3057" y="1531"/>
         </scene>
         <!--Maps View Controller-->
         <scene sceneID="vGq-Yq-Bvy">
@@ -421,20 +421,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5k-1E-Sh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="2271"/>
+            <point key="canvasLocation" x="3057" y="2271"/>
         </scene>
-        <!--Event Split View Controller-->
+        <!--Split View Controller-->
         <scene sceneID="Cmg-Lt-nWH">
             <objects>
-                <splitViewController id="qWo-7t-Kgc" customClass="HTEventSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="qWo-7t-Kgc" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="" image="calendar-active" selectedImage="calendar-active" id="w0v-1C-qON">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="G0q-EC-DC2"/>
                     <connections>
-                        <segue destination="nGb-HO-gXP" kind="relationship" relationship="detailViewController" id="Fj7-qI-xf1"/>
                         <segue destination="93J-Qg-h7Z" kind="relationship" relationship="masterViewController" id="OQf-eS-eIi"/>
+                        <segue destination="52w-aK-Nck" kind="relationship" relationship="detailViewController" id="d8H-Jh-Jqg"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtM-mJ-VLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -602,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3j-ea-u36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6074" y="894"/>
+            <point key="canvasLocation" x="6140" y="843"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="Hiw-ZN-0Kf">
@@ -630,7 +630,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWd-bZ-9uM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1089" y="894"/>
+            <point key="canvasLocation" x="-1090" y="844"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="ncf-MQ-TpN">
@@ -743,7 +743,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwv-vH-OfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4295" y="159"/>
+            <point key="canvasLocation" x="4090" y="159"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="i93-iB-gUR">
@@ -755,7 +755,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="44D-XO-0SY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="44D-XO-0SY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -795,6 +795,34 @@
             </objects>
             <point key="canvasLocation" x="3057" y="159"/>
         </scene>
+        <!--Empty Detail View Controller-->
+        <scene sceneID="Gs6-yl-O6f">
+            <objects>
+                <viewController id="JQK-Po-pmo" customClass="HTEmptyDetailViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MEK-RD-vA4"/>
+                        <viewControllerLayoutGuide type="bottom" id="HhO-8m-dJN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vpd-CN-81L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.050000000000000003" contentMode="center" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="hpF-de-Nd8">
+                                <rect key="frame" x="87" y="209" width="200" height="200"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hpF-de-Nd8" firstAttribute="centerY" secondItem="vpd-CN-81L" secondAttribute="centerY" id="pfz-1I-D8E"/>
+                            <constraint firstItem="hpF-de-Nd8" firstAttribute="centerX" secondItem="vpd-CN-81L" secondAttribute="centerX" id="vfM-gu-kS1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RjJ-7l-7CT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kc4-n7-hwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3057" y="844"/>
+        </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="4uI-13-dFR">
             <objects>
@@ -804,7 +832,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="5l0-LJ-ArA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5l0-LJ-ArA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -816,23 +844,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vd-bq-LOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="1489"/>
+            <point key="canvasLocation" x="1849" y="1531"/>
         </scene>
-        <!--Schedule Split View Controller-->
+        <!--Split View Controller-->
         <scene sceneID="wTW-Tn-Qo3">
             <objects>
-                <splitViewController id="Wr4-BW-i8o" customClass="HTScheduleSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="Wr4-BW-i8o" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="saved-inactive" selectedImage="saved-active" id="xzX-0b-oaM">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <connections>
                         <segue destination="wkl-G5-ofO" kind="relationship" relationship="masterViewController" id="RVe-x7-BHg"/>
-                        <segue destination="nGb-HO-gXP" kind="relationship" relationship="detailViewController" id="7fV-wR-NYj"/>
+                        <segue destination="52w-aK-Nck" kind="relationship" relationship="detailViewController" id="uiE-E7-nxe"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UcF-Ez-HTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="1490"/>
+            <point key="canvasLocation" x="700" y="1532"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="W6a-bK-zOb">
@@ -843,7 +871,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" id="Med-we-Ik4">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="Med-we-Ik4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -854,7 +882,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fW8-eN-buX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="2271"/>
+            <point key="canvasLocation" x="1849" y="2271"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="Vpi-LE-8FQ">
@@ -862,7 +890,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nGb-HO-gXP" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pRO-V9-tnf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pRO-V9-tnf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -873,7 +901,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWU-AW-Ffa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5302" y="894"/>
+            <point key="canvasLocation" x="5278" y="843"/>
+        </scene>
+        <!--Events Nav View Controller-->
+        <scene sceneID="qT4-pX-Wks">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="52w-aK-Nck" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dtY-8W-mzn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JQK-Po-pmo" kind="relationship" relationship="rootViewController" id="T4c-Kd-6ZI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Hv-rc-DkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="842"/>
         </scene>
     </scenes>
     <resources>
@@ -896,7 +942,8 @@
         <image name="sync-30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7fV-wR-NYj"/>
+        <segue reference="d8H-Jh-Jqg"/>
+        <segue reference="zg6-LD-ovW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
