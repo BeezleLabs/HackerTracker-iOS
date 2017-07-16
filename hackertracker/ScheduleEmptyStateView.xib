@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It appears you don't have any events scheduled. Save some events and come back." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqM-0k-vBg">
-                    <rect key="frame" x="0.0" y="36" width="381" height="41"/>
+                    <rect key="frame" x="20" y="16" width="341" height="61"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -28,8 +28,8 @@
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
             <constraints>
-                <constraint firstItem="cqM-0k-vBg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JWt-z1-eYP"/>
-                <constraint firstAttribute="trailing" secondItem="cqM-0k-vBg" secondAttribute="trailing" id="UOp-8I-2xQ"/>
+                <constraint firstItem="cqM-0k-vBg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="JWt-z1-eYP"/>
+                <constraint firstAttribute="trailing" secondItem="cqM-0k-vBg" secondAttribute="trailing" constant="20" id="UOp-8I-2xQ"/>
                 <constraint firstItem="cqM-0k-vBg" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-5" id="bzP-6R-X1l"/>
                 <constraint firstItem="2qS-YA-vRW" firstAttribute="centerX" secondItem="cqM-0k-vBg" secondAttribute="centerX" id="kOA-Ja-OWe"/>
                 <constraint firstItem="2qS-YA-vRW" firstAttribute="top" secondItem="cqM-0k-vBg" secondAttribute="bottom" constant="10" id="z9S-OV-FJ7"/>

@@ -21,69 +21,113 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JAf-fz-6cz">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="JAf-fz-6cz">
                     <rect key="frame" x="20" y="78" width="335" height="200"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2td-05-zXT">
-                            <rect key="frame" x="0.0" y="0.0" width="335" height="33"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="Seth Law / @sethlaw">
-                                <color key="titleColor" red="0.49052229523658752" green="0.88387930393218994" blue="0.76865249872207642" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </state>
-                            <connections>
-                                <action selector="sethLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="YNk-yk-c0R"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATy-lP-OJ3">
+                            <rect key="frame" x="0.0" y="0.0" width="167" height="33"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seth Law / " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpw-zo-4qR">
+                                    <rect key="frame" x="0.0" y="0.0" width="85" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2td-05-zXT">
+                                    <rect key="frame" x="85" y="0.0" width="82" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="@SethLaw">
+                                        <color key="titleColor" red="0.49052229523658752" green="0.88387930393218994" blue="0.76865249872207642" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sethLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="YNk-yk-c0R"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xE7-jb-hEL" userLabel="Developer">
-                            <rect key="frame" x="0.0" y="33" width="335" height="17"/>
+                            <rect key="frame" x="0.0" y="33" width="66" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lj1-6u-p1J">
-                            <rect key="frame" x="0.0" y="50" width="335" height="33"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="Chris Mays  / @chrismays94">
-                                <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </state>
-                            <connections>
-                                <action selector="chrisLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="3M9-g3-0WS"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAG-D4-ZIM">
+                            <rect key="frame" x="0.0" y="50" width="216.5" height="33"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chris Mays  /" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UW1-52-Scd" userLabel="Chris Mays  /">
+                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qh-Ea-GlK" userLabel="@chrismays94">
+                                    <rect key="frame" x="99.5" y="0.0" width="117" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="@ChrisMays94">
+                                        <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="chrisLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gq5-N6-YFg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxi-hm-ZJ1" userLabel="Developer">
-                            <rect key="frame" x="0.0" y="83" width="335" height="17"/>
+                            <rect key="frame" x="0.0" y="83" width="66" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8M-ga-v2l">
-                            <rect key="frame" x="0.0" y="100" width="335" height="33"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="Meghan Macera / @macerameg">
-                                <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </state>
-                            <connections>
-                                <action selector="megLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="VE1-dv-gTe"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mva-lx-ACM">
+                            <rect key="frame" x="0.0" y="100" width="244" height="33"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meghan Macera / " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANd-NN-Qqi" userLabel="Chris Mays  /">
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8M-ga-v2l">
+                                    <rect key="frame" x="138" y="0.0" width="106" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="@MaceraMeg">
+                                        <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="megLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="VE1-dv-gTe"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOF-ga-aRE" userLabel="Developer">
-                            <rect key="frame" x="0.0" y="133" width="335" height="17"/>
+                            <rect key="frame" x="0.0" y="133" width="58" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZI-qt-RcD">
-                            <rect key="frame" x="0.0" y="150" width="335" height="33"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="Ben Humphries / @iMacHumphries">
-                                <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </state>
-                            <connections>
-                                <action selector="benLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="U5i-VJ-kTy"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asC-7c-f1W">
+                            <rect key="frame" x="0.0" y="150" width="268.5" height="33"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ben Humphries / " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AI-pq-5HZ" userLabel="Ben Humphries / ">
+                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZI-qt-RcD">
+                                    <rect key="frame" x="132.5" y="0.0" width="136" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="@iMacHumphries">
+                                        <color key="titleColor" red="0.49052229520000001" green="0.88387930390000002" blue="0.76865249869999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="benLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="U5i-VJ-kTy"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGa-FO-ZSq" userLabel="Developer">
-                            <rect key="frame" x="0.0" y="183" width="335" height="17"/>
+                            <rect key="frame" x="0.0" y="183" width="66" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
