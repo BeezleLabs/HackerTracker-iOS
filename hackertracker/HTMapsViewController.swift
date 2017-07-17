@@ -81,6 +81,10 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         dayMapView?.maximumZoomScale = 8
         nightMapView?.maximumZoomScale = 8
 
+        let hour = NSCalendar.current.component(.hour, from: Date())
+        // Assuming 8pm is night time.
+        dayTimeSwitch.selectedSegmentIndex = hour > 20 ? 1 : 0
+
         mapTypeChanged(dayTimeSwitch)
     }
     
