@@ -70,7 +70,7 @@ public class EventCell : UITableViewCell {
         } else {
             subtitle.text = event.location
         }
-        
+
         time.text = eventTime
     }
 }
