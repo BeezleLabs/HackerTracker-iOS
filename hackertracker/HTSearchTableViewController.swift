@@ -23,6 +23,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         eventSearchBar.placeholder = "Search Events"
         eventSearchBar.delegate = self
         self.title = "SEARCH"
+        tableView.keyboardDismissMode = .onDrag
     }
 
     override func viewWillAppear(_ animated: Bool) {
