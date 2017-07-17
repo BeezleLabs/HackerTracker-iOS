@@ -64,7 +64,13 @@ public class EventCell : UITableViewCell {
             color.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         }
 
-        subtitle.text = event.location
+        
+        if event.location.isEmpty {
+            subtitle.text = "Location in description"
+        } else {
+            subtitle.text = event.location
+        }
+        
         time.text = eventTime
     }
 }
