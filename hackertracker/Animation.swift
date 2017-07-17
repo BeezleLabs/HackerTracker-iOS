@@ -16,7 +16,7 @@ class Animation {
     }()
 
     let pixelScaleFactor = 50.0
-    let startingPixelScale = 1.0
+    var startingPixelScale = 1.0
 
     let exposureIntensityScale = 2.0
     let maskedSplashImage = CIImage(image: #imageLiteral(resourceName: "splashMask"))?.clampingToExtent()
@@ -29,6 +29,8 @@ class Animation {
     var originalSplashImage: UIImage!
     var transitionStartTime = CACurrentMediaTime()
     var originalInputCIImage = CIImage()
+
+    var isPlaying = false
 
     private var duration: Double
     private var image: UIImage {
@@ -51,6 +53,52 @@ class Animation {
         }
     }
 
+    func stopPlaying() {
+        isPlaying = false
+        image = originalSplashImage
+    }
+
+    func startPixelAnimation() {
+        startingPixelScale = 50.0
+        let displayLink = CADisplayLink(
+            target: self,
+            selector: #selector(pixelAnimationTimerFired(displayLink:))
+        )
+
+        originalSplashImage = image
+        transitionStartTime = CACurrentMediaTime()
+
+        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        isPlaying = true
+    }
+
+    @objc func pixelAnimationTimerFired(displayLink: CADisplayLink) {
+        guard let extent = originalImageExtent else {
+            print("originalImageExtent is nil")
+            stopPlaying()
+            displayLink.invalidate()
+            return
+        }
+
+        let progress = min((CACurrentMediaTime() - transitionStartTime) / duration, 1.0)
+
+        var pixellation = progress
+
+        if progress > 0.7 {
+            pixellation = 1.0 - progress
+        }
+
+        if let pixelImage = applyPixelFilter(on: originalInputCIImage, progress: pixellation),
+            let cgImage = context.createCGImage(pixelImage, from: extent) {
+            image = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
+        }
+
+        if progress >= 1.0 {
+            stopPlaying()
+            displayLink.invalidate()
+        }
+    }
+
     func startHackerAnimation() {
         let displayLink = CADisplayLink(
             target: self,
@@ -61,12 +109,14 @@ class Animation {
         transitionStartTime = CACurrentMediaTime()
 
         displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+
+        isPlaying = true
     }
 
     @objc func hackerAnimationTimerFired(displayLink: CADisplayLink) {
         guard let extent = originalImageExtent else {
             print("originalImageExtent is nil")
-            image = originalSplashImage
+            stopPlaying()
             displayLink.invalidate()
             return
         }
@@ -99,6 +149,7 @@ class Animation {
         }
 
         if progress >= 1.0 {
+            stopPlaying()
             displayLink.invalidate()
         }
     }
