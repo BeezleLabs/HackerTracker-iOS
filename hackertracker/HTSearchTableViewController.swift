@@ -40,18 +40,16 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         var event: Event?
 
         if let selectedIndexPath = selectedIndexPath {
-            event = isFiltered() ? filteredEvents[selectedIndexPath.row] as! Event : events[selectedIndexPath.row] as! Event
+            event = filteredEvents[selectedIndexPath.row] as? Event
         }
 
         self.tableView.reloadData()
 
-        let currentEvents = isFiltered() ? filteredEvents : events
-
         if let selectedIndexPath = selectedIndexPath,
             let event = event,
-            selectedIndexPath.row < currentEvents.count {
+            selectedIndexPath.row < filteredEvents.count {
 
-            if let newEvent = currentEvents[selectedIndexPath.row] as? Event,
+            if let newEvent = filteredEvents[selectedIndexPath.row] as? Event,
                 newEvent == event {
                 tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
             }
