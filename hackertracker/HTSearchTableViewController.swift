@@ -36,7 +36,26 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             event = filteredEvents[selectedIndexPath.row] as? Event
         }
 
+        let selectedIndexPath = tableView.indexPathForSelectedRow
+        var event: Event?
+
+        if let selectedIndexPath = selectedIndexPath {
+            event = isFiltered() ? filteredEvents[selectedIndexPath.row] as! Event : events[selectedIndexPath.row] as! Event
+        }
+
         self.tableView.reloadData()
+
+        let currentEvents = isFiltered() ? filteredEvents : events
+
+        if let selectedIndexPath = selectedIndexPath,
+            let event = event,
+            selectedIndexPath.row < currentEvents.count {
+
+            if let newEvent = currentEvents[selectedIndexPath.row] as? Event,
+                newEvent == event {
+                tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -86,7 +105,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         
         filterEvents(searchText!)
         
-        self.tableView.reloadData()
+        reloadEvents()
     }
     
     func filterEvents(_ searchText: String) {
@@ -144,7 +163,15 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             self.tableView.reloadData()
         }
     }
-    
+
+    func isFiltered() -> Bool {
+        guard let text = eventSearchBar.text else {
+            return false
+        }
+
+        return text.characters.count > 0
+    }
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
