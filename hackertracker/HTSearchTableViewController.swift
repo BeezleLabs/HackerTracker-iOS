@@ -14,8 +14,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
     var filteredEvents:NSArray = []
-    var selectedEvent:Event?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
          tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
