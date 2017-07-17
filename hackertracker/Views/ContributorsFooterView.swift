@@ -64,7 +64,4 @@ class ContributorsFooterView: UIView {
         footerDelegate?.linkTapped(link: .macerameg)
     }
     
-    @IBAction func willowTreeLinkPressed(_ sender: Any) {
-        footerDelegate?.linkTapped(link: .willowtree)
-    }
 }
