@@ -70,18 +70,18 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
         dayMapView = ReaderContentView(frame: self.view.frame, fileURL: dayFile!, page: 0, password: "")
         view.addSubview(dayMapView!)
-        
-        dayMapView?.mapScrollViewDelegate = self
+
         dayMapView?.backgroundColor = UIColor.backgroundGray
 
         nightMapView = ReaderContentView(frame: self.view.frame, fileURL: nightFile!, page: 0, password: "")
         view.addSubview(nightMapView!)
-        
-        nightMapView?.mapScrollViewDelegate = self
+
         nightMapView?.backgroundColor = UIColor.backgroundGray
-        nightMapView?.isHidden = true
+
         dayMapView?.maximumZoomScale = 8
         nightMapView?.maximumZoomScale = 8
+
+        mapTypeChanged(dayTimeSwitch)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -129,17 +129,25 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-      
         let setterView = scrollView == dayMapView ? nightMapView : dayMapView
         let getterView = scrollView
-        
+
         setterView?.zoomScale = getterView.zoomScale
         setterView?.contentOffset = getterView.contentOffset
     }
     
     @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
-        dayMapView?.isHidden = sender.selectedSegmentIndex != 0
-        nightMapView?.isHidden = sender.selectedSegmentIndex != 1
+        let isDay = sender.selectedSegmentIndex == 0
+        let isNight = !isDay
+
+        dayMapView?.isHidden = isNight
+        nightMapView?.isHidden = isDay
+
+        dayMapView?.isUserInteractionEnabled = isDay
+        nightMapView?.isUserInteractionEnabled = isNight
+
+        nightMapView?.mapScrollViewDelegate = isNight ? self : nil
+        dayMapView?.mapScrollViewDelegate = isDay ? self : nil
     }
     
     func doneButtonPressed() {
