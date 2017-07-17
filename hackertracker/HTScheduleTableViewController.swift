@@ -79,7 +79,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         if let selectedIndexPath = selectedIndexPath,
             let event = event,
             selectedIndexPath.section < eventSections.count,
-            selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count {
+            selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count,
+            !splitViewController!.isCollapsed {
 
             let newEvent = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
             if newEvent == event {

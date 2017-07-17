@@ -47,7 +47,8 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
 
         if let selectedIndexPath = selectedIndexPath,
             let event = event,
-            selectedIndexPath.row < filteredEvents.count {
+            selectedIndexPath.row < filteredEvents.count,
+            !splitViewController!.isCollapsed {
 
             if let newEvent = filteredEvents[selectedIndexPath.row] as? Event,
                 newEvent == event {
