@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ContributorsFooterView" customModule="hackertracker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="298"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONtributors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFt-zo-MbX">
@@ -54,13 +54,13 @@
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAG-D4-ZIM">
                             <rect key="frame" x="0.0" y="50" width="220.5" height="33"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Chris Mays  / " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UW1-52-Scd" userLabel="Chris Mays  /">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chris Mays  / " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UW1-52-Scd" userLabel="Chris Mays  /">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="33"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qh-Ea-GlK" userLabel="@chrismays94">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qh-Ea-GlK" userLabel="@chrismays94">
                                     <rect key="frame" x="103.5" y="0.0" width="117" height="33"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="@ChrisMays94">
@@ -134,13 +134,6 @@
                         </label>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIe-kk-wx2">
-                    <rect key="frame" x="77" y="303" width="220" height="28"/>
-                    <state key="normal" image="attribution"/>
-                    <connections>
-                        <action selector="willowTreeLinkPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="NmS-Yj-kOb"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPr-g8-KBq">
                     <rect key="frame" x="20" y="0.0" width="355" height="1"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -155,10 +148,8 @@
                 <constraint firstItem="vPr-g8-KBq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="FP9-NU-Z3x"/>
                 <constraint firstAttribute="trailing" secondItem="JAf-fz-6cz" secondAttribute="trailing" constant="20" id="KZD-Lf-XGE"/>
                 <constraint firstItem="jFt-zo-MbX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="YzT-cn-7xW"/>
-                <constraint firstItem="kIe-kk-wx2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dhA-ro-X3O"/>
                 <constraint firstItem="jFt-zo-MbX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="mdc-g3-s2v"/>
                 <constraint firstItem="JAf-fz-6cz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qII-R3-beR"/>
-                <constraint firstItem="kIe-kk-wx2" firstAttribute="top" secondItem="JAf-fz-6cz" secondAttribute="bottom" constant="25" id="tOS-h1-9GA"/>
                 <constraint firstItem="JAf-fz-6cz" firstAttribute="top" secondItem="jFt-zo-MbX" secondAttribute="bottom" constant="17.5" id="xzm-fa-t1L"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -166,10 +157,7 @@
             <connections>
                 <outlet property="contributorsHeaderLabel" destination="jFt-zo-MbX" id="f2q-SN-qWz"/>
             </connections>
-            <point key="canvasLocation" x="60.5" y="-115"/>
+            <point key="canvasLocation" x="60.5" y="-126"/>
         </view>
     </objects>
-    <resources>
-        <image name="attribution" width="220" height="28"/>
-    </resources>
 </document>
