@@ -30,6 +30,8 @@ class Animation {
     var transitionStartTime = CACurrentMediaTime()
     var originalInputCIImage = CIImage()
 
+    var isPlaying = false
+
     private var duration: Double
     private var image: UIImage {
         didSet {
@@ -51,6 +53,11 @@ class Animation {
         }
     }
 
+    func stopPlaying() {
+        isPlaying = false
+        image = originalSplashImage
+    }
+
     func startPixelAnimation() {
         startingPixelScale = 50.0
         let displayLink = CADisplayLink(
@@ -62,12 +69,13 @@ class Animation {
         transitionStartTime = CACurrentMediaTime()
 
         displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        isPlaying = true
     }
 
     @objc func pixelAnimationTimerFired(displayLink: CADisplayLink) {
         guard let extent = originalImageExtent else {
             print("originalImageExtent is nil")
-            image = originalSplashImage
+            stopPlaying()
             displayLink.invalidate()
             return
         }
@@ -86,7 +94,7 @@ class Animation {
         }
 
         if progress >= 1.0 {
-            image = originalSplashImage
+            stopPlaying()
             displayLink.invalidate()
         }
     }
@@ -101,12 +109,14 @@ class Animation {
         transitionStartTime = CACurrentMediaTime()
 
         displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+
+        isPlaying = true
     }
 
     @objc func hackerAnimationTimerFired(displayLink: CADisplayLink) {
         guard let extent = originalImageExtent else {
             print("originalImageExtent is nil")
-            image = originalSplashImage
+            stopPlaying()
             displayLink.invalidate()
             return
         }
@@ -139,6 +149,7 @@ class Animation {
         }
 
         if progress >= 1.0 {
+            stopPlaying()
             displayLink.invalidate()
         }
     }
