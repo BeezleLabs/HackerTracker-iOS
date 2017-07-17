@@ -337,7 +337,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
     
     public override func emptyState() -> UIView {
         if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
-            emptyState.bind(description: "No events for this category yet. Pull to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
+            emptyState.bind(description: "No events for this category yet. Check back later.", image: #imageLiteral(resourceName: "skull-active"))
             return emptyState
         }
         return UIView()
