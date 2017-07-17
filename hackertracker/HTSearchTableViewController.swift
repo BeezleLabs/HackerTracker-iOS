@@ -13,7 +13,6 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
-    var events:NSArray = []
     var filteredEvents:NSArray = []
     var selectedEvent:Event?
     
@@ -23,11 +22,11 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         eventSearchBar.placeholder = "Search Events"
         eventSearchBar.delegate = self
         self.title = "SEARCH"
+        tableView.keyboardDismissMode = .onDrag
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadEvents()
     }
 
     func reloadEvents() {
@@ -37,7 +36,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
-        self.events = try! context.fetch(fr) as NSArray
+        self.filteredEvents = try! context.fetch(fr) as NSArray
 
         self.tableView.reloadData()
     }
@@ -52,7 +51,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
             return self.filteredEvents.count
         } else {
-            return self.events.count
+            return 0
         }
     }
     
@@ -61,11 +60,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
        
         var event: Event
         
-        if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
-            event = self.filteredEvents.object(at: indexPath.row) as! Event
-        } else {
-            event = self.events.object(at: indexPath.row) as! Event
-        }
+        event = self.filteredEvents.object(at: indexPath.row) as! Event
         
         cell.bind(event: event)
         
@@ -147,6 +142,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             
             self.tableView.reloadData()
         } else {
+            self.filteredEvents = []
             self.tableView.reloadData()
         }
     }
@@ -170,11 +166,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                 indexPath = sender as! IndexPath
             }
 
-            if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
-                dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
-            } else {
-                dv.event = self.events.object(at: indexPath.row) as? Event
-            }
+            dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
             dv.delegate = self
         }
     }

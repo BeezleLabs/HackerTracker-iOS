@@ -191,7 +191,23 @@ class DataImportManager: NSObject {
             managedEvent.includes = ""
         }
         
-        if let title = event["title"] as? String {
+        if var title = event["title"] as? String {
+            
+            if title.localizedCaseInsensitiveContains("Apple") {
+                title = title.replacingOccurrences(of: "Apple", with: "[COMPANY X]")
+                title = title.replacingOccurrences(of: "apple", with: "[COMPANY X]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("jailbreak") {
+                title = title.replacingOccurrences(of: "jailbreak", with: "[CENSORED]")
+                title = title.replacingOccurrences(of: "Jailbreak", with: "[CENSORED]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("jail break") {
+                title = title.replacingOccurrences(of: "jail break", with: "[CENSORED]")
+                title = title.replacingOccurrences(of: "Jail Break", with: "[CENSORED]")
+            }
+            
             managedEvent.title = title
         } else {
             managedEvent.title = "TBD"
@@ -215,7 +231,26 @@ class DataImportManager: NSObject {
             managedEvent.entry_type = ""
         }
         
-        if let description = event["description"] as? String {
+        if var description = event["description"] as? String {
+            if description.localizedCaseInsensitiveContains("Apple") {
+                description = description.replacingOccurrences(of: "Apple", with: "[COMPANY X]")
+                description = description.replacingOccurrences(of: "apple", with: "[COMPANY X]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("watchOS") {
+                description = description.replacingOccurrences(of: "watchOS", with: "[OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("jailbreak") {
+                description = description.replacingOccurrences(of: "jailbreak", with: "[CENSORED]")
+                description = description.replacingOccurrences(of: "Jailbreak", with: "[CENSORED]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("jail break") {
+                description = description.replacingOccurrences(of: "jail break", with: "[CENSORED]")
+                description = description.replacingOccurrences(of: "Jail Break", with: "[CENSORED]")
+            }
+            
             managedEvent.details = description
         } else {
             managedEvent.details = ""
