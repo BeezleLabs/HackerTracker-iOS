@@ -144,6 +144,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImage" destination="rly-3y-2nK" id="i6i-DB-qpi"/>
+                        <outlet property="dcIconView" destination="etI-Pt-oJJ" id="kUY-25-ZKr"/>
                         <outlet property="headerImageHeightConstraint" destination="peP-Pp-qx0" id="lgP-F9-Fz5"/>
                         <outlet property="leadingImageConstraint" destination="7m0-Zq-MfX" id="9y4-uJ-DJW"/>
                         <outlet property="logoCenterToTopMargin" destination="Cy9-iq-WJc" id="p0Q-rC-FZk"/>

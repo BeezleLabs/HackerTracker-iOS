@@ -21,7 +21,9 @@ class HTUpdatesViewController: UIViewController {
     var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     
     var footer = UIView()
-    
+
+    var hiddenAnimation: Animation!
+    var shouldPlayAnimation = false
 
     @IBOutlet weak var logoCenterToTopMargin: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
@@ -31,10 +33,11 @@ class HTUpdatesViewController: UIViewController {
     @IBOutlet weak var trailingImageConstraint: NSLayoutConstraint!
     @IBOutlet weak var skullBackground: UIImageView!
     
+    @IBOutlet weak var dcIconView: UIImageView!
+
     let footerView = ContributorsFooterView()
-    
     let standardLogoHeight = CGFloat(118.0)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -57,12 +60,15 @@ class HTUpdatesViewController: UIViewController {
             footer.footerDelegate = self
             self.footer = footer
         }
-        
 
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fr.returnsObjectsAsFaults = false
         self.messages = (try! context.fetch(fr)) as! [Message]
+
+        hiddenAnimation = Animation(duration: 1.0, image: dcIconView.image!) { (image) in
+            self.dcIconView.image = image
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -125,6 +131,20 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         //Only make the easter egg visible on top overscroll
         skullBackground.isHidden = scrollView.contentOffset.y > 0
         logoCenterToTopMargin.constant =  ((updatesTableView.contentInset.top + 64) / 2.0) - ((((updatesTableView.contentInset.top + 64) / 2.0) - 37) * percentage)
+
+        if percentage < -1.37 && !hiddenAnimation.isPlaying {
+            shouldPlayAnimation = true
+        }
+
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        if shouldPlayAnimation {
+            hiddenAnimation.startPixelAnimation()
+        }
+
+        shouldPlayAnimation = false
     }
 }
 
