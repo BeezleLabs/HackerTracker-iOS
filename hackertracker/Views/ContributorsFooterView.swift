@@ -13,7 +13,6 @@ enum LinkType {
     case imachumphries
     case sethlaw
     case macerameg
-    case willowtree
 }
 
 protocol ContributorsFooterDelegate : class {

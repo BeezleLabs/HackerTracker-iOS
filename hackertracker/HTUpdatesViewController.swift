@@ -162,17 +162,6 @@ extension HTUpdatesViewController : ContributorsFooterDelegate {
         case .sethlaw:
             url = URL(string: "https://twitter.com/sethlaw")!
             break
-        case .willowtree:
-            let bundleIdentifier = "org.beezle.hackertracker"
-            let platform = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone ? "iphone" : "ipad"
-            let urlPath = "http://www.willowtreeapps.com/?utm_source=\(bundleIdentifier)&utm_medium=\(platform)&utm_campaign=attribution"
-            
-            if let unwrappedUrl = URL(string: urlPath) {
-                url = unwrappedUrl
-
-            }
-            
-            break
         }
         
         if let url = url {
