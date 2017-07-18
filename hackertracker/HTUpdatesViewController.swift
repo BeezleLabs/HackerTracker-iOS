@@ -69,6 +69,8 @@ class HTUpdatesViewController: UIViewController {
         hiddenAnimation = Animation(duration: 1.0, image: dcIconView.image!) { (image) in
             self.dcIconView.image = image
         }
+
+        dcIconView.layer.zPosition = 100
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -131,6 +133,17 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             shouldPlayAnimation = true
         }
 
+        var perspectiveTransform = CATransform3DIdentity
+        perspectiveTransform.m34 = 1.0 / -500.0
+        perspectiveTransform = CATransform3DRotate(perspectiveTransform,
+                                                   max(.pi / 4 * min(-percentage, 1.0), 0),
+                                                   1,
+                                                   0,
+                                                   0)
+        UIView.animate(withDuration: 0.1) {
+            self.dcIconView.layer.transform = perspectiveTransform
+        }
+
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -141,6 +154,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 
         shouldPlayAnimation = false
     }
+
 }
 
 extension HTUpdatesViewController : ContributorsFooterDelegate {
