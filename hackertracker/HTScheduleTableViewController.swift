@@ -14,7 +14,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     typealias EventSection = (date: String, events: [Event])
     
     var eventSections : [EventSection] = []
-    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     var data = NSMutableData()
     var emptyStateView : UIView?
 

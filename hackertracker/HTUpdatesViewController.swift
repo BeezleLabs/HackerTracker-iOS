@@ -13,12 +13,9 @@ import SafariServices
 class HTUpdatesViewController: UIViewController {
     
     @IBOutlet weak var updatesTableView: UITableView!
-    
-    @IBOutlet weak var headerImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundImage: UIImageView!
     var messages: [Message] = []
     var data = NSMutableData()
-    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     
     var footer = UIView()
 
@@ -27,15 +24,11 @@ class HTUpdatesViewController: UIViewController {
 
     @IBOutlet weak var logoCenterToTopMargin: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var leadingImageConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var trailingImageConstraint: NSLayoutConstraint!
     @IBOutlet weak var skullBackground: UIImageView!
     
     @IBOutlet weak var dcIconView: UIImageView!
 
-    let footerView = ContributorsFooterView()
     let standardLogoHeight = CGFloat(118.0)
 
     override func viewDidLoad() {
