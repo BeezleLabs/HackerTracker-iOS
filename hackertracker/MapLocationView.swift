@@ -73,6 +73,7 @@ public enum Location
         case "Wireless Village":
             return .wirelessVillage
         default:
+            print("unkown location: \(value)")
             return .unknown
         }
     }
@@ -159,7 +160,7 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
                 mapZoomLevel = 11.5321488259658
                 mapOffset = CGPoint(x: 1756.66666666667, y: 2700.33333333333)
                 break
-            case .hardwareHackingVillage
+            case .hardwareHackingVillage:
                 mapZoomLevel = 5.99026466659583
                 mapOffset = CGPoint(x: 295.666666666667, y: 1173.66666666667)
                 break
