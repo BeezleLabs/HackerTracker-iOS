@@ -20,6 +20,16 @@ public enum Location
     case trevi
     case capri
     case modena
+    case bioHackingVillage
+    case cryptoAndPrivacyVillage
+    case hardwareHackingVillage
+    case icsVillage
+    case iotVillage
+    case lockpickVillage
+    case packetCaptureVillage
+    case socialEngineerVillage
+    case tamperEvidentVillage
+    case wirelessVillage
     
     public static func valueFromString(_ value : String) -> Location
     {
@@ -42,6 +52,26 @@ public enum Location
             return .modena
         case "track 2":
             return .track2
+        case "BIO Hacking Village":
+            return .bioHackingVillage
+        case "Crypto and Privacy Village":
+            return .cryptoAndPrivacyVillage
+        case "Hardware Hacking Village":
+            return .hardwareHackingVillage
+        case "ICS Village":
+            return .icsVillage
+        case "IoT Village":
+            return .iotVillage
+        case "Lockpick Village":
+            return .lockpickVillage
+        case "Packet Capture Village":
+            return .packetCaptureVillage
+        case "Social-Engineer Village":
+            return .socialEngineerVillage
+        case "Tamper Evident Village":
+            return .tamperEvidentVillage
+        case "Wireless Village":
+            return .wirelessVillage
         default:
             return .unknown
         }
