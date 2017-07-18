@@ -57,7 +57,7 @@ class HTEventDetailViewController: UIViewController {
         }
         
         eventDetailTextView.text = event.details
-        
+
         if (event.starred) {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
         } else {
