@@ -126,50 +126,80 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
             case .track_101, .track1_101:
                 mapZoomLevel = 5.46535710851014
                 mapOffset = CGPoint(x: 1108.0, y: 1091.0)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
                 break
             case .track2, .track2_101:
                 mapZoomLevel = 5.04600641912036
                 mapOffset = CGPoint(x: 936.333333333333, y: 352)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
                 break
             case .track3:
                 mapZoomLevel = 6.47638274448022
                 mapOffset = CGPoint(x: 281, y: 586.333333333333)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
                 break
             case .track4:
                 mapZoomLevel = 6.47638274448022
                 mapOffset = CGPoint(x: 441.666666666667, y: 586.333333333333)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
                 break
             case .trevi:
                 mapZoomLevel = 30.5747421643601
                 mapOffset = CGPoint(x: 4134.66666666667, y: 4805.66666666667)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
                 break
             case .modena:
                 mapZoomLevel = 30.5747421643601
                 mapOffset = CGPoint(x: 4086.66666666667, y: 5467.33333333333)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
                 break
             case .capri:
                 mapZoomLevel = 25.7730198429929
                 mapOffset = CGPoint(x: 3129.0, y: 6295.0)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+                break
+            case .bioHackingVillage:
+                mapZoomLevel = 15.5319305068955
+                mapOffset = CGPoint(x: 1824.0, y: 2302.0)
+                break
+            case .cryptoAndPrivacyVillage:
+                mapZoomLevel = 11.5321488259658
+                mapOffset = CGPoint(x: 1756.66666666667, y: 2700.33333333333)
+                break
+            case .hardwareHackingVillage
+                mapZoomLevel = 5.99026466659583
+                mapOffset = CGPoint(x: 295.666666666667, y: 1173.66666666667)
+                break
+            case .icsVillage:
+                mapZoomLevel = 13.9902143693864
+                mapOffset = CGPoint(x: 392.666666666667, y: 2656.66666666667)
+                break
+            case .iotVillage:
+                mapZoomLevel = 13.9902143693864
+                mapOffset = CGPoint(x: 392.666666666667, y: 2838.33333333333)
+                break
+            case .lockpickVillage:
+                mapZoomLevel = 7.55686887825483
+                mapOffset = CGPoint(x: 240.0, y: 1466.0)
+                break
+            case .packetCaptureVillage:
+                mapZoomLevel = 4.78024461014065
+                mapOffset = CGPoint(x: 542.333333333333, y: 246.666666666667)
+                break
+            case .socialEngineerVillage:
+                mapZoomLevel = 9.11508857992245
+                mapOffset = CGPoint(x: 1729.66666666667, y: 1392.0)
+                break
+            case .tamperEvidentVillage:
+                mapZoomLevel = 7.15414767702267
+                mapOffset = CGPoint(x: 257.333333333333, y: 1487.33333333333)
+                break
+            case .wirelessVillage:
+                mapZoomLevel = 11.5321488259658
+                mapOffset = CGPoint(x: 1615.66666666667, y: 2700.33333333333)
                 break
             default:
-                mapOffset = CGPoint(x: 0, y: 0)
+                mapOffset = .zero
                 currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
                 break
             }
+
+            currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
+            invalidateIntrinsicContentSize()
+
         }
     }
     
