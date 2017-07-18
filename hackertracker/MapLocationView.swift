@@ -57,6 +57,15 @@ enum TimeOfDay
     {
         return (self == .day ? MapLocationView.dayFile : MapLocationView.nightFile) as URL
     }
+
+    static func timeOfDay(for date: Date) -> TimeOfDay {
+        var calendar = NSCalendar.current
+        calendar.timeZone = TimeZone(abbreviation: "PDT")!
+        let hour = calendar.component(.hour, from: date)
+        // 8pm
+        return hour >= 20 ? .night : .day
+
+    }
 }
 
 

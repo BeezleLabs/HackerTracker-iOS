@@ -18,6 +18,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     var nightMapView : ReaderContentView?
 
     var roomDimensions : CGRect?
+    var timeOfDay : TimeOfDay?
 
     var mapLocation : Location = .unknown {
         didSet {
@@ -81,10 +82,6 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         dayMapView?.maximumZoomScale = 8
         nightMapView?.maximumZoomScale = 8
 
-        let hour = NSCalendar.current.component(.hour, from: Date())
-        // Assuming 8pm is night time.
-        dayTimeSwitch.selectedSegmentIndex = hour > 20 ? 1 : 0
-
         mapTypeChanged(dayTimeSwitch)
     }
     
@@ -98,38 +95,46 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             navigationItem.rightBarButtonItem = doneButton
         }
 
-        guard let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0  else {
-            return
+        if let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0 {
+            zoomToLocation(roomDimensions)
         }
-        
+
+        if let timeOfDay = timeOfDay {
+            dayTimeSwitch.selectedSegmentIndex = timeOfDay == .night ? 1 : 0
+        } else {
+            dayTimeSwitch.selectedSegmentIndex = TimeOfDay.timeOfDay(for: Date()) == .night ? 1 : 0
+        }
+
+        mapTypeChanged(dayTimeSwitch)
+    }
+
+    func zoomToLocation(_ roomDimensions: CGRect) {
         let size = self.view.frame.size
-        
-        if roomDimensions.width == 0, roomDimensions.height == 0 {
-            return
-        }
-        
+
         let widthScale = size.width/roomDimensions.width
         let heightScale = size.height/roomDimensions.height
-        
+
         let maxZoom : CGFloat = dayMapView?.maximumZoomScale ?? 4
-        
+
         let scale : CGFloat
-        
+
         if widthScale * roomDimensions.height < size.height
         {
             scale = min(maxZoom, widthScale)
         } else {
             scale = min(maxZoom, heightScale)
         }
-        
+
         dayMapView?.zoomScale = scale
-        
+
         let roomCorner = CGPoint(x: roomDimensions.origin.x * scale, y: roomDimensions.origin.y * scale)
         let roomSize = CGSize(width: roomDimensions.size.width * scale, height: roomDimensions.size.height * scale)
 
         let roomCenter = CGPoint(x: roomCorner.x + (roomSize.width / 2), y: roomCorner.y + (roomSize.height / 2))
-        
+
         dayMapView?.contentOffset = CGPoint(x: roomCenter.x - (size.width/2), y: roomCenter.y - (size.height/2))
+        nightMapView?.contentOffset = CGPoint(x: roomCenter.x - (size.width/2), y: roomCenter.y - (size.height/2))
+
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

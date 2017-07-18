@@ -83,6 +83,9 @@ class HTEventDetailViewController: UIViewController {
         let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
         touchGesture.minimumPressDuration = 0.0
         locationMapView.addGestureRecognizer(touchGesture)
+
+        locationMapView.timeOfDay = TimeOfDay.timeOfDay(for: event.start_date)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -298,7 +301,6 @@ class HTEventDetailViewController: UIViewController {
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
 
-        
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Event"
         content.body = "\(event.title) in \(event.location)"
@@ -343,6 +345,7 @@ class HTEventDetailViewController: UIViewController {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
                 mapView.mapLocation = locationMapView.currentLocation
+                mapView.timeOfDay = locationMapView.timeOfDay
                 let navigationController = HTEventsNavViewController(rootViewController: mapView)
                 self.present(navigationController, animated: true, completion: nil)
             }

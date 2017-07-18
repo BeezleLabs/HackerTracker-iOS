@@ -30,13 +30,12 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
 
     func reloadEvents() {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
+        let selectedIndexPath = tableView.indexPathForSelectedRow
+        var event: Event?
 
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-        self.filteredEvents = try! context.fetch(fr) as NSArray
+        if let selectedIndexPath = selectedIndexPath {
+            event = filteredEvents[selectedIndexPath.row] as? Event
+        }
 
         self.tableView.reloadData()
     }
