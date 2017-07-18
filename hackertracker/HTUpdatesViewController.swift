@@ -93,13 +93,8 @@ class HTUpdatesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(self.updatesTableView.contentOffset)")
-        print("\(self.updatesTableView.contentInset)")
         let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
-        self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)
-        print("\(self.updatesTableView.contentInset)")
-        print("\(self.updatesTableView.contentOffset)")
-        
+        self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)        
         scrollViewDidScroll(self.updatesTableView)
     }
 
