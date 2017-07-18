@@ -15,9 +15,11 @@ class ScheduleEmptyStateView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        backgroundColor = UIColor.backgroundGray
     }
     
     public func bind(description: String, image : UIImage) {
+        backgroundColor = UIColor.backgroundGray
         descriptionLabel.text = description
         descriptionIcon.image = image
     }
