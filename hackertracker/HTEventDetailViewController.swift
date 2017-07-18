@@ -79,13 +79,7 @@ class HTEventDetailViewController: UIViewController {
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
         locationMapView.currentLocation = Location.valueFromString(event.location)
-        
-        let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
-        touchGesture.minimumPressDuration = 0.0
-        locationMapView.addGestureRecognizer(touchGesture)
-
         locationMapView.timeOfDay = TimeOfDay.timeOfDay(for: event.start_date)
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
