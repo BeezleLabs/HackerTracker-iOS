@@ -11,16 +11,11 @@ import CoreData
 import SafariServices
 
 class HTUpdatesViewController: UIViewController {
-    
+
+    let standardLogoHeight = CGFloat(118.0)
+
     @IBOutlet weak var updatesTableView: UITableView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    var messages: [Message] = []
-    var data = NSMutableData()
-    
-    var footer = UIView()
-
-    var hiddenAnimation: Animation!
-    var shouldPlayAnimation = false
 
     @IBOutlet weak var logoCenterToTopMargin: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
@@ -29,7 +24,13 @@ class HTUpdatesViewController: UIViewController {
     
     @IBOutlet weak var dcIconView: UIImageView!
 
-    let standardLogoHeight = CGFloat(118.0)
+    var messages: [Message] = []
+    var data = NSMutableData()
+
+    var footer = UIView()
+
+    var hiddenAnimation: Animation!
+    var shouldPlayAnimation = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
