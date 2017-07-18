@@ -75,7 +75,7 @@ class HTEventsScrollingTabController: ScrollingTabController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = UIColor.backgroundGray
         navigationController?.navigationBar.isTranslucent = false
         automaticallyAdjustsScrollViewInsets = true
         

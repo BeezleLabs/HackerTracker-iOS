@@ -31,12 +31,18 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         refreshControl?.tintColor = UIColor.gray
         refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl!)
+        
+        reloadEvents()
+        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadEvents()
-        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        
+        if isViewLoaded {
+            reloadEvents()
+            tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +96,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             if floor(emptyState.frame.size.height) != floor(tableHeader.frame.size.height) {
                 emptyStateView?.frame.size.height = floor(tableView.frame.size.height)
                 tableView.tableHeaderView = emptyStateView
+                tableView.layoutIfNeeded()
             }
         }
     }

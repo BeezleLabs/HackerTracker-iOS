@@ -163,6 +163,7 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         webView.delegate = self
         webView.scalesPageToFit = true
         webView.scrollView.delegate = self
+        webView.scrollView.scrollsToTop = false
     }
     
     
