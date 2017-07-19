@@ -133,6 +133,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                                                    1,
                                                    0,
                                                    0)
+    
         UIView.animate(withDuration: 0.1) {
             self.dcIconView.layer.transform = perspectiveTransform
         }
