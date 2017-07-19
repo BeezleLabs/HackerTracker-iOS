@@ -30,7 +30,6 @@ class HTUpdatesViewController: UIViewController {
     var footer = UIView()
 
     var hiddenAnimation: Animation!
-    var shouldPlayAnimation = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +123,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         logoCenterToTopMargin.constant =  ((updatesTableView.contentInset.top + 64) / 2.0) - ((((updatesTableView.contentInset.top + 64) / 2.0) - 37) * percentage)
 
         if percentage < -1.37 && !hiddenAnimation.isPlaying {
-            shouldPlayAnimation = true
+            hiddenAnimation.startPixelAnimation()
         }
 
         var perspectiveTransform = CATransform3DIdentity
@@ -138,15 +137,6 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             self.dcIconView.layer.transform = perspectiveTransform
         }
 
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
-        if shouldPlayAnimation {
-            hiddenAnimation.startPixelAnimation()
-        }
-
-        shouldPlayAnimation = false
     }
 
 }
