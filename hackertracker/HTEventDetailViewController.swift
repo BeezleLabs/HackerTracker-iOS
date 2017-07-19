@@ -40,6 +40,11 @@ class HTEventDetailViewController: UIViewController {
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
 
+    /*
+    //Keep around for map view visual testing
+    var eventLocations : [Location] = [.track_101, .track1_101, .track2, .track2_101, .track3, .track4, .capri, .modena, .trevi, .bioHackingVillage, .cryptoAndPrivacyVillage, .hardwareHackingVillage, .icsVillage, .iotVillage, .lockpickVillage, .packetCaptureVillage, .socialEngineerVillage, .tamperEvidentVillage, .wirelessVillage, .unknown]
+    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
