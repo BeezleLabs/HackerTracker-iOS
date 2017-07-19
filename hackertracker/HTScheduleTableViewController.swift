@@ -14,7 +14,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     typealias EventSection = (date: String, events: [Event])
     
     var eventSections : [EventSection] = []
-    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
     var data = NSMutableData()
     var emptyStateView : UIView?
 
@@ -38,18 +37,21 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if isViewLoaded {
             reloadEvents()
             tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+            // Fix misplaced section header.
+            // https://stackoverflow.com/questions/33989551/misplaced-or-hidden-uitableview-section-header-while-switching-from-one-datasour
+            tableView.setContentOffset(.zero, animated: false)
+            tableView.layoutIfNeeded()
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
-        tableView.layoutIfNeeded()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
-        
+        tableView.layoutIfNeeded()
     }
     
     func reloadEvents() {

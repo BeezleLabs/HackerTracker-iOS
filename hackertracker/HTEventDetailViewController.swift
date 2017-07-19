@@ -17,11 +17,8 @@ protocol EventDetailDelegate {
 class HTEventDetailViewController: UIViewController {
 
     @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventNameButton2: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet weak var eventStartTimeLabel: UILabel!
-    @IBOutlet weak var eventStopTimeLabel: UILabel!
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDetailTextView: UITextView!
     @IBOutlet weak var eventStarredButton: UIBarButtonItem!
@@ -60,7 +57,7 @@ class HTEventDetailViewController: UIViewController {
         }
         
         eventDetailTextView.text = event.details
-        
+
         if (event.starred) {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
         } else {

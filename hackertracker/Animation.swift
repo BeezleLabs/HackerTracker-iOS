@@ -68,7 +68,7 @@ class Animation {
         originalSplashImage = image
         transitionStartTime = CACurrentMediaTime()
 
-        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        displayLink.add(to: .main, forMode: .commonModes)
         isPlaying = true
     }
 

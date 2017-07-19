@@ -11,32 +11,25 @@ import CoreData
 import SafariServices
 
 class HTUpdatesViewController: UIViewController {
-    
-    @IBOutlet weak var updatesTableView: UITableView!
-    
-    @IBOutlet weak var headerImageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backgroundImage: UIImageView!
-    var messages: [Message] = []
-    var data = NSMutableData()
-    var syncAlert = UIAlertController(title: nil, message: "Syncing...", preferredStyle: .alert)
-    
-    var footer = UIView()
 
-    var hiddenAnimation: Animation!
-    var shouldPlayAnimation = false
+    let standardLogoHeight = CGFloat(118.0)
+
+    @IBOutlet weak var updatesTableView: UITableView!
+    @IBOutlet weak var backgroundImage: UIImageView!
 
     @IBOutlet weak var logoCenterToTopMargin: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var leadingImageConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var trailingImageConstraint: NSLayoutConstraint!
     @IBOutlet weak var skullBackground: UIImageView!
     
     @IBOutlet weak var dcIconView: UIImageView!
 
-    let footerView = ContributorsFooterView()
-    let standardLogoHeight = CGFloat(118.0)
+    var messages: [Message] = []
+    var data = NSMutableData()
+
+    var footer = UIView()
+
+    var hiddenAnimation: Animation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +62,8 @@ class HTUpdatesViewController: UIViewController {
         hiddenAnimation = Animation(duration: 1.0, image: dcIconView.image!) { (image) in
             self.dcIconView.image = image
         }
+
+        dcIconView.layer.zPosition = 100
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -93,13 +88,8 @@ class HTUpdatesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(self.updatesTableView.contentOffset)")
-        print("\(self.updatesTableView.contentInset)")
         let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
-        self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)
-        print("\(self.updatesTableView.contentInset)")
-        print("\(self.updatesTableView.contentOffset)")
-        
+        self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)        
         scrollViewDidScroll(self.updatesTableView)
     }
 
@@ -133,19 +123,22 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         logoCenterToTopMargin.constant =  ((updatesTableView.contentInset.top + 64) / 2.0) - ((((updatesTableView.contentInset.top + 64) / 2.0) - 37) * percentage)
 
         if percentage < -1.37 && !hiddenAnimation.isPlaying {
-            shouldPlayAnimation = true
-        }
-
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
-        if shouldPlayAnimation {
             hiddenAnimation.startPixelAnimation()
         }
 
-        shouldPlayAnimation = false
+        var perspectiveTransform = CATransform3DIdentity
+        perspectiveTransform.m34 = 1.0 / -500.0
+        perspectiveTransform = CATransform3DRotate(perspectiveTransform,
+                                                   max(.pi / 4 * min(-percentage, 1.0), 0),
+                                                   1,
+                                                   0,
+                                                   0)
+        UIView.animate(withDuration: 0.1) {
+            self.dcIconView.layer.transform = perspectiveTransform
+        }
+
     }
+
 }
 
 extension HTUpdatesViewController : ContributorsFooterDelegate {
