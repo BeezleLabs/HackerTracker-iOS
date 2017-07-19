@@ -194,13 +194,16 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
                 break
             default:
                 mapOffset = .zero
-                currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
                 break
             }
 
-            currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
+            if (currentLocation == .unknown) {
+                currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
+            } else {
+                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
+            }
+            
             invalidateIntrinsicContentSize()
-
         }
     }
     

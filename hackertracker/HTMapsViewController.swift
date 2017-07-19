@@ -44,6 +44,36 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             case .trevi:
                 roomDimensions = CGRect(x: 532, y: 604, width: 44, height: 35)
                 break
+            case .bioHackingVillage:
+                roomDimensions = CGRect(x: 486, y: 573, width: 30, height: 65)
+                break
+            case .cryptoAndPrivacyVillage:
+                roomDimensions = CGRect(x: 627, y: 933, width: 57, height: 61)
+                break
+            case .hardwareHackingVillage:
+                roomDimensions = CGRect(x: 231.5, y: 862.87, width: 125.55, height: 75.14)
+                break
+            case .icsVillage:
+                roomDimensions = CGRect(x: 127.94, y: 754.71, width: 44.09, height: 42.98)
+                break
+            case .iotVillage:
+                roomDimensions = CGRect(x: 127.94, y: 795.86, width: 44.09, height: 65.01)
+                break
+            case .lockpickVillage:
+                roomDimensions = CGRect(x: 169.07, y: 752.56, width: 64.13, height: 111.6)
+                break
+            case .packetCaptureVillage:
+                roomDimensions = CGRect(x: 495.8, y: 255.84, width: 150.22, height: 127.83)
+                break
+            case .socialEngineerVillage:
+                roomDimensions = CGRect(x: 786.54, y: 604.83, width: 64.33, height: 91.05)
+                break
+            case .tamperEvidentVillage:
+                roomDimensions = CGRect(x: 169, y: 861.57, width: 64.85, height: 75.14)
+                break
+            case .wirelessVillage:
+                roomDimensions = CGRect(x: 577, y: 932, width: 57, height: 61)
+                break
             case .unknown:
                 break
             }
