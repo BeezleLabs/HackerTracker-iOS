@@ -41,10 +41,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         if isViewLoaded {
             reloadEvents()
             tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
-            // Fix misplaced section header.
-            // https://stackoverflow.com/questions/33989551/misplaced-or-hidden-uitableview-section-header-while-switching-from-one-datasour
-            tableView.setContentOffset(.zero, animated: false)
-            tableView.layoutIfNeeded()
         }
     }
 
@@ -176,7 +172,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             return emptyStateView
         }
         
-        let dayText = days[section]
+        let dayText = eventSections[section].date
         let date = DateFormatterUtility.yearMonthDayFormatter.date(from: dayText)
         
         let dateHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "EventHeader") as? EventDateHeaderView ?? EventDateHeaderView(reuseIdentifier: "EventHeader")
