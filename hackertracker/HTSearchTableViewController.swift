@@ -36,13 +36,6 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             event = filteredEvents[selectedIndexPath.row] as? Event
         }
 
-        let selectedIndexPath = tableView.indexPathForSelectedRow
-        var event: Event?
-
-        if let selectedIndexPath = selectedIndexPath {
-            event = filteredEvents[selectedIndexPath.row] as? Event
-        }
-
         self.tableView.reloadData()
 
         if let selectedIndexPath = selectedIndexPath,
