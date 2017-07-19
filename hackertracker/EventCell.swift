@@ -18,12 +18,31 @@ public class EventCell : UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.backgroundGray
+        initialize()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialize()
+    }
+
+    func initialize() {
         backgroundColor = UIColor.backgroundGray
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
+        selectedBackgroundView = selectedView
+    }
+
+    override public func setSelected(_ selected: Bool, animated: Bool) {
+        let oldColor = color.backgroundColor
+        super.setSelected(selected, animated: animated)
+        color.backgroundColor = oldColor
+    }
+
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        let oldColor = color.backgroundColor
+        super.setHighlighted(highlighted, animated: animated)
+        color.backgroundColor = oldColor
     }
 
     func bind(event : Event) {
@@ -31,39 +50,7 @@ public class EventCell : UITableViewCell {
         
         title.text = event.title
 
-        if (event.starred) {
-            switch(event.entry_type) {
-                case "Official":
-                    color.backgroundColor = UIColor.deepPurple
-                    break
-                case "Contest":
-                    color.backgroundColor = UIColor.blue
-                    break
-                case "Event":
-                    color.backgroundColor = UIColor.red
-                    break
-                case "Party":
-                    color.backgroundColor = UIColor.cyan
-                    break
-                case "Kids":
-                    color.backgroundColor = UIColor.green
-                    break
-                case "Skytalks":
-                    color.backgroundColor = UIColor.orange
-                    break
-                case "Villages":
-                    color.backgroundColor = UIColor.yellow
-                    break
-                case "Workshop":
-                    color.backgroundColor = UIColor.purple
-                default:
-                    color.backgroundColor = UIColor.white
-                    break
-            }
-        } else {
-            color.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
-        }
-
+        color.backgroundColor = color(for: event)
         
         if event.location.isEmpty {
             subtitle.text = "Location in description"
@@ -73,4 +60,42 @@ public class EventCell : UITableViewCell {
 
         time.text = eventTime
     }
+
+    func color(for event: Event) -> UIColor {
+        var color = UIColor.gray.withAlphaComponent(0.4)
+        if (event.starred) {
+            switch(event.entry_type) {
+            case "Official":
+                color = .deepPurple
+                break
+            case "Contest":
+                color = .blue
+                break
+            case "Event":
+                color = .red
+                break
+            case "Party":
+                color = .cyan
+                break
+            case "Kids":
+                color = .green
+                break
+            case "Skytalks":
+                color = .orange
+                break
+            case "Villages":
+                color = .yellow
+                break
+            case "Workshop":
+                color = .purple
+                break
+            default:
+                color = .white
+                break
+            }
+        }
+
+        return color
+    }
+
 }

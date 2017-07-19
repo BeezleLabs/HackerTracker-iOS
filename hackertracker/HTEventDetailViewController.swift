@@ -234,6 +234,8 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
             saveContext()
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
+
+            delegate?.reloadEvents()
         } else {
             
             let _duplicates = dataRequest.findConflictingStarredEvents(event)
@@ -262,10 +264,7 @@ class HTEventDetailViewController: UIViewController {
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                     self.saveContext()
                     self.scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
-                    
-                    if let delegate = self.delegate {
-                        delegate.reloadEvents()
-                    }
+                    self.delegate?.reloadEvents()
                 })
                 
                 let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
@@ -276,7 +275,7 @@ class HTEventDetailViewController: UIViewController {
                 
                 alert.addAction(yesItem)
                 alert.addAction(noItem)
-                
+
                 self.present(alert, animated: true, completion: nil)
             }
             else
@@ -285,13 +284,12 @@ class HTEventDetailViewController: UIViewController {
                 eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                 saveContext()
                 scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
+
+                delegate?.reloadEvents()
             }
 
         }
 
-        if let delegate = delegate {
-            delegate.reloadEvents()
-        }
     }
 
     func scheduleNotification(at date: Date,_ event:Event) {
