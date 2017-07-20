@@ -208,6 +208,14 @@ class DataImportManager: NSObject {
                 title = title.replacingOccurrences(of: "Jail Break", with: "[CENSORED]")
             }
             
+            if title.localizedCaseInsensitiveContains("macOS") {
+                title = title.replacingOccurrences(of: "macOS", with: "[DESKTOP OS]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("iOS") {
+                title = title.replacingOccurrences(of: "iOS", with: "[MOBILE OS]")
+            }
+            
             managedEvent.title = title
         } else {
             managedEvent.title = "TBD"
@@ -239,6 +247,14 @@ class DataImportManager: NSObject {
             
             if description.localizedCaseInsensitiveContains("watchOS") {
                 description = description.replacingOccurrences(of: "watchOS", with: "[OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("macOS") {
+                description = description.replacingOccurrences(of: "macOS", with: "[DESKTOP OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("iOS") {
+                description = description.replacingOccurrences(of: "iOS", with: "[MOBILE OPERATING SYSTEM]")
             }
             
             if description.localizedCaseInsensitiveContains("jailbreak") {
