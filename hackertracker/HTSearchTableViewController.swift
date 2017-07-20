@@ -48,6 +48,11 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                 tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
             }
         }
+
+        if let splitViewController = splitViewController,
+            !splitViewController.isCollapsed {
+            tableView.scrollToNearestSelectedRow(at: .middle, animated: true)
+        }
     }
     
     // MARK: - Table view data source
