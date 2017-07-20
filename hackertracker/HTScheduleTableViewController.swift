@@ -16,6 +16,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var eventSections : [EventSection] = []
     var data = NSMutableData()
     var emptyStateView : UIView?
+    var lastContentOffset: CGPoint?
 
     // Dates for DC 25
     var days = ["2017-07-27", "2017-07-28", "2017-07-29", "2017-07-30"]
@@ -38,18 +39,16 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if isViewLoaded {
+        if isViewLoaded && !animated  {
             reloadEvents()
-            tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+
+            if let lastContentOffset = lastContentOffset {
+                tableView.contentOffset = lastContentOffset
+                tableView.layoutIfNeeded()
+            }
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidLoad()
-        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
-        tableView.layoutIfNeeded()
-    }
-    
     func reloadEvents() {
         let selectedIndexPath = tableView.indexPathForSelectedRow
         var event: Event?
@@ -196,6 +195,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        lastContentOffset = tableView.contentOffset
         if (segue.identifier == "eventDetailSegue") {
 
             let dv : HTEventDetailViewController
@@ -225,7 +225,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    
+
     func sync(sender: AnyObject) {
         
         let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
@@ -358,7 +358,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
         super.viewWillAppear(animated)
         title = eType.name
     }
-    
+
     public override func emptyState() -> UIView {
         if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
             emptyState.bind(description: "No events for this category yet. Pull to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
