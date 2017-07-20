@@ -50,6 +50,13 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 
     func reloadEvents() {
+        let selectedIndexPath = tableView.indexPathForSelectedRow
+        var event: Event?
+
+        if let selectedIndexPath = selectedIndexPath {
+            event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
+        }
+
         eventSections.removeAll()
 
         for day in days {
@@ -63,13 +70,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
         self.emptyStateView = emptyStateView
         emptyStateView.isHidden = eventSections.count != 0
-
-        let selectedIndexPath = tableView.indexPathForSelectedRow
-        var event: Event?
-
-        if let selectedIndexPath = selectedIndexPath {
-            event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
-        }
 
         tableView.reloadData()
 
