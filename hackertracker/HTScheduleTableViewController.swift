@@ -28,6 +28,22 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
 
+        reloadEvents()
+        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if isViewLoaded {
+            reloadEvents()
+            tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidLoad()
+
         refreshControl = UIRefreshControl()
         let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
         refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
@@ -48,13 +64,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
         tableView.addSubview(refreshControl!)
 
-        reloadEvents()
-        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
+<<<<<<< HEAD
         if isViewLoaded && !animated  {
             reloadEvents()
 
@@ -65,6 +76,12 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         }
     }
 
+=======
+        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        tableView.layoutIfNeeded()
+    }
+    
+>>>>>>> b20c88b... Fix iPad refresh controller size
     func reloadEvents() {
         let selectedIndexPath = tableView.indexPathForSelectedRow
         var event: Event?
