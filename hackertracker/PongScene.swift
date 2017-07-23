@@ -25,6 +25,18 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
         right = childNode(withName: "right") as? SKSpriteNode
         skull = childNode(withName: "skull") as? SKSpriteNode
 
+        createFrameCollision()
+
+        skullPhysicsBody = skull?.physicsBody
+        skullPhysicsBody?.usesPreciseCollisionDetection = true
+    }
+
+    override func didChangeSize(_ oldSize: CGSize) {
+        super.didChangeSize(oldSize)
+        createFrameCollision()
+    }
+
+    func createFrameCollision() {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody?.usesPreciseCollisionDetection = true
         physicsBody?.categoryBitMask = .max
@@ -32,8 +44,6 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
         physicsBody?.restitution = 1
         physicsBody?.friction = 0
 
-        skullPhysicsBody = skull?.physicsBody
-        skullPhysicsBody?.usesPreciseCollisionDetection = true
     }
 
     func play() {

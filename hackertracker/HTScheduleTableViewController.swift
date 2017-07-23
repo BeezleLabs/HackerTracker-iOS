@@ -136,6 +136,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 tableView.layoutIfNeeded()
             }
         }
+
+        if let refreshControl = refreshControl,
+            tableView.subviews.contains(refreshControl) {
+            tableView.sendSubview(toBack: refreshControl)
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
