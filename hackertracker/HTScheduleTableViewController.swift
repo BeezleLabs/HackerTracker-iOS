@@ -44,25 +44,27 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
 
-        refreshControl = UIRefreshControl()
-        let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
-        refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
-        refreshControl?.tintColor = .clear
-        refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
+        if pullDownAnimation == nil {
+            refreshControl = UIRefreshControl()
+            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
+            refreshControl?.tintColor = .clear
+            refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
 
-        let view = SKView(frame: refreshControl!.frame)
-        if let scene = SKScene(fileNamed: "scene") as? PongScene {
-            pullDownAnimation = scene
-            scene.backgroundColor = .clear
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene)
-            view.ignoresSiblingOrder = true
-            view.backgroundColor = .clear
+            let view = SKView(frame: refreshControl!.frame)
+            if let scene = SKScene(fileNamed: "scene") as? PongScene {
+                pullDownAnimation = scene
+                scene.backgroundColor = .clear
+                scene.scaleMode = .aspectFill
+                view.presentScene(scene)
+                view.ignoresSiblingOrder = true
+                view.backgroundColor = .clear
 
-            refreshControl?.addSubview(view)
+                refreshControl?.addSubview(view)
+            }
+
+            tableView.addSubview(refreshControl!)
         }
-
-        tableView.addSubview(refreshControl!)
 
 
 <<<<<<< HEAD
