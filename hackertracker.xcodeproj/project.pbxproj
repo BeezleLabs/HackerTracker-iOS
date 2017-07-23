@@ -62,6 +62,10 @@
 		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
 		B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */; };
 		B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */; };
+		B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B552AC891F2084D4006D4F98 /* PongScene.swift */; };
+		B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B568B64A1F1F3A740092CE4A /* SpriteKit.framework */; };
+		B568B6651F1F3FAB0092CE4A /* scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B568B6641F1F3FAB0092CE4A /* scene.sks */; };
+		B568B6691F1F409E0092CE4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B568B6671F1F409E0092CE4A /* Assets.xcassets */; };
 		B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9F7521F17307800EDC6FE /* Animation.swift */; };
 		E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */; };
 /* End PBXBuildFile section */
@@ -162,6 +166,10 @@
 		B2E8240619E30EF7A3D6816A /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
 		B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEmptyDetailViewController.swift; sourceTree = "<group>"; };
 		B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSplitViewController.swift; sourceTree = "<group>"; };
+		B552AC891F2084D4006D4F98 /* PongScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PongScene.swift; sourceTree = "<group>"; };
+		B568B64A1F1F3A740092CE4A /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		B568B6641F1F3FAB0092CE4A /* scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = scene.sks; sourceTree = "<group>"; };
+		B568B6671F1F409E0092CE4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5A9F7521F17307800EDC6FE /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		ED397C5AF8CCBCF2CEDCFB65 /* Pods-hackertrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackertrackerTests/Pods-hackertrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */,
 				83B0F8541F19BA1B006493A6 /* QuartzCore.framework in Frameworks */,
 				83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */,
 				E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */,
@@ -244,6 +253,9 @@
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
 				83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */,
 				83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */,
+				B568B6641F1F3FAB0092CE4A /* scene.sks */,
+				B552AC891F2084D4006D4F98 /* PongScene.swift */,
+				B568B6671F1F409E0092CE4A /* Assets.xcassets */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -322,6 +334,7 @@
 		5DF3D6ACCF616DD9F4C24179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B568B64A1F1F3A740092CE4A /* SpriteKit.framework */,
 				83B0F8531F19BA1B006493A6 /* QuartzCore.framework */,
 				83B0F8411F19A673006493A6 /* SafariServices.framework */,
 				8345F2CB1F0F0C81006761BE /* WebKit.framework */,
@@ -469,6 +482,7 @@
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
 				83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */,
+				B568B6691F1F409E0092CE4A /* Assets.xcassets in Resources */,
 				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
@@ -618,6 +632,7 @@
 				5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */,
 				83B0F8501F19BA07006493A6 /* ReaderContentPage.m in Sources */,
 				83B0F85F1F1A74E4006493A6 /* LICENSE.md in Sources */,
+				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83B0F8521F19BA07006493A6 /* ReaderContentView.m in Sources */,

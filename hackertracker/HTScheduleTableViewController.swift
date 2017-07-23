@@ -8,15 +8,18 @@
 
 import UIKit
 import CoreData
+import SpriteKit
 
 class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate {
     
     typealias EventSection = (date: String, events: [Event])
-    
+
     var eventSections : [EventSection] = []
     var data = NSMutableData()
     var emptyStateView : UIView?
     var lastContentOffset: CGPoint?
+
+    var pullDownAnimation: PongScene?
 
     // Dates for DC 25
     var days = ["2017-07-27", "2017-07-28", "2017-07-29", "2017-07-30"]
@@ -24,14 +27,27 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
-        
+
         refreshControl = UIRefreshControl()
         let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
         refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
-        refreshControl?.tintColor = UIColor.gray
+        refreshControl?.tintColor = .clear
         refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
+
+        let view = SKView(frame: refreshControl!.frame)
+        if let scene = SKScene(fileNamed: "scene") as? PongScene {
+            pullDownAnimation = scene
+            scene.backgroundColor = .clear
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene)
+            view.ignoresSiblingOrder = true
+            view.backgroundColor = .clear
+
+            refreshControl?.addSubview(view)
+        }
+
         tableView.addSubview(refreshControl!)
-        
+
         reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
     }
@@ -232,7 +248,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 
     func sync(sender: AnyObject) {
-        
+        pullDownAnimation?.play()
+
         let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
         let envs = NSDictionary(contentsOfFile: envPlist!)!
         
