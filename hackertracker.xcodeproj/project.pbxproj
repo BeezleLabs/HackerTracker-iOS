@@ -64,7 +64,7 @@
 		B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */; };
 		B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B552AC891F2084D4006D4F98 /* PongScene.swift */; };
 		B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B568B64A1F1F3A740092CE4A /* SpriteKit.framework */; };
-		B568B6651F1F3FAB0092CE4A /* scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B568B6641F1F3FAB0092CE4A /* scene.sks */; };
+		B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B568B6641F1F3FAB0092CE4A /* scene.sks */; };
 		B568B6691F1F409E0092CE4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B568B6671F1F409E0092CE4A /* Assets.xcassets */; };
 		B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9F7521F17307800EDC6FE /* Animation.swift */; };
 		E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */; };
@@ -483,6 +483,7 @@
 				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
 				83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */,
 				B568B6691F1F409E0092CE4A /* Assets.xcassets in Resources */,
+				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
 				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
