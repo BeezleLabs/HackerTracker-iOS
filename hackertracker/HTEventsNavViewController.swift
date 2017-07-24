@@ -13,7 +13,7 @@ extension UIImage {
     static func mainHeaderImage(scaledToWidth:CGFloat, visibleRect : CGRect? = nil) -> UIImage {
         let image = #imageLiteral(resourceName: "dc-25-wallpaper-blurred")
         
-        var  transformScale : CGFloat = 1.0
+        var transformScale : CGFloat = 1.0
         
         transformScale = scaledToWidth/image.size.width
     
