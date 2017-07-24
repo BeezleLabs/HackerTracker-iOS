@@ -66,8 +66,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             tableView.addSubview(refreshControl!)
         }
 
-
-<<<<<<< HEAD
         if isViewLoaded && !animated  {
             reloadEvents()
 
@@ -78,12 +76,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         }
     }
 
-=======
-        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
-        tableView.layoutIfNeeded()
-    }
-    
->>>>>>> b20c88b... Fix iPad refresh controller size
     func reloadEvents() {
         let selectedIndexPath = tableView.indexPathForSelectedRow
         var event: Event?
