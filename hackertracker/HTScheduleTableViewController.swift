@@ -35,9 +35,13 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if isViewLoaded {
+        if isViewLoaded && !animated  {
             reloadEvents()
-            tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+
+            if let lastContentOffset = lastContentOffset {
+                tableView.contentOffset = lastContentOffset
+                tableView.layoutIfNeeded()
+            }
         }
     }
 
@@ -66,14 +70,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             tableView.addSubview(refreshControl!)
         }
 
-        if isViewLoaded && !animated  {
-            reloadEvents()
-
-            if let lastContentOffset = lastContentOffset {
-                tableView.contentOffset = lastContentOffset
-                tableView.layoutIfNeeded()
-            }
-        }
     }
 
     func reloadEvents() {
