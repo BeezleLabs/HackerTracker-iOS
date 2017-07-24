@@ -43,7 +43,6 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
         physicsBody?.collisionBitMask = .max
         physicsBody?.restitution = 1
         physicsBody?.friction = 0
-
     }
 
     func play() {
@@ -53,7 +52,7 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    private func reset() {
+    func reset() {
         skull?.physicsBody?.isDynamic = false
         left?.removeAllActions()
         right?.removeAllActions()

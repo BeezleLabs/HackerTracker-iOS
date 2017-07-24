@@ -384,6 +384,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         eventSpeakerDownloadGroup.notify(queue: DispatchQueue.main) {
             self.refreshControl?.endRefreshing()
             self.reloadEvents()
+            self.pullDownAnimation?.reset()
         }
     }
 
