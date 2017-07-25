@@ -212,6 +212,14 @@ class DataImportManager: NSObject {
                 title = title.replacingOccurrences(of: "macOS", with: "[DESKTOP OS]")
             }
             
+            if title.localizedCaseInsensitiveContains("OSX") {
+                title = title.replacingOccurrences(of: "OSX", with: "[DESKTOP OS]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("OS X") {
+                title = title.replacingOccurrences(of: "OS X", with: "[DESKTOP OS]")
+            }
+            
             if title.localizedCaseInsensitiveContains("iOS") {
                 title = title.replacingOccurrences(of: "iOS", with: "[MOBILE OS]")
             }
@@ -251,6 +259,14 @@ class DataImportManager: NSObject {
             
             if description.localizedCaseInsensitiveContains("macOS") {
                 description = description.replacingOccurrences(of: "macOS", with: "[DESKTOP OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("OSX") {
+                description = description.replacingOccurrences(of: "OSX", with: "[DESKTOP OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("OS X") {
+                description = description.replacingOccurrences(of: "OS X", with: "[DESKTOP OPERATING SYSTEM]")
             }
             
             if description.localizedCaseInsensitiveContains("iOS") {
