@@ -27,14 +27,10 @@ struct eventType {
 class HTEventsScrollingTabController: ScrollingTabController {
     
     var eventTypes: [eventType] = [
-        eventType(n: "TALKS", i: "speaker", d: "Official", c: 0),
-        eventType(n: "CONTESTS", i: "contest", d: "Contest", c: 0),
-        eventType(n: "EVENTS", i: "calendar-active", d: "Event", c: 0),
-        eventType(n: "PARTIES", i: "party", d: "Party", c: 0),
-        eventType(n: "KIDS", i: "kids", d: "Kids", c: 0),
-        eventType(n: "SKYTALKS", i: "cloud", d: "Skytalks", c: 0),
-        eventType(n: "VILLAGES", i: "village", d: "Villages", c: 0),
-        eventType(n: "WORKSHOPS", i:"workshop", d:"Workshop", c: 0),
+        eventType(n: "CONFERENCE", i: "speaker", d: "Conference", c: 0),
+        eventType(n: "WORKSHOPS", i: "workshop", d: "Workshops", c: 0),
+        eventType(n: "SEMINARS", i: "seminar", d: "Seminars", c: 0),
+        eventType(n: "CONTESTS", i: "party", d: "Contests", c: 0),
         eventType(n: "OTHER", i:"other", d:"Other", c:0)
 
     ]

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="au4-zG-Z3M">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="au4-zG-Z3M">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
@@ -49,6 +49,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1998" y="843"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UjF-p2-zPO">
+            <objects>
+                <viewController id="M0O-1s-7Yg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGv-XF-b9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="-1221"/>
         </scene>
         <!--Updates View Controller-->
         <scene sceneID="o5z-Zp-Lcx">
@@ -390,9 +398,9 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="dayTimeSwitch" destination="VpL-dl-uug" id="8mo-On-3e2"/>
+                        <outlet property="dayTimeSwitch" destination="VpL-dl-uug" id="EUe-Wa-Gtl"/>
                         <outlet property="dayView" destination="MW8-Ig-jaP" id="Adi-Fm-uNy"/>
-                        <outlet property="nightView" destination="0om-4U-yZy" id="PpD-85-tdv"/>
+                        <outlet property="nightView" destination="0om-4U-yZy" id="sbU-Tg-PyM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5k-1E-Sh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -404,7 +412,7 @@
             <objects>
                 <splitViewController id="qWo-7t-Kgc" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="" image="calendar-active" selectedImage="calendar-active" id="w0v-1C-qON">
+                    <tabBarItem key="tabBarItem" title="" image="calendar-inactive" selectedImage="calendar-active" id="w0v-1C-qON">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="G0q-EC-DC2"/>
@@ -919,15 +927,12 @@
         <image name="map-inactive" width="40" height="40"/>
         <image name="saved-active" width="40" height="40"/>
         <image name="saved-inactive" width="40" height="40"/>
-        <image name="search" width="30" height="30"/>
-        <image name="skull-active" width="40" height="40"/>
-        <image name="skull-inactive" width="40" height="40"/>
+        <image name="skull-active" width="45" height="45"/>
+        <image name="skull-inactive" width="45" height="45"/>
         <image name="skull_lg" width="200" height="200"/>
         <image name="splash" width="375" height="667"/>
-        <image name="sync-30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zg6-LD-ovW"/>
         <segue reference="d8H-Jh-Jqg"/>
         <segue reference="zg6-LD-ovW"/>
     </inferredMetricsTieBreakers>

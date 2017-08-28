@@ -96,8 +96,8 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
         automaticallyAdjustsScrollViewInsets = false
         
-        let dayFile = Bundle.main.url(forResource: "dc-25-floorplan-v7.5-public", withExtension: "pdf")
-        let nightFile = Bundle.main.url(forResource: "dc-25-floorplan-night", withExtension: "pdf")
+        let dayFile = Bundle.main.url(forResource: "toorcon-19-floorplan", withExtension: "pdf")
+        let nightFile = Bundle.main.url(forResource: "toorcon-19-floorplan", withExtension: "pdf")
 
         dayMapView = ReaderContentView(frame: self.view.frame, fileURL: dayFile!, page: 0, password: "")
         view.addSubview(dayMapView!)
@@ -129,13 +129,13 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             zoomToLocation(roomDimensions)
         }
 
-        if let timeOfDay = timeOfDay {
+        /*if let timeOfDay = timeOfDay {
             dayTimeSwitch.selectedSegmentIndex = timeOfDay == .night ? 1 : 0
         } else {
             dayTimeSwitch.selectedSegmentIndex = TimeOfDay.timeOfDay(for: Date()) == .night ? 1 : 0
         }
 
-        mapTypeChanged(dayTimeSwitch)
+        mapTypeChanged(dayTimeSwitch)*/
     }
 
     func zoomToLocation(_ roomDimensions: CGRect) {

@@ -24,8 +24,9 @@ class DataImportManager: NSObject {
     public func importSpeakers(speakerData : Data) throws {
         let _speakers = try JSONSerialization.jsonObject(with: speakerData, options: .allowFragments) as? [String : Any]
         
-        guard let speakers = _speakers, let updateDateString = speakers["update_date"] as? String, let _ = DateFormatterUtility.iso8601pdtFormatter.date(from:updateDateString), let speakerItems = speakers["speakers"] as? [[String : Any]] else
+        guard let speakers = _speakers, let updateDateString = speakers["update_date"] as? String, let _ = DateFormatterUtility.iso8601Formatter.date(from:updateDateString), let speakerItems = speakers["speakers"] as? [[String : Any]] else
         {
+            print("wtf")
             return ;
         }
         
@@ -74,7 +75,7 @@ class DataImportManager: NSObject {
         
         managedSpeaker.indexsp = index
         
-        if let lastUpdateString = speaker["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: lastUpdateString) {
+        if let lastUpdateString = speaker["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
             managedSpeaker.last_update = lastUpdateDate
         } else {
             managedSpeaker.last_update = Date()
@@ -101,7 +102,7 @@ class DataImportManager: NSObject {
     public func importEvents(eventData : Data) throws {
         let _events = try JSONSerialization.jsonObject(with: eventData, options: .allowFragments) as? [String : Any]
         
-        guard let events = _events, let updateDateString = events["update_date"] as? String, let lastUpdateDate = DateFormatterUtility.iso8601pdtFormatter.date(from:updateDateString), let eventItems = events["schedule"] as? [[String : Any]] else
+        guard let events = _events, let updateDateString = events["update_date"] as? String, let lastUpdateDate = DateFormatterUtility.iso8601Formatter.date(from:updateDateString), let eventItems = events["schedule"] as? [[String : Any]] else
         {
             return ;
         }
@@ -288,19 +289,19 @@ class DataImportManager: NSObject {
             managedEvent.details = ""
         }
         
-        if let startDateString = event["start_date"] as? String, let startDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: startDateString) {
+        if let startDateString = event["start_date"] as? String, let startDate =  DateFormatterUtility.iso8601Formatter.date(from: startDateString) {
             managedEvent.start_date = startDate
         } else {
-            managedEvent.start_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!
+            managedEvent.start_date = DateFormatterUtility.iso8601Formatter.date(from: "2017-07-25T10:00:00")!
         }
         
-        if let endDateString = event["end_date"] as? String, let endDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: endDateString) {
+        if let endDateString = event["end_date"] as? String, let endDate =  DateFormatterUtility.iso8601Formatter.date(from: endDateString) {
             managedEvent.end_date = endDate
         } else {
-            managedEvent.end_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!
+            managedEvent.end_date = DateFormatterUtility.iso8601Formatter.date(from: "2017-09-03T10:00:00-07:00")!
         }
         
-        if let lastUpdateString = event["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: lastUpdateString) {
+        if let lastUpdateString = event["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
             managedEvent.updated_at = lastUpdateDate
         } else {
             managedEvent.updated_at = Date()

@@ -54,27 +54,28 @@ class HTInitViewController: UIViewController {
             
             do {
                try dataManager.importSpeakers(speakerData: speakers_data)
+                
+                
+                let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+                message1.date = Date()
+                message1.msg = "Welcome to HackerTracker iOS for TOORCON 19. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
+                
+                let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+                message2.date = Date()
+                message2.msg = "The initial schedule contains official talks, etc. Pull down to update the schedule from official sources."
             } catch {
-                print("Failed to import Speakers")
+                print("Failed to import speakers: \(error)")
             }
             
             let schedule_file = Bundle.main.path(forResource: "schedule-full", ofType: "json")!
-            let schedule_content = try! NSString(contentsOfFile: schedule_file, encoding: String.Encoding.ascii.rawValue)
-            let schedule_data = schedule_content.data(using: String.Encoding.utf8.rawValue)!
+            let schedule_content = try! String(contentsOfFile: schedule_file)
+            let schedule_data = schedule_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
             
             do {
                 try dataManager.importEvents(eventData: schedule_data)
             } catch {
-                print("Failed to import schedule")
+                print("Failed to import schedule: \(error)")
             }
-            
-            let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-            message1.date = Date()
-            message1.msg = "Welcome to HackerTracker iOS for DEF CON 25. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. The HackerTracker team is now a part of the DEF CON Infobooth. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
-            
-            let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-            message2.date = Date()
-            message2.msg = "The initial schedule contains official talks, workshops, villages, parties, etc. Pull down on the schedule to update with info.defcon.org."
             
             do {
                 try context.save()

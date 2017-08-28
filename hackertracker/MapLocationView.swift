@@ -108,8 +108,8 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
     var mapOffset = CGPoint(x:0, y:0)
     var mapZoomLevel : CGFloat = 1.0
     
-    fileprivate static let dayFile = Bundle.main.url(forResource: "dc-25-floorplan-v7.5-public", withExtension: "pdf")!
-    fileprivate static let nightFile = Bundle.main.url(forResource: "dc-25-floorplan-night", withExtension: "pdf")!
+    fileprivate static let dayFile = Bundle.main.url(forResource: "toorcon-19-floorplan", withExtension: "pdf")!
+    fileprivate static let nightFile = Bundle.main.url(forResource: "toorcon-19-floorplan", withExtension: "pdf")!
 
     var timeOfDay = TimeOfDay.day
     {

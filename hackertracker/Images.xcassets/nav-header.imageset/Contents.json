@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Header BG 2.png",
+      "filename" : "navheader_1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Header BG 2@2x.png",
+      "filename" : "navheader_2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Header BG 2@3x.png",
+      "filename" : "navheader.png",
       "scale" : "3x"
     }
   ],

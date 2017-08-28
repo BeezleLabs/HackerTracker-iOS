@@ -65,20 +65,20 @@ public class EventCell : UITableViewCell {
         var color = UIColor.gray.withAlphaComponent(0.4)
         if (event.starred) {
             switch(event.entry_type) {
-            case "Official":
+            case "Conference":
                 color = .deepPurple
                 break
-            case "Contest":
+            case "Workshops":
                 color = .blue
                 break
-            case "Event":
+            case "Seminars":
                 color = .red
                 break
-            case "Party":
-                color = .cyan
+            case "Contests":
+                color = .green
                 break
             case "Kids":
-                color = .green
+                color = .cyan
                 break
             case "Skytalks":
                 color = .orange
