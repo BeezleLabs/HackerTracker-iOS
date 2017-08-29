@@ -747,7 +747,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="44D-XO-0SY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="44D-XO-0SY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -824,7 +824,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="5l0-LJ-ArA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5l0-LJ-ArA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -864,7 +864,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Med-we-Ik4">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="Med-we-Ik4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -883,7 +883,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nGb-HO-gXP" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pRO-V9-tnf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pRO-V9-tnf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -901,7 +901,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="52w-aK-Nck" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dtY-8W-mzn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dtY-8W-mzn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
