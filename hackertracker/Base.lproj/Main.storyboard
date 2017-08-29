@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -353,55 +353,14 @@
                     <view key="view" contentMode="scaleToFill" id="ta4-tB-Y16">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSu-xE-gf2" userLabel="Scroll View Blocker">
-                                <rect key="frame" x="67" y="245" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <webView hidden="YES" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MW8-Ig-jaP" userLabel="DayView">
-                                <rect key="frame" x="0.0" y="-8" width="375" height="562"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0om-4U-yZy">
-                                <rect key="frame" x="0.0" y="-8" width="375" height="562"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.30980392159999998" green="0.29411764709999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="MW8-Ig-jaP" firstAttribute="topMargin" secondItem="ta4-tB-Y16" secondAttribute="top" id="2kb-Iu-izh"/>
-                            <constraint firstItem="0om-4U-yZy" firstAttribute="bottom" secondItem="MW8-Ig-jaP" secondAttribute="bottom" id="7iM-ah-0RZ"/>
-                            <constraint firstAttribute="trailing" secondItem="MW8-Ig-jaP" secondAttribute="trailing" id="8pp-0G-xiW"/>
-                            <constraint firstItem="MW8-Ig-jaP" firstAttribute="leading" secondItem="ta4-tB-Y16" secondAttribute="leading" id="MoY-W9-HaZ"/>
-                            <constraint firstItem="0om-4U-yZy" firstAttribute="top" secondItem="MW8-Ig-jaP" secondAttribute="top" id="RHm-AE-oUq"/>
-                            <constraint firstItem="0om-4U-yZy" firstAttribute="trailing" secondItem="MW8-Ig-jaP" secondAttribute="trailing" id="YSZ-mR-s9j"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="MW8-Ig-jaP" secondAttribute="bottom" id="ZFD-f3-j0f"/>
-                            <constraint firstItem="0om-4U-yZy" firstAttribute="leading" secondItem="MW8-Ig-jaP" secondAttribute="leading" id="geF-FG-6ij"/>
-                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="eTb-OG-eb5">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="VpL-dl-uug">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="DAY"/>
-                                <segment title="NIGHT"/>
-                            </segments>
-                            <connections>
-                                <action selector="mapTypeChanged:" destination="9uk-jY-kfH" eventType="valueChanged" id="QIk-7r-nIx"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
-                    <connections>
-                        <outlet property="dayTimeSwitch" destination="VpL-dl-uug" id="EUe-Wa-Gtl"/>
-                        <outlet property="dayView" destination="MW8-Ig-jaP" id="Adi-Fm-uNy"/>
-                        <outlet property="nightView" destination="0om-4U-yZy" id="sbU-Tg-PyM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5k-1E-Sh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -800,7 +759,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.050000000000000003" contentMode="center" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="hpF-de-Nd8">
-                                <rect key="frame" x="87" y="209" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="209" width="200" height="200"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
