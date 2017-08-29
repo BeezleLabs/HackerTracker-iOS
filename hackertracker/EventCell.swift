@@ -52,10 +52,25 @@ public class EventCell : UITableViewCell {
 
         color.backgroundColor = color(for: event)
         
+        let speakers : [Speaker]
+        
+        let dataRequest = DataRequestManager(managedContext: getContext())
+        if let retrievedSpeakers = dataRequest.getSpeakersForEvent(event.index)
+        {
+            speakers = retrievedSpeakers
+        } else {
+            speakers = []
+        }
+        
         if event.location.isEmpty {
             subtitle.text = "Location in description"
         } else {
             subtitle.text = event.location
+            for s in speakers {
+                let split = s.who.characters.split(separator: " ")
+                let last    = String(split.suffix(1).joined(separator: [" "]))
+                subtitle.text = "\(String(describing: subtitle.text!)) - \(last)"
+            }
         }
 
         time.text = eventTime
