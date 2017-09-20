@@ -1,5 +1,5 @@
 {
-  "update_date": "2017-07-17T15:57:16-07:00",
+  "update_date": "2017-08-29T19:54:16-07:00",
   "schedule":
   [
     {
@@ -125,7 +125,7 @@
       "location" : "Track 2",
       "demo" : 0,
       "entry_type" : "Conference",
-      "description" : "Pentesters are tired of breaking things, writing a report, and walking away. Security teams are caught in a backlog that prevents them from ever staying ahead. Developers curse security for slowing them down. How can we address these seemingly incompatible and insurmountable issues in an organization, especially at scale? The answer to this may be found in a practice called “DevSecOps” that has been gaining momentum in large organizations that need to move fast and ensure a high level of security across their applications and operations. It is a practice that attempts to address all of these issues through two core principles- automation and education. Using experience gained from working with several large fortune 500 companies, this talk will cover the basics of DevSecOps, and dive into specific tools and processes that organizations of any size can implement to immediately improve their speed of delivery while maintaining a strong and measurable security baseline.",
+      "description" : "Pentesters are tired of breaking things, writing a report, and walking away. Security teams are caught in a backlog that prevents them from ever staying ahead. Developers curse security for slowing them down. How can we address these seemingly incompatible and insurmountable issues in an organization, especially at scale? The answer to this may be found in a practice called \"DevSecOps\" that has been gaining momentum in large organizations that need to move fast and ensure a high level of security across their applications and operations. It is a practice that attempts to address all of these issues through two core principles- automation and education. Using experience gained from working with several large fortune 500 companies, this talk will cover the basics of DevSecOps, and dive into specific tools and processes that organizations of any size can implement to immediately improve their speed of delivery while maintaining a strong and measurable security baseline.",
       "index" : "5",
       "end_date" : "2017-09-02T13:50:00-07:00",
       "updated_at" : "2017-08-24T22:08:28-07:00",
@@ -175,7 +175,7 @@
       "location" : "Track 2",
       "demo" : 0,
       "entry_type" : "Conference",
-      "description" : "Innovation is a key buzzword currently within the US military and is shaping the vision for our forces as being agile organizations able to adapt to a complex world. But does our military have the capabilities to protect vital national interests in cyber? The growth of the Internet in our globally connected world has meant that tools for cyber are constantly changing. Accordingly, do we have the capacity to gain the advantages needed to out-hack our adversaries in this domain? In this talk, we provide a relatively simple framework for different types of innovation (disruptive, breakthrough, sustaining, and incremental) in order to find better solutions to malicious cyberattacks. By doing so, we promote how “inside-the-box” thinking can help successfully defend cyberspace.",
+      "description" : "Innovation is a key buzzword currently within the US military and is shaping the vision for our forces as being agile organizations able to adapt to a complex world. But does our military have the capabilities to protect vital national interests in cyber? The growth of the Internet in our globally connected world has meant that tools for cyber are constantly changing. Accordingly, do we have the capacity to gain the advantages needed to out-hack our adversaries in this domain? In this talk, we provide a relatively simple framework for different types of innovation (disruptive, breakthrough, sustaining, and incremental) in order to find better solutions to malicious cyberattacks. By doing so, we promote how \"inside-the-box\" thinking can help successfully defend cyberspace.",
       "index" : "7",
       "end_date" : "2017-09-02T14:50:00-07:00",
       "updated_at" : "2017-08-24T22:08:28-07:00",
@@ -432,7 +432,7 @@
       "location" : "Track 1",
       "demo" : 0,
       "entry_type" : "Conference",
-      "description" : "Many cybersecurity experts have said for years that we need to do better whitelisting, and that relying on blacklisting and anomaly detection is not good enough anymore. Unfortunately, organizations often cannot technically implement the comprehensive security policies they want to (or should want to). This is because there are too many overlapping technical configs in too many places, and everything keeps changing dynamically. This is particularly hard for large, interconnected “IT landscapes” like IoT. We need better security policy automation tools that allow us to write policies in generic, simple terms, and automatically implement them, and update them if the IT landscape changes. This is of course easier said than done. In this talk we will present (and run a demo) of security policy automation we are developing as part of a current government R&D subcontract (across an interconnected medical device landscape and across an interconnected intelligent transport system). It allows to author generic policies, ingests numerous data sources, tests policies, generates technical policy configurations, and monitor. The presentation will explain technical approaches, benefits and challenges",
+      "description" : "Many cybersecurity experts have said for years that we need to do better whitelisting, and that relying on blacklisting and anomaly detection is not good enough anymore. Unfortunately, organizations often cannot technically implement the comprehensive security policies they want to (or should want to). This is because there are too many overlapping technical configs in too many places, and everything keeps changing dynamically. This is particularly hard for large, interconnected \"IT landscapes\" like IoT. We need better security policy automation tools that allow us to write policies in generic, simple terms, and automatically implement them, and update them if the IT landscape changes. This is of course easier said than done. In this talk we will present (and run a demo) of security policy automation we are developing as part of a current government R&D subcontract (across an interconnected medical device landscape and across an interconnected intelligent transport system). It allows to author generic policies, ingests numerous data sources, tests policies, generates technical policy configurations, and monitor. The presentation will explain technical approaches, benefits and challenges",
       "index" : "17",
       "end_date" : "2017-09-03T12:50:00-07:00",
       "updated_at" : "2017-08-24T22:08:28-07:00",
@@ -457,7 +457,7 @@
       "location" : "Track 2",
       "demo" : 0,
       "entry_type" : "Conference",
-      "description" : "For an outsider, the world of cybersecurity and hacking can be complex and mystifying. People are intrigued and terrified by the “400 lb hacker.” With phishing and other forms of social engineering still being one of the most common root cause of breach, there is a need to empower a company's employees, especially the non-technical ones, to be able to defend and not fall prey to such attacks. Similarly, the increase in the amount of code being written along with the shortage of cybersecurity professionals calls for a need to train software developers in Security. Traditional methods of awareness including lectures, videos etc. have been ineffective in achieving this adequately. I claim this based on reports by organizations such as Experian, Ponemon etc. and the extensive internal research done at my current company. I present a novel system for cybersecurity training and awareness : Security Gamification including CTF ( Capture The Flags). The training emphasizes on a ‘no one left behind' principle in which all the employees at a company get trained in CyberSecurity defense.\n\nCTFs are online cybersecurity competitions that involve practical hands on training through Security puzzle solving. They are mostly played by current or aspiring Security professionals and have proven to be one of the best ways to learn about Security and defense. My training method is novel in that this is the first publicly released use of CTFs and Security puzzles to train developers and non-technical people. CTFs rely on the interactive ‘learning by doing' methodology which has proven to be more successful than the one-way incoming lecture style. We use this methodology to gamify the Security training for technical as well as nontechnical employees by varying the scopes and level of challenges. The idea is to help the participants learn how to defend by making them break or hack things in a controlled environment. It helps the participants defend better by getting into the attacker mindset, thereby de-mystifying the hacking world. Additionally, the healthy competition amongst employees, the fun puzzle based format and the chance to work in teams all provides exceptional learning opportunities.\n\nIn my presentation, I will also delve into the key take-aways for people interested in building a similar system at their respective companies. This detailed interaction will contain discussions about the reconnaissance of Security awareness at a company needed as step one of building this system. Then, it will go on to demo some example challenges for both developers as well as non-technical employees. I also plan to include a brief section about how to present it such that the employees and leadership are excited about it rather than seeing it as a burden.\n\nOne of the many appealing things about this system is its ability to effectively track and quantifiably measure the increase in Security awareness and defense capabilities over time. Starting from the reconnaissance phase, all the way to successfully completing the implementation and even after that, the system provides functionality of number of challenges solved, time taken, number of attempts etc. for each employee which can also be combined per team, per department or the whole company etc.",
+      "description" : "For an outsider, the world of cybersecurity and hacking can be complex and mystifying. People are intrigued and terrified by the \"400 lb hacker.\" With phishing and other forms of social engineering still being one of the most common root cause of breach, there is a need to empower a company's employees, especially the non-technical ones, to be able to defend and not fall prey to such attacks. Similarly, the increase in the amount of code being written along with the shortage of cybersecurity professionals calls for a need to train software developers in Security. Traditional methods of awareness including lectures, videos etc. have been ineffective in achieving this adequately. I claim this based on reports by organizations such as Experian, Ponemon etc. and the extensive internal research done at my current company. I present a novel system for cybersecurity training and awareness : Security Gamification including CTF ( Capture The Flags). The training emphasizes on a ‘no one left behind' principle in which all the employees at a company get trained in CyberSecurity defense.\n\nCTFs are online cybersecurity competitions that involve practical hands on training through Security puzzle solving. They are mostly played by current or aspiring Security professionals and have proven to be one of the best ways to learn about Security and defense. My training method is novel in that this is the first publicly released use of CTFs and Security puzzles to train developers and non-technical people. CTFs rely on the interactive ‘learning by doing' methodology which has proven to be more successful than the one-way incoming lecture style. We use this methodology to gamify the Security training for technical as well as nontechnical employees by varying the scopes and level of challenges. The idea is to help the participants learn how to defend by making them break or hack things in a controlled environment. It helps the participants defend better by getting into the attacker mindset, thereby de-mystifying the hacking world. Additionally, the healthy competition amongst employees, the fun puzzle based format and the chance to work in teams all provides exceptional learning opportunities.\n\nIn my presentation, I will also delve into the key take-aways for people interested in building a similar system at their respective companies. This detailed interaction will contain discussions about the reconnaissance of Security awareness at a company needed as step one of building this system. Then, it will go on to demo some example challenges for both developers as well as non-technical employees. I also plan to include a brief section about how to present it such that the employees and leadership are excited about it rather than seeing it as a burden.\n\nOne of the many appealing things about this system is its ability to effectively track and quantifiably measure the increase in Security awareness and defense capabilities over time. Starting from the reconnaissance phase, all the way to successfully completing the implementation and even after that, the system provides functionality of number of challenges solved, time taken, number of attempts etc. for each employee which can also be combined per team, per department or the whole company etc.",
       "index" : "18",
       "end_date" : "2017-09-03T12:50:00-07:00",
       "updated_at" : "2017-08-24T22:08:28-07:00",
@@ -494,25 +494,21 @@
       "exploit" : 0,
       "dctv_channel" : "0",
       "who" : [
-        {
-          "indexsp" : "23",
-          "who" : "Sharad Kumar"
-        }
       ],
       "tool" : 0,
       "id" : "tc19c2020",
-      "start_date" : "2017-09-03T14:00:00-07:00",
+      "start_date" : "2017-09-03T15:30:00-07:00",
       "includes" : "",
       "recommended" : "0",
       "link" : "https://sandiego.toorcon.net/conference/#19",
       "location" : "Track 2",
       "demo" : 0,
       "entry_type" : "Conference",
-      "description" : "Starting from Espionage and ending at OSINT, our data gathering techniques has been developed magnificently. In 90's, the security posture of national security, law enforcement agencies, Cyber Security agencies was totally different. At that time gathering, data about someone was very difficult due to fewer Internet resources.But, this digital era has overcome the techniques used for information gathering in 90's by Intelligence Gathering. It includes gathering data from various public sources and their API. Activities which one performs in its entire lifespan is recorded by various public sources.Intelligence Gathering includes human, geo-location, open-source, signals, digital and financial intelligence. The CIA, NSA, and RGA are using OSINT for collecting data as collateral information.\n\nIn order to debunk people myth's about information gathering, I made an open source tool called as OSINT-SPY which I will release after this talk. OSINT-SPY can find information about a person, email, an organization, person's geolocation, domain names, publically available devices on the internet and so on. It can be used by Data Miners, Infosec Researchers, Penetration Testers and cyber crime investigator in order to find deep information about their target.\n\nIn this talk, my main focus will be to demonstrate different techniques to gather information from public API, resources and understanding the need of implementing OSINT in any organization because open sources may often be useful in penetrating across closed borders than open societies.",
+      "description" : "Talk To Be Announced",
       "index" : "20",
-      "end_date" : "2017-09-03T14:20:00-07:00",
-      "updated_at" : "2017-08-24T22:08:28-07:00",
-      "title" : "From 90's to 20's | Espionage to Intelligence - Birth Of OSINT"
+      "end_date" : "2017-09-03T15:50:00-07:00",
+      "updated_at" : "2017-08-28T22:08:28-07:00",
+      "title" : "CHANGED - TBA"
     },
 
 
@@ -534,7 +530,7 @@
       "location" : "Track 1",
       "demo" : 0,
       "entry_type" : "Conference",
-      "description" : "This presentation is about a creative approach to intrusion tests, as the popular saying would say: “-The dog is man's best friend” (he makes you feel good and secure).\n\nLet's explore the vulnerability of layer eight, the human being, subject to error and the social engineering techniques; This is an innovative method, with art and style, will be simpler than it sounds; The dog will be used as an attack tool, which will carry a mobile phone hidden along with its pectoral collar.\n\nThe attack vectors are triggered automatically without any human interaction. This may include geographically close attacks, such as fake Wi-Fi access points, cellular base stations or local user attacks on a network, we can exploit DNS hijacking, packet injection, Evil-Twin, rogue router or ISP, and many other variants.\n\nFurthermore, the target will connect to your rogue wifi access point and the rules are enabled with the DHCP configurations to allow fake AP to allocate IP address to the clients and forward traffic to a fake/malicious web-site; Then, the information can be stored easily as well the injection of malicious file to remotely control the victim.\n\nAnd it's done. You can drop your hacker dog in a park and expect him to hack people for you, quietly, that's perfect!",
+      "description" : "This presentation is about a creative approach to intrusion tests, as the popular saying would say: \"The dog is man's best friend\" (he makes you feel good and secure).\n\nLet's explore the vulnerability of layer eight, the human being, subject to error and the social engineering techniques; This is an innovative method, with art and style, will be simpler than it sounds; The dog will be used as an attack tool, which will carry a mobile phone hidden along with its pectoral collar.\n\nThe attack vectors are triggered automatically without any human interaction. This may include geographically close attacks, such as fake Wi-Fi access points, cellular base stations or local user attacks on a network, we can exploit DNS hijacking, packet injection, Evil-Twin, rogue router or ISP, and many other variants.\n\nFurthermore, the target will connect to your rogue wifi access point and the rules are enabled with the DHCP configurations to allow fake AP to allocate IP address to the clients and forward traffic to a fake/malicious web-site; Then, the information can be stored easily as well the injection of malicious file to remotely control the victim.\n\nAnd it's done. You can drop your hacker dog in a park and expect him to hack people for you, quietly, that's perfect!",
       "index" : "21",
       "end_date" : "2017-09-03T14:50:00-07:00",
       "updated_at" : "2017-08-24T22:08:28-07:00",
@@ -602,7 +598,7 @@
       ],
       "tool" : 0,
       "id" : "tc19c2024",
-      "start_date" : "2017-09-03T15:30:00-07:00",
+      "start_date" : "2017-09-03T14:00:00-07:00",
       "includes" : "",
       "recommended" : "0",
       "link" : "https://sandiego.toorcon.net/conference/#23",
@@ -611,8 +607,8 @@
       "entry_type" : "Conference",
       "description" : "Bringing awareness to the pain felt in the healthcare industry from a security standpoint, what attackers are targeting, and how the industry needs to steer itself to prevent further patient risk and mishandling of data.\n\nI'll be covering a brief background on HIPAA, how it has set the stage for a series of failures, what those failures are, and things individuals and the medical industry can do to protect themselves",
       "index" : "24",
-      "end_date" : "2017-09-03T15:50:00-07:00",
-      "updated_at" : "2017-08-24T22:08:28-07:00",
+      "end_date" : "2017-09-03T14:20:00-07:00",
+      "updated_at" : "2017-08-28T22:08:28-07:00",
       "title" : "The state of Security in the Medical Industry"
     },
 
@@ -986,7 +982,7 @@
       "location" : "Workshop",
       "demo" : 0,
       "entry_type" : "Workshops",
-      "description" : "The two day Software Defined Radio (SDR) workshop at ToorCon is an introduction to digital signal processing, software radio, and the powerful tools that enable the growing array of SDR projects within the hacker community. This course takes a unique “software radio for hackers” approach, building on the participants' knowledge of computer programming and introducing them to the forefront of digital radio technology. Participants will learn how to transmit, receive, and analyze radio signals and will be prepared to use this knowledge in the research of wireless communication security.",
+      "description" : "The two day Software Defined Radio (SDR) workshop at ToorCon is an introduction to digital signal processing, software radio, and the powerful tools that enable the growing array of SDR projects within the hacker community. This course takes a unique \"software radio for hackers\" approach, building on the participants' knowledge of computer programming and introducing them to the forefront of digital radio technology. Participants will learn how to transmit, receive, and analyze radio signals and will be prepared to use this knowledge in the research of wireless communication security.",
       "index" : "33",
       "end_date" : "2017-08-303T16:50:00-07:00",
       "updated_at" : "2017-08-24T22:08:28-07:00",
@@ -1010,7 +1006,7 @@
       "location" : "Workshop",
       "demo" : 0,
       "entry_type" : "Workshops",
-      "description" : "The two day Software Defined Radio (SDR) workshop at ToorCon is an introduction to digital signal processing, software radio, and the powerful tools that enable the growing array of SDR projects within the hacker community. This course takes a unique “software radio for hackers” approach, building on the participants' knowledge of computer programming and introducing them to the forefront of digital radio technology. Participants will learn how to transmit, receive, and analyze radio signals and will be prepared to use this knowledge in the research of wireless communication security.",
+      "description" : "The two day Software Defined Radio (SDR) workshop at ToorCon is an introduction to digital signal processing, software radio, and the powerful tools that enable the growing array of SDR projects within the hacker community. This course takes a unique \"software radio for hackers\" approach, building on the participants' knowledge of computer programming and introducing them to the forefront of digital radio technology. Participants will learn how to transmit, receive, and analyze radio signals and will be prepared to use this knowledge in the research of wireless communication security.",
       "index" : "51",
       "end_date" : "2017-08-31T16:50:00-07:00",
       "updated_at" : "2017-08-24T22:08:28-07:00",
