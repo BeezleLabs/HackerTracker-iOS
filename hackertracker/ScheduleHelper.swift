@@ -17,8 +17,8 @@ func getContext() -> NSManagedObjectContext {
 }
 
 func getBackgroundContext() -> NSManagedObjectContext {
-    let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    return delegate.backgroundManagedObjectContext!
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        return delegate.backgroundManagedObjectContext!
 }
 
 // Certificate Pinning Delegate

@@ -124,22 +124,22 @@ class HTEventDetailViewController: UIViewController {
             let whoAttributedString = NSMutableAttributedString(string:s.who)
             let whoParagraphStyle = NSMutableParagraphStyle()
             whoParagraphStyle.alignment = .center
-            whoAttributedString.addAttribute(NSParagraphStyleAttributeName, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
-            whoAttributedString.addAttribute(NSForegroundColorAttributeName, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (s.who as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (s.who as NSString).length))
             
             let titleAttributedString = NSMutableAttributedString(string:s.sptitle)
             let titleParagraphStyle = NSMutableParagraphStyle()
             titleParagraphStyle.alignment = .center
-            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
             
             let bioAttributedString = NSMutableAttributedString(string:s.bio)
             let bioParagraphStyle = NSMutableParagraphStyle()
             bioParagraphStyle.alignment = .justified
-            bioAttributedString.addAttribute(NSParagraphStyleAttributeName, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
             
             
             speakerBios.append(whoAttributedString)
@@ -201,7 +201,7 @@ class HTEventDetailViewController: UIViewController {
         locationMapView.addGestureRecognizer(touchGesture)
     }
 
-    func expand() {
+    @objc func expand() {
         if self.eventNameLabel.attributedText == speakerList {
             self.eventNameLabel.attributedText = speakerBios
         } else {
@@ -330,7 +330,7 @@ class HTEventDetailViewController: UIViewController {
         }
     }
     
-    func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)
+    @objc func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)
     {
         let touchPoint = tapGesture.location(in: tapGesture.view)
         

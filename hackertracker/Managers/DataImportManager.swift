@@ -26,7 +26,7 @@ class DataImportManager: NSObject {
         
         guard let speakers = _speakers, let updateDateString = speakers["update_date"] as? String, let _ = DateFormatterUtility.iso8601Formatter.date(from:updateDateString), let speakerItems = speakers["speakers"] as? [[String : Any]] else
         {
-            print("wtf")
+            print("Something is wrong with speaker import")
             return ;
         }
         
@@ -44,9 +44,11 @@ class DataImportManager: NSObject {
     }
     
     public func importSpeaker(speaker : [String : Any]) throws -> Speaker {
-        guard let indexString = speaker["indexsp"] as? String, let index = Int32(indexString) else {
-            throw ImportError.idDoesntExist
-        }
+        //guard let indexString = event["indexsp"] as? String, let indexsp = Int32(indexString) else {
+        //    throw ImportError.idDoesntExist
+        //}
+        let index = speaker["indexsp"] as! Int32
+        print("importSpeaker \(index)")
         
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
         fre.predicate = NSPredicate(format: "indexsp = %@", argumentArray: [index])
@@ -127,9 +129,10 @@ class DataImportManager: NSObject {
     }
     
     public func importEvent(event : [String : Any]) throws -> Event {
-        guard let indexString = event["index"] as? String, let index = Int32(indexString) else {
-            throw ImportError.idDoesntExist
-        }
+        //guard let indexString = event["index"] as? String, let index = Int32(indexString) else {
+        //    throw ImportError.idDoesntExist
+        //}
+        let index = event["index"] as! Int32
         
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fre.predicate = NSPredicate(format: "index = %@", argumentArray: [index])

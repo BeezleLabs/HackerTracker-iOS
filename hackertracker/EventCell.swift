@@ -67,7 +67,8 @@ public class EventCell : UITableViewCell {
         } else {
             subtitle.text = event.location
             for s in speakers {
-                let split = s.who.characters.split(separator: " ")
+                let split = s.who.split(separator: " ")
+                //let split = s.who.characters.split(separator: " ")
                 let last    = String(split.suffix(1).joined(separator: [" "]))
                 subtitle.text = "\(String(describing: subtitle.text!)) - \(last)"
             }

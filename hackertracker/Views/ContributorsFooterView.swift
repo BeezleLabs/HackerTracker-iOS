@@ -38,8 +38,8 @@ class ContributorsFooterView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let attributedCon = NSAttributedString(string: "CON", attributes: [NSFontAttributeName : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: UIFontWeightBold), NSForegroundColorAttributeName : UIColor.white])
-        let attributedTributor = NSAttributedString(string: "tributors", attributes: [NSFontAttributeName : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: UIFontWeightLight), NSForegroundColorAttributeName : UIColor.white])
+        let attributedCon = NSAttributedString(string: "CON", attributes: [NSAttributedStringKey.font : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: UIFont.Weight.bold), NSAttributedStringKey.foregroundColor : UIColor.white])
+        let attributedTributor = NSAttributedString(string: "tributors", attributes: [NSAttributedStringKey.font : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: UIFont.Weight.light), NSAttributedStringKey.foregroundColor : UIColor.white])
         
         let attributedContributer = NSMutableAttributedString(attributedString: attributedCon)
         attributedContributer.append(attributedTributor)

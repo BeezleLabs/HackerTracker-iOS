@@ -27,20 +27,22 @@ struct eventType {
 class HTEventsScrollingTabController: ScrollingTabController {
     
     var eventTypes: [eventType] = [
-        eventType(n: "CONFERENCE", i: "speaker", d: "Conference", c: 0),
-        eventType(n: "WORKSHOPS", i: "workshop", d: "Workshops", c: 0),
-        eventType(n: "SEMINARS", i: "seminar", d: "Seminars", c: 0),
-        eventType(n: "CONTESTS", i: "party", d: "Contests", c: 0),
+        eventType(n: "CONFERENCE", i: "speaker", d: "Official", c: 0),
+        eventType(n: "FIRETALKS", i: "firetalks", d: "Firetalk", c: 0),
+        eventType(n: "LABS", i: "lab", d: "Lab", c: 0),
+        eventType(n: "CONTESTS", i: "content", d: "Contest", c: 0),
         eventType(n: "OTHER", i:"other", d:"Other", c:0)
 
     ]
     
-    let leftFadedView = UIView()
-    let rightFadedView = UIView()
+    var leftFadedView: UIView!
+    var rightFadedView: UIView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        leftFadedView = UIView()
+        rightFadedView = UIView()
         numToPreload = eventTypes.count + 2
         
         var eventControllers = [HTScheduleTableViewController]()

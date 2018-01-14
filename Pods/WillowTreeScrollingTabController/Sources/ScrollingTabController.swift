@@ -90,7 +90,7 @@ open class ScrollingTabController: UIViewController, UIScrollViewDelegate, UICol
     
     /// The current scrolled percentage
     var scrolledPercentage: CGFloat {
-        guard tabControllersView != nil, tabControllersView.contentSize.width > 0 else {
+        guard tabControllersView.contentSize.width > 0 else {
             return 0
         }
 
@@ -106,7 +106,7 @@ open class ScrollingTabController: UIViewController, UIScrollViewDelegate, UICol
     var previousPage: Int = 0
     var updatingCurrentPage = true
     var loadedPages = (0 ..< 0)
-    open var numToPreload = 1
+    public var numToPreload = 1
     fileprivate var largestTabSize = CGSize.zero
     fileprivate var deferredInitialSelectedPage: Int?
     fileprivate var initialAppearanceComplete = false
@@ -164,6 +164,8 @@ open class ScrollingTabController: UIViewController, UIScrollViewDelegate, UICol
             initialAppearanceComplete = true
             selectTab(atIndex: selectedPage, animated: false)
             deferredInitialSelectedPage = nil
+        } else {
+            reloadCurrentPage(animated: animated)
         }
         
         delegate?.scrollingTabController(self, displayedViewControllerAtIndex: currentPage)
@@ -219,7 +221,7 @@ open class ScrollingTabController: UIViewController, UIScrollViewDelegate, UICol
         tabControllersView.contentOffset = CGPoint(x: CGFloat(currentPage) * tabControllersView.bounds.width, y: 0)
     }
 
-    open func setLargestTabSize() {
+    func setLargestTabSize() {
         largestTabSize = viewControllers.reduce(CGSize.zero) { (largestSize: CGSize, viewController: UIViewController) -> CGSize in
             ScrollingTabController.sizingCell.title = viewController.tabBarItem.title
             let size = ScrollingTabController.sizingCell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
@@ -380,7 +382,7 @@ open class ScrollingTabController: UIViewController, UIScrollViewDelegate, UICol
             guard let dataSource = collectionView.dataSource else { return size }
             let itemCount = dataSource.collectionView(collectionView, numberOfItemsInSection: 0)
             if largestTabSize.width * CGFloat(itemCount) > collectionView.frame.width {
-                size = CGSize(width: largestTabSize.width, height: tabView.frame.height)
+                size = largestTabSize;
             } else {
                 let width = collectionView.frame.width / CGFloat(itemCount)
                 size = CGSize(width: width, height: tabView.frame.height)

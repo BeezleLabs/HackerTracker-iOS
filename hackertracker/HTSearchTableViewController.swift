@@ -62,7 +62,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
+        if let characterCount = eventSearchBar.text?.count, characterCount > 0 {
             return self.filteredEvents.count
         } else {
             return 0
@@ -151,7 +151,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if (searchText.characters.count > 0) {
+        if (searchText.count > 0) {
             filterEvents(searchText)
             
             self.tableView.reloadData()
@@ -166,7 +166,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             return false
         }
 
-        return text.characters.count > 0
+        return text.count > 0
     }
 
     // MARK: - Navigation

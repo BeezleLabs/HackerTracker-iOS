@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>base</key>
-	<string>https://raw.githubusercontent.com/BeezleLabs/conferences/master/TOORCON19/</string>
+	<string>https://raw.githubusercontent.com/BeezleLabs/conferences/master/SHMOOCON2018/</string>
+	<key>event_types</key>
+	<string></string>
 	<key>schedule</key>
 	<string>schedule-full.json</string>
 	<key>speakers</key>

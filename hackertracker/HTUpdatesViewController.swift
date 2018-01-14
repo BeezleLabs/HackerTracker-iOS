@@ -26,8 +26,8 @@ class HTUpdatesViewController: UIViewController {
 
     var messages: [Message] = []
     var data = NSMutableData()
-
-    var footer = UIView()
+    
+    var footer: UIView!
 
     var hiddenAnimation: Animation!
 

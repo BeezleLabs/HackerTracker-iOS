@@ -116,7 +116,7 @@ open class ScrollingTabCell: UICollectionViewCell {
                                toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
         ]
 
-        titleLabel.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+        titleLabel.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
 
         NSLayoutConstraint.activate(horizontalConstraints + titleContraints)
     }

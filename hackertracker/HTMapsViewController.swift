@@ -94,7 +94,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
     }
     
-    func doneButtonPressed() {
+    @objc func doneButtonPressed() {
         self.dismiss(animated: true, completion: nil)
     }
 }

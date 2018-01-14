@@ -22,7 +22,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var pullDownAnimation: PongScene?
 
     // Dates for ToorCon 19
-    var days = ["2017-08-28","2017-08-29","2017-08-30","2017-08-31","2017-09-01", "2017-09-02", "2017-09-03"]
+    //var days = ["2017-08-28","2017-08-29","2017-08-30","2017-08-31","2017-09-01", "2017-09-02", "2017-09-03"]
+    // Dates for ShmooCon 2018
+    var days = ["2018-01-19","2018-01-20","2018-01-21"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
         if pullDownAnimation == nil {
             refreshControl = UIRefreshControl()
-            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
             refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
             refreshControl?.tintColor = .clear
             refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
@@ -259,7 +261,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         return 60
     }
 
-    func sync(sender: AnyObject) {
+    @objc func sync(sender: AnyObject) {
         pullDownAnimation?.play()
 
         let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
@@ -282,7 +284,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         
         session.dataTask(with: request, completionHandler: { (data, response, error) in
             
-            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
             let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
             
             if let error = error {
@@ -295,24 +297,27 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-                    let context = getBackgroundContext()
                     
-                    context.perform {
+                    DispatchQueue.main.async() {
+                        let context = getBackgroundContext()
                         
-                        let dataManager = DataImportManager(managedContext: context)
-                        
-                        do {
-                            try dataManager.importSpeakers(speakerData: data)
-                        } catch {
+                        context.perform {
+                            
+                            let dataManager = DataImportManager(managedContext: context)
+                            
+                            do {
+                                try dataManager.importSpeakers(speakerData: data)
+                            } catch {
+                                
+                            }
+                            DispatchQueue.main.async() {
+                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated speakers \(n)", attributes: attr)
+                                DispatchQueue.main.async() {
+                                    eventSpeakerDownloadGroup.leave()
+                                }
+                            }
                             
                         }
-                        DispatchQueue.main.async() {
-                            self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated speakers \(n)", attributes: attr)
-                            DispatchQueue.main.async() {
-                                eventSpeakerDownloadGroup.leave()
-                            }
-                        }
-                        
                     }
                 } else {
                     DispatchQueue.main.async() {
@@ -330,7 +335,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         
         session.dataTask(with: request, completionHandler: { (data, response, error) in
             
-            let attr: Dictionary = [ NSForegroundColorAttributeName : UIColor.white ]
+            let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
             let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
             
             if let error = error {
@@ -344,28 +349,29 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
                     
-                    let context = getBackgroundContext()
+                    DispatchQueue.main.async() {
+                        let context = getBackgroundContext()
                     
-                    context.perform {
-                        
-                        let dataManager = DataImportManager(managedContext: context)
-                        
-                        do {
-                            try dataManager.importEvents(eventData: data)
-                            DispatchQueue.main.async() {
-                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+                        context.perform {
+                            
+                            let dataManager = DataImportManager(managedContext: context)
+                            
+                            do {
+                                try dataManager.importEvents(eventData: data)
+                                DispatchQueue.main.async() {
+                                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
+                                }
+                            } catch {
+                                DispatchQueue.main.async() {
+                                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
+                                }
                             }
-                        } catch {
-                            DispatchQueue.main.async() {
-                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
+                            
+                            
+                                DispatchQueue.main.async() {
+                                    eventSpeakerDownloadGroup.leave()
+                                }
                             }
-                        }
-                        
-                        DispatchQueue.main.async() {
-                            DispatchQueue.main.async() {
-                                eventSpeakerDownloadGroup.leave()
-                            }
-                        }
                         
                     }
                     

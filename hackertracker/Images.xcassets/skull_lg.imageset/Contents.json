@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "skull_lg@1x.png",
+      "filename" : "shmoo_lg@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "skull_lg@2x.png",
+      "filename" : "shmoo_lg@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "skull_lg@3x.png",
+      "filename" : "shmoo_lg@3x.png",
       "scale" : "3x"
     }
   ],
