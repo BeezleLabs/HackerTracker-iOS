@@ -22,6 +22,7 @@ class DataImportManager: NSObject {
     }
     
     public func importSpeakers(speakerData : Data) throws {
+        //print("IMPORT SPEAKERS")
         let _speakers = try JSONSerialization.jsonObject(with: speakerData, options: .allowFragments) as? [String : Any]
         
         guard let speakers = _speakers, let updateDateString = speakers["update_date"] as? String, let _ = DateFormatterUtility.iso8601Formatter.date(from:updateDateString), let speakerItems = speakers["speakers"] as? [[String : Any]] else
@@ -32,7 +33,8 @@ class DataImportManager: NSObject {
         
         for speaker in speakerItems
         {
-            if let _ = speaker["last_update"] as? String, let _ = speaker["indexsp"] as? String {
+            //print("SPEAKER: \(speaker)\n")
+            if let _ = speaker["last_update"] as? String, let _ = speaker["indexsp"] as? Int32 {
                 do {
                     _ = try importSpeaker(speaker: speaker)
                 } catch {
@@ -44,11 +46,9 @@ class DataImportManager: NSObject {
     }
     
     public func importSpeaker(speaker : [String : Any]) throws -> Speaker {
-        //guard let indexString = event["indexsp"] as? String, let indexsp = Int32(indexString) else {
-        //    throw ImportError.idDoesntExist
-        //}
-        let index = speaker["indexsp"] as! Int32
-        print("importSpeaker \(index)")
+        guard let index = speaker["indexsp"] as? Int32 else {
+            throw ImportError.idDoesntExist
+        }
         
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
         fre.predicate = NSPredicate(format: "indexsp = %@", argumentArray: [index])
@@ -58,6 +58,7 @@ class DataImportManager: NSObject {
         let managedSpeaker : Speaker
         
         if let existingSpeaker = ret.first as? Speaker {
+            print("Existing Speaker \(index)")
             managedSpeaker = existingSpeaker
         } else {
             managedSpeaker = NSEntityDescription.insertNewObject(forEntityName: "Speaker", into: managedContext) as! Speaker
@@ -129,30 +130,38 @@ class DataImportManager: NSObject {
     }
     
     public func importEvent(event : [String : Any]) throws -> Event {
-        //guard let indexString = event["index"] as? String, let index = Int32(indexString) else {
-        //    throw ImportError.idDoesntExist
-        //}
-        let index = event["index"] as! Int32
+        guard let id = event["id"] as? String else {
+            throw ImportError.idDoesntExist
+        }
         
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fre.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
+        fre.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
         
         let ret = try managedContext.fetch(fre)
         
         let managedEvent : Event
         
         if let existingEvent = ret.first as? Event {
+            print("Existing Event \(id)")
             managedEvent = existingEvent
             
         } else {
             managedEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: managedContext) as! Event
-            managedEvent.index = index
+            managedEvent.id = id
         }
+        
+        if let index = event["index"] as? Int32 {
+            managedEvent.index = index
+        } else {
+            managedEvent.index = 0
+            //throw ImportError.idDoesntExist
+        }
+        
         
         if let who = event["who"] as? [[String : Any]] {
             
             let speakersFetch:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
-            speakersFetch.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
+            speakersFetch.predicate = NSPredicate(format: "index = %@", argumentArray: [String(describing: index)])
             
             do {
                 let speakerEvents = try managedContext.fetch(speakersFetch) as? [EventSpeaker]
@@ -170,11 +179,13 @@ class DataImportManager: NSObject {
                 print("Couldn't fetch speakers ignoring")
             }
             
+
+            
             for eventData in who {
-                if let speakerIDString = eventData["indexsp"] as? String, let speakerID = Int32(speakerIDString)
+                if let speakerID = eventData["indexsp"] as? Int32, let eventID = event["index"] as? Int32
                 {
                     do {
-                        try setSpeakerEventPair(eventID: index, speakerID: speakerID)
+                        try setSpeakerEventPair(eventID: eventID as Int32, speakerID: speakerID)
                     } catch {
                         assert(false, "Failed to import Speaker")
                         print("Failed to import Speaker \(event)")
@@ -183,11 +194,7 @@ class DataImportManager: NSObject {
             }
         }
         
-        if let id = event["id"] as? String {
-            managedEvent.id = id
-        } else {
-            managedEvent.id = ""
-        }
+       
         
         if let includes = event["includes"] as? String {
             managedEvent.includes = includes
@@ -293,15 +300,16 @@ class DataImportManager: NSObject {
         }
         
         if let startDateString = event["start_date"] as? String, let startDate =  DateFormatterUtility.iso8601Formatter.date(from: startDateString) {
+            //print("startdate: \(String(describing:startDateString))")
             managedEvent.start_date = startDate
         } else {
-            managedEvent.start_date = DateFormatterUtility.iso8601Formatter.date(from: "2017-07-25T10:00:00")!
+            managedEvent.start_date = DateFormatterUtility.iso8601Formatter.date(from: "2018-01-19T10:00:00-05:00")!
         }
         
         if let endDateString = event["end_date"] as? String, let endDate =  DateFormatterUtility.iso8601Formatter.date(from: endDateString) {
             managedEvent.end_date = endDate
         } else {
-            managedEvent.end_date = DateFormatterUtility.iso8601Formatter.date(from: "2017-09-03T10:00:00-07:00")!
+            managedEvent.end_date = DateFormatterUtility.iso8601Formatter.date(from: "2018-01-21T10:00:00-05:00")!
         }
         
         if let lastUpdateString = event["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {

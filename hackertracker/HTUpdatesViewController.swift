@@ -47,7 +47,7 @@ class HTUpdatesViewController: UIViewController {
         if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
             updatesTableView.tableFooterView = footer
             var frame = updatesTableView.tableFooterView?.frame
-            frame?.size.height = 360
+            frame?.size.height = view.frame.size.height * 0.25
             updatesTableView.frame = frame ?? CGRect.zero
             updatesTableView.tableFooterView = footer
             footer.footerDelegate = self
@@ -82,7 +82,7 @@ class HTUpdatesViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.footer.frame.size.height = 360
+        //self.footer.frame.size.height = 360
         updatesTableView.tableFooterView = self.footer
     }
     

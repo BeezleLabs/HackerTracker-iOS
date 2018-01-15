@@ -44,7 +44,7 @@ enum TimeOfDay
 
     static func timeOfDay(for date: Date) -> TimeOfDay {
         var calendar = NSCalendar.current
-        calendar.timeZone = TimeZone(abbreviation: "PDT")!
+        calendar.timeZone = TimeZone(abbreviation: "EST")!
         let hour = calendar.component(.hour, from: date)
         // 8pm
         return hour >= 20 ? .night : .day

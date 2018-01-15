@@ -23,7 +23,7 @@ class DateFormatterUtility {
     //UTC time format
     static let yearMonthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss z"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
@@ -32,7 +32,7 @@ class DateFormatterUtility {
     //UTC time format
     static let yearMonthDayTimeNoSecondsFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.dateFormat = "yyyy-MM-dd HH:mm z"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
@@ -42,7 +42,7 @@ class DateFormatterUtility {
     //Yeat-Month-Day
     static let yearMonthDayFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
@@ -77,7 +77,7 @@ class DateFormatterUtility {
     //Year-Month-Day time format
     static let yearMonthDayNoTimeZoneTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.dateFormat = "yyyy-M-d HH:mm:ss"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
@@ -87,7 +87,7 @@ class DateFormatterUtility {
     //DOW format
     static let dayOfWeekFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEEE"
         return formatter
@@ -96,7 +96,7 @@ class DateFormatterUtility {
     //DOW Hour:Minute time format
     static let dayOfWeekTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EE HH:mm"
         return formatter
@@ -105,7 +105,7 @@ class DateFormatterUtility {
     //Hour:Minute time format
     static let hourMinuteTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "HH:mm"
         return formatter
@@ -114,7 +114,7 @@ class DateFormatterUtility {
     //Full DOW full Month day hour minute
     static let dayOfWeekMonthTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEEE, MMMM dd HH:mm"
         return formatter
@@ -123,7 +123,7 @@ class DateFormatterUtility {
     //Partial Day of week Ex: Fri
     static let partialDayOfWeekFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.timeZone = TimeZone(abbreviation: "EST")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "E"
         return formatter

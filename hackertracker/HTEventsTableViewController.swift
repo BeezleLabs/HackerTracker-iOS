@@ -12,13 +12,11 @@ import WillowTreeScrollingTabController
 
 struct eventType {
     var name:String
-    var img:String
     var dbName:String
     var count:Int
    
-    init(n:String,i:String,d:String,c:Int) {
+    init(n:String,d:String,c:Int) {
         self.name = n
-        self.img = i
         self.dbName = d
         self.count = c
     }
@@ -27,11 +25,10 @@ struct eventType {
 class HTEventsScrollingTabController: ScrollingTabController {
     
     var eventTypes: [eventType] = [
-        eventType(n: "CONFERENCE", i: "speaker", d: "Official", c: 0),
-        eventType(n: "FIRETALKS", i: "firetalks", d: "Firetalk", c: 0),
-        eventType(n: "LABS", i: "lab", d: "Lab", c: 0),
-        eventType(n: "CONTESTS", i: "content", d: "Contest", c: 0),
-        eventType(n: "OTHER", i:"other", d:"Other", c:0)
+        eventType(n: "CONFERENCE", d: "Official", c: 0),
+        eventType(n: "LABS", d: "Lab", c: 0),
+        eventType(n: "CONTESTS", d: "Contest", c: 0),
+        eventType(n: "OTHER", d:"Other", c:0)
 
     ]
     

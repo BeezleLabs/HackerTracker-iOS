@@ -176,6 +176,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         
         do {
             if let eventsForDay = try context.fetch(fetchRequestForDay(dateString)) as? [Event] {
+                print("Got \(eventsForDay.count) events for \(dateString)")
                 return eventsForDay
             } else {
                 assert(false, "Failed to convert fetch response to events array")
@@ -190,8 +191,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
 
-        let startofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
-        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
+        let startofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 EST")!
+        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 EST")!
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fr.predicate = NSPredicate(format: "start_date >= %@ AND end_date <= %@", argumentArray: [ startofDay, endofDay])
@@ -298,8 +299,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
                     
-                    DispatchQueue.main.async() {
-                        let context = getBackgroundContext()
+                        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                        let context = delegate.managedObjectContext!
                         
                         context.perform {
                             
@@ -318,7 +319,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                             }
                             
                         }
-                    }
                 } else {
                     DispatchQueue.main.async() {
                         eventSpeakerDownloadGroup.leave()
@@ -349,8 +349,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
                     
-                    DispatchQueue.main.async() {
-                        let context = getBackgroundContext()
+                        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                        let context = delegate.managedObjectContext!
                     
                         context.perform {
                             
@@ -371,9 +371,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                 DispatchQueue.main.async() {
                                     eventSpeakerDownloadGroup.leave()
                                 }
-                            }
-                        
-                    }
+                        }
+                    
                     
                 } else {
                     DispatchQueue.main.async() {
@@ -409,13 +408,14 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
     }
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
-        let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
-        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
+        let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 EST")!
+        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 EST")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         if eType.dbName.contains("Other") {
-            fr.predicate = NSPredicate(format: "entry_type != 'Conference' AND entry_type != 'Workshops' AND entry_type != 'Contests' AND entry_type != 'Seminars' AND entry_type != 'Workshop' AND entry_type != 'Kids' AND entry_type != 'Villages' AND entry_type != 'Skytalks' AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
+            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Labs' AND entry_type != 'Contests'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
         } else {
+            //print("Searching for \(eType.dbName) from \(String(describing: startofDay)) to \(String(describing: endofDay))")
             fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
         }
         

@@ -42,8 +42,8 @@ class HTInitViewController: UIViewController {
     }
     
     func loadData() {
-        DispatchQueue.main.async() {
-            let context = getBackgroundContext()
+            let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = delegate.backgroundManagedObjectContext!
             
             context.perform {
                 
@@ -59,11 +59,8 @@ class HTInitViewController: UIViewController {
                     
                     let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
                     message1.date = Date()
-                    message1.msg = "Welcome to HackerTracker iOS for TOORCON 19. If you have any events, parties, or contests to add, or if you find any errors or typos, email info@beezle.org. Code for this app can be found at https://github.com/BeezleLabs/HackerTracker-iOS."
+                    message1.msg = "Welcome to HackerTracker iOS. To add events, parties, or contests, email info@beezle.org. https://github.com/BeezleLabs/HackerTracker-iOS."
                     
-                    let message2 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-                    message2.date = Date()
-                    message2.msg = "The initial schedule contains official talks, etc. Pull down to update the schedule from official sources."
                 } catch {
                     print("Failed to import speakers: \(error)")
                 }
@@ -88,7 +85,6 @@ class HTInitViewController: UIViewController {
                 self.importComplete = true
                 self.go()
             }
-        }
 
     }
     
