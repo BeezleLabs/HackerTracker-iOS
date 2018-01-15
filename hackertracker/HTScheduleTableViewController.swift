@@ -298,7 +298,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-                    
+                    DispatchQueue.main.async() {
+
                         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
                         let context = delegate.managedObjectContext!
                         
@@ -319,6 +320,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                             }
                             
                         }
+                    }
                 } else {
                     DispatchQueue.main.async() {
                         eventSpeakerDownloadGroup.leave()
@@ -348,7 +350,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-                    
+                    DispatchQueue.main.async() {
+
                         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
                         let context = delegate.managedObjectContext!
                     
@@ -372,8 +375,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                     eventSpeakerDownloadGroup.leave()
                                 }
                         }
-                    
-                    
+                    }
                 } else {
                     DispatchQueue.main.async() {
                         eventSpeakerDownloadGroup.leave()

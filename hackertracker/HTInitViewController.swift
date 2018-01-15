@@ -83,7 +83,9 @@ class HTInitViewController: UIViewController {
             
 
                 self.importComplete = true
-                self.go()
+                DispatchQueue.main.async {
+                    self.go()
+                }
             }
 
     }
