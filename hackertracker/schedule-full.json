@@ -1,5 +1,5 @@
 {
-	"update_date": "2018-01-14T12:22:00-05:00",
+	"update_date": "2018-01-15T20:59:00-05:00",
 	"schedule": [
 		{
 			"exploit": 0,
@@ -93,7 +93,7 @@
 			"entry_type": "Official",
 			"description": "",
 			"index": 599,
-			"end_date": "2018-01-21T15:30:00-05:00",
+			"end_date": "2018-01-19T15:30:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Opening Remarks, Rumblings, Ruminations, and Rants"
 		},
@@ -121,7 +121,7 @@
 			"entry_type": "Official",
 			"description": "The information security community has long suffered from a lack of effective and affordable tools and techniques for locating radio devices. Many methods are available, but most of them require multiple radio receivers and/or physical motion of one or more antennas. Pseudo-doppler is an old technique that implements Direction Finding (DF) by rapidly switching between multiple fixed antennas connected to a single radio receiver.\nWe have taken a modern approach to the implementation of pseudo-doppler DF with Software Defined Radio (SDR). Our open source solution enables low cost DF of bursty, packet-based target systems using arbitrary digital modulations. Additionally we will discuss our future work toward asymmetric pseudo-doppler approaches that eliminate the need for direction calibration and that can be used as a countermeasure against targets that attempt to spoof direction.",
 			"index": 41,
-			"end_date": "2018-01-21T15:50:00-05:00",
+			"end_date": "2018-01-19T15:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Pseudo-Doppler Redux"
 		},
@@ -145,7 +145,7 @@
 			"entry_type": "Official",
 			"description": "With GDPR coming into effect on May 25, 2018, any organization handling EU citizen's personal data should be prepared to comply with stricter privacy regulations or be ready to pay up to four percent of their global annual revenue in fines or €20,000,000. This is a substantial penalty for non-compliant companies, and does not focus just on companies based in Europe — it's for ALL companies globally who do business in the EU. With just months remaining, the clock is ticking on companies to be compliant. Let's explore what is covered by GDPR and how it may impact your organisation answering questions such as do I need to have a DPO; I don't do business directly in the EU when does GDPR affect me; what data is affected? While a compliance theme has been pushed by vendors, we will cover why GDPR is not about compliance but about changing key process and procedures such as incident response.",
 			"index": 25,
-			"end_date": "2018-01-21T16:20:00-05:00",
+			"end_date": "2018-01-19T16:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Don’t Ignore GDPR; It Matters Now!"
 		},
@@ -169,7 +169,7 @@
 			"entry_type": "Official",
 			"description": "Elonka Dunin, known for her website on the World's Most Famous Unsolved Codes, discovered a cipher on one of the tombstones in Arlington National Cemetery. Not just any tombstone, it's that of William and Elizebeth Friedman, two giants in the fields of cryptanalysis. In fact, William Friedman created the terms of cryptanalysis, and also of \"index of coincidence\". Elizebeth, who had taught William about cryptography in the first place, had an astonishing career cracking the codes of Nazis, drug smugglers, and rum-runners. They also wrote a book together examining and debunking the theories about whether William Shakespeare really wrote his own works. How did a geneticist and a Shakespearean scholar come to meet, and then have careers which grew and became the foundation of what is today known as the National Security Agency? How did they hide a cipher on their tombstone which remained undiscovered for so many years, and was found in the year that is the 100-year anniversary of their marriage? Tune in and find out!",
 			"index": 23,
-			"end_date": "2018-01-21T16:50:00-05:00",
+			"end_date": "2018-01-19T16:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "The Friedman Tombstone — A Cipher in Arlington National Cemetery"
 		},
@@ -193,7 +193,7 @@
 			"entry_type": "Official",
 			"description": "\"Technology is the active human interface with the material world.\" – UK LeGuin\nOnce upon a time, computer scientists spoke of semiconductors and magnetic cores, carefully designing their algorithms around the substrates that computation occurred on. Instead of programs, there were \"computations,\" \"states\" instead data, or the modern descendent, \"content.\" Since then, we as computer scientists have developed layers of abstraction and from there formed a diverse ecosystem of high level paradigms to create and distribute information with speed, reliability, and efficiency. Neural networks in the brain are sparsely connected, composed of components with an over 50% failure rate, and still amazingly consistent in their high-level behavior over time. We are building models of biologically plausible neural networks to help explain how the brain can protect against a malicious adversary while keeping networks tiny, low power, and easily trained. Using parameters taken from the somatosensory cortex, we have built a prototype simulator to show the relationships between connectivity and severity of possible attacks.",
 			"index": 60,
-			"end_date": "2018-01-21T17:20:00-05:00",
+			"end_date": "2018-01-19T17:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Your Cerebellum as an Attack Surface: How Does the Brain Stay Secure?"
 		},
@@ -217,7 +217,7 @@
 			"entry_type": "Official",
 			"description": "As organizations deploy EDR (Endpoint Detection & Response) solutions, it becomes imperative that these solutions are tested. The efficacy of these products depends on their correct configuration and deployment. In order to conduct these tests, we have developed a free Open Source framework called the Atomic Red Team. Designed to provide teams with small discrete tests. We want these test to be vendor agnostic, and representative of actual adversary behavior. When evaluating if these products are viable for your organization you need some standard tests to compare what provides you with the best coverage. This talk will explore our framework, discuss basic tests, chaining tests, and discuss how to contribute to the framework. Our aim is to put a testing framework in the hands of large and small security teams to confirm that they have the coverage needed to face modern adversaries. You need a plan to test on a regular basis that your systems are operational. We want to share our work, drawing from Software Engineering principles on testing, to help ensure your EDR tools are ready to face actual adversaries. Don't wait for something horrible to happen to figure out that your solution isn't working.",
 			"index": 50,
-			"end_date": "2018-01-21T17:50:00-05:00",
+			"end_date": "2018-01-19T17:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Tap, Tap, Is This Thing On? Testing EDR Capabilities"
 		},
@@ -241,7 +241,7 @@
 			"entry_type": "Official",
 			"description": "Hard core athletes and wannabes alike use the Strava app to track their runs, bikes, swims, and more. Most athletes compete, nay, fight to the death for the top \"leaderboard\" spot on a given segment of a run. Want to be the fastest down the Mall? Want to outpace professional marathon runners in the Marine Corp Marathon? Without ever tying your shoe laces?\nLet me show you the hacker's way up the leaderboard. By examining and manipulating the GPX file format, scraping and inserting geolocation data, and using good old command line utilities I will show you how to craft a Gold Medal performance — and make you the envy of all the \"elite\" runners around you. This talk highlights the absence of data validation in the file upload feature of mainstream fitness tracking tools. And opens the floor to a broader discussion of expectations, reality, competition, and fraud.",
 			"index": 22,
-			"end_date": "2018-01-21T18:20:00-05:00",
+			"end_date": "2018-01-19T18:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Running a Marathon Without Breaking a Sweat? Forensic Manipulation of Fitness App Data."
 		},
@@ -265,7 +265,7 @@
 			"entry_type": "Official",
 			"description": "Donna F. Dodson is the Chief Cybersecurity Advisor for the National Institute of Standards and Technology (NIST). She is also the Director of NIST's National Cybersecurity Center of Excellence (NCCoE).\nDonna oversees ITL's cyber security program to conduct research, development and outreach necessary to provide standards, guidelines, tools, metrics and practices to protect the information and communication infrastructure. In addition, Donna guides ITL programs to support both national and international security standards activities. She recently led the establishment of the NIST NCCoE. Through partnerships with state, local and industry, the NCCoE collaborates with industry sectors to accelerate the widespread adoption of standards-based cyber security tools and technologies. Donna's research interests include applied cryptography, key management, authentication and security testing. She has led technical teams to produce standards, guidelines and tools in each of these areas. Donna received two Department of Commerce Gold Medals and three NIST Bronze Medals. She was a Fed 100 Award winner for her innovations in cybersecurity and in 2011 was included in the top 10 influential people in government information security. Recently, Donna was recognized as one of DC's Top 50 Women in Tech.",
 			"index": 1,
-			"end_date": "2018-01-21T19:30:00-05:00",
+			"end_date": "2018-01-19T19:30:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Keynote"
 		},
@@ -489,7 +489,7 @@
 			"entry_type": "Official",
 			"description": "Systems that hide their firmware–often deep in readout-protected flash or hidden in encrypted ROM chips–have long stymied reverse engineers, who often have to resort to inventive methods to understand closed systems. To help reduce the effort needed to get a foothold into a new system, we present GlitchKit–an open source hardware and firmware solution that significantly simplifies the process of fault-injecting your way into a new system–and of fault-injecting firmware secrets out! This talk presents the development completed thus far, demonstrates the use of GlitchKit in simple attacks, and invites participation in the development of our open-source tools.",
 			"index": 52,
-			"end_date": "2018-01-21T10:50:00-05:00",
+			"end_date": "2018-01-20T10:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Opening Closed Systems with GlitchKit"
 		},
@@ -513,7 +513,7 @@
 			"entry_type": "Official",
 			"description": "The last five to ten years has seen massive advancements in open source Internet-wide mass-scan tooling, on-demand cloud computing, and high speed Internet connectivity. This has lead to a massive influx of different groups mass-scanning all four billion IP address in the IPv4 space on a constant basis. Information security researchers, cyber security companies, search engines, and criminals scan the Internet for various different benign and nefarious reasons (such as the WannaCry ransomware and multiple MongoDB, ElasticSearch, and Memcached ransomware variants). It is increasingly difficult to differentiate between scan/attack traffic targeting your organization specifically and opportunistic mass-scan background radiation packets.\nGrey Noise is a system that records and analyzes all the collective omnidirectional background noise of the Internet, performs enrichments and analytics, and makes the data available to researchers for free. Traffic is collected by a large network of geographically and logically diverse \"listener\" servers distributed around different data centers belonging to different cloud providers and ISPs around the world. In this talk I will candidly discuss motivations for developing the system, a technical deep dive on the architecture, data pipeline, and analytics, observations and analysis of the traffic collected by the system, business impacts for network operators, pitfalls and lessons learned, and the vision for the system moving forward.",
 			"index": 38,
-			"end_date": "2018-01-21T10:50:00-05:00",
+			"end_date": "2018-01-20T10:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "The Background Noise of the Internet"
 		},
@@ -537,7 +537,7 @@
 			"entry_type": "Official",
 			"description": "As desktop and server security keeps raising the baseline for successful exploitation, IOT devices are still stuck in the 1990's, despite their ubiquity in every home network. This, coupled with the trend of \"monitor your devices from anywhere!\", is creating a time-bomb situation, in which millions of households are left vulnerable, regardless of any network security posture.\nThese topics will be examined using the \"Circle with Disney\" and Foscam devices as case studies. During the course of the vulnerabilty testing of these devices, over 50 CVEs were discovered, out of which, discussion will focus on the more novel attack techniques seen, including:\n\nSSL certificate Attribute validation bypasses\nSSID Broadcasting injection\nUse-Between-Realloc Memory Corruption.\nCloud Routing Abuse\nFinally, there will be discussion IOT device's use of traditionally offensive tools (arp-poisoning, backdoors, and payload beaconing) for central functionality.",
 			"index": 61,
-			"end_date": "2018-01-21T10:50:00-05:00",
+			"end_date": "2018-01-20T10:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "IoT RCE, a Study With Disney"
 		},
@@ -565,7 +565,7 @@
 			"entry_type": "Official",
 			"description": "The Controller Area Network (CAN) bus has been mandated in all cars sold in the United States since 2008. But CAN is terrible in many unique and disturbing ways. CAN has served as a convenient punching bag for automotive security researches for a plethora of reasons, but all of the available analysis tools share a shortcoming. They invariably use a microcontroller with a built-in CAN peripheral that automatically takes care of the low-level (ISO layer 1 and 2) communication details, and ensures that the CAN peripheral plays nicely and behaves at those low levels. However, a good hardware hacker understands that the sole purpose of the electron is to be bent to our will, and breaking assumptions by making \"That CANT happen!\" happen is a surefire way to find bugs.\nCANT is a (partial) CAN bus peripheral implemented in software that allows security researchers to exercise the electrical bus-level error handling capability of CAN devices. The ability to selectively attack specific ECUs in a manner that is not detectable by automotive IDS/IPS systems (see ICS-ALERT-17-209-01) is invaluable to automotive security researchers as more automakers integrate advanced security measures into their vehicles.",
 			"index": 16,
-			"end_date": "2018-01-21T11:50:00-05:00",
+			"end_date": "2018-01-20T11:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "When CAN CANT"
 		},
@@ -593,7 +593,7 @@
 			"entry_type": "Official",
 			"description": "JA3 is an open source SSL/TLS client fingerprinting tool developed by John Althouse, Josh Atkins, and Jeff Atkinson. Since it's release a few months ago in a blog post, it has gained wide adoption across the industry and we've seen conference talks highlighting it's features. However, there's been some confusion on it's capabilities and how best to utilize it. So, then, it's about time we do a talk on JA3 and what it can really do.\nIn this talk we will show the benefits of SSL fingerprinting, JA3's capabilities, and how best to utilize it in your detection and response operations. We will show how to utilize JA3 to find and detect SSL malware on your network. Imagine detecting every Meterpreter shell, regardless of C2 and without the need for SSL interception. We will also announce JA3S, JA3 for SSL server fingerprinting. Imagine detecting every Metasploit Multi Handler or [REDACTED] C2s on AWS. Then we'll tie it all together, making you armed to the teeth for detecting all things SSL.",
 			"index": 7,
-			"end_date": "2018-01-21T11:50:00-05:00",
+			"end_date": "2018-01-20T11:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Profiling and Detecting all Things SSL with JA3"
 		},
@@ -617,7 +617,7 @@
 			"entry_type": "Official",
 			"description": "This talk is an encapsulation of implemented solutions for achieving common requirements when constructing software designed to perform long term covert intelligence gathering. It is a \"grab bag\" of \"tips and tricks\" developed and or abstracted from previous works by the presenter in a variety of intelligence gathering operations, none of which will be specifically disclosed. Full source code (almost all of it written in Golang) will be provided for tactic snippets, as well as several publicly available practical examples of solutions to various covert intelligence gathering roadblocks.\nThe technical details of this presentation will be prefaced by a small summery of \"which tactics work from a methodical perspective and why\" from a human perspective. Beyond this, specific mappings will be drawn from these methods to the specific technical capabilities disclosed in the latter portion of the presentation. The technical subjects in question will include but not be limited to. — anti virus evasion (with special emphasis on modern machine learning based solutions) — anti attribution techniques — covert channel methods — C2 \"castle guarding\" — covert administration & devops — solution scaling — persistence — future proofing — counter intelligence / anti reverse engineering.",
 			"index": 56,
-			"end_date": "2018-01-21T11:50:00-05:00",
+			"end_date": "2018-01-20T11:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Pages from a Sword-Maker’s Notebook pt. II"
 		},
@@ -641,7 +641,7 @@
 			"entry_type": "Official",
 			"description": "Back in the good ol' days there was a toy called the GirlTech IMME, which had a sub-GHz radio chip, a display, and a keypad. It was bulky and heavy, but good folks had a lot of run writing radio exploits for it. In a fit of nostalgia for those days, I cloned the Casio 3208 calculator wristwatch module with the CC430F6137 chip, giving me a better CPU than the IMME but essentially the same radio. It runs for years on a coin cell battery, and in addition to the radio, RPN calculator, and hex editor, it just happens to tell the time.",
 			"index": 33,
-			"end_date": "2018-01-21T12:50:00-05:00",
+			"end_date": "2018-01-20T12:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Building a GoodWatch"
 		},
@@ -673,7 +673,7 @@
 			"entry_type": "Official",
 			"description": "As the modern threat landscape evolves, so have the players. Cyber-warfare has become so profitable that even lesser resourced nations are entering the arena. This talk will discuss an advanced persistent threat (APT) nation-state actor (to be named later) who is exploiting targets globally across multiple platforms, including mobile devices.",
 			"index": 28,
-			"end_date": "2018-01-21T12:50:00-05:00",
+			"end_date": "2018-01-20T12:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Nation-State Espionage: Hunting Multi-Platform APTs on a Global Scale"
 		},
@@ -697,7 +697,7 @@
 			"entry_type": "Official",
 			"description": "Hobbyists worldwide have been developing and improving technology for awesome Christmas light shows. They are assembling displays that are computer controlled and synchronized to music broadcast over FM radio as well as implementing complex patterns and even pictures display in LED lights.\nThis talk covers the building blocks of sophisticated LED light shows, breaking down the concepts into the core components. Many elements of a computer controlled show can be implemented with Raspberry Pi technology and other homebrew solutions. Free and open source software to create visual patterns and run the display are available. The common pitfalls of power distribution, signal corruption and waterproofing will be discussed. Learn new things about lighting technology and come away understanding how to be the Clark Griswold of your own neighborhood!",
 			"index": 35,
-			"end_date": "2018-01-21T12:50:00-05:00",
+			"end_date": "2018-01-20T12:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Building Absurd Christmas Light Shows"
 		},
@@ -749,7 +749,7 @@
 			"entry_type": "Official",
 			"description": "When a new globally menacing piece of malware is detected, consider how many separate efforts are launched to reverse the same binary, with teams of researchers all around the world working redundantly, creating the same functions, comments, and annotations. This gratuitous duplication of effort stems from the lack of good collaboration tools for reverse engineering. We can solve this problem with a tool for distributed collaboration–a tool that combines the project management capabilities of GitHub with the collaboration features of Google Docs and the analytical power of IDA Pro.\nODA (onlinedisassembler.com) is a reverse engineering platform that provides a collaborative reversing experience hosted in the cloud. With ODA, groups of people can collaborate on reversing the same binary and share their contributions in real time. ODA seeks to become \"GitHub and Google Docs meets IDA Pro.\"\nUp until now, ODA has been a closed source effort. At ShmooCon 2018 we are open sourcing the entire code base and announcing several new features. This talk introduces the audience to the features and design of ODA, demonstrates new features, and presents a roadmap for the future, which can only be achieved with the help of the open source community.",
 			"index": 20,
-			"end_date": "2018-01-21T14:50:00-05:00",
+			"end_date": "2018-01-20T14:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "ODA: A Collaborative, Open Source Reversing Platform in the Cloud"
 		},
@@ -777,7 +777,7 @@
 			"entry_type": "Official",
 			"description": "In this presentation we take a look at over a decade of research into the cat-and-mouse game of evasive malware vs. automated malware analysis systems. While the challenge of evasive malware is well known, few have ever comprehensively looked at the problem. We survey almost two hundred scholarly works, industry presentations, and studies of malware in the wild over the past decade to understand how we got to where we are today, and where this battle is going.\nThis presentation will systematically review i) malware evasion techniques used against automated dynamic malware analysis systems, ii) evasive behavior detection, and iii) evasion mitigation. We conclude by discussing future directions in both offensive and defensive research and novel ways of thinking about these problems that may help security practitioners.",
 			"index": 17,
-			"end_date": "2018-01-21T14:50:00-05:00",
+			"end_date": "2018-01-20T14:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Catch Me If You Can: A Decade of Evasive Malware Attack and Defense"
 		},
@@ -813,7 +813,7 @@
 			"entry_type": "Official",
 			"description": "Modern electronic voting systems were introduced in the US at large scale after the passage of the 2002 Help America Vote Act. Almost from the moment they appeared, serious questions have been raised about the security and integrity of these systems. This talk will review the architecture of current E-voting systems, the security risks and attack surfaces inherent in these designs, the risks to back-end systems (which are often connected to the Internet), and viable alternatives that can mitigate these risks. In particular, we will review the findings of the two most comprehensive studies of E-voting systems done to date: the 2007 California and Ohio reviews (in which the authors participated) as well as the 2017 Defcon Voting Village (which the authors organized). We will also discuss how two important techniques–precinct-counted optical scan and risk limiting audits–can effectively mitigate many of the vulnerabilities inherent in e-voting.",
 			"index": 12,
-			"end_date": "2018-01-21T14:50:00-05:00",
+			"end_date": "2018-01-20T14:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Electronic Voting in 2018: Threat or Menace"
 		},
@@ -837,7 +837,7 @@
 			"entry_type": "Official",
 			"description": "Git is a widely-used Version Control System for software development projects. Because of the way Git works, \"deleted\" secrets don't disappear from the filesystem. That means when a developer commits encryption keys, production passwords, or other secrets to the repository, removing them in a later commit won't scrub them from the history. They live on in compressed plaintext on every developers' machine, unless the history is rewritten.\nGrawler is a command line utility written in Bash and Python that crawls the object trees of a Git repository searching for and extracting secrets, passwords, keys, and other sensitive information. It is useful for verifying that history rewriting successfully scrubbed all occurrences of sensitive data using git-log, as well as exposing problems in revision deltas by walking Pack files.",
 			"index": 47,
-			"end_date": "2018-01-21T15:20:00-05:00",
+			"end_date": "2018-01-20T15:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Better Git Hacking: Extracting \"Deleted\" Secrets from Git Databases with Grawler"
 		},
@@ -861,7 +861,7 @@
 			"entry_type": "Official",
 			"description": "The FCC is trying to ram through anti-net neutrality legislation and are using the submissions from their call for comments. There were more than 22 million comments submitted in approximately three months dealing with net neutrality, many supporting an anti-net neutrality stance, but something is rotten in the state of the US. Other researchers have posited that there are bots and false submissions, but they used tools not commonly available to everyone.\n In this case, using open source ingesters developed in house and freely available on GitHub, we pulled in all of the comments and used analytics to see if this were really the true story. When looking at the raw total number of comments, the majority fall into the anti-neutrality camp. However, after refining comments to include only those submitted via the FCC website (as opposed to those which were submitted via the FCC provided API for bulk submissions) the extreme opposite is true. People who submitted comments directly to the FCC website are overwhelmingly in support of net neutrality regulations. This talk reviews the journey to this conclusion.",
 			"index": 24,
-			"end_date": "2018-01-21T15:20:00-05:00",
+			"end_date": "2018-01-20T15:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Someone is Lying to You on the Internet–Using Analytics to Find Bot Submissions in the FCC Net Neutrality Submissions"
 		},
@@ -885,7 +885,7 @@
 			"entry_type": "Official",
 			"description": "Higher education institutions have started heavily investing in cybersecurity education programs for STEM (Science, Technology, Engineering, and Mathematics) disciplines. These programs offer standard courses, such as network security, forensics, penetration testing, intrusion detection and recovery. To offer a holistic experience, these programs also include courses on business systems lifecycle, data analytics, auditing, investigation, and cyberlaw.\nLittle, however, is being done to understand the human side of cyberattacks/cybersecurity. The social sciences has much to offer in this arena. However, the discipline's potential contribution to training the next workforce generation (STEM or otherwise) remains underdeveloped.\n\nThis talk shares an educator's attempt to address this gap via involving undergraduate students across multiple disciplines in experiential learning (EL) class projects in ‘cyber-field' research. The talk highlights several benefits, such as fostering multidisciplinary dialog, developing qualitative research skills, understanding adversarial mindsets, and predicting defender behavior. This talk uses students' and the educator's reflections as a narrative to discuss ongoing efforts, struggles, challenges, and lessons learned. Audience feedback is welcomed (and much needed!) as this educator is still experimenting with the EL pedagogical approach.",
 			"index": 46,
-			"end_date": "2018-01-21T15:20:00-05:00",
+			"end_date": "2018-01-20T15:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "A Social Science Approach to Cybersecurity Education for all Disciplines"
 		},
@@ -909,7 +909,7 @@
 			"entry_type": "Official",
 			"description": "SSL Certificates and Certificate Authorities are the backbone of how secure communication works online for most secure protocols these days. This has worked well for quite some time, but fails when you can no longer trust the Certificate Authorities as we have seen when they are breached or misbehave. Certificate Transparency was created as a way to allow anyone to publicly audit the behavior of a Certificate Authority to solve this problem, and it does just that. But there are also unintended privacy side effects not as well known about Certificate Transparency, both for the end user and server's organization. After covering the background about how Certificate Transparency works, I will tell you what you need to know to protect yourself and your organization. Finally I introduce CertGraph, a new tool being developed to uncover and enumerate domains hiding in SSL certificate Alternative Names. CertGraph crawls internet accessible certificates through exposed hosts and Certificate Transparency logs creating a visual graph of certificates and domains. CertGraph has already been used to identify internal and public domains an organization may not want public knowledge of, host enumeration for an organization and its related partners, and misconfigured SSL certificates for incorrect domains.",
 			"index": 29,
-			"end_date": "2018-01-21T15:50:00-05:00",
+			"end_date": "2018-01-20T15:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "CertGraph: A Tool to Crawl the Graph of SSL Certificate Alternate Names using Certificate Transparency"
 		},
@@ -933,7 +933,7 @@
 			"entry_type": "Official",
 			"description": "An operating system's chain of trust is a really a chain of loaders. Although loaders, and especially bootloaders, have always been essential piece of a well-behaved system, they are typically designed with robustness and flexibility in mind — rather than security. Yet, they act as security arbitrators at the very roots of the chain of trust. My talk seeks to address these shortcomings and bootloader vulnerabilities by introducing tools and techniques for retrofitting a bootloader with behavioral constraints implemented via a typing system which governs memory write operations and exists outside the confines of the compilation toolchain. I then demonstrate the feasibility of such a typing mechanism by using it to overlay behavioral constraints onto an instance of U-Boot, the popular ARM bootloader. Finally, I will discuss how my tools and techniques may be used as a fuzzing aid and for reverse engineering for any type of software.",
 			"index": 49,
-			"end_date": "2018-01-21T15:50:00-05:00",
+			"end_date": "2018-01-20T15:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Bludgeoning Bootloader Bugs: No Write Left Behind"
 		},
@@ -961,7 +961,7 @@
 			"entry_type": "Official",
 			"description": "Our community is defined by our dedication to sharing process, resources, and knowledge freely with each other—yet, we lack a coherent strategy for keeping the firehose of information organized adequately for hackers and hacklings alike. The Sisyphean task of keeping up with the day's developments plagues the busy professional, but Twitter's algorithms rarely suit our purposes. Hackers (of all people!) ought to be up to the task of hacking together a way to curate our own content—on our own terms. It sure would be nice to be able to...\n• give newbies a peek into the conversations happening among the most resourceful members of an intriguing subspecialty;\n• automatically rank resources based on the community reputations of those sharing a given URL;\n• study the way our own community shares information with itself—and learn how to communicate most effectively during crises like WannaCry;\n• generate daily|weekly digests of interesting threads & resources.\nThis talk is a call to action to contribute your own knowledge to improve the curation. We've gotten it started: now it's time for ya'll to use it and help us make it the best tool it can be—made freely available to all hackers and hackers-to-be. <3",
 			"index": 59,
-			"end_date": "2018-01-21T15:50:00-05:00",
+			"end_date": "2018-01-20T15:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Listing the 1337: Adventures in Curating HackerTwitter’s Institutional Knowledge"
 		},
@@ -985,7 +985,7 @@
 			"entry_type": "Official",
 			"description": "American Fuzzy Lop (AFL) revolutionized fuzzing. It's easily the best thing out there for quickly performing cutting-edge automated vulnerability analysis on command line applications. But what about the situations where accessing the logic you want to fuzz via command line isn't so simple? For example, maybe you want to fuzz a parsing function from an embedded system that receives input via an analog RF front-end. Sometimes you can write a test harness, but what if you could just emulate the parts of the code that you want to fuzz and still get all the coverage-based advantages of AFL? With afl-unicorn if you can emulate it, you can fuzz it.\nafl-unicorn bridges the gap between the thoroughness of fully manual research (i.e. reading disassembly/source) and the unmatched ease-of-use of AFL. With a little bit of reverse engineering and setup time afl-unicorn lets you leverage all of the automated path-finding power of AFL to rapidly discover vulnerabilities regardless of how it gets its input. If you find yourself confidently reverse engineering the basic functionality of a target application, but would rather use an automated process to discover all the vulnerabilities it contains then afl-unicorn is for you.\n\nafl-unicorn has been successfully used to find bugs in a wide variety of targets, from single-threaded embedded RF firmware to complex, widely used Windows and Linux applications. This talk will cover the basics of afl-unicorn, and walk you through a repeatable workflow you can use to fuzz your own target code.",
 			"index": 55,
-			"end_date": "2018-01-21T16:20:00-05:00",
+			"end_date": "2018-01-20T16:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "afl-unicorn: Fuzzing the ‘Unfuzzable’"
 		},
@@ -1009,7 +1009,7 @@
 			"entry_type": "Official",
 			"description": "Honeytokens are really useful. AWS tokens are also really useful, for you and your attackers. Together, they fight crime.\nWell, they let you know a crime is happening, which is similar, I guess.\n\nI'll talk about SPACECRAB which lets you deploy a lot of AWS honey tokens with relatively little effort, and also what I learned from posting AWS keys on the internet repeatedly. I can't tell you what I learned in this abstract because I haven't done it yet. Stay tuned.",
 			"index": 14,
-			"end_date": "2018-01-21T16:20:00-05:00",
+			"end_date": "2018-01-20T16:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "AWS Honey Tokens with SPACECRAB"
 		},
@@ -1033,7 +1033,7 @@
 			"entry_type": "Official",
 			"description": "A (slightly irreverent) look at the most important laws, cases, regulations, and legally relevant (or, in some cases, irrelevant) cybersecurity issues during the most recent year–and maybe a little farther back if the item is particularly outrageous. Just the basic topic and fundamental principles are highlighted–most original legal texts are so complex–who would read them all the way through?",
 			"index": 13,
-			"end_date": "2018-01-21T16:20:00-05:00",
+			"end_date": "2018-01-20T16:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Cyberlaw: Year in Review"
 		},
@@ -1057,7 +1057,7 @@
 			"entry_type": "Official",
 			"description": "The command line hexadecimal editor, disassembler and debugger radare2 can be an invaluable reverse engineering tool. Even users of IDA Pro can find use in radare2 when it comes to odd file formats and getting a second opinion from a different disassembly engine. The biggest barrier to easy adoption of radare2 is the funky command sequences it employs. What if we threw a chatbot on top of it, so folks could type in detailed questions about a binary and get reasonable answers? What if we put a speech to text engine in front of that, so users could get second screen information from radare2 without leaving their favorite environment? This talk would demonstrate the usefulness of such a system.",
 			"index": 48,
-			"end_date": "2018-01-21T16:50:00-05:00",
+			"end_date": "2018-01-20T16:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "radare2 in Conversation"
 		},
@@ -1081,7 +1081,7 @@
 			"entry_type": "Official",
 			"description": "The ability to detect automated behavior within cyber relevant log data is a useful tool for the network defender, as malicious activity executed by scripts or bots is likely to leave behind identifiable traces in logs. This paper presents a methodology for detecting certain types of automated activity within logs based on matching observed temporal patterns. This methodology is scalable, overcoming the infeasibility of brute force methods to identify groups of nearest neighbors in large datasets by implementing a locality sensitive hashing algorithm. This coordination detection method- ology applied to cyber relevant log data can be used to develop features for input into further analysis such as anomaly detection to flag potentially malicious activity or unsupervised clustering to char- acterize classes of automated behavior. Alternatively, the methodology could be used as a means to fuse together disparate data sources by generating a ‘temporal signature' key and allowing for fuzzy matching on this key. Examples of each type of application are presented using a dataset of billions of records of netflow data.",
 			"index": 19,
-			"end_date": "2018-01-21T16:50:00-05:00",
+			"end_date": "2018-01-20T16:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Time Signature Based Matching for Data Fusion and Coordination Detection in Cyber Relevant Logs"
 		},
@@ -1105,7 +1105,7 @@
 			"entry_type": "Official",
 			"description": "Revisiting past CVEs can be a useful tool for finding patterns, to increase our critical thinking, gain knowledge in techniques that have been previously used, and to increase our skills to eventually be able to contribute to the wider security community. In addition, when a known exploit currently exists for a CVE, and our experiments yield different results from the known exploit, we must practice our critical thinking skills to determine the discrepancies, and to determine if any unstated assumptions exist. The following talk outlines the motivation for revisiting past CVEs, and some strategies for developing our vulnerability hunting and exploit creation skills, in the context of CVE-2013-5576.",
 			"index": 76,
-			"end_date": "2018-01-21T16:50:00-05:00",
+			"end_date": "2018-01-20T16:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Skill Building By Revisiting Past CVEs"
 		},
@@ -1129,7 +1129,7 @@
 			"entry_type": "Official",
 			"description": "With the rise in leaks of our personal information, most of us are well-educated about the dos and don'ts of protecting our personal data. However, we don't always realize that the \"innocuous\" data that we allow companies to collect can still be used to gather valuable insight into our daily lives.\nI will discuss how I used Data Science and Machine Learning techniques on my personal location tracking data to infer where I live, work, shop, and vacation. Knowing these significant locations, I was able to create a queryable record of my location at any time and day (for example: at home, at work, on vacation, away from home). This compilation of my history then enabled me to answer questions about average commute times, days when I did not follow my usual routine, and to predict, for example, what days and times I would most likely be at the grocery store. I conclude the presentation with some thoughts on how this approach could allow businesses and organizations to subtly change the ways they interact with us, while we remain none-the-wiser.",
 			"index": 18,
-			"end_date": "2018-01-21T17:20:00-05:00",
+			"end_date": "2018-01-20T17:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "OK Google, Tell Me About Myself"
 		},
@@ -1153,7 +1153,7 @@
 			"entry_type": "Official",
 			"description": "Many people have a plan to make it through the robopocalypse (robot apocalypse), but in this talk we put these plans to the test. We start our discussion with a quick overview of physical and social abilities of current robots, mainly as a way to inform the people that haven't taken the time to think what their life might be like if robots were to take over. We follow this by doing live demos of robot physical and social engineering attacks, and some of the defenses that we have employed to protect ourselves from these risks. By the end of this talk you can walk away with effective and practical defenses that you can use in your workspace and home today.",
 			"index": 43,
-			"end_date": "2018-01-21T17:20:00-05:00",
+			"end_date": "2018-01-20T17:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Defending Against Robot Attacks"
 		},
@@ -1185,7 +1185,7 @@
 			"entry_type": "Official",
 			"description": "Infosec researchers, experts, and hackers in general have a...fraught relationship with media, ranging from exploitive to adversarial. Recent episodes, including the doxxing of Marcus Hutchins by UK media and sensational coverage of his arrest, don't help, nor do broadcast media reports that are often factually incorrect or even damaging to the security of those who take the reports as gospel. And researchers looking to get out word to the general public are often (based on anecdotal data) confused or intimidated by the\nmedia machine. This presentation seeks to demystify how news media work, the strengths and weaknesses of each channel of communications, and how to effectively interact with journalists in a way that is constructive and productive. I am an infosec and national security reporter–ask me anything.",
 			"index": 30,
-			"end_date": "2018-01-21T17:20:00-05:00",
+			"end_date": "2018-01-20T17:20:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Hacking the News: an Infosec Guide to the Media, and How to Talk to Them"
 		},
