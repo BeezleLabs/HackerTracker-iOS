@@ -35,7 +35,8 @@ class HTUpdatesViewController: UIViewController {
         super.viewDidLoad()
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        
+
+        updatesTableView.rowHeight = UITableViewAutomaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         backgroundImage.image = UIImage.mainHeaderImage(scaledToWidth: self.view.frame.size.width, visibleRect:CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.40)))
         

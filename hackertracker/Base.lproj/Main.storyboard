@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dc-25-wallpaper-blurred" translatesAutoresizingMaskIntoConstraints="NO" id="rly-3y-2nK">
-                                <rect key="frame" x="0.0" y="20" width="375" height="242"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="266" id="peP-Pp-qx0"/>
@@ -83,7 +83,7 @@
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="skw-9w-8jM">
-                                <rect key="frame" x="87" y="282" width="200" height="200"/>
+                                <rect key="frame" x="87" y="262" width="200" height="200"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defcon-25-white" translatesAutoresizingMaskIntoConstraints="NO" id="etI-Pt-oJJ">
                                 <rect key="frame" x="39.5" y="42.5" width="295" height="118"/>
@@ -112,10 +112,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rly-3y-2nK" secondAttribute="trailing" id="3IA-mo-LTo"/>
                             <constraint firstItem="rly-3y-2nK" firstAttribute="leading" secondItem="GOz-6l-VXo" secondAttribute="leading" id="7m0-Zq-MfX"/>
-                            <constraint firstItem="rly-3y-2nK" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="topMargin" id="A05-N7-jX7"/>
                             <constraint firstItem="etI-Pt-oJJ" firstAttribute="centerY" secondItem="GOz-6l-VXo" secondAttribute="topMargin" constant="81.5" id="Cy9-iq-WJc"/>
                             <constraint firstItem="o4M-Xc-Ytc" firstAttribute="leading" secondItem="GOz-6l-VXo" secondAttribute="leading" id="D1o-0S-UI8"/>
                             <constraint firstItem="skw-9w-8jM" firstAttribute="centerX" secondItem="rly-3y-2nK" secondAttribute="centerX" id="HGs-HR-PQb"/>
+                            <constraint firstItem="rly-3y-2nK" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="top" id="OjN-A3-T13"/>
                             <constraint firstItem="skw-9w-8jM" firstAttribute="top" secondItem="rly-3y-2nK" secondAttribute="bottom" constant="20" id="YKf-ea-UgJ"/>
                             <constraint firstAttribute="trailing" secondItem="o4M-Xc-Ytc" secondAttribute="trailing" id="Yah-Ij-400"/>
                             <constraint firstItem="o4M-Xc-Ytc" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="topMargin" constant="64" id="iei-44-T2f"/>
@@ -595,7 +595,7 @@
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" searchBarStyle="prominent" text="" id="Ymw-ng-JHs">
+                        <searchBar key="tableHeaderView" contentMode="redraw" misplaced="YES" barStyle="black" searchBarStyle="prominent" text="" id="Ymw-ng-JHs">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
