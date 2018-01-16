@@ -92,7 +92,7 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "",
-			"index": 99,
+			"index": 599,
 			"end_date": "2018-01-21T15:30:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Opening Remarks, Rumblings, Ruminations, and Rants"
@@ -460,7 +460,7 @@
 			"demo": 0,
 			"entry_type": "Event",
 			"description": "",
-			"index": 99,
+			"index": 699,
 			"end_date": "2018-01-20T16:00:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Registration Opens"
@@ -1232,7 +1232,7 @@
 			"demo": 0,
 			"entry_type": "Event",
 			"description": "",
-			"index": 99,
+			"index": 799,
 			"end_date": "2018-01-21T16:00:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Registration Opens"
@@ -1336,7 +1336,7 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "For thirteen years, we've chosen to stand up and share all the ins and outs and inner workings of the con. Why stop now? Join us to get the break down of budget, an insight to the CFP process, a breakdown of the hours it takes to put on a con like ShmooCon, and anything thing else you might want to talk about. This is an informative, fast paced, and generally fun session as Bruce dances on stage, and Heidi tries to hide from the mic. Seriously though–if you ever wanted to know How, When, or Why when it comes to ShmooCon you shouldn't miss this. Or go ahead and do. It'll be online later anyway.\nThe Shmoo Group is the leading force behind ShmooCon. Together with our amazing volunteers we bring you ShmooCon. It truly is a group effort.",
-			"index": 99,
+			"index": 899,
 			"end_date": "2018-01-21T11:50:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "0wn the Con"
@@ -1544,7 +1544,7 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "",
-			"index": 99,
+			"index": 999,
 			"end_date": "2018-01-21T15:00:00-05:00",
 			"updated_at": "2018-01-12T12:00:00-05:00",
 			"title": "Closing Remarks"

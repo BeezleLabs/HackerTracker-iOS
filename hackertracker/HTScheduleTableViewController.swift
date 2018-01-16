@@ -190,15 +190,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 
     func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
-
-        let startofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 EST")!
-        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 EST")!
-
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "start_date >= %@ AND end_date <= %@", argumentArray: [ startofDay, endofDay])
-        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-
         return fr
     }
     
@@ -417,7 +409,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
         if eType.dbName.contains("Other") {
             fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Labs' AND entry_type != 'Contests'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
         } else {
-            //print("Searching for \(eType.dbName) from \(String(describing: startofDay)) to \(String(describing: endofDay))")
+            print("Searching for \(eType.dbName) from \(String(describing: startofDay)) to \(String(describing: endofDay))")
             fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
         }
         

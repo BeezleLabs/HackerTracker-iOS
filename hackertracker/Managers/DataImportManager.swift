@@ -58,7 +58,7 @@ class DataImportManager: NSObject {
         let managedSpeaker : Speaker
         
         if let existingSpeaker = ret.first as? Speaker {
-            print("Existing Speaker \(index)")
+            //print("Existing Speaker \(index)")
             managedSpeaker = existingSpeaker
         } else {
             managedSpeaker = NSEntityDescription.insertNewObject(forEntityName: "Speaker", into: managedContext) as! Speaker
@@ -142,7 +142,6 @@ class DataImportManager: NSObject {
         let managedEvent : Event
         
         if let existingEvent = ret.first as? Event {
-            print("Existing Event \(id)")
             managedEvent = existingEvent
             
         } else {
@@ -160,36 +159,22 @@ class DataImportManager: NSObject {
         
         if let who = event["who"] as? [[String : Any]] {
             
-            let speakersFetch:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
-            speakersFetch.predicate = NSPredicate(format: "index = %@", argumentArray: [String(describing: index)])
-            
-            do {
-                let speakerEvents = try managedContext.fetch(speakersFetch) as? [EventSpeaker]
-                
-                if let speakerEvents = speakerEvents {
-                    for speakerEvent in speakerEvents {
-                        managedContext.delete(speakerEvent)
-                    }
-
-                }
-                
-                try managedContext.save()
-            } catch {
-                assert(false, "Couldn't Fetch Speakers")
-                print("Couldn't fetch speakers ignoring")
-            }
             
 
             
             for eventData in who {
-                if let speakerID = eventData["indexsp"] as? Int32, let eventID = event["index"] as? Int32
+                
+                if let speakerString = eventData["indexsp"] as? String, let speakerID = Int32(speakerString)
                 {
+                    
                     do {
-                        try setSpeakerEventPair(eventID: eventID as Int32, speakerID: speakerID)
+                        try setSpeakerEventPair(eventID: managedEvent.index, speakerID: speakerID)
                     } catch {
                         assert(false, "Failed to import Speaker")
                         print("Failed to import Speaker \(event)")
                     }
+                } else {
+                    print("could not find indexsp, something is up")
                 }
             }
         }
@@ -366,12 +351,26 @@ class DataImportManager: NSObject {
     }
     
     func setSpeakerEventPair(eventID : Int32, speakerID : Int32) throws {
-        let eventSpeaker = NSEntityDescription.insertNewObject(forEntityName: "EventSpeaker", into: managedContext) as! EventSpeaker
+        let speakersFetch:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
+        speakersFetch.predicate = NSPredicate(format: "index = %@ AND indexsp = %@", argumentArray: [eventID,speakerID])
         
-        eventSpeaker.index = eventID
-        eventSpeaker.indexsp = speakerID
-        
-        try managedContext.save()
+        do {
+            let speakerEvents = try managedContext.fetch(speakersFetch) as? [EventSpeaker]
+            
+            if (speakerEvents?.count)! < 1 {
+                print("Adding speaker \(speakerID) to event \(eventID)")
+                let eventSpeaker = NSEntityDescription.insertNewObject(forEntityName: "EventSpeaker", into: managedContext) as! EventSpeaker
+                
+                eventSpeaker.index = eventID
+                eventSpeaker.indexsp = speakerID
+            }
+            
+            try managedContext.save()
+        } catch {
+            assert(false, "Couldn't Fetch Speakers")
+            print("Couldn't fetch speakers ignoring")
+        }
+
     }
     
 }
