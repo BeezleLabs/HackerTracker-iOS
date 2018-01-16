@@ -23,7 +23,7 @@ class HTInitViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let shmoo_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-01-16")
+        let shmoo_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-01-15")
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
@@ -38,6 +38,12 @@ class HTInitViewController: UIViewController {
             self.loadData()
         } else if (status[0].lastsync < shmoo_update!) {
             NSLog("Database older than shmoo update, reseting")
+            do {
+                try DataImportManager(managedContext: context).deleteMessages()
+                try context.save()
+            } catch {
+                NSLog("Error deleting old messages")
+            }
             self.loadData()
         } else {
             importComplete = true
@@ -59,13 +65,7 @@ class HTInitViewController: UIViewController {
                 let speakers_data = speakers_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
                 
                 do {
-                   try dataManager.importSpeakers(speakerData: speakers_data)
-                    
-                    
-                    let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
-                    message1.date = Date()
-                    message1.msg = "Welcome to HackerTracker iOS, now with more Shmoo. To add events, parties, or contests, email info@beezle.org. https://github.com/BeezleLabs/HackerTracker-iOS."
-                    
+                    try dataManager.importSpeakers(speakerData: speakers_data)
                 } catch {
                     print("Failed to import speakers: \(error)")
                 }
@@ -78,6 +78,16 @@ class HTInitViewController: UIViewController {
                     try dataManager.importEvents(eventData: schedule_data)
                 } catch {
                     print("Failed to import schedule: \(error)")
+                }
+                
+                let messages_file = Bundle.main.path(forResource: "messages", ofType: "json")!
+                let messages_content = try! String(contentsOfFile: messages_file)
+                let messages_data = messages_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+                
+                do {
+                    try dataManager.importMessages(msgData: messages_data)
+                } catch {
+                    print("Failed to import messages: \(error)")
                 }
                 
                 do {

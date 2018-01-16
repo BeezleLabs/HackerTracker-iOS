@@ -56,7 +56,7 @@ class HTUpdatesViewController: UIViewController {
         }
 
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
-        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         fr.returnsObjectsAsFaults = false
         self.messages = (try! context.fetch(fr)) as! [Message]
 
@@ -89,6 +89,15 @@ class HTUpdatesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
+        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        fr.returnsObjectsAsFaults = false
+        self.messages = (try! context.fetch(fr)) as! [Message]
+        
+        self.updatesTableView.reloadData()
         let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
         self.updatesTableView.contentInset = UIEdgeInsets(top: topContentInset, left: 0, bottom: 0, right: 0)        
         scrollViewDidScroll(self.updatesTableView)

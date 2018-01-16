@@ -266,6 +266,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "speakers") as! String)
         let speakersURL = Foundation.URL(string: tURL)
         
+        tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "messages") as! String)
+        let messagesURL = Foundation.URL(string: tURL)
+        
         let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: NSURLSessionPinningDelegate(), delegateQueue: nil)
         
         var request = URLRequest(url: speakersURL!)
@@ -309,6 +312,53 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                 DispatchQueue.main.async() {
                                     eventSpeakerDownloadGroup.leave()
                                 }
+                            }
+                            
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async() {
+                        eventSpeakerDownloadGroup.leave()
+                    }
+                }
+            }
+            
+        }).resume()
+        
+        request = URLRequest(url: messagesURL!)
+        request.httpMethod = "GET"
+        
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
+            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
+            
+            if let error = error {
+                NSLog("DataTask error: " + error.localizedDescription)
+                DispatchQueue.main.async() {
+                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
+                    eventSpeakerDownloadGroup.leave()
+                }
+            } else {
+                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+                
+                if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
+                    DispatchQueue.main.async() {
+                        
+                        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                        let context = delegate.managedObjectContext!
+                        
+                        context.perform {
+                            
+                            let dataManager = DataImportManager(managedContext: context)
+                            
+                            do {
+                                try dataManager.importMessages(msgData: data)
+                            } catch {
+                                
+                            }
+                            DispatchQueue.main.async() {
+                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated messages \(n)", attributes: attr)
                             }
                             
                         }

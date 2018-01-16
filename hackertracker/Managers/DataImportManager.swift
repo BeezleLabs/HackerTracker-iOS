@@ -314,6 +314,72 @@ class DataImportManager: NSObject {
         return managedEvent
     }
     
+    public func deleteMessages() throws {
+        let frm:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
+        
+        let ret = try managedContext.fetch(frm) as? [Message]
+        
+        for msg in ret! {
+            managedContext.delete(msg)
+        }
+    }
+    
+    public func importMessages(msgData : Data) throws {
+        let _messages = try JSONSerialization.jsonObject(with: msgData, options: .allowFragments) as? [String : Any]
+        
+        guard let messages = _messages, let updateDateString = messages["update_date"] as? String, let messageItems = messages["messages"] as? [[String : Any]] else
+        {
+            return ;
+        }
+        
+        for msg in messageItems
+        {
+            if let _ = msg["date"] as? String, let _ = msg["text"] as? String, let _ = msg["id"] as? String {
+                do {
+                    _ = try importMessage(msg: msg)
+                } catch let error {
+                    print("Failed to import message \(msg) error \(error)")
+                }
+            }
+        }
+    }
+    
+    public func importMessage(msg: [String : Any]) throws -> Message {
+        guard let id = msg["id"] as? String else {
+            throw ImportError.idDoesntExist
+        }
+        
+        print("import message \(id)")
+
+        let frm:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
+        frm.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
+        
+        let ret = try managedContext.fetch(frm)
+        
+        let managedMessage : Message
+        
+        if let existingMessage = ret.first as? Message {
+            managedMessage = existingMessage
+        } else {
+            managedMessage = NSEntityDescription.insertNewObject(forEntityName: "Message", into: managedContext) as! Message
+            managedMessage.id = id
+        }
+        
+        if let dateString = msg["date"] as? String, let msgDate =  DateFormatterUtility.iso8601Formatter.date(from: dateString) {
+            managedMessage.date = msgDate
+        } else {
+            managedMessage.date = Date()
+        }
+        
+        if let text = msg["text"] as? String {
+            managedMessage.msg = text
+        } else {
+            managedMessage.msg = ""
+        }
+        
+        return managedMessage
+    }
+    
     public func lastSyncDate() -> Date? {
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
        

@@ -10,5 +10,7 @@
 	<string>schedule-full.json</string>
 	<key>speakers</key>
 	<string>speakers.json</string>
+	<key>messages</key>
+	<string>messages.json</string>
 </dict>
 </plist>
