@@ -176,7 +176,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         
         do {
             if let eventsForDay = try context.fetch(fetchRequestForDay(dateString)) as? [Event] {
-                print("Got \(eventsForDay.count) events for \(dateString)")
+                //print("Got \(eventsForDay.count) events for \(dateString)")
                 return eventsForDay
             } else {
                 assert(false, "Failed to convert fetch response to events array")
@@ -407,9 +407,9 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         if eType.dbName.contains("Other") {
-            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Labs' AND entry_type != 'Contests'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
+            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Lab' AND entry_type != 'Contest'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
         } else {
-            print("Searching for \(eType.dbName) from \(String(describing: startofDay)) to \(String(describing: endofDay))")
+            //print("Searching for \(eType.dbName) from \(String(describing: startofDay)) to \(String(describing: endofDay))")
             fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
         }
         

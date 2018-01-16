@@ -84,25 +84,25 @@ public class EventCell : UITableViewCell {
             case "Official":
                 color = .deepPurple
                 break
-            case "Workshops":
+            case "Lab":
                 color = .blue
                 break
-            case "Seminars":
+            case "Other":
                 color = .red
                 break
-            case "Contests":
+            case "Contest":
                 color = .green
                 break
-            case "Kids":
-                color = .cyan
-                break
-            case "Skytalks":
-                color = .orange
-                break
-            case "Villages":
+            case "Party":
                 color = .yellow
                 break
-            case "Workshop":
+            case "Event":
+                color = .orange
+                break
+            case "Village":
+                color = .yellow
+                break
+            case "Firetalk":
                 color = .purple
                 break
             default:

@@ -23,16 +23,21 @@ class HTInitViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
+        let shmoo_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-01-16")
+        
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
         
-        let status = try! context.fetch(fr) as NSArray
+        let status = try! context.fetch(fr) as! [Status]
 
         let timeBeforeSegue = hackerAnimationDuration
         playAnimation()
 
         if status.count < 1 {
             NSLog("Database not setup, preloading with initial schedule")
+            self.loadData()
+        } else if (status[0].lastsync < shmoo_update!) {
+            NSLog("Database older than shmoo update, reseting")
             self.loadData()
         } else {
             importComplete = true
@@ -59,7 +64,7 @@ class HTInitViewController: UIViewController {
                     
                     let message1 = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
                     message1.date = Date()
-                    message1.msg = "Welcome to HackerTracker iOS. To add events, parties, or contests, email info@beezle.org. https://github.com/BeezleLabs/HackerTracker-iOS."
+                    message1.msg = "Welcome to HackerTracker iOS, now with more Shmoo. To add events, parties, or contests, email info@beezle.org. https://github.com/BeezleLabs/HackerTracker-iOS."
                     
                 } catch {
                     print("Failed to import speakers: \(error)")

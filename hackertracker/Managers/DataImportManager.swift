@@ -358,7 +358,7 @@ class DataImportManager: NSObject {
             let speakerEvents = try managedContext.fetch(speakersFetch) as? [EventSpeaker]
             
             if (speakerEvents?.count)! < 1 {
-                print("Adding speaker \(speakerID) to event \(eventID)")
+                //print("Adding speaker \(speakerID) to event \(eventID)")
                 let eventSpeaker = NSEntityDescription.insertNewObject(forEntityName: "EventSpeaker", into: managedContext) as! EventSpeaker
                 
                 eventSpeaker.index = eventID
