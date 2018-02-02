@@ -26,8 +26,8 @@ class HTEventsScrollingTabController: ScrollingTabController {
     
     var eventTypes: [eventType] = [
         eventType(n: "CONFERENCE", d: "Official", c: 0),
-        eventType(n: "LABS", d: "Lab", c: 0),
-        eventType(n: "CONTESTS", d: "Contest", c: 0),
+        eventType(n: "TRAININGS", d: "Training", c: 0),
+        eventType(n: "WORKSHOPS", d: "Workshop", c: 0),
         eventType(n: "OTHER", d:"Other", c:0)
 
     ]

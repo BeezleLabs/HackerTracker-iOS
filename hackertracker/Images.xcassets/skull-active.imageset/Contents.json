@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "shmoo_sm@1x.png",
+      "filename" : "hackwest-active@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "shmoo_sm@2x.png",
+      "filename" : "hackwest-active@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "shmoo_sm@3x.png",
+      "filename" : "hackwest-active@3x.png",
       "scale" : "3x"
     }
   ],

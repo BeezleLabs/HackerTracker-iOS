@@ -24,7 +24,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     // Dates for ToorCon 19
     //var days = ["2017-08-28","2017-08-29","2017-08-30","2017-08-31","2017-09-01", "2017-09-02", "2017-09-03"]
     // Dates for ShmooCon 2018
-    var days = ["2018-01-19","2018-01-20","2018-01-21"]
+    //var days = ["2018-01-19","2018-01-20","2018-01-21"]
+    // Dates for HackWest 2018
+    var days = ["2018-03-21","2018-03-22","2018-03-23"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -457,7 +459,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         if eType.dbName.contains("Other") {
-            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Lab' AND entry_type != 'Contest'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
+            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Workshop' AND entry_type != 'Training'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
         } else {
             //print("Searching for \(eType.dbName) from \(String(describing: startofDay)) to \(String(describing: endofDay))")
             fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])

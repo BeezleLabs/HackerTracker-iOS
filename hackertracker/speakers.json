@@ -1,621 +1,157 @@
 {
 	"speakers": [
 		{
-			"sptitle": "Chief Cybersecurity Advisor",
-			"who": "Donna F. Dodson",
-			"indexsp": 1,
-			"last_update": "2018-01-12T12:00:00-05:00",
+			"sptitle": "",
+			"who": "Tim \"Lanmaster\" Tomes",
+			"indexsp": 1800,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@LaNMaSteR53",
+			"bio": "Christian, father, husband, veteran, code slinger, aspiring difference-maker and hacking enthusiast."
+		},
+		{
+			"sptitle": "",
+			"who": "FuzzyNop",
+			"indexsp": 1802,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@FuzzyNop",
+			"bio": ""
+		},
+		{
+			"sptitle": "",
+			"who": "Erich Kron",
+			"indexsp": 1801,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@ErichKron",
+			"bio": "Security Awareness Advocate at KnowBe4, is a veteran information security professional with over 20 years’ experience in the medical, aerospace manufacturing and defense fields. He is the former security manager for the US Army’s 2nd Regional Cyber Center-Western Hemisphere and holds CISSP, CISSP-ISSAP, MCITP and ITIL v3 certifications, among others. Erich has worked with information security professionals around the world to provide the tools, training and educational opportunities to succeed in Information Security."
+		},
+		{
+			"sptitle": "",
+			"who": "Jordan Drysdale",
+			"indexsp": 1803,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@Rev10D",
+			"bio": ""
+		},
+		{
+			"sptitle": "",
+			"who": "Kent Ickler",
+			"indexsp": 1804,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@KentIckler",
+			"bio": ""
+		},
+		{
+			"sptitle": "",
+			"who": "Sherrie Cowley",
+			"indexsp": 1805,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@sherriecowley",
+			"bio": ""
+		},
+		{
+			"sptitle": "",
+			"who": "Pau Muñoz",
+			"indexsp": 1806,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@devilafant",
+			"bio": "Pau Muñoz is a computer security enthusiast and a researcher at the university of Girona in Spain. He holds a degree in computer engineering and OSWP, OSCP and OSCE certificates. He started his career in computer security at the age of 16 and since then he went through different positions related to vulnerability analysis and security research focusing purple teaming and creative network defense strategy."
+		},
+		{
+			"sptitle": "",
+			"who": "Morgan Roman",
+			"indexsp": 1807,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@distrustCaution",
+			"bio": "Morgan Roman works on the application security team at DocuSign. He started his career writing integration tests for web applications and APIs as a software development engineer in test. He is passionate about finding ways to automate security testing and make it part of the deployment process."
+		},
+		{
+			"sptitle": "",
+			"who": "Waylon Granger",
+			"indexsp": 1808,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@professor__plum",
+			"bio": "Waylon Grange is an experienced reverse engineer, developer, and digital forensics examiner. He holds a graduate degree in Information Security from Johns Hopkins University and has worked numerous computer incident investigations spanning the globe. He currently works as a Senior Threat Researcher for Symantec and previously worked for the Department of Defense performing vulnerability research, software development, and Computer Network Operations."
+		},
+		{
+			"sptitle": "",
+			"who": "Gabriel Ryan",
+			"indexsp": 1809,
+			"last_update": "2018-02-02T12:00:00-07:00",
 			"media": "",
-			"bio": "Donna F. Dodson is the Chief Cybersecurity Advisor for the National Institute of Standards and Technology (NIST). She is also the Director of NIST's National Cybersecurity Center of Excellence (NCCoE). Donna oversees ITL's cyber security program to conduct research, development and outreach necessary to provide standards, guidelines, tools, metrics and practices to protect the information and communication infrastructure. In addition, Donna guides ITL programs to support both national and international security standards activities. She recently led the establishment of the NIST NCCoE. Through partnerships with state, local and industry, the NCCoE collaborates with industry sectors to accelerate the widespread adoption of standards-based cyber security tools and technologies. Donna's research interests include applied cryptography, key management, authentication and security testing. She has led technical teams to produce standards, guidelines and tools in each of these areas. Donna received two Department of Commerce Gold Medals and three NIST Bronze Medals. She was a Fed 100 Award winner for her innovations in cybersecurity and in 2011 was included in the top 10 influential people in government information security. Recently, Donna was recognized as one of DC's Top 50 Women in Tech."
-		},
-		{
-			"sptitle": "Principal Security Strategist",
-			"who": "Wendy Nather",
-			"indexsp": 2,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@wendynather",
-			"bio": "Wendy Nather (@wendynather) is Principal Security Strategist at Duo Security, and wants to be Jack Daniel when she grows up."
+			"bio": ""
 		},
 		{
 			"sptitle": "",
-			"who": "Jack Daniel",
-			"indexsp": 3,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@jack_daniel",
-			"bio": "Jack Daniel (@jack_daniel) is the host organism for Jack's Beard and wants to be Wendy Nather *if* he grows up."
+			"who": "Justin Larson",
+			"indexsp": 1810,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@phant0mtrav3ler",
+			"bio": ""
 		},
 		{
 			"sptitle": "",
-			"who": "Jack Gavigan",
-			"indexsp": 4,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@JackGavigan",
-			"bio": "Jack Gavigan (@JackGavigan) has a background in info security and financial technology, and worked with a bunch of banks before joining the team behind the Zcash cryptocurrency. He likes steak and Old Fashioneds, and in his spare time, he trafficks chocolates from London to the US."
+			"who": "Seth Law",
+			"indexsp": 1811,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@sethlaw",
+			"bio": ""
 		},
 		{
-			"sptitle": "Senior Assistant City Attorney ",
-			"who": "Elizabeth Wharton",
-			"indexsp": 5,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@LayerLiz",
-			"bio": "Elizabeth (Liz) Wharton (@LawyerLiz) is the Senior Assistant City Attorney (City of Atlanta) responsible for technology projects and policies on behalf of Atlanta and the world's busiest airport Hartsfield-Jackson Atlanta International Airport. In her spare time she chats drones, IoT, and infosec as host of the “Buzz Off with Lawyer Liz” Radio Show & Podcast. No, she doesn't have any pull with TSA and she doesn't know how to find your lost luggage."
+			"sptitle": "",
+			"who": "Tanya Janca",
+			"indexsp": 1812,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@SheHacksPurple",
+			"bio": "Tanya is a developer advocate specializing in application security; evangelizing about software security through public speaking, her open source project OWASP DevSlop, and various forms of teaching via workshops, blogs and community events.  As an ethical hacker, OWASP Project and Chapter Leader, software developer, effective altruist and professional computer geek of 20+ years, she is a person who is truly fascinated by the ‘science’ of computer science."
 		},
 		{
-			"sptitle": "CISO",
-			"who": "Bruce Potter",
-			"indexsp": 6,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@gdead",
-			"bio": "Bruce Potter (@gdead) is the CISO at Expel and spends most of his time instructing people on the correct pronunciation of CISO (it's “ciz-oh”)."
-		},
-		{
-			"sptitle": "Detection Scientist",
-			"who": "John Althouse",
-			"indexsp": 7,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@4A4133",
-			"bio": "John Althouse (@4A4133) is a (self proclaimed) Detection Scientist, firmly believing there's a way to detect anything. A Bro enthusiast (the NSM). A PC master builder (AIOs are for normies). And a Race Track Instructor (I wanna go fast)."
-		},
-		{
-			"sptitle": "Security Engineer",
-			"who": "Jeff Atkinson",
-			"indexsp": 8,
-			"last_update": "2018-01-12T12:00:00-05:00",
+			"sptitle": "",
+			"who": "Adam Steed",
+			"indexsp": 1813,
+			"last_update": "2018-02-02T12:00:00-07:00",
 			"media": "",
-			"bio": "Jeff Atkinson is a security engineer with over 15 years focused in Information Security. Experienced in Incident Response, Threat Intelligence, and Malware Analysis, Jeff brings a unique perspective on defense strategies. While working in both private and public sectors and Fortune 50, he deployed scalable custom network monitoring solutions, always including his favorite tool Bro."
+			"bio": ""
 		},
 		{
 			"sptitle": "",
-			"who": "Joe Hall",
-			"indexsp": 9,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@JoeBeOne",
-			"bio": "Matt Blaze (@mattblaze), Joe Hall (@JoeBeOne), Margaret MacAlpine (@MaggieMacAlpine), and Harri Hursti were organizers of the Defcon Voting Machine Hacking Village and were also part of the 2007 California and Ohio “top to bottom” voting studies."
+			"who": "Robert Neel",
+			"indexsp": 1814,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@redeemedHacker",
+			"bio": "Robert Neel has fourteen years experience as a system/network administrator and security consultant/engineer/analyst in the private sector.  He is currently employed by a large financial institution where he established the Red Team and continues to lead it.  In addition, he has seven years experience in the government sector where he performed Vulnerability Analysis and Exploitation for the NSA.  He has experience with twenty-three programming languages and has written complex programs for both Offense and Defense in fifteen of those languages.  Robert is also the founder of PENConsultants.com.  When he is not Red Teaming, Robert loves to spend time with his wife and two children. They enjoy traveling, going to theme parks, and building their dream house together."
 		},
 		{
 			"sptitle": "",
-			"who": "Margaret MacAlpine",
-			"indexsp": 10,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@MaggieMacAlpine",
-			"bio": "Matt Blaze (@mattblaze), Joe Hall (@JoeBeOne), Margaret MacAlpine (@MaggieMacAlpine), and Harri Hursti were organizers of the Defcon Voting Machine Hacking Village and were also part of the 2007 California and Ohio “top to bottom” voting studies."
+			"who": "David Thompson",
+			"indexsp": 1815,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@dirty_tizzle",
+			"bio": "David Thompson has 13 years experience in the security field.  He is currently employed by a large financial institution where he leads the New Detective Capabilities Project and is an active member of the Red Team.  He started his security road trip in the Air Force doing Vulnerability Assessments for the Air Force Blue Team and working Active Hunt Ops at NSA (OIF x2).  He then took a Pen Tester position with Johns Hopkins Applied Physics Lab working on Space Systems and other DoD projects.  Wanting to get back to TX, he took a Pen Tester job with the Air Force Blue Team (Threat Emulation Cell) working on Space, Aircraft and other Weapon Systems.  When not on the keyboard, he loves spending time with his wife and three girls.  They enjoy RVing, fishing, hunting and playing sports."
 		},
 		{
 			"sptitle": "",
-			"who": "Harri Hursti",
-			"indexsp": 11,
-			"last_update": "2018-01-12T12:00:00-05:00",
+			"who": "Jayme Hancock",
+			"indexsp": 1816,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@highmeh",
+			"bio": "Jayme is a penetration tester with AppSec Consulting and former systems administrator with a strong interest in network security, physical security, and active defense. He holds the OSCP, CISSP, GCED, and CEH certifications. Jayme resides in Southern California and spends his free time off-roading, camping, traveling, and failing at astrophotography."
+		},
+		{
+			"sptitle": "",
+			"who": "Marley",
+			"indexsp": 1817,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "@mkr_ultra",
+			"bio": "Marley is a blue team engineer with 14 West. In her spare time she reads a lot and cries about space."
+		},
+		{
+			"sptitle": "",
+			"who": "Joe Gray",
+			"indexsp": 1818,
+			"last_update": "2018-02-02T12:00:00-07:00",
 			"media": "",
-			"bio": "Matt Blaze (@mattblaze), Joe Hall (@JoeBeOne), Margaret MacAlpine (@MaggieMacAlpine), and Harri Hursti were organizers of the Defcon Voting Machine Hacking Village and were also part of the 2007 California and Ohio “top to bottom” voting studies."
-		},
-		{
-			"sptitle": "",
-			"who": "Matt Blaze",
-			"indexsp": 12,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@mattblaze",
-			"bio": "Matt Blaze (@mattblaze), Joe Hall (@JoeBeOne), Margaret MacAlpine (@MaggieMacAlpine), and Harri Hursti were organizers of the Defcon Voting Machine Hacking Village and were also part of the 2007 California and Ohio “top to bottom” voting studies."
-		},
-		{
-			"sptitle": "Professor",
-			"who": "Steve Black",
-			"indexsp": 13,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@legalh4ck3r",
-			"bio": "Prior to moving to Texas, Professor Steve Black (@legalh4ck3r) taught at BYU, UNH, LSU, Syracuse University, the University of Idaho, and the University of Washington. He focuses on cyberlaw, entrepreneurship, and tax issues. He has presented around the world and has been named a Visiting Scholar at the National University of Singapore. Professor Black has been cited in Forbes, and his articles have been published in leading national law journals. He recently began writing for the blog, “Legal Hacker.” He has degrees in tax, law, and mathematics, began coding at age 12, works with startups, and is teaching himself the ukulele."
-		},
-		{
-			"sptitle": "Security Intelligence Analyst",
-			"who": "Dan Bourke",
-			"indexsp": 14,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Dan Bourke is a security intelligence analyst at Atlassian and has no idea what goes in a con bio. He enjoyes bunnies, edge cases and writing in the third person."
-		},
-		{
-			"sptitle": "Security Researcher",
-			"who": "Mitchell Johnson",
-			"indexsp": 15,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@ehntoo",
-			"bio": "Tim Brom (@b1tbane) and Mitchell Johnson (@ehntoo) are security researchers at GRIMM, specializing in automotive vulnerability research. Their background includes specialized embedded software development, with a particular focus on the automotive and safety industries as well as background in other sectors including safety critical aerospace, and industrial control systems. They have contributed extensively to GRIMM's open source “CanCat” CAN bus reverse engineering tool and on “3PO,” GRIMM's mobile auto-hacking demonstration. Tim has also had publications about car hacking tools and techniques, like the recent Macchina M2."
-		},
-		{
-			"sptitle": "Security Researcher",
-			"who": "Tim Brom",
-			"indexsp": 16,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@b1tbane",
-			"bio": "Tim Brom (@b1tbane) and Mitchell Johnson (@ehntoo) are security researchers at GRIMM, specializing in automotive vulnerability research. Their background includes specialized embedded software development, with a particular focus on the automotive and safety industries as well as background in other sectors including safety critical aerospace, and industrial control systems. They have contributed extensively to GRIMM's open source “CanCat” CAN bus reverse engineering tool and on “3PO,” GRIMM's mobile auto-hacking demonstration. Tim has also had publications about car hacking tools and techniques, like the recent Macchina M2."
-		},
-		{
-			"sptitle": "Security Researcher",
-			"who": "Alexei Bulazel",
-			"indexsp": 17,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Alexei Bulazel is a security researcher with River Loop Security. He has previously presented at venues such as Black Hat, ShmooCon, DeepSec/ROOTS, and USENIX WOOT, among others. A recent graduate of Rensselaer Polytechnic Institute (RPI), Alexei worked under Dr. Bülent Yener on developing anti-emulation techniques for malware."
-		},
-    {
-      "sptitle": "",
-      "who": "Bülent Yener",
-      "indexsp": 77,
-      "last_update": "2018-01-12T12:00:00-05:00",
-      "media": "",
-      "bio": ""
-    },
-		{
-			"sptitle": "Data Scientist, Software Engineer",
-			"who": "Lisa Chang",
-			"indexsp": 18,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Lisa Chang is a Data Scientist and Software Engineer at Praxis Engineering. She enjoys playing with data and teaching Data Science to others. In the past, she worked in the engine oil, fiber optics, nuclear, and semiconductor industries before she discovered computers and began solving Natural Language problems. She is still hoping to become someone who knows a lot about one thing (but so far has only succeeded in knowing a little about a lot of things)."
-		},
-		{
-			"sptitle": "Data Scientist",
-			"who": "Dr. Lauren Deason",
-			"indexsp": 19,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Dr. Lauren Deason is a data scientist at PUNCH Cyber Analytics Group and has been working for over two years DARPA's Network Defense program developing algorithms to automatically flag suspicious activity based on various cyber relevant logs. Prior to becoming a data scientist, she worked for over a decade as an International Trade Economist and a Math Instructor. She holds a PhD in Economics from University of Maryland, College Park, an MA in Mathematics from University of California, Berkeley, and a BS in Applied Mathematics from University of Virginia."
-		},
-		{
-			"sptitle": "Founder of Syscall 7",
-			"who": "Anthony DeRosa",
-			"indexsp": 20,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Anthony DeRosa is the founder of Syscall 7, a software consulting firm in the Baltimore region. He created ODA because he was tired of setting up entire toolchains to disassemble small snippets of binary code for less common processor architectures. He hopes to see ODA become the next generation reversing platform with the help of the open source community."
-		},
-		{
-			"sptitle": "",
-			"who": "Bill Davis",
-			"indexsp": 21,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Bill Davis spends his days moving bytes from databases to web browsers. By creating a centralized hub for reverse engineering, he believes the community can leverage the power of collaboration to identify and combat new threats more efficiently."
-		},
-		{
-			"sptitle": "Offensive Cyber Systems Engineer",
-			"who": "Mika Devonshire",
-			"indexsp": 22,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@cybermeeks",
-			"bio": "Mika Devonshire (@cybermeeks) is an offensive cyber systems engineer at BAE Systems. Prior to BAE, Ms. Devonshire served on the internal security team at Silent Circle, a Swissowned encrypted communications firm, and as Product Manager of a mobile authentication app at MicroStrategy. Ms. Devonshire holds a Masters in Digital Forensics from George Washington University, and a Bachelors in Comparative Literature from Princeton. She holds several certifications including Network+, Security+, and CEH and is currently pursuing her OSCP."
-		},
-		{
-			"sptitle": "Game Developer",
-			"who": "Elonka Dunin",
-			"indexsp": 23,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@ElonkaDunin",
-			"bio": "Elonka Dunin (@ElonkaDunin), game developer and USAF veteran, has a deep and varied interest in cryptography. Her elonka.com website with the world's most famous unsolved codes has received millions of visitors, and bestselling author Dan Brown (“Da Vinci Code”) named a character after her in one of his novels. Since 2012 she has been a Director of the National Cryptologic Museum Foundation, and is actively involved with the plans for a new museum. She is also co-founder of a group working to crack the Kryptos sculpture at CIA Headquarters, and a lifetime member of the International Game Developers Association."
-		},
-		{
-			"sptitle": "Lead Data Engineer",
-			"who": "Leah Figueroa",
-			"indexsp": 24,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Leah Figueroa is a 14 year veteran of the data analytics field and works at Gravwell as Lead Data Engineer. She holds a Master's in Education, an ABD in research psychology, and has taught kindergarten. A data aficionado, Leah enjoys working in various areas of data, while still remaining passionate about her crusade to improve student data security. Leah also enjoys being a fiber artist (knitter) and loves cats, InfoSec, picking locks, cooking, and reading."
-		},
-		{
-			"sptitle": "",
-			"who": "Thomas Fischer",
-			"indexsp": 25,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@FVT",
-			"bio": "With over 25+ years experience, Thomas Fischer (@FVT) has a unique view on security in the enterprise with experience in multi domains from risk management, secure development to incident response and forensics. Thomas has held roles varying like incident responder to security architect for fortune 500 company to industry vendors and consulting organizations. Thomas currently plays a lead role in advising customers while investigating malicious activity and analyzing threats for Digital Guardian. Thomas is also an active participant in the infosec community not only as a member but also as director of Security BSides London and ISSA UK chapter board member."
-		},
-		{
-			"sptitle": "",
-			"who": "Cooper Quintin",
-			"indexsp": 26,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@cooperq",
-			"bio": "Eva Galperin (@evacide) and Cooper Quintin (@cooperq) are with the Electronic Frontier Foundation (@EFF)–the leading nonprofit organization defending civil liberties in the digital world. Founded in 1990, EFF champions user privacy, free expression, and innovation through impact litigation, policy analysis, grassroots activism, and technology development. We work to ensure that rights and freedoms are enhanced and protected as our use of technology grows."
-		},
-		{
-			"sptitle": "",
-			"who": "Eva Galperin",
-			"indexsp": 27,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@evacide",
-			"bio": "Eva Galperin (@evacide) and Cooper Quintin (@cooperq) are with the Electronic Frontier Foundation (@EFF)–the leading nonprofit organization defending civil liberties in the digital world. Founded in 1990, EFF champions user privacy, free expression, and innovation through impact litigation, policy analysis, grassroots activism, and technology development. We work to ensure that rights and freedoms are enhanced and protected as our use of technology grows."
-		},
-		{
-			"sptitle": "Security Researcher",
-			"who": "Michael Flossman",
-			"indexsp": 28,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@terminalrift",
-			"bio": "Michael Flossman (@terminalrift) is a security researcher at Lookout where he works on reverse engineering sophisticated mobile threats while tracking their evolution, the campaigns they are used in, and the actors behind them."
-		},
-		{
-			"sptitle": "",
-			"who": "Ian Foster",
-			"indexsp": 29,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@lanrat",
-			"bio": "Ian Foster (@lanrat) enjoys researching systems and networking problems and solutions in an effort to make the world more secure. He has published research papers analyzing the new gTLD land rush and crawling and parsing most WHOIS records. From demonstrating how insecure aftermarket OBD “dongles” can be used to compromise and take over automobiles; to measuring the paths an email traverses online with encryption in an effort to increase integrity, authenticity, and confidentiality; and more. During the day Ian is a Security Engineer at Salesforce working to keep the cloud secure."
-		},
-		{
-			"sptitle": "",
-			"who": "Sean Gallagher",
-			"indexsp": 30,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@thepacketrat",
-			"bio": "Sean Gallagher (@thepacketrat) is the Information Technology and National Security Editor for Ars Technica. A former IT practitioner and developer with a background in information security from the US Navy, Gallagher earned an honorable mention on Google's application security wall of fame for uncovering a plain-text data leak in search on Chrome in 2014. He runs Ars Technica's Techology Lab. He is also a member of the organizing committee for BSides Charm City."
-		},
-		{
-			"sptitle": "Senior Staff Writer",
-			"who": "Steve Ragan",
-			"indexsp": 31,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@SteveD3",
-			"bio": "Steve Ragan (@SteveD3) is Senior Staff Writer at CSO, an IDG publication. Prior to joining the journalism world in 2005, Steve Ragan spent 15 years as a freelance IT contractor focused on infrastructure management and security. He's a father of two and rounded geek with a strong technical background."
-		},
-		{
-			"sptitle": "Senior Editor",
-			"who": "Paul Wagenseil",
-			"indexsp": 32,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@snd_wagenseil",
-			"bio": "Paul Wagenseil (@snd_wagenseil) is a senior editor at Tom's Guide focused on security and privacy. That's all he's going to tell you unless you meet him in person."
-		},
-		{
-			"sptitle": "",
-			"who": "Travis Goodspeed",
-			"indexsp": 33,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@travisgoodspeed",
-			"bio": "Travis Goodspeed (@travisgoodspeed) is a reverse engineering, watchmaker and professional bum. His projects include the MD380Tools project of patched firmware for a ham radio, the International Journal of PoC||GTFO, and a non-fictional comedy novel about the 509th Airborne in WW2."
-		},
-		{
-			"sptitle": "",
-			"who": "Russell Handorf",
-			"indexsp": 34,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@dntlookbehindu",
-			"bio": "Russell Handorf (@dntlookbehindu) has been in the information security realm for over 15 years. He built and sold a wireless ISP, worked info sec in the financial services industry and now is a public servant of sorts. His hobbies and interests have always involved radio in some sort of fashion. When he has spare time, he teaches, does random projects not related to radio, loves working with his hands, creates mischief, and is working on his dad jokes."
-		},
-		{
-			"sptitle": "",
-			"who": "Rob Joyce",
-			"indexsp": 35,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@RGB_Lights",
-			"bio": "Rob Joyce's (@RGB_Lights) wife thinks he has a problem. He has been building computerized Christmas light shows for the last five years, adding new elements every year. His most recent display was likely visible from the international space station. In addition to an infatuation with Christmas light displays, he helped a Boy Scout troop built catapults for the annual Punkin Chunkin competition until lawyers ruined it for all of us. To pay for these hobbies, he works as the White House Cybersecurity Coordinator and has led organizations at the NSA doing both foreign intelligence and cybersecurity work."
-		},
-		{
-			"sptitle": "",
-			"who": "Paul McMillan",
-			"indexsp": 36,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@PaulM",
-			"bio": "Matt King and Paul McMillan (@PaulM) secure cloud hardware for a living. Matt implements NSA-style implants for fun, and Paul enjoys attempting to solve impossible problems."
-		},
-		{
-			"sptitle": "",
-			"who": "Matt King",
-			"indexsp": 37,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Matt King and Paul McMillan (@PaulM) secure cloud hardware for a living. Matt implements NSA-style implants for fun, and Paul enjoys attempting to solve impossible problems."
-		},
-		{
-			"sptitle": "Founder of Grey Noise Intelligence",
-			"who": "Andrew Morris",
-			"indexsp": 38,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@Andrew___Morris",
-			"bio": "Andrew Morris (@Andrew___Morris) is a cyber security professional and the founder of Grey Noise Intelligence. He has spent the past decade studying attacker tradecraft as a researcher, gaining access to secure networks as a red team operator, and building distributed systems as an engineer. Andrew is a frequent speaker at various cyber security conferences around the world, having presented at public security conferences and private events. In his free time, he spends his time writing music and trying to figure out what his dreams mean."
-		},
-		{
-			"sptitle": "Vulnerability Team Intern",
-			"who": "Madison Oliver",
-			"indexsp": 39,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@iqmadddyqi",
-			"bio": "Madison Oliver (@iqmadddyqi) is a Vulnerability Team Intern at the Software Engineering Institute (SEI) CERT Coordination Center (CERT/CC) currently pursuing a Master's degree in Information Security Policy and Management at Carnegie Mellon University. She has been studying Information Technology for five years."
-		},
-		{
-			"sptitle": "",
-			"who": "Kyle O'Meara",
-			"indexsp": 40,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@cool_breeze26",
-			"bio": "Kyle O'Meara (@cool_breeze26) is a Senior Member of the Technical Staff at the SEI CERT/CC and an Adjunct Faculty and Faculty Advisor at Carnegie Mellon University. He has been in information technology for 12 years, most, if not all, with a cyber security focus. Much of his current work focuses on research and analysis of embedded systems and exploits."
-		},
-		{
-			"sptitle": "Wireless Security Researcher",
-			"who": "Michael Ossmann",
-			"indexsp": 41,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@michaelossmann",
-			"bio": "Michael Ossmann (@michaelossmann) is a wireless security researcher who makes hardware for hackers. Best known for the open source HackRF, Ubertooth, and GreatFET projects, he founded Great Scott Gadgets in an effort to put exciting, new tools into the hands of innovative people."
-		},
-		{
-			"sptitle": "",
-			"who": "Schuyler St. Leger",
-			"indexsp": 42,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@docprofsky",
-			"bio": "Schuyler St. Leger (@docprofsky) is a young maker in Arizona. He enjoys working with both hardware and software. His interests include 3D printing, electronics, hardware and software programming, Software Defined Dadio (SDR), robotics, computers, and more. He is always interested in how things work."
-		},
-		{
-			"sptitle": "",
-			"who": "Brittany Postnikoff",
-			"indexsp": 43,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@Straithe",
-			"bio": "Brittany Postnikoff (@Straithe) is the robot maestro of the University of Waterloo Cryptography, Security and Privacy research group. During the day she keeps her research ethics board approved, but at night she can be found roving the streets of major urban centers with her pack of semi-autonomous social engineering robots. Outside of research she is president of a CTF Club, produces puzzles for CTF groups worldwide, and volunteers with infosec unlocked, C&P Village, and BSides conferences. Brittany has spoken about her life of robots at conferences such as BSidesLV, Troopers, Day-Con, BSidesWPG, and the International Conference on Robotics and Automation."
-		},
-		{
-			"sptitle": "Data Engineer",
-			"who": "Domenic Puzio",
-			"indexsp": 44,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Domenic Puzio is a Data Engineer with Capital One. He graduated from the University of Virginia with degrees in Mathematics and Computer Science. On his current project he is a core developer of a custom platform for ingesting, processing, and analyzing Capital One's cyber-security data sources. Built entirely from opensource tools (NiFi, Kafka, Storm, Elasticsearch, Kibana), this framework processes hundreds of millions of events per hour. Currently, his focus is on the creation and productionization of machine learning models that provide enrichment to the data being streamed through the system. He is a contributor to two Apache projects."
-		},
-		{
-			"sptitle": "",
-			"who": "Kate Highnam",
-			"indexsp": 45,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Kate Highnam has a background in Computer Science and Business, focusing on security, embedded devices, and accounting. At the University of Virginia, her thesis was a published industrial research paper containing an attack scenario and repair algorithm for drones deployed on missions with limited ground control contact. After joining Capital One as a Data Engineer, Kate has developed features within an internal DevOps Pipeline and Data Lake governance system. Currently, she builds machine learning models to assist cybersecurity experts and enhance defenses."
-		},
-		{
-			"sptitle": "Criminology Professor",
-			"who": "Aunshul Rege",
-			"indexsp": 46,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@prof_rege",
-			"bio": "Aunshul Rege (@prof_rege) is a criminology professor at Temple University. Her National Science Foundation sponsored research projects examine cyberattacks/security from a human behavioral perspective, focusing on adversarial decision‐making, adaptation to disruptions, and group dynamics. She intersects theoretical frameworks and methodologies from criminology with hard science approaches game theory, simulations, and machine learning) to foster innovative and multidisciplinary proactive cybersecurity research. She is passionate about educating the next generation workforce about the relevance of the human factor in cybersecurity. Other than being a researcher/educator, Aunshul is a mom to a spunky seven year old, a therapy dog volunteer, and new to ShmooCon!"
-		},
-		{
-			"sptitle": "Penetration Tester",
-			"who": "Justin Regele",
-			"indexsp": 47,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Justin Regele works as a Penetration Tester with Tiro Security, as well as a freelance software engineer, doing full stack, mobile and embedded development. His introduction to computer programming came from Herb Schildt's “Teach Yourself C,” which he found in a dumpster in 2005."
-		},
-		{
-			"sptitle": "Senior Data Scientist",
-			"who": "Rich Seymour",
-			"indexsp": 48,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Rich Seymour is a Senior Data Scientist at Endgame working on integrating chatbots into their endpoint detection and response platform. He has a PhD in Materials Science and a M.S. in Computer Science from the University of Southern California where he worked on high performance computing simulations of nanoscale materials under stress."
-		},
-		{
-			"sptitle": "",
-			"who": "Rebecca Shapiro",
-			"indexsp": 49,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@bxsays",
-			"bio": "Rebecca “.bx” Shapiro (@bxsays) is a PhD student at Dartmouth College, a small college in the Northern Appalachia region of the US. She enjoys tinkering with systems in undocumented manners to find hidden sources of computation. She has previously studied the weird machines present in application linkers and loaders, but has since turned her focus towards loaders that live at the interface between hardware and software."
-		},
-		{
-			"sptitle": "Director of Applied Research",
-			"who": "Casey Smith",
-			"indexsp": 50,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@subTee",
-			"bio": "Casey Smith (@subTee) is the Director of Applied Research at Red Canary. He has a passion for testing and understanding the limits of defensive systems."
-		},
-		{
-			"sptitle": "Senior Security Researcher",
-			"who": "Dominic Spill",
-			"indexsp": 51,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@dominicgs",
-			"bio": "Dominic Spill (@dominicgs) is a senior security researcher at Great Scott Gadgets where he writes software and firmware for open source hardware. His primary focus is sniffing and modifying communication protocols."
-		},
-		{
-			"sptitle": "",
-			"who": "Kate Temkin",
-			"indexsp": 52,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@ktemkin",
-			"bio": "Kate Temkin (@ktemkin) leads the low-level Computer Architectures group at Assured Information Security, researching a variety of hardware hacking and architectural security topics. When not hacking hardware, she maintains and contributes to a variety of open-source projects, including FaceDancer and GreatFET, and probably spends way too much time reverse engineering and collecting electronic lab equipment."
-		},
-		{
-			"sptitle": "",
-			"who": "Andrew Wong",
-			"indexsp": 53,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Team MILK (Phil Vachon (@pvachonnyc) and Andrew Wong) is a spectrum-curious duo of signal hoarders. Fascinated by the unexpected order in the chaos of the aether, they've built a platform to capture, decode, and analyze various radio signals to satisfy their data fetish. Their current project started with the pager spectrum, covering multiple geographic areas. There's a good chance they spent too much time staring into the abyss. Greets to the remaining IRC refuges. Hello to the Nefarious Five, we own the night."
-		},
-		{
-			"sptitle": "",
-			"who": "Phil Vachon",
-			"indexsp": 54,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@pvachonnyc",
-			"bio": "Team MILK (Phil Vachon (@pvachonnyc) and Andrew Wong) is a spectrum-curious duo of signal hoarders. Fascinated by the unexpected order in the chaos of the aether, they've built a platform to capture, decode, and analyze various radio signals to satisfy their data fetish. Their current project started with the pager spectrum, covering multiple geographic areas. There's a good chance they spent too much time staring into the abyss. Greets to the remaining IRC refuges. Hello to the Nefarious Five, we own the night."
-		},
-		{
-			"sptitle": "Senior Engineer",
-			"who": "Nathan Voss",
-			"indexsp": 55,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Nathan Voss is currently a senior engineer at Finite State, a stealth-mode IoT security company. He spent the last 12 years developing skills in all realms of hardware and software engineering as a founding member of Battelle's cyber security group in Columbus, Ohio, and specializes in creating novel fuzzing tools for difficult and unusual targets."
-		},
-		{
-			"sptitle": "",
-			"who": "Vyrus",
-			"indexsp": 56,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@vyrus001",
-			"bio": "Vyrus (@vyrus001) may or may not have begun his offensive security training in early childhood through a series of allegedly criminal acts for a hacker collective still active on the internet today. Over the last approximately 2 decades these experiences have expressed themselves through participation within a variety of both independent, as well as corporate; technically legal information security professions. While the specific nature of many of these professions has yet to be disclosed, the professional skills Vyrus has been known to utilize throughout employment include but are not limited to: reverse engineering, penetration testing, “red teaming”, security controls analysis, proof of concept malware development, incident response, implant development, exploit development, long term electronic surveillance, traffic analysis, complex systems risk analysis, many forms of wireless security, hardware security assessment, and general IT solution development & support."
-		},
-		{
-			"sptitle": "Chief Security Researcher",
-			"who": "Patrick Wardle",
-			"indexsp": 57,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@patrickwardle",
-			"bio": "Patrick Wardle (@patrickwardle) is the Chief Security Researcher at Synack, and founder of Objective-See. Having worked at NASA and the NSA, and well as presented at many security conferences, he is intimately familiar with aliens, spies, and talking nerdy. Currently, Patrick's focus is on automated vulnerability discovery, and the emerging threats of Mac malware. In his personal time, Patrick collects Mac malware and writes free Mac security tools. Both can be found on his site, Objective-See.com"
-		},
-		{
-			"sptitle": "",
-			"who": "Daniel Gallagher",
-			"indexsp": 58,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@DanielGallagher",
-			"bio": "hexwaxwing (@hexwaxwing) and Daniel Gallagher (@DanielGallagher) develop infosec training environments for a company founded by rogue AI researchers interested in toppling traditional educational paradigms. HEX is a proud two-time dropout with a former life involving anthropology, neuroscience, and other interdisciplinary nonsense prior to entering infosec. Her penchant for taking on impossibly complex projects regularly gets her into the best kind of trouble, and she wouldn't have it any other way. GALLAGHER is a grumpycat who hunts ransomware devs for breakfast, appreciates the simple elegance of an apropos GIF, and (probably) wants it written on his gravestone that he once successfully quarantined a massive Qakbot infestation."
-		},
-		{
-			"sptitle": "",
-			"who": "hexwaxwing",
-			"indexsp": 59,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@hexwaxwing",
-			"bio": "hexwaxwing (@hexwaxwing) and Daniel Gallagher (@DanielGallagher) develop infosec training environments for a company founded by rogue AI researchers interested in toppling traditional educational paradigms. HEX is a proud two-time dropout with a former life involving anthropology, neuroscience, and other interdisciplinary nonsense prior to entering infosec. Her penchant for taking on impossibly complex projects regularly gets her into the best kind of trouble, and she wouldn't have it any other way. GALLAGHER is a grumpycat who hunts ransomware devs for breakfast, appreciates the simple elegance of an apropos GIF, and (probably) wants it written on his gravestone that he once successfully quarantined a massive Qakbot infestation."
-		},
-		{
-			"sptitle": "Assistant Professor",
-			"who": "Dr. Avani Wildani",
-			"indexsp": 60,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Dr. Avani Wildani (neuron) is an assistant professor at Emory University, where she is, in part, applying her background in distributed systems to exploring the security profile of computational neurobiology. Her Ph.D. work included finding correlated disk activity by analyzing block I/O traces collected through tapping the SATA bus. She believes that the best way of understanding how a system is designed is to understand the attacks it can and cannot defend against. She is usually found hovering around Toool and tinkering with something small and sharp."
-		},
-		{
-			"sptitle": "Research Engineer",
-			"who": "Lilith Wyatt",
-			"indexsp": 61,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Lilith Wyatt is a Research Engineer with the Talos Security Intelligence and Research Group at Cisco. She's done open source and closed source research on a variety of products, resulting in CVEs on products from vendors including Vmware and Zabbix, and has also done internal research on Cisco devices. She's OSCP and OSCE certified, and previously to her first real security job with Cisco ASIG, she was a Network Engineer, Boxer, and an Android app/firmware patcher."
-		},
-		{
-			"sptitle": "CITL Acting Director",
-			"who": "Tim Carstens",
-			"indexsp": 62,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@intoverflow",
-			"bio": "Tim Carstens, CITL Acting Director (@intoverflow)"
-		},
-		{
-			"sptitle": "CITL Chief Scientist",
-			"who": "Sarah Zatko",
-			"indexsp": 63,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Sarah Zatko, CITL Chief Scientist"
-		},
-		{
-			"sptitle": "CITL Lead Engineer",
-			"who": "Parker Thompson",
-			"indexsp": 64,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@m0thran",
-			"bio": "Parker Thompson, CITL Lead Engineer (@m0thran)"
-		},
-		{
-			"sptitle": "CITL Special Advisor",
-			"who": "Patrick Stach",
-			"indexsp": 65,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Patrick Stach, CITL Special Advisor"
-		},
-		{
-			"sptitle": "CITL Board Chairman",
-			"who": "Peiter Zatko",
-			"indexsp": 66,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@dotMudge",
-			"bio": "Peiter “Mudge” Zatko, CITL Board Chairman (@dotMudge)"
-		},
-		{
-			"sptitle": "CSOC Engineering Team Lead",
-			"who": "Carson Zimmerman",
-			"indexsp": 67,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Carson Zimmerman is currently a CSOC engineering team lead with Microsoft. He has worked in and around CSOCs for about 15 years, holding roles in the CSOC ranging from tier 1 analyst to CSOC architect. Previously with MITRE, Carson wrote “Ten Strategies of a World-Class Cybersecurity Operations Center,” which can be downloaded for free at http://bit.ly/1sKCOH9. He received a BS in Computer Engineering from Purdue University and an MS in Information Systems from George Mason University. Spotting Carson at Shmoocon is easy–just look for the guy in a kilt running around with two cameras."
-		},
-		{
-			"sptitle": "",
-			"who": "Beau Woods",
-			"indexsp": 68,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@beauwoods",
-			"bio": "Beau Woods (@beauwoods) was one of the first people to hack a medical device (2008), won Best Mustache at Movember London (2013), evaded Russian Mafiosi near Moscow, hiked (did not summit) Mt. Everest in Winter, brought two Congressmen to DEF CON, and learned to throw a curve from a major league pitcher. Beau also helps lead I Am The Cavalry, holds a Fellowship with the Atlantic Council, is Founder/CEO of Stratigos Security, DEF CON Goon, Village organizer, BSidesLV staff, runs Hackers on the Hill, has a BS in Psychology from Georgia Tech, and lives in DC."
-		},
-		{
-			"sptitle": "",
-			"who": "Tess Schrodinger",
-			"indexsp": 69,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@TessShrodinger",
-			"bio": "Tess Schrodinger (@TessSchrodinger) is a jack of all trades and a master of some. She has spoken at a variety of security conferences on such topics as counter-intelligence, insider threat, quantum computing, and security awareness training."
-		},
-		{
-			"sptitle": "Senior Staff Reverse Engineer",
-			"who": "Jon Erickson",
-			"indexsp": 70,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@2130706433",
-			"bio": "Jon Erickson (@2130706433) is a Senior Staff Reverse Engineer on the FLARE team at FireEye. Before joining FireEye, Jon made the rounds with various government contractors and served in the United States Air Force. Jon has worked in the security industry for over a decade and has a Master's Degree from George Mason University. Jon has spoken at numerous conferences including Blackhat Asia, CodeBlue, and SyScan 360. He's contributed to several CVE's and loves working with new security researchers to help them better themselves."
-		},
-		{
-			"sptitle": "Founder and CEO of SCYTHE",
-			"who": "Bryson Bort",
-			"indexsp": 71,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@brysonbort",
-			"bio": "Bryson Bort (@brysonbort) is the Founder and CEO of SCYTHE and Chairman of GRIMM. Prior to launching SCYTHE and GRIMM, Bryson led an elite research & development (R&D) division that directly contributed towards National Security priorities and interest. Prior to that he developed an enterprise R&D program and supported creation of a cybersecurity strategy as a Deputy CTO and Program Director focused on supporting technology research and global infrastructure for the DoD and the Intelligence Community. Bryson received his Bachelor of Science in Computer Science with honors from the United States Military Academy at West Point."
-		},
-		{
-			"sptitle": "CISO",
-			"who": "Alexander Romero",
-			"indexsp": 72,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "",
-			"bio": "Alexander Romero, a BSides Goon, is a CISO in DOD and “Digital Services Expert” at the Defense Digital Service. He worked as a Marine and now as a civilian to improve government infosec. He ensured the success of the government's first bug bounty program, Hack the Pentagon."
-		},
-		{
-			"sptitle": "CISO",
-			"who": "Steve Luczynski",
-			"indexsp": 73,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@cyberpilot22",
-			"bio": "Steve Luczynski (@cyberpilot22) recently retired from the Air Force. His new civilian job… CISO."
-		},
-		{
-			"sptitle": "Threat Intel Analyst",
-			"who": "Cheryl Biswas",
-			"indexsp": 74,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@3ncr1pt3d",
-			"bio": "Cheryl Biswas (@3ncr1pt3d) is a Threat Intel Analyst with TD Bank in Toronto, Canada. Previously, she was a Cyber Security Consultant with KPMG and worked on GRC, privacy, breaches, and DRP. She has an ITIL certification and degree in Political Science. Her areas of interest include APTs, mainframes, ransomware, ICS SCADA, and building threat intel. She actively shares her passion for security in blogs, in print, on podcasts, and speaking at conferences."
-		},
-		{
-			"sptitle": "",
-			"who": "Erin Jacobs",
-			"indexsp": 75,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@secbarbie",
-			"bio": "Erin Jacobs (@secbarbie): All the normal infosec bio things, and currently in year 3 of pursuing her Advanced Sommelier certification by the Court of Master Sommelier's."
-		},
-    {
-			"sptitle": "Security Engineer",
-			"who": "Sandra Escandor-O'Keefe",
-			"indexsp": 76,
-			"last_update": "2018-01-12T12:00:00-05:00",
-			"media": "@s3scand0r",
-			"bio": "Sandra Escandor-O'Keefe (@s3scand0r) has been working in the tech industry for almost 7 years–5 years as a Software Developer, and close to two years as a Security Engineer, currently at Fastly. She enjoys learning about vulnerability scanning techniques, cryptography, and cloud security."
+			"bio": "Marley is a blue team engineer with 14 West. In her spare time she reads a lot and cries about space."
 		}
 	],
-	"update_date": "2017-07-27T10:00:00-05:00"
+	"update_date": "2018-02-02T10:00:00-07:00"
 }
