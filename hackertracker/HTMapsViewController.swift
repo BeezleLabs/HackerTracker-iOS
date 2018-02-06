@@ -20,13 +20,35 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         didSet {
             switch mapLocation {
             case .track1:
-                roomDimensions = CGRect(x: 107.47, y: 197.77, width: 98.09, height: 90.5)
+                roomDimensions = CGRect(x: 1196.0, y: 712.0, width: 539.0, height: 338.0)
                 break
             case .track2:
-                roomDimensions = CGRect(x: 295.01, y: 188.37, width: 86.2, height: 73.48)
+                roomDimensions = CGRect(x: 1200.0, y: 276.0, width: 266.0, height: 339.0)
                 break
-            case .seminars:
-                roomDimensions = CGRect(x: 138.88, y: 348.61, width: 70.95, height: 73.48)
+            case .training1:
+                roomDimensions = CGRect(x: 50.0, y: 287.0, width: 252.40, height: 233.17)
+                break
+            case .training2:
+                roomDimensions = CGRect(x: 50.0, y: 730.0, width: 252.40, height: 233.17)
+                break
+            case .training3:
+                roomDimensions = CGRect(x: 305.0, y: 715.0, width: 268.00, height: 329.00)
+                break
+            case .workshop1:
+                roomDimensions = CGRect(x: 555.0, y: 712.0, width: 268.00, height: 334.00)
+                break
+            case .workshop2:
+                roomDimensions = CGRect(x: 307.0, y: 287.0, width: 261.00, height: 322.00)
+                break
+            case .chillout:
+                roomDimensions = CGRect(x: 943.0, y: 282.0, width: 277.0, height: 251.0)
+                break
+            case .lightning:
+                roomDimensions = CGRect(x: 950.0, y: 792.0, width: 270.0, height: 258.0)
+                break
+            case .villages:
+                roomDimensions = CGRect(x: 1456.0, y: 276.0, width: 264.0, height: 337.0)
+                break
             case .unknown:
                 break
             }

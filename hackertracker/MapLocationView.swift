@@ -13,17 +13,38 @@ public enum Location
     case unknown
     case track1
     case track2
-    case seminars
+    case training1
+    case training2
+    case training3
+    case workshop1
+    case workshop2
+    case chillout
+    case lightning
+    case villages
     
     public static func valueFromString(_ value : String) -> Location
     {
         switch value.lowercased() {
-        case "track 1":
+        case "track one":
             return .track1
-        case "track 2":
+        case "track two":
             return .track2
-        case "seminars":
-            return .seminars
+        case "villages":
+            return .villages
+        case "training one":
+            return .training1
+        case "training two":
+            return .training2
+        case "training three":
+            return .training3
+        case "workshop one":
+            return .workshop1
+        case "workshop two":
+            return .training2
+        case "chill out":
+            return .chillout
+        case "Lightning":
+            return .lightning
         default:
             print("unkown location: \(value)")
             return .unknown
@@ -61,8 +82,8 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
     var mapOffset = CGPoint(x:0, y:0)
     var mapZoomLevel : CGFloat = 1.0
     
-    fileprivate static let dayFile = Bundle.main.url(forResource: "toorcon-19-floorplan", withExtension: "pdf")!
-    fileprivate static let nightFile = Bundle.main.url(forResource: "toorcon-19-floorplan", withExtension: "pdf")!
+    fileprivate static let dayFile = Bundle.main.url(forResource: "hackwest-2018-map", withExtension: "pdf")!
+    fileprivate static let nightFile = Bundle.main.url(forResource: "hackwest-2018-map", withExtension: "pdf")!
 
     var timeOfDay = TimeOfDay.day
     {
@@ -77,17 +98,45 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         didSet
         {
             switch currentLocation {
+            case .training1:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 50.0, y: 287.0)
+                break
+            case .training2:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 50.0, y: 730.0)
+                break
+            case .training3:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 275.0, y: 675.0)
+                break
+            case .workshop1:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 555.0, y: 712.0)
+                break
+            case .workshop2:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 307.0, y: 287.0)
+                break
             case .track1:
-                mapZoomLevel = 8.32341261928717
-                mapOffset = CGPoint(x: 334.5, y: 641.5)
+                mapZoomLevel = 4.0
+                mapOffset = CGPoint(x: 796.0, y: 475.0)
                 break
             case .track2:
-                mapZoomLevel = 10.2361423152965
-                mapOffset = CGPoint(x: 1107.0, y: 756.5)
+                mapZoomLevel = 5.0
+                mapOffset = CGPoint(x: 925, y: 239)
                 break
-            case .seminars:
-                mapZoomLevel = 10.2361423152965
-                mapOffset = CGPoint(x: 502.0, y: 1329.0)
+            case .chillout:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 943.0, y: 282.0)
+                break
+            case .villages:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 1456.0, y: 276.0)
+                break
+            case .lightning:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 950.0, y: 792.0)
                 break
             default:
                 mapOffset = .zero
