@@ -1,5 +1,5 @@
 {
-	"update_date": "2018-02-02T10:59:00-07:00",
+	"update_date": "2018-02-02T10:59:00-06:00",
 	"schedule": [
 		{
 			"exploit": 0,
@@ -12,7 +12,7 @@
       			],
 			"tool": 0,
 			"id": "hw1801",
-			"start_date": "2018-03-021T08:30:00-07:00",
+			"start_date": "2018-03-021T08:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -21,8 +21,8 @@
 			"entry_type": "Event",
 			"description": "HackWest Registration will be open",
 			"index": 1801,
-			"end_date": "2018-03-021T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
+			"end_date": "2018-03-021T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Registration"
 		},
 		{
@@ -36,7 +36,7 @@
       			],
 			"tool": 0,
 			"id": "hw1802",
-			"start_date": "2018-03-022T08:30:00-07:00",
+			"start_date": "2018-03-022T08:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -45,8 +45,8 @@
 			"entry_type": "Event",
 			"description": "HackWest Registration will be open",
 			"index": 1802,
-			"end_date": "2018-03-022T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
+			"end_date": "2018-03-022T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Registration"
 		},
 		{
@@ -60,7 +60,7 @@
       			],
 			"tool": 0,
 			"id": "hw1803",
-			"start_date": "2018-03-23T08:30:00-07:00",
+			"start_date": "2018-03-23T08:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -69,8 +69,8 @@
 			"entry_type": "Event",
 			"description": "HackWest Registration will be open",
 			"index": 1803,
-			"end_date": "2018-03-23T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Registration"
 		},
 		{
@@ -84,7 +84,7 @@
       			],
 			"tool": 1,
 			"id": "hw1804",
-			"start_date": "2018-03-21T09:30:00-07:00",
+			"start_date": "2018-03-21T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "https://www.hackwest.org/register/training/1",
@@ -93,8 +93,8 @@
 			"entry_type": "Training",
 			"description": "PWAPT provides comprehensive training on the latest open source tools and manual techniques for performing end-to-end web application penetration testing engagements. Students will be introduced to the best tools currently available for the specific steps of the methodology, including Burp Suite Pro, and taught how to integrate these tools with manual testing techniques to maximize effectiveness. A major goal of this course is teaching students the glue that brings the tools and techniques together to successfully perform a web application penetration test from beginning to end. The end result is an individual with the confidence and skill set to conduct consultative web application penetration testing engagements.\n\nPWAPT provides comprehensive training on the latest open source tools and manual techniques for performing end-to-end web application penetration testing engagements. After a quick overview of the penetration testing methodology, the instructor will lead students through the process of testing and exploiting a target web application using the techniques and approaches developed from a career of real world application penetration testing experiences. Students will be introduced to the best tools currently available for the specific steps of the methodology, including Burp Suite Pro, and taught how to integrate these tools with manual testing techniques to maximize effectiveness. A major goal of this course is teaching students the glue that brings the tools and techniques together to successfully perform a web application penetration test from beginning to end. The end result is an individual with the confidence and skill set to conduct consultative web application penetration testing engagements.\n\nThe majority of the course will be spent performing an instructor led, hands-on web application penetration test against a target application built specifically for this class using a modern technology stack (Python Flask and React) and including real vulnerabilities as encountered in the wild. No old-school vanilla PHP stuff here folks. Students won't be given overly simplistic steps to execute independently. Rather, at each stage of the test, the instructor will present the goals that each testing task is to accomplish and perform the penetration test in front of the class while students do it on their own machine. Primary emphasis of these instructor led exercises will be placed on how to integrate the tools with manual testing procedures to improve the overall work flow. This experience will help students gain the confidence and knowledge necessary to perform web application penetration tests as an application security professional.\n\nPWAPT is a PortSwigger preferred Burp Suite Training course (https://portswigger.net/training/). PWAPT students will learn basic and advanced usage techniques for Burp Suite Pro, as well as discover obscure functionality hidden within the vast capabilities of the tool. Students will also receive a ~2 week trial license for Burp Suite Pro to use during and after the course.\n\nMore info and testimonials can be found at http://www.lanmaster53.com/training/",
 			"index": 1804,
-			"end_date": "2018-03-21T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-21T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Practical Web Appliation Penetration Testing (PWAPT)"
 		},
 		{
@@ -108,7 +108,7 @@
       			],
 			"tool": 1,
 			"id": "hw1805",
-			"start_date": "2018-03-22T09:30:00-07:00",
+			"start_date": "2018-03-22T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "https://www.hackwest.org/register/training/1",
@@ -117,8 +117,8 @@
 			"entry_type": "Training",
 			"description": "PWAPT provides comprehensive training on the latest open source tools and manual techniques for performing end-to-end web application penetration testing engagements. Students will be introduced to the best tools currently available for the specific steps of the methodology, including Burp Suite Pro, and taught how to integrate these tools with manual testing techniques to maximize effectiveness. A major goal of this course is teaching students the glue that brings the tools and techniques together to successfully perform a web application penetration test from beginning to end. The end result is an individual with the confidence and skill set to conduct consultative web application penetration testing engagements.\n\nPWAPT provides comprehensive training on the latest open source tools and manual techniques for performing end-to-end web application penetration testing engagements. After a quick overview of the penetration testing methodology, the instructor will lead students through the process of testing and exploiting a target web application using the techniques and approaches developed from a career of real world application penetration testing experiences. Students will be introduced to the best tools currently available for the specific steps of the methodology, including Burp Suite Pro, and taught how to integrate these tools with manual testing techniques to maximize effectiveness. A major goal of this course is teaching students the glue that brings the tools and techniques together to successfully perform a web application penetration test from beginning to end. The end result is an individual with the confidence and skill set to conduct consultative web application penetration testing engagements.\n\nThe majority of the course will be spent performing an instructor led, hands-on web application penetration test against a target application built specifically for this class using a modern technology stack (Python Flask and React) and including real vulnerabilities as encountered in the wild. No old-school vanilla PHP stuff here folks. Students won't be given overly simplistic steps to execute independently. Rather, at each stage of the test, the instructor will present the goals that each testing task is to accomplish and perform the penetration test in front of the class while students do it on their own machine. Primary emphasis of these instructor led exercises will be placed on how to integrate the tools with manual testing procedures to improve the overall work flow. This experience will help students gain the confidence and knowledge necessary to perform web application penetration tests as an application security professional.\n\nPWAPT is a PortSwigger preferred Burp Suite Training course (https://portswigger.net/training/). PWAPT students will learn basic and advanced usage techniques for Burp Suite Pro, as well as discover obscure functionality hidden within the vast capabilities of the tool. Students will also receive a ~2 week trial license for Burp Suite Pro to use during and after the course.\n\nMore info and testimonials can be found at http://www.lanmaster53.com/training/",
 			"index": 1805,
-			"end_date": "2018-03-22T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-22T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Practical Web Appliation Penetration Testing (PWAPT)"
 		},
 		{
@@ -132,7 +132,7 @@
       			],
 			"tool": 1,
 			"id": "hw1806",
-			"start_date": "2018-03-21T09:30:00-07:00",
+			"start_date": "2018-03-21T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "https://www.hackwest.org/register/training/2",
@@ -141,8 +141,8 @@
 			"entry_type": "Training",
 			"description": "The Modern Red Team Immersion Bootcamp is designed to expose students to the types of attacks that long term persistent Red Teams have deployed against modern organizations. The first day includes a deep dive of recon techniques and approaches where students will plan an attack against a target of their choosing. The second day focuses on post exploitation, lateral movement, and escalation techniques within modern environments comprised of OSX, Linux, Continuous Integration Systems, and elastic compute services.\n\nCourse Description\n\nIn reality penetration testing and red teaming are NOT synonyms. It's one thing to search for vulnerabilities, but it's entirely different when you operate in that fuzzy space between simulating an adversary and being the adversary. Welcome to the Modern Red Team Immersion Bootcamp where the focus is on strategy and realistic execution rather than tools and vulnerability findings.\n\nIn this training students will dive headfirst, immersing themselves, into a pool of deliberate self doubt, mental masochism, and tactical triumph. Those crazy enough will find themselves knee deep in recon and attack planning against a target of their choosing and will engage in the subtle art of balancing the liberty of a true no-scope-yoloswag red team engagement with the need to achieve a specific desired impact, normally that means stealing the most important stuff without getting caught. Students can expect to be challenged to know their enemy, define impactful targets, craft a fool proof targeted spear phish, get up in that west coast post exploitation vector swag, exfiltrate that sweet big data booty, and more! Not to worry, nothing illegal will be permitted.\n\nFancy words aside, this class is designed to throw you into the exact process we use on our Red Team engagements. You will be performing recon and developing an attack strategy against an actual target of your choosing. In post exploitation labs expect to attack OSX, Linux, and elastic compute environments modeled around what we encounter most often in the real world.",
 			"index": 1806,
-			"end_date": "2018-03-21T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-21T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Modern Red Team Immersion Bootcamp"
 		},
 		{
@@ -156,7 +156,7 @@
       			],
 			"tool": 1,
 			"id": "hw1807",
-			"start_date": "2018-03-22T09:30:00-07:00",
+			"start_date": "2018-03-22T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "https://www.hackwest.org/register/training/2",
@@ -165,8 +165,8 @@
 			"entry_type": "Training",
 			"description": "The Modern Red Team Immersion Bootcamp is designed to expose students to the types of attacks that long term persistent Red Teams have deployed against modern organizations. The first day includes a deep dive of recon techniques and approaches where students will plan an attack against a target of their choosing. The second day focuses on post exploitation, lateral movement, and escalation techniques within modern environments comprised of OSX, Linux, Continuous Integration Systems, and elastic compute services.\n\nCourse Description\n\nIn reality penetration testing and red teaming are NOT synonyms. It's one thing to search for vulnerabilities, but it's entirely different when you operate in that fuzzy space between simulating an adversary and being the adversary. Welcome to the Modern Red Team Immersion Bootcamp where the focus is on strategy and realistic execution rather than tools and vulnerability findings.\n\nIn this training students will dive headfirst, immersing themselves, into a pool of deliberate self doubt, mental masochism, and tactical triumph. Those crazy enough will find themselves knee deep in recon and attack planning against a target of their choosing and will engage in the subtle art of balancing the liberty of a true no-scope-yoloswag red team engagement with the need to achieve a specific desired impact, normally that means stealing the most important stuff without getting caught. Students can expect to be challenged to know their enemy, define impactful targets, craft a fool proof targeted spear phish, get up in that west coast post exploitation vector swag, exfiltrate that sweet big data booty, and more! Not to worry, nothing illegal will be permitted.\n\nFancy words aside, this class is designed to throw you into the exact process we use on our Red Team engagements. You will be performing recon and developing an attack strategy against an actual target of your choosing. In post exploitation labs expect to attack OSX, Linux, and elastic compute environments modeled around what we encounter most often in the real world.",
 			"index": 1807,
-			"end_date": "2018-03-22T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-22T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Modern Red Team Immersion Bootcamp"
 		},
 		{
@@ -184,7 +184,7 @@
       			],
 			"tool": 1,
 			"id": "hw1808",
-			"start_date": "2018-03-21T09:30:00-07:00",
+			"start_date": "2018-03-21T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "https://www.hackwest.org/register/training/3",
@@ -193,8 +193,8 @@
 			"entry_type": "Training",
 			"description": "Wireless is everywhere, join us to learn to hack and defend wireless networks. A Practical Wireless Hacking and Defense is a hands-on focused course that will introduce students to SDR frequency investigations, 802.11 technologies, vulnerabilities and the methodology of standard attacks and defenses. Penetration testers, security analysts, and defenders will learn techniques to analyze, attack, and defend wireless networks large and small. Attacks include 4-way handshake PSK capture and cracking, KRACK, 802.1x credential theft, frequency jamming, and replay. Defense focuses on identification, analysis, mitigation, and infrastructure design. Hands-on labs will drive the course material and are the primary focus throughout this class. Students will use and keep all included course provided materials: SDR hardware, wireless equipment, USB thumbdrive and course workbook.\n\nCourse Description\n\nPractical Wireless Hacking and Defense is designed to introduce students to a time proven methodology for attacking and defending all manner of wireless networks. The course will cover WEP attacks, WPS PIN brute-forcing techniques, and WPA and WPA2, and 802.1x radius attacks and defenses. In discussing WPA networks, students will be introduced to the four-way handshake capture process, cracking, and defense. Evil-twin AP attacks will also demonstrate how WPA-Enterprise protected networks can also be compromised.\n\nDuring this course, students will learn how the recent Key Reinstallation Attack (Krack) methodology can be utilized to access encrypted communication. Students will be observing and identifying wireless attacks, learn defense mechanisms, and learn how to limit a breach potential with pre-emptive secure network design.\n\nStudents will also have the opportunity to interact with an 802.1x Radius-Authentication WPA enterprise deployment where they will be expected to perform an evil twin AP attack. Corporate user hashed credentials will then be cracked. Various pivots will be demonstrated as each type of wireless attack is successfully executed.\n\nFinally, students will be exposed to simple Software Defined Radio projects that expose weaknesses in everyday products that employ wireless technologies. This abbreviated section of the course will focus on radio frequency modulation techniques, signals that can be intercepted in the Industrial, Scientific, and Medical (ISM) bands, and inherent weaknesses that may exist when engineers do not use industry accepted secure protocols.",
 			"index": 1808,
-			"end_date": "2018-03-21T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-21T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "A Practical Approach to Wireless Hacking and Defense: Hands-On & Live Fire"
 		},
 		{
@@ -212,7 +212,7 @@
       			],
 			"tool": 1,
 			"id": "hw1809",
-			"start_date": "2018-03-22T09:30:00-07:00",
+			"start_date": "2018-03-22T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "https://www.hackwest.org/register/training/3",
@@ -221,8 +221,8 @@
 			"entry_type": "Training",
 			"description": "Wireless is everywhere, join us to learn to hack and defend wireless networks. A Practical Wireless Hacking and Defense is a hands-on focused course that will introduce students to SDR frequency investigations, 802.11 technologies, vulnerabilities and the methodology of standard attacks and defenses. Penetration testers, security analysts, and defenders will learn techniques to analyze, attack, and defend wireless networks large and small. Attacks include 4-way handshake PSK capture and cracking, KRACK, 802.1x credential theft, frequency jamming, and replay. Defense focuses on identification, analysis, mitigation, and infrastructure design. Hands-on labs will drive the course material and are the primary focus throughout this class. Students will use and keep all included course provided materials: SDR hardware, wireless equipment, USB thumbdrive and course workbook.\n\nCourse Description\n\nPractical Wireless Hacking and Defense is designed to introduce students to a time proven methodology for attacking and defending all manner of wireless networks. The course will cover WEP attacks, WPS PIN brute-forcing techniques, and WPA and WPA2, and 802.1x radius attacks and defenses. In discussing WPA networks, students will be introduced to the four-way handshake capture process, cracking, and defense. Evil-twin AP attacks will also demonstrate how WPA-Enterprise protected networks can also be compromised.\n\nDuring this course, students will learn how the recent Key Reinstallation Attack (Krack) methodology can be utilized to access encrypted communication. Students will be observing and identifying wireless attacks, learn defense mechanisms, and learn how to limit a breach potential with pre-emptive secure network design.\n\nStudents will also have the opportunity to interact with an 802.1x Radius-Authentication WPA enterprise deployment where they will be expected to perform an evil twin AP attack. Corporate user hashed credentials will then be cracked. Various pivots will be demonstrated as each type of wireless attack is successfully executed.\n\nFinally, students will be exposed to simple Software Defined Radio projects that expose weaknesses in everyday products that employ wireless technologies. This abbreviated section of the course will focus on radio frequency modulation techniques, signals that can be intercepted in the Industrial, Scientific, and Medical (ISM) bands, and inherent weaknesses that may exist when engineers do not use industry accepted secure protocols.",
 			"index": 1809,
-			"end_date": "2018-03-22T17:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-22T17:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "A Practical Approach to Wireless Hacking and Defense: Hands-On & Live Fire"
 		},
 		{
@@ -236,7 +236,7 @@
       			],
 			"tool": 0,
 			"id": "hw1810",
-			"start_date": "2018-03-23T08:30:00-07:00",
+			"start_date": "2018-03-23T08:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -245,8 +245,8 @@
 			"entry_type": "Official",
 			"description": "Opening Keynote",
 			"index": 1810,
-			"end_date": "2018-03-23T09:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T09:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Opening Keynote"
 		},
 		{
@@ -260,7 +260,7 @@
       			],
 			"tool": 0,
 			"id": "hw1811",
-			"start_date": "2018-03-23T17:30:00-07:00",
+			"start_date": "2018-03-23T17:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -269,8 +269,8 @@
 			"entry_type": "Official",
 			"description": "Closing Keynote",
 			"index": 1811,
-			"end_date": "2018-03-23T18:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T18:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Closing Keynote"
 		},
 		{
@@ -285,7 +285,7 @@
 			"tool": 0,
 			"id": "hw1812",
 			"index": 1812,
-			"start_date": "2018-03-23T09:30:00-07:00",
+			"start_date": "2018-03-23T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -293,8 +293,8 @@
 			"demo": 1,
 			"entry_type": "Official",
 			"description": "Ransomware is spreading at an alarming pace and infecting networks across all industries and company sizes, primarily though phishing attacks. The cyber criminals behind the attacks are furiously innovating and keeping ahead of the defenses. In this session we will have an interactive discussion related to the latest in ransomware threats and how to best protect your organization and yourself against this growing threat.\nThe presenter will educate attendees about the newest features of ransomware strains designed to evade detection and spread in new and creative ways. He will also discuss recent attacks and how the organizations could have better protected themselves.\n\nThe session is intended for an intermediate experience level and will examine:\n-Current phishing trends\n-Ransomware and how it is infecting networks\n-Effective mitigation strategies\n-Recovering from an attack",
-			"end_date": "2018-03-23T10:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T10:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Put up a CryptoWall and Locky the Key – Stopping the Explosion of Ransomware"
 		},
 		{
@@ -309,7 +309,7 @@
 			"tool": 0,
 			"id": "hw1813",
 			"index": 1813,
-			"start_date": "2018-03-23T09:30:00-07:00",
+			"start_date": "2018-03-23T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -317,8 +317,8 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "Newsflash: Multi-Factor Authentication alone is not your company’s silver bullet. We will start off with a blue team perspective by exploring the common methods used in multi-factor authentication including SMS, Authenticator Apps (OTP), Message Prompts, and Security Keys and in simple terms I’ll explain the pros and cons as well as the protocols being used for each. Then, we’ll switch gears and demonstrate how a red team could still bypass strong authentication methods leaving a company’s accounts vulnerable and requiring our defensive teams to consider additional controls.",
-			"end_date": "2018-03-23T10:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T10:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Breaking Multi-Factor Authentication"
 		},
 		{
@@ -333,7 +333,7 @@
 			"tool": 0,
 			"id": "hw1814",
 			"index": 1814,
-			"start_date": "2018-03-23T10:30:00-07:00",
+			"start_date": "2018-03-23T10:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -341,8 +341,8 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "Designing the security of a large data center network is a though and critical mission as you have to pay attention to many key factors but also make sure you are complying with all the company’s internal policies such as security policies and ISO’s/others (27001, PCI and such). When it comes to network design of a large-scale network through security random decisions or decisions based on “trends”, “it works for every case”‘s or “hunches” are bad decisions for sure. Security research teams and purple security teams are in charge of a very important job, running the actual research on what’s happening on the network before designing a custom security strategy for its defense: from network flow modeling, pentest coordination and malware analysis to custom tools development security research teams are pushing the “purple team” concept to the next step.\n\nAs the chief of security research of a data center with more than 3K servers including virtualized services, dedicated servers and clusters administrated by different clients I was in charge of designing the security strategy of the network. In this talk I will explain the process that me and my team of 7 security engineers followed to perform that task focusing on the tools and methodologies we developed during the process.\n\nDuring that process we developed a couple of custom tools: One for doing automatic incident report and response between clients and the main company using SmartContracts and other for detecting anomalies on the network flow based on mathematical methods. We want to release these tools as free-software during the conference :)",
-			"end_date": "2018-03-23T11:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T11:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Enhancing the Purple Team Concept through Security Research"
 		},
 		{
@@ -357,7 +357,7 @@
 			"tool": 0,
 			"id": "hw1815",
 			"index": 1815,
-			"start_date": "2018-03-23T11:30:00-07:00",
+			"start_date": "2018-03-23T11:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -365,8 +365,8 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "Having a dedicated suite of a continuously run security tests seems out of reach for all but the most mature security programs. Scanners only scratch the surface or your application. Yet, many companies already have a large set of integration tests that snake their way deeply into the application, covering nearly every workflow. In this talk, we will use a minimal amount of work to transform these integration tests into a suite of security tests.\nUsing Selenium, ZAP, Syntribos, and PostMan, we will repurpose integration tests into security tests to search for common web application flaws such as XSS, XXE, and SQLi with more context than a scanner. These security tests will traverse the web application the same way a real user would. We will then extend these tests to find subtle security bugs in authorization, authentication, and business logic.\nThis session is ideal for security professionals and testers interested in making security testing part of their continuous integration pipeline.",
-			"end_date": "2018-03-23T12:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T12:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Integrated security testing: finding security vulnerabilities with your existing test framework"
 		},
 		{
@@ -381,7 +381,7 @@
 			"tool": 0,
 			"id": "hw1816",
 			"index": 1816,
-			"start_date": "2018-03-23T11:30:00-07:00",
+			"start_date": "2018-03-23T11:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -389,8 +389,8 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "The MD5 hashing algorithm is cryptographically broken and it has been over 10 years since the first practical collision was demonstrated. Despite this, the algorithm is still widely used for sharing indicators of compromise amongst security vendors as well as in file repositories and file reputation software. We will present the practical implementation of a novel attack that uses a specifically crafted collision to leave both researchers and security products that rely on MD5 exposed to the actual threat.\nBuilding on previously documented chosen-prefix attacks against MD5 we developed a variant for Windows executable files which allows generating collisions between digitally signed executables and chosen malware. This technique leaves the Authenticode signature completely intact, thus potentially creating identity confusion between a binary signed by a trusted provider such as Google, Adobe, Apple, etc. and a malicious file.\nThe resulting pair of files can then be used to thwart file reputation systems that rely on MD5 hashes. We will show the real-world impact of the technique during a demonstration bypassing an endpoint security solution by exploiting the MD5 collision and implicit trust of signed binaries to “whitelist” a malware of our choice.",
-			"end_date": "2018-03-23T12:30:00-07:00",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"end_date": "2018-03-23T12:30:00-06:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "These are not the files you are looking for: Creating MD5 collisions against signed executables"
 		},
 		{
@@ -405,8 +405,8 @@
 			"tool": 0,
 			"id": "hw1817",
 			"index": 1817,
-			"start_date": "2018-03-23T13:30:00-07:00",
-			"end_date": "2018-03-23T14:30:00-07:00",
+			"start_date": "2018-03-23T13:30:00-06:00",
+			"end_date": "2018-03-23T14:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -414,7 +414,7 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "In this presentation we will introduce a new feature to eaphammer: the ability to easily and reliably perform rogue AP attacks against 802.11n/802.11ac networks that operate on the 5Ghz spectrum. Although most hostapd-based tools for performing rogue AP attacks do support the creation of 5Ghz 802.11n/802.11ac access points, we are the first tool to do so reliably and without extensive manual configuration.\n\nThe 5Ghz spectrum has presented a challenge to wireless penetration testers since its inception due to hardware compatibility issues. This challenge is further compounded by the widespread adoption of 802.11n and 802.11ac, both of which are comprised largely of edge cases that can be tedious to implement in software.\n\nIn this presentation we will address both of these issues. We will address the hardware issues by performing a side-by-side comparison of multiple 802.11n/802.11ac wireless adapters to identify models that perform well within a penetration testing environment. We will then introduce a set of unified configs that can be used to reliably create rogue access points using each of these models, and demonstrate how they have been implemented in eaphammer.",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "5Ghz Electronic Warfare"
 		},
 		{
@@ -433,8 +433,8 @@
 			"tool": 0,
 			"id": "hw1818",
 			"index": 1818,
-			"start_date": "2018-03-23T14:30:00-07:00",
-			"end_date": "2018-03-23T15:30:00-07:00",
+			"start_date": "2018-03-23T14:30:00-06:00",
+			"end_date": "2018-03-23T15:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -442,7 +442,7 @@
 			"demo": 1,
 			"entry_type": "Official",
 			"description": "Prepare for a journey through the tangle of HTTP Security Headers. What are they? Why should you use them? Who do they protect? How do they reduce risk? This talk will review both old and new security headers, their history, adoption rates, and show examples of good and bad implementations. It will also include demonstrations of common web attacks with and without the headers in place as long as _someone_ performs the blood sacrifice to appease the demo gods.",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Security Headers and You"
 		},
 		{
@@ -461,8 +461,8 @@
 			"tool": 0,
 			"id": "hw1821",
 			"index": 1821,
-			"start_date": "2018-03-23T15:30:00-07:00",
-			"end_date": "2018-03-23T16:30:00-07:00",
+			"start_date": "2018-03-23T15:30:00-06:00",
+			"end_date": "2018-03-23T16:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -470,7 +470,7 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "Do you want to start a Red Team in your organization, but you are having trouble getting approval because of availability, data privacy, and brand reputation concerns?\n\nThis talk will be about our multi-year journey to full Red Team Operations. We will address our biggest hurdles, successes, lessons learned, and our RT wins all while working in an ultra risk avoidance environment. We will also share examples from each phase of our progression and give examples of how we have been “purple teaming” since before the phrase was coined.\n\nAs a bonus, the audience will learn general, vendor agnostic techniques for sandbox exploitation, AV bypass, exfil, mitigation/detection fingerprinting, remote desktop attack vectors, DoS attacks, customer facing avenues, and more.",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Zero to Hero - Building a Red Team, one step at a time"
 		},
 		{
@@ -485,8 +485,8 @@
 			"tool": 0,
 			"id": "hw1819",
 			"index": 1819,
-			"start_date": "2018-03-23T13:30:00-07:00",
-			"end_date": "2018-03-23T14:30:00-07:00",
+			"start_date": "2018-03-23T13:30:00-06:00",
+			"end_date": "2018-03-23T14:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -494,7 +494,7 @@
 			"demo": 1,
 			"entry_type": "Official",
 			"description": "With incident response and penetration testing currently receiving most of our application security dollars, it would appear that industry has decided to treat the symptom instead of the disease.  “Pushing left” refers to starting security earlier in the SDLC; addressing the problem throughout the process.  From scanning your code with a vulnerability scanner to red team exercises, developer education programs and bug bounties, this talk will show you how to ‘push left’, like a boss.",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Pushing Left Like a Boss"
 		},
 		{
@@ -513,8 +513,8 @@
 			"tool": 0,
 			"id": "hw1822",
 			"index": 1822,
-			"start_date": "2018-03-23T16:30:00-07:00",
-			"end_date": "2018-03-23T17:30:00-07:00",
+			"start_date": "2018-03-23T16:30:00-06:00",
+			"end_date": "2018-03-23T17:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -522,7 +522,7 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "What if an attacker could perform reconnaissance, social engineering, and exploitation without user input or credentials, using pages so seemingly benign that user awareness training failed? During the first part of this talk, we’ll discuss how to leverage the Browser Exploitation Framework (BeEF) to perform these client-side attacks, as well as how to evade defensive capabilities and avoid detection.\n\nOne of the challenges faced by defenders is mitigating these threats without making the browser unusable. Users constrained by security policies will inevitably find a way around those policies. An effective defender must work to reduce risk without affecting functionality, using the tools already at their disposal. This includes browser management through Group Policy, attack signatures in order to filter or drop traffic, and other compensating controls. During the second half of this talk, we will cover the three major browsers, while discussing which provides the most discrete levels of control and protection for the user.",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Where’s the BeEF? Pwning with the Browser Exploitation Framework and Building Effective Defenses"
 		},
 		{
@@ -537,8 +537,8 @@
 			"tool": 0,
 			"id": "hw1823",
 			"index": 1823,
-			"start_date": "2018-03-23T16:30:00-07:00",
-			"end_date": "2018-03-23T17:30:00-07:00",
+			"start_date": "2018-03-23T16:30:00-06:00",
+			"end_date": "2018-03-23T17:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -546,7 +546,7 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "When we think of the process for attacking an organization, OSINT comes to the front and center of our minds. This presentation takes a presenter with experience in applying OSINT to effective penetration testing and social engineering and reverse engineers the process to determine what steps can be taken to further complicate their efforts. This is a presentation that talks about online deception, decoy accounts, canary data, encryption, maintaining one’s social media in a secure manner, and protecting one’s identity as much as possible. While nothing is absolute, this is a presentation that will leave attendees more aware of techniques to make it harder for attackers to collect accurate OSINT, either by removal or deception.",
-			"updated_at": "2018-02-02T12:00:00-07:00",
+			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "DECEPTICON: Deceptive Techniques to Derail OSINT attempts"
 		},
 	]
