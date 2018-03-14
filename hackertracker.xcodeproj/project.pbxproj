@@ -11,8 +11,8 @@
 		49730E4E1E2D1AB50029438C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4D1E2D1AB50029438C /* Theme.swift */; };
 		49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */; };
 		5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D00AA2B1B0C3BE600916EAC /* schedule-full.json */; };
-		5D1B72FE1F54C48C002544E5 /* toorcon-19-floorplan.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5D1B72FD1F54C48C002544E5 /* toorcon-19-floorplan.pdf */; };
 		5D261012200EB06C006A88CC /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D261011200EB06C006A88CC /* messages.json */; };
+		5D32D653202A3C1900682D5F /* hackwest-2018-map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5D32D652202A3C1900682D5F /* hackwest-2018-map.pdf */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
 		5D3A94471AD6C6F40076F544 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94461AD6C6F40076F544 /* Status.swift */; };
@@ -20,7 +20,6 @@
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */; };
-		5DD3676A200BCFE20035031B /* shmoocon-2018-map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5DD36769200BCFE20035031B /* shmoocon-2018-map.pdf */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642621AC3C62300ED3256 /* hackertracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642601AC3C62300ED3256 /* hackertracker.xcdatamodeld */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
@@ -41,8 +40,6 @@
 		8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */; };
 		8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */; };
 		8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */; };
-		8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */; };
-		8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */; };
 		8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D21F1297D4006761BE /* MapLocationView.swift */; };
 		8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D51F15BDA3006761BE /* DataImportManager.swift */; };
 		8345F2ED1F15D38D006761BE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2EB1F15D38D006761BE /* Event.swift */; };
@@ -103,8 +100,8 @@
 		49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
 		4A297DEF49BFDC47D04261A0 /* Pods-hackertrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertrackerTests/Pods-hackertrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D00AA2B1B0C3BE600916EAC /* schedule-full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedule-full.json"; sourceTree = "<group>"; };
-		5D1B72FD1F54C48C002544E5 /* toorcon-19-floorplan.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "toorcon-19-floorplan.pdf"; sourceTree = "<group>"; };
 		5D261011200EB06C006A88CC /* messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
+		5D32D652202A3C1900682D5F /* hackwest-2018-map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "hackwest-2018-map.pdf"; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5D3A94461AD6C6F40076F544 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -113,7 +110,6 @@
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsTableViewController.swift; sourceTree = "<group>"; };
 		5DD36768200AFFD90035031B /* hackertracker shmoo18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hackertracker shmoo18.xcdatamodel"; sourceTree = "<group>"; };
-		5DD36769200BCFE20035031B /* shmoocon-2018-map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "shmoocon-2018-map.pdf"; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD6425D1AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,9 +136,7 @@
 		8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleEmptyStateView.swift; path = Views/ScheduleEmptyStateView.swift; sourceTree = "<group>"; };
 		8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleEmptyStateView.xib; sourceTree = "<group>"; };
 		8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventCell.xib; path = Views/EventCell.xib; sourceTree = "<group>"; };
-		8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "dc-25-floorplan-night.pdf"; sourceTree = "<group>"; };
 		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "dc-25-floorplan-v7.5-public.pdf"; sourceTree = "<group>"; };
 		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
 		8345F2D51F15BDA3006761BE /* DataImportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImportManager.swift; sourceTree = "<group>"; };
 		8345F2EB1F15D38D006761BE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -306,14 +300,11 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5DD36769200BCFE20035031B /* shmoocon-2018-map.pdf */,
-				5D1B72FD1F54C48C002544E5 /* toorcon-19-floorplan.pdf */,
+				5D32D652202A3C1900682D5F /* hackwest-2018-map.pdf */,
 				78C72FAA1F1869F100AFC0B6 /* Furore.otf */,
 				7896EB191F116403000D04C4 /* speakers.json */,
 				5D261011200EB06C006A88CC /* messages.json */,
 				7820245C1F05B7CE0092ED07 /* cert.der */,
-				8345F2C91F0F099D006761BE /* dc-25-floorplan-night.pdf */,
-				8345F2CD1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf */,
 				5D00AA2B1B0C3BE600916EAC /* schedule-full.json */,
 				5DD6425D1AC3C62300ED3256 /* Info.plist */,
 				5DFB87BE1B30BBF10083604C /* Connections.plist */,
@@ -488,11 +479,8 @@
 				78C72FAB1F1869F100AFC0B6 /* Furore.otf in Resources */,
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
-				8345F2CA1F0F099D006761BE /* dc-25-floorplan-night.pdf in Resources */,
 				83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */,
-				5D1B72FE1F54C48C002544E5 /* toorcon-19-floorplan.pdf in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
-				8345F2CE1F0F10C2006761BE /* dc-25-floorplan-v7.5-public.pdf in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
@@ -500,9 +488,9 @@
 				7896EB1A1F116403000D04C4 /* speakers.json in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				7820245D1F05B7CE0092ED07 /* cert.der in Resources */,
+				5D32D653202A3C1900682D5F /* hackwest-2018-map.pdf in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 				5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */,
-				5DD3676A200BCFE20035031B /* shmoocon-2018-map.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

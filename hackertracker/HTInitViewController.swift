@@ -24,6 +24,7 @@ class HTInitViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         let shmoo_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-01-15")
+        let hw_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-02-23")
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
@@ -37,7 +38,16 @@ class HTInitViewController: UIViewController {
             NSLog("Database not setup, preloading with initial schedule")
             self.loadData()
         } else if (status[0].lastsync < shmoo_update!) {
-            NSLog("Database older than shmoo update, reseting")
+            NSLog("Database older than shmoo update, resetting")
+            do {
+                try DataImportManager(managedContext: context).deleteMessages()
+                try context.save()
+            } catch {
+                NSLog("Error deleting old messages")
+            }
+            self.loadData()
+        } else if (status[0].lastsync < hw_update!) {
+            NSLog("Database older than hackwest update, resetting")
             do {
                 try DataImportManager(managedContext: context).deleteMessages()
                 try context.save()
