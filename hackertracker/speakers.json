@@ -2,228 +2,108 @@
 	"speakers": [
 		{
 			"sptitle": "",
-			"who": "Tim \"Lanmaster\" Tomes",
+			"who": "Avani Desai",
 			"indexsp": 1800,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@LaNMaSteR53",
-			"bio": "Christian, father, husband, veteran, code slinger, aspiring difference-maker and hacking enthusiast."
+			"media": "",
+			"bio": "Avani Desai is a Partner and Executive Vice President at Schellman & Company, the largest niche CPA firm in the world that focuses on technology and security assessments. She is also CEO and co-founder of MyCryptoAlert, a push notification and portfolio app for cryptocurrency.\n\nAvani started her career working at a Big 4 accounting firm for over 10 years, where she led a team and oversaw IT Risk Management and Privacy across national service-lines. In addition, Avani managed the development of internal and external privacy programs and related practices, leveraging her deep knowledge with healthcare and emerging technologies, such as blockchain, cloud computing, artificial intelligence, and virtualization.\n\nNow at Schellman & Company, Avani has been focusing on growth strategies, strategic client and market development, industry analysis, and new services for the last five years. She has been featured in Forbes, CIO.com, and the Wall Street Journal, and is a sought after speaker as a voice on a variety of emerging topics, including security, privacy, information security, future technology trends, and the expansion of young women involved in technology.\n\nIn 2017, Avani, a crypto enthusiast, launched MyCryptoAlert, an app that provides a mobile solution for the alert and portfolio problems crypto investors face. Also passionate about strategic philanthropy, Avani sits on the board of Arnold Palmer Medical Center, the Central Florida Foundation, and is the co-chair of 100 Women Strong, a female-only venture capitalist based giving circle that focuses on solving community-based problems specific to women and children by using data analytics and big data. With all that being said, Avani still considers her greatest accomplishment to be personal rather than professional—she is the proud mother to her 7-year-old son, Sahil, and her 4-year-old daughter, Sareena."
 		},
 		{
 			"sptitle": "",
-			"who": "FuzzyNop",
-			"indexsp": 1802,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@FuzzyNop",
-			"bio": ""
-		},
-		{
-			"sptitle": "",
-			"who": "Erich Kron",
+			"who": "Kevin Cody",
 			"indexsp": 1801,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@ErichKron",
-			"bio": "Security Awareness Advocate at KnowBe4, is a veteran information security professional with over 20 years’ experience in the medical, aerospace manufacturing and defense fields. He is the former security manager for the US Army’s 2nd Regional Cyber Center-Western Hemisphere and holds CISSP, CISSP-ISSAP, MCITP and ITIL v3 certifications, among others. Erich has worked with information security professionals around the world to provide the tools, training and educational opportunities to succeed in Information Security."
+			"media": "",
+			"bio": "Kevin is a Senior Application Security Consultant with experience working at several Fortune 500 enterprises. Although his particular expertise is geared toward hacking Web and Mobile applications, he is also experienced in the entire gamut from mainframes to embedded systems. Kevin is adamant on helping build-up developers through security, which can be seen in his involvement within OWASP or while speaking at events like CodeMash or BSides."
 		},
 		{
 			"sptitle": "",
-			"who": "Jordan Drysdale",
+			"who": "Thomas Richards",
+			"indexsp": 1802,
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "",
+			"bio": "Thomas Richards, Associate Principal Consultant, has been with Cigital(now Synopsys) since 2012. His primary areas of expertise include Red Teaming and Mobile Security. He is an Offensive Security Certified Professional (OSCP). Thomas spends his days guiding working with clients on red teaming activities and initiatives. In his free time, he enjoys playing guitar, camping, and spending time with his wife and five kids."
+		},
+		{
+			"sptitle": "",
+			"who": "Bryan Smith",
 			"indexsp": 1803,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@Rev10D",
-			"bio": ""
+			"media": "",
+			"bio": "Bryan A Smith is a Debian Gnu/Linux and BSD enthusiast and Systems Engineer. Bryan has used Free and Open Source Operating Systems since the late 90’s.\n\nHe contributes to several Open Source projects and has helped launch several startup ISP’s based in his area using Free and Open Source software.\n\nHe’s currently helping organize Devopsday Indianapolis. Bryan is also the Orlando initiator of The Things Network; powering global IoT initiatives."
 		},
 		{
 			"sptitle": "",
-			"who": "Kent Ickler",
+			"who": "Fraq",
 			"indexsp": 1804,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@KentIckler",
-			"bio": ""
+			"media": "",
+			"bio": "Ops engineer. Security professional. Veteran. Community builder and leader."
 		},
 		{
 			"sptitle": "",
-			"who": "Sherrie Cowley",
+			"who": "Chad Seaman",
 			"indexsp": 1805,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@sherriecowley",
-			"bio": ""
+			"media": "",
+			"bio": "Internet dumpster diver, DDoS researcher, hunter of botnets, diddler of malware. Senior Security Response Team Engineer @ Akamai"
 		},
 		{
 			"sptitle": "",
-			"who": "Pau Munoz",
+			"who": "David Switzer",
 			"indexsp": 1806,
-			"last_update": "2018-03-15T12:22:00-07:00",
-			"media": "@devilafant",
-			"bio": "Pau Munoz is a computer security enthusiast and a researcher at the university of Girona in Spain. He holds a degree in computer engineering and OSWP, OSCP and OSCE certificates. He started his career in computer security at the age of 16 and since then he went through different positions related to vulnerability analysis and security research focusing purple teaming and creative network defense strategy."
+			"last_update": "2018-02-02T12:00:00-07:00",
+			"media": "",
+			"bio": "David Switzer is a red team operator who has 20+ years of experience in systems and network security. Some alphabet Soup: GSE #136, G[cia|cih|awn|sec|stuff]), OSCE, CISSP and ITILv3 (I keep it gangsta). His obsessions/amusements include RF, wireless networks, hardware hacking, and other expensive time sinks."
 		},
 		{
 			"sptitle": "",
-			"who": "Morgan Roman",
+			"who": "Jonathan Echavarria",
 			"indexsp": 1807,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@distrustCaution",
-			"bio": "Morgan Roman works on the application security team at DocuSign. He started his career writing integration tests for web applications and APIs as a software development engineer in test. He is passionate about finding ways to automate security testing and make it part of the deployment process."
+			"media": "",
+			"bio": "Jonathan Echavarria has over half a decade of experience. Certs:OSCE, OSCP and CEH."
 		},
 		{
 			"sptitle": "",
-			"who": "Waylon Granger",
+			"who": "Beau Bullock",
 			"indexsp": 1808,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@professor__plum",
-			"bio": "Waylon Grange is an experienced reverse engineer, developer, and digital forensics examiner. He holds a graduate degree in Information Security from Johns Hopkins University and has worked numerous computer incident investigations spanning the globe. He currently works as a Senior Threat Researcher for Symantec and previously worked for the Department of Defense performing vulnerability research, software development, and Computer Network Operations."
+			"media": "",
+			"bio": "Beau is a Senior Security Analyst at Black Hills Information Security and has held positions in the financial and health industries. He has experience with all aspects of enterprise network security including penetration testing, and vulnerability analysis. Beau is the developer of the PowerShell tool MailSniper, a Hack Naked TV host, and frequent speaker at industry events. @dafthack on Twitter."
 		},
 		{
 			"sptitle": "",
-			"who": "Gabriel Ryan",
+			"who": "Mike Felch",
 			"indexsp": 1809,
 			"last_update": "2018-02-02T12:00:00-07:00",
 			"media": "",
-			"bio": ""
+			"bio": "Mike is currently a red teamer / pentester for Black Hills Information Security. He began his career in 1997 as a Linux Administrator which eventually led to numerous offensive security roles, software development and hardware/software security research. Mike is also a lead forensics instructor for TeelTech, an Officer for OWASP Orlando (Chief Breaker) and an organizer for BSides Orlando."
 		},
 		{
 			"sptitle": "",
-			"who": "Justin Larson",
+			"who": "Jon Haas",
 			"indexsp": 1810,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@phant0mtrav3ler",
-			"bio": ""
+			"media": "",
+			"bio": "Jonathan Haas is the Managing Principal at Jet Set Security, where he leads the development of Information Security programs for multiple partners globally. Previously, Haas designed and implemented multiple highly acclaimed static analysis tools at various Fortune 10 companies. He presents at conferences around the world, as well as leading roundtable discussions for security professionals on risk management, corporate security and insider threat."
 		},
 		{
 			"sptitle": "",
-			"who": "Seth Law",
+			"who": "Alex Lynch",
 			"indexsp": 1811,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@sethlaw",
-			"bio": "appsec, mobile, hack, fix rinse, repeat"
+			"media": "",
+			"bio": "Alex Lynch is a student of Computer Science at the University of Central Florida. As a competing member of Knightsec, Hack@UCF’s offensive security team, he has won multiple computer security competitions including Cyberseed CTF and RIT’S CPTC. Currently working part-time as a security consultant, Alex specializes in web application security but also sometimes spends his time shooting down WiFi enabled drones."
 		},
 		{
 			"sptitle": "",
-			"who": "Tanya Janca",
+			"who": "Dennis Murphy",
 			"indexsp": 1812,
 			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@SheHacksPurple",
-			"bio": "Tanya is a developer advocate specializing in application security; evangelizing about software security through public speaking, her open source project OWASP DevSlop, and various forms of teaching via workshops, blogs and community events.  As an ethical hacker, OWASP Project and Chapter Leader, software developer, effective altruist and professional computer geek of 20+ years, she is a person who is truly fascinated by the ‘science’ of computer science."
-		},
-		{
-			"sptitle": "",
-			"who": "Adam Steed",
-			"indexsp": 1813,
-			"last_update": "2018-02-02T12:00:00-07:00",
 			"media": "",
-			"bio": ""
-		},
-		{
-			"sptitle": "",
-			"who": "Robert Neel",
-			"indexsp": 1814,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@redeemedHacker",
-			"bio": "Robert Neel has fourteen years experience as a system/network administrator and security consultant/engineer/analyst in the private sector.  He is currently employed by a large financial institution where he established the Red Team and continues to lead it.  In addition, he has seven years experience in the government sector where he performed Vulnerability Analysis and Exploitation for the NSA.  He has experience with twenty-three programming languages and has written complex programs for both Offense and Defense in fifteen of those languages.  Robert is also the founder of PENConsultants.com.  When he is not Red Teaming, Robert loves to spend time with his wife and two children. They enjoy traveling, going to theme parks, and building their dream house together."
-		},
-		{
-			"sptitle": "",
-			"who": "David Thompson",
-			"indexsp": 1815,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@dirty_tizzle",
-			"bio": "David Thompson has 13 years experience in the security field.  He is currently employed by a large financial institution where he leads the New Detective Capabilities Project and is an active member of the Red Team.  He started his security road trip in the Air Force doing Vulnerability Assessments for the Air Force Blue Team and working Active Hunt Ops at NSA (OIF x2).  He then took a Pen Tester position with Johns Hopkins Applied Physics Lab working on Space Systems and other DoD projects.  Wanting to get back to TX, he took a Pen Tester job with the Air Force Blue Team (Threat Emulation Cell) working on Space, Aircraft and other Weapon Systems.  When not on the keyboard, he loves spending time with his wife and three girls.  They enjoy RVing, fishing, hunting and playing sports."
-		},
-		{
-			"sptitle": "",
-			"who": "Jayme Hancock",
-			"indexsp": 1816,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@highmeh",
-			"bio": "Jayme is a penetration tester with AppSec Consulting and former systems administrator with a strong interest in network security, physical security, and active defense. He holds the OSCP, CISSP, GCED, and CEH certifications. Jayme resides in Southern California and spends his free time off-roading, camping, traveling, and failing at astrophotography."
-		},
-		{
-			"sptitle": "",
-			"who": "Marley",
-			"indexsp": 1817,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "@mkr_ultra",
-			"bio": "Marley is a blue team engineer with 14 West. In her spare time she reads a lot and cries about space."
-		},
-		{
-			"sptitle": "",
-			"who": "Joe Gray",
-			"indexsp": 1818,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Marley is a blue team engineer with 14 West. In her spare time she reads a lot and cries about space."
-		},
-		{
-			"sptitle": "",
-			"who": "Michael Whiteley",
-			"indexsp": 1819,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "@compukidmike",
-			"bio": "Michael Whiteley @compukidmike is an electrical engineer, IT manager, father, and Defcon black badge winner. He doesn’t like long walks on the beach, but prefers to be indoors with a fast internet connection."
-		},
-		{
-			"sptitle": "",
-			"who": "Sherrie Cowley",
-			"indexsp": 1820,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "@SherrieCowley",
-			"bio": "Sherrie Cowley @SherrieCowley has a Masters in Information Systems from the University of Utah with an emphasis on software engineering and cyber security. She has managed help desk, software engineering, and identity and access management teams and is currently an Information Security Manager for a large organization. She has presented at universities, was a keynote for Splunk Live, and acts as a liaison for InfraGard members and the FBI Cyber Task Force."
-		},
-		{
-			"sptitle": "",
-			"who": "Colin Jackson",
-			"indexsp": 1821,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "@d1dymu5",
-			"bio": "Father, locksport enthusiast, security engineer/architect, inventor."
-		},
-		{
-			"sptitle": "",
-			"who": "Nate",
-			"indexsp": 1822,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "@n8zwn",
-			"bio": "He is currently working as a Sr. Security Analyst for the past few years. His current position involves doing both red and blue team activities. He loves everything information security related as well as being outdoors with his family."
-		},
-		{
-			"sptitle": "",
-			"who": "Andrew Hall",
-			"indexsp": 1823,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "@RuShan_EE",
-			"bio": "Security expert and board designer. Father, electrical engineer, CISSP, graduate student, and enjoys all things security related."
-		},
-		{
-			"sptitle": "",
-			"who": "Jake",
-			"indexsp": 1824,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "@s7a73farm",
-			"bio": "Senior Security Engineer. Due to a severe case of ADD, Infosec was a natural habitat for him. Send him the problem that makes everyone else quit. He loves learning by breaking stuff. His favorite thing about... 'Oooh something shiny, brb!'"
-		},
-		{
-			"sptitle": "",
-			"who": "Dawn-Marie Hutchinson",
-			"indexsp": 1825,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "",
-			"bio": "Dawn-Marie Hutchinson brings 18 years of enterprise information technology experience to her role as executive director in the Office of the CISO at Optiv. A well-known thought leader and highly sought after speaker as an expert on the subjects of crisis management, incident response, threat mapping, data privacy, cyber security strategy and leadership. She is credited with establishing standards and controls for the anonymization of patient level data and authored the white paper for defining those levels, as well as use cases for the secondary uses of medical data.In addition to being recognized by CSO Magazine as one of twelve most influential women in cyber security she was also honored as SC Magazine’s \"8 Women to Watch,\" and on the CRN Women's Power 50 list honoring outstanding female executives prominently involved in the IT channel ecosystem for their successes and the far-reaching impact they are having on the technology industry."
-		},
-		{
-			"sptitle": "",
-			"who": "Eve Galparin",
-			"indexsp": 1826,
-			"last_update": "2018-03-13T12:00:00-07:00",
-			"media": "",
-			"bio": "Eva Galperin is EFF's Director of Cybersecurity. Prior to 2007, when she came to work for EFF, Eva worked in security and IT in Silicon Valley and earned degrees in Political Science and International Relations from SFSU. Her work is primarily focused on providing privacy and security for vulnerable populations around the world. To that end, she has applied the combination of her political science and technical background to everything from organizing EFF's Tor Relay Challenge, to writing privacy and security training materials (including Surveillance Self Defense and the Digital First Aid Kit), and publishing research on malware in Syria,Vietnam, Kazakhstan. When she is not collecting new and exotic malware, she practices aerial circus arts and learning new languages."
-		},
-		{
-			"sptitle": "",
-			"who": "Scott Piper",
-			"indexsp": 1827,
-			"last_update": "2018-03-17T16:08:00-06:00",
-			"media": "@0xdabbad00",
-			"bio": "Scott Piper is an independent AWS security consultant."
+			"bio": "Designing, installing and maintaining process automation networks is where I started my career 25 years ago. Most of my experience with SCADA systems was integrating data between the IT and OT networks. In 2005, I realized how security was more of an afterthought in my work and I shifted my focus to securing ICS networks. Now I am turning into a network security monitoring (NSM) professional and using this technology to help ICS engineers understand the impacts their design decisions have on the security of control system networks. I focus on providing practical solutions to meet national critical infrastructure cyber security requirements. My main interest is in bridging the gap between the information technology (IT) security requirements and operational technology (OT) security requirements. Those requirements are not synchronized and causes much confusion and heartache in the industry."
 		}
 	],
-        "update_date": "2018-03-17T16:08:00-06:00"
+	"update_date": "2018-02-02T10:00:00-07:00"
 }

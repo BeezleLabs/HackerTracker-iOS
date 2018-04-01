@@ -65,7 +65,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
         automaticallyAdjustsScrollViewInsets = false
         
-        let dayFile = Bundle.main.url(forResource: "hackwest-2018-map", withExtension: "pdf")
+        let dayFile = Bundle.main.url(forResource: "bsidesorl_map", withExtension: "pdf")
 
         dayMapView = ReaderContentView(frame: self.view.frame, fileURL: dayFile!, page: 0, password: "")
         view.addSubview(dayMapView!)

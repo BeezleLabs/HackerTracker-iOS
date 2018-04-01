@@ -324,6 +324,21 @@ class DataImportManager: NSObject {
         }
     }
     
+    public func resetDB() throws {
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+        let frs:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
+        
+        let rete = try managedContext.fetch(fre) as? [Event]
+        for ev in rete! {
+            managedContext.delete(ev)
+        }
+        let rets = try managedContext.fetch(frs) as? [Speaker]
+        for sp in rets! {
+            managedContext.delete(sp)
+        }
+        
+    }
+    
     public func importMessages(msgData : Data) throws {
         let _messages = try JSONSerialization.jsonObject(with: msgData, options: .allowFragments) as? [String : Any]
         

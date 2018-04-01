@@ -24,7 +24,7 @@ class HTInitViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         let shmoo_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-01-15")
-        let hw_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-02-23")
+        let hw_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-04-01")
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
@@ -47,9 +47,10 @@ class HTInitViewController: UIViewController {
             }
             self.loadData()
         } else if (status[0].lastsync < hw_update!) {
-            NSLog("Database older than hackwest update, resetting")
+            NSLog("Database older than most recent update, resetting")
             do {
                 try DataImportManager(managedContext: context).deleteMessages()
+                try DataImportManager(managedContext: context).resetDB()
                 try context.save()
             } catch {
                 NSLog("Error deleting old messages")
