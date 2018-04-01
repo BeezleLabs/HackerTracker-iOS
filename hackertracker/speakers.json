@@ -50,11 +50,11 @@
 		},
 		{
 			"sptitle": "",
-			"who": "Pau Muñoz",
+			"who": "Pau Munoz",
 			"indexsp": 1806,
-			"last_update": "2018-02-02T12:00:00-07:00",
+			"last_update": "2018-03-15T12:22:00-07:00",
 			"media": "@devilafant",
-			"bio": "Pau Muñoz is a computer security enthusiast and a researcher at the university of Girona in Spain. He holds a degree in computer engineering and OSWP, OSCP and OSCE certificates. He started his career in computer security at the age of 16 and since then he went through different positions related to vulnerability analysis and security research focusing purple teaming and creative network defense strategy."
+			"bio": "Pau Munoz is a computer security enthusiast and a researcher at the university of Girona in Spain. He holds a degree in computer engineering and OSWP, OSCP and OSCE certificates. He started his career in computer security at the age of 16 and since then he went through different positions related to vulnerability analysis and security research focusing purple teaming and creative network defense strategy."
 		},
 		{
 			"sptitle": "",
@@ -94,7 +94,7 @@
 			"indexsp": 1811,
 			"last_update": "2018-02-02T12:00:00-07:00",
 			"media": "@sethlaw",
-			"bio": ""
+			"bio": "appsec, mobile, hack, fix rinse, repeat"
 		},
 		{
 			"sptitle": "",
@@ -151,7 +151,79 @@
 			"last_update": "2018-02-02T12:00:00-07:00",
 			"media": "",
 			"bio": "Marley is a blue team engineer with 14 West. In her spare time she reads a lot and cries about space."
+		},
+		{
+			"sptitle": "",
+			"who": "Michael Whiteley",
+			"indexsp": 1819,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "@compukidmike",
+			"bio": "Michael Whiteley @compukidmike is an electrical engineer, IT manager, father, and Defcon black badge winner. He doesn’t like long walks on the beach, but prefers to be indoors with a fast internet connection."
+		},
+		{
+			"sptitle": "",
+			"who": "Sherrie Cowley",
+			"indexsp": 1820,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "@SherrieCowley",
+			"bio": "Sherrie Cowley @SherrieCowley has a Masters in Information Systems from the University of Utah with an emphasis on software engineering and cyber security. She has managed help desk, software engineering, and identity and access management teams and is currently an Information Security Manager for a large organization. She has presented at universities, was a keynote for Splunk Live, and acts as a liaison for InfraGard members and the FBI Cyber Task Force."
+		},
+		{
+			"sptitle": "",
+			"who": "Colin Jackson",
+			"indexsp": 1821,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "@d1dymu5",
+			"bio": "Father, locksport enthusiast, security engineer/architect, inventor."
+		},
+		{
+			"sptitle": "",
+			"who": "Nate",
+			"indexsp": 1822,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "@n8zwn",
+			"bio": "He is currently working as a Sr. Security Analyst for the past few years. His current position involves doing both red and blue team activities. He loves everything information security related as well as being outdoors with his family."
+		},
+		{
+			"sptitle": "",
+			"who": "Andrew Hall",
+			"indexsp": 1823,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "@RuShan_EE",
+			"bio": "Security expert and board designer. Father, electrical engineer, CISSP, graduate student, and enjoys all things security related."
+		},
+		{
+			"sptitle": "",
+			"who": "Jake",
+			"indexsp": 1824,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "@s7a73farm",
+			"bio": "Senior Security Engineer. Due to a severe case of ADD, Infosec was a natural habitat for him. Send him the problem that makes everyone else quit. He loves learning by breaking stuff. His favorite thing about... 'Oooh something shiny, brb!'"
+		},
+		{
+			"sptitle": "",
+			"who": "Dawn-Marie Hutchinson",
+			"indexsp": 1825,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "",
+			"bio": "Dawn-Marie Hutchinson brings 18 years of enterprise information technology experience to her role as executive director in the Office of the CISO at Optiv. A well-known thought leader and highly sought after speaker as an expert on the subjects of crisis management, incident response, threat mapping, data privacy, cyber security strategy and leadership. She is credited with establishing standards and controls for the anonymization of patient level data and authored the white paper for defining those levels, as well as use cases for the secondary uses of medical data.In addition to being recognized by CSO Magazine as one of twelve most influential women in cyber security she was also honored as SC Magazine’s \"8 Women to Watch,\" and on the CRN Women's Power 50 list honoring outstanding female executives prominently involved in the IT channel ecosystem for their successes and the far-reaching impact they are having on the technology industry."
+		},
+		{
+			"sptitle": "",
+			"who": "Eve Galparin",
+			"indexsp": 1826,
+			"last_update": "2018-03-13T12:00:00-07:00",
+			"media": "",
+			"bio": "Eva Galperin is EFF's Director of Cybersecurity. Prior to 2007, when she came to work for EFF, Eva worked in security and IT in Silicon Valley and earned degrees in Political Science and International Relations from SFSU. Her work is primarily focused on providing privacy and security for vulnerable populations around the world. To that end, she has applied the combination of her political science and technical background to everything from organizing EFF's Tor Relay Challenge, to writing privacy and security training materials (including Surveillance Self Defense and the Digital First Aid Kit), and publishing research on malware in Syria,Vietnam, Kazakhstan. When she is not collecting new and exotic malware, she practices aerial circus arts and learning new languages."
+		},
+		{
+			"sptitle": "",
+			"who": "Scott Piper",
+			"indexsp": 1827,
+			"last_update": "2018-03-17T16:08:00-06:00",
+			"media": "@0xdabbad00",
+			"bio": "Scott Piper is an independent AWS security consultant."
 		}
 	],
-	"update_date": "2018-02-02T10:00:00-07:00"
+        "update_date": "2018-03-17T16:08:00-06:00"
 }

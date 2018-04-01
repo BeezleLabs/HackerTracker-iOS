@@ -1,5 +1,5 @@
 {
-	"update_date": "2018-02-02T10:59:00-06:00",
+        "update_date": "2018-03-19T12:31:00-06:00",
 	"schedule": [
 		{
 			"exploit": 0,
@@ -12,7 +12,7 @@
       			],
 			"tool": 0,
 			"id": "hw1801",
-			"start_date": "2018-03-021T08:30:00-06:00",
+			"start_date": "2018-03-21T08:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -21,7 +21,7 @@
 			"entry_type": "Event",
 			"description": "HackWest Registration will be open",
 			"index": 1801,
-			"end_date": "2018-03-021T17:30:00-06:00",
+			"end_date": "2018-03-21T17:30:00-06:00",
 			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Registration"
 		},
@@ -36,7 +36,7 @@
       			],
 			"tool": 0,
 			"id": "hw1802",
-			"start_date": "2018-03-022T08:30:00-06:00",
+			"start_date": "2018-03-22T08:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -45,7 +45,7 @@
 			"entry_type": "Event",
 			"description": "HackWest Registration will be open",
 			"index": 1802,
-			"end_date": "2018-03-022T17:30:00-06:00",
+			"end_date": "2018-03-22T17:30:00-06:00",
 			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "Registration"
 		},
@@ -173,104 +173,88 @@
 			"exploit": 1,
 			"dctv_channel": 0,
       			"who" : [
-        			{
-          			"indexsp" : "1803",
-          			"who" : ""
-        			},
-        			{
-          			"indexsp" : "1804",
-          			"who" : ""
-        			}
       			],
 			"tool": 1,
 			"id": "hw1808",
-			"start_date": "2018-03-21T09:30:00-06:00",
+			"start_date": "2018-03-09T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
-			"link": "https://www.hackwest.org/register/training/3",
+			"link": "",
 			"location": "Training Three",
 			"demo": 1,
 			"entry_type": "Training",
-			"description": "Wireless is everywhere, join us to learn to hack and defend wireless networks. A Practical Wireless Hacking and Defense is a hands-on focused course that will introduce students to SDR frequency investigations, 802.11 technologies, vulnerabilities and the methodology of standard attacks and defenses. Penetration testers, security analysts, and defenders will learn techniques to analyze, attack, and defend wireless networks large and small. Attacks include 4-way handshake PSK capture and cracking, KRACK, 802.1x credential theft, frequency jamming, and replay. Defense focuses on identification, analysis, mitigation, and infrastructure design. Hands-on labs will drive the course material and are the primary focus throughout this class. Students will use and keep all included course provided materials: SDR hardware, wireless equipment, USB thumbdrive and course workbook.\n\nCourse Description\n\nPractical Wireless Hacking and Defense is designed to introduce students to a time proven methodology for attacking and defending all manner of wireless networks. The course will cover WEP attacks, WPS PIN brute-forcing techniques, and WPA and WPA2, and 802.1x radius attacks and defenses. In discussing WPA networks, students will be introduced to the four-way handshake capture process, cracking, and defense. Evil-twin AP attacks will also demonstrate how WPA-Enterprise protected networks can also be compromised.\n\nDuring this course, students will learn how the recent Key Reinstallation Attack (Krack) methodology can be utilized to access encrypted communication. Students will be observing and identifying wireless attacks, learn defense mechanisms, and learn how to limit a breach potential with pre-emptive secure network design.\n\nStudents will also have the opportunity to interact with an 802.1x Radius-Authentication WPA enterprise deployment where they will be expected to perform an evil twin AP attack. Corporate user hashed credentials will then be cracked. Various pivots will be demonstrated as each type of wireless attack is successfully executed.\n\nFinally, students will be exposed to simple Software Defined Radio projects that expose weaknesses in everyday products that employ wireless technologies. This abbreviated section of the course will focus on radio frequency modulation techniques, signals that can be intercepted in the Industrial, Scientific, and Medical (ISM) bands, and inherent weaknesses that may exist when engineers do not use industry accepted secure protocols.",
+			"description": "",
 			"index": 1808,
-			"end_date": "2018-03-21T17:30:00-06:00",
-			"updated_at": "2018-02-02T12:00:00-06:00",
-			"title": "A Practical Approach to Wireless Hacking and Defense: Hands-On & Live Fire"
+			"end_date": "2018-03-12T17:30:00-06:00",
+			"updated_at": "2018-03-13T12:00:00-06:00",
+			"title": ""
 		},
 		{
 			"exploit": 1,
 			"dctv_channel": 0,
       			"who" : [
-        			{
-          			"indexsp" : "1803",
-          			"who" : ""
-        			},
-        			{
-          			"indexsp" : "1804",
-          			"who" : ""
-        			}
       			],
 			"tool": 1,
 			"id": "hw1809",
-			"start_date": "2018-03-22T09:30:00-06:00",
+			"start_date": "2018-03-12T09:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
-			"link": "https://www.hackwest.org/register/training/3",
+			"link": "",
 			"location": "Training Three",
 			"demo": 1,
 			"entry_type": "Training",
-			"description": "Wireless is everywhere, join us to learn to hack and defend wireless networks. A Practical Wireless Hacking and Defense is a hands-on focused course that will introduce students to SDR frequency investigations, 802.11 technologies, vulnerabilities and the methodology of standard attacks and defenses. Penetration testers, security analysts, and defenders will learn techniques to analyze, attack, and defend wireless networks large and small. Attacks include 4-way handshake PSK capture and cracking, KRACK, 802.1x credential theft, frequency jamming, and replay. Defense focuses on identification, analysis, mitigation, and infrastructure design. Hands-on labs will drive the course material and are the primary focus throughout this class. Students will use and keep all included course provided materials: SDR hardware, wireless equipment, USB thumbdrive and course workbook.\n\nCourse Description\n\nPractical Wireless Hacking and Defense is designed to introduce students to a time proven methodology for attacking and defending all manner of wireless networks. The course will cover WEP attacks, WPS PIN brute-forcing techniques, and WPA and WPA2, and 802.1x radius attacks and defenses. In discussing WPA networks, students will be introduced to the four-way handshake capture process, cracking, and defense. Evil-twin AP attacks will also demonstrate how WPA-Enterprise protected networks can also be compromised.\n\nDuring this course, students will learn how the recent Key Reinstallation Attack (Krack) methodology can be utilized to access encrypted communication. Students will be observing and identifying wireless attacks, learn defense mechanisms, and learn how to limit a breach potential with pre-emptive secure network design.\n\nStudents will also have the opportunity to interact with an 802.1x Radius-Authentication WPA enterprise deployment where they will be expected to perform an evil twin AP attack. Corporate user hashed credentials will then be cracked. Various pivots will be demonstrated as each type of wireless attack is successfully executed.\n\nFinally, students will be exposed to simple Software Defined Radio projects that expose weaknesses in everyday products that employ wireless technologies. This abbreviated section of the course will focus on radio frequency modulation techniques, signals that can be intercepted in the Industrial, Scientific, and Medical (ISM) bands, and inherent weaknesses that may exist when engineers do not use industry accepted secure protocols.",
+			"description": "",
 			"index": 1809,
-			"end_date": "2018-03-22T17:30:00-06:00",
-			"updated_at": "2018-02-02T12:00:00-06:00",
-			"title": "A Practical Approach to Wireless Hacking and Defense: Hands-On & Live Fire"
+			"end_date": "2018-03-12T17:30:00-06:00",
+			"updated_at": "2018-03-15T12:18:00-06:00",
+			"title": "",
 		},
 		{
 			"exploit": 0,
 			"dctv_channel": 0,
       			"who" : [
         			{
-          			"indexsp" : "0",
+          			"indexsp" : "1825",
           			"who" : ""
         			}
       			],
 			"tool": 0,
 			"id": "hw1810",
-			"start_date": "2018-03-23T08:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
 			"location": "Track One",
 			"demo": 0,
 			"entry_type": "Official",
-			"description": "Opening Keynote",
+			"description": "In today's cyber threat environment incident response can range from a pesky user activity to full scale cyber war. Responding to the vast array of cyber threats requires not just a red team, or a blue team but a coordinated team both knowledgeable in incident response but also business savvy. In this session we will talk about bridging the gap between the server room and board room while responding to a cyber security incident.",
 			"index": 1810,
+			"start_date": "2018-03-23T08:30:00-06:00",
 			"end_date": "2018-03-23T09:30:00-06:00",
-			"updated_at": "2018-02-02T12:00:00-06:00",
-			"title": "Opening Keynote"
+			"updated_at": "2018-03-13T12:00:00-06:00",
+			"title": "Opening Keynote - Conjunction Junction, what's your function?"
 		},
 		{
 			"exploit": 0,
 			"dctv_channel": 0,
       			"who" : [
         			{
-          			"indexsp" : "0",
+          			"indexsp" : "1826",
           			"who" : ""
         			}
       			],
 			"tool": 0,
 			"id": "hw1811",
-			"start_date": "2018-03-23T17:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
 			"location": "Track One",
 			"demo": 1,
 			"entry_type": "Official",
-			"description": "Closing Keynote",
+			"description": "Closing Keynote - Eve Galparin",
 			"index": 1811,
+			"start_date": "2018-03-23T17:30:00-06:00",
 			"end_date": "2018-03-23T18:30:00-06:00",
-			"updated_at": "2018-02-02T12:00:00-06:00",
+			"updated_at": "2018-03-13T12:00:00-06:00",
 			"title": "Closing Keynote"
 		},
 		{
@@ -294,8 +278,8 @@
 			"entry_type": "Official",
 			"description": "Ransomware is spreading at an alarming pace and infecting networks across all industries and company sizes, primarily though phishing attacks. The cyber criminals behind the attacks are furiously innovating and keeping ahead of the defenses. In this session we will have an interactive discussion related to the latest in ransomware threats and how to best protect your organization and yourself against this growing threat.\nThe presenter will educate attendees about the newest features of ransomware strains designed to evade detection and spread in new and creative ways. He will also discuss recent attacks and how the organizations could have better protected themselves.\n\nThe session is intended for an intermediate experience level and will examine:\n-Current phishing trends\n-Ransomware and how it is infecting networks\n-Effective mitigation strategies\n-Recovering from an attack",
 			"end_date": "2018-03-23T10:30:00-06:00",
-			"updated_at": "2018-02-02T12:00:00-06:00",
-			"title": "Put up a CryptoWall and Locky the Key – Stopping the Explosion of Ransomware"
+			"updated_at": "2018-03-15T12:18:00-06:00",
+			"title": "Put up a CryptoWall and Locky the Key - Stopping the Explosion of Ransomware"
 		},
 		{
 			"exploit": 0,
@@ -433,8 +417,8 @@
 			"tool": 0,
 			"id": "hw1818",
 			"index": 1818,
-			"start_date": "2018-03-23T14:30:00-06:00",
-			"end_date": "2018-03-23T15:30:00-06:00",
+			"start_date": "2018-03-09T14:30:00-06:00",
+			"end_date": "2018-03-09T15:30:00-06:00",
 			"includes": "",
 			"recommended": 0,
 			"link": "",
@@ -442,8 +426,32 @@
 			"demo": 1,
 			"entry_type": "Official",
 			"description": "Prepare for a journey through the tangle of HTTP Security Headers. What are they? Why should you use them? Who do they protect? How do they reduce risk? This talk will review both old and new security headers, their history, adoption rates, and show examples of good and bad implementations. It will also include demonstrations of common web attacks with and without the headers in place as long as _someone_ performs the blood sacrifice to appease the demo gods.",
-			"updated_at": "2018-02-02T12:00:00-06:00",
+			"updated_at": "2018-03-19T12:25:00-06:00",
 			"title": "Security Headers and You"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "1813",
+          			"who" : ""
+        			}
+      			],
+			"tool": 0,
+			"id": "hw1820",
+			"index": 1820,
+			"start_date": "2018-03-23T14:30:00-06:00",
+			"end_date": "2018-03-23T15:30:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Track One",
+			"demo": 1,
+			"entry_type": "Official",
+			"description": "Pass the Hash attacks is the most common attack methods used against Active Directory, yet the vast majority of organization do not audit password hashes. First we will define what is great password hash hygiene, demonstrate different methods to dump every password hash out of Active Directory, and demonstrate scripts to perform analysis to identify: weak hashing protocols, accounts with the same passwords, accounts with reversible encryptions, and default passwords.",
+			"updated_at": "2018-03-17T16:00:00-06:00",
+			"title": "For Good and Evil: Password Hash Dumping In Active Directory"
 		},
 		{
 			"exploit": 0,
@@ -522,8 +530,8 @@
 			"demo": 0,
 			"entry_type": "Official",
 			"description": "What if an attacker could perform reconnaissance, social engineering, and exploitation without user input or credentials, using pages so seemingly benign that user awareness training failed? During the first part of this talk, we’ll discuss how to leverage the Browser Exploitation Framework (BeEF) to perform these client-side attacks, as well as how to evade defensive capabilities and avoid detection.\n\nOne of the challenges faced by defenders is mitigating these threats without making the browser unusable. Users constrained by security policies will inevitably find a way around those policies. An effective defender must work to reduce risk without affecting functionality, using the tools already at their disposal. This includes browser management through Group Policy, attack signatures in order to filter or drop traffic, and other compensating controls. During the second half of this talk, we will cover the three major browsers, while discussing which provides the most discrete levels of control and protection for the user.",
-			"updated_at": "2018-02-02T12:00:00-06:00",
-			"title": "Where’s the BeEF? Pwning with the Browser Exploitation Framework and Building Effective Defenses"
+			"updated_at": "2018-03-15T12:18:00-06:00",
+			"title": "Where's the BeEF? Pwning with the Browser Exploitation Framework and Building Effective Defenses"
 		},
 		{
 			"exploit": 0,
@@ -548,6 +556,246 @@
 			"description": "When we think of the process for attacking an organization, OSINT comes to the front and center of our minds. This presentation takes a presenter with experience in applying OSINT to effective penetration testing and social engineering and reverse engineers the process to determine what steps can be taken to further complicate their efforts. This is a presentation that talks about online deception, decoy accounts, canary data, encryption, maintaining one’s social media in a secure manner, and protecting one’s identity as much as possible. While nothing is absolute, this is a presentation that will leave attendees more aware of techniques to make it harder for attackers to collect accurate OSINT, either by removal or deception.",
 			"updated_at": "2018-02-02T12:00:00-06:00",
 			"title": "DECEPTICON: Deceptive Techniques to Derail OSINT attempts"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "1819",
+          			"who" : ""
+        			},
+        			{
+          			"indexsp" : "1820",
+          			"who" : ""
+        			},
+        			{
+          			"indexsp" : "1821",
+          			"who" : ""
+        			},
+        			{
+          			"indexsp" : "1822",
+          			"who" : ""
+        			},
+        			{
+          			"indexsp" : "1823",
+          			"who" : ""
+        			},
+        			{
+          			"indexsp" : "1824",
+          			"who" : ""
+        			}
+      			],
+			"tool": 0,
+			"id": "hw1824",
+			"index": 1824,
+			"start_date": "2018-03-22T09:00:00-06:00",
+			"end_date": "2018-03-22T12:00:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Workshop One",
+			"demo": 0,
+			"entry_type": "Workshop",
+			"description": "Coin challenges require a lot of thinking outside the box, and it can be hard to do it alone. Join us in working on last year's coin challenge. This will be an informal workshop, with the goal of broadening your thought process as you work through the challenges.",
+			"updated_at": "2018-03-13T14:23:00-06:00",
+			"title": "Hackwest Workshop - The Good, The Bad, The Crypto - Working through Coin Challenges"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "0",
+          			"who" : ""
+        			}
+			],
+			"tool": 0,
+			"id": "hw1825",
+			"index": 1825,
+			"start_date": "2018-03-21T09:30:00-06:00",
+			"end_date": "2018-03-21T17:30:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Villages",
+			"demo": 0,
+			"entry_type": "Event",
+			"description": "This event is an opportunity for average users (Joes) to try their hand at both the offensive and defensive side of computer security. For the Pro's, it's a chance to hone and show off their skills, helping others to learn and better themselves. Joes are split up into teams, each with a Pro captain, and given their own network to defend against the other Pros in our Red Cell. Each team's network is full of servers and desktops running Windows, Linux, your standard services like DNS, Web, Mail, and others. Of course, there will be more than a few surprises...\n\nFor two days, players will attack and defend in live networks, breaking into each other's systems to steal flags for fame and glory. Each team is provided with their own network that is full of servers and workstations to defend. All of this gear is housed in a dedicated and isolated network that we affectionately call the Gaming Grid. Players need only bring a laptop to connect to the environment with. (Laptops will not be in the line of fire).",
+			"updated_at": "2018-02-02T12:00:00-06:00",
+			"title": "Pros vs. Joes - Day One"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "0",
+          			"who" : ""
+        			}
+			],
+			"tool": 0,
+			"id": "hw1826",
+			"index": 1826,
+			"start_date": "2018-03-22T09:30:00-06:00",
+			"end_date": "2018-03-22T17:30:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Villages",
+			"demo": 0,
+			"entry_type": "Event",
+			"description": "This event is an opportunity for average users (Joes) to try their hand at both the offensive and defensive side of computer security. For the Pro's, it's a chance to hone and show off their skills, helping others to learn and better themselves. Joes are split up into teams, each with a Pro captain, and given their own network to defend against the other Pros in our Red Cell. Each team's network is full of servers and desktops running Windows, Linux, your standard services like DNS, Web, Mail, and others. Of course, there will be more than a few surprises...\n\nFor two days, players will attack and defend in live networks, breaking into each other's systems to steal flags for fame and glory. Each team is provided with their own network that is full of servers and workstations to defend. All of this gear is housed in a dedicated and isolated network that we affectionately call the Gaming Grid. Players need only bring a laptop to connect to the environment with. (Laptops will not be in the line of fire).",
+			"updated_at": "2018-03-13T12:00:00-06:00",
+			"title": "Pros vs. Joes - Day Two"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "0",
+          			"who" : ""
+        			}
+			],
+			"tool": 0,
+			"id": "hw1827",
+			"index": 1827,
+			"start_date": "2018-03-23T09:30:00-06:00",
+			"end_date": "2018-03-23T12:00:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Villages",
+			"demo": 0,
+			"entry_type": "Event",
+			"description": "Have you ever detected an attack while it was happening? Have you ever been the attacker? Join us for our Red vs. Blue competition, a hands-on workshop where participants experience security attacks from the perspective of an attacker and a defender. This session runs for approximately two hours in duration. We will run a morning session and an afternoon session.\n\nAs a Blue Team participant, you're monitoring a live environment looking for anomalous behaviors. It’s your job to identify the breach and make recommendations for remediation. Blue team players will get hands-on experience using tools for attack detection.\n\nRed Team participants will receive a playbook with step-by-step instructions for a series of attacks against the Blue Team. All Red Team tools are included with Kali Linux.\n\nThis event is designed for players of all abilities.\n\nPLEASE BRING: A laptop capable of booting Kali Linux is required OR an SSH client, such as putty or terminal.\n\nRvB has 16 available slots with teams of two facing off against each other. Please indicate if you’d like to be Red or Blue team and if you’d like to be paired with a particular teammate; we’ll do our best to accommodate.\n\nThe RvB competition will start on time. Please arrive early, open seats will be given to alternates.\n\nPlease contact jpierson at compunet dot biz with questions with Red Vs. Blue.",
+			"updated_at": "2018-03-13T12:00:00-06:00",
+			"title": "Compunet Red vs Blue Workshop"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "0",
+          			"who" : ""
+        			}
+			],
+			"tool": 0,
+			"id": "hw1828",
+			"index": 1828,
+			"start_date": "2018-03-23T13:30:00-06:00",
+			"end_date": "2018-03-23T16:00:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Villages",
+			"demo": 0,
+			"entry_type": "Event",
+			"description": "Have you ever detected an attack while it was happening? Have you ever been the attacker? Join us for our Red vs. Blue competition, a hands-on workshop where participants experience security attacks from the perspective of an attacker and a defender. This session runs for approximately two hours in duration. We will run a morning session and an afternoon session.\n\nAs a Blue Team participant, you're monitoring a live environment looking for anomalous behaviors. It’s your job to identify the breach and make recommendations for remediation. Blue team players will get hands-on experience using tools for attack detection.\n\nRed Team participants will receive a playbook with step-by-step instructions for a series of attacks against the Blue Team. All Red Team tools are included with Kali Linux.\n\nThis event is designed for players of all abilities.\n\nPLEASE BRING: A laptop capable of booting Kali Linux is required OR an SSH client, such as putty or terminal.\n\nRvB has 16 available slots with teams of two facing off against each other. Please indicate if you’d like to be Red or Blue team and if you’d like to be paired with a particular teammate; we’ll do our best to accommodate.\n\nThe RvB competition will start on time. Please arrive early, open seats will be given to alternates.\n\nPlease contact jpierson at compunet dot biz with questions with Red Vs. Blue.",
+			"updated_at": "2018-03-13T12:00:00-06:00",
+			"title": "Compunet Red vs Blue Workshop"
+		},
+		{
+			"exploit": 1,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "1803",
+          			"who" : ""
+        			},
+        			{
+          			"indexsp" : "1804",
+          			"who" : ""
+        			}
+      			],
+			"tool": 1,
+			"id": "hw1829",
+			"index": 1829,
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Track Two",
+			"demo": 1,
+			"entry_type": "Official",
+			"description": "Wireless technologies are considered an easy target for red teams and hackers.  Infrastructure design and management is slow to respond to the barrage of new attack methods and vulnerabilities within standardized wireless protocols.  Watch as Jordan and Kent explain how rethinking wireless infrastructure can immobilize attackers in their tracks, leaving them stranded in a wireless wasteland.\n\nThe duo discusses how typical wireless deployments don’t afford security despite providing the perception of a secure environment.  Blue-Teams will learn how attackers can be identified and how to make the attacks irrelevant by reconsidering the safety of encrypted WIFI to be the truly hostile and untrusted environment it is.",
+			"start_date": "2018-03-23T15:30:00-06:00",
+			"end_date": "2018-03-23T16:30:00-06:00",
+			"updated_at": "2018-03-15T11:44:00-06:00",
+			"title": "Don't Suck at Wireless"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "1827",
+          			"who" : ""
+        			}
+      			],
+			"tool": 0,
+			"id": "hw1830",
+			"index": 1830,
+			"start_date": "2018-03-23T14:30:00-06:00",
+			"end_date": "2018-03-23T15:30:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Track Two",
+			"demo": 0,
+			"entry_type": "Official",
+			"description": "This workshop will demo free and open-source tools I’ve developed (http://flaws.cloud, CloudMapper, and CloudTracker) and discussion of other tools out there including Security Monkey, StreamAlert, and canarytokens.",
+			"updated_at": "2018-03-17T16:25:00-06:00",
+			"title": "Free AWS Security Tools Workshop"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "1809",
+          			"who" : ""
+        			}
+      			],
+			"tool": 0,
+			"id": "hw1831",
+			"index": 1831,
+			"start_date": "2018-03-22T09:00:00-06:00",
+			"end_date": "2018-03-22T17:00:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Workshop Two",
+			"demo": 0,
+			"entry_type": "Workshop",
+			"description": "This workshop will instruct attendees on how to carry out sophisticated wireless attacks against corporate infrastructure. Attendees will learn how to attack and gain access to WPA2-Enterprise networks, bypass network access controls, and perform replay attacks to gain administrative control over an Active Directory environment. External wireless adapters and preconfigured live USBs will be provided to all workshop attendees, and material learned in the lectures will be practiced within a realistic lab environment.\n\nAreas of focus include:\n\n- Wireless reconnaissance and target identification within a red team environment\n- Attacking and gaining entry to WPA2-EAP wireless networks\n- LLMNR/NBT-NS Poisoning\n- Firewall and NAC Evasion Using Indirect Wireless Pivots\n- MITM and SMB Relay Attacks\n- Downgrading modern SSL/TLS implementations using partial HSTS bypasses\n\nPREREQUISITES:\nDownload Virtual Lab and Course Guide before class\n\nhttps://drive.google.com/drive/folders/0BwFgM9oAhmd_c2JJaG1iUmhkZTg",
+			"updated_at": "2018-03-19T12:17:00-06:00",
+			"title": "Advanced Wireless Attacks Against Enterprise Networks - Workshop"
+		},
+		{
+			"exploit": 0,
+			"dctv_channel": 0,
+      			"who" : [
+        			{
+          			"indexsp" : "0",
+          			"who" : ""
+        			}
+      			],
+			"tool": 0,
+			"id": "hw1832",
+			"index": 1832,
+			"start_date": "2018-03-23T09:30:00-06:00",
+			"end_date": "2018-03-23T16:30:00-06:00",
+			"includes": "",
+			"recommended": 0,
+			"link": "",
+			"location": "Lightning",
+			"demo": 0,
+			"entry_type": "Event",
+			"description": "A lightning talk is a very short presentation lasting only a few minutes. We will open up the conference for lightning talks and people within the community are encouraged to present topics of their choosing which fit within the scope of our code of conduct. Sign up below.\n\nhttps://docs.google.com/forms/d/e/1FAIpQLSdF8Scr0YVPp1I3YbQvPX78rD5UItqLPzEFyccJ9jAlO7LkFw/viewform",
+			"updated_at": "2018-03-19T12:31:00-06:00",
+			"title": "HackWest Lightning Talks"
 		},
 	]
 }
