@@ -1,710 +1,969 @@
 {
-	"update_date": "2018-04-01T14:50:00-07:00",
-	"schedule": [
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-      			"who" : [
-        			{
-          			"indexsp" : "0",
-          			"who" : ""
-        			}
-      			],
-			"tool": 0,
-			"id": "bsorl1700",
-			"start_date": "2018-04-07T08:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Event",
-			"description": "Registration opens",
-			"index": 1700,
-			"end_date": "2018-04-07T09:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Registration"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1701",
-			"start_date": "2018-04-07T09:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "Opening Cermonies",
-			"index": 1701,
-			"end_date": "2018-04-07T09:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Opening Cermonies"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1800",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1702",
-			"start_date": "2018-04-07T09:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/keynote-avani-desai",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "Obsolescence to Relevance – A World When Technology Outpaces Humans",
-			"index": 1702,
-			"end_date": "2018-04-07T10:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Opening Keynote - Avani Desai"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1703",
-			"start_date": "2018-04-07T09:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Career Hall (3B-113)",
-			"demo": 0,
-			"entry_type": "Event",
-			"description": "",
-			"index": 1703,
-			"end_date": "2018-04-07T10:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Career Hall - Resume Review"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1704",
-			"start_date": "2018-04-07T09:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Lockpicking Village (3B-136)",
-			"demo": 0,
-			"entry_type": "Village",
-			"description": "The Orlando Chapter of The Open Organization Of Lockpickers (TOOOL) will host a Lock Picking Village (LPV) at BSides Orlando.\n\nLearn how locks work, common tools used for opening locks, locksport, lockpicking,  ask questions about locks, safes,  physical security, and MORE!\n\nWe will have locksport challenges including a challenge box with a gift card locked inside.\n\nLearn more at https://toool.us/",
-			"index": 1704,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Career Hall - Resume Review"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1801",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1705",
-			"start_date": "2018-04-07T10:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/kevin-cody",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "Have you looked at HTTP headers lately? Not only are they unwieldy, but what do half of them mean? Furthermore, browsers are protecting us from more-and-more attacks, but what are all of these acronyms? SOP, CSP, XSS, HSTS, HPKP, CAA… at the end of the day, we just want useable AND secure applications. This talk will break down exactly what all of these acronyms and browser-enforced security policies mean. Attendees will learn implementation and long-term strategies in effort to increase security posture without potentially sinkholing your user’s traffic. Whether you’re a first time developer, multi-linguist application guru, or simply an app user who wants to know what all of this security fuss is about – this session will appeal to the entire security conscious gamut.",
-			"index": 1705,
-			"end_date": "2018-04-07T11:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Enhancing Application Security: Understanding and Utilizing Browser Security Features"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1802",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1706",
-			"start_date": "2018-04-07T10:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/thomas-richards",
-			"location": "Track 2 (3B-307)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "As any security program matures, it will use tools and techniques to automate processes to improve the security posture of the organization. This includes asset management and discovery, patch management, deploying software, and vulnerability discovery. However, if the these tools are improperly configured, they can lead to a total compromise of your network by an attacker. In this talk we will go over a few case studies of abusing these tools while on penetration tests as well as remediation methods to prevent these attacks from occurring.",
-			"index": 1706,
-			"end_date": "2018-04-07T11:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Security Tool Misconfiguration and Abuse"
-		}
-		,
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1707",
-			"start_date": "2018-04-07T10:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Career Hall (3B-113)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "",
-			"index": 1707,
-			"end_date": "2018-04-07T11:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Panel: Career Search: Are you pwning or being pwned?"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1708",
-			"start_date": "2018-04-07T11:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Event",
-			"description": "",
-			"index": 1708,
-			"end_date": "2018-04-07T12:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Lunch"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1709",
-			"start_date": "2018-04-07T11:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Track 2 (3B-307)",
-			"demo": 0,
-			"entry_type": "Firetalks",
-			"description": "Open stage, 10 minute slots",
-			"index": 1709,
-			"end_date": "2018-04-07T12:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Firetalks"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1710",
-			"start_date": "2018-04-07T11:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Career Hall (3B-113)",
-			"demo": 0,
-			"entry_type": "Event",
-			"description": "",
-			"index": 1710,
-			"end_date": "2018-04-07T12:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Resume Review"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1711",
-			"start_date": "2018-04-07T12:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Lockpicking Village (3B-136)",
-			"demo": 0,
-			"entry_type": "Village",
-			"description": "",
-			"index": 1711,
-			"end_date": "2018-04-07T13:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Lockpicking 101 Demo"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1803",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1712",
-			"start_date": "2018-04-07T13:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/bryan-smith",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "",
-			"index": 1712,
-			"end_date": "2018-04-07T14:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Dear Blue Team: Forensic Advice for Security Engineers, System Admins, and more!"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1804",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1713",
-			"start_date": "2018-04-07T13:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/fraq",
-			"location": "Track 2 (3B-307)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "As society becomes ever more dependent on increasingly complex systems, skilled technical minds with the ability to creatively discover and exploit flaws in these systems will become ever more valuable. This talk reinforces the hacker ethos and how we will evolve to live and work in a world where we are no longer the outcasts we once were. We are not entering the twilight of the hacker ethos. Instead, we are entering our golden age.",
-			"index": 1713,
-			"end_date": "2018-04-07T14:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "We Need Hackers Now More Than Ever"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1714",
-			"start_date": "2018-04-07T13:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Career Hall (3B-113)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "",
-			"index": 1714,
-			"end_date": "2018-04-07T14:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Preventable Fatalities of Multimedia Presentations"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1805",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1715",
-			"start_date": "2018-04-07T14:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/chad-seaman",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "In 2017 Akamai was hit with a series of prolonged targeted layer 7 DDoS attacks against major hospitality e-commerce companies. From attack traffic to disassembled malware, we’ll cover how a DDoS attack lead to the discovery of an Android powered DDoS botnet.",
-			"index": 1715,
-			"end_date": "2018-04-07T15:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "WireX - Why Shady Apps Lead to Hot Pockets"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1806",
-								"who" : ""
-							},
-							{
-								"indexsp" : "1807",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1716",
-			"start_date": "2018-04-07T14:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/david-switzer-jonathan-echavarria",
-			"location": "Track 2 (3B-307)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "Home automation and IoT is all the rage, but once you have your thermostat automated, what is next? How can you leverage your automated home for active defense and gain some situational awareness, both inside and out? Much research has been done on the security of IoT devices, and this talk looks into how to use IoT (and possibly their insecurities) for your home security, while keeping costs down.",
-			"index": 1716,
-			"end_date": "2018-04-07T14:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "The Trap House: Making Your House as Paranoid as You Are"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1717",
-			"start_date": "2018-04-07T14:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Career Hall (3B-113)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "",
-			"index": 1717,
-			"end_date": "2018-04-07T15:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "You Can Capture the Flag, but Can You Code the Right Resume for Your Next Job?"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1718",
-			"start_date": "2018-04-07T14:30:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Lockpicking Village (3B-136)",
-			"demo": 0,
-			"entry_type": "Village",
-			"description": "",
-			"index": 1718,
-			"end_date": "2018-04-07T15:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Lockpicking 101 Demo"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1808",
-								"who" : ""
-							},
-							{
-								"indexsp" : "1809",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1719",
-			"start_date": "2018-04-07T15:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/beau-bullock-mike-felch",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "As more corporations adopt Google for providing cloud services they are also inheriting the security risks associated with centralized computing, email and data storage outside the perimeter. In order for pentesters and red teamers to remain effective in analyzing security risks, they must adapt techniques in a way that brings value to the customer.\n\nIn this presentation we will begin by demonstrating adaptive techniques to crack the perimeter of Google Suite customers. Next, we will show how evasion can be accomplished by hiding in plain-sight due to failures in incident response plans. Finally, we will also show how a simple compromise could mean collateral damage for customers who are not carefully monitoring these cloud environments.",
-			"index": 1719,
-			"end_date": "2018-04-07T16:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "OK Google, How do I Red Team GSuite?"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1803",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1720",
-			"start_date": "2018-04-07T15:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/bryan-smith",
-			"location": "Track 2 (3B-307)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "IOT has many connectivity options and systems based on Low Power\nNetworks(LPN's) such as Lorawan are showing a great deal of promise.\nThe Things Networks(TTN) is a community initiated Lorawan, Low Power Wide Area Network(LPWAN). It’s collaboratively built by scores of passionate people, Open Source Software and Open Governance. The network even has a manifesto and fair access policy that governs it’s use and promotes band management.\n\nIn the session we’ll discuss:\nThe technology behind Lorawan, The Things Network and other similar networks.\nTTN’s impact on public and private LPWANs.\nSecurity implications of community initiated LPWANs.\nThe initiators and communities that install and build Lorawan gateways.\nLastly we’ll discuss the impact of the deployments in real world use cases.\n\nThere will also be a live demo of a Lorawan gateway and node in action on several public networks including The Things Network as well as others.",
-			"index": 1720,
-			"end_date": "2018-04-07T16:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "The Things Network: IoT for Fun and Profit"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1721",
-			"start_date": "2018-04-07T15:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Career Hall (3B-113)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "",
-			"index": 1721,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Resume Review"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1810",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1722",
-			"start_date": "2018-04-07T16:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/speakers/keynote-jon-haas",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "",
-			"index": 1722,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Closing Keynote - What I Didn't Learn in School"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1723",
-			"start_date": "2018-04-07T17:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Official",
-			"description": "",
-			"index": 1723,
-			"end_date": "2018-04-07T17:30:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Closing Ceremonies"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1812",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1724",
-			"start_date": "2018-04-07T09:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/ics-packet-analysis-workshop",
-			"location": "Hands On Hall",
-			"demo": 0,
-			"entry_type": "Workshop",
-			"description": "The course has two sections.  The first section explains control system functions to IT/IS people.  This includes PLC design and operation and why things are they way they are today in ICS network environments.  It also includes basic information on how to identify ABB, Honeywell, Emerson, Telvent, Siemens, Rockwell and BACNet network connections.  It also explains in great detail, the Modbus and DNP3 protocols and how to manually decode them.  The second section has three labs which take the student through decoding the Modbus protocol, detailed Wireshark analysis techniques and then running an automated NSM tool.\n\nSee link for more details.",
-			"index": 1724,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "ICS Packet Analysis Workshop"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "1811",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1725",
-			"start_date": "2018-04-07T09:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/ctf-101",
-			"location": "Hands On Hall",
-			"demo": 0,
-			"entry_type": "Workshop",
-			"description": "Ever wanted to play in a Capture the Flag competition but didn’t know where to start? This workshop is for you! We’ll cover basic challenges in various areas like binary reversing and exploitation, web, and forensics.\n\nSee link for more details.",
-			"index": 1725,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "CTF 101"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1726",
-			"start_date": "2018-04-07T09:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/sunshine-ctf",
-			"location": "Capture the Flag",
-			"demo": 0,
-			"entry_type": "Contest",
-			"description": "The team from Hack@UCF will return to BSides Orlando to host SunshineCTF. Attempt exciting challenges created by members of competitive CTF teams that have won on the National and International level.\n\nThe CTF will be held at BSides Orlando and at https://ctftime.org/ \n]nThe winning team at BSides Orlando will be presented with a trophy at closing ceremonies.\n\nUnfamiliar with CTFs? Want to learn how they work and how to compete?  Check out the CTF 101 workshop at BSides Orlando.",
-			"index": 1726,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Sunshine CTF"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1727",
-			"start_date": "2018-04-07T09:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/hands-on-hall",
-			"location": "Hands On Hall",
-			"demo": 0,
-			"entry_type": "Training",
-			"description": "For the first time BSides Orlando will run a Hands On Hall sponsored by Black Hills Information Security. This will include live demos where attendees have the opportunity to “get their hands dirty” with short labs.\n\nBlack Hills Information Security is excited to bring some of the popular Wild West Hacking labs to BSides Orlando 2018. What? You haven’t heard about the WWHF labs? Well then are you in for a treat! The labs are totally hands on, with detailed instructions and a BHIS researcher to help if you get stuck . You will have the opportunity to do the following:\n\nInteract with a Jatagulator to perform reconnaissance on a device or communicate with their embedded chips.\nUse a Bus Pirate to dump the firmware and obtain gold from a wireless router chip.\nPlay with Software Defined Radio (SDR) and perform replay attacks against common technologies.\n\nIf you have not heard of the words: Jatagulator, Bus Pirate or SDR then you must join BHIS in their playground. Hope to see you there!\n\nLearn more about Black Hills Information Security here: https://www.blackhillsinfosec.com/\n\nCheck out Wild West Hackin’ Fest: https://www.wildwesthackinfest.com/",
-			"index": 1727,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Hands On Hall"
-		},
-		{
-			"exploit": 0,
-			"dctv_channel": 0,
-						"who" : [
-							{
-								"indexsp" : "0",
-								"who" : ""
-							}
-						],
-			"tool": 0,
-			"id": "bsorl1728",
-			"start_date": "2018-04-07T09:00:00-05:00",
-			"includes": "",
-			"recommended": 0,
-			"link": "https://bsidesorlando.org/2018/silent-auction",
-			"location": "Track 1 (Full Sail Live)",
-			"demo": 0,
-			"entry_type": "Event",
-			"description": "BSides Orlando will have a silent auction with great items up for bid. There’s something for all from pros to the curious and everyone in between.\n\nSilent auction sales will go toward future BSides events.\n\nCash or Credit Card Accepted.",
-			"index": 1728,
-			"end_date": "2018-04-07T17:00:00-05:00",
-			"updated_at": "2018-02-02T12:00:00-05:00",
-			"title": "Silent Auction"
-		}
-	]
+  "update_date": "2018-05-21T10:36:00-06:00",
+  "schedule": [
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer01",
+      "start_date": "2018-05-26T09:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "Registration & Vendor Area",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "Registration opens & Continental breakfast!",
+      "index": 1801,
+      "end_date": "2018-05-26T09:45:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Registration"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer02",
+      "start_date": "2018-05-26T09:45:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "Opening remarks",
+      "index": 1002,
+      "end_date": "2018-05-26T10:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Opening remarks"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer03",
+      "start_date": "2018-05-26T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/tamper-evident-contest/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Contest",
+      "description": "",
+      "index": 1003,
+      "end_date": "2018-05-26T20:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Tamper Evident King of the Hill"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "1",
+          "who": "Mike Sanders"
+        }
+      ],
+      "tool": 0,
+      "id": "layer04",
+      "start_date": "2018-05-26T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#mikesanders",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "You have many security products, probably too many. But you are still not secure because it’s nearly impossible to know if your security products are actually doing what you want. Through live network and endpoint attack demonstrations, see how to use attack behaviors with Bartalex, Vawtrak, Mimikatz, PowerShell, Tunneling and others to validate your actual security products are working. See startling statistics, based on real-life case studies, that illustrate how ineffective many organizations, some with massive security budgets and teams, actually are because of a lack of validation. See how you can turn these attacks into an opportunity to instrument more effective security.",
+      "index": 1004,
+      "end_date": "2018-05-26T11:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Mike Sanders - Go Hack Yourself: Moving Beyond Assumption-based Security"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer05",
+      "start_date": "2018-05-26T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/ctf/",
+      "location": "CTF",
+      "demo": 0,
+      "entry_type": "Contest",
+      "description": "",
+      "index": 1005,
+      "end_date": "2018-05-26T20:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Capture the Flag"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "2",
+          "who": "z0rro"
+        }
+      ],
+      "tool": 0,
+      "id": "layer06",
+      "start_date": "2018-05-26T11:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#z0rro",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "This talk will demonstrate how administrative slip-ups can result in deanonymization of live tor hidden services. Covering multiple techniques to reveal IP address of hidden services and more! This is not an in-depth talk on how tor works or how to use tor, nor is it a talk about exploiting the tor protocols themselves.",
+      "index": 1006,
+      "end_date": "2018-05-26T12:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "z0rro - Leeky Onions: Deanonymizing Live Tor Hidden Services"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer07",
+      "start_date": "2018-05-26T12:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1007,
+      "end_date": "2018-05-26T13:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Lunch Break"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer08",
+      "start_date": "2018-05-26T12:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/lockpicking-village/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1008,
+      "end_date": "2018-05-26T13:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Lockpicking Village - Intro to Lockpicking"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "3",
+          "who": "Amit Serper"
+        }
+      ],
+      "tool": 0,
+      "id": "layer09",
+      "start_date": "2018-05-26T13:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#amitserper",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "Adware isn’t a new or an exciting threat. It is often ignored by security professionals because “they just display ads.” Security companies often classify adware as “PuPs” of “Potentially unwanted programs,” downplaying their actual risks and dangers. In this talk I demonstrate just how serious adware can be and how the only difference between adware and malware is the fact that adware companies have legal departments. This is the talk that adware makers don’t want you to attend.\n\nBack in 2016 I discovered a new OSX strain of the Pirrit adware/malware which, at the time, only targeted Windows machines. I completely reverse engineered the malware; it runs with root privileges, hijacks all HTTP traffic on the infected machine, and employs several other nefarious tricks. Due to some stunning opsec mistakes I found the malware’s authors full names and the company that they work for. Fast forward to the present, OSX/Pirrit was back with a vengeance, employing new techniques and learning their lessons from everything I wrote about in my previous reports and talks. Nevertheless, after lots of binary reverse engineering, going through thousands of lines of JavaScript, bash, and AppleScript code - I managed to reveal just how sinister the new version of OSX/pirrit is which is virtually impossible to remove without deep OSX knowledge. Due to more opsec mistakes by the authors I managed to tie this new wave of infections back to On top of that, TargetingEdge, the company who makes this adware/malware, bombarded us with cease and desist letters, threatening my employer and myself personally to prevent us from publishing our report.\n\nThis talk will highlight all of the methods used by the malware authors to abuse systems, I will guide the attendees through the process of reverse engineering such malware and share with everyone the amazing and hilarious story behind this whole incident. There will be IDA screenshots, there will be stunning opsec mistakes by the authors and there will lolz galore.",
+      "index": 1009,
+      "end_date": "2018-05-26T14:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Amit Serper - Adware is just Malware with a Legal Department"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "4",
+          "who": "Rtzq0"
+        }
+      ],
+      "tool": 0,
+      "id": "layer10",
+      "start_date": "2018-05-26T14:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#rtzq0",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "While a lot of noise has been made about sensitive artifacts being left in git, and several tools exist to analyze git repositories for deleted files, a deep understanding of where and how git stores things (and therefore how such artifacts are being retained) eludes many. NO MORE! Rtzq0 will teach you how git functions, and in doing so you will come to understand the many ways in which things that people think have been deleted have not actually been deleted (and therefore how you might obtain them). Vivent les accidentally comitted private keys!",
+      "index": 1010,
+      "end_date": "2018-05-26T15:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Rtzq0 - Git for Hackers"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "5",
+          "who": "Robert Adams"
+        }
+      ],
+      "tool": 0,
+      "id": "layer11",
+      "start_date": "2018-05-26T15:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#robertadams",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "The idea for this talk came from several clients asking the same basic legal questions about security research and what they can and shouldn’t do to avoid criminal liability. I thought this would be a good forum to try to answer these questions, especially for private and independent researchers who do not have the backing of a large firm behind them. We’re going to try to answer a couple of generic legal questions that affects anyone who performs security research. Where’s the line in the sand regarding what a security researcher can do and shouldn’t do to avoid criminal liability, and what happens if it’s crossed? What happens when a security researcher wants to disclose a vulnerability to the manufacturer? Can that manufacturer sue the researcher to stop them from publishing their research or giving talks, and can the manufacturer sue for compensatory damages (i.e. money)?",
+      "index": 1011,
+      "end_date": "2018-05-26T16:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Robert Adams - How to Security Research Without Getting Sucked into a Courtroom"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer12",
+      "start_date": "2018-05-26T15:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/lockpicking-village/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1012,
+      "end_date": "2018-05-26T16:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Lockpicking Village - Intro to Lockpicking"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer13",
+      "start_date": "2018-05-26T15:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/infosec-career-panel/",
+      "location": "Hardware Hacking Village",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1013,
+      "end_date": "2018-05-26T16:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "InfoSec Career Panel"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "6",
+          "who": "Security Panda"
+        }
+      ],
+      "tool": 0,
+      "id": "layer14",
+      "start_date": "2018-05-26T16:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#securitypanda",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "Although not commonly known, HTTP2 was first published in May 2015 as an update to HTTP 1.1. By the end of that year, the majority of major browsers added HTTP2 support and it is now being utilized all across the Internet. Sites such as Google, Twitter, Facebook, and perhaps even your company’s site have HTTP2 enabled. If so, you probably do not realize you are using it. In fact, many Web Application Firewalls (WAFs) are not keeping pace with HTTP2 security needs and common AppSec testing tools such Burp, Zap, and other DAST products don’t support HTTP2.\n\nThis talk will discuss the details of the presenter’s discovery process in identifying how many site hosts are utilizing HTTP2, and a sample of common vulnerabilities which were found on these sites. Attendees will come away with having a better understanding of the security implications of HTTP2 and how you can detect these potential pitfalls on your network using freely available tools.",
+      "index": 1014,
+      "end_date": "2018-05-26T17:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Security Panda - HTTP2 and You"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer15",
+      "start_date": "2018-05-26T17:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/demo-party/",
+      "location": "Chillout Room",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1015,
+      "end_date": "2018-05-26T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Demo Party"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer16",
+      "start_date": "2018-05-26T18:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/ham-testing/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1016,
+      "end_date": "2018-05-26T19:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "HAM Testing"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer17",
+      "start_date": "2018-05-26T20:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1017,
+      "end_date": "2018-05-26T23:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Saturday Night Dinner & Party"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer18",
+      "start_date": "2018-05-27T09:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "Registration & Vendor Area",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1018,
+      "end_date": "2018-05-27T10:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Registration opens & continental breakfast"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "7",
+          "who": "Wasabi"
+        }
+      ],
+      "tool": 0,
+      "id": "layer19",
+      "start_date": "2018-05-27T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#wasabi",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "Wireless communication is getting cheaper and hobby projects are integrating long range low powered communication to link devices in all sorts of unique ways. But what about in the world of information security? This talk will cover the acronym soup of current communication systems including LoRA, RFM, Satellite, ASK, and many others to identify what protocols make sense when you are trying to communicate either stealthily or in remote areas. In addition, this talk will cover how to improve reliability of wireless communication and the costs associated with making your super pen test box. The aim for this talk is to be interactive, and allow people to share experiences.",
+      "index": 1019,
+      "end_date": "2018-05-27T11:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Wasabi - Can You Hear Me Now?: Wireless Communication for Pentesters"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "8",
+          "who": "Matthew Stits"
+        }
+      ],
+      "tool": 0,
+      "id": "layer20",
+      "start_date": "2018-05-27T11:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#matthewstits",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "Security people are often seen as a contradiction in terms. Being both the smartest people in the room and also those least aligned with the business. If you’ve ever wanted to shift the conversation and better communicate with the business this talk is for you. Focusing on changing the conversation; talking more about reliability and not only security, risk in dollars and not just compliance, focusing on the opportunities in the conversation you’re having and not the threat(s).",
+      "index": 1020,
+      "end_date": "2018-05-27T12:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Matthew Stits - From Security to Risk: Shifting the focus and changing the conversation"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer21",
+      "start_date": "2018-05-27T09:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/hebocon-robot-battles/",
+      "location": "Hardware Hacking Village",
+      "demo": 0,
+      "entry_type": "Contest",
+      "description": "",
+      "index": 1021,
+      "end_date": "2018-05-27T12:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Hebocon Robot Battle Royale"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer22",
+      "start_date": "2018-05-27T12:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1022,
+      "end_date": "2018-05-27T13:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Lunch Break"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer23",
+      "start_date": "2018-05-27T12:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/lockpicking-village/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1023,
+      "end_date": "2018-05-27T13:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Lockpicking Village - Intro to Lockpicking"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "9",
+          "who": "Katie Knowles"
+        }
+      ],
+      "tool": 0,
+      "id": "layer24",
+      "start_date": "2018-05-27T13:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#sigil",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "Cranes, trains, building controls, oil rigs, and …ceiling fans? Recent developments have made secure wireless protocols more common, but the fact is there’s still a swarm of simpler RF controls in the wireless world around us. Luckily, the onset of Software Defined Radios (SDRs) means analyzing these insecure signals is easier than ever! We’ll explore the basics of capturing and reversing simple RF control signals with the affordable RTL-SDR. With a little exploration through this menagerie of signals, we can unravel the mysteries of their operation and better understand what risk they pose to the environments we protect.",
+      "index": 1024,
+      "end_date": "2018-05-27T14:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Katie Knowles - Signal Safari: Investigating RF Controls with RTL-SDR"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "10",
+          "who": "Timur Yunusov"
+        },
+        {
+          "indexsp": "11",
+          "who": "Leigh-Anne Galloway"
+        }
+      ],
+      "tool": 0,
+      "id": "layer25",
+      "start_date": "2018-05-27T14:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#leighannegallowaytimuryunusov",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "Have you ever wanted to learn more about how payments work? Do you want to know how criminals bypass security mechanisms on Point of Sales terminals, ATM’s and digital wallets? Payment technologies are a transparent part of our lives. They enable us pay for everything from a coffee to a car. In the first part of this talk we take a look at payment technologies past, present and future. Learn how payments have evolved and what transactions look like today. Next we’ll dive into the different attacks that are possible with each transaction type and discuss which areas security teams should be focused on now, and in the future. Learn how hackers gain access to banking endpoints, bypass fraud mechanisms, and how they ultimately cash out.\n\nPayment methods have changed vastly in the last 50 years. From the development of the ATM to the more recent adoption of digital payment methods. These days it’s hard to find a shop, restaurant or café that doesn’t accept card or contactless payments. In this talk firstly, we will demystify payment methods so that anyone can understand. What is NFC? EMV? and Tokenization? This talk will leave you with a great understanding of how payments work.\n\nIn the second part of this talk we will cover demonstrations of the risks associated with payments. If you considering integrating payment technologies into your business, or already accept payments, pay close attention. Working from case studies and our own experience, we’ll dive into the different attacks that are possible with each transaction type. We’ll look at techniques used to gain access to endpoints such as ATM’s and POS’s. Next we’ll explore the tactics used to bypass fraud detection mechanisms, and the multipliers employed by attackers to make the payout huge.",
+      "index": 1025,
+      "end_date": "2018-05-27T15:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Leigh-Anne Galloway & Timur Yunusov - Hack In, Cash Out: Hacking and Securing Payment Technologies"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer26",
+      "start_date": "2018-05-27T14:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/lockpicking-village/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1026,
+      "end_date": "2018-05-27T15:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Lockpicking Village - Intro to Lockpicking"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "12",
+          "who": "Matt Hoy"
+        }
+      ],
+      "tool": 0,
+      "id": "layer27",
+      "start_date": "2018-05-27T15:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/speakers/#matthoymattrix",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "This presentation is a discussion about designing your defense strategy based on Data Security models and Asset Classifications.\n\nMany organizations have suffered breaches that have exposed embarrassingly sensitive data such as Personally Identifiable Information (PII), data preferences and we will continue to see this until we build security into the protection of data.",
+      "index": 1027,
+      "end_date": "2018-05-27T16:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Matt Hoy - Data Security: How to avoid an embarrassing breach"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer27",
+      "start_date": "2018-05-27T15:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/fail-of-things/",
+      "location": "Chillout Room",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1027,
+      "end_date": "2018-05-27T16:00:00-07:00",
+      "updated_at": "2018-05-20T12:00:00-05:00",
+      "title": "Fail of Things"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer28",
+      "start_date": "2018-05-27T15:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/raiseme-resume-building-workshop/",
+      "location": "Hardware Hacking Village",
+      "demo": 0,
+      "entry_type": "Workshop",
+      "description": "",
+      "index": 1028,
+      "end_date": "2018-05-27T16:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "RaiseMe Resume Workshop"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "13",
+          "who": "Mark Liphardt"
+        }
+      ],
+      "tool": 0,
+      "id": "layer29",
+      "start_date": "2018-05-27T16:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Official",
+      "description": "Today many people are concerned with personal privacy issues. However, despite what people say, we often act in many ways which may seem to contradict that desire. This talk will explore some common misconceptions about privacy and contrast behaviors that suggest that either we don’t really know or we don’t actually care about protecting our privacy in real life. We will explore some of the challenges related to achieving and maintaining various degrees of personal privacy in the modern world. We will examine technical issues, as well as, some of the laws and pending legislation impacting it and compare what is happening in the US verses other countries to learn which are doing a better or worse job at protecting their citizen’s personal information. Finally, we will identify current trends and activities that may help or hinder our rights in the near future. We will attempt to discover what is really needed to make our dreams of individual privacy protection come true.",
+      "index": 1029,
+      "end_date": "2018-05-27T17:00:00-07:00",
+      "updated_at": "2018-05-20T02:18:00-05:00",
+      "title": "Mark Liphardt - Does Privacy Matter Anymore? Exploring Perception vs. Reality"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer30",
+      "start_date": "2018-05-27T09:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/tamper-evident-contest",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Contest",
+      "description": "",
+      "index": 1030,
+      "end_date": "2018-05-27T16:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Tamper Evident King of the Hill"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer31",
+      "start_date": "2018-05-27T09:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/ctf",
+      "location": "CTF",
+      "demo": 0,
+      "entry_type": "Contest",
+      "description": "",
+      "index": 1031,
+      "end_date": "2018-05-27T16:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Capture the Flag"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer32",
+      "start_date": "2018-05-27T17:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "",
+      "location": "International Ballroom",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1032,
+      "end_date": "2018-05-27T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Closing Ceremonies"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer33",
+      "start_date": "2018-05-27T17:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.meetup.com/23bshop/",
+      "location": "23b Shop",
+      "demo": 0,
+      "entry_type": "Event",
+      "description": "",
+      "index": 1033,
+      "end_date": "2018-05-27T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "After Party at the 23b Shop"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer34",
+      "start_date": "2018-05-26T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/iot-village/",
+      "location": "IoT Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1034,
+      "end_date": "2018-05-26T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "IoT Village"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer35",
+      "start_date": "2018-05-27T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/iot-village/",
+      "location": "IoT Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1035,
+      "end_date": "2018-05-27T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "IoT Village"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer36",
+      "start_date": "2018-05-26T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/hardware-hacking-village/",
+      "location": "Hardware Hacking Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1036,
+      "end_date": "2018-05-26T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Hardware Hacking Village"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer37",
+      "start_date": "2018-05-27T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/hardware-hacking-village/",
+      "location": "Hardware Hacking Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1037,
+      "end_date": "2018-05-27T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Hardware Hacking Village"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer38",
+      "start_date": "2018-05-26T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/lockpicking-village/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1038,
+      "end_date": "2018-05-26T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Lockpicking Village"
+    },
+    {
+      "exploit": 0,
+      "dctv_channel": 0,
+      "who": [
+        {
+          "indexsp": "0",
+          "who": ""
+        }
+      ],
+      "tool": 0,
+      "id": "layer39",
+      "start_date": "2018-05-27T10:00:00-07:00",
+      "includes": "",
+      "recommended": 0,
+      "link": "https://www.layerone.org/events/lockpicking-village/",
+      "location": "Lockpicking Village",
+      "demo": 0,
+      "entry_type": "Village",
+      "description": "",
+      "index": 1039,
+      "end_date": "2018-05-27T18:00:00-07:00",
+      "updated_at": "2018-05-14T12:00:00-05:00",
+      "title": "Lockpicking Village"
+    }
+  ]
 }

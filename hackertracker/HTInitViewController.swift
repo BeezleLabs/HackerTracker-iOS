@@ -24,7 +24,7 @@ class HTInitViewController: UIViewController {
         let context = delegate.managedObjectContext!
         
         let shmoo_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-01-15")
-        let hw_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-04-01")
+        let l1_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-05-14")
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
@@ -46,7 +46,7 @@ class HTInitViewController: UIViewController {
                 NSLog("Error deleting old messages")
             }
             self.loadData()
-        } else if (status[0].lastsync < hw_update!) {
+        } else if (status[0].lastsync < l1_update!) {
             NSLog("Database older than most recent update, resetting")
             do {
                 try DataImportManager(managedContext: context).deleteMessages()

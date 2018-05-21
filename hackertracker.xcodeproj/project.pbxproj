@@ -12,12 +12,10 @@
 		49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */; };
 		5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D00AA2B1B0C3BE600916EAC /* schedule-full.json */; };
 		5D261012200EB06C006A88CC /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D261011200EB06C006A88CC /* messages.json */; };
-		5D32D653202A3C1900682D5F /* hackwest-2018-map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5D32D652202A3C1900682D5F /* hackwest-2018-map.pdf */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
 		5D3A94471AD6C6F40076F544 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94461AD6C6F40076F544 /* Status.swift */; };
 		5D3A94491AD6C6F40076F544 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94481AD6C6F40076F544 /* Message.swift */; };
-		5D67231320717C7300CF1FA2 /* bsidesorl_map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67231220717C7300CF1FA2 /* bsidesorl_map.pdf */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */; };
@@ -30,6 +28,7 @@
 		5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */; };
 		5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */; };
 		5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */; };
+		5DECA11420B328FA000CD72F /* layerone_map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5DECA11320B328FA000CD72F /* layerone_map.pdf */; };
 		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
 		7820245D1F05B7CE0092ED07 /* cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 7820245C1F05B7CE0092ED07 /* cert.der */; };
 		7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */; };
@@ -102,12 +101,10 @@
 		4A297DEF49BFDC47D04261A0 /* Pods-hackertrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertrackerTests/Pods-hackertrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D00AA2B1B0C3BE600916EAC /* schedule-full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedule-full.json"; sourceTree = "<group>"; };
 		5D261011200EB06C006A88CC /* messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
-		5D32D652202A3C1900682D5F /* hackwest-2018-map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "hackwest-2018-map.pdf"; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5D3A94461AD6C6F40076F544 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		5D3A94481AD6C6F40076F544 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		5D67231220717C7300CF1FA2 /* bsidesorl_map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bsidesorl_map.pdf; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsTableViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +122,7 @@
 		5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTUpdatesViewController.swift; sourceTree = "<group>"; };
 		5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTHomeTabBarController.swift; sourceTree = "<group>"; };
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
+		5DECA11320B328FA000CD72F /* layerone_map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = layerone_map.pdf; sourceTree = "<group>"; };
 		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
 		7820245C1F05B7CE0092ED07 /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
 		7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSearchTableViewController.swift; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 				49730E4C1E2D1A9F0029438C /* Utilities */,
 				498AD73F1E2D2C0400DD5B56 /* Views */,
 				5DD642681AC3C62300ED3256 /* Images.xcassets */,
-				5D67231220717C7300CF1FA2 /* bsidesorl_map.pdf */,
 				5DD642601AC3C62300ED3256 /* hackertracker.xcdatamodeld */,
 				5DD6425C1AC3C62300ED3256 /* Supporting Files */,
 				5DA268531D06006400249C63 /* LaunchScreen.storyboard */,
@@ -303,7 +300,7 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5D32D652202A3C1900682D5F /* hackwest-2018-map.pdf */,
+				5DECA11320B328FA000CD72F /* layerone_map.pdf */,
 				78C72FAA1F1869F100AFC0B6 /* Furore.otf */,
 				7896EB191F116403000D04C4 /* speakers.json */,
 				5D261011200EB06C006A88CC /* messages.json */,
@@ -486,13 +483,12 @@
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
+				5DECA11420B328FA000CD72F /* layerone_map.pdf in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				5D261012200EB06C006A88CC /* messages.json in Resources */,
 				7896EB1A1F116403000D04C4 /* speakers.json in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				7820245D1F05B7CE0092ED07 /* cert.der in Resources */,
-				5D32D653202A3C1900682D5F /* hackwest-2018-map.pdf in Resources */,
-				5D67231320717C7300CF1FA2 /* bsidesorl_map.pdf in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 				5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */,
 			);

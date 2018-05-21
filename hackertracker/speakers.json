@@ -1,109 +1,109 @@
 {
-	"speakers": [
-		{
-			"sptitle": "",
-			"who": "Avani Desai",
-			"indexsp": 1800,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Avani Desai is a Partner and Executive Vice President at Schellman & Company, the largest niche CPA firm in the world that focuses on technology and security assessments. She is also CEO and co-founder of MyCryptoAlert, a push notification and portfolio app for cryptocurrency.\n\nAvani started her career working at a Big 4 accounting firm for over 10 years, where she led a team and oversaw IT Risk Management and Privacy across national service-lines. In addition, Avani managed the development of internal and external privacy programs and related practices, leveraging her deep knowledge with healthcare and emerging technologies, such as blockchain, cloud computing, artificial intelligence, and virtualization.\n\nNow at Schellman & Company, Avani has been focusing on growth strategies, strategic client and market development, industry analysis, and new services for the last five years. She has been featured in Forbes, CIO.com, and the Wall Street Journal, and is a sought after speaker as a voice on a variety of emerging topics, including security, privacy, information security, future technology trends, and the expansion of young women involved in technology.\n\nIn 2017, Avani, a crypto enthusiast, launched MyCryptoAlert, an app that provides a mobile solution for the alert and portfolio problems crypto investors face. Also passionate about strategic philanthropy, Avani sits on the board of Arnold Palmer Medical Center, the Central Florida Foundation, and is the co-chair of 100 Women Strong, a female-only venture capitalist based giving circle that focuses on solving community-based problems specific to women and children by using data analytics and big data. With all that being said, Avani still considers her greatest accomplishment to be personal rather than professional—she is the proud mother to her 7-year-old son, Sahil, and her 4-year-old daughter, Sareena."
-		},
-		{
-			"sptitle": "",
-			"who": "Kevin Cody",
-			"indexsp": 1801,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Kevin is a Senior Application Security Consultant with experience working at several Fortune 500 enterprises. Although his particular expertise is geared toward hacking Web and Mobile applications, he is also experienced in the entire gamut from mainframes to embedded systems. Kevin is adamant on helping build-up developers through security, which can be seen in his involvement within OWASP or while speaking at events like CodeMash or BSides."
-		},
-		{
-			"sptitle": "",
-			"who": "Thomas Richards",
-			"indexsp": 1802,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Thomas Richards, Associate Principal Consultant, has been with Cigital(now Synopsys) since 2012. His primary areas of expertise include Red Teaming and Mobile Security. He is an Offensive Security Certified Professional (OSCP). Thomas spends his days guiding working with clients on red teaming activities and initiatives. In his free time, he enjoys playing guitar, camping, and spending time with his wife and five kids."
-		},
-		{
-			"sptitle": "",
-			"who": "Bryan Smith",
-			"indexsp": 1803,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Bryan A Smith is a Debian Gnu/Linux and BSD enthusiast and Systems Engineer. Bryan has used Free and Open Source Operating Systems since the late 90’s.\n\nHe contributes to several Open Source projects and has helped launch several startup ISP’s based in his area using Free and Open Source software.\n\nHe’s currently helping organize Devopsday Indianapolis. Bryan is also the Orlando initiator of The Things Network; powering global IoT initiatives."
-		},
-		{
-			"sptitle": "",
-			"who": "Fraq",
-			"indexsp": 1804,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Ops engineer. Security professional. Veteran. Community builder and leader."
-		},
-		{
-			"sptitle": "",
-			"who": "Chad Seaman",
-			"indexsp": 1805,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Internet dumpster diver, DDoS researcher, hunter of botnets, diddler of malware. Senior Security Response Team Engineer @ Akamai"
-		},
-		{
-			"sptitle": "",
-			"who": "David Switzer",
-			"indexsp": 1806,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "David Switzer is a red team operator who has 20+ years of experience in systems and network security. Some alphabet Soup: GSE #136, G[cia|cih|awn|sec|stuff]), OSCE, CISSP and ITILv3 (I keep it gangsta). His obsessions/amusements include RF, wireless networks, hardware hacking, and other expensive time sinks."
-		},
-		{
-			"sptitle": "",
-			"who": "Jonathan Echavarria",
-			"indexsp": 1807,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Jonathan Echavarria has over half a decade of experience. Certs:OSCE, OSCP and CEH."
-		},
-		{
-			"sptitle": "",
-			"who": "Beau Bullock",
-			"indexsp": 1808,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Beau is a Senior Security Analyst at Black Hills Information Security and has held positions in the financial and health industries. He has experience with all aspects of enterprise network security including penetration testing, and vulnerability analysis. Beau is the developer of the PowerShell tool MailSniper, a Hack Naked TV host, and frequent speaker at industry events. @dafthack on Twitter."
-		},
-		{
-			"sptitle": "",
-			"who": "Mike Felch",
-			"indexsp": 1809,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Mike is currently a red teamer / pentester for Black Hills Information Security. He began his career in 1997 as a Linux Administrator which eventually led to numerous offensive security roles, software development and hardware/software security research. Mike is also a lead forensics instructor for TeelTech, an Officer for OWASP Orlando (Chief Breaker) and an organizer for BSides Orlando."
-		},
-		{
-			"sptitle": "",
-			"who": "Jon Haas",
-			"indexsp": 1810,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Jonathan Haas is the Managing Principal at Jet Set Security, where he leads the development of Information Security programs for multiple partners globally. Previously, Haas designed and implemented multiple highly acclaimed static analysis tools at various Fortune 10 companies. He presents at conferences around the world, as well as leading roundtable discussions for security professionals on risk management, corporate security and insider threat."
-		},
-		{
-			"sptitle": "",
-			"who": "Alex Lynch",
-			"indexsp": 1811,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Alex Lynch is a student of Computer Science at the University of Central Florida. As a competing member of Knightsec, Hack@UCF’s offensive security team, he has won multiple computer security competitions including Cyberseed CTF and RIT’S CPTC. Currently working part-time as a security consultant, Alex specializes in web application security but also sometimes spends his time shooting down WiFi enabled drones."
-		},
-		{
-			"sptitle": "",
-			"who": "Dennis Murphy",
-			"indexsp": 1812,
-			"last_update": "2018-02-02T12:00:00-07:00",
-			"media": "",
-			"bio": "Designing, installing and maintaining process automation networks is where I started my career 25 years ago. Most of my experience with SCADA systems was integrating data between the IT and OT networks. In 2005, I realized how security was more of an afterthought in my work and I shifted my focus to securing ICS networks. Now I am turning into a network security monitoring (NSM) professional and using this technology to help ICS engineers understand the impacts their design decisions have on the security of control system networks. I focus on providing practical solutions to meet national critical infrastructure cyber security requirements. My main interest is in bridging the gap between the information technology (IT) security requirements and operational technology (OT) security requirements. Those requirements are not synchronized and causes much confusion and heartache in the industry."
-		}
-	],
-	"update_date": "2018-02-02T10:00:00-07:00"
+  "speakers": [
+    {
+      "sptitle": "",
+      "who": "Mike Sanders",
+      "indexsp": 1,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "TBA"
+    },
+    {
+      "sptitle": "",
+      "who": "z0rro",
+      "indexsp": 2,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "z0rro helps run DC562, does red teaming, and security research."
+    },
+    {
+      "sptitle": "",
+      "who": "Amit Serper",
+      "indexsp": 3,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Amit leads the security research at Cybereason’s Boston HQ. He specializes in low-level, vulnerability and kernel research, malware analysis and reverse engineering. He also has extensive experience researching attacks on large scale networks and investigating undocumented OS resources and APIs. Prior to joining Cybereason, Amit spent nine years leading security research projects and teams for an Israeli intelligence agency, specifically in embedded system security. He’s presented at RSA, BSides, CircleCityCon, Derbycon, LayerOne and other conferences."
+    },
+    {
+      "sptitle": "",
+      "who": "Rtzq0",
+      "indexsp": 4,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Rtzq0 is a \"DevOps\" (whatever the hell that means) consultant, hacker and organizer with DC562, and loves him some karate. Designing a 3d printer for hackers “There are a TON of 3d printers out there, and more being released every day. Increasing interest has led to increasing competition from Shenzen, which has driven prices lower and quality at low price points ever higher. But as more and more of these impressive products are produced, the 3d printing ecosystem moves further and further away from it’s RepRap roots, it’s hacker roots. More and more printer designs rely on prefab kits or sourcing proprietary metal parts, and less and less focus is being placed on developing something that you can fiddle with, remix, and rebuild with your friends and a modicum of study."
+    },
+    {
+      "sptitle": "",
+      "who": "Robert Adams",
+      "indexsp": 5,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Robert is a licensed attorney and a member of the State Bar of California, the U.S. District Court Bar for the Central District of California, and the American Bar Association. I am listed as a Cooperating Attorney with the EFF and holds multiple certifications. He established his own law firm, RobbLAW, that specializes in information technology law, corporate compliance, privacy and data security law, computer law, and Internet/cyber law (even though he hates the term cyber, it’s how the State Bar categorizes it). Robert grew up in the 80’s and was fortunate enough to have a computer in his bedroom. He enjoyed playing with it but always wanted to be a lawyer; he loved arguing too much. Robert never thought about computers as a career until being discharged from the United States Marine Corps. He had just moved to Los Angeles and the only job available at the time was in desktop support. He knew enough about computers to figure out how to do the job so he took it. Over the years, Robert learned as much as he could and eventually worked my way up to becoming the Technical Lead Engineer in North America for Universal Music. After running their engineering program for a couple of years, Robert decided it was time to follow my calling and go to law school. He worked fulltime and went to law school in the evenings. After graduating, Robert transitioned from systems engineering to information security and compliance because it allowed me to keep my technical skills and apply my legal education."
+    },
+    {
+      "sptitle": "",
+      "who": "Security Panda",
+      "indexsp": 6,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Brett is a Breaker of Web Applications, Leader of a DefCon Group, Maker of Tasty Food, and Owner of a Majestic Beard. He has over 17 years of experience in IT and Security, specializing in Web Application Pentesting, PCI practices, vulnerability scanning, and management."
+    },
+    {
+      "sptitle": "",
+      "who": "Wasabi",
+      "indexsp": 7,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Researcher of embedded devices and internet of things"
+    },
+    {
+      "sptitle": "",
+      "who": "Matthew Stits",
+      "indexsp": 8,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Matthew Stits has been in the security industry for nearly 20 years. He’s consulted and worked for a number of fortune 500 companies in the Communications, Finance, Casino Gaming and Payment Card industries. Today he’s a Security Architect and Researcher for Adobe focusing on emerging technologies and business cases."
+    },
+    {
+      "sptitle": "",
+      "who": "Katie Knowles",
+      "indexsp": 9,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "@_sigil",
+      "bio": "Katie Knowles (@_sigil) is a Security Consultant and Pentester with MWR InfoSecurity. Before her switch to offense, she implemented and managed enterprise security solutions. She enjoys good time spent on good projects, learning new tricks and incantations to befuddle innocent computers, and sharing her newfound knowledge with anyone (un)fortunate enough to be in earshot."
+    },
+    {
+      "sptitle": "",
+      "who": "Timur Yunusov",
+      "indexsp": 10,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Timur Yunusov – Senior Expert of Banking systems security and author of multiple researches in field of application security including “”Apple Pay replay attacks”” showed at the BlackHat USA 2017, “”Bruteforce of PHPSESSID””, rated in Top Ten Web Hacking Techniques by WhiteHat Security and “”XML Out-Of-Band”” showed at the BlackHat EU. Professional application security researcher. Timur has previously spoken at CanSecWest, BlackHat USA, BlackHat EU, HackInTheBox, Nullcon, NoSuchCon, Hack In Paris, ZeroNights and Positive Hack Days."
+    },
+    {
+      "sptitle": "",
+      "who": "Leigh-Anne Galloway",
+      "indexsp": 11,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "",
+      "bio": "Leigh-Anne Galloway is the Cyber Security Resilience Lead at Positive Technologies where she advises organisations on how best to secure their applications and infrastructure against modern threats. She is an expert in the Application Security Unit, specializing in ATM and POS Security and is the author of security research in account recovery processes on social media websites. She has spoken at many conferences including DevSecCon, BSides, InfoSec Europe, Hacktivity, 8dot8, Blackhat EU and Troopers."
+    },
+    {
+      "sptitle": "",
+      "who": "Matthew Hoy",
+      "indexsp": 12,
+      "last_update": "2018-05-14T12:00:00-07:00",
+      "media": "@mattrix_",
+      "bio": "Matthew Hoy (@mattrix_). Matt has worked in the Information Security world for over 15 years in various Information Security roles from Security Analyst, Architect, Incident Response, Consulting and Management. Matt currently holds CISSP and SANS GCIH Certifications. Matt has presented at Toorcon Seattle, B-Sides Los Angeles, Toorcon San Diego, Circle City Con, Grrcon, DerbyCon, and of course LayeOne."
+    },
+    {
+      "sptitle": "",
+      "who": "Mark Liphardt",
+      "indexsp": 13,
+      "last_update": "2018-05-17T02:18:00-07:00",
+      "media": "",
+      "bio": "OG member of the hacking/InfoSec community. A computer forensics expert with a lifetime of experiences to share on many aspects of the tech industry. A Defcon goon for 25 years and longtime privacy advocate."
+    }
+  ],
+  "update_date": "2018-05-17T02:18:00-07:00"
 }

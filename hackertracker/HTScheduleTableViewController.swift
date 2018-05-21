@@ -28,7 +28,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     // Dates for HackWest 2018
     //var days = ["2018-03-21","2018-03-22","2018-03-23"]
     // Dates for BSides ORL
-    var days = ["2018-04-07"]
+    //var days = ["2018-04-07"]
+    // Dates for LayerOne
+    var days = ["2018-05-25", "2018-05-26", "2018-05-27"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -294,7 +296,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                     eventSpeakerDownloadGroup.leave()
                 }
             } else {
-                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+                let resStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
                     DispatchQueue.main.async() {
@@ -344,7 +346,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                     eventSpeakerDownloadGroup.leave()
                 }
             } else {
-                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+                let resStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
                     DispatchQueue.main.async() {
@@ -393,7 +395,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                     self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
                 }
             } else {
-                let resStr = NSString(data: data!, encoding: String.Encoding.ascii.rawValue)
+                let resStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                 
                 if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
                     DispatchQueue.main.async() {
@@ -456,12 +458,12 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
     }
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
-        let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 EST")!
-        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 EST")!
+        let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
+        let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         if eType.dbName.contains("Other") {
-            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Workshop'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
+            fr.predicate = NSPredicate(format: "entry_type != 'Official' AND entry_type != 'Village' AND entry_type != 'Contest'  AND start_date >= %@ AND end_date <= %@", argumentArray: [startofDay, endofDay])
         } else {
             //print("Searching for \(eType.dbName) from \(String(describing: startofDay)) to \(String(describing: endofDay))")
             fr.predicate = NSPredicate(format: "entry_type = %@ AND start_date >= %@ AND end_date <= %@", argumentArray: [eType.dbName, startofDay, endofDay])
