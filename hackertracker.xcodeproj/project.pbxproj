@@ -17,6 +17,7 @@
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
 		5D3A94471AD6C6F40076F544 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94461AD6C6F40076F544 /* Status.swift */; };
 		5D3A94491AD6C6F40076F544 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A94481AD6C6F40076F544 /* Message.swift */; };
+		5D67231320717C7300CF1FA2 /* bsidesorl_map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67231220717C7300CF1FA2 /* bsidesorl_map.pdf */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DA748581B3EF30100D10E5C /* HTEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */; };
@@ -106,6 +107,7 @@
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5D3A94461AD6C6F40076F544 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		5D3A94481AD6C6F40076F544 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5D67231220717C7300CF1FA2 /* bsidesorl_map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bsidesorl_map.pdf; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA748571B3EF30100D10E5C /* HTEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsTableViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				49730E4C1E2D1A9F0029438C /* Utilities */,
 				498AD73F1E2D2C0400DD5B56 /* Views */,
 				5DD642681AC3C62300ED3256 /* Images.xcassets */,
+				5D67231220717C7300CF1FA2 /* bsidesorl_map.pdf */,
 				5DD642601AC3C62300ED3256 /* hackertracker.xcdatamodeld */,
 				5DD6425C1AC3C62300ED3256 /* Supporting Files */,
 				5DA268531D06006400249C63 /* LaunchScreen.storyboard */,
@@ -489,6 +492,7 @@
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				7820245D1F05B7CE0092ED07 /* cert.der in Resources */,
 				5D32D653202A3C1900682D5F /* hackwest-2018-map.pdf in Resources */,
+				5D67231320717C7300CF1FA2 /* bsidesorl_map.pdf in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 				5D00AA2C1B0C3BE600916EAC /* schedule-full.json in Resources */,
 			);
