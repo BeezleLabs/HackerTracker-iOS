@@ -11,42 +11,47 @@ import UIKit
 public enum Location
 {
     case unknown
-    case track_101
-    case track1_101
-    case track2_101
+    case track1
     case track2
-    case track3
-    case track4
-    case trevi
-    case capri
-    case modena
+    case training1
+    case training2
+    case training3
+    case workshop1
+    case workshop2
+    case chillout
+    case lightning
+    case villages
     
     public static func valueFromString(_ value : String) -> Location
     {
         switch value.lowercased() {
-        case "101 track 1":
-            return .track1_101
-        case "101 track 2":
-            return .track2_101
-        case "101 track":
-            return .track_101
-        case "track 3":
-            return .track3
-        case "track 4":
-            return .track4
-        case "trevi room":
-            return .trevi
-        case "capri room":
-            return .capri
-        case "modena room":
-            return .modena
-        case "track 2":
+        case "track one":
+            return .track1
+        case "track two":
             return .track2
+        case "villages":
+            return .villages
+        case "training one":
+            return .training1
+        case "training two":
+            return .training2
+        case "training three":
+            return .training3
+        case "workshop one":
+            return .workshop1
+        case "workshop two":
+            return .training2
+        case "chill out":
+            return .chillout
+        case "Lightning":
+            return .lightning
         default:
+            print("unkown location: \(value)")
             return .unknown
         }
     }
 }
+
 
 enum TimeOfDay
 {
@@ -56,6 +61,15 @@ enum TimeOfDay
     public func url() -> URL
     {
         return (self == .day ? MapLocationView.dayFile : MapLocationView.nightFile) as URL
+    }
+
+    static func timeOfDay(for date: Date) -> TimeOfDay {
+        var calendar = NSCalendar.current
+        calendar.timeZone = TimeZone(abbreviation: "EST")!
+        let hour = calendar.component(.hour, from: date)
+        // 8pm
+        return hour >= 20 ? .night : .day
+
     }
 }
 
@@ -68,8 +82,8 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
     var mapOffset = CGPoint(x:0, y:0)
     var mapZoomLevel : CGFloat = 1.0
     
-    fileprivate static let dayFile = Bundle.main.url(forResource: "dc-25-floorplan-v7.5-public", withExtension: "pdf")!
-    fileprivate static let nightFile = Bundle.main.url(forResource: "dc-25-floorplan-night", withExtension: "pdf")!
+    fileprivate static let dayFile = Bundle.main.url(forResource: "hackwest-2018-map", withExtension: "pdf")!
+    fileprivate static let nightFile = Bundle.main.url(forResource: "hackwest-2018-map", withExtension: "pdf")!
 
     var timeOfDay = TimeOfDay.day
     {
@@ -84,53 +98,58 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         didSet
         {
             switch currentLocation {
-            case .track_101, .track1_101:
-                mapZoomLevel = 5.46535710851014
-                mapOffset = CGPoint(x: 1108.0, y: 1091.0)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+            case .training1:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 50.0, y: 287.0)
                 break
-            case .track2, .track2_101:
-                mapZoomLevel = 5.04600641912036
-                mapOffset = CGPoint(x: 936.333333333333, y: 352)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+            case .training2:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 50.0, y: 730.0)
                 break
-            case .track3:
-                mapZoomLevel = 6.47638274448022
-                mapOffset = CGPoint(x: 281, y: 586.333333333333)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+            case .training3:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 275.0, y: 675.0)
                 break
-            case .track4:
-                mapZoomLevel = 6.47638274448022
-                mapOffset = CGPoint(x: 441.666666666667, y: 586.333333333333)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+            case .workshop1:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 555.0, y: 712.0)
                 break
-            case .trevi:
-                mapZoomLevel = 30.5747421643601
-                mapOffset = CGPoint(x: 4134.66666666667, y: 4805.66666666667)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+            case .workshop2:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 307.0, y: 287.0)
                 break
-            case .modena:
-                mapZoomLevel = 30.5747421643601
-                mapOffset = CGPoint(x: 4086.66666666667, y: 5467.33333333333)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+            case .track1:
+                mapZoomLevel = 4.0
+                mapOffset = CGPoint(x: 796.0, y: 475.0)
                 break
-            case .capri:
-                mapZoomLevel = 25.7730198429929
-                mapOffset = CGPoint(x: 3129.0, y: 6295.0)
-                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
-                invalidateIntrinsicContentSize()
+            case .track2:
+                mapZoomLevel = 5.0
+                mapOffset = CGPoint(x: 925, y: 239)
+                break
+            case .chillout:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 943.0, y: 282.0)
+                break
+            case .villages:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 1456.0, y: 276.0)
+                break
+            case .lightning:
+                mapZoomLevel = 5.32341261928717
+                mapOffset = CGPoint(x: 950.0, y: 792.0)
                 break
             default:
-                mapOffset = CGPoint(x: 0, y: 0)
-                currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
+                mapOffset = .zero
                 break
             }
+
+            if (currentLocation == .unknown) {
+                currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
+            } else {
+                currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
+            }
+            
+            invalidateIntrinsicContentSize()
         }
     }
     
@@ -146,6 +165,8 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         
         setup()
     }
+    
+    
     
     func setup()
     {
@@ -163,6 +184,7 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         webView.delegate = self
         webView.scalesPageToFit = true
         webView.scrollView.delegate = self
+        webView.scrollView.scrollsToTop = false
     }
     
     

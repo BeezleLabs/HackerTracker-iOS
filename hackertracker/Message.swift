@@ -13,5 +13,6 @@ class Message: NSManagedObject {
 
     @NSManaged var date: Date
     @NSManaged var msg: String
+    @NSManaged var id: String
 
 }

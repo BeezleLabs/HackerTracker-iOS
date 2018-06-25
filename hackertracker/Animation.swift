@@ -19,7 +19,7 @@ class Animation {
     var startingPixelScale = 1.0
 
     let exposureIntensityScale = 2.0
-    let maskedSplashImage = CIImage(image: #imageLiteral(resourceName: "splashMask"))?.clampingToExtent()
+    let maskedSplashImage = CIImage(image: #imageLiteral(resourceName: "splashMask"))?.clampedToExtent()
 
     let stripeCutWidth = 25.0
     let stripeMoveSpeed = 15.0
@@ -47,7 +47,7 @@ class Animation {
         // Initialize onImageUpdate before image because setting image will trigger onImageUpdate.
         self.onImageUpdate = onImageUpdate
         self.image = image
-        coreImage = CIImage(image: self.image)?.clampingToExtent()
+        coreImage = CIImage(image: self.image)?.clampedToExtent()
         if let coreImage = coreImage {
             originalInputCIImage = coreImage
         }
@@ -68,7 +68,7 @@ class Animation {
         originalSplashImage = image
         transitionStartTime = CACurrentMediaTime()
 
-        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        displayLink.add(to: .main, forMode: .commonModes)
         isPlaying = true
     }
 
@@ -163,7 +163,7 @@ class Animation {
         pixelFilter.setValue(image, forKey: kCIInputImageKey)
         pixelFilter.setValue((pixelScaleFactor * progress) + startingPixelScale, forKey: kCIInputScaleKey)
 
-        return pixelFilter.outputImage?.clampingToExtent()
+        return pixelFilter.outputImage?.clampedToExtent()
     }
 
     private func applyExposureFilter(on image: CIImage, progress: Double) -> CIImage? {
@@ -175,7 +175,7 @@ class Animation {
         exposureFilter.setValue((exposureIntensityScale * progress), forKey: kCIInputEVKey)
         exposureFilter.setValue(image, forKey: kCIInputImageKey)
 
-        return exposureFilter.outputImage?.clampingToExtent()
+        return exposureFilter.outputImage?.clampedToExtent()
     }
 
     func applyStripeFilter(progress: Double) -> CIImage? {
@@ -195,9 +195,9 @@ class Animation {
         stripeFilter.setValue(stripeCutWidth + drand48() * sign * 2, forKey: kCIInputWidthKey)
 
 
-        let output = stripeFilter.outputImage?.clampingToExtent()
-        return output?.applying(CGAffineTransform(rotationAngle: .pi / 2))
-            .applying(CGAffineTransform(translationX: CGFloat(stripeXPostion * 500), y: 0))
+        let output = stripeFilter.outputImage?.clampedToExtent()
+        return output?.transformed(by: CGAffineTransform(rotationAngle: .pi / 2))
+            .transformed(by: CGAffineTransform(translationX: CGFloat(stripeXPostion * 500), y: 0))
     }
 
     func applyLinearBumpFilter(on image: CIImage, progress: Double) -> CIImage? {
@@ -209,7 +209,7 @@ class Animation {
         linearBumpFilter.setValue(image, forKey: kCIInputImageKey)
         linearBumpFilter.setValue(max(progress, 0.1) * stripeScaleBump + 1, forKey: kCIInputScaleKey)
 
-        return linearBumpFilter.outputImage?.clampingToExtent()
+        return linearBumpFilter.outputImage?.clampedToExtent()
     }
 
     lazy var pixelFilter: CIFilter? = {
@@ -247,7 +247,7 @@ class Animation {
     }()
 
     lazy var whiteImage: CIImage? = {
-        return self.coloredFilter(CIColor.white())?.outputImage?.clampingToExtent()
+        return self.coloredFilter(CIColor.white)?.outputImage?.clampedToExtent()
     }()
 
     private func applyBlendFilter(with inputImage: CIImage, backgroundImage: CIImage?, mask: CIImage?) -> CIImage? {
@@ -256,7 +256,7 @@ class Animation {
         blendWithMaskFilter?.setValue(backgroundImage, forKey: kCIInputBackgroundImageKey)
         blendWithMaskFilter?.setValue(mask, forKey: kCIInputMaskImageKey)
 
-        return blendWithMaskFilter?.outputImage?.clampingToExtent()
+        return blendWithMaskFilter?.outputImage?.clampedToExtent()
     }
 
     private func coloredFilter(_ color: CIColor) -> CIFilter? {

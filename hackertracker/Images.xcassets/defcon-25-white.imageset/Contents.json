@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "defcon-25-white.png",
+      "filename" : "l1-top@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "defcon-25-white@2x.png",
+      "filename" : "l1-top@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "defcon-25-white@3x.png",
+      "filename" : "l1-top@3x.png",
       "scale" : "3x"
     }
   ],

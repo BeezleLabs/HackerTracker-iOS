@@ -12,13 +12,11 @@ import WillowTreeScrollingTabController
 
 struct eventType {
     var name:String
-    var img:String
     var dbName:String
     var count:Int
    
-    init(n:String,i:String,d:String,c:Int) {
+    init(n:String,d:String,c:Int) {
         self.name = n
-        self.img = i
         self.dbName = d
         self.count = c
     }
@@ -27,24 +25,21 @@ struct eventType {
 class HTEventsScrollingTabController: ScrollingTabController {
     
     var eventTypes: [eventType] = [
-        eventType(n: "TALKS", i: "speaker", d: "Official", c: 0),
-        eventType(n: "CONTESTS", i: "contest", d: "Contest", c: 0),
-        eventType(n: "EVENTS", i: "calendar-active", d: "Event", c: 0),
-        eventType(n: "PARTIES", i: "party", d: "Party", c: 0),
-        eventType(n: "KIDS", i: "kids", d: "Kids", c: 0),
-        eventType(n: "SKYTALKS", i: "cloud", d: "Skytalks", c: 0),
-        eventType(n: "VILLAGES", i: "village", d: "Villages", c: 0),
-        eventType(n: "WORKSHOPS", i:"workshop", d:"Workshop", c: 0),
-        eventType(n: "OTHER", i:"other", d:"Other", c:0)
+        eventType(n: "CONFERENCE", d: "Official", c: 0),
+        eventType(n: "VILLAGES", d: "Village", c: 0),
+        eventType(n: "CONTESTS", d: "Contest", c: 0),
+        eventType(n: "OTHER", d:"Other", c:0)
 
     ]
     
-    let leftFadedView = UIView()
-    let rightFadedView = UIView()
+    var leftFadedView: UIView!
+    var rightFadedView: UIView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        leftFadedView = UIView()
+        rightFadedView = UIView()
         numToPreload = eventTypes.count + 2
         
         var eventControllers = [HTScheduleTableViewController]()
@@ -75,7 +70,7 @@ class HTEventsScrollingTabController: ScrollingTabController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = UIColor.backgroundGray
         navigationController?.navigationBar.isTranslucent = false
         automaticallyAdjustsScrollViewInsets = true
         

@@ -17,11 +17,8 @@ protocol EventDetailDelegate {
 class HTEventDetailViewController: UIViewController {
 
     @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventNameButton2: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet weak var eventStartTimeLabel: UILabel!
-    @IBOutlet weak var eventStopTimeLabel: UILabel!
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDetailTextView: UITextView!
     @IBOutlet weak var eventStarredButton: UIBarButtonItem!
@@ -40,6 +37,11 @@ class HTEventDetailViewController: UIViewController {
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
 
+    /*
+    //Keep around for map view visual testing
+    var eventLocations : [Location] = [.track_101, .track1_101, .track2, .track2_101, .track3, .track4, .capri, .modena, .trevi, .bioHackingVillage, .cryptoAndPrivacyVillage, .hardwareHackingVillage, .icsVillage, .iotVillage, .lockpickVillage, .packetCaptureVillage, .socialEngineerVillage, .tamperEvidentVillage, .wirelessVillage, .unknown]
+    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,7 +62,7 @@ class HTEventDetailViewController: UIViewController {
         }
         
         eventDetailTextView.text = event.details
-        
+
         if (event.starred) {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
         } else {
@@ -79,10 +81,7 @@ class HTEventDetailViewController: UIViewController {
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
         locationMapView.currentLocation = Location.valueFromString(event.location)
-        
-        let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
-        touchGesture.minimumPressDuration = 0.0
-        locationMapView.addGestureRecognizer(touchGesture)
+        locationMapView.timeOfDay = TimeOfDay.timeOfDay(for: event.start_date)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -125,22 +124,22 @@ class HTEventDetailViewController: UIViewController {
             let whoAttributedString = NSMutableAttributedString(string:s.who)
             let whoParagraphStyle = NSMutableParagraphStyle()
             whoParagraphStyle.alignment = .center
-            whoAttributedString.addAttribute(NSParagraphStyleAttributeName, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
-            whoAttributedString.addAttribute(NSForegroundColorAttributeName, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (s.who as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (s.who as NSString).length))
             
             let titleAttributedString = NSMutableAttributedString(string:s.sptitle)
             let titleParagraphStyle = NSMutableParagraphStyle()
             titleParagraphStyle.alignment = .center
-            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSParagraphStyleAttributeName, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
             
             let bioAttributedString = NSMutableAttributedString(string:s.bio)
             let bioParagraphStyle = NSMutableParagraphStyle()
             bioParagraphStyle.alignment = .justified
-            bioAttributedString.addAttribute(NSParagraphStyleAttributeName, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
             
             
             speakerBios.append(whoAttributedString)
@@ -202,7 +201,7 @@ class HTEventDetailViewController: UIViewController {
         locationMapView.addGestureRecognizer(touchGesture)
     }
 
-    func expand() {
+    @objc func expand() {
         if self.eventNameLabel.attributedText == speakerList {
             self.eventNameLabel.attributedText = speakerBios
         } else {
@@ -231,6 +230,8 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
             saveContext()
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
+
+            reloadEvents()
         } else {
             
             let _duplicates = dataRequest.findConflictingStarredEvents(event)
@@ -259,10 +260,7 @@ class HTEventDetailViewController: UIViewController {
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                     self.saveContext()
                     self.scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
-                    
-                    if let delegate = self.delegate {
-                        delegate.reloadEvents()
-                    }
+                    self.reloadEvents()
                 })
                 
                 let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
@@ -273,7 +271,7 @@ class HTEventDetailViewController: UIViewController {
                 
                 alert.addAction(yesItem)
                 alert.addAction(noItem)
-                
+
                 self.present(alert, animated: true, completion: nil)
             }
             else
@@ -282,12 +280,18 @@ class HTEventDetailViewController: UIViewController {
                 eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                 saveContext()
                 scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
+
+                reloadEvents()
             }
 
         }
 
-        if let delegate = delegate {
-            delegate.reloadEvents()
+    }
+
+    func reloadEvents() {
+        if let splitViewController = self.splitViewController,
+            !splitViewController.isCollapsed {
+            delegate?.reloadEvents()
         }
     }
 
@@ -298,7 +302,6 @@ class HTEventDetailViewController: UIViewController {
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
 
-        
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Event"
         content.body = "\(event.title) in \(event.location)"
@@ -327,7 +330,7 @@ class HTEventDetailViewController: UIViewController {
         }
     }
     
-    func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)
+    @objc func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)
     {
         let touchPoint = tapGesture.location(in: tapGesture.view)
         
@@ -343,6 +346,7 @@ class HTEventDetailViewController: UIViewController {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
                 mapView.mapLocation = locationMapView.currentLocation
+                mapView.timeOfDay = locationMapView.timeOfDay
                 let navigationController = HTEventsNavViewController(rootViewController: mapView)
                 self.present(navigationController, animated: true, completion: nil)
             }

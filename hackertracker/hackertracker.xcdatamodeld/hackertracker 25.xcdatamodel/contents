@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 7.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Xcode 7.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Event" representedClassName=".Event" syncable="YES">
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="end_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -21,6 +21,7 @@
     </entity>
     <entity name="Message" representedClassName=".Message" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="msg" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Speaker" representedClassName=".Speaker" syncable="YES">
@@ -35,10 +36,10 @@
         <attribute name="lastsync" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-434" positionY="-3" width="128" height="238"/>
+        <element name="Event" positionX="-434" positionY="-3" width="128" height="240"/>
         <element name="EventSpeaker" positionX="-27" positionY="117" width="128" height="75"/>
-        <element name="Message" positionX="-54" positionY="-9" width="128" height="75"/>
-        <element name="Speaker" positionX="-191" positionY="102" width="128" height="133"/>
+        <element name="Message" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Speaker" positionX="-191" positionY="102" width="128" height="135"/>
         <element name="Status" positionX="-63" positionY="-18" width="128" height="60"/>
     </elements>
 </model>

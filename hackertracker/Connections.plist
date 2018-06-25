@@ -3,10 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>base</key>
-	<string>https://info.defcon.org/json/</string>
+	<string>https://raw.githubusercontent.com/BeezleLabs/conferences/master/LAYERONE2018/</string>
+	<key>event_types</key>
+	<string></string>
 	<key>schedule</key>
 	<string>schedule-full.json</string>
 	<key>speakers</key>
 	<string>speakers.json</string>
+	<key>messages</key>
+	<string>messages.json</string>
 </dict>
 </plist>

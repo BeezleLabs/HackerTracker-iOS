@@ -22,16 +22,19 @@ class DataImportManager: NSObject {
     }
     
     public func importSpeakers(speakerData : Data) throws {
+        //print("IMPORT SPEAKERS")
         let _speakers = try JSONSerialization.jsonObject(with: speakerData, options: .allowFragments) as? [String : Any]
         
-        guard let speakers = _speakers, let updateDateString = speakers["update_date"] as? String, let _ = DateFormatterUtility.iso8601pdtFormatter.date(from:updateDateString), let speakerItems = speakers["speakers"] as? [[String : Any]] else
+        guard let speakers = _speakers, let updateDateString = speakers["update_date"] as? String, let _ = DateFormatterUtility.iso8601Formatter.date(from:updateDateString), let speakerItems = speakers["speakers"] as? [[String : Any]] else
         {
+            print("Something is wrong with speaker import")
             return ;
         }
         
         for speaker in speakerItems
         {
-            if let _ = speaker["last_update"] as? String, let _ = speaker["indexsp"] as? String {
+            //print("SPEAKER: \(speaker)\n")
+            if let _ = speaker["last_update"] as? String, let _ = speaker["indexsp"] as? Int32 {
                 do {
                     _ = try importSpeaker(speaker: speaker)
                 } catch {
@@ -43,7 +46,7 @@ class DataImportManager: NSObject {
     }
     
     public func importSpeaker(speaker : [String : Any]) throws -> Speaker {
-        guard let indexString = speaker["indexsp"] as? String, let index = Int32(indexString) else {
+        guard let index = speaker["indexsp"] as? Int32 else {
             throw ImportError.idDoesntExist
         }
         
@@ -55,6 +58,7 @@ class DataImportManager: NSObject {
         let managedSpeaker : Speaker
         
         if let existingSpeaker = ret.first as? Speaker {
+            //print("Existing Speaker \(index)")
             managedSpeaker = existingSpeaker
         } else {
             managedSpeaker = NSEntityDescription.insertNewObject(forEntityName: "Speaker", into: managedContext) as! Speaker
@@ -74,7 +78,7 @@ class DataImportManager: NSObject {
         
         managedSpeaker.indexsp = index
         
-        if let lastUpdateString = speaker["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: lastUpdateString) {
+        if let lastUpdateString = speaker["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
             managedSpeaker.last_update = lastUpdateDate
         } else {
             managedSpeaker.last_update = Date()
@@ -101,7 +105,7 @@ class DataImportManager: NSObject {
     public func importEvents(eventData : Data) throws {
         let _events = try JSONSerialization.jsonObject(with: eventData, options: .allowFragments) as? [String : Any]
         
-        guard let events = _events, let updateDateString = events["update_date"] as? String, let lastUpdateDate = DateFormatterUtility.iso8601pdtFormatter.date(from:updateDateString), let eventItems = events["schedule"] as? [[String : Any]] else
+        guard let events = _events, let updateDateString = events["update_date"] as? String, let lastUpdateDate = DateFormatterUtility.iso8601Formatter.date(from:updateDateString), let eventItems = events["schedule"] as? [[String : Any]] else
         {
             return ;
         }
@@ -126,12 +130,12 @@ class DataImportManager: NSObject {
     }
     
     public func importEvent(event : [String : Any]) throws -> Event {
-        guard let indexString = event["index"] as? String, let index = Int32(indexString) else {
+        guard let id = event["id"] as? String else {
             throw ImportError.idDoesntExist
         }
         
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fre.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
+        fre.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
         
         let ret = try managedContext.fetch(fre)
         
@@ -142,48 +146,40 @@ class DataImportManager: NSObject {
             
         } else {
             managedEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: managedContext) as! Event
-            managedEvent.index = index
+            managedEvent.id = id
         }
+        
+        if let index = event["index"] as? Int32 {
+            managedEvent.index = index
+        } else {
+            managedEvent.index = 0
+            //throw ImportError.idDoesntExist
+        }
+        
         
         if let who = event["who"] as? [[String : Any]] {
             
-            let speakersFetch:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
-            speakersFetch.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
             
-            do {
-                let speakerEvents = try managedContext.fetch(speakersFetch) as? [EventSpeaker]
-                
-                if let speakerEvents = speakerEvents {
-                    for speakerEvent in speakerEvents {
-                        managedContext.delete(speakerEvent)
-                    }
 
-                }
-                
-                try managedContext.save()
-            } catch {
-                assert(false, "Couldn't Fetch Speakers")
-                print("Couldn't fetch speakers ignoring")
-            }
             
             for eventData in who {
-                if let speakerIDString = eventData["indexsp"] as? String, let speakerID = Int32(speakerIDString)
+                
+                if let speakerString = eventData["indexsp"] as? String, let speakerID = Int32(speakerString)
                 {
+                    
                     do {
-                        try setSpeakerEventPair(eventID: index, speakerID: speakerID)
+                        try setSpeakerEventPair(eventID: managedEvent.index, speakerID: speakerID)
                     } catch {
                         assert(false, "Failed to import Speaker")
                         print("Failed to import Speaker \(event)")
                     }
+                } else {
+                    print("could not find indexsp, something is up")
                 }
             }
         }
         
-        if let id = event["id"] as? String {
-            managedEvent.id = id
-        } else {
-            managedEvent.id = ""
-        }
+       
         
         if let includes = event["includes"] as? String {
             managedEvent.includes = includes
@@ -206,6 +202,22 @@ class DataImportManager: NSObject {
             if title.localizedCaseInsensitiveContains("jail break") {
                 title = title.replacingOccurrences(of: "jail break", with: "[CENSORED]")
                 title = title.replacingOccurrences(of: "Jail Break", with: "[CENSORED]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("macOS") {
+                title = title.replacingOccurrences(of: "macOS", with: "[DESKTOP OS]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("OSX") {
+                title = title.replacingOccurrences(of: "OSX", with: "[DESKTOP OS]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("OS X") {
+                title = title.replacingOccurrences(of: "OS X", with: "[DESKTOP OS]")
+            }
+            
+            if title.localizedCaseInsensitiveContains("iOS") {
+                title = title.replacingOccurrences(of: "iOS", with: "[MOBILE OS]")
             }
             
             managedEvent.title = title
@@ -241,6 +253,22 @@ class DataImportManager: NSObject {
                 description = description.replacingOccurrences(of: "watchOS", with: "[OPERATING SYSTEM]")
             }
             
+            if description.localizedCaseInsensitiveContains("macOS") {
+                description = description.replacingOccurrences(of: "macOS", with: "[DESKTOP OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("OSX") {
+                description = description.replacingOccurrences(of: "OSX", with: "[DESKTOP OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("OS X") {
+                description = description.replacingOccurrences(of: "OS X", with: "[DESKTOP OPERATING SYSTEM]")
+            }
+            
+            if description.localizedCaseInsensitiveContains("iOS") {
+                description = description.replacingOccurrences(of: "iOS", with: "[MOBILE OPERATING SYSTEM]")
+            }
+            
             if description.localizedCaseInsensitiveContains("jailbreak") {
                 description = description.replacingOccurrences(of: "jailbreak", with: "[CENSORED]")
                 description = description.replacingOccurrences(of: "Jailbreak", with: "[CENSORED]")
@@ -256,19 +284,20 @@ class DataImportManager: NSObject {
             managedEvent.details = ""
         }
         
-        if let startDateString = event["start_date"] as? String, let startDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: startDateString) {
+        if let startDateString = event["start_date"] as? String, let startDate =  DateFormatterUtility.iso8601Formatter.date(from: startDateString) {
+            //print("startdate: \(String(describing:startDateString))")
             managedEvent.start_date = startDate
         } else {
-            managedEvent.start_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!
+            managedEvent.start_date = DateFormatterUtility.iso8601Formatter.date(from: "2018-01-19T10:00:00-05:00")!
         }
         
-        if let endDateString = event["end_date"] as? String, let endDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: endDateString) {
+        if let endDateString = event["end_date"] as? String, let endDate =  DateFormatterUtility.iso8601Formatter.date(from: endDateString) {
             managedEvent.end_date = endDate
         } else {
-            managedEvent.end_date = DateFormatterUtility.iso8601pdtFormatter.date(from: "2017-07-25T10:00:00")!
+            managedEvent.end_date = DateFormatterUtility.iso8601Formatter.date(from: "2018-01-21T10:00:00-05:00")!
         }
         
-        if let lastUpdateString = event["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601pdtFormatter.date(from: lastUpdateString) {
+        if let lastUpdateString = event["last_update"] as? String, let lastUpdateDate =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
             managedEvent.updated_at = lastUpdateDate
         } else {
             managedEvent.updated_at = Date()
@@ -283,6 +312,87 @@ class DataImportManager: NSObject {
         try managedContext.save()
         
         return managedEvent
+    }
+    
+    public func deleteMessages() throws {
+        let frm:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
+        
+        let ret = try managedContext.fetch(frm) as? [Message]
+        
+        for msg in ret! {
+            managedContext.delete(msg)
+        }
+    }
+    
+    public func resetDB() throws {
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+        let frs:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
+        
+        let rete = try managedContext.fetch(fre) as? [Event]
+        for ev in rete! {
+            managedContext.delete(ev)
+        }
+        let rets = try managedContext.fetch(frs) as? [Speaker]
+        for sp in rets! {
+            managedContext.delete(sp)
+        }
+        
+    }
+    
+    public func importMessages(msgData : Data) throws {
+        let _messages = try JSONSerialization.jsonObject(with: msgData, options: .allowFragments) as? [String : Any]
+        
+        guard let messages = _messages, let updateDateString = messages["update_date"] as? String, let messageItems = messages["messages"] as? [[String : Any]] else
+        {
+            return ;
+        }
+        
+        for msg in messageItems
+        {
+            if let _ = msg["date"] as? String, let _ = msg["text"] as? String, let _ = msg["id"] as? String {
+                do {
+                    _ = try importMessage(msg: msg)
+                } catch let error {
+                    print("Failed to import message \(msg) error \(error)")
+                }
+            }
+        }
+    }
+    
+    public func importMessage(msg: [String : Any]) throws -> Message {
+        guard let id = msg["id"] as? String else {
+            throw ImportError.idDoesntExist
+        }
+        
+        print("import message \(id)")
+
+        let frm:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
+        frm.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
+        
+        let ret = try managedContext.fetch(frm)
+        
+        let managedMessage : Message
+        
+        if let existingMessage = ret.first as? Message {
+            managedMessage = existingMessage
+        } else {
+            managedMessage = NSEntityDescription.insertNewObject(forEntityName: "Message", into: managedContext) as! Message
+            managedMessage.id = id
+        }
+        
+        if let dateString = msg["date"] as? String, let msgDate =  DateFormatterUtility.iso8601Formatter.date(from: dateString) {
+            managedMessage.date = msgDate
+        } else {
+            managedMessage.date = Date()
+        }
+        
+        if let text = msg["text"] as? String {
+            managedMessage.msg = text
+        } else {
+            managedMessage.msg = ""
+        }
+        
+        return managedMessage
     }
     
     public func lastSyncDate() -> Date? {
@@ -322,12 +432,26 @@ class DataImportManager: NSObject {
     }
     
     func setSpeakerEventPair(eventID : Int32, speakerID : Int32) throws {
-        let eventSpeaker = NSEntityDescription.insertNewObject(forEntityName: "EventSpeaker", into: managedContext) as! EventSpeaker
+        let speakersFetch:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
+        speakersFetch.predicate = NSPredicate(format: "index = %@ AND indexsp = %@", argumentArray: [eventID,speakerID])
         
-        eventSpeaker.index = eventID
-        eventSpeaker.indexsp = speakerID
-        
-        try managedContext.save()
+        do {
+            let speakerEvents = try managedContext.fetch(speakersFetch) as? [EventSpeaker]
+            
+            if (speakerEvents?.count)! < 1 {
+                //print("Adding speaker \(speakerID) to event \(eventID)")
+                let eventSpeaker = NSEntityDescription.insertNewObject(forEntityName: "EventSpeaker", into: managedContext) as! EventSpeaker
+                
+                eventSpeaker.index = eventID
+                eventSpeaker.indexsp = speakerID
+            }
+            
+            try managedContext.save()
+        } catch {
+            assert(false, "Couldn't Fetch Speakers")
+            print("Couldn't fetch speakers ignoring")
+        }
+
     }
     
 }

@@ -14,8 +14,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
     var filteredEvents:NSArray = []
-    var selectedEvent:Event?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
          tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
@@ -30,15 +29,30 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
 
     func reloadEvents() {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
+        let selectedIndexPath = tableView.indexPathForSelectedRow
+        var event: Event?
 
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-        self.filteredEvents = try! context.fetch(fr) as NSArray
+        if let selectedIndexPath = selectedIndexPath {
+            event = filteredEvents[selectedIndexPath.row] as? Event
+        }
 
         self.tableView.reloadData()
+
+        if let selectedIndexPath = selectedIndexPath,
+            let event = event,
+            selectedIndexPath.row < filteredEvents.count,
+            !splitViewController!.isCollapsed {
+
+            if let newEvent = filteredEvents[selectedIndexPath.row] as? Event,
+                newEvent == event {
+                tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
+            }
+        }
+
+        if let splitViewController = splitViewController,
+            !splitViewController.isCollapsed {
+            tableView.scrollToNearestSelectedRow(at: .middle, animated: true)
+        }
     }
     
     // MARK: - Table view data source
@@ -48,7 +62,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let characterCount = eventSearchBar.text?.characters.count, characterCount > 0 {
+        if let characterCount = eventSearchBar.text?.count, characterCount > 0 {
             return self.filteredEvents.count
         } else {
             return 0
@@ -88,7 +102,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         
         filterEvents(searchText!)
         
-        self.tableView.reloadData()
+        reloadEvents()
     }
     
     func filterEvents(_ searchText: String) {
@@ -137,7 +151,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if (searchText.characters.count > 0) {
+        if (searchText.count > 0) {
             filterEvents(searchText)
             
             self.tableView.reloadData()
@@ -146,7 +160,15 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             self.tableView.reloadData()
         }
     }
-    
+
+    func isFiltered() -> Bool {
+        guard let text = eventSearchBar.text else {
+            return false
+        }
+
+        return text.count > 0
+    }
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventDetailSegue") {
