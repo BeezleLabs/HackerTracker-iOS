@@ -46,7 +46,7 @@ public enum Location
         case "Lightning":
             return .lightning
         default:
-            print("unkown location: \(value)")
+            //print("unknown location: \(value)")
             return .unknown
         }
     }
@@ -82,8 +82,8 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
     var mapOffset = CGPoint(x:0, y:0)
     var mapZoomLevel : CGFloat = 1.0
     
-    fileprivate static let dayFile = Bundle.main.url(forResource: "hackwest-2018-map", withExtension: "pdf")!
-    fileprivate static let nightFile = Bundle.main.url(forResource: "hackwest-2018-map", withExtension: "pdf")!
+    fileprivate static let dayFile = Bundle.main.url(forResource: "layerone_map", withExtension: "pdf")!
+    fileprivate static let nightFile = Bundle.main.url(forResource: "layerone_map", withExtension: "pdf")!
 
     var timeOfDay = TimeOfDay.day
     {

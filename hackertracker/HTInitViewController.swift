@@ -23,8 +23,7 @@ class HTInitViewController: UIViewController {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
-        let shmoo_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-01-15")
-        let l1_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-05-14")
+        let dc26_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-07-01")
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
@@ -37,23 +36,19 @@ class HTInitViewController: UIViewController {
         if status.count < 1 {
             NSLog("Database not setup, preloading with initial schedule")
             self.loadData()
-        } else if (status[0].lastsync < shmoo_update!) {
-            NSLog("Database older than shmoo update, resetting")
             do {
-                try DataImportManager(managedContext: context).deleteMessages()
+                try DataImportManager(managedContext: context).setSyncDate(Date())
                 try context.save()
             } catch {
-                NSLog("Error deleting old messages")
+                NSLog("Error setting sync date: \(error)")
             }
-            self.loadData()
-        } else if (status[0].lastsync < l1_update!) {
-            NSLog("Database older than most recent update, resetting")
+        } else if (status[0].lastsync! < dc26_update!) {
+            NSLog("Database older than dc26 update, resetting")
             do {
-                try DataImportManager(managedContext: context).deleteMessages()
                 try DataImportManager(managedContext: context).resetDB()
                 try context.save()
             } catch {
-                NSLog("Error deleting old messages")
+                NSLog("Error resetting the database \(error)")
             }
             self.loadData()
         } else {
@@ -70,35 +65,31 @@ class HTInitViewController: UIViewController {
             context.perform {
                 
                 let dataManager = DataImportManager(managedContext: context)
+                let requestManager = DataRequestManager(managedContext: context)
+                let dir: String = "DC26"
+                // If we are loading data, it's the initial load, so specify which conference we should load by the conference code
                 
-                let speakers_file = Bundle.main.path(forResource: "speakers", ofType: "json")!
-                let speakers_content = try! String(contentsOfFile: speakers_file)
-                let speakers_data = speakers_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                
+                let conferences_file = Bundle.main.path(forResource: "conferences", ofType: "json")!
+                let conferences_content = try! String(contentsOfFile: conferences_file)
+                let conferences_data = conferences_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
                 do {
-                    try dataManager.importSpeakers(speakerData: speakers_data)
+                    try dataManager.importConferences(conData: conferences_data)
                 } catch {
-                    print("Failed to import speakers: \(error)")
+                    print("Failed to import conferences: \(error)")
                 }
+                let myCon = requestManager.getConference(dir)!
+                myCon.selected = true
                 
-                let schedule_file = Bundle.main.path(forResource: "schedule-full", ofType: "json")!
-                let schedule_content = try! String(contentsOfFile: schedule_file)
-                let schedule_data = schedule_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                
-                do {
-                    try dataManager.importEvents(eventData: schedule_data)
-                } catch {
-                    print("Failed to import schedule: \(error)")
-                }
-                
-                let messages_file = Bundle.main.path(forResource: "messages", ofType: "json")!
-                let messages_content = try! String(contentsOfFile: messages_file)
-                let messages_data = messages_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                
-                do {
-                    try dataManager.importMessages(msgData: messages_data)
-                } catch {
-                    print("Failed to import messages: \(error)")
+                for i in ["articles","event_types", "faqs", "locations", "notifications", "speakers", "vendors", "events"] {
+                    let a_file = Bundle.main.path(forResource: i, ofType: "json", inDirectory: dir)!
+                    let a_content = try! String(contentsOfFile: a_file)
+                    let a_data = a_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+                    do {
+                        try dataManager.importData(data: a_data)
+                    } catch {
+                        print("Failed to import \(i): \(error)")
+                    }
+
                 }
                 
                 do {
@@ -113,7 +104,6 @@ class HTInitViewController: UIViewController {
                     self.go()
                 }
             }
-
     }
     
     @objc func timerComplete() {

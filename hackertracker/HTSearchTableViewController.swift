@@ -122,19 +122,13 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         let frs = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
         frs.returnsObjectsAsFaults = false
         frs.predicate = NSPredicate(format: "who contains[cd] %@", argumentArray: [searchText])
-        let ret = try! context.fetch(frs) as NSArray
+        let ret = try! context.fetch(frs) as! [Speaker]
         if (ret.count > 0) {
             for s in ret {
-                
-                do {
-                    let events = try dataRequest.getEventsFromSpeaker((s as! Speaker).indexsp)
-                    for e in events {
-                        currentEvents.append(e)
-                    }
-                } catch {
-                    
+                let events = s.events?.allObjects as! [Event]
+                for e in events {
+                    currentEvents.append(e)
                 }
-                
             }
         }
         

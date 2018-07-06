@@ -11,7 +11,7 @@ import CoreGraphics
 
 extension UIImage {
     static func mainHeaderImage(scaledToWidth:CGFloat, visibleRect : CGRect? = nil) -> UIImage {
-        let image = #imageLiteral(resourceName: "dc-25-wallpaper-blurred")
+        let image = #imageLiteral(resourceName: "header")
         
         var transformScale : CGFloat = 1.0
         

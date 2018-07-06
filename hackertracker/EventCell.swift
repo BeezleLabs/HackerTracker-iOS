@@ -46,29 +46,21 @@ public class EventCell : UITableViewCell {
     }
 
     func bind(event : Event) {
-        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
+        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as! Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as! Date)
         
         title.text = event.title
 
         color.backgroundColor = color(for: event)
+    
+        let speakers = event.speakers?.allObjects as! [Speaker]
         
-        let speakers : [Speaker]
-        
-        let dataRequest = DataRequestManager(managedContext: getContext())
-        if let retrievedSpeakers = dataRequest.getSpeakersForEvent(event.index)
-        {
-            speakers = retrievedSpeakers
-        } else {
-            speakers = []
-        }
-        
-        if event.location.isEmpty {
+        if event.location?.id == 0 {
             subtitle.text = "Location in description"
         } else {
-            subtitle.text = event.location
+            subtitle.text = event.location?.name
+            
             for s in speakers {
-                let split = s.who.split(separator: " ")
-                //let split = s.who.characters.split(separator: " ")
+                let split = s.name!.split(separator: " ")
                 let last    = String(split.suffix(1).joined(separator: [" "]))
                 subtitle.text = "\(String(describing: subtitle.text!)) - \(last)"
             }
@@ -77,10 +69,11 @@ public class EventCell : UITableViewCell {
         time.text = eventTime
     }
 
+    // TODO: update for custom colors on event
     func color(for event: Event) -> UIColor {
         var color = UIColor.gray.withAlphaComponent(0.4)
         if (event.starred) {
-            switch(event.entry_type) {
+            switch(event.event_type?.name) {
             case "Official":
                 color = .deepPurple
                 break

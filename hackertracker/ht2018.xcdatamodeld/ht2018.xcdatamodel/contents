@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Article" representedClassName=".Article" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="articles" inverseEntity="Conference" syncable="YES"/>
+    </entity>
+    <entity name="Conference" representedClassName=".Conference" syncable="YES" codeGenerationType="class">
+        <attribute name="articles_link" attributeType="String" syncable="YES"/>
+        <attribute name="articles_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="end_date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="event_types_link" attributeType="String" syncable="YES"/>
+        <attribute name="event_types_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="events_link" attributeType="String" syncable="YES"/>
+        <attribute name="events_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="faqs_link" attributeType="String" syncable="YES"/>
+        <attribute name="faqs_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="link" attributeType="String" syncable="YES"/>
+        <attribute name="locations_link" attributeType="String" syncable="YES"/>
+        <attribute name="locations_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="notifications_link" attributeType="String" syncable="YES"/>
+        <attribute name="notifications_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="selected" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="speakers_link" attributeType="String" syncable="YES"/>
+        <attribute name="speakers_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="start_date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="timezone" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="vendors_link" attributeType="String" syncable="YES"/>
+        <attribute name="vendors_updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="conference" inverseEntity="Article" syncable="YES"/>
+        <relationship name="event_types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EventType" inverseName="conference" inverseEntity="EventType" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="conference" inverseEntity="Event" syncable="YES"/>
+        <relationship name="faqs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FAQ" inverseName="conference" inverseEntity="FAQ" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationModel" inverseName="conference" inverseEntity="LocationModel" syncable="YES"/>
+        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notification" inverseName="conference" inverseEntity="Notification" syncable="YES"/>
+        <relationship name="speakers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speaker" inverseName="conference" inverseEntity="Speaker" syncable="YES"/>
+        <relationship name="vendor" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vendor" inverseName="conference" inverseEntity="Vendor" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="end_date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="includes" attributeType="String" syncable="YES"/>
+        <attribute name="link" attributeType="String" syncable="YES"/>
+        <attribute name="starred" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="start_date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="events" inverseEntity="Conference" syncable="YES"/>
+        <relationship name="event_type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventType" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationModel" syncable="YES"/>
+        <relationship name="speakers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speaker" inverseName="events" inverseEntity="Speaker" syncable="YES"/>
+    </entity>
+    <entity name="EventType" representedClassName=".EventType" syncable="YES" codeGenerationType="class">
+        <attribute name="color" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="event_types" inverseEntity="Conference" syncable="YES"/>
+    </entity>
+    <entity name="FAQ" representedClassName=".FAQ" syncable="YES" codeGenerationType="class">
+        <attribute name="answer" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="question" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="faqs" inverseEntity="Conference" syncable="YES"/>
+    </entity>
+    <entity name="LocationModel" representedClassName=".LocationModel" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="locations" inverseEntity="Conference" syncable="YES"/>
+    </entity>
+    <entity name="Notification" representedClassName=".Notification" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="notifications" inverseEntity="Conference" syncable="YES"/>
+    </entity>
+    <entity name="Speaker" representedClassName=".Speaker" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="link" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="twitter" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="speakers" inverseEntity="Conference" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="speakers" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <entity name="Status" representedClassName=".Status" syncable="YES" codeGenerationType="class">
+        <attribute name="lastsync" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="Vendor" representedClassName=".Vendor" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="link" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="partner" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updated_at" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conference" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="vendor" inverseEntity="Conference" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Article" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Conference" positionX="-54" positionY="45" width="128" height="555"/>
+        <element name="Event" positionX="-36" positionY="153" width="128" height="240"/>
+        <element name="EventType" positionX="0" positionY="171" width="128" height="120"/>
+        <element name="FAQ" positionX="18" positionY="180" width="128" height="120"/>
+        <element name="LocationModel" positionX="18" positionY="171" width="128" height="105"/>
+        <element name="Notification" positionX="-9" positionY="135" width="128" height="120"/>
+        <element name="Speaker" positionX="0" positionY="144" width="128" height="180"/>
+        <element name="Status" positionX="9" positionY="153" width="128" height="60"/>
+        <element name="Vendor" positionX="18" positionY="162" width="128" height="150"/>
+    </elements>
+</model>

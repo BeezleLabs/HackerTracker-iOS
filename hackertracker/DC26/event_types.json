@@ -1,0 +1,26 @@
+{
+  "event_types": [
+    {
+      "color": "#c77228",
+      "id": 1,
+      "updated_at": "2018-06-30T19:25+0000",
+      "name": "Official",
+      "conference": "DC26"
+    },
+    {
+      "color": "#AD1457",
+      "id": 3,
+      "updated_at": "2018-06-30T19:26+0000",
+      "name": "Workshop",
+      "conference": "DC26"
+    },
+    {
+      "color": "#653fff",
+      "id": 4,
+      "updated_at": "2018-07-03T14:36+0000",
+      "name": "Demo Lab",
+      "conference": "DC26"
+    }
+  ],
+  "updated_at": "2018-07-03T14:36+0000"
+}

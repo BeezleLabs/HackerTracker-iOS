@@ -16,7 +16,7 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
         reloadEvents()
     }
 
-    override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
+    override func fetchRequestForDay(_ dateString: String,_ event_type: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
 

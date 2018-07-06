@@ -24,7 +24,7 @@ class HTUpdatesViewController: UIViewController {
     
     @IBOutlet weak var dcIconView: UIImageView!
 
-    var messages: [Message] = []
+    var messages: [Article] = []
     var data = NSMutableData()
     
     var footer: UIView!
@@ -55,16 +55,20 @@ class HTUpdatesViewController: UIViewController {
             self.footer = footer
         }
 
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
-        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Article")
+        fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
         fr.returnsObjectsAsFaults = false
-        self.messages = (try! context.fetch(fr)) as! [Message]
+        self.messages = (try! context.fetch(fr)) as! [Article]
 
-        hiddenAnimation = Animation(duration: 1.0, image: dcIconView.image!) { (image) in
-            self.dcIconView.image = image
+        if hiddenAnimation != nil {
+            hiddenAnimation = Animation(duration: 1.0, image: dcIconView.image!) { (image) in
+                self.dcIconView.image = image
+            }
         }
 
-        dcIconView.layer.zPosition = 100
+        if dcIconView != nil {
+            dcIconView.layer.zPosition = 100
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -92,10 +96,10 @@ class HTUpdatesViewController: UIViewController {
         
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Message")
-        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Article")
+        fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
         fr.returnsObjectsAsFaults = false
-        self.messages = (try! context.fetch(fr)) as! [Message]
+        self.messages = (try! context.fetch(fr)) as! [Article]
         
         self.updatesTableView.reloadData()
         let topContentInset = min((self.view.frame.size.height * 0.4) - 64, self.backgroundImage.frame.size.height - 64)
@@ -126,11 +130,17 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let minHeight = standardLogoHeight - 40
         let percentage = min(1.0 + (scrollView.contentOffset.y / scrollView.contentInset.top), 1.0)
-        self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
+        if (self.logoHeightConstraint == nil) {
+            self.logoHeightConstraint = NSLayoutConstraint.init()
+        } else {
+            self.logoHeightConstraint.constant = standardLogoHeight - (minHeight * percentage)
+        }
         
         //Only make the easter egg visible on top overscroll
         skullBackground.isHidden = scrollView.contentOffset.y > 0
-        logoCenterToTopMargin.constant =  ((updatesTableView.contentInset.top + 64) / 2.0) - ((((updatesTableView.contentInset.top + 64) / 2.0) - 37) * percentage)
+        if logoHeightConstraint != nil {
+            logoCenterToTopMargin.constant =  ((updatesTableView.contentInset.top + 64) / 2.0) - ((((updatesTableView.contentInset.top + 64) / 2.0) - 37) * percentage)
+        }
 
         if percentage < -1.37 && !hiddenAnimation.isPlaying {
             hiddenAnimation.startPixelAnimation()
@@ -145,7 +155,9 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                                                    0)
     
         UIView.animate(withDuration: 0.1) {
-            self.dcIconView.layer.transform = perspectiveTransform
+            if self.dcIconView != nil {
+                self.dcIconView.layer.transform = perspectiveTransform
+            }
         }
 
     }

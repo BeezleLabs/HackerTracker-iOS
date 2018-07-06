@@ -24,19 +24,31 @@ struct eventType {
 
 class HTEventsScrollingTabController: ScrollingTabController {
     
-    var eventTypes: [eventType] = [
+    //let app_delegate = UIApplication.shared.delegate as! AppDelegate
+    /* var eventTypes: [eventType] = [
         eventType(n: "CONFERENCE", d: "Official", c: 0),
         eventType(n: "VILLAGES", d: "Village", c: 0),
         eventType(n: "CONTESTS", d: "Contest", c: 0),
         eventType(n: "OTHER", d:"Other", c:0)
 
-    ]
+    ] */
+    var eventTypes: [EventType] = []
+    
     
     var leftFadedView: UIView!
     var rightFadedView: UIView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = delegate.managedObjectContext!
+        
+        for con in DataRequestManager(managedContext: context).getSelectedConferences() {
+            for et in con.event_types?.allObjects as! [EventType] {
+                eventTypes.append(et)
+            }
+        }
         
         leftFadedView = UIView()
         rightFadedView = UIView()
@@ -58,7 +70,7 @@ class HTEventsScrollingTabController: ScrollingTabController {
 
         tabView.selectionIndicator.tintColor = UIColor.white.withAlphaComponent(0.75)
         
-        tabTheme = CellTheme(font: UIFont(name: "Furore", size: 12)!, defaultColor: UIColor.white.withAlphaComponent(0.75), selectedColor: UIColor.white)
+        tabTheme = CellTheme(font: UIFont(name: "Bungee", size: 12)!, defaultColor: UIColor.white.withAlphaComponent(0.75), selectedColor: UIColor.white)
         
         self.viewControllers = eventControllers
         

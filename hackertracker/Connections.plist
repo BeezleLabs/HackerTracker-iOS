@@ -2,14 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>conferences</key>
+	<string>conferences.json</string>
 	<key>base</key>
-	<string>https://raw.githubusercontent.com/BeezleLabs/conferences/master/LAYERONE2018/</string>
+	<string>https://hackertracker.app/</string>
 	<key>event_types</key>
-	<string></string>
+	<string>event_types.json</string>
 	<key>schedule</key>
-	<string>schedule-full.json</string>
+	<string>events.json</string>
 	<key>speakers</key>
 	<string>speakers.json</string>
+	<key>locations</key>
+	<string>locations.json</string>
+	<key>vendors</key>
+	<string>vendors.json</string>
 	<key>messages</key>
 	<string>messages.json</string>
 </dict>
