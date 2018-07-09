@@ -249,7 +249,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.30980392159999998" green="0.29411764709999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -570,11 +570,117 @@
                         <segue destination="qWo-7t-Kgc" kind="relationship" relationship="viewControllers" id="TcT-gZ-Bvq"/>
                         <segue destination="Wr4-BW-i8o" kind="relationship" relationship="viewControllers" id="Wm3-tt-7nk"/>
                         <segue destination="QWo-cS-Afi" kind="relationship" relationship="viewControllers" id="7q6-TO-xay"/>
+                        <segue destination="PSi-m9-7in" kind="relationship" relationship="viewControllers" id="GCB-dy-T2C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWd-bZ-9uM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1090" y="844"/>
+        </scene>
+        <!--Conference Table View Controller-->
+        <scene sceneID="rW0-R1-IMV">
+            <objects>
+                <tableViewController id="PSi-m9-7in" customClass="HTConferenceTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zTv-d6-5Un">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" barStyle="black" id="wRd-YP-g3f">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textAttributes key="titleTextAttributes">
+                                <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="17"/>
+                            </textAttributes>
+                            <items>
+                                <navigationItem title="Select Conferences" id="NO3-ce-GeH"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="conferenceCell" rowHeight="68" id="3r5-xn-JU2" userLabel="conferenceCell" customClass="ConferenceCell" customModule="hackertracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3r5-xn-JU2" id="hsO-wL-G7J">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-GC-26N">
+                                            <rect key="frame" x="37" y="11" width="60" height="20"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Name">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="20" name="Bungee-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-TY-4f7">
+                                            <rect key="frame" x="37" y="33" width="44" height="22"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Dates">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="17" name="Larsseit"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7L2-25-YGa">
+                                            <rect key="frame" x="23" y="11" width="6" height="47"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="6" id="BuJ-Sh-Nqs"/>
+                                                <constraint firstAttribute="height" constant="47" id="mKv-yn-1or"/>
+                                            </constraints>
+                                        </view>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2X-Rg-0Yr">
+                                            <rect key="frame" x="312" y="18" width="49" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="selectConference:" destination="3r5-xn-JU2" eventType="valueChanged" id="q3U-Se-gGv"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="o3J-TY-4f7" firstAttribute="leading" secondItem="7L2-25-YGa" secondAttribute="trailing" constant="8" id="O9T-er-kuK"/>
+                                        <constraint firstItem="o3J-TY-4f7" firstAttribute="top" secondItem="L4G-GC-26N" secondAttribute="bottom" constant="2" id="Qdb-1Q-DYD"/>
+                                        <constraint firstAttribute="topMargin" secondItem="L4G-GC-26N" secondAttribute="top" id="WCS-04-xYl"/>
+                                        <constraint firstAttribute="topMargin" secondItem="7L2-25-YGa" secondAttribute="top" id="Y9v-cX-xKI"/>
+                                        <constraint firstItem="L4G-GC-26N" firstAttribute="leading" secondItem="7L2-25-YGa" secondAttribute="trailing" constant="8" id="nFP-Dk-zEM"/>
+                                        <constraint firstItem="7L2-25-YGa" firstAttribute="leading" secondItem="hsO-wL-G7J" secondAttribute="leadingMargin" constant="7" id="uWe-7j-hwn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="color" destination="7L2-25-YGa" id="60j-Up-2S1"/>
+                                    <outlet property="conSelected" destination="U2X-Rg-0Yr" id="TmG-ZL-bHh"/>
+                                    <outlet property="dates" destination="o3J-TY-4f7" id="bBy-o1-2oA"/>
+                                    <outlet property="name" destination="L4G-GC-26N" id="E1P-FA-JWh"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PSi-m9-7in" id="RH8-vq-4av"/>
+                            <outlet property="delegate" destination="PSi-m9-7in" id="1gJ-PO-hZN"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="Twj-CX-3RA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBR-U4-ule" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="417" y="843"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="ncf-MQ-TpN">
@@ -883,7 +989,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
-        <segue reference="zg6-LD-ovW"/>
+        <segue reference="M7t-3x-HF9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

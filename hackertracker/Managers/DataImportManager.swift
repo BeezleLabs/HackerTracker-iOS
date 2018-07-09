@@ -769,7 +769,7 @@ class DataImportManager: NSObject {
                 managedConference.desc = ""
             }
             
-            if let end_date_string = conference["end_date"] as? String, let end_date =  DateFormatterUtility.iso8601Formatter.date(from: end_date_string) {
+            if let end_date_string = conference["end_date"] as? String, let end_date =  DateFormatterUtility.yearMonthDayFormatter.date(from: end_date_string) {
                 managedConference.end_date = end_date
             } else {
                 managedConference.end_date = Date()
@@ -787,7 +787,7 @@ class DataImportManager: NSObject {
                 managedConference.name = ""
             }
             
-            if let date_string = conference["start_date"] as? String, let start_date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = conference["start_date"] as? String, let start_date =  DateFormatterUtility.yearMonthDayFormatter.date(from: date_string) {
                 managedConference.start_date = start_date
             } else {
                 managedConference.start_date = Date()
