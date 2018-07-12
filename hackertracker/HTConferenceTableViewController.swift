@@ -53,7 +53,7 @@ class HTConferenceTableViewController: UITableViewController {
         var c: Conference
         
         c = self.conferences[indexPath.row]
-        //NSLog("setting row \(indexPath.row) to conference \(c.name)")
+        NSLog("setting row \(indexPath.row) to conference \(c.name)")
         cell.setConference(conference: c)
 
         return cell

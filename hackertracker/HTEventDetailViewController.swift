@@ -236,16 +236,16 @@ class HTEventDetailViewController: UIViewController {
                 let duplicateTitles = duplicates.reduce("", { (result, event) -> String in
                     if result == ""
                     {
-                        return "•\'\(event.title!)\'"
+                        return "•\'\(event.title)\'"
                     }
                     else
                     {
-                        return result + "\n" + "•\'\(event.title!)\'"
+                        return result + "\n" + "•\'\(event.title)\'"
                     }
                     
                 })
                 
-                let alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(event.title!)\'" + " to schedule?"
+                let alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(event.title)\'" + " to schedule?"
                 
                 let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:alertBody, preferredStyle: UIAlertControllerStyle.alert)
                 

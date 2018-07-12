@@ -27,7 +27,6 @@
 		5DD642781AC3C62300ED3256 /* hackertrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642771AC3C62300ED3256 /* hackertrackerTests.swift */; };
 		5DDD629720F2A73800E527C5 /* HTConferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */; };
 		5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */; };
-		5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */; };
 		5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */; };
 		5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */; };
 		5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */; };
@@ -120,7 +119,6 @@
 		5DD642771AC3C62300ED3256 /* hackertrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hackertrackerTests.swift; sourceTree = "<group>"; };
 		5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTConferenceTableViewController.swift; sourceTree = "<group>"; };
 		5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceCell.swift; sourceTree = "<group>"; };
-		5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFAQTableViewController.swift; sourceTree = "<group>"; };
 		5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTInitViewController.swift; sourceTree = "<group>"; };
 		5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTUpdatesViewController.swift; sourceTree = "<group>"; };
 		5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTHomeTabBarController.swift; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 		498AD73E1E2D2BC900DD5B56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */,
 				5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */,
 				B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */,
 				5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */,
@@ -632,7 +629,6 @@
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83B0F8521F19BA07006493A6 /* ReaderContentView.m in Sources */,
-				5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */,
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,
 				B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */,
