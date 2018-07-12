@@ -46,6 +46,20 @@ class DataRequestManager: NSObject {
         }
     }
     
+    func getConferenceDates(_ conference: Conference) -> [String] {
+        let calendar = NSCalendar.current
+        var ret: [String] = []
+        
+        let components = calendar.dateComponents([.day], from: conference.start_date!, to: conference.end_date!)
+        ret.append(DateFormatterUtility.yearMonthDayFormatter.string(from: conference.start_date!))
+        var cur = conference.start_date!
+        for _ in 1...components.day! {
+            cur = calendar.date(byAdding: Calendar.Component.day, value: 1, to: cur)!
+            ret.append(DateFormatterUtility.yearMonthDayFormatter.string(from: cur))
+        }
+        return ret
+    }
+    
     func getSelectedConferences() -> [Conference] {
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Conference")
         fre.predicate = NSPredicate(format: "selected = true")
@@ -57,6 +71,20 @@ class DataRequestManager: NSObject {
         } catch {
             print("Failed to fetch conferences")
             return []
+        }
+    }
+    
+    func getSelectedConference() -> Conference? {
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Conference")
+        fre.predicate = NSPredicate(format: "selected = true")
+        
+        do {
+            let ret = try managedContext.fetch(fre) as! [Conference]
+            
+            return ret.first
+        } catch {
+            print("Failed to fetch conferences")
+            return nil
         }
     }
     

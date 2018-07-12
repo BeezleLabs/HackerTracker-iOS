@@ -116,12 +116,12 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
-        fr.predicate = NSPredicate(format: "location contains[cd] %@ OR title contains[cd] %@ OR details contains[cd] %@ OR includes contains[cd] %@", argumentArray: [searchText,searchText, searchText, searchText])
+        fr.predicate = NSPredicate(format: "location.name contains[cd] %@ OR title contains[cd] %@ OR desc contains[cd] %@ OR includes contains[cd] %@", argumentArray: [searchText,searchText, searchText, searchText])
         currentEvents = try! context.fetch(fr) as! Array<Event>
         
         let frs = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
         frs.returnsObjectsAsFaults = false
-        frs.predicate = NSPredicate(format: "who contains[cd] %@", argumentArray: [searchText])
+        frs.predicate = NSPredicate(format: "name contains[cd] %@", argumentArray: [searchText])
         let ret = try! context.fetch(frs) as! [Speaker]
         if (ret.count > 0) {
             for s in ret {

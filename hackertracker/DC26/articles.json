@@ -1,4 +1,12 @@
 {
-  "articles": [],
-  "updated_at": "2018-01-01T01:00+0000"
+  "articles": [
+    {
+      "text": "Once again we find ourselves headed to Las Vegas for DEF CON in the heat of the summer. Hackertracker comes preloaded with most official events, but let us know what we are missing by emailing info@hackertracker.app.",
+      "id": 1,
+      "updated_at": "2018-07-12T20:39+0000",
+      "conference": "DC26",
+      "name": "Welcome to DEF CON 26"
+    }
+  ],
+  "updated_at": "2018-07-12T20:39+0000"
 }

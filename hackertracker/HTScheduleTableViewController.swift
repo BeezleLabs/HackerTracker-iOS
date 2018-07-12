@@ -21,17 +21,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var updated : [String] = []
 
     var pullDownAnimation: PongScene?
-
-    // Dates for ToorCon 19
-    //var days = ["2017-08-28","2017-08-29","2017-08-30","2017-08-31","2017-09-01", "2017-09-02", "2017-09-03"]
-    // Dates for ShmooCon 2018
-    //var days = ["2018-01-19","2018-01-20","2018-01-21"]
-    // Dates for HackWest 2018
-    //var days = ["2018-03-21","2018-03-22","2018-03-23"]
-    // Dates for BSides ORL
-    //var days = ["2018-04-07"]
-    // Dates for LayerOne
-    var days = ["2018-08-09", "2018-08-10", "2018-08-11", "2018-08-12"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,8 +80,10 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
         eventSections.removeAll()
 
-        for day in days {
-            let events = retrieveEventsForDay(day,"Official")
+        let drm = DataRequestManager(managedContext: getContext())
+        let myCon = drm.getSelectedConference()
+        for day in drm.getConferenceDates(myCon!) {
+            let events = retrieveEventsForDay(day)
             if events.count > 0 {
                 eventSections.append((date: day, events: events))
             }
@@ -177,12 +168,12 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         return cell
     }
 
-    func retrieveEventsForDay(_ dateString: String,_ event_type: String) -> [Event] {
+    func retrieveEventsForDay(_ dateString: String) -> [Event] {
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
         do {
-            if let eventsForDay = try context.fetch(fetchRequestForDay(dateString,event_type)) as? [Event] {
+            if let eventsForDay = try context.fetch(fetchRequestForDay(dateString)) as? [Event] {
                 //print("Got \(eventsForDay.count) events for \(dateString)")
                 return eventsForDay
             } else {
@@ -196,7 +187,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         return []
     }
 
-    func fetchRequestForDay(_ dateString: String,_ event_type: String) -> NSFetchRequest<NSFetchRequestResult> {
+    func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         return fr
     }
@@ -266,8 +257,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         let dataManager = DataImportManager(managedContext: context)
-        let requestManager = DataRequestManager(managedContext: context)
-
+        
         let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
         let envs = NSDictionary(contentsOfFile: envPlist!)!
         
@@ -375,69 +365,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             
         }).resume()
         
-        //cDispatchGroup.wait()
-        
         print("Update from the following links: \(self.updated)")
-        
-        
-        // Now spin through any additional updated links and get the data
-        
-        /*for link in self.updated {
-            let linkURL = Foundation.URL(string: link)
-            request = URLRequest(url: linkURL!)
-            request.httpMethod = "GET"
-            print("Getting data from \(link)")
-            cDispatchGroup.enter()
-            
-            session.dataTask(with: request, completionHandler: { (data, response, error) in
-                
-                let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
-                let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
-                
-                if let error = error {
-                    NSLog("DataTask error: " + error.localizedDescription)
-                    DispatchQueue.main.async() {
-                        self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
-                        cDispatchGroup.leave()
-                    }
-                } else {
-                    let resStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                    
-                    if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-                        DispatchQueue.main.async() {
-                            
-                            let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                            let context = delegate.managedObjectContext!
-                            
-                            context.perform {
-                                
-                                let dataManager = DataImportManager(managedContext: context)
-                                
-                                do {
-                                    try dataManager.importData(data: data)
-                                } catch {
-                                    
-                                }
-                                DispatchQueue.main.async() {
-                                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated at \(n)", attributes: attr)
-                                    DispatchQueue.main.async() {
-                                        cDispatchGroup.leave()
-                                    }
-                                }
-                                
-                            }
-                        }
-                    } else {
-                        DispatchQueue.main.async() {
-                            cDispatchGroup.leave()
-                        }
-                    }
-                }
-                
-            }).resume()
-        }*/
-        
-        
         
         cDispatchGroup.notify(queue: DispatchQueue.main) {
             self.refreshControl?.endRefreshing()
@@ -446,130 +374,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         }
         
     }
-
-        /* tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "speakers") as! String)
-        let speakersURL = Foundation.URL(string: tURL)
-        
-        tURL =  (envs.value(forKey: "base") as! String) + (envs.value(forKey: "messages") as! String)
-        let messagesURL = Foundation.URL(string: tURL)
-        
-        let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: NSURLSessionPinningDelegate(), delegateQueue: nil)
-        
-        var request = URLRequest(url: speakersURL!)
-        request.httpMethod = "GET"
-        
-        let eventSpeakerDownloadGroup = DispatchGroup()
-        
-        eventSpeakerDownloadGroup.enter()
-     
-        
-        request = URLRequest(url: messagesURL!)
-        request.httpMethod = "GET"
-        
-        session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
-            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
-            
-            if let error = error {
-                NSLog("DataTask error: " + error.localizedDescription)
-                DispatchQueue.main.async() {
-                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
-                    eventSpeakerDownloadGroup.leave()
-                }
-            } else {
-                let resStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                
-                if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-                    DispatchQueue.main.async() {
-                        
-                        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                        let context = delegate.managedObjectContext!
-                        
-                        context.perform {
-                            
-                            let dataManager = DataImportManager(managedContext: context)
-                            
-                            do {
-                                try dataManager.importMessages(msgData: data)
-                            } catch {
-                                
-                            }
-                            DispatchQueue.main.async() {
-                                self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated messages \(n)", attributes: attr)
-                            }
-                            
-                        }
-                    }
-                } else {
-                    DispatchQueue.main.async() {
-                        eventSpeakerDownloadGroup.leave()
-                    }
-                }
-            }
-            
-        }).resume()
-        
-        request = URLRequest(url: scheduleURL!)
-        request.httpMethod = "GET"
-        
-        eventSpeakerDownloadGroup.enter()
-        
-        session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
-            let n = DateFormatterUtility.monthDayTimeFormatter.string(from: Date())
-            
-            if let error = error {
-                NSLog("DataTask error: " + error.localizedDescription)
-                DispatchQueue.main.async() {
-                    eventSpeakerDownloadGroup.leave()
-                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Sync Failed at \(n)", attributes: attr)
-                }
-            } else {
-                let resStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                
-                if let data = resStr?.data(using: String.Encoding.utf8.rawValue) {
-                    DispatchQueue.main.async() {
-
-                        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                        let context = delegate.managedObjectContext!
-                    
-                        context.perform {
-                            
-                            let dataManager = DataImportManager(managedContext: context)
-                            
-                            do {
-                                try dataManager.importEvents(eventData: data)
-                                DispatchQueue.main.async() {
-                                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated \(n)", attributes: attr)
-                                }
-                            } catch {
-                                DispatchQueue.main.async() {
-                                    self.refreshControl?.attributedTitle = NSAttributedString(string: "Last sync at \(n)", attributes: attr)
-                                }
-                            }
-                            
-                            
-                                DispatchQueue.main.async() {
-                                    eventSpeakerDownloadGroup.leave()
-                                }
-                        }
-                    }
-                } else {
-                    DispatchQueue.main.async() {
-                        eventSpeakerDownloadGroup.leave()
-                    }
-                }
-            }
-        }).resume()
-        
-        eventSpeakerDownloadGroup.notify(queue: DispatchQueue.main) {
-            self.refreshControl?.endRefreshing()
-            self.reloadEvents()
-            self.pullDownAnimation?.reset()
-        }
-    }*/
 
 }
 
@@ -583,18 +387,18 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
 
     public override func emptyState() -> UIView {
         if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
-            emptyState.bind(description: "No events for this category yet. Pull to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
+            emptyState.bind(description: "No events for this date yet. Pull to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
             return emptyState
         }
         return UIView()
     }
 
-    override func fetchRequestForDay(_ dateString: String,_ event_type: String) -> NSFetchRequest<NSFetchRequestResult> {
+    override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "event_type.name = %@ AND start_date > %@ AND end_date < %@", argumentArray: [event_type, startofDay, endofDay])
+        fr.predicate = NSPredicate(format: "event_type = %@ AND start_date > %@ AND end_date < %@", argumentArray: [eType!, startofDay, endofDay])
         
         
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]

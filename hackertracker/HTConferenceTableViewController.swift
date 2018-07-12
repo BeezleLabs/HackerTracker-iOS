@@ -16,13 +16,7 @@ class HTConferenceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSLog("loading conferences")
         self.loadConferences()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,12 +27,10 @@ class HTConferenceTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return conferences.count
     }
     
@@ -53,8 +45,11 @@ class HTConferenceTableViewController: UITableViewController {
         var c: Conference
         
         c = self.conferences[indexPath.row]
-        //NSLog("setting row \(indexPath.row) to conference \(c.name)")
         cell.setConference(conference: c)
+        
+        if conferences.count == 1 {
+            cell.conSelected.isEnabled = false
+        }
 
         return cell
     }
@@ -68,6 +63,24 @@ class HTConferenceTableViewController: UITableViewController {
         conferences = try! getContext().fetch(fr) as! [Conference]
     }
     
+    /* override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ConferenceCell
+        cell.setSelected(!(cell.con?.selected)!, animated: true)
+        cell.con?.selected = !(cell.con?.selected)!
+        do {
+            try getContext().save()
+        } catch {}
+        
+        if (cell.con?.selected)! {
+            for c in conferences {
+                if c != cell.con {
+                    c.selected = false
+                }
+            }
+        }
+        
+        self.tableView.reloadData()
+    } */
 
     /*
     // Override to support conditional editing of the table view.

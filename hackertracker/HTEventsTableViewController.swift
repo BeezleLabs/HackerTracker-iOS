@@ -10,28 +10,8 @@ import UIKit
 import CoreData
 import WillowTreeScrollingTabController
 
-struct eventType {
-    var name:String
-    var dbName:String
-    var count:Int
-   
-    init(n:String,d:String,c:Int) {
-        self.name = n
-        self.dbName = d
-        self.count = c
-    }
-}
-
 class HTEventsScrollingTabController: ScrollingTabController {
     
-    //let app_delegate = UIApplication.shared.delegate as! AppDelegate
-    /* var eventTypes: [eventType] = [
-        eventType(n: "CONFERENCE", d: "Official", c: 0),
-        eventType(n: "VILLAGES", d: "Village", c: 0),
-        eventType(n: "CONTESTS", d: "Contest", c: 0),
-        eventType(n: "OTHER", d:"Other", c:0)
-
-    ] */
     var eventTypes: [EventType] = []
     
     
@@ -45,7 +25,7 @@ class HTEventsScrollingTabController: ScrollingTabController {
         let context = delegate.managedObjectContext!
         
         for con in DataRequestManager(managedContext: context).getSelectedConferences() {
-            for et in con.event_types?.allObjects as! [EventType] {
+            for et in (con.event_types?.allObjects as! [EventType]).sorted(by: {$0.name! < $1.name! }) {
                 eventTypes.append(et)
             }
         }

@@ -21,6 +21,7 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         dateLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        dateLabel.textAlignment = NSTextAlignment.center
         dateLabel.textColor = .white
     }
     
@@ -38,7 +39,7 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
             } else if Calendar.current.isDateInTomorrow(date) {
                 dateLabel.text = "Tomorrow"
             } else {
-                dateLabel.text = DateFormatterUtility.dayOfWeekFormatter.string(from: date)
+                dateLabel.text = DateFormatterUtility.dayMonthDayOfWeekFormatter.string(from: date)
             }
         } else {
             dateLabel.text = "Unknown"

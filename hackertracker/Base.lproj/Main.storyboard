@@ -91,7 +91,7 @@
                                 <rect key="frame" x="87" y="262" width="200" height="200"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o4M-Xc-Ytc">
-                                <rect key="frame" x="0.0" y="84" width="375" height="534"/>
+                                <rect key="frame" x="0.0" y="74" width="375" height="544"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="l5o-Cn-WI7">
@@ -104,6 +104,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEFCON 26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQC-m8-pOK">
+                                <rect key="frame" x="113" y="28" width="148" height="26"/>
+                                <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="26"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,8 +121,10 @@
                             <constraint firstItem="rly-3y-2nK" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="top" id="OjN-A3-T13"/>
                             <constraint firstItem="skw-9w-8jM" firstAttribute="top" secondItem="rly-3y-2nK" secondAttribute="bottom" constant="20" id="YKf-ea-UgJ"/>
                             <constraint firstAttribute="trailing" secondItem="o4M-Xc-Ytc" secondAttribute="trailing" id="Yah-Ij-400"/>
-                            <constraint firstItem="o4M-Xc-Ytc" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="topMargin" constant="64" id="iei-44-T2f"/>
+                            <constraint firstItem="KQC-m8-pOK" firstAttribute="centerX" secondItem="GOz-6l-VXo" secondAttribute="centerX" id="axl-zO-22Q"/>
+                            <constraint firstItem="o4M-Xc-Ytc" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="topMargin" constant="54" id="iei-44-T2f"/>
                             <constraint firstAttribute="bottomMargin" secondItem="o4M-Xc-Ytc" secondAttribute="bottom" id="tzm-tC-CQI"/>
+                            <constraint firstItem="rly-3y-2nK" firstAttribute="top" secondItem="KQC-m8-pOK" secondAttribute="bottom" constant="-54" id="vZX-jf-QHI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="skull-inactive" selectedImage="skull-active" id="G0n-np-0tL">
@@ -125,6 +133,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="backgroundImage" destination="rly-3y-2nK" id="i6i-DB-qpi"/>
+                        <outlet property="conName" destination="KQC-m8-pOK" id="Xsq-1J-zyB"/>
                         <outlet property="skullBackground" destination="skw-9w-8jM" id="qYQ-bp-eyR"/>
                         <outlet property="trailingImageConstraint" destination="3IA-mo-LTo" id="eTx-rb-BKj"/>
                         <outlet property="updatesTableView" destination="o4M-Xc-Ytc" id="rj0-JQ-iej"/>
@@ -630,7 +639,7 @@
             </objects>
             <point key="canvasLocation" x="-1090" y="844"/>
         </scene>
-        <!--Settings-->
+        <!--Select-->
         <scene sceneID="rW0-R1-IMV">
             <objects>
                 <tableViewController id="PSi-m9-7in" customClass="HTConferenceTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -728,7 +737,7 @@
                             <outlet property="delegate" destination="PSi-m9-7in" id="1gJ-PO-hZN"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" id="Twj-CX-3RA"/>
+                    <tabBarItem key="tabBarItem" title="Select" id="Twj-CX-3RA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBR-U4-ule" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1042,7 +1051,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
-        <segue reference="M7t-3x-HF9"/>
+        <segue reference="e3h-Nv-O2c"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
