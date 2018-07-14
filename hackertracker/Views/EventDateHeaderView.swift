@@ -17,12 +17,17 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
         dateLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         dateLabel.textAlignment = NSTextAlignment.center
         dateLabel.textColor = .white
+        dateLabel.backgroundColor = UIColor.backgroundGray
+        dateLabel.layer.borderColor = UIColor.darkGray.cgColor
+        dateLabel.layer.borderWidth = 2.0
+        dateLabel.layer.cornerRadius = 10
+        dateLabel.font = UIFont(name: "Larsseit", size: 14)
     }
     
     required public init?(coder aDecoder: NSCoder) {

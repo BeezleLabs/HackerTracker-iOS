@@ -1,6 +1,0 @@
-framework module WillowTreeScrollingTabController {
-  umbrella header "WillowTreeScrollingTabController-umbrella.h"
-
-  export *
-  module * { export * }
-}

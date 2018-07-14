@@ -28,6 +28,7 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var locationMapView: MapLocationView!
     @IBOutlet weak var eventTypeContainer: UIView!
     @IBOutlet weak var bottomPaddingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var eventTypeLabel: UILabel!
     
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
@@ -55,6 +56,11 @@ class HTEventDetailViewController: UIViewController {
         setupSpeakers(event: event)
         
         eventLocationLabel.text = event.location?.name
+        eventTypeLabel.layer.borderColor = UIColor(hexString: (event.event_type?.color!)!).cgColor
+        eventTypeLabel.layer.borderWidth = 1.0
+        eventTypeLabel.text = " \((event.event_type?.name!)!) "
+        eventTypeLabel.layer.masksToBounds = true
+        eventTypeLabel.layer.cornerRadius = 5
         
         locationMapView.isHidden = true
         /*if (event.location?.name?.isEmpty)! {
@@ -109,6 +115,7 @@ class HTEventDetailViewController: UIViewController {
         
         eventNameLabel.text = ""
         
+        var i = 1
         for s in speakers {
             if (s != speakers.first) {
                 speakerList.append(NSAttributedString(string:", "))
@@ -131,9 +138,9 @@ class HTEventDetailViewController: UIViewController {
             
             let bioAttributedString = NSMutableAttributedString(string:s.desc!)
             let bioParagraphStyle = NSMutableParagraphStyle()
-            bioParagraphStyle.alignment = .justified
+            bioParagraphStyle.alignment = .left
             bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.desc! as NSString).length))
-            bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.desc! as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Larsseit", size: 17)!, range: NSRange(location: 0, length: (s.desc! as NSString).length))
             bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (s.desc! as NSString).length))
             
             
@@ -142,7 +149,10 @@ class HTEventDetailViewController: UIViewController {
             speakerBios.append(titleAttributedString)
             speakerBios.append(NSAttributedString(string:"\n\n"))
             speakerBios.append(bioAttributedString)
-            speakerBios.append(NSAttributedString(string:"\n\n"))
+            if speakers.count > 1, i < speakers.count {
+                speakerBios.append(NSAttributedString(string:"\n\n"))
+            }
+            i = i+1
         }
         
         let textAttachment = NSTextAttachment()
@@ -161,6 +171,10 @@ class HTEventDetailViewController: UIViewController {
         }
 
         eventNameLabel.attributedText = speakerList
+        eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
+        eventNameLabel.layer.borderWidth = 0.5
+        //eventNameLabel.layer.masksToBounds = true
+        eventNameLabel.layer.cornerRadius = 5
         
         
         eventLocationLabel.text = event.location?.name
@@ -224,7 +238,7 @@ class HTEventDetailViewController: UIViewController {
             event.starred = false
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
             saveContext()
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
+            removeNotification(event)
 
             reloadEvents()
         } else {
@@ -236,25 +250,37 @@ class HTEventDetailViewController: UIViewController {
                 let duplicateTitles = duplicates.reduce("", { (result, event) -> String in
                     if result == ""
                     {
-                        return "•\'\(event.title!)\'"
+                        return "• \(event.title!)"
                     }
                     else
                     {
-                        return result + "\n" + "•\'\(event.title!)\'"
+                        return result + "\n" + "• \(event.title!)"
                     }
                     
                 })
                 
                 let alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(event.title!)\'" + " to schedule?"
                 
-                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:alertBody, preferredStyle: UIAlertControllerStyle.alert)
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.alignment = NSTextAlignment.left
+                let messageText = NSMutableAttributedString(
+                    string: alertBody,
+                    attributes: [
+                        NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                        NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14),
+                        NSAttributedStringKey.foregroundColor : UIColor.black
+                    ]
+                )
+                
+                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:"", preferredStyle: UIAlertControllerStyle.alert)
+                alert.setValue(messageText, forKey: "attributedMessage")
                 
                 let yesItem : UIAlertAction = UIAlertAction(title: "Add Anyway", style: UIAlertActionStyle.default, handler: {
                     (action:UIAlertAction) in
                     event.starred = true
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                     self.saveContext()
-                    self.scheduleNotification(at: (event.start_date?.addingTimeInterval(-600))!,event)
+                    scheduleNotification(at: (event.start_date?.addingTimeInterval(-600))!,event)
                     self.reloadEvents()
                 })
                 
@@ -287,27 +313,6 @@ class HTEventDetailViewController: UIViewController {
         if let splitViewController = self.splitViewController,
             !splitViewController.isCollapsed {
             delegate?.reloadEvents()
-        }
-    }
-
-    func scheduleNotification(at date: Date,_ event:Event) {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents(in: .current, from: date)
-        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
-
-        let content = UNMutableNotificationContent()
-        content.title = "Upcoming Event"
-        content.body = "\(event.title) in \(event.location)"
-        content.sound = UNNotificationSound.default()
-        
-        let request = UNNotificationRequest(identifier: "hackertracker-\(event.id)", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) {(error) in
-            if let error = error {
-                NSLog("Error: \(error)")
-            }
         }
     }
     

@@ -55,14 +55,6 @@
             </objects>
             <point key="canvasLocation" x="-1999.2" y="842.42878560719646"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="UjF-p2-zPO">
-            <objects>
-                <viewController id="M0O-1s-7Yg" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MGv-XF-b9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1849" y="-1221"/>
-        </scene>
         <!--Updates View Controller-->
         <scene sceneID="o5z-Zp-Lcx">
             <objects>
@@ -141,7 +133,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWF-fe-EhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="-576.1619190404798"/>
+            <point key="canvasLocation" x="2350" y="-742"/>
+        </scene>
+        <!--Filter Schedule Table View Controller-->
+        <scene sceneID="TvF-qB-3bC">
+            <objects>
+                <tableViewController id="5pb-fP-Ibh" customClass="HTFilterScheduleTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bcp-Eh-w6p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="lmC-NY-0WL" style="IBUITableViewCellStyleDefault" id="o1T-Bs-kEO">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o1T-Bs-kEO" id="lSa-D0-M3V">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lmC-NY-0WL">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5pb-fP-Ibh" id="6j8-Bu-if9"/>
+                            <outlet property="delegate" destination="5pb-fP-Ibh" id="eAu-9f-gWo"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N8r-JI-FoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3274" y="-743"/>
         </scene>
         <!--Schedule Table View Controller-->
         <scene sceneID="plL-wp-CvI">
@@ -242,13 +271,10 @@
                             </fragment>
                         </attributedString>
                     </refreshControl>
-                    <connections>
-                        <segue destination="nGb-HO-gXP" kind="showDetail" identifier="eventDetailSegue" id="zg6-LD-ovW"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agy-pQ-LU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6488.8000000000002" y="-38.23088455772114"/>
+            <point key="canvasLocation" x="5694" y="9"/>
         </scene>
         <!--SCHEDULE-->
         <scene sceneID="x1L-ac-RFe">
@@ -436,7 +462,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtM-mJ-VLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639.2" y="158.77061469265368"/>
+            <point key="canvasLocation" x="1639" y="9"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="dcg-US-5Be">
@@ -456,43 +482,62 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z18-L4-dCy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4Uz-v6-n11">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="364"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Uz-v6-n11">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="338"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HeW-d7-uFG">
-                                                <rect key="frame" x="15" y="0.0" width="345" height="72"/>
+                                                <rect key="frame" x="15" y="0.0" width="345" height="80"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Event Title that is so long in could run over to another line." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJH-Fa-q94">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="45"/>
-                                                        <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Event Title that is so long in could run over to another line." lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJH-Fa-q94">
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="53"/>
+                                                        <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="20"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Presenter Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqc-Jd-sAB">
-                                                        <rect key="frame" x="0.0" y="55" width="345" height="17"/>
-                                                        <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqc-Jd-sAB">
+                                                        <rect key="frame" x="0.0" y="63" width="345" height="17"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Presenter Name">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <font key="NSFont" size="17" name="Bungee-Regular"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="71E-ru-HrV">
-                                                <rect key="frame" x="90" y="92" width="195.5" height="94"/>
+                                                <rect key="frame" x="90" y="90" width="195.5" height="90"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZj-6h-XGH">
-                                                        <rect key="frame" x="65" y="0.0" width="65.5" height="22"/>
-                                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="at0-U0-5XT">
+                                                        <rect key="frame" x="48.5" y="0.0" width="98.5" height="18"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" type " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK7-VB-2z9">
+                                                                <rect key="frame" x="0.0" y="0.0" width="34.5" height="18"/>
+                                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZj-6h-XGH">
+                                                                <rect key="frame" x="44.5" y="0.0" width="54" height="18"/>
+                                                                <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
+                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, August 07 09:00-17:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKd-ci-QDo">
-                                                        <rect key="frame" x="0.0" y="32" width="195.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="28" width="195.5" height="22"/>
                                                         <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffv-Fv-Vgw" userLabel="Images View">
-                                                        <rect key="frame" x="44.5" y="64" width="106" height="30"/>
+                                                        <rect key="frame" x="44.5" y="60" width="106" height="30"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yyz-KH-rYU">
                                                                 <rect key="frame" x="-12" y="0.0" width="130" height="30"/>
@@ -535,7 +580,7 @@
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" usesAttributedText="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVM-vj-OhI">
-                                                <rect key="frame" x="15" y="206" width="345" height="38"/>
+                                                <rect key="frame" x="15" y="190" width="345" height="38"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <attributedString key="attributedText">
@@ -550,7 +595,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-7A-I69" userLabel="MapView" customClass="MapLocationView" customModule="hackertracker" customModuleProvider="target">
-                                                <rect key="frame" x="137.5" y="264" width="100" height="100"/>
+                                                <rect key="frame" x="137.5" y="238" width="100" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -600,6 +645,7 @@
                         <outlet property="eventStarredButton" destination="mYV-28-MqK" id="0Kw-2Q-Pld"/>
                         <outlet property="eventTitleLabel" destination="sJH-Fa-q94" id="VvL-p3-74z"/>
                         <outlet property="eventTypeContainer" destination="Ffv-Fv-Vgw" id="WX0-OF-Jgf"/>
+                        <outlet property="eventTypeLabel" destination="wK7-VB-2z9" id="7Cb-sA-gyu"/>
                         <outlet property="exploitImage" destination="M1D-kR-NYb" id="eFj-iJ-Aqq"/>
                         <outlet property="locationMapView" destination="Vn7-7A-I69" id="HdV-Xy-Ycl"/>
                         <outlet property="toolImage" destination="XIC-0I-9aJ" id="9VA-E5-fdV"/>
@@ -855,7 +901,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwv-vH-OfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4956" y="8.5457271364317844"/>
+            <point key="canvasLocation" x="4298" y="9"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="i93-iB-gUR">
@@ -878,21 +924,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LR1-7q-NAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="158.77061469265368"/>
+            <point key="canvasLocation" x="2350" y="9"/>
         </scene>
         <!--EVENTS-->
         <scene sceneID="IHZ-Ax-T76">
             <objects>
-                <viewController id="5pr-J2-42a" customClass="HTEventsScrollingTabController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aBu-4d-kvd"/>
-                        <viewControllerLayoutGuide type="bottom" id="YzI-6V-Hm9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aCR-gP-XEi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                <viewController id="5pr-J2-42a" customClass="HTScheduleTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="EVENTS" id="8kR-GY-6Ub">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="aTB-Lb-iTY">
@@ -901,10 +938,93 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="nGb-HO-gXP" kind="showDetail" identifier="eventDetailSegue" id="a0t-7o-Cnk"/>
+                    </connections>
                 </viewController>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" id="vIj-wI-Dh7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.4707467789" green="0.44749008610000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="sectionIndexBackgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <prototypes>
+                        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="64" id="anO-zV-0wP" customClass="EventCell" customModule="hackertracker" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="22" width="375" height="64"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="anO-zV-0wP" id="R9e-i0-5aa">
+                                <rect key="frame" x="0.0" y="0.0" width="341" height="63.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ae-6f-iBv">
+                                        <rect key="frame" x="37" y="8" width="294" height="24"/>
+                                        <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmg-z0-27I">
+                                        <rect key="frame" x="37" y="34" width="189" height="21"/>
+                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ON-7s-02b">
+                                        <rect key="frame" x="23" y="11" width="6" height="47"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="6" id="OlM-1g-5by"/>
+                                            <constraint firstAttribute="height" constant="47" id="Ylt-Jg-EKV"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00-00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkm-jA-sMg">
+                                        <rect key="frame" x="237" y="34" width="105" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="FdL-3D-VGR"/>
+                                            <constraint firstAttribute="width" constant="105" id="eCd-Oh-Z2V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7ae-6f-iBv" secondAttribute="trailing" constant="10" id="6LT-J5-E2q"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mmg-z0-27I" secondAttribute="bottom" constant="8.5" id="7Yk-UA-5ky"/>
+                                    <constraint firstItem="gkm-jA-sMg" firstAttribute="top" secondItem="Mmg-z0-27I" secondAttribute="top" id="M6k-UA-0cp"/>
+                                    <constraint firstAttribute="topMargin" secondItem="7ae-6f-iBv" secondAttribute="top" id="OSX-ow-P7S"/>
+                                    <constraint firstItem="7ae-6f-iBv" firstAttribute="leading" secondItem="2ON-7s-02b" secondAttribute="trailing" constant="8" id="Oa3-U7-SwK"/>
+                                    <constraint firstItem="2ON-7s-02b" firstAttribute="leading" secondItem="R9e-i0-5aa" secondAttribute="leadingMargin" constant="7" id="i51-5Z-xgV"/>
+                                    <constraint firstAttribute="topMargin" secondItem="2ON-7s-02b" secondAttribute="top" id="l94-ew-DGq"/>
+                                    <constraint firstItem="Mmg-z0-27I" firstAttribute="leading" secondItem="2ON-7s-02b" secondAttribute="trailing" constant="8" id="n14-A5-cXg"/>
+                                    <constraint firstItem="gkm-jA-sMg" firstAttribute="leading" secondItem="Mmg-z0-27I" secondAttribute="trailing" constant="11" id="vo8-6t-Lhm"/>
+                                    <constraint firstItem="Mmg-z0-27I" firstAttribute="top" secondItem="7ae-6f-iBv" secondAttribute="bottom" constant="2" id="wOP-0i-gn4"/>
+                                </constraints>
+                            </tableViewCellContentView>
+                            <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="gkm-jA-sMg" secondAttribute="trailing" constant="33" id="dUv-Ru-X1g"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="color" destination="2ON-7s-02b" id="FEb-Ht-zep"/>
+                                <outlet property="subtitle" destination="Mmg-z0-27I" id="tSz-1q-05t"/>
+                                <outlet property="time" destination="gkm-jA-sMg" id="ZNk-5J-8mk"/>
+                                <outlet property="title" destination="7ae-6f-iBv" id="6JO-a1-kAo"/>
+                            </connections>
+                        </tableViewCell>
+                    </prototypes>
+                    <connections>
+                        <outlet property="dataSource" destination="9LO-P7-sTl" id="ajx-RW-8bO"/>
+                        <outlet property="delegate" destination="9LO-P7-sTl" id="jvY-S5-OGb"/>
+                    </connections>
+                </tableView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unv-PC-TBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3996" y="158.77061469265368"/>
+            <point key="canvasLocation" x="3257" y="9"/>
         </scene>
         <!--Empty Detail View Controller-->
         <scene sceneID="Gs6-yl-O6f">
@@ -932,7 +1052,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kc4-n7-hwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3057" y="844"/>
+            <point key="canvasLocation" x="2734" y="843"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="4uI-13-dFR">
@@ -1012,7 +1132,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWU-AW-Ffa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5278" y="843"/>
+            <point key="canvasLocation" x="4898" y="828"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="qT4-pX-Wks">
@@ -1051,7 +1171,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
-        <segue reference="e3h-Nv-O2c"/>
+        <segue reference="a0t-7o-Cnk"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

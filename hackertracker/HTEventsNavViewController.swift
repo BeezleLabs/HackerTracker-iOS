@@ -43,6 +43,7 @@ class HTEventsNavViewController: UINavigationController {
         if let windowSize = UIApplication.shared.keyWindow?.frame.size {
             setNavBarImage(screenSize: windowSize)
         }
+        //UIBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Bungee", size: 17)])
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

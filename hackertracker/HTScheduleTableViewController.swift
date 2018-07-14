@@ -379,10 +379,18 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
 class HTScheduleTableViewController: BaseScheduleTableViewController {
     var eType : EventType?
+    var filteredtypes: [EventType] = []
+    private var filterButton = UIButton()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = eType?.name
+        let con = DataRequestManager(managedContext: getContext()).getSelectedConference()
+        filteredtypes = con?.event_types?.allObjects as! [EventType]
+        reloadEvents()
+        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        tableView.backgroundColor = UIColor.backgroundGray
+        self.title = con?.name!
+        createFloatingButton()
     }
 
     public override func emptyState() -> UIView {
@@ -392,19 +400,69 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
         }
         return UIView()
     }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if filterButton.superview != nil {
+            DispatchQueue.main.async {
+                self.filterButton.removeFromSuperview()
+                //self.filterButton = nil
+            }
+        }
+    }
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "event_type = %@ AND start_date > %@ AND end_date < %@", argumentArray: [eType!, startofDay, endofDay])
+        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND end_date < %@", argumentArray: [filteredtypes, startofDay, endofDay])
         
         
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
 
         return fr
+    }
+    
+    func createFloatingButton() {
+        filterButton = UIButton(type: .custom)
+        filterButton.translatesAutoresizingMaskIntoConstraints = false
+        filterButton.backgroundColor = UIColor.white
+        filterButton.setImage(UIImage(named:"filter"), for: .normal)
+
+        filterButton.addTarget(self, action: #selector(filterTypes(sender:)), for: UIControlEvents.touchUpInside)
+        // We're manipulating the UI, must be on the main thread:
+        DispatchQueue.main.async {
+            if let keyWindow = UIApplication.shared.keyWindow {
+                keyWindow.addSubview(self.filterButton)
+                NSLayoutConstraint.activate([
+                    keyWindow.trailingAnchor.constraint(equalTo: self.filterButton.trailingAnchor, constant: 15),
+                    keyWindow.bottomAnchor.constraint(equalTo: self.filterButton.bottomAnchor, constant: 50),
+                    self.filterButton.widthAnchor.constraint(equalToConstant: 50),
+                    self.filterButton.heightAnchor.constraint(equalToConstant: 50)])
+            }
+            // Make the button round:
+            self.filterButton.layer.cornerRadius = 25
+            // Add a black shadow:
+            self.filterButton.layer.shadowColor = UIColor.black.cgColor
+            self.filterButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+            self.filterButton.layer.masksToBounds = false
+            self.filterButton.layer.shadowRadius = 2.0
+            self.filterButton.layer.shadowOpacity = 0.5
+            // Add a pulsing animation to draw attention to button:
+            let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+            scaleAnimation.duration = 1
+            scaleAnimation.repeatCount = .greatestFiniteMagnitude
+            scaleAnimation.autoreverses = true
+            scaleAnimation.fromValue = 1.0;
+            scaleAnimation.toValue = 1.04;
+            self.filterButton.layer.add(scaleAnimation, forKey: "scale")
+        }
+    }
+    
+    @objc func filterTypes(sender: AnyObject) {
+        NSLog("Time to filter")
     }
 }
 

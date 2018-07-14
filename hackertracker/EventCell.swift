@@ -64,19 +64,21 @@ public class EventCell : UITableViewCell {
             subtitle.text = event.location?.name
         }
         
-        et_label.backgroundColor = UIColor(hexString: (event.event_type?.color!)!)
+        et_label.layer.borderColor = UIColor(hexString: (event.event_type?.color!)!).cgColor
+        et_label.layer.borderWidth = 1.0
         et_label.text = " \((event.event_type?.name!)!) "
         et_label.layer.masksToBounds = true
         et_label.layer.cornerRadius = 5
-        favorited.tintColor = UIColor.white
         
         if event.starred {
             favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            favorited.tintColor = UIColor.yellow
+            favorited.tintColor = UIColor.white
+
         } else {
             favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            favorited.tintColor = UIColor.white
+            favorited.tintColor = UIColor.gray
         }
+
         
         let tr = UITapGestureRecognizer(target: self, action: #selector(tappedStar(sender:)))
         tr.delegate = self
@@ -91,17 +93,25 @@ public class EventCell : UITableViewCell {
             myEvent?.starred = !(myEvent?.starred)!
             if (myEvent?.starred)! {
                 favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-                favorited.tintColor = UIColor.yellow
+                favorited.tintColor = UIColor.white
+                scheduleNotification(at: (myEvent?.start_date?.addingTimeInterval(-600))!,myEvent!)
             } else {
                 favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-                favorited.tintColor = UIColor.white
+                favorited.tintColor = UIColor.gray
+                removeNotification(myEvent!)
             }
-            do {
-                try getContext().save()
-            } catch {}
+
+            
+            saveContext()
         } else {
             NSLog("No event defined on star tap")
         }
+    }
+    
+    func saveContext() {
+        do {
+            try getContext().save()
+        } catch {}
     }
 
 }
