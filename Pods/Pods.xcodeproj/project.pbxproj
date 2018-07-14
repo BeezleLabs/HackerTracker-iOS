@@ -7,60 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03629723390ED88048CC069A5DB1FEB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		1D7B33F04ACADCDBD3DAF2A5FFE92861 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		3A660D8015D3E28E92EAEEB546CFEF00 /* ScrollingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8DA4B5FD9CFF52482C9FAB811E047F /* ScrollingTabView.swift */; };
-		4F4E891FFE9A6B90F1EAC3CC26B6D4C6 /* Pods-hackertracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37078D27EC367AB20048B5805238FCB8 /* Pods-hackertracker-dummy.m */; };
-		6009202B7965AC2BB86266439F9E38A8 /* ScrollingTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89164906EBD2CAA2F462D5782B77A834 /* ScrollingTabCell.swift */; };
-		636A4E5A5E96F5C72213B67392AF9534 /* WillowTreeScrollingTabController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF269B9DFEB0E9F46C3A3436BCE1016D /* WillowTreeScrollingTabController-dummy.m */; };
-		6A0ADCAD4E216E62F319FA158147FE5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		74136726AD763A0761A826D9036405B6 /* WillowTreeScrollingTabController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 80244B7E3E79B3124456A2A39BD8F4A8 /* WillowTreeScrollingTabController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8189E8BE72300EA662F9FB533BD51666 /* Pods-hackertracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D5DA3F37AB4E2588CF75073480F72AC /* Pods-hackertracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B5B83A353872DE0FEE099C0457B64C6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		C88313300A7A6B4AD5961616AEA164BB /* ScrollingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2B2319C64D3CF5B9ACF4F5C34DB9D /* ScrollingTabController.swift */; };
+		6AFDA0705F84C8A7C491DF2061E037E3 /* Pods-hackertracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37078D27EC367AB20048B5805238FCB8 /* Pods-hackertracker-dummy.m */; };
+		E0C4EEE2D43A789EC454DD68EDC9DDBC /* Pods-hackertracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D5DA3F37AB4E2588CF75073480F72AC /* Pods-hackertracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE129F217526965F1DC7BD79873EA069 /* Pods-hackertrackerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BC266DBA4040111FE0D7BF8848FE91 /* Pods-hackertrackerTests-dummy.m */; };
 		F7967B488A80A8936CE4416C9ABA826A /* Pods-hackertrackerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66A16A164ED92270DBE4C1E9881A3AB2 /* Pods-hackertrackerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8234322550AC1D7ECE45310E68EAD627 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F23A9B0BFD531362A95B810D421A9FA6;
-			remoteInfo = WillowTreeScrollingTabController;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		036D4412D1B7C381F1573F348729923D /* Pods_hackertracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_hackertracker.framework; path = "Pods-hackertracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		089E3246955A4A0F42140451E9638879 /* Pods-hackertrackerTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-hackertrackerTests-frameworks.sh"; sourceTree = "<group>"; };
-		1BC2B2319C64D3CF5B9ACF4F5C34DB9D /* ScrollingTabController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingTabController.swift; path = Sources/ScrollingTabController.swift; sourceTree = "<group>"; };
 		1D5DA3F37AB4E2588CF75073480F72AC /* Pods-hackertracker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-hackertracker-umbrella.h"; sourceTree = "<group>"; };
 		2A514E64551269E1F1AE3E29E5CA4135 /* Pods-hackertracker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-hackertracker-acknowledgements.plist"; sourceTree = "<group>"; };
 		37078D27EC367AB20048B5805238FCB8 /* Pods-hackertracker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-hackertracker-dummy.m"; sourceTree = "<group>"; };
-		496DEB7F3060B8CCBEB9DBF9B43FE544 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63266A4BE5F0192ADD5151C8E57CDD56 /* Pods-hackertrackerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-hackertrackerTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		66A16A164ED92270DBE4C1E9881A3AB2 /* Pods-hackertrackerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-hackertrackerTests-umbrella.h"; sourceTree = "<group>"; };
-		6995C6B235B891A9B9CC8A1DEBB78AB7 /* WillowTreeScrollingTabController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = WillowTreeScrollingTabController.modulemap; sourceTree = "<group>"; };
 		7143D97E4E8D02A4984B45F17BC378CC /* Pods-hackertrackerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-hackertrackerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		73EB0711ABA9D643677798E05FEF8E03 /* Pods_hackertracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_hackertracker.framework; path = "Pods-hackertracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAF62F98DD440CD4C321634DF5B2B8A /* Pods-hackertracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-hackertracker.modulemap"; sourceTree = "<group>"; };
-		80244B7E3E79B3124456A2A39BD8F4A8 /* WillowTreeScrollingTabController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WillowTreeScrollingTabController-umbrella.h"; sourceTree = "<group>"; };
-		89164906EBD2CAA2F462D5782B77A834 /* ScrollingTabCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingTabCell.swift; path = Sources/ScrollingTabCell.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A9DF76C55E661C6C4D32E15CEF2A819 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E8DA4B5FD9CFF52482C9FAB811E047F /* ScrollingTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingTabView.swift; path = Sources/ScrollingTabView.swift; sourceTree = "<group>"; };
 		A72558326FE729A51B8F70381CA9B2C1 /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
 		A7501F98302990A27F97C99DFC8B14F9 /* Pods-hackertrackerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-hackertrackerTests.modulemap"; sourceTree = "<group>"; };
 		A996F89208B26F787F10E6AEA6F1679B /* Pods-hackertrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertrackerTests.release.xcconfig"; sourceTree = "<group>"; };
-		B22306BB4D9628F3C156AFF4EB4A8A07 /* WillowTreeScrollingTabController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WillowTreeScrollingTabController.framework; path = WillowTreeScrollingTabController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5C3B9B6BC10CE34FDAC165E34F24ED1 /* Pods_hackertrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_hackertrackerTests.framework; path = "Pods-hackertrackerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF269B9DFEB0E9F46C3A3436BCE1016D /* WillowTreeScrollingTabController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WillowTreeScrollingTabController-dummy.m"; sourceTree = "<group>"; };
 		DB2F316E8B869F21471F11FE8DAFB06D /* Pods-hackertracker-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-hackertracker-frameworks.sh"; sourceTree = "<group>"; };
+		DBF09A1B48058A0A99271AE68F2FBB8F /* Pods_hackertrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_hackertrackerTests.framework; path = "Pods-hackertrackerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42DB47661D50E9A53B804766997FA3C /* Pods-hackertracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertracker.debug.xcconfig"; sourceTree = "<group>"; };
-		E5CB5BC19ECD64ECEEF9EB6F3BCB19DC /* WillowTreeScrollingTabController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WillowTreeScrollingTabController.xcconfig; sourceTree = "<group>"; };
 		E73A8CD128B6B6A17F9F750F14A74DD6 /* Pods-hackertrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E814A2BDC136EA559001E35770D7A98D /* WillowTreeScrollingTabController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WillowTreeScrollingTabController-prefix.pch"; sourceTree = "<group>"; };
 		EA2F2CB68F1AC0778F2E9566FB4B5DF7 /* Pods-hackertrackerTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-hackertrackerTests-resources.sh"; sourceTree = "<group>"; };
 		EA9E3B1CC752573AEB5BC8F11DC9B7B3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6BC266DBA4040111FE0D7BF8848FE91 /* Pods-hackertrackerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-hackertrackerTests-dummy.m"; sourceTree = "<group>"; };
@@ -77,19 +51,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A47EBF17F00D5A5D67EDF42B1786C6F3 /* Frameworks */ = {
+		6234D22B9201771AC2D21E355DEB2396 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5B83A353872DE0FEE099C0457B64C6A /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD41F7EE248F10C955D151B319D3C431 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A0ADCAD4E216E62F319FA158147FE5C /* Foundation.framework in Frameworks */,
+				03629723390ED88048CC069A5DB1FEB2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,28 +80,13 @@
 			path = "Target Support Files/Pods-hackertracker";
 			sourceTree = "<group>";
 		};
-		2ADBECC42BBE312C7B87FFCCA66A9E2A /* Products */ = {
+		5FAF3855052A58A8E85EFCB96FF1C8A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				73EB0711ABA9D643677798E05FEF8E03 /* Pods_hackertracker.framework */,
-				B5C3B9B6BC10CE34FDAC165E34F24ED1 /* Pods_hackertrackerTests.framework */,
-				B22306BB4D9628F3C156AFF4EB4A8A07 /* WillowTreeScrollingTabController.framework */,
+				036D4412D1B7C381F1573F348729923D /* Pods_hackertracker.framework */,
+				DBF09A1B48058A0A99271AE68F2FBB8F /* Pods_hackertrackerTests.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5B4207A94F5B92378E7E26B69F0731B7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				496DEB7F3060B8CCBEB9DBF9B43FE544 /* Info.plist */,
-				6995C6B235B891A9B9CC8A1DEBB78AB7 /* WillowTreeScrollingTabController.modulemap */,
-				E5CB5BC19ECD64ECEEF9EB6F3BCB19DC /* WillowTreeScrollingTabController.xcconfig */,
-				CF269B9DFEB0E9F46C3A3436BCE1016D /* WillowTreeScrollingTabController-dummy.m */,
-				E814A2BDC136EA559001E35770D7A98D /* WillowTreeScrollingTabController-prefix.pch */,
-				80244B7E3E79B3124456A2A39BD8F4A8 /* WillowTreeScrollingTabController-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/WillowTreeScrollingTabController";
 			sourceTree = "<group>";
 		};
 		70882D6A427836033A97F024CDF299B6 /* Targets Support Files */ = {
@@ -152,30 +103,9 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				A6C27375C8470AF41603C9D7E1E1914D /* Pods */,
-				2ADBECC42BBE312C7B87FFCCA66A9E2A /* Products */,
+				5FAF3855052A58A8E85EFCB96FF1C8A1 /* Products */,
 				70882D6A427836033A97F024CDF299B6 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		9A789DFB9E2BD0B8C13100C9D7421774 /* WillowTreeScrollingTabController */ = {
-			isa = PBXGroup;
-			children = (
-				89164906EBD2CAA2F462D5782B77A834 /* ScrollingTabCell.swift */,
-				1BC2B2319C64D3CF5B9ACF4F5C34DB9D /* ScrollingTabController.swift */,
-				9E8DA4B5FD9CFF52482C9FAB811E047F /* ScrollingTabView.swift */,
-				5B4207A94F5B92378E7E26B69F0731B7 /* Support Files */,
-			);
-			name = WillowTreeScrollingTabController;
-			path = WillowTreeScrollingTabController;
-			sourceTree = "<group>";
-		};
-		A6C27375C8470AF41603C9D7E1E1914D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9A789DFB9E2BD0B8C13100C9D7421774 /* WillowTreeScrollingTabController */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		B01FB3F707F286AA3EFF2537731AA023 /* Pods-hackertrackerTests */ = {
@@ -223,58 +153,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		905F400EB254A2264B057C5F503F8F34 /* Headers */ = {
+		8B4D721AEF20EDD2AE51B221A352CB40 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74136726AD763A0761A826D9036405B6 /* WillowTreeScrollingTabController-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDC2E672BEF14B07CC9AEC1A900B7415 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8189E8BE72300EA662F9FB533BD51666 /* Pods-hackertracker-umbrella.h in Headers */,
+				E0C4EEE2D43A789EC454DD68EDC9DDBC /* Pods-hackertracker-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EF02E490D553635058F6D249F7CDE3F9 /* Pods-hackertracker */ = {
+		165796C92B752925D25E2162FD5A9C84 /* Pods-hackertracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 961A3DCAFC14F0D517894F1C99567D2B /* Build configuration list for PBXNativeTarget "Pods-hackertracker" */;
+			buildConfigurationList = 6B6D8D90D54CC49F27002D8805C0A990 /* Build configuration list for PBXNativeTarget "Pods-hackertracker" */;
 			buildPhases = (
-				6202E0CACF26DA37C07CD31D380A0100 /* Sources */,
-				AD41F7EE248F10C955D151B319D3C431 /* Frameworks */,
-				CDC2E672BEF14B07CC9AEC1A900B7415 /* Headers */,
+				6FC7F3335311F24D263FC8645EFDDF4D /* Sources */,
+				6234D22B9201771AC2D21E355DEB2396 /* Frameworks */,
+				8B4D721AEF20EDD2AE51B221A352CB40 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				16C40AA90193EFADCF589F39F0833DEB /* PBXTargetDependency */,
 			);
 			name = "Pods-hackertracker";
 			productName = "Pods-hackertracker";
-			productReference = 73EB0711ABA9D643677798E05FEF8E03 /* Pods_hackertracker.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		F23A9B0BFD531362A95B810D421A9FA6 /* WillowTreeScrollingTabController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5CB258F29BF08183F26648A505ABD9D /* Build configuration list for PBXNativeTarget "WillowTreeScrollingTabController" */;
-			buildPhases = (
-				232396BBC523742BA48C858635ADD02A /* Sources */,
-				A47EBF17F00D5A5D67EDF42B1786C6F3 /* Frameworks */,
-				905F400EB254A2264B057C5F503F8F34 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WillowTreeScrollingTabController;
-			productName = WillowTreeScrollingTabController;
-			productReference = B22306BB4D9628F3C156AFF4EB4A8A07 /* WillowTreeScrollingTabController.framework */;
+			productReference = 036D4412D1B7C381F1573F348729923D /* Pods_hackertracker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F3646E00A7A2DAECEE3B5FCCCF444E8B /* Pods-hackertrackerTests */ = {
@@ -291,7 +195,7 @@
 			);
 			name = "Pods-hackertrackerTests";
 			productName = "Pods-hackertrackerTests";
-			productReference = B5C3B9B6BC10CE34FDAC165E34F24ED1 /* Pods_hackertrackerTests.framework */;
+			productReference = DBF09A1B48058A0A99271AE68F2FBB8F /* Pods_hackertrackerTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -311,34 +215,22 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 2ADBECC42BBE312C7B87FFCCA66A9E2A /* Products */;
+			productRefGroup = 5FAF3855052A58A8E85EFCB96FF1C8A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EF02E490D553635058F6D249F7CDE3F9 /* Pods-hackertracker */,
+				165796C92B752925D25E2162FD5A9C84 /* Pods-hackertracker */,
 				F3646E00A7A2DAECEE3B5FCCCF444E8B /* Pods-hackertrackerTests */,
-				F23A9B0BFD531362A95B810D421A9FA6 /* WillowTreeScrollingTabController */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		232396BBC523742BA48C858635ADD02A /* Sources */ = {
+		6FC7F3335311F24D263FC8645EFDDF4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6009202B7965AC2BB86266439F9E38A8 /* ScrollingTabCell.swift in Sources */,
-				C88313300A7A6B4AD5961616AEA164BB /* ScrollingTabController.swift in Sources */,
-				3A660D8015D3E28E92EAEEB546CFEF00 /* ScrollingTabView.swift in Sources */,
-				636A4E5A5E96F5C72213B67392AF9534 /* WillowTreeScrollingTabController-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6202E0CACF26DA37C07CD31D380A0100 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F4E891FFE9A6B90F1EAC3CC26B6D4C6 /* Pods-hackertracker-dummy.m in Sources */,
+				6AFDA0705F84C8A7C491DF2061E037E3 /* Pods-hackertracker-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,19 +244,10 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		16C40AA90193EFADCF589F39F0833DEB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = WillowTreeScrollingTabController;
-			target = F23A9B0BFD531362A95B810D421A9FA6 /* WillowTreeScrollingTabController */;
-			targetProxy = 8234322550AC1D7ECE45310E68EAD627 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		13EF507F567EDD1AA577F69996282004 /* Release */ = {
+		016D936D27D77C513729740C3CBD812C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5CB5BC19ECD64ECEEF9EB6F3BCB19DC /* WillowTreeScrollingTabController.xcconfig */;
+			baseConfigurationReference = A72558326FE729A51B8F70381CA9B2C1 /* Pods-hackertracker.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -375,18 +258,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/WillowTreeScrollingTabController/WillowTreeScrollingTabController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/WillowTreeScrollingTabController/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-hackertracker/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/WillowTreeScrollingTabController/WillowTreeScrollingTabController.modulemap";
-				PRODUCT_NAME = WillowTreeScrollingTabController;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-hackertracker/Pods-hackertracker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_hackertracker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -486,37 +370,6 @@
 			};
 			name = Debug;
 		};
-		8BF0B1E0E8E212EBB1297B684F8513A4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5CB5BC19ECD64ECEEF9EB6F3BCB19DC /* WillowTreeScrollingTabController.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/WillowTreeScrollingTabController/WillowTreeScrollingTabController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/WillowTreeScrollingTabController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/WillowTreeScrollingTabController/WillowTreeScrollingTabController.modulemap";
-				PRODUCT_NAME = WillowTreeScrollingTabController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		933C6FB302E314C77DE485F12F188371 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A996F89208B26F787F10E6AEA6F1679B /* Pods-hackertrackerTests.release.xcconfig */;
@@ -605,7 +458,7 @@
 			};
 			name = Release;
 		};
-		9DCD8F6B720D233A7EEFEE6607A8296A /* Debug */ = {
+		A627EB6ED20ED5C165190A1D82437DFE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E42DB47661D50E9A53B804766997FA3C /* Pods-hackertracker.debug.xcconfig */;
 			buildSettings = {
@@ -631,47 +484,11 @@
 				PRODUCT_NAME = Pods_hackertracker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		DED363A1275AC549D66463BDAAB60CB3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A72558326FE729A51B8F70381CA9B2C1 /* Pods-hackertracker.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-hackertracker/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-hackertracker/Pods-hackertracker.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_hackertracker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -685,20 +502,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		961A3DCAFC14F0D517894F1C99567D2B /* Build configuration list for PBXNativeTarget "Pods-hackertracker" */ = {
+		6B6D8D90D54CC49F27002D8805C0A990 /* Build configuration list for PBXNativeTarget "Pods-hackertracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DCD8F6B720D233A7EEFEE6607A8296A /* Debug */,
-				DED363A1275AC549D66463BDAAB60CB3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5CB258F29BF08183F26648A505ABD9D /* Build configuration list for PBXNativeTarget "WillowTreeScrollingTabController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8BF0B1E0E8E212EBB1297B684F8513A4 /* Debug */,
-				13EF507F567EDD1AA577F69996282004 /* Release */,
+				A627EB6ED20ED5C165190A1D82437DFE /* Debug */,
+				016D936D27D77C513729740C3CBD812C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
