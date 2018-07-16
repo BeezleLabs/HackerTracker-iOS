@@ -425,11 +425,27 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="eTb-OG-eb5">
                         <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="xb3-s5-YsK">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Caesars"/>
+                                <segment title="Flamingo"/>
+                                <segment title="Night"/>
+                                <segment title="Linq"/>
+                            </segments>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="mapChanged:" destination="9uk-jY-kfH" eventType="valueChanged" id="Aic-FN-ip1"/>
+                            </connections>
+                        </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapSwitch" destination="xb3-s5-YsK" id="TRG-kB-qqr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5k-1E-Sh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3057" y="2271"/>
+            <point key="canvasLocation" x="3056.8000000000002" y="2270.9145427286358"/>
         </scene>
         <!--FAQs-->
         <scene sceneID="tso-xb-Uoy">
