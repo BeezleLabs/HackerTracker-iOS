@@ -88,6 +88,22 @@ class DataRequestManager: NSObject {
         }
     }
     
+    func getEventTypes(con: Conference) -> [EventType]{
+        
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventType")
+        fre.predicate = NSPredicate(format: "conference = %@", argumentArray: [con])
+        fre.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        do {
+            let ret = try managedContext.fetch(fre)
+            return ret as! [EventType]
+        } catch {
+            print("Failed to fetch event types")
+            return []
+        }
+        
+    }
+    
     func getEvent(_ id: Int32) -> Event? {
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fre.predicate = NSPredicate(format: "id = %@", argumentArray: [id])

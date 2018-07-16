@@ -377,19 +377,29 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
 }
 
-class HTScheduleTableViewController: BaseScheduleTableViewController {
+class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate {
+    
     var eType : EventType?
+    var alltypes: [EventType] = []
     var filteredtypes: [EventType] = []
+    var filterView: HTFilterViewController?
     private var filterButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let drm = DataRequestManager(managedContext: getContext())
+        let con = drm.getSelectedConference()
+        self.title = con?.name!
+        alltypes = drm.getEventTypes(con: con!)
+        filteredtypes = alltypes
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let con = DataRequestManager(managedContext: getContext()).getSelectedConference()
-        filteredtypes = con?.event_types?.allObjects as! [EventType]
         reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
-        self.title = con?.name!
         createFloatingButton()
     }
 
@@ -462,7 +472,19 @@ class HTScheduleTableViewController: BaseScheduleTableViewController {
     }
     
     @objc func filterTypes(sender: AnyObject) {
-        NSLog("Time to filter")
+        let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
+        fvc.delegate = self
+        fvc.all = alltypes
+        fvc.filtered = filteredtypes
+        fvc.modalPresentationStyle = .popover
+        present(fvc, animated:false, completion:nil)
+        fvc.popoverPresentationController?.sourceView = view
+        fvc.popoverPresentationController?.sourceRect = sender.frame
+    }
+    
+    func filterList(filteredEventTypes: [EventType]) {
+        self.filteredtypes = filteredEventTypes
+        self.reloadEvents()
     }
 }
 

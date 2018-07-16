@@ -10,7 +10,7 @@
 		49730E4B1E2929BC0029438C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4A1E2929BC0029438C /* EventCell.swift */; };
 		49730E4E1E2D1AB50029438C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4D1E2D1AB50029438C /* Theme.swift */; };
 		49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */; };
-		5D02760E20FA7CB000E5ED6A /* HTFilterScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02760D20FA7CB000E5ED6A /* HTFilterScheduleTableViewController.swift */; };
+		5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
 		5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D47A2B020EEB7DD0015401B /* ht2018.xcdatamodeld */; };
@@ -99,7 +99,7 @@
 		49730E4D1E2D1AB50029438C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
 		4A297DEF49BFDC47D04261A0 /* Pods-hackertrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertrackerTests/Pods-hackertrackerTests.release.xcconfig"; sourceTree = "<group>"; };
-		5D02760D20FA7CB000E5ED6A /* HTFilterScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFilterScheduleTableViewController.swift; sourceTree = "<group>"; };
+		5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFilterViewController.swift; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5D47A2B120EEB7DD0015401B /* ht2018.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ht2018.xcdatamodel; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		498AD73E1E2D2BC900DD5B56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5D02760D20FA7CB000E5ED6A /* HTFilterScheduleTableViewController.swift */,
+				5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */,
 				5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */,
 				5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */,
 				B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */,
@@ -612,7 +612,6 @@
 				83B0F8511F19BA07006493A6 /* ReaderContentTile.m in Sources */,
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,
 				83B0F84E1F19BA07006493A6 /* CGPDFDocument.m in Sources */,
-				5D02760E20FA7CB000E5ED6A /* HTFilterScheduleTableViewController.swift in Sources */,
 				5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */,
 				5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */,
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
@@ -631,6 +630,7 @@
 				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
+				5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */,
 				83B0F8521F19BA07006493A6 /* ReaderContentView.m in Sources */,
 				5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */,
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
