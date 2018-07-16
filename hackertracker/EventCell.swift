@@ -15,6 +15,11 @@ public class EventCell : UITableViewCell {
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var color: UIView!
+    @IBOutlet weak var et_label: UILabel!
+    @IBOutlet weak var favorited: UIImageView!
+    
+    var myEvent: Event?
+    
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: reuseIdentifier)
@@ -46,72 +51,67 @@ public class EventCell : UITableViewCell {
     }
 
     func bind(event : Event) {
-        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
+        myEvent = event
+        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as! Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as! Date)
         
         title.text = event.title
 
-        color.backgroundColor = color(for: event)
+        color.backgroundColor = UIColor(hexString: (event.event_type?.color!)!)
         
-        let speakers : [Speaker]
-        
-        let dataRequest = DataRequestManager(managedContext: getContext())
-        if let retrievedSpeakers = dataRequest.getSpeakersForEvent(event.index)
-        {
-            speakers = retrievedSpeakers
-        } else {
-            speakers = []
-        }
-        
-        if event.location.isEmpty {
+        if event.location?.id == 0 {
             subtitle.text = "Location in description"
         } else {
-            subtitle.text = event.location
-            for s in speakers {
-                let split = s.who.split(separator: " ")
-                //let split = s.who.characters.split(separator: " ")
-                let last    = String(split.suffix(1).joined(separator: [" "]))
-                subtitle.text = "\(String(describing: subtitle.text!)) - \(last)"
-            }
+            subtitle.text = event.location?.name
         }
+        
+        et_label.layer.borderColor = UIColor(hexString: (event.event_type?.color!)!).cgColor
+        et_label.layer.borderWidth = 1.0
+        et_label.text = " \((event.event_type?.name!)!) "
+        et_label.layer.masksToBounds = true
+        et_label.layer.cornerRadius = 5
+        
+        if event.starred {
+            favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            favorited.tintColor = UIColor.white
+
+        } else {
+            favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            favorited.tintColor = UIColor.gray
+        }
+
+        
+        let tr = UITapGestureRecognizer(target: self, action: #selector(tappedStar(sender:)))
+        tr.delegate = self
+        favorited.addGestureRecognizer(tr)
+        favorited.isUserInteractionEnabled = true
 
         time.text = eventTime
     }
-
-    func color(for event: Event) -> UIColor {
-        var color = UIColor.gray.withAlphaComponent(0.4)
-        if (event.starred) {
-            switch(event.entry_type) {
-            case "Official":
-                color = .deepPurple
-                break
-            case "Party":
-                color = .blue
-                break
-            case "Workshop":
-                color = .red
-                break
-            case "Contest":
-                color = .green
-                break
-            case "Training":
-                color = .yellow
-                break
-            case "Event":
-                color = .orange
-                break
-            case "Village":
-                color = .yellow
-                break
-            case "Firetalk":
-                color = .purple
-                break
-            default:
-                color = .white
-                break
+    
+    @objc func tappedStar(sender: AnyObject) {
+        if myEvent != nil {
+            myEvent?.starred = !(myEvent?.starred)!
+            if (myEvent?.starred)! {
+                favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                favorited.tintColor = UIColor.white
+                scheduleNotification(at: (myEvent?.start_date?.addingTimeInterval(-600))!,myEvent!)
+            } else {
+                favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                favorited.tintColor = UIColor.gray
+                removeNotification(myEvent!)
             }
-        }
 
-        return color
+            
+            saveContext()
+        } else {
+            NSLog("No event defined on star tap")
+        }
+    }
+    
+    func saveContext() {
+        do {
+            try getContext().save()
+        } catch {}
     }
 
 }

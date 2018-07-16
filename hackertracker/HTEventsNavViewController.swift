@@ -11,7 +11,7 @@ import CoreGraphics
 
 extension UIImage {
     static func mainHeaderImage(scaledToWidth:CGFloat, visibleRect : CGRect? = nil) -> UIImage {
-        let image = #imageLiteral(resourceName: "dc-25-wallpaper-blurred")
+        let image = #imageLiteral(resourceName: "header")
         
         var transformScale : CGFloat = 1.0
         
@@ -43,6 +43,7 @@ class HTEventsNavViewController: UINavigationController {
         if let windowSize = UIApplication.shared.keyWindow?.frame.size {
             setNavBarImage(screenSize: windowSize)
         }
+        //UIBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Bungee", size: 17)])
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

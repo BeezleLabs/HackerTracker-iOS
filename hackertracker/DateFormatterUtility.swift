@@ -60,7 +60,7 @@ class DateFormatterUtility {
     static let iso8601Formatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mmZ"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
@@ -78,7 +78,7 @@ class DateFormatterUtility {
     static let yearMonthDayNoTimeZoneTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "PDT")
-        formatter.dateFormat = "yyyy-M-d HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-d HH:mm:ss"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
@@ -90,6 +90,15 @@ class DateFormatterUtility {
         formatter.timeZone = TimeZone(abbreviation: "PDT")
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEEE"
+        return formatter
+    }()
+    
+    //DOW format
+    static let dayMonthDayOfWeekFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "EEEE, MMM d"
         return formatter
     }()
     

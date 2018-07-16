@@ -18,26 +18,95 @@ class DataRequestManager: NSObject {
         
         super.init()
     }
-
-    func getEventsFromSpeaker(_ indexsp: Int32) throws -> [Event] {
-        var events = [Event]()
     
-        let fre = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
-        fre.predicate = NSPredicate(format: "indexsp = %@", argumentArray: [indexsp])
-        if let ret = try managedContext.fetch(fre) as? [EventSpeaker] {
-            for es in ret {
-                if let event = getEvent(es.index) {
-                    events.append(event)
-                }
-            }
-        }
+    func getConference(_ code: String) -> Conference? {
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Conference")
+        fre.predicate = NSPredicate(format: "code = %@", argumentArray: [code])
         
-        return events
+        do {
+            let ret = try managedContext.fetch(fre)
+            
+            return ret.first as? Conference
+        } catch {
+            print("Failed to fetch conference")
+            return nil
+        }
     }
     
-    func getEvent(_ index: Int32) -> Event? {
+    func getConferences() -> [Conference] {
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Conference")
+        
+        do {
+            let ret = try managedContext.fetch(fre) as! [Conference]
+            
+            return ret
+        } catch {
+            print("Failed to fetch conferences")
+            return []
+        }
+    }
+    
+    func getConferenceDates(_ conference: Conference) -> [String] {
+        let calendar = NSCalendar.current
+        var ret: [String] = []
+        
+        let components = calendar.dateComponents([.day], from: conference.start_date!, to: conference.end_date!)
+        ret.append(DateFormatterUtility.yearMonthDayFormatter.string(from: conference.start_date!))
+        var cur = conference.start_date!
+        for _ in 1...components.day! {
+            cur = calendar.date(byAdding: Calendar.Component.day, value: 1, to: cur)!
+            ret.append(DateFormatterUtility.yearMonthDayFormatter.string(from: cur))
+        }
+        return ret
+    }
+    
+    func getSelectedConferences() -> [Conference] {
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Conference")
+        fre.predicate = NSPredicate(format: "selected = true")
+        
+        do {
+            let ret = try managedContext.fetch(fre) as! [Conference]
+            
+            return ret
+        } catch {
+            print("Failed to fetch conferences")
+            return []
+        }
+    }
+    
+    func getSelectedConference() -> Conference? {
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Conference")
+        fre.predicate = NSPredicate(format: "selected = true")
+        
+        do {
+            let ret = try managedContext.fetch(fre) as! [Conference]
+            
+            return ret.first
+        } catch {
+            print("Failed to fetch conferences")
+            return nil
+        }
+    }
+    
+    func getEventTypes(con: Conference) -> [EventType]{
+        
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventType")
+        fre.predicate = NSPredicate(format: "conference = %@", argumentArray: [con])
+        fre.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        do {
+            let ret = try managedContext.fetch(fre)
+            return ret as! [EventType]
+        } catch {
+            print("Failed to fetch event types")
+            return []
+        }
+        
+    }
+    
+    func getEvent(_ id: Int32) -> Event? {
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fre.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
+        fre.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
        
         do {
             let ret = try managedContext.fetch(fre)
@@ -49,10 +118,10 @@ class DataRequestManager: NSObject {
         }
     }
     
-    func getSpeaker(speakerId indexsp: Int32) -> Speaker? {
+    func getSpeaker(speakerId id: Int32) -> Speaker? {
         
         let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
-        fre.predicate = NSPredicate(format: "indexsp = %@", argumentArray: [indexsp])
+        fre.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
         
         do {
             let ret = try managedContext.fetch(fre)
@@ -64,31 +133,34 @@ class DataRequestManager: NSObject {
         
     }
     
-    func getSpeakersForEvent(_ index: Int32) -> [Speaker]? {
-        var speakers: [Speaker] = []
+    func getLocation(id: Int32) -> LocationModel? {
         
-        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventSpeaker")
-        fre.predicate = NSPredicate(format: "index = %@", argumentArray: [index])
-        
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"LocationModel")
+        fre.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
         
         do {
-            let ret = try managedContext.fetch(fre) as? [EventSpeaker]
-            
-            if let eventSpeakers = ret {
-                for es in eventSpeakers {
-                    if let speaker = self.getSpeaker(speakerId: es.indexsp) {
-                        speakers.append(speaker)
-                    }
-                }
-                
-                return speakers
-            }
+            let ret = try managedContext.fetch(fre)
+            return ret.first as? LocationModel
         } catch {
-            print("failed to fetch speakers for event")
+            print("Failed to fetch location")
             return nil
         }
         
-        return nil
+    }
+    
+    func getEventType(id: Int32) -> EventType? {
+        
+        let fre:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EventType")
+        fre.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
+        
+        do {
+            let ret = try managedContext.fetch(fre)
+            return ret.first as? EventType
+        } catch {
+            print("Failed to fetch location")
+            return nil
+        }
+        
     }
     
     func findConflictingStarredEvents(_ event: Event) -> [Event]? {

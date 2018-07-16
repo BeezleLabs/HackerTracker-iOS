@@ -10,8 +10,12 @@ import UIKit
 
 class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var mapSwitch: UISegmentedControl!
     
-    var dayMapView : ReaderContentView?
+    var caesarsMapView : ReaderContentView?
+    var flamingoMapView : ReaderContentView?
+    var nightMapView : ReaderContentView?
+    var linqMapView : ReaderContentView?
 
     var roomDimensions : CGRect?
     var timeOfDay : TimeOfDay?
@@ -22,7 +26,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             case .track1:
                 roomDimensions = CGRect(x: 1196.0, y: 712.0, width: 539.0, height: 338.0)
                 break
-            case .track2:
+            /*case .track2:
                 roomDimensions = CGRect(x: 1200.0, y: 276.0, width: 266.0, height: 339.0)
                 break
             case .training1:
@@ -48,8 +52,10 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
                 break
             case .villages:
                 roomDimensions = CGRect(x: 1456.0, y: 276.0, width: 264.0, height: 337.0)
-                break
+                break*/
             case .unknown:
+                break
+            default:
                 break
             }
         }
@@ -65,12 +71,31 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
         automaticallyAdjustsScrollViewInsets = false
         
-        let dayFile = Bundle.main.url(forResource: "layerone_map", withExtension: "pdf")
-
-        dayMapView = ReaderContentView(frame: self.view.frame, fileURL: dayFile!, page: 0, password: "")
-        view.addSubview(dayMapView!)
-
-        dayMapView?.backgroundColor = UIColor.backgroundGray
+        let caesarsFile = Bundle.main.url(forResource: "dc-26-caesars-public-1", withExtension: "pdf", subdirectory: "maps")
+        caesarsMapView = ReaderContentView(frame: self.view.frame, fileURL: caesarsFile!, page: 0, password: "")
+        view.addSubview(caesarsMapView!)
+        caesarsMapView?.backgroundColor = UIColor.backgroundGray
+        caesarsMapView?.maximumZoomScale = 8
+        
+        let flamingoFile = Bundle.main.url(forResource: "dc-26-flamingo-public-1", withExtension: "pdf", subdirectory: "maps")
+        flamingoMapView = ReaderContentView(frame: self.view.frame, fileURL: flamingoFile!, page: 0, password: "")
+        view.addSubview(flamingoMapView!)
+        flamingoMapView?.backgroundColor = UIColor.backgroundGray
+        flamingoMapView?.maximumZoomScale = 8
+        
+        let nightFile = Bundle.main.url(forResource: "dc-26-flamingo-noct-public", withExtension: "pdf", subdirectory: "maps")
+        nightMapView = ReaderContentView(frame: self.view.frame, fileURL: nightFile!, page: 0, password: "")
+        view.addSubview(nightMapView!)
+        nightMapView?.backgroundColor = UIColor.backgroundGray
+        nightMapView?.maximumZoomScale = 8
+        
+        let linqFile = Bundle.main.url(forResource: "dc-26-linq-workshops", withExtension: "pdf", subdirectory: "maps")
+        linqMapView = ReaderContentView(frame: self.view.frame, fileURL: linqFile!, page: 0, password: "")
+        view.addSubview(linqMapView!)
+        linqMapView?.backgroundColor = UIColor.backgroundGray
+        linqMapView?.maximumZoomScale = 8
+        
+        mapChanged(mapSwitch)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +111,9 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         if let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0 {
             zoomToLocation(roomDimensions)
         }
+        
+        mapChanged(mapSwitch)
+        
     }
 
     func zoomToLocation(_ roomDimensions: CGRect) {
@@ -94,7 +122,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         let widthScale = size.width/roomDimensions.width
         let heightScale = size.height/roomDimensions.height
 
-        let maxZoom : CGFloat = dayMapView?.maximumZoomScale ?? 4
+        let maxZoom : CGFloat = caesarsMapView?.maximumZoomScale ?? 4
 
         let scale : CGFloat
 
@@ -105,18 +133,65 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             scale = min(maxZoom, heightScale)
         }
 
-        dayMapView?.zoomScale = scale
+        caesarsMapView?.zoomScale = scale
 
         let roomCorner = CGPoint(x: roomDimensions.origin.x * scale, y: roomDimensions.origin.y * scale)
         let roomSize = CGSize(width: roomDimensions.size.width * scale, height: roomDimensions.size.height * scale)
 
         let roomCenter = CGPoint(x: roomCorner.x + (roomSize.width / 2), y: roomCorner.y + (roomSize.height / 2))
 
-        dayMapView?.contentOffset = CGPoint(x: roomCenter.x - (size.width/2), y: roomCenter.y - (size.height/2))
+        caesarsMapView?.contentOffset = CGPoint(x: roomCenter.x - (size.width/2), y: roomCenter.y - (size.height/2))
 
     }
     
     @objc func doneButtonPressed() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func mapChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 3:
+            caesarsMapView?.isHidden = true
+            flamingoMapView?.isHidden = true
+            nightMapView?.isHidden = true
+            linqMapView?.isHidden = false
+            caesarsMapView?.isUserInteractionEnabled = false
+            flamingoMapView?.isUserInteractionEnabled = false
+            nightMapView?.isUserInteractionEnabled = false
+            linqMapView?.isUserInteractionEnabled = true
+            break
+        case 2:
+            caesarsMapView?.isHidden = true
+            flamingoMapView?.isHidden = true
+            nightMapView?.isHidden = false
+            linqMapView?.isHidden = true
+            caesarsMapView?.isUserInteractionEnabled = false
+            flamingoMapView?.isUserInteractionEnabled = false
+            nightMapView?.isUserInteractionEnabled = true
+            linqMapView?.isUserInteractionEnabled = false
+            break
+        case 1:
+            caesarsMapView?.isHidden = true
+            flamingoMapView?.isHidden = false
+            nightMapView?.isHidden = true
+            linqMapView?.isHidden = true
+            caesarsMapView?.isUserInteractionEnabled = false
+            flamingoMapView?.isUserInteractionEnabled = true
+            nightMapView?.isUserInteractionEnabled = false
+            linqMapView?.isUserInteractionEnabled = false
+            break
+        default:
+            caesarsMapView?.isHidden = false
+            flamingoMapView?.isHidden = true
+            nightMapView?.isHidden = true
+            linqMapView?.isHidden = true
+            caesarsMapView?.isUserInteractionEnabled = true
+            flamingoMapView?.isUserInteractionEnabled = false
+            nightMapView?.isUserInteractionEnabled = false
+            linqMapView?.isUserInteractionEnabled = false
+            break
+            
+        }
+    }
+    
 }

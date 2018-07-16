@@ -28,6 +28,7 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var locationMapView: MapLocationView!
     @IBOutlet weak var eventTypeContainer: UIView!
     @IBOutlet weak var bottomPaddingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var eventTypeLabel: UILabel!
     
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
@@ -54,14 +55,22 @@ class HTEventDetailViewController: UIViewController {
         
         setupSpeakers(event: event)
         
-        eventLocationLabel.text = event.location
+        eventLocationLabel.text = event.location?.name
+        eventTypeLabel.layer.borderColor = UIColor(hexString: (event.event_type?.color!)!).cgColor
+        eventTypeLabel.layer.borderWidth = 1.0
+        eventTypeLabel.text = " \((event.event_type?.name!)!) "
+        eventTypeLabel.layer.masksToBounds = true
+        eventTypeLabel.layer.cornerRadius = 5
         
-        if (event.location.isEmpty) {
+        locationMapView.isHidden = true
+        /*if (event.location?.name?.isEmpty)! {
             eventLocationLabel.isHidden = true
             locationMapView.isHidden = true
-        }
+        } else {
+            locationMapView.currentLocation = Location.valueFromString((event.location?.name)!)
+        }*/
         
-        eventDetailTextView.text = event.details
+        eventDetailTextView.text = event.desc
 
         if (event.starred) {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
@@ -69,19 +78,18 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         }
 
-        toolImage.isHidden = !event.isTool()
-        demoImage.isHidden = !event.isDemo()
-        exploitImage.isHidden = !event.isExploit()
+        toolImage.isHidden = !(event.includes?.lowercased().contains("tool"))!
+        demoImage.isHidden = !(event.includes?.lowercased().contains("demo"))!
+        exploitImage.isHidden = !(event.includes?.lowercased().contains("exploit"))!
 
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden
         
-        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as Date)
-        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
+        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as! Date)
+        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as! Date)
 
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
-        locationMapView.currentLocation = Location.valueFromString(event.location)
-        locationMapView.timeOfDay = TimeOfDay.timeOfDay(for: event.start_date)
+        locationMapView.timeOfDay = TimeOfDay.timeOfDay(for: event.start_date!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -103,43 +111,37 @@ class HTEventDetailViewController: UIViewController {
     func setupSpeakers(event : Event) {
         eventNameLabel.textColor = UIColor(red: 79.0/255.0, green: 227.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         
-        let speakers : [Speaker]
-        
-        if let retrievedSpeakers = dataRequest.getSpeakersForEvent(event.index)
-        {
-            speakers = retrievedSpeakers
-        } else {
-            speakers = []
-        }
+        let speakers = event.speakers?.allObjects as! [Speaker]
         
         eventNameLabel.text = ""
         
+        var i = 1
         for s in speakers {
             if (s != speakers.first) {
                 speakerList.append(NSAttributedString(string:", "))
             }
             
-            speakerList.append(NSAttributedString(string:s.who))
+            speakerList.append(NSAttributedString(string:s.name!))
             
-            let whoAttributedString = NSMutableAttributedString(string:s.who)
+            let whoAttributedString = NSMutableAttributedString(string:s.name!)
             let whoParagraphStyle = NSMutableParagraphStyle()
             whoParagraphStyle.alignment = .center
-            whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.who as NSString).length))
-            whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (s.who as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.name! as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (s.name! as NSString).length))
             
-            let titleAttributedString = NSMutableAttributedString(string:s.sptitle)
+            let titleAttributedString = NSMutableAttributedString(string:s.title!)
             let titleParagraphStyle = NSMutableParagraphStyle()
             titleParagraphStyle.alignment = .center
-            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Furore", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.sptitle as NSString).length))
-            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.sptitle as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.title! as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Bungee", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (s.title! as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (s.title! as NSString).length))
             
-            let bioAttributedString = NSMutableAttributedString(string:s.bio)
+            let bioAttributedString = NSMutableAttributedString(string:s.desc!)
             let bioParagraphStyle = NSMutableParagraphStyle()
-            bioParagraphStyle.alignment = .justified
-            bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.bio as NSString).length))
-            bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (s.bio as NSString).length))
+            bioParagraphStyle.alignment = .left
+            bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (s.desc! as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Larsseit", size: 17)!, range: NSRange(location: 0, length: (s.desc! as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (s.desc! as NSString).length))
             
             
             speakerBios.append(whoAttributedString)
@@ -147,7 +149,10 @@ class HTEventDetailViewController: UIViewController {
             speakerBios.append(titleAttributedString)
             speakerBios.append(NSAttributedString(string:"\n\n"))
             speakerBios.append(bioAttributedString)
-            speakerBios.append(NSAttributedString(string:"\n\n"))
+            if speakers.count > 1, i < speakers.count {
+                speakerBios.append(NSAttributedString(string:"\n\n"))
+            }
+            i = i+1
         }
         
         let textAttachment = NSTextAttachment()
@@ -166,15 +171,21 @@ class HTEventDetailViewController: UIViewController {
         }
 
         eventNameLabel.attributedText = speakerList
+        eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
+        eventNameLabel.layer.borderWidth = 0.5
+        //eventNameLabel.layer.masksToBounds = true
+        eventNameLabel.layer.cornerRadius = 5
         
-        eventLocationLabel.text = event.location
         
-        if (event.location.isEmpty) {
+        eventLocationLabel.text = event.location?.name
+        if (event.location?.name?.isEmpty)! {
             eventLocationLabel.isHidden = true
             locationMapView.isHidden = true
+        } else {
+            locationMapView.currentLocation = Location.valueFromString((event.location?.name)!)
         }
         
-        eventDetailTextView.text = event.details
+        eventDetailTextView.text = event.desc
         
         if (event.starred) {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
@@ -182,18 +193,16 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
         }
 
-        toolImage.isHidden = !event.isTool()
-        demoImage.isHidden = !event.isDemo()
-        exploitImage.isHidden = !event.isExploit()
+        toolImage.isHidden = !(event.includes?.lowercased().contains("tool"))!
+        demoImage.isHidden = !(event.includes?.lowercased().contains("demo"))!
+        exploitImage.isHidden = !(event.includes?.lowercased().contains("exploit"))!
 
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden
         
-        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as Date)
-        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as Date)
+        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as! Date)
+        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as! Date)
 
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
-        
-        locationMapView.currentLocation = Location.valueFromString(event.location)
         
         let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
         touchGesture.minimumPressDuration = 0.0
@@ -229,7 +238,7 @@ class HTEventDetailViewController: UIViewController {
             event.starred = false
             eventStarredButton.image = #imageLiteral(resourceName: "saved-inactive")
             saveContext()
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
+            removeNotification(event)
 
             reloadEvents()
         } else {
@@ -241,25 +250,37 @@ class HTEventDetailViewController: UIViewController {
                 let duplicateTitles = duplicates.reduce("", { (result, event) -> String in
                     if result == ""
                     {
-                        return "•\'\(event.title)\'"
+                        return "• \(event.title!)"
                     }
                     else
                     {
-                        return result + "\n" + "•\'\(event.title)\'"
+                        return result + "\n" + "• \(event.title!)"
                     }
                     
                 })
                 
-                let alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(event.title)\'" + " to schedule?"
+                let alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(event.title!)\'" + " to schedule?"
                 
-                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:alertBody, preferredStyle: UIAlertControllerStyle.alert)
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.alignment = NSTextAlignment.left
+                let messageText = NSMutableAttributedString(
+                    string: alertBody,
+                    attributes: [
+                        NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                        NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14),
+                        NSAttributedStringKey.foregroundColor : UIColor.black
+                    ]
+                )
+                
+                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:"", preferredStyle: UIAlertControllerStyle.alert)
+                alert.setValue(messageText, forKey: "attributedMessage")
                 
                 let yesItem : UIAlertAction = UIAlertAction(title: "Add Anyway", style: UIAlertActionStyle.default, handler: {
                     (action:UIAlertAction) in
                     event.starred = true
                     self.eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                     self.saveContext()
-                    self.scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
+                    scheduleNotification(at: (event.start_date?.addingTimeInterval(-600))!,event)
                     self.reloadEvents()
                 })
                 
@@ -279,7 +300,7 @@ class HTEventDetailViewController: UIViewController {
                 event.starred = true
                 eventStarredButton.image = #imageLiteral(resourceName: "saved-active")
                 saveContext()
-                scheduleNotification(at: event.start_date.addingTimeInterval(-600),event)
+                scheduleNotification(at: (event.start_date?.addingTimeInterval(-600))!,event)
 
                 reloadEvents()
             }
@@ -292,27 +313,6 @@ class HTEventDetailViewController: UIViewController {
         if let splitViewController = self.splitViewController,
             !splitViewController.isCollapsed {
             delegate?.reloadEvents()
-        }
-    }
-
-    func scheduleNotification(at date: Date,_ event:Event) {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents(in: .current, from: date)
-        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
-
-        let content = UNMutableNotificationContent()
-        content.title = "Upcoming Event"
-        content.body = "\(event.title) in \(event.location)"
-        content.sound = UNNotificationSound.default()
-        
-        let request = UNNotificationRequest(identifier: "hackertracker-\(event.id)", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) {(error) in
-            if let error = error {
-                NSLog("Error: \(error)")
-            }
         }
     }
     

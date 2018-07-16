@@ -27,12 +27,13 @@ public class UpdateCell : UITableViewCell {
         selectionStyle = .none
     }
 
-    func bind(message: Message) {
-        titleLabel.text = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.date)
+    func bind(message: Article) {
+        let date = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.updated_at!)
 
-        titleLabel.font = UIFont(name: "Furore", size: 18)
-        descriptionLabel.text = message.msg
-        descriptionLabel.font = UIFont(name: "MuseoSans-300", size: 14)
+        titleLabel.text = message.name
+        titleLabel.font = UIFont(name: "Bungee", size: 16)
+        descriptionLabel.text = "[\(date)]: \(message.text!)"
+        descriptionLabel.font = UIFont(name: "Larsseit", size: 14)
 
     }
 
