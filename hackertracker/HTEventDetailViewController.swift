@@ -62,13 +62,8 @@ class HTEventDetailViewController: UIViewController {
         eventTypeLabel.layer.masksToBounds = true
         eventTypeLabel.layer.cornerRadius = 5
         
-        locationMapView.isHidden = true
-        /*if (event.location?.name?.isEmpty)! {
-            eventLocationLabel.isHidden = true
-            locationMapView.isHidden = true
-        } else {
-            locationMapView.currentLocation = Location.valueFromString((event.location?.name)!)
-        }*/
+        //locationMapView.isHidden = true
+        locationMapView.currentLocation = Location.valueFromString((event.location?.name)!)
         
         eventDetailTextView.text = event.desc
 
@@ -84,8 +79,8 @@ class HTEventDetailViewController: UIViewController {
 
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden
         
-        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date as! Date)
-        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as! Date)
+        let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: event.start_date!)
+        let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date!)
 
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
@@ -94,6 +89,13 @@ class HTEventDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if self.tabBarController == nil
+        {
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+            doneButton.tintColor = .white
+            navigationItem.leftBarButtonItem = doneButton
+        }
 
         if let splitViewController = self.splitViewController,
             splitViewController.isCollapsed {
@@ -102,6 +104,11 @@ class HTEventDetailViewController: UIViewController {
             bottomPaddingConstraint.constant = 80
         }
     }
+    
+    @objc func doneButtonPressed() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -173,17 +180,12 @@ class HTEventDetailViewController: UIViewController {
         eventNameLabel.attributedText = speakerList
         eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
         eventNameLabel.layer.borderWidth = 0.5
-        //eventNameLabel.layer.masksToBounds = true
         eventNameLabel.layer.cornerRadius = 5
         
         
         eventLocationLabel.text = event.location?.name
-        if (event.location?.name?.isEmpty)! {
-            eventLocationLabel.isHidden = true
-            locationMapView.isHidden = true
-        } else {
-            locationMapView.currentLocation = Location.valueFromString((event.location?.name)!)
-        }
+
+        locationMapView.currentLocation = Location.valueFromString((event.location?.name)!)
         
         eventDetailTextView.text = event.desc
         
@@ -267,7 +269,7 @@ class HTEventDetailViewController: UIViewController {
                     string: alertBody,
                     attributes: [
                         NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                        NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14),
+                        NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14)!,
                         NSAttributedStringKey.foregroundColor : UIColor.black
                     ]
                 )

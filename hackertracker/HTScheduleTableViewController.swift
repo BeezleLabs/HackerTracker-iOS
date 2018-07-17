@@ -383,7 +383,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     var alltypes: [EventType] = []
     var filteredtypes: [EventType] = []
     var filterView: HTFilterViewController?
-    private var filterButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -400,7 +399,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
-        createFloatingButton()
     }
 
     public override func emptyState() -> UIView {
@@ -409,16 +407,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
             return emptyState
         }
         return UIView()
-    }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if filterButton.superview != nil {
-            DispatchQueue.main.async {
-                self.filterButton.removeFromSuperview()
-                //self.filterButton = nil
-            }
-        }
     }
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
@@ -434,57 +422,21 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
         return fr
     }
-    
-    func createFloatingButton() {
-        filterButton = UIButton(type: .custom)
-        filterButton.translatesAutoresizingMaskIntoConstraints = false
-        filterButton.backgroundColor = UIColor.white
-        filterButton.setImage(UIImage(named:"filter"), for: .normal)
 
-        filterButton.addTarget(self, action: #selector(filterTypes(sender:)), for: UIControlEvents.touchUpInside)
-        // We're manipulating the UI, must be on the main thread:
-        DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.keyWindow {
-                keyWindow.addSubview(self.filterButton)
-                NSLayoutConstraint.activate([
-                    keyWindow.trailingAnchor.constraint(equalTo: self.filterButton.trailingAnchor, constant: 15),
-                    keyWindow.bottomAnchor.constraint(equalTo: self.filterButton.bottomAnchor, constant: 50),
-                    self.filterButton.widthAnchor.constraint(equalToConstant: 50),
-                    self.filterButton.heightAnchor.constraint(equalToConstant: 50)])
-            }
-            // Make the button round:
-            self.filterButton.layer.cornerRadius = 25
-            // Add a black shadow:
-            self.filterButton.layer.shadowColor = UIColor.black.cgColor
-            self.filterButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-            self.filterButton.layer.masksToBounds = false
-            self.filterButton.layer.shadowRadius = 2.0
-            self.filterButton.layer.shadowOpacity = 0.5
-            // Add a pulsing animation to draw attention to button:
-            let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
-            scaleAnimation.duration = 1
-            scaleAnimation.repeatCount = .greatestFiniteMagnitude
-            scaleAnimation.autoreverses = true
-            scaleAnimation.fromValue = 1.0;
-            scaleAnimation.toValue = 1.04;
-            self.filterButton.layer.add(scaleAnimation, forKey: "scale")
-        }
-    }
-    
-    @objc func filterTypes(sender: AnyObject) {
-        let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
-        fvc.delegate = self
-        fvc.all = alltypes
-        fvc.filtered = filteredtypes
-        fvc.modalPresentationStyle = .popover
-        present(fvc, animated:false, completion:nil)
-        fvc.popoverPresentationController?.sourceView = view
-        fvc.popoverPresentationController?.sourceRect = sender.frame
-    }
     
     func filterList(filteredEventTypes: [EventType]) {
         self.filteredtypes = filteredEventTypes
         self.reloadEvents()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filterSegue" {
+            let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
+            fvc.delegate = self
+            fvc.all = alltypes
+            fvc.filtered = filteredtypes
+            present(fvc, animated:false, completion:nil)
+        }
     }
 }
 

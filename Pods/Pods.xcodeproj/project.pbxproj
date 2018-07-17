@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		036D4412D1B7C381F1573F348729923D /* Pods_hackertracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_hackertracker.framework; path = "Pods-hackertracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		036D4412D1B7C381F1573F348729923D /* Pods_hackertracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		089E3246955A4A0F42140451E9638879 /* Pods-hackertrackerTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-hackertrackerTests-frameworks.sh"; sourceTree = "<group>"; };
 		1D5DA3F37AB4E2588CF75073480F72AC /* Pods-hackertracker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-hackertracker-umbrella.h"; sourceTree = "<group>"; };
 		2A514E64551269E1F1AE3E29E5CA4135 /* Pods-hackertracker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-hackertracker-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -25,14 +25,14 @@
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		66A16A164ED92270DBE4C1E9881A3AB2 /* Pods-hackertrackerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-hackertrackerTests-umbrella.h"; sourceTree = "<group>"; };
 		7143D97E4E8D02A4984B45F17BC378CC /* Pods-hackertrackerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-hackertrackerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7BAF62F98DD440CD4C321634DF5B2B8A /* Pods-hackertracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-hackertracker.modulemap"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7BAF62F98DD440CD4C321634DF5B2B8A /* Pods-hackertracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-hackertracker.modulemap"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A9DF76C55E661C6C4D32E15CEF2A819 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A72558326FE729A51B8F70381CA9B2C1 /* Pods-hackertracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertracker.release.xcconfig"; sourceTree = "<group>"; };
-		A7501F98302990A27F97C99DFC8B14F9 /* Pods-hackertrackerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-hackertrackerTests.modulemap"; sourceTree = "<group>"; };
+		A7501F98302990A27F97C99DFC8B14F9 /* Pods-hackertrackerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-hackertrackerTests.modulemap"; sourceTree = "<group>"; };
 		A996F89208B26F787F10E6AEA6F1679B /* Pods-hackertrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB2F316E8B869F21471F11FE8DAFB06D /* Pods-hackertracker-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-hackertracker-frameworks.sh"; sourceTree = "<group>"; };
-		DBF09A1B48058A0A99271AE68F2FBB8F /* Pods_hackertrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_hackertrackerTests.framework; path = "Pods-hackertrackerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF09A1B48058A0A99271AE68F2FBB8F /* Pods_hackertrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42DB47661D50E9A53B804766997FA3C /* Pods-hackertracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E73A8CD128B6B6A17F9F750F14A74DD6 /* Pods-hackertrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-hackertrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2F2CB68F1AC0778F2E9566FB4B5DF7 /* Pods-hackertrackerTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-hackertrackerTests-resources.sh"; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -324,6 +324,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -331,6 +332,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -417,6 +419,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -424,6 +427,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Bungee-Regular.ttf">
+            <string>Bungee-Regular</string>
+        </array>
+        <array key="Larsseit.ttf">
+            <string>Larsseit</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,27 +27,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ah-u5-GpY">
-                        <rect key="frame" x="28" y="8" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ah-u5-GpY">
+                        <rect key="frame" x="8" y="8" width="358" height="16"/>
+                        <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdw-5A-rJ9">
-                        <rect key="frame" x="8" y="37" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdw-5A-rJ9">
+                        <rect key="frame" x="8" y="31.5" width="358" height="18"/>
+                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Xdw-5A-rJ9" secondAttribute="bottom" constant="5" id="7QM-cL-dyp"/>
-                    <constraint firstItem="8Ah-u5-GpY" firstAttribute="top" secondItem="2bt-sO-p30" secondAttribute="top" constant="30" id="JlV-Rv-AOA"/>
-                    <constraint firstItem="8Ah-u5-GpY" firstAttribute="leading" secondItem="Xdw-5A-rJ9" secondAttribute="leading" id="LFJ-QZ-hpb"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xdw-5A-rJ9" secondAttribute="trailing" constant="20" id="OvA-tO-GSP"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Ah-u5-GpY" secondAttribute="trailing" constant="20" id="aOA-hr-ekh"/>
-                    <constraint firstItem="8Ah-u5-GpY" firstAttribute="leading" secondItem="2bt-sO-p30" secondAttribute="leading" constant="20" id="gdO-l8-API"/>
-                    <constraint firstItem="Xdw-5A-rJ9" firstAttribute="top" secondItem="8Ah-u5-GpY" secondAttribute="bottom" constant="8" id="rFI-4n-Uq4"/>
+                    <constraint firstItem="8Ah-u5-GpY" firstAttribute="top" secondItem="2bt-sO-p30" secondAttribute="top" constant="8" id="JlV-Rv-AOA"/>
+                    <constraint firstAttribute="trailing" secondItem="8Ah-u5-GpY" secondAttribute="trailing" constant="9" id="L2d-Uo-tIQ"/>
+                    <constraint firstAttribute="trailing" secondItem="Xdw-5A-rJ9" secondAttribute="trailing" constant="9" id="dBo-8r-hKV"/>
+                    <constraint firstItem="Xdw-5A-rJ9" firstAttribute="centerX" secondItem="2bt-sO-p30" secondAttribute="centerX" id="ddE-NZ-kl7"/>
+                    <constraint firstItem="8Ah-u5-GpY" firstAttribute="leading" secondItem="2bt-sO-p30" secondAttribute="leading" constant="8" id="gdO-l8-API"/>
+                    <constraint firstItem="Xdw-5A-rJ9" firstAttribute="leading" secondItem="2bt-sO-p30" secondAttribute="leading" constant="8" id="hlB-gZ-R1K"/>
+                    <constraint firstItem="8Ah-u5-GpY" firstAttribute="centerX" secondItem="2bt-sO-p30" secondAttribute="centerX" id="mnU-pk-feD"/>
+                    <constraint firstItem="Xdw-5A-rJ9" firstAttribute="top" secondItem="8Ah-u5-GpY" secondAttribute="bottom" constant="8" id="pa2-iG-EFh"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
