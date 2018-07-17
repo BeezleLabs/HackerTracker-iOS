@@ -163,17 +163,20 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 || indexPath.section == 2 {
-            self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+            self.performSegue(withIdentifier: "homeEventDetailSegue", sender: indexPath)
         }
     }
-    
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "eventDetailSegue" {
+        if segue.identifier == "homeEventDetailSegue" {
             let dv : HTEventDetailViewController
             
             if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {

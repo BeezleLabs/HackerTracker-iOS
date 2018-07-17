@@ -239,6 +239,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 indexPath = sender as! IndexPath
             }
 
+            NSLog("Returning section \(indexPath.section) row \(indexPath.row)")
             dv.event = self.eventSections[indexPath.section].events[indexPath.row]
             dv.delegate = self
         }
@@ -430,12 +431,33 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "filterSegue" {
             let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
             fvc.delegate = self
             fvc.all = alltypes
             fvc.filtered = filteredtypes
             present(fvc, animated:false, completion:nil)
+            
+        } else if (segue.identifier == "eventDetailSegue") {
+            
+            let dv : HTEventDetailViewController
+            
+            if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
+                dv = _dv
+            } else {
+                dv = segue.destination as! HTEventDetailViewController
+            }
+            
+            var indexPath: IndexPath
+            if let ec = sender as? EventCell {
+                indexPath = tableView.indexPath(for: ec)! as IndexPath
+            } else {
+                indexPath = sender as! IndexPath
+            }
+            
+            dv.event = self.eventSections[indexPath.section].events[indexPath.row]
+            dv.delegate = self
         }
     }
 }

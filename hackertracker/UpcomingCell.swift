@@ -10,9 +10,7 @@ import UIKit
 
 class UpcomingCell: UITableViewCell {
 
-    @IBOutlet weak var color: UIView!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var star: UIImageView!
     @IBOutlet weak var time: UILabel!
     
     var myEvent: Event?
@@ -46,15 +44,9 @@ class UpcomingCell: UITableViewCell {
         myEvent = event
         
         title.text = event.title
+        title.sizeToFit()
+        title.numberOfLines = 0
         time.text = DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.start_date!)
-        
-        star.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        star.tintColor = UIColor.white
-        if event.starred {
-            star.isHidden = false
-        } else {
-            star.isHidden = true
-        }
         
         self.contentView.layer.borderColor = UIColor(hexString: (event.event_type?.color!)!).cgColor
         self.contentView.layer.borderWidth = 1.0

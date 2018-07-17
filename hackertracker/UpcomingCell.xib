@@ -25,46 +25,33 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWG-I7-Ixx">
-                        <rect key="frame" x="39" y="8" width="274" height="28"/>
+                        <rect key="frame" x="36" y="11" width="277" height="22"/>
                         <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqK-JG-J26">
-                        <rect key="frame" x="4" y="8" width="27" height="16"/>
+                        <rect key="frame" x="4" y="14" width="27" height="16"/>
                         <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="saved-active" translatesAutoresizingMaskIntoConstraints="NO" id="jXy-qL-SVn">
-                        <rect key="frame" x="10" y="24" width="15" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="15" id="arC-GL-L4x"/>
-                            <constraint firstAttribute="height" constant="15" id="ecL-I2-Ce6"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="AqK-JG-J26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="2zK-pE-G0F"/>
+                    <constraint firstItem="aWG-I7-Ixx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="09M-1a-VOK"/>
                     <constraint firstItem="AqK-JG-J26" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="DJx-ye-u7n"/>
-                    <constraint firstAttribute="bottom" secondItem="aWG-I7-Ixx" secondAttribute="bottom" constant="7.5" id="Eml-eF-h7u"/>
-                    <constraint firstItem="aWG-I7-Ixx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="F60-OE-fKk"/>
-                    <constraint firstItem="jXy-qL-SVn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="IEm-Bh-N2U"/>
+                    <constraint firstAttribute="bottom" secondItem="aWG-I7-Ixx" secondAttribute="bottom" constant="10.5" id="FyY-vK-qF0"/>
                     <constraint firstAttribute="trailing" secondItem="aWG-I7-Ixx" secondAttribute="trailing" constant="7" id="Tgs-1a-uYI"/>
-                    <constraint firstItem="jXy-qL-SVn" firstAttribute="top" secondItem="AqK-JG-J26" secondAttribute="bottom" id="WNV-z6-nsC"/>
-                    <constraint firstItem="aWG-I7-Ixx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="qvo-kd-hGL"/>
+                    <constraint firstItem="aWG-I7-Ixx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="aZW-Ih-j7h"/>
+                    <constraint firstItem="AqK-JG-J26" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wol-fv-a6R"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="star" destination="jXy-qL-SVn" id="qyz-vh-reQ"/>
                 <outlet property="time" destination="AqK-JG-J26" id="m5L-0x-f3Y"/>
                 <outlet property="title" destination="aWG-I7-Ixx" id="yGN-Zo-hll"/>
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="saved-active" width="40" height="40"/>
-    </resources>
 </document>

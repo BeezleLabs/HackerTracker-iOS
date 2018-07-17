@@ -95,7 +95,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nGb-HO-gXP" kind="showDetail" identifier="eventDetailSegue" id="4rv-eb-WDL"/>
+                                            <segue destination="nGb-HO-gXP" kind="showDetail" identifier="homeEventDetailSegue" id="4rv-eb-WDL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1237,7 +1237,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uiE-E7-nxe"/>
-        <segue reference="a0t-7o-Cnk"/>
+        <segue reference="4rv-eb-WDL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
