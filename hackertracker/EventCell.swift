@@ -56,19 +56,28 @@ public class EventCell : UITableViewCell {
         
         title.text = event.title
 
-        color.backgroundColor = UIColor(hexString: (event.event_type?.color!)!)
+        if let et = event.event_type, let col = et.color {
+            color.backgroundColor = UIColor(hexString: (col))
+            et_label.layer.borderColor = UIColor(hexString: col).cgColor
+            et_label.layer.borderWidth = 1.0
+            et_label.backgroundColor = UIColor(hexString: col)
+            et_label.text = " \((event.event_type?.name!)!) "
+            et_label.layer.masksToBounds = true
+            et_label.layer.cornerRadius = 5
+        } else {
+            color.backgroundColor = UIColor.gray
+            et_label.text = " "
+        }
         
         if event.location?.id == 0 {
             subtitle.text = "Location in description"
         } else {
-            subtitle.text = event.location?.name
+            if let n = event.location?.name {
+                subtitle.text = "\(n) |"
+            } else {
+                subtitle.text = "TBA |"
+            }
         }
-        
-        et_label.layer.borderColor = UIColor(hexString: (event.event_type?.color!)!).cgColor
-        et_label.layer.borderWidth = 1.0
-        et_label.text = " \((event.event_type?.name!)!) "
-        et_label.layer.masksToBounds = true
-        et_label.layer.cornerRadius = 5
         
         if event.starred {
             favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)

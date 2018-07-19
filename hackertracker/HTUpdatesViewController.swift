@@ -20,7 +20,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
     @IBOutlet weak var conName: UILabel!
 
     var messages: [Article] = []
-    var eventSections: [String] = ["News","Upcoming Starred","Upcoming","About"]
+    var eventSections: [String] = ["News","Upcoming Starred","Upcoming"]
     var starred: [Event] = []
     var upcoming: [Event] = []
     var data = NSMutableData()
@@ -37,7 +37,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
 
         updatesTableView.rowHeight = UITableViewAutomaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
-        updatesTableView.register(UINib.init(nibName: "UpcomingCell", bundle: Bundle(for: UpcomingCell.self)), forCellReuseIdentifier: "UpcomingCell")
+        updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
         
         updatesTableView.delegate = self
         updatesTableView.dataSource = self
@@ -46,10 +46,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
        
         if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
             updatesTableView.tableFooterView = footer
-            var frame = updatesTableView.tableFooterView?.frame
-            frame?.size.height = view.frame.size.height * 0.25
-            updatesTableView.frame = frame ?? CGRect.zero
-            updatesTableView.tableFooterView = footer
+            //var frame = updatesTableView.tableFooterView?.frame
+            //frame?.size.height = view.frame.size.height * 0.25
+            //updatesTableView.frame = frame ?? CGRect.zero
+            //updatesTableView.tableFooterView = footer
             footer.footerDelegate = self
             self.footer = footer
         }
@@ -78,7 +78,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
         
         self.updatesTableView.reloadData()
         self.updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        self.updatesTableView.separatorColor = UIColor.backgroundGray
+        self.updatesTableView.separatorColor = UIColor.gray
         self.updatesTableView.separatorStyle = .singleLine
     }
 
@@ -87,21 +87,21 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
         fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
         fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [myCon!])
         fr.returnsObjectsAsFaults = false
-        fr.fetchLimit = 2
+        fr.fetchLimit = 3
         self.messages = (try! getContext().fetch(fr)) as! [Article]
         
         let frs:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         frs.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         frs.predicate = NSPredicate(format: "conference = %@ and start_date > %@ and starred = %@", argumentArray: [myCon!, Date(), true])
         frs.returnsObjectsAsFaults = false
-        frs.fetchLimit = 2
+        frs.fetchLimit = 3
         self.starred = (try! getContext().fetch(frs)) as! [Event]
         
         let fru:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fru.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fru.predicate = NSPredicate(format: "conference = %@ and start_date > %@", argumentArray: [myCon!, Date(), true])
         fru.returnsObjectsAsFaults = false
-        fru.fetchLimit = 2
+        fru.fetchLimit = 3
         self.upcoming = (try! getContext().fetch(fru)) as! [Event]
 
     }
@@ -123,30 +123,45 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UpcomingCell", for: indexPath) as! UpcomingCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event : Event = starred[indexPath.row]
             
             cell.bind(event: event)
             
             return cell
         } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UpcomingCell", for: indexPath) as! UpcomingCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event : Event = upcoming[indexPath.row]
             
             cell.bind(event: event)
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UpcomingCell", for: indexPath) as! UpcomingCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             return cell
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    /*func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return eventSections[section]
+    }*/
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HomeHeader") as? HomeHeaderView ?? HomeHeaderView(reuseIdentifier: "HomeHeader")
-        header.headerLabel.text = " \(eventSections[section])"
+        let headerView = UIView()
         
-        return header
+        let headerLabel = UILabel(frame: CGRect(x: 25, y: 0, width:
+            tableView.bounds.size.width, height: tableView.bounds.size.height))
+        headerLabel.font = UIFont(name: "Larsseit", size: 14)
+        headerLabel.textColor = UIColor.lightGray
+        headerLabel.text = eventSections[section].uppercased()
+        headerLabel.sizeToFit()
+        headerView.addSubview(headerLabel)
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -168,7 +183,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 75
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
