@@ -239,7 +239,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 indexPath = sender as! IndexPath
             }
 
-            NSLog("Returning section \(indexPath.section) row \(indexPath.row)")
             dv.event = self.eventSections[indexPath.section].events[indexPath.row]
             dv.delegate = self
         }
@@ -409,7 +408,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         }
         return UIView()
     }
-
+    
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!

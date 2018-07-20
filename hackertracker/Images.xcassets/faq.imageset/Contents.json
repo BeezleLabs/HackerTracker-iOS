@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "filter_40.png",
+      "filename" : "qa-40.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "filter_80.png",
+      "filename" : "qa-80.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "filter_120.png",
+      "filename" : "qa-120.png",
       "scale" : "3x"
     }
   ],

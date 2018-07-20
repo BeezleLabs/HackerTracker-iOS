@@ -85,21 +85,27 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
     func reloadEvents() {
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Article")
         fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
-        fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [myCon!])
+        if let c = myCon {
+            fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [c])
+        }
         fr.returnsObjectsAsFaults = false
-        fr.fetchLimit = 3
+        fr.fetchLimit = 2
         self.messages = (try! getContext().fetch(fr)) as! [Article]
         
         let frs:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         frs.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        frs.predicate = NSPredicate(format: "conference = %@ and start_date > %@ and starred = %@", argumentArray: [myCon!, Date(), true])
+        if let c = myCon {
+            frs.predicate = NSPredicate(format: "conference = %@ and start_date > %@ and starred = %@", argumentArray: [c, Date(), true])
+        }
         frs.returnsObjectsAsFaults = false
         frs.fetchLimit = 3
         self.starred = (try! getContext().fetch(frs)) as! [Event]
         
         let fru:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fru.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fru.predicate = NSPredicate(format: "conference = %@ and start_date > %@", argumentArray: [myCon!, Date(), true])
+        if let c = myCon {
+            fru.predicate = NSPredicate(format: "conference = %@ and start_date > %@", argumentArray: [c, Date(), true])
+        }
         fru.returnsObjectsAsFaults = false
         fru.fetchLimit = 3
         self.upcoming = (try! getContext().fetch(fru)) as! [Event]
@@ -145,10 +151,6 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    
-    /*func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return eventSections[section]
-    }*/
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()

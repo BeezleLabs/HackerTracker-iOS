@@ -21,12 +21,11 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
         dateLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        dateLabel.textAlignment = NSTextAlignment.center
-        dateLabel.textColor = .white
+        dateLabel.textAlignment = NSTextAlignment.left
+        dateLabel.textColor = .lightGray
         dateLabel.backgroundColor = UIColor.backgroundGray
-        dateLabel.layer.borderColor = UIColor.darkGray.cgColor
-        dateLabel.layer.borderWidth = 2.0
-        dateLabel.layer.cornerRadius = 10
+        dateLabel.layer.borderColor = UIColor.lightGray.cgColor
+        dateLabel.layer.borderWidth = 0.5
         dateLabel.font = UIFont(name: "Larsseit", size: 14)
     }
     
@@ -38,13 +37,14 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
     {
         if let date = date {
             if Calendar.current.isDateInYesterday(date) {
-                dateLabel.text = "Yesterday"
+                dateLabel.text = "    Yesterday".uppercased()
             } else if Calendar.current.isDateInToday(date) {
-                dateLabel.text = "Today"
+                dateLabel.text = "    Today".uppercased()
             } else if Calendar.current.isDateInTomorrow(date) {
-                dateLabel.text = "Tomorrow"
+                dateLabel.text = "    Tomorrow".uppercased()
             } else {
-                dateLabel.text = DateFormatterUtility.dayMonthDayOfWeekFormatter.string(from: date)
+                let dt = DateFormatterUtility.dayMonthDayOfWeekFormatter.string(from: date).uppercased()
+                dateLabel.text = "    \(dt)"
             }
         } else {
             dateLabel.text = "Unknown"
