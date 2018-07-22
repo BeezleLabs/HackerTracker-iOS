@@ -20,31 +20,17 @@ protocol ContributorsFooterDelegate : class {
 }
 
 class ContributorsFooterView: UIView {
-
-    @IBOutlet weak var contributorsHeaderLabel: UILabel!
     
     weak var footerDelegate : ContributorsFooterDelegate?
-    
-    public init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.frame = CGRect(x: 0, y: 0, width: 300, height: 460)
         backgroundColor = .backgroundGray
 
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let attributedCon = NSAttributedString(string: "CON", attributes: [NSAttributedStringKey.font : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: UIFont.Weight.bold), NSAttributedStringKey.foregroundColor : UIColor.white])
-        let attributedTributor = NSAttributedString(string: "tributors", attributes: [NSAttributedStringKey.font : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: UIFont.Weight.light), NSAttributedStringKey.foregroundColor : UIColor.white])
-        
-        let attributedContributer = NSMutableAttributedString(attributedString: attributedCon)
-        attributedContributer.append(attributedTributor)
-        
-        contributorsHeaderLabel.attributedText = attributedContributer
     }
     
     @IBAction func sethLinkPressed(_ sender: Any) {

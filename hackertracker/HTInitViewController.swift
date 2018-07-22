@@ -73,7 +73,7 @@ class HTInitViewController: UIViewController {
                 let conferences_content = try! String(contentsOfFile: conferences_file)
                 let conferences_data = conferences_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
                 do {
-                    try dataManager.importConferences(conData: conferences_data)
+                    try _ = dataManager.importConferences(conData: conferences_data)
                 } catch {
                     print("Failed to import conferences: \(error)")
                 }

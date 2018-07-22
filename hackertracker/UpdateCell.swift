@@ -31,9 +31,7 @@ public class UpdateCell : UITableViewCell {
         let date = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.updated_at!)
 
         titleLabel.text = message.name
-        titleLabel.font = UIFont(name: "Bungee", size: 16)
         descriptionLabel.text = "[\(date)]: \(message.text!)"
-        descriptionLabel.font = UIFont(name: "Larsseit", size: 14)
 
     }
 

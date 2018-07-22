@@ -16,17 +16,12 @@ class ConferenceCell: UITableViewCell {
     @IBOutlet weak var conSelected: UISwitch!
     
     var con: Conference?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        if con != nil {
-            self.conSelected.setOn((self.con?.selected)!, animated: false)
+        if let conference = con {
+            self.conSelected.setOn(conference.selected, animated: false)
         }
         
     }
@@ -41,13 +36,13 @@ class ConferenceCell: UITableViewCell {
     }
     
     @IBAction func selectConference(_ sender: Any) {
-        NSLog("setting selected to \(!(self.con?.selected)!)")
-        self.conSelected.setOn(!(self.con?.selected)!, animated: true)
-        self.con?.selected = !(self.con?.selected)!
-        do {
-            try getContext().save()
-        } catch {
-            
+        if let conference = con {
+            NSLog("setting selected to \(!conference.selected)")
+            conSelected.setOn(!conference.selected, animated: true)
+            conference.selected = !conference.selected
+            do {
+                try getContext().save()
+            } catch { }
         }
     }
     

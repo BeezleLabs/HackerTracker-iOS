@@ -42,33 +42,50 @@ public class EventCell : UITableViewCell {
         let oldColor = color.backgroundColor
         super.setSelected(selected, animated: animated)
         color.backgroundColor = oldColor
+        et_label.layer.backgroundColor = oldColor?.cgColor
+        et_label.backgroundColor = oldColor
     }
 
     override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
         let oldColor = color.backgroundColor
         super.setHighlighted(highlighted, animated: animated)
         color.backgroundColor = oldColor
+        et_label.layer.backgroundColor = oldColor?.cgColor
+        et_label.backgroundColor = oldColor
     }
 
     func bind(event : Event) {
         myEvent = event
-        let eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:event.start_date as! Date) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: event.end_date as! Date)
+        var eventTime = "TBD"
+        if let start = event.start_date, let end = event.end_date {
+            eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:start) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
+        }
         
         title.text = event.title
 
-        color.backgroundColor = UIColor(hexString: (event.event_type?.color!)!)
+        if let et = event.event_type, let col = et.color {
+            color.backgroundColor = UIColor(hexString: (col))
+            et_label.layer.borderColor = UIColor(hexString: col).cgColor
+            et_label.layer.borderWidth = 1.0
+            et_label.backgroundColor = UIColor(hexString: col)
+            et_label.text = " \((event.event_type?.name!)!) "
+            et_label.layer.masksToBounds = true
+            et_label.layer.cornerRadius = 5
+            
+        } else {
+            color.backgroundColor = UIColor.gray
+            et_label.text = " "
+        }
         
         if event.location?.id == 0 {
             subtitle.text = "Location in description"
         } else {
-            subtitle.text = event.location?.name
+            if let n = event.location?.name {
+                subtitle.text = "\(n) |"
+            } else {
+                subtitle.text = "TBA |"
+            }
         }
-        
-        et_label.layer.borderColor = UIColor(hexString: (event.event_type?.color!)!).cgColor
-        et_label.layer.borderWidth = 1.0
-        et_label.text = " \((event.event_type?.name!)!) "
-        et_label.layer.masksToBounds = true
-        et_label.layer.cornerRadius = 5
         
         if event.starred {
             favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
@@ -89,9 +106,9 @@ public class EventCell : UITableViewCell {
     }
     
     @objc func tappedStar(sender: AnyObject) {
-        if myEvent != nil {
-            myEvent?.starred = !(myEvent?.starred)!
-            if (myEvent?.starred)! {
+        if let e = myEvent {
+            e.starred = !e.starred
+            if e.starred {
                 favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
                 favorited.tintColor = UIColor.white
                 scheduleNotification(at: (myEvent?.start_date?.addingTimeInterval(-600))!,myEvent!)
