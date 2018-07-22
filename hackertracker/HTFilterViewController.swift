@@ -12,6 +12,8 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
     
     var all: [EventType] = []
     var filtered: [EventType] = []
@@ -21,33 +23,44 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        popupView.layer.masksToBounds = true
-        popupView.layer.cornerRadius = 5
+
         doneButton.layer.borderColor = UIColor.white.cgColor
         doneButton.layer.borderWidth = 1.0
-        doneButton.layer.masksToBounds = true
-        doneButton.layer.cornerRadius = 5
-        // Do any additional setup after loading the view.
+        
+        resetButton.layer.borderColor = UIColor.white.cgColor
+        resetButton.layer.borderWidth = 1.0
+
+        clearButton.layer.borderColor = UIColor.white.cgColor
+        clearButton.layer.borderWidth = 1.0
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return all.count
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.all.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 2.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
         
-        let et = self.all[indexPath.row]
-        cell.textLabel?.text = self.all[indexPath.row].name!
+        let et = self.all[indexPath.section]
+        if let n = et.name {
+            cell.textLabel?.text = n
+        }
         cell.layer.borderColor = UIColor(hexString: et.color!).cgColor
         cell.layer.borderWidth = 1.0
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 5
+
         if filtered.contains(et) {
             cell.accessoryType = .checkmark
         } else {
@@ -60,7 +73,7 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let et = self.all[indexPath.row]
+            let et = self.all[indexPath.section]
             if cell.accessoryType == .checkmark
             {
                 cell.accessoryType = .none
@@ -76,21 +89,20 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    @IBAction func resetList(_ sender: Any) {
+        filtered = all
+        self.tableView.reloadData()
+    }
     
-
+    @IBAction func clearList(_ sender: Any) {
+        filtered = []
+        self.tableView.reloadData()
+    }
+    
     @IBAction func closePopup(_ sender: Any) {
         delegate?.filterList(filteredEventTypes: filtered)
         dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

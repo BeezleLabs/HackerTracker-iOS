@@ -305,7 +305,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                         let linkURL = Foundation.URL(string: link)
                                         request = URLRequest(url: linkURL!)
                                         request.httpMethod = "GET"
-                                        print("Getting data from \(link)")
+                                        NSLog("Getting data from \(link)")
                                         //cDispatchGroup.enter()
                                         
                                         session.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -336,6 +336,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                                             }
                                                             DispatchQueue.main.async() {
                                                                 self.refreshControl?.attributedTitle = NSAttributedString(string: "Updated at \(n)", attributes: attr)
+                                                                self.reloadEvents()
                                                             }
                                                         }
                                                     }
@@ -365,7 +366,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             
         }).resume()
         
-        print("Update from the following links: \(self.updated)")
         
         cDispatchGroup.notify(queue: DispatchQueue.main) {
             self.refreshControl?.endRefreshing()
@@ -388,10 +388,11 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         super.viewDidLoad()
         
         let drm = DataRequestManager(managedContext: getContext())
-        let con = drm.getSelectedConference()
-        self.title = con?.name!
-        alltypes = drm.getEventTypes(con: con!)
-        filteredtypes = alltypes
+        if let con = drm.getSelectedConference() {
+            if let n = con.name { self.title = n }
+            alltypes = drm.getEventTypes(con: con)
+            filteredtypes = alltypes
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -434,7 +435,10 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         if segue.identifier == "filterSegue" {
             let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
             fvc.delegate = self
-            fvc.all = alltypes
+            let drm = DataRequestManager(managedContext: getContext())
+            if let con = drm.getSelectedConference() {
+                fvc.all = drm.getEventTypes(con: con)
+            }
             fvc.filtered = filteredtypes
             present(fvc, animated:false, completion:nil)
             

@@ -1,26 +1,54 @@
 {
   "event_types": [
     {
-      "color": "#c77228",
-      "id": 1,
-      "updated_at": "2018-06-30T19:25+0000",
       "name": "Official",
-      "conference": "DC26"
+      "color": "#c77228",
+      "conference": "DC26",
+      "id": 1,
+      "updated_at": "2018-06-30T19:25+0000"
     },
     {
-      "color": "#AD1457",
-      "id": 3,
-      "updated_at": "2018-06-30T19:26+0000",
       "name": "Workshop",
-      "conference": "DC26"
+      "color": "#AD1457",
+      "conference": "DC26",
+      "id": 3,
+      "updated_at": "2018-06-30T19:26+0000"
     },
     {
-      "color": "#653fff",
-      "id": 4,
-      "updated_at": "2018-07-03T14:36+0000",
       "name": "Demo Lab",
-      "conference": "DC26"
+      "color": "#653fff",
+      "conference": "DC26",
+      "id": 4,
+      "updated_at": "2018-07-03T14:36+0000"
+    },
+    {
+      "name": "Party/Meetup",
+      "color": "#5c74ff",
+      "conference": "DC26",
+      "id": 5,
+      "updated_at": "2018-07-22T19:05+0000"
+    },
+    {
+      "name": "Car Hacking Village",
+      "color": "#5c74ff",
+      "conference": "DC26",
+      "id": 6,
+      "updated_at": "2018-07-21T06:50+0000"
+    },
+    {
+      "name": "AI Village",
+      "color": "#42d2bc",
+      "conference": "DC26",
+      "id": 7,
+      "updated_at": "2018-07-21T06:50+0000"
+    },
+    {
+      "name": "Recon Village",
+      "color": "#9a3290",
+      "conference": "DC26",
+      "id": 8,
+      "updated_at": "2018-07-21T06:51+0000"
     }
   ],
-  "updated_at": "2018-07-03T14:36+0000"
+  "updated_at": "2018-07-22T19:05+0000"
 }

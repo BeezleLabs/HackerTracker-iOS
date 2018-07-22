@@ -104,6 +104,10 @@ class HTEventDetailViewController: UIViewController {
         } else {
             eventDateLabel.text = "To Be Announced"
         }
+        
+        // Hiding Map View on the event details page for the initial launch.
+        // Enable this before launching the maps functionality.
+        locationMapView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -191,7 +195,7 @@ class HTEventDetailViewController: UIViewController {
         self.eventNameLabel.contentMode = UIViewContentMode.top
         
         if speakers.count == 0 {
-            speakerList = NSMutableAttributedString(string: "To Be Announced")
+            speakerList = NSMutableAttributedString(string: "Anonymous")
         } else {
             let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
             eventNameLabel.isUserInteractionEnabled = true
