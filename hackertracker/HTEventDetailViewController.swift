@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import SafariServices
 
 protocol EventDetailDelegate {
     func reloadEvents()
@@ -29,6 +30,7 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var eventTypeContainer: UIView!
     @IBOutlet weak var bottomPaddingConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventTypeLabel: UILabel!
+    @IBOutlet weak var linkButton: UIButton!
     
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
@@ -88,12 +90,19 @@ class HTEventDetailViewController: UIViewController {
         }
         
         if let i = event.includes {
-            toolImage.isHidden = !(i.lowercased().contains("tool"))
-            demoImage.isHidden = !(i.lowercased().contains("demo"))
-            exploitImage.isHidden = !(i.lowercased().contains("exploit"))
+            if !i.lowercased().contains("tool") { toolImage.alpha = 0.1 }
+            if !i.lowercased().contains("demo") { demoImage.alpha = 0.1 }
+            if !i.lowercased().contains("exploit") { exploitImage.alpha = 0.1 }
         }
-
-        eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden
+        
+        if let l = event.link {
+            if l == "" {
+                linkButton.alpha = 0.1
+                linkButton.isEnabled = false
+            } else {
+                linkButton.isEnabled = true
+            }
+        }
         
         if let start = event.start_date, let end = event.end_date {
             let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: start)
@@ -196,56 +205,22 @@ class HTEventDetailViewController: UIViewController {
         
         if speakers.count == 0 {
             speakerList = NSMutableAttributedString(string: "Anonymous")
+            eventNameLabel.isHidden = true
         } else {
             let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
             eventNameLabel.isUserInteractionEnabled = true
             eventNameLabel.addGestureRecognizer(touchSpeaker)
-        }
-
-        eventNameLabel.attributedText = speakerList
-        eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
-        eventNameLabel.layer.borderWidth = 0.5
-        eventNameLabel.layer.cornerRadius = 5
-        
-        
-        if let l = event.location, let n = l.name {
-            eventLocationLabel.text = n
-            locationMapView.currentLocation = Location.valueFromString(n)
-        } else {
-            eventLocationLabel.text = "To Be Determined"
-            locationMapView.currentLocation = Location.unknown
+            eventNameLabel.attributedText = speakerList
+            eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
+            eventNameLabel.layer.borderWidth = 0.5
+            eventNameLabel.layer.cornerRadius = 5
         }
         
-        eventDetailTextView.text = event.desc
-        
-        if (event.starred) {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-        } else {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-        }
-
-        if let i = event.includes {
-            toolImage.isHidden = !(i.lowercased().contains("tool"))
-            demoImage.isHidden = !(i.lowercased().contains("demo"))
-            exploitImage.isHidden = !(i.lowercased().contains("exploit"))
-        }
-
-        eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden
-        
-        if let start = event.start_date, let end = event.end_date {
-            let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: start)
-            let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
-            eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
-        } else {
-            eventDateLabel.text = "TBD"
-        }
-
-        
-        
+        /*
         let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
         touchGesture.minimumPressDuration = 0.0
         touchGesture.cancelsTouchesInView = false
-        locationMapView.addGestureRecognizer(touchGesture)
+        locationMapView.addGestureRecognizer(touchGesture) */
     }
 
     @objc func expand() {
@@ -376,6 +351,54 @@ class HTEventDetailViewController: UIViewController {
         if err != nil {
             NSLog("%@",err!)
         }
+    }
+    
+    @IBAction func followLink(_ sender: Any) {
+        if let e = event, let l = e.link {
+            NSLog("followLink touched for \(l)")
+            if let u = URL(string: l) {
+                let svc = SFSafariViewController(url: u)
+                svc.preferredBarTintColor = UIColor.backgroundGray
+                svc.preferredControlTintColor = UIColor.white
+                present(svc, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func shareEvent(_ sender: Any) {
+        if let e = event, let t = e.title, let l = e.location?.name, let start = e.start_date, let c = e.conference?.name {
+            
+            let time = DateFormatterUtility.dayOfWeekTimeFormatter.string(from: start)
+            let item = "\(c): Attending '\(t)' on \(time) in \(l) #hackertracker"
+            //let secondActivityItem : NSURL = NSURL(string: "http//:urlyouwant")!
+            // If you want to put an image
+            let image : UIImage = #imageLiteral(resourceName: "skull_share")
+            
+            let activityViewController : UIActivityViewController = UIActivityViewController(
+                activityItems: [item, image], applicationActivities: nil)
+            
+            // This lines is for the popover you need to show in iPad
+            activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
+            
+            // This line remove the arrow of the popover to show in iPad
+            activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+            activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+            
+            // Anything you want to exclude
+            activityViewController.excludedActivityTypes = [
+                UIActivityType.postToWeibo,
+                UIActivityType.print,
+                UIActivityType.assignToContact,
+                UIActivityType.saveToCameraRoll,
+                UIActivityType.addToReadingList,
+                UIActivityType.postToFlickr,
+                UIActivityType.postToVimeo,
+                UIActivityType.postToTencentWeibo
+            ]
+            
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+
     }
     
     @objc func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)

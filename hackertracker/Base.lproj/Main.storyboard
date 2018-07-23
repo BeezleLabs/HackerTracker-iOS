@@ -523,10 +523,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="71E-ru-HrV">
-                                                <rect key="frame" x="90" y="90" width="195.5" height="90"/>
+                                                <rect key="frame" x="76.5" y="90" width="222" height="90"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="at0-U0-5XT">
-                                                        <rect key="frame" x="48.5" y="0.0" width="98.5" height="18"/>
+                                                        <rect key="frame" x="62" y="0.0" width="98.5" height="18"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" type " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK7-VB-2z9">
                                                                 <rect key="frame" x="0.0" y="0.0" width="34.5" height="18"/>
@@ -544,19 +544,26 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, August 07 09:00-17:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKd-ci-QDo">
-                                                        <rect key="frame" x="0.0" y="28" width="195.5" height="22"/>
+                                                        <rect key="frame" x="13.5" y="28" width="195.5" height="22"/>
                                                         <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffv-Fv-Vgw" userLabel="Images View">
-                                                        <rect key="frame" x="44.5" y="60" width="106" height="30"/>
+                                                        <rect key="frame" x="0.0" y="60" width="222" height="30"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yyz-KH-rYU">
-                                                                <rect key="frame" x="-12" y="0.0" width="130" height="30"/>
+                                                                <rect key="frame" x="-12" y="0.0" width="246" height="30"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txd-W2-Yuo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                                                        <state key="normal" image="share"/>
+                                                                        <connections>
+                                                                            <action selector="shareEvent:" destination="6HW-oR-hKq" eventType="touchUpInside" id="Jwz-DK-9Hp"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_demo" translatesAutoresizingMaskIntoConstraints="NO" id="GlD-WK-o3c">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                                        <rect key="frame" x="66" y="0.0" width="30" height="30"/>
                                                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="GDE-4N-Dj6"/>
@@ -564,7 +571,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_exploit" translatesAutoresizingMaskIntoConstraints="NO" id="M1D-kR-NYb">
-                                                                        <rect key="frame" x="50" y="0.0" width="30" height="30"/>
+                                                                        <rect key="frame" x="116" y="0.0" width="30" height="30"/>
                                                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="Krz-9V-aXL"/>
@@ -572,13 +579,20 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tool" translatesAutoresizingMaskIntoConstraints="NO" id="XIC-0I-9aJ">
-                                                                        <rect key="frame" x="100" y="0.0" width="30" height="30"/>
+                                                                        <rect key="frame" x="166" y="0.0" width="30" height="30"/>
                                                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="Wv4-ta-ykX"/>
                                                                             <constraint firstAttribute="height" constant="30" id="rcP-U6-GFd"/>
                                                                         </constraints>
                                                                     </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xk-aR-OlV">
+                                                                        <rect key="frame" x="216" y="0.0" width="30" height="30"/>
+                                                                        <state key="normal" image="external_link"/>
+                                                                        <connections>
+                                                                            <action selector="followLink:" destination="6HW-oR-hKq" eventType="touchUpInside" id="0TF-AC-teH"/>
+                                                                        </connections>
+                                                                    </button>
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
@@ -662,13 +676,14 @@
                         <outlet property="eventTypeContainer" destination="Ffv-Fv-Vgw" id="WX0-OF-Jgf"/>
                         <outlet property="eventTypeLabel" destination="wK7-VB-2z9" id="7Cb-sA-gyu"/>
                         <outlet property="exploitImage" destination="M1D-kR-NYb" id="eFj-iJ-Aqq"/>
+                        <outlet property="linkButton" destination="8Xk-aR-OlV" id="Xiw-ZB-OBN"/>
                         <outlet property="locationMapView" destination="Vn7-7A-I69" id="HdV-Xy-Ycl"/>
                         <outlet property="toolImage" destination="XIC-0I-9aJ" id="9VA-E5-fdV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3j-ea-u36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5945" y="826"/>
+            <point key="canvasLocation" x="5944.8000000000002" y="825.33733133433293"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="Hiw-ZN-0Kf">
@@ -1157,6 +1172,7 @@
     <resources>
         <image name="calendar-active" width="40" height="40"/>
         <image name="calendar-inactive" width="40" height="40"/>
+        <image name="external_link" width="30" height="30"/>
         <image name="faq" width="40" height="40"/>
         <image name="filter" width="40" height="40"/>
         <image name="header" width="375" height="242"/>
@@ -1168,6 +1184,7 @@
         <image name="news" width="40" height="40"/>
         <image name="saved-active" width="40" height="40"/>
         <image name="saved-inactive" width="40" height="40"/>
+        <image name="share" width="30" height="30"/>
         <image name="skull-active" width="40" height="40"/>
         <image name="skull-inactive" width="40" height="40"/>
         <image name="skull_lg" width="200" height="200"/>
