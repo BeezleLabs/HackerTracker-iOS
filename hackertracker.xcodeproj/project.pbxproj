@@ -13,6 +13,8 @@
 		5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */; };
 		5D02761820FC346000E5ED6A /* maps in Resources */ = {isa = PBXBuildFile; fileRef = 5D02761720FC346000E5ED6A /* maps */; };
 		5D027620210160F400E5ED6A /* HTNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */; };
+		5D02762821078B8600E5ED6A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02762621078B8500E5ED6A /* Crashlytics.framework */; };
+		5D02762921078B8600E5ED6A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02762721078B8600E5ED6A /* Fabric.framework */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
 		5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D47A2B020EEB7DD0015401B /* ht2018.xcdatamodeld */; };
@@ -104,6 +106,8 @@
 		5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFilterViewController.swift; sourceTree = "<group>"; };
 		5D02761720FC346000E5ED6A /* maps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maps; sourceTree = "<group>"; };
 		5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTNewsTableViewController.swift; sourceTree = "<group>"; };
+		5D02762621078B8500E5ED6A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		5D02762721078B8600E5ED6A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5D47A2B120EEB7DD0015401B /* ht2018.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ht2018.xcdatamodel; sourceTree = "<group>"; };
@@ -181,9 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */,
+				5D02762821078B8600E5ED6A /* Crashlytics.framework in Frameworks */,
 				83B0F8541F19BA1B006493A6 /* QuartzCore.framework in Frameworks */,
 				83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */,
 				E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */,
+				5D02762921078B8600E5ED6A /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +334,8 @@
 		5DF3D6ACCF616DD9F4C24179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D02762621078B8500E5ED6A /* Crashlytics.framework */,
+				5D02762721078B8600E5ED6A /* Fabric.framework */,
 				B568B64A1F1F3A740092CE4A /* SpriteKit.framework */,
 				83B0F8531F19BA1B006493A6 /* QuartzCore.framework */,
 				83B0F8411F19A673006493A6 /* SafariServices.framework */,
@@ -392,6 +400,7 @@
 				5D53FCD71B02A09A006653B1 /* Embed App Extensions */,
 				4A36C6E56B194E36AB7DB904 /* [CP] Embed Pods Frameworks */,
 				EDE7AA06C57FCE678FA8534A /* [CP] Copy Pods Resources */,
+				5D02762121078A9300E5ED6A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -538,6 +547,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5D02762121078A9300E5ED6A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 8905e29d4c9f8eb7baf966d4a30d17bbaadd563e ab87bc8855f8a89d411b1d18b3904bfd40d2a99b930ddc003b22fe7f3eca7c32";
 		};
 		84CCD74081182CC004B0E9AF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -794,6 +816,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = MJ97FDMT75;
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -820,6 +846,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = MJ97FDMT75;
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = hackertracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
