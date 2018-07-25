@@ -46,10 +46,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
        
         if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
             updatesTableView.tableFooterView = footer
-            //var frame = updatesTableView.tableFooterView?.frame
-            //frame?.size.height = view.frame.size.height * 0.25
-            //updatesTableView.frame = frame ?? CGRect.zero
-            //updatesTableView.tableFooterView = footer
+            if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                footer.versionLabel.text = "Hackertracker iOS v\(v) (\(b))"
+            }
+            
             footer.footerDelegate = self
             self.footer = footer
         }
