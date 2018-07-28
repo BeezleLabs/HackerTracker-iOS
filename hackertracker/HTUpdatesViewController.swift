@@ -34,7 +34,9 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
         let context = delegate.managedObjectContext!
         myCon = DataRequestManager(managedContext: context).getSelectedConference()
         conName.text = myCon?.name
-
+        self.title = myCon?.name;
+        self.navigationItem.titleView = conName;
+        
         updatesTableView.rowHeight = UITableViewAutomaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
