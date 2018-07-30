@@ -13,6 +13,12 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        guard let font = UIFont(name: "Bungee", size: 24.0) else {
+            NSLog("whoops")
+            return
+        }
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
         reloadEvents()
     }
 
@@ -27,4 +33,5 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
 
         return fr
     }
+
 }

@@ -34,6 +34,16 @@ public class UpdateCell : UITableViewCell {
         descriptionLabel.text = "[\(date)]: \(message.text!)"
 
     }
+    
+    func bind(vendor: Vendor) {
+        let date = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: vendor.updated_at!)
+        
+        if let n = vendor.name, let d = vendor.desc {
+            titleLabel.text = n
+            descriptionLabel.text = d
+        }
+        
+    }
 
 
 }
