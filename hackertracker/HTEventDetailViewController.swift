@@ -90,19 +90,25 @@ class HTEventDetailViewController: UIViewController {
         }
         
         if let i = event.includes {
-            if !i.lowercased().contains("tool") { toolImage.alpha = 0.1 }
-            if !i.lowercased().contains("demo") { demoImage.alpha = 0.1 }
-            if !i.lowercased().contains("exploit") { exploitImage.alpha = 0.1 }
+            if !i.lowercased().contains("tool") { toolImage.isHidden = true }
+            if !i.lowercased().contains("demo") { demoImage.isHidden = true }
+            if !i.lowercased().contains("exploit") { exploitImage.isHidden = true }
+            if i != "" {
+                if let t = eventDetailTextView.text {
+                    eventDetailTextView.text = "\(t)\n\nIncludes: \(i.uppercased())"
+                }
+            }
         }
         
         if let l = event.link {
             if l == "" {
-                linkButton.alpha = 0.1
+                linkButton.isHidden = true
                 linkButton.isEnabled = false
             } else {
                 linkButton.isEnabled = true
             }
         }
+        eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
         
         if let start = event.start_date, let end = event.end_date {
             let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: start)
@@ -165,13 +171,13 @@ class HTEventDetailViewController: UIViewController {
                 
                 let whoAttributedString = NSMutableAttributedString(string:n)
                 let whoParagraphStyle = NSMutableParagraphStyle()
-                whoParagraphStyle.alignment = .center
+                whoParagraphStyle.alignment = .left
                 whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
                 whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (n as NSString).length))
                 
                 let titleAttributedString = NSMutableAttributedString(string:t)
                 let titleParagraphStyle = NSMutableParagraphStyle()
-                titleParagraphStyle.alignment = .center
+                titleParagraphStyle.alignment = .left
                 titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
                 titleAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Bungee", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
                 titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
@@ -180,7 +186,7 @@ class HTEventDetailViewController: UIViewController {
                 let bioParagraphStyle = NSMutableParagraphStyle()
                 bioParagraphStyle.alignment = .left
                 bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Larsseit", size: 17)!, range: NSRange(location: 0, length: (d as NSString).length))
+                bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Larsseit", size: 14)!, range: NSRange(location: 0, length: (d as NSString).length))
                 bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
                 
                 
@@ -355,7 +361,7 @@ class HTEventDetailViewController: UIViewController {
     
     @IBAction func followLink(_ sender: Any) {
         if let e = event, let l = e.link {
-            NSLog("followLink touched for \(l)")
+            //NSLog("followLink touched for \(l)")
             if let u = URL(string: l) {
                 let svc = SFSafariViewController(url: u)
                 svc.preferredBarTintColor = UIColor.backgroundGray
@@ -372,13 +378,13 @@ class HTEventDetailViewController: UIViewController {
             let item = "\(c): Attending '\(t)' on \(time) in \(l) #hackertracker"
             //let secondActivityItem : NSURL = NSURL(string: "http//:urlyouwant")!
             // If you want to put an image
-            let image : UIImage = #imageLiteral(resourceName: "skull_share")
+            //let image : UIImage = #imageLiteral(resourceName: "skull_share")
             
             let activityViewController : UIActivityViewController = UIActivityViewController(
-                activityItems: [item, image], applicationActivities: nil)
+                activityItems: [item], applicationActivities: nil)
             
             // This lines is for the popover you need to show in iPad
-            activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
+            activityViewController.popoverPresentationController?.sourceView = self.view
             
             // This line remove the arrow of the popover to show in iPad
             activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
@@ -431,6 +437,12 @@ class HTEventDetailViewController: UIViewController {
     }
     
     @IBAction func closeEvent(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        if self.tabBarController == nil {
+            //NSLog("no tab bar controller")
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            //NSLog("tab bar controller exists!")
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }

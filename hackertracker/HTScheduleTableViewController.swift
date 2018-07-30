@@ -389,7 +389,14 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         
         let drm = DataRequestManager(managedContext: getContext())
         if let con = drm.getSelectedConference() {
-            if let n = con.name { self.title = n }
+            if let n = con.name {
+                guard let font = UIFont(name: "Bungee", size: 24.0) else {
+                    NSLog("whoops")
+                    return
+                }
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
+                self.title = n
+            }
             alltypes = drm.getEventTypes(con: con)
             filteredtypes = alltypes
         }
@@ -463,6 +470,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
             dv.delegate = self
         }
     }
+    
 }
 
 
