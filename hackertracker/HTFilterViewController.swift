@@ -11,30 +11,36 @@ import UIKit
 class HTFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var bottomToTop: NSLayoutConstraint!
+    @IBOutlet weak var fadeView: UIView!
     
     var all: [EventType] = []
     var filtered: [EventType] = []
     var delegate: FilterViewControllerDelegate?
+    
+    var centeredConstraint : NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
 
-        doneButton.layer.borderColor = UIColor.white.cgColor
-        doneButton.layer.borderWidth = 1.0
-        
-        resetButton.layer.borderColor = UIColor.white.cgColor
-        resetButton.layer.borderWidth = 1.0
-
-        clearButton.layer.borderColor = UIColor.white.cgColor
-        clearButton.layer.borderWidth = 1.0
-
+        let tapGesture = UITapGestureRecognizer(target:self, action: #selector(close))
+        fadeView.addGestureRecognizer(tapGesture)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        bottomToTop.isActive = false;
+        centeredConstraint = popupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        centeredConstraint?.isActive = true
+        
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutSubviews()
+            self.fadeView.alpha = 0.5
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -58,8 +64,6 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         if let n = et.name {
             cell.textLabel?.text = n
         }
-        cell.layer.borderColor = UIColor(hexString: et.color!).cgColor
-        cell.layer.borderWidth = 1.0
 
         if filtered.contains(et) {
             cell.accessoryType = .checkmark
@@ -86,22 +90,42 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.accessoryType = .checkmark
                 filtered.append(et)
             }
+            delegate?.filterList(filteredEventTypes: filtered)
         }
     }
     
     @IBAction func resetList(_ sender: Any) {
         filtered = all
         self.tableView.reloadData()
+        delegate?.filterList(filteredEventTypes: filtered)
     }
     
     @IBAction func clearList(_ sender: Any) {
         filtered = []
         self.tableView.reloadData()
+        delegate?.filterList(filteredEventTypes: filtered)
     }
     
-    @IBAction func closePopup(_ sender: Any) {
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        close()
+    }
+    
+    @objc func close() {
         delegate?.filterList(filteredEventTypes: filtered)
-        dismiss(animated: true, completion: nil)
+       
+        if let centeredConstraint = centeredConstraint {
+            centeredConstraint.isActive = false
+            popupView.topAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            
+            UIView.animate(withDuration: 0.4, animations: {
+                self.view.layoutIfNeeded()
+                
+            }, completion: { (done) in
+                self.dismiss(animated: false, completion: nil)
+            })
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 
 }
