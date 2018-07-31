@@ -110,9 +110,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="nGb-HO-gXP" kind="presentation" identifier="eventDetailSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="flipHorizontal" id="4rv-eb-WDL"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -136,11 +133,12 @@
                         <outlet property="skullBackground" destination="skw-9w-8jM" id="qYQ-bp-eyR"/>
                         <outlet property="trailingImageConstraint" destination="3IA-mo-LTo" id="eTx-rb-BKj"/>
                         <outlet property="updatesTableView" destination="o4M-Xc-Ytc" id="rj0-JQ-iej"/>
+                        <segue destination="6HW-oR-hKq" kind="show" identifier="eventDetailSegue" action="showDetailViewController:sender:" id="XQt-9W-ade"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWF-fe-EhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3497" y="-1188"/>
+            <point key="canvasLocation" x="6630" y="879"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="D24-WK-AJj">
@@ -508,7 +506,7 @@
         <!--Event Detail View Controller-->
         <scene sceneID="dcg-US-5Be">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="6HW-oR-hKq" customClass="HTEventDetailViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HTEventDetailViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="6HW-oR-hKq" customClass="HTEventDetailViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dWd-BM-lGC"/>
                         <viewControllerLayoutGuide type="bottom" id="MHn-qu-koF"/>
@@ -720,7 +718,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5022" y="842"/>
+            <point key="canvasLocation" x="5543" y="842"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="Hiw-ZN-0Kf">
@@ -1276,7 +1274,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uiE-E7-nxe"/>
-        <segue reference="4rv-eb-WDL"/>
+        <segue reference="e3h-Nv-O2c"/>
+        <segue reference="XQt-9W-ade"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

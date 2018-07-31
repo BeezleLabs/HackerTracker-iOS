@@ -216,7 +216,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+            eventController.event = self.eventSections[indexPath.section].events[indexPath.row]
+            eventController.delegate = self
+            self.navigationController?.pushViewController(eventController, animated: true)
+        }
     }
     
     // MARK: - Navigation

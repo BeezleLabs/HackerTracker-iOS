@@ -30,24 +30,8 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
 
     func reloadEvents() {
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        var event: Event?
-
-        if let selectedIndexPath = selectedIndexPath {
-            event = filteredEvents[selectedIndexPath.row] as? Event
-        }
 
         self.tableView.reloadData()
-
-        if let selectedIndexPath = selectedIndexPath,
-            let event = event,
-            selectedIndexPath.row < filteredEvents.count,
-            !splitViewController!.isCollapsed {
-
-            if let newEvent = filteredEvents[selectedIndexPath.row] as? Event,
-                newEvent == event {
-                tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
-            }
-        }
 
         if let splitViewController = splitViewController,
             !splitViewController.isCollapsed {
@@ -82,7 +66,11 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+            eventController.event = self.filteredEvents.object(at: indexPath.row) as? Event
+            eventController.delegate = self
+            self.navigationController?.pushViewController(eventController, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

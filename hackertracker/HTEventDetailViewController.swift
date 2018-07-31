@@ -127,19 +127,21 @@ class HTEventDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if self.tabBarController == nil
-        {
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
-            doneButton.tintColor = .white
-            navigationItem.leftBarButtonItem = doneButton
-        }
-
+        applyDoneButtonIfNeeded()
         if let splitViewController = self.splitViewController,
             splitViewController.isCollapsed {
             bottomPaddingConstraint.constant = 20
         } else {
             bottomPaddingConstraint.constant = 80
+        }
+    }
+    
+    func applyDoneButtonIfNeeded() {
+        guard let _ = self.navigationController?.parent as? HTHamburgerMenuViewController else {
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+            doneButton.tintColor = .white
+            navigationItem.rightBarButtonItem = doneButton
+            return
         }
     }
     

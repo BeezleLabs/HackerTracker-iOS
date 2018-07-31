@@ -206,7 +206,14 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 || indexPath.section == 2 {
-            self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+            if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+                if indexPath.section == 1 {
+                    eventController.event = self.starred[indexPath.row]
+                } else {
+                    eventController.event = self.upcoming[indexPath.row]
+                }
+                self.navigationController?.pushViewController(eventController, animated: true)
+            }
         }
     }
 
