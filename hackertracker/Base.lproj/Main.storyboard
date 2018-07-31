@@ -13,9 +13,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Bungee-Regular.ttf">
-            <string>Bungee-Regular</string>
-        </array>
         <array key="Larsseit-Bold.ttf">
             <string>Larsseit-Bold</string>
         </array>
@@ -99,11 +96,11 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="skw-9w-8jM">
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="skw-9w-8jM">
                                 <rect key="frame" x="87" y="252" width="200" height="200"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="o4M-Xc-Ytc">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="l5o-Cn-WI7">
@@ -130,7 +127,6 @@
                             <constraint firstAttribute="trailing" secondItem="o4M-Xc-Ytc" secondAttribute="trailing" id="Yah-Ij-400"/>
                             <constraint firstItem="skw-9w-8jM" firstAttribute="top" secondItem="rly-3y-2nK" secondAttribute="bottom" constant="10" id="gh4-q3-fXZ"/>
                             <constraint firstItem="o4M-Xc-Ytc" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="topMargin" id="iei-44-T2f"/>
-                            <constraint firstItem="skw-9w-8jM" firstAttribute="centerX" secondItem="KQC-m8-pOK" secondAttribute="centerX" id="tMp-Ub-HZc"/>
                             <constraint firstAttribute="bottomMargin" secondItem="o4M-Xc-Ytc" secondAttribute="bottom" id="tzm-tC-CQI"/>
                         </constraints>
                     </view>
@@ -528,24 +524,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Uz-v6-n11">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="330.5"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="323.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HeW-d7-uFG">
-                                                <rect key="frame" x="15" y="0.0" width="345" height="83.5"/>
+                                                <rect key="frame" x="15" y="0.0" width="345" height="77.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Event Title that is so long in could run over to another line." lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJH-Fa-q94">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="53"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="47"/>
                                                         <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="20"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqc-Jd-sAB">
-                                                        <rect key="frame" x="0.0" y="63" width="345" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="57" width="345" height="20.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Presenter Name">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <font key="NSFont" size="17" name="Bungee-Regular"/>
+                                                                    <font key="NSFont" metaFont="system" size="17"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -555,20 +551,20 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="71E-ru-HrV">
-                                                <rect key="frame" x="104" y="90" width="167" height="86.5"/>
+                                                <rect key="frame" x="100.5" y="87.5" width="174.5" height="83"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="at0-U0-5XT">
-                                                        <rect key="frame" x="34.5" y="0.0" width="98.5" height="18"/>
+                                                        <rect key="frame" x="37" y="0.0" width="100" height="16.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" type " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK7-VB-2z9">
-                                                                <rect key="frame" x="0.0" y="0.0" width="34.5" height="18"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="35.5" height="16.5"/>
                                                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
                                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZj-6h-XGH">
-                                                                <rect key="frame" x="44.5" y="0.0" width="54" height="18"/>
+                                                                <rect key="frame" x="45.5" y="0.0" width="54.5" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -576,13 +572,13 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, August 07 09:00-17:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKd-ci-QDo">
-                                                        <rect key="frame" x="0.0" y="28" width="167" height="18.5"/>
+                                                        <rect key="frame" x="0.0" y="26.5" width="174.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="14"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffv-Fv-Vgw" userLabel="Images View">
-                                                        <rect key="frame" x="0.0" y="56.5" width="167" height="30"/>
+                                                        <rect key="frame" x="3.5" y="53" width="167" height="30"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yyz-KH-rYU">
                                                                 <rect key="frame" x="-12" y="0.0" width="191" height="30"/>
@@ -632,14 +628,14 @@
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" usesAttributedText="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVM-vj-OhI">
-                                                <rect key="frame" x="15" y="186.5" width="345" height="34"/>
+                                                <rect key="frame" x="15" y="180.5" width="345" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Event Description">
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="14" name="Larsseit"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.5"/>
                                                         </attributes>
                                                     </fragment>
@@ -647,7 +643,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-7A-I69" userLabel="MapView" customClass="MapLocationView" customModule="hackertracker" customModuleProvider="target">
-                                                <rect key="frame" x="137.5" y="230.5" width="100" height="100"/>
+                                                <rect key="frame" x="137.5" y="223.5" width="100" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -1216,7 +1212,6 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="thD-Eo-3BI">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="24"/>
@@ -1238,7 +1233,6 @@
                     <tabBarItem key="tabBarItem" title="Vendors" image="vendor" id="rMR-DS-M6J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="od0-BT-1nI">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">

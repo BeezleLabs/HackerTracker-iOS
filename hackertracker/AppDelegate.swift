@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        let attributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        
         Fabric.with([Crashlytics.self])
         NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: self.backgroundManagedObjectContext, queue: OperationQueue.main) { (notifaction) in
             self.managedObjectContext?.mergeChanges(fromContextDidSave: notifaction)

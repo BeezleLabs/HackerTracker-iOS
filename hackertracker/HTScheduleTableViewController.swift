@@ -394,7 +394,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                     NSLog("whoops")
                     return
                 }
-                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
                 self.title = n
             }
             alltypes = drm.getEventTypes(con: con)

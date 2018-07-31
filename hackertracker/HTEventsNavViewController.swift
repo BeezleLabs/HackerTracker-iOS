@@ -37,12 +37,10 @@ class HTEventsNavViewController: UINavigationController {
 
     var lastSize : CGSize = CGSize.zero
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let attributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        
-        UINavigationBar.appearance().titleTextAttributes = attributes
-        
+
         view.tintColor = UIColor.white
         if let windowSize = UIApplication.shared.keyWindow?.frame.size {
             setNavBarImage(screenSize: windowSize)

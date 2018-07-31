@@ -36,14 +36,8 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
         let context = delegate.managedObjectContext!
         
         if let con = DataRequestManager(managedContext: context).getSelectedConference() {
-            if let n = con.name {
-                guard let font = UIFont(name: "Bungee", size: 24.0) else {
-                    NSLog("whoops")
-                    return
-                }
-                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
-                self.title = n
-                self.navigationItem.titleView = conName;
+            if let name = con.name {
+                self.title = name
             }
         }
 
