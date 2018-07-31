@@ -22,7 +22,8 @@ protocol ContributorsFooterDelegate : class {
 class ContributorsFooterView: UIView {
     
     weak var footerDelegate : ContributorsFooterDelegate?
-
+    @IBOutlet weak var versionLabel: UILabel!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         backgroundColor = .backgroundGray

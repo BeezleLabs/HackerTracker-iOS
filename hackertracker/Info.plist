@@ -17,11 +17,25 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.1</string>
+	<string>3.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>29</string>
+	<string>37</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>8905e29d4c9f8eb7baf966d4a30d17bbaadd563e</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>

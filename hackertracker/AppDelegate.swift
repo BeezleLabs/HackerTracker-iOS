@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import UserNotifications
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        Fabric.with([Crashlytics.self])
         NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: self.backgroundManagedObjectContext, queue: OperationQueue.main) { (notifaction) in
             self.managedObjectContext?.mergeChanges(fromContextDidSave: notifaction)
         }
