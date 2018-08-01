@@ -438,13 +438,4 @@ class HTEventDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func closeEvent(_ sender: AnyObject) {
-        if self.tabBarController == nil {
-            //NSLog("no tab bar controller")
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            //NSLog("tab bar controller exists!")
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
 }

@@ -203,6 +203,7 @@
                                     <constraint firstItem="rBd-Wj-dgq" firstAttribute="leading" secondItem="bZZ-F8-XA3" secondAttribute="leading" id="cKx-fc-5LL"/>
                                     <constraint firstAttribute="trailing" secondItem="pCG-9h-SDF" secondAttribute="trailing" constant="10" id="dMf-WO-5vh"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="hjK-F7-qEB"/>
+                                    <constraint firstItem="pCG-9h-SDF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bZZ-F8-XA3" secondAttribute="leading" constant="253" id="mRf-CH-uLK"/>
                                     <constraint firstAttribute="bottom" secondItem="rBd-Wj-dgq" secondAttribute="bottom" id="mc3-Zy-Rsz"/>
                                 </constraints>
                             </view>
@@ -415,7 +416,7 @@
         <!--News-->
         <scene sceneID="Q9M-rA-BIO">
             <objects>
-                <tableViewController storyboardIdentifier="HTNewsTableViewController" id="0LS-ea-XUG" customClass="HTNewsTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HTNewsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0LS-ea-XUG" customClass="HTNewsTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iz9-wX-nLG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -489,7 +490,6 @@
         <!--Split View Controller-->
         <scene sceneID="Cmg-Lt-nWH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jtM-mJ-VLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <splitViewController id="qWo-7t-Kgc" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="" image="calendar-inactive" selectedImage="calendar-active" id="w0v-1C-qON">
@@ -501,6 +501,7 @@
                         <segue destination="52w-aK-Nck" kind="relationship" relationship="detailViewController" id="d8H-Jh-Jqg"/>
                     </connections>
                 </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jtM-mJ-VLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3943.1999999999998" y="-734.48275862068976"/>
         </scene>
@@ -659,9 +660,6 @@
                                     <constraint firstAttribute="trailing" secondItem="4Uz-v6-n11" secondAttribute="trailing" id="fnj-N7-PYF"/>
                                     <constraint firstItem="4Uz-v6-n11" firstAttribute="leading" secondItem="Z18-L4-dCy" secondAttribute="leading" id="ucX-iq-zQr"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="OcS-Fk-nee" appends="YES" id="5oh-S2-CYm"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -713,11 +711,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3j-ea-u36" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="OcS-Fk-nee">
-                    <connections>
-                        <action selector="closeEvent:" destination="6HW-oR-hKq" id="c3j-PO-z9a"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5543" y="842"/>
         </scene>
@@ -742,9 +735,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-GC-26N">
-                                            <rect key="frame" x="37" y="11" width="53" height="23.5"/>
+                                            <rect key="frame" x="37" y="11" width="271" height="24"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="Name">
+                                                <fragment content="Name of the conference  here!">
                                                     <attributes>
                                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <font key="NSFont" metaFont="system" size="20"/>
@@ -755,7 +748,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-TY-4f7">
-                                            <rect key="frame" x="37" y="36.5" width="44" height="20.5"/>
+                                            <rect key="frame" x="37" y="37" width="44" height="21"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Dates">
                                                     <attributes>
@@ -775,9 +768,8 @@
                                                 <constraint firstAttribute="height" constant="47" id="mKv-yn-1or"/>
                                             </constraints>
                                         </view>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2X-Rg-0Yr">
-                                            <rect key="frame" x="312" y="18" width="49" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2X-Rg-0Yr">
+                                            <rect key="frame" x="316" y="18" width="51" height="31"/>
                                             <connections>
                                                 <action selector="selectConference:" destination="3r5-xn-JU2" eventType="valueChanged" id="q3U-Se-gGv"/>
                                             </connections>
@@ -786,12 +778,15 @@
                                     <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="centerY" secondItem="hsO-wL-G7J" secondAttribute="centerY" id="8d7-Ui-P1m"/>
                                         <constraint firstItem="o3J-TY-4f7" firstAttribute="leading" secondItem="7L2-25-YGa" secondAttribute="trailing" constant="8" id="O9T-er-kuK"/>
                                         <constraint firstItem="o3J-TY-4f7" firstAttribute="top" secondItem="L4G-GC-26N" secondAttribute="bottom" constant="2" id="Qdb-1Q-DYD"/>
                                         <constraint firstAttribute="topMargin" secondItem="L4G-GC-26N" secondAttribute="top" id="WCS-04-xYl"/>
                                         <constraint firstAttribute="topMargin" secondItem="7L2-25-YGa" secondAttribute="top" id="Y9v-cX-xKI"/>
+                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="leading" secondItem="L4G-GC-26N" secondAttribute="trailing" constant="8" id="kLX-yj-KIu"/>
                                         <constraint firstItem="L4G-GC-26N" firstAttribute="leading" secondItem="7L2-25-YGa" secondAttribute="trailing" constant="8" id="nFP-Dk-zEM"/>
                                         <constraint firstItem="7L2-25-YGa" firstAttribute="leading" secondItem="hsO-wL-G7J" secondAttribute="leadingMargin" constant="7" id="uWe-7j-hwn"/>
+                                        <constraint firstAttribute="trailing" secondItem="U2X-Rg-0Yr" secondAttribute="trailing" constant="10" id="zoc-3Y-gRJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -814,7 +809,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBR-U4-ule" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-458" y="-1226"/>
+            <point key="canvasLocation" x="-458.5" y="-1226.5"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="ncf-MQ-TpN">
@@ -884,7 +879,6 @@
         <!--Events Nav View Controller-->
         <scene sceneID="i93-iB-gUR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LR1-7q-NAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="93J-Qg-h7Z" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="" image="calendar-inactive" selectedImage="calendar-active" id="roC-pj-9m6">
@@ -902,6 +896,7 @@
                         <segue destination="5pr-J2-42a" kind="relationship" relationship="rootViewController" id="HvN-o0-ztV"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LR1-7q-NAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4852" y="-734.48275862068976"/>
         </scene>
@@ -1009,7 +1004,6 @@
         <!--Events Nav View Controller-->
         <scene sceneID="4uI-13-dFR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Vd-bq-LOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wkl-G5-ofO" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="saved-inactive" selectedImage="saved-active" id="1nj-eO-kSJ">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -1026,13 +1020,13 @@
                         <segue destination="oIR-Ov-nyS" kind="relationship" relationship="rootViewController" id="gkp-9R-z9l"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Vd-bq-LOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="1608"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="wTW-Tn-Qo3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UcF-Ez-HTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <splitViewController id="Wr4-BW-i8o" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="saved-inactive" selectedImage="saved-active" id="xzX-0b-oaM">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -1043,13 +1037,13 @@
                         <segue destination="52w-aK-Nck" kind="relationship" relationship="detailViewController" id="uiE-E7-nxe"/>
                     </connections>
                 </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UcF-Ez-HTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74" y="1608"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="W6a-bK-zOb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fW8-eN-buX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="HTEventsNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="QWo-cS-Afi" customClass="HTEventsNavViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="" image="map-inactive" selectedImage="map-active" id="Qtr-7h-6Xo">
@@ -1066,6 +1060,7 @@
                         <segue destination="9uk-jY-kfH" kind="relationship" relationship="rootViewController" id="Ryx-Ee-MVW"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fW8-eN-buX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1090" y="2115"/>
         </scene>
@@ -1091,7 +1086,6 @@
         <!--Events Nav View Controller-->
         <scene sceneID="qT4-pX-Wks">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Hv-rc-DkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="52w-aK-Nck" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dtY-8W-mzn">
@@ -1103,13 +1097,13 @@
                         <segue destination="JQK-Po-pmo" kind="relationship" relationship="rootViewController" id="T4c-Kd-6ZI"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Hv-rc-DkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="799"/>
         </scene>
         <!--News-->
         <scene sceneID="g1o-Hs-t3L">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="73F-bw-QTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hUp-P5-HSq" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News" image="news" id="vHC-d7-s71"/>
                     <toolbarItems/>
@@ -1126,13 +1120,13 @@
                         <segue destination="0LS-ea-XUG" kind="relationship" relationship="rootViewController" id="a2V-d3-EFU"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="73F-bw-QTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2145" y="-494"/>
         </scene>
         <!--FAQs-->
         <scene sceneID="wrj-h4-EMa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gjh-C1-clD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ObO-ze-zJp" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="FAQs" image="faq" id="dym-so-cbb"/>
                     <toolbarItems/>
@@ -1149,13 +1143,13 @@
                         <segue destination="A21-Pm-Mb9" kind="relationship" relationship="rootViewController" id="wmK-HS-Jdt"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gjh-C1-clD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1321" y="-494"/>
         </scene>
         <!--Select Conference-->
         <scene sceneID="Jek-NO-pa6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gPS-rC-40a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pFe-ie-1f6" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Select Conference" image="filter" id="Twj-CX-3RA"/>
                     <toolbarItems/>
@@ -1172,13 +1166,13 @@
                         <segue destination="PSi-m9-7in" kind="relationship" relationship="rootViewController" id="4tv-Rl-gVO"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gPS-rC-40a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-457" y="-494"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="nMQ-TS-iRf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wej-le-Z3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RS4-xP-2nk" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="skull-inactive" selectedImage="skull-active" id="G0n-np-0tL">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -1197,13 +1191,13 @@
                         <segue destination="Snx-g6-3Uk" kind="relationship" relationship="rootViewController" id="TAO-m6-DE1"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wej-le-Z3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="780" y="-396"/>
         </scene>
         <!--Vendors-->
         <scene sceneID="Anh-dF-pu8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhw-5q-bKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w3J-Uc-e4o" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Vendors" image="vendor" id="rMR-DS-M6J"/>
                     <toolbarItems/>
@@ -1223,6 +1217,7 @@
                         <segue destination="tM9-rA-Nr1" kind="relationship" relationship="rootViewController" id="7OR-k6-szy"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhw-5q-bKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3015" y="-494"/>
         </scene>
