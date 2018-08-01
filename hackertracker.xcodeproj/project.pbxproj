@@ -70,14 +70,12 @@
 		83B0F85F1F1A74E4006493A6 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F85E1F1A74E4006493A6 /* LICENSE.md */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
-		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
 		B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */; };
 		B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */; };
 		B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B552AC891F2084D4006D4F98 /* PongScene.swift */; };
 		B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B568B64A1F1F3A740092CE4A /* SpriteKit.framework */; };
 		B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B568B6641F1F3FAB0092CE4A /* scene.sks */; };
 		B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9F7521F17307800EDC6FE /* Animation.swift */; };
-		E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,8 +102,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49730E4A1E2929BC0029438C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		49730E4D1E2D1AB50029438C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
@@ -202,7 +198,6 @@
 				5D02762821078B8600E5ED6A /* Crashlytics.framework in Frameworks */,
 				83B0F8541F19BA1B006493A6 /* QuartzCore.framework in Frameworks */,
 				83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */,
-				E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */,
 				5D02762921078B8600E5ED6A /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,7 +206,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +350,6 @@
 				83B0F8531F19BA1B006493A6 /* QuartzCore.framework */,
 				83B0F8411F19A673006493A6 /* SafariServices.framework */,
 				8345F2CB1F0F0C81006761BE /* WebKit.framework */,
-				24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */,
-				031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

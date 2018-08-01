@@ -626,6 +626,11 @@ class DataImportManager: NSObject {
         }
         
         if let speakers = event["speakers"] as? [Int32] {
+            if let event_speakers = managedEvent.speakers?.allObjects {
+                for s in event_speakers as! [Speaker] {
+                    managedEvent.removeFromSpeakers(s)
+                }
+            }
             for speaker_id in speakers {
                 if let s = self.dataManager.getSpeaker(speakerId: speaker_id) {
                     managedEvent.addToSpeakers(s)
