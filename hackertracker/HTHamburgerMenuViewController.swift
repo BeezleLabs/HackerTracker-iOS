@@ -28,7 +28,8 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let hamburgerNavigationController: HTEventsNavViewController
     let alphaView = UIView()
 
-    let leftButton = UIBarButtonItem(title:"Menu", style:UIBarButtonItemStyle.plain, target: self, action: #selector(hamburgerMenuItemPressed))
+    //let leftButton = UIBarButtonItem(title:"Menu", style:UIBarButtonItemStyle.plain, target: self, action: #selector(hamburgerMenuItemPressed))
+    let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(hamburgerMenuItemPressed))
     let intialTab = "Home"
     //This is a mapping of tabs to vcs
     let tabs = [
@@ -38,6 +39,8 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
                 "Map" : "HTMapsViewController",
                 "FAQ" : "HTFAQTableViewController",
                 "News" : "HTNewsTableViewController",
+                "Vendors": "HTVendorTableViewController"
+                //"Settings": "HTConferenceTableViewController" // Include this after DEFCON
     ];
     
     //This is a list of tabs we will display in the hamburger menu
@@ -48,6 +51,8 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         HamburgerItem(title:"Map", imageID:"map-active"),
         HamburgerItem(title:"FAQ", imageID:"faq"),
         HamburgerItem(title:"News", imageID:"news"),
+        HamburgerItem(title: "Vendors", imageID: "vendor")
+        //HamburgerItem(title: "Settings", imageID: "filter") // Include this after DEFCON
     ]
     
     let hamburgerMenuWidth : CGFloat = 300.0
