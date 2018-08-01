@@ -26,7 +26,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
     var data = NSMutableData()
     var myCon: Conference?
     var lastContentOffset: CGPoint?
-    
+
     var footer: UIView!
 
     override func viewDidLoad() {
@@ -34,56 +34,52 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
         //NSLog("HTUpdates.viewDidLoad")
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
+        
         if let con = DataRequestManager(managedContext: context).getSelectedConference() {
-            if let n = con.name {
-                guard let font = UIFont(name: "Bungee", size: 24.0) else {
-                    NSLog("whoops")
-                    return
-                }
-                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
-                self.title = n
+            if let name = con.name {
+                self.title = name
             }
         }
 
         updatesTableView.rowHeight = UITableViewAutomaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        
+
         updatesTableView.delegate = self
         updatesTableView.dataSource = self
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-       
+
         if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
             updatesTableView.tableFooterView = footer
             if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                 footer.versionLabel.text = "Hackertracker iOS v\(v) (\(b))"
             }
-            
+
             footer.footerDelegate = self
             self.footer = footer
         }
         reloadEvents()
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         //NSLog("HTUpdates.viewWillTransition")
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         //self.footer.frame.size.height = 360
         updatesTableView.tableFooterView = self.footer
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //NSLog("HTUpdates.viewWillAppear")
-        
+
         if isViewLoaded && !animated  {
             reloadEvents()
-            
+
             if let lastContentOffset = lastContentOffset {
                 updatesTableView.contentOffset = lastContentOffset
                 updatesTableView.layoutIfNeeded()
@@ -102,7 +98,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
         fr.returnsObjectsAsFaults = false
         fr.fetchLimit = 2
         self.messages = (try! getContext().fetch(fr)) as! [Article]
-        
+
         let frs:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         frs.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         frs.predicate = NSPredicate(format: "conference = %@ and start_date > %@ and starred = %@", argumentArray: [myCon, Date(), true])
@@ -118,18 +114,18 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
         self.upcoming = (try! getContext().fetch(fru)) as! [Event]
 
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         lastContentOffset = self.updatesTableView.contentOffset
         if segue.identifier == "eventDetailSegue" {
             let dv : HTEventDetailViewController
-            
+
             if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
                 dv = _dv
             } else {
                 dv = segue.destination as! HTEventDetailViewController
             }
-            
+
             if let indexPath = sender as? IndexPath {
                 if indexPath.section == 1 {
                     dv.event = self.starred[indexPath.row]
@@ -137,7 +133,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
                     dv.event = self.upcoming[indexPath.row]
                 }
             }
-            
+
             dv.delegate = self
         }
     }
@@ -150,41 +146,41 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         // News
         //
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-            
+
             cell.bind(message: messages[indexPath.row])
-            
+
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event : Event = starred[indexPath.row]
-            
+
             cell.bind(event: event)
-            
+
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event : Event = upcoming[indexPath.row]
-            
+
             cell.bind(event: event)
-            
+
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        
+
         let headerLabel = UILabel(frame: CGRect(x: 25, y: 0, width:
             tableView.bounds.size.width, height: tableView.bounds.size.height))
         headerLabel.font = UIFont(name: "Larsseit", size: 14)
@@ -192,10 +188,10 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         headerLabel.text = eventSections[section].uppercased()
         headerLabel.sizeToFit()
         headerView.addSubview(headerLabel)
-        
+
         return headerView
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return messages.count
@@ -207,13 +203,20 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 || indexPath.section == 2 {
-            self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+            if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+                if indexPath.section == 1 {
+                    eventController.event = self.starred[indexPath.row]
+                } else {
+                    eventController.event = self.upcoming[indexPath.row]
+                }
+                self.navigationController?.pushViewController(eventController, animated: true)
+            }
         }
     }
-    
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
@@ -239,7 +242,7 @@ extension HTUpdatesViewController : ContributorsFooterDelegate {
             url = URL(string: "https://twitter.com/sethlaw")!
             break
         }
-        
+
         if let url = url {
             let safariVC = SFSafariViewController(url: url)
             self.present(safariVC, animated: true, completion: nil)

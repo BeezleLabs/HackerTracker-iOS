@@ -18,7 +18,6 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
             NSLog("whoops")
             return
         }
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
         reloadEvents()
     }
 

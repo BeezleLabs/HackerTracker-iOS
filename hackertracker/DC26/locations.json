@@ -1,77 +1,89 @@
 {
-  "updated_at": "2018-07-02T23:44+0000",
   "locations": [
     {
-      "updated_at": "2018-06-30T18:57+0000",
-      "id": 26001,
       "name": "Track 2",
-      "conference": "DC26"
+      "id": 26001,
+      "conference": "DC26",
+      "updated_at": "2018-06-30T18:57+0000"
     },
     {
-      "updated_at": "2018-06-30T18:57+0000",
-      "id": 26002,
       "name": "101 Track, Flamingo",
-      "conference": "DC26"
+      "id": 26002,
+      "conference": "DC26",
+      "updated_at": "2018-06-30T18:57+0000"
     },
     {
-      "updated_at": "2018-06-30T18:57+0000",
-      "id": 26003,
       "name": "Track 1",
-      "conference": "DC26"
+      "id": 26003,
+      "conference": "DC26",
+      "updated_at": "2018-06-30T18:57+0000"
     },
     {
-      "updated_at": "2018-06-30T18:57+0000",
-      "id": 26004,
       "name": "Track 3",
-      "conference": "DC26"
+      "id": 26004,
+      "conference": "DC26",
+      "updated_at": "2018-06-30T18:57+0000"
     },
     {
-      "updated_at": "2018-06-30T18:57+0000",
-      "id": 26005,
       "name": "Location:TBA",
-      "conference": "DC26"
+      "id": 26005,
+      "conference": "DC26",
+      "updated_at": "2018-06-30T18:57+0000"
     },
     {
-      "updated_at": "2018-07-02T15:05+0000",
-      "id": 26006,
       "name": "Icon F",
-      "conference": "DC26"
+      "id": 26006,
+      "conference": "DC26",
+      "updated_at": "2018-07-02T15:05+0000"
     },
     {
-      "updated_at": "2018-07-02T15:05+0000",
-      "id": 26007,
       "name": "Icon D",
-      "conference": "DC26"
+      "id": 26007,
+      "conference": "DC26",
+      "updated_at": "2018-07-02T15:05+0000"
     },
     {
-      "updated_at": "2018-07-02T15:05+0000",
-      "id": 26008,
       "name": "Icon B",
-      "conference": "DC26"
+      "id": 26008,
+      "conference": "DC26",
+      "updated_at": "2018-07-02T15:05+0000"
     },
     {
-      "updated_at": "2018-07-02T15:05+0000",
-      "id": 26009,
       "name": "Icon C",
-      "conference": "DC26"
+      "id": 26009,
+      "conference": "DC26",
+      "updated_at": "2018-07-02T15:05+0000"
     },
     {
-      "updated_at": "2018-07-02T15:05+0000",
-      "id": 26010,
       "name": "Icon E",
-      "conference": "DC26"
+      "id": 26010,
+      "conference": "DC26",
+      "updated_at": "2018-07-02T15:05+0000"
     },
     {
-      "updated_at": "2018-07-02T15:05+0000",
-      "id": 26011,
       "name": "Icon A",
-      "conference": "DC26"
+      "id": 26011,
+      "conference": "DC26",
+      "updated_at": "2018-07-02T15:05+0000"
     },
     {
-      "updated_at": "2018-07-02T23:44+0000",
-      "id": 26012,
       "name": "Demo Labs",
-      "conference": "DC26"
+      "id": 26012,
+      "conference": "DC26",
+      "updated_at": "2018-07-02T23:44+0000"
+    },
+    {
+      "name": "Location In Description",
+      "id": 26013,
+      "conference": "DC26",
+      "updated_at": "2018-07-21T22:43+0000"
+    },
+    {
+      "name": "Skytalks",
+      "id": 26014,
+      "conference": "DC26",
+      "updated_at": "2018-07-30T23:26+0000"
     }
-  ]
+  ],
+  "updated_at": "2018-07-30T23:26+0000"
 }

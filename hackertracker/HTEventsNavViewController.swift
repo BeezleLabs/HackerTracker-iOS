@@ -37,9 +37,11 @@ class HTEventsNavViewController: UINavigationController {
 
     var lastSize : CGSize = CGSize.zero
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        view.tintColor = UIColor.white
         if let windowSize = UIApplication.shared.keyWindow?.frame.size {
             setNavBarImage(screenSize: windowSize)
         }

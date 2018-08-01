@@ -51,6 +51,12 @@
 		8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D51F15BDA3006761BE /* DataImportManager.swift */; };
 		834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D31F17113C0092C2FE /* DataRequestManager.swift */; };
 		834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D51F1818240092C2FE /* EventDateHeaderView.swift */; };
+		83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */; };
+		83679CE7210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CE6210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift */; };
+		83679CEA210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CE8210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift */; };
+		83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83679CE9210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib */; };
+		83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CEC210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift */; };
+		83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */; };
 		83B0F83E1F1967AA006493A6 /* ContributorsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */; };
 		83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */; };
 		83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B0F8411F19A673006493A6 /* SafariServices.framework */; };
@@ -64,14 +70,12 @@
 		83B0F85F1F1A74E4006493A6 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F85E1F1A74E4006493A6 /* LICENSE.md */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
-		B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */; };
 		B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */; };
 		B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */; };
 		B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B552AC891F2084D4006D4F98 /* PongScene.swift */; };
 		B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B568B64A1F1F3A740092CE4A /* SpriteKit.framework */; };
 		B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B568B6641F1F3FAB0092CE4A /* scene.sks */; };
 		B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9F7521F17307800EDC6FE /* Animation.swift */; };
-		E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,8 +102,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49730E4A1E2929BC0029438C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		49730E4D1E2D1AB50029438C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
@@ -151,6 +153,12 @@
 		8345F2D51F15BDA3006761BE /* DataImportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImportManager.swift; sourceTree = "<group>"; };
 		834713D31F17113C0092C2FE /* DataRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestManager.swift; sourceTree = "<group>"; };
 		834713D51F1818240092C2FE /* EventDateHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDateHeaderView.swift; path = Views/EventDateHeaderView.swift; sourceTree = "<group>"; };
+		83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerMenuViewController.swift; sourceTree = "<group>"; };
+		83679CE6210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerMenuTableViewController.swift; sourceTree = "<group>"; };
+		83679CE8210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		83679CE9210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HTHamburgerHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		83679CEC210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerItemTableViewCell.swift; sourceTree = "<group>"; };
+		83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HTHamburgerItemTableViewCell.xib; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		83B0F83D1F1967AA006493A6 /* ContributorsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContributorsFooterView.swift; path = Views/ContributorsFooterView.swift; sourceTree = "<group>"; };
 		83B0F83F1F197CF3006493A6 /* ContributorsFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContributorsFooterView.xib; sourceTree = "<group>"; };
@@ -190,7 +198,6 @@
 				5D02762821078B8600E5ED6A /* Crashlytics.framework in Frameworks */,
 				83B0F8541F19BA1B006493A6 /* QuartzCore.framework in Frameworks */,
 				83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */,
-				E30CDFAA36A85379410CFD9C /* Pods_hackertracker.framework in Frameworks */,
 				5D02762921078B8600E5ED6A /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,7 +206,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4493F883576A4E6A53D2B80 /* Pods_hackertrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +290,7 @@
 		5DD6425B1AC3C62300ED3256 /* hackertracker */ = {
 			isa = PBXGroup;
 			children = (
+				83679CE5210CED76000CADE4 /* HamburgerMenu */,
 				83B0F8431F19B9D1006493A6 /* PDFViewer */,
 				8345F2D41F15BD7B006761BE /* Managers */,
 				5DD642651AC3C62300ED3256 /* Main.storyboard */,
@@ -343,8 +350,6 @@
 				83B0F8531F19BA1B006493A6 /* QuartzCore.framework */,
 				83B0F8411F19A673006493A6 /* SafariServices.framework */,
 				8345F2CB1F0F0C81006761BE /* WebKit.framework */,
-				24CAF41CA5792E6575E01CB4 /* Pods_hackertracker.framework */,
-				031032D4F7BB93F5094E85B0 /* Pods_hackertrackerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -356,6 +361,19 @@
 				834713D31F17113C0092C2FE /* DataRequestManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		83679CE5210CED76000CADE4 /* HamburgerMenu */ = {
+			isa = PBXGroup;
+			children = (
+				83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */,
+				83679CE6210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift */,
+				83679CE8210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift */,
+				83679CE9210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib */,
+				83679CEC210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift */,
+				83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */,
+			);
+			name = HamburgerMenu;
 			sourceTree = "<group>";
 		};
 		83B0F8431F19B9D1006493A6 /* PDFViewer */ = {
@@ -488,6 +506,7 @@
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				5DBA8C1320EEEA8B00D82D9A /* DC26 in Resources */,
+				83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */,
 				5D67EBFC20E1CD30004E5D19 /* Bungee-Regular.ttf in Resources */,
 				5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */,
 				83B0F8401F197CF3006493A6 /* ContributorsFooterView.xib in Resources */,
@@ -495,6 +514,7 @@
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				5DECA11420B328FA000CD72F /* layerone_map.pdf in Resources */,
+				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				7820245D1F05B7CE0092ED07 /* cert.der in Resources */,
@@ -643,8 +663,10 @@
 				5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */,
 				5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
+				83679CE7210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift in Sources */,
 				83B0F8511F19BA07006493A6 /* ReaderContentTile.m in Sources */,
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,
+				83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */,
 				83B0F84E1F19BA07006493A6 /* CGPDFDocument.m in Sources */,
 				5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */,
 				5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */,
@@ -654,6 +676,7 @@
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
 				8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */,
+				83679CEA210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift in Sources */,
 				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,
 				83B0F85D1F1A7490006493A6 /* ReaderThumbView.m in Sources */,
 				83B0F84F1F19BA07006493A6 /* ReaderConstants.m in Sources */,
@@ -664,6 +687,7 @@
 				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
+				83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */,
 				5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */,
 				83B0F8521F19BA07006493A6 /* ReaderContentView.m in Sources */,
 				5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */,

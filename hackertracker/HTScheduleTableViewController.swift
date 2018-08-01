@@ -99,18 +99,12 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         if let selectedIndexPath = selectedIndexPath,
             let event = event,
             selectedIndexPath.section < eventSections.count,
-            selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count,
-            !splitViewController!.isCollapsed {
+            selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count {
 
             let newEvent = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
             if newEvent == event {
                 tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
             }
-        }
-
-        if let splitViewController = splitViewController,
-            !splitViewController.isCollapsed {
-            tableView.scrollToNearestSelectedRow(at: .middle, animated: true)
         }
     }
     
@@ -216,7 +210,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "eventDetailSegue", sender: indexPath)
+        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+            eventController.event = self.eventSections[indexPath.section].events[indexPath.row]
+            eventController.delegate = self
+            self.navigationController?.pushViewController(eventController, animated: true)
+        }
     }
     
     // MARK: - Navigation
@@ -390,11 +388,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         let drm = DataRequestManager(managedContext: getContext())
         if let con = drm.getSelectedConference() {
             if let n = con.name {
-                guard let font = UIFont(name: "Bungee", size: 24.0) else {
-                    NSLog("whoops")
-                    return
-                }
-                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
                 self.title = n
             }
             alltypes = drm.getEventTypes(con: con)

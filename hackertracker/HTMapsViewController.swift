@@ -100,20 +100,22 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if self.tabBarController == nil
-        {
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
-            doneButton.tintColor = .white
-            navigationItem.rightBarButtonItem = doneButton
-        }
-
+        applyDoneButtonIfNeeded()
         if let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0 {
             zoomToLocation(roomDimensions)
         }
         
         mapChanged(mapSwitch)
         
+    }
+    
+    func applyDoneButtonIfNeeded() {
+        guard let _ = self.navigationController?.parent as? HTHamburgerMenuViewController else {
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+            doneButton.tintColor = .white
+            navigationItem.rightBarButtonItem = doneButton
+            return
+        }
     }
 
     func zoomToLocation(_ roomDimensions: CGRect) {
