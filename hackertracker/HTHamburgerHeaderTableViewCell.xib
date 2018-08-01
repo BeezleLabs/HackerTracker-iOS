@@ -42,6 +42,7 @@
                     <constraint firstItem="KdP-tJ-bdA" firstAttribute="top" secondItem="TI7-8V-DPT" secondAttribute="bottom" constant="-6" id="ipw-Ok-Ma3"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.18150174620000001" green="0.2069737613" blue="0.25883677599999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="conferenceTitle" destination="KdP-tJ-bdA" id="Hew-oZ-4xN"/>
