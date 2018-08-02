@@ -415,7 +415,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND end_date < %@", argumentArray: [filteredtypes, startofDay, endofDay])
+        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@", argumentArray: [filteredtypes, startofDay, endofDay])
         
         
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]

@@ -13,10 +13,12 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bottomToTop: NSLayoutConstraint!
     @IBOutlet weak var fadeView: UIView!
+    @IBOutlet weak var toggleButton: UIButton!
     
     var all: [EventType] = []
     var filtered: [EventType] = []
     var delegate: FilterViewControllerDelegate?
+    var toggle: Bool = true
     
     var centeredConstraint : NSLayoutConstraint?
     
@@ -100,8 +102,15 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         delegate?.filterList(filteredEventTypes: filtered)
     }
     
-    @IBAction func clearList(_ sender: Any) {
-        filtered = []
+    @IBAction func toggleCheck(_ sender: Any) {
+        if toggle {
+            filtered = []
+            toggleButton.setTitle("Check All", for: UIControlState.normal)
+        } else {
+            filtered = all
+            toggleButton.setTitle("Uncheck All", for: UIControlState.normal)
+        }
+        toggle = !toggle
         self.tableView.reloadData()
         delegate?.filterList(filteredEventTypes: filtered)
     }

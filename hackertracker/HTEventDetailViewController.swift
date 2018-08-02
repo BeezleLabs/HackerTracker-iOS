@@ -27,10 +27,11 @@ class HTEventDetailViewController: UIViewController {
     @IBOutlet weak var exploitImage: UIImageView!
     @IBOutlet weak var toolImage: UIImageView!
     @IBOutlet weak var locationMapView: MapLocationView!
-    @IBOutlet weak var eventTypeContainer: UIView!
+    @IBOutlet weak var eventTypeContainer: UIStackView!
     @IBOutlet weak var bottomPaddingConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventTypeLabel: UILabel!
     @IBOutlet weak var linkButton: UIButton!
+    @IBOutlet weak var twitterStackView: UIStackView!
     
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
@@ -52,6 +53,10 @@ class HTEventDetailViewController: UIViewController {
             print("HTEventDetailViewController: Event is nil")
             return
         }
+        
+        twitterStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        twitterStackView.isHidden = true
         
         eventTitleLabel.text = event.title
         
@@ -156,7 +161,7 @@ class HTEventDetailViewController: UIViewController {
     }
     
     func setupSpeakers(event : Event) {
-        eventNameLabel.textColor = UIColor(red: 79.0/255.0, green: 227.0/255.0, blue: 194.0/255.0, alpha: 1.0)
+        eventNameLabel.textColor = UIColor(hexString: "#98b7e1")
         
         let speakers = event.speakers?.allObjects as! [Speaker]
         
@@ -175,6 +180,7 @@ class HTEventDetailViewController: UIViewController {
                 let whoParagraphStyle = NSMutableParagraphStyle()
                 whoParagraphStyle.alignment = .left
                 whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
                 whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (n as NSString).length))
                 
                 let titleAttributedString = NSMutableAttributedString(string:t)
@@ -200,14 +206,22 @@ class HTEventDetailViewController: UIViewController {
                 if speakers.count > 1, i < speakers.count {
                     speakerBios.append(NSAttributedString(string:"\n\n"))
                 }
+                
+                if let twitter = s.twitter {
+                    if twitter != "" {
+                        NSLog("adding twitter button for \(twitter)")
+                        let twitButton = UIButton()
+                        twitButton.setTitle(twitter, for: .normal)
+                        twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
+                        twitButton.addTarget(self, action: #selector(twitterFollow), for: .touchUpInside)
+                        twitButton.titleLabel?.font = UIFont(name: "Larsseit", size: 14)
+                        twitButton.sizeToFit()
+                        twitterStackView.addArrangedSubview(twitButton)
+                    }
+                }
             }
             i = i+1
         }
-        
-        let textAttachment = NSTextAttachment()
-        textAttachment.image = UIImage(named: "speaker_carrot")
-        speakerList.append(NSAttributedString(string:" "))
-        speakerList.append(NSAttributedString(attachment:textAttachment))
         
         self.eventNameLabel.contentMode = UIViewContentMode.top
         
@@ -234,12 +248,27 @@ class HTEventDetailViewController: UIViewController {
     @objc func expand() {
         if self.eventNameLabel.attributedText == speakerList {
             self.eventNameLabel.attributedText = speakerBios
+            twitterStackView.isHidden = false // TODO
+            
         } else {
             self.eventNameLabel.attributedText = speakerList
+            twitterStackView.isHidden = true
         }
         
         UIView.animate(withDuration: 0.3) {
            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func twitterFollow(sender: UIButton!) {
+        if let twit = sender.titleLabel?.text {
+            let l = "https://mobile.twitter.com/\(twit.replacingOccurrences(of: "@", with: ""))"
+            if let u = URL(string: l) {
+                let svc = SFSafariViewController(url: u)
+                svc.preferredBarTintColor = UIColor.backgroundGray
+                svc.preferredControlTintColor = UIColor.white
+                present(svc, animated: true, completion: nil)
+            }
         }
     }
     
