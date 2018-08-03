@@ -26,6 +26,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
     var data = NSMutableData()
     var myCon: Conference?
     var lastContentOffset: CGPoint?
+    var rick: Int = 0
 
     var footer: UIView!
 
@@ -241,10 +242,19 @@ extension HTUpdatesViewController : ContributorsFooterDelegate {
         case .sethlaw:
             url = URL(string: "https://twitter.com/sethlaw")!
             break
+        case .version:
+            rick = rick + 1
+            if rick > 6 {
+                url = URL(string: "https://www.youtube.com/watch?v=oHg5SJYRHA0")
+                rick = 0
+            }
+            break
         }
 
         if let url = url {
             let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredBarTintColor = UIColor.backgroundGray
+            safariVC.preferredControlTintColor = UIColor.white
             self.present(safariVC, animated: true, completion: nil)
         }
 

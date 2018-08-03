@@ -22,14 +22,18 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
     }
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         let startofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
-
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "start_date >= %@ AND start_date <= %@ AND starred == YES", argumentArray: [startofDay, endofDay])
+        
+        if let con = DataRequestManager(managedContext: getContext()).getSelectedConference() {
+            fr.predicate = NSPredicate(format: "start_date >= %@ AND start_date <= %@ AND starred == YES AND conference = %@", argumentArray: [startofDay, endofDay,con])
+            
+        } else {
+            fr.predicate = NSPredicate(format: "start_date >= %@ AND start_date <= %@ AND starred == YES", argumentArray: [startofDay, endofDay])
+        }
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         fr.returnsObjectsAsFaults = false
-
         return fr
     }
 

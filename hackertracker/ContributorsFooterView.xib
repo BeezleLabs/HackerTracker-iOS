@@ -135,7 +135,7 @@
             <connections>
                 <outlet property="versionLabel" destination="k4G-wu-NfM" id="gVW-xt-wUu"/>
             </connections>
-            <point key="canvasLocation" x="48.5" y="-169.5"/>
+            <point key="canvasLocation" x="-119" y="-191"/>
         </view>
     </objects>
 </document>

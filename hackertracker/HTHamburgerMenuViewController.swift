@@ -28,7 +28,6 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let hamburgerNavigationController: HTEventsNavViewController
     let alphaView = UIView()
 
-    //let leftButton = UIBarButtonItem(title:"Menu", style:UIBarButtonItemStyle.plain, target: self, action: #selector(hamburgerMenuItemPressed))
     let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(hamburgerMenuItemPressed))
     let intialTab = "Home"
     //This is a mapping of tabs to vcs

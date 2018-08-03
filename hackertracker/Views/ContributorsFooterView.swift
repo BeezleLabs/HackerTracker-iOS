@@ -13,6 +13,7 @@ enum LinkType {
     case imachumphries
     case sethlaw
     case macerameg
+    case version
 }
 
 protocol ContributorsFooterDelegate : class {
@@ -32,6 +33,14 @@ class ContributorsFooterView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(versionTapped))
+        versionLabel.addGestureRecognizer(tapGesture)
+        versionLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc func versionTapped() {
+        footerDelegate?.linkTapped(link: .version)
     }
     
     @IBAction func sethLinkPressed(_ sender: Any) {
@@ -40,10 +49,6 @@ class ContributorsFooterView: UIView {
     
     @IBAction func chrisLinkPressed(_ sender: Any) {
         footerDelegate?.linkTapped(link: .chrismays94)
-    }
-    
-    @IBAction func benLinkPressed(_ sender: Any) {
-        footerDelegate?.linkTapped(link: .imachumphries)
     }
     
     @IBAction func megLinkPressed(_ sender: Any) {

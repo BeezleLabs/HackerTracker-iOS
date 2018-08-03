@@ -96,19 +96,11 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    @IBAction func resetList(_ sender: Any) {
-        filtered = all
-        self.tableView.reloadData()
-        delegate?.filterList(filteredEventTypes: filtered)
-    }
-    
     @IBAction func toggleCheck(_ sender: Any) {
         if toggle {
             filtered = []
-            toggleButton.setTitle("Check All", for: UIControlState.normal)
         } else {
             filtered = all
-            toggleButton.setTitle("Uncheck All", for: UIControlState.normal)
         }
         toggle = !toggle
         self.tableView.reloadData()

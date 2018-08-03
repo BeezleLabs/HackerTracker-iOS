@@ -160,13 +160,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZZ-F8-XA3">
                                 <rect key="frame" x="37" y="667" width="300" height="400"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbC-ov-4ZT">
-                                        <rect key="frame" x="10" y="0.0" width="74" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbC-ov-4ZT">
+                                        <rect key="frame" x="277" y="8" width="15" height="16.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="3yT-fD-NgU"/>
+                                            <constraint firstAttribute="width" secondItem="SbC-ov-4ZT" secondAttribute="height" multiplier="11:12" id="AvF-LN-c6Z"/>
+                                            <constraint firstAttribute="width" constant="15" id="g9u-iV-G1M"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
-                                        <state key="normal" title="Uncheck All"/>
+                                        <state key="normal" image="check"/>
                                         <connections>
                                             <action selector="toggleCheck:" destination="YXH-5x-qfI" eventType="touchUpInside" id="CcV-z7-lfA"/>
                                         </connections>
@@ -195,13 +195,13 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCG-9h-SDF">
-                                        <rect key="frame" x="256" y="0.0" width="34" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCG-9h-SDF">
+                                        <rect key="frame" x="8" y="9" width="18" height="17.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="fJU-Q0-ld8"/>
+                                            <constraint firstAttribute="width" secondItem="pCG-9h-SDF" secondAttribute="height" multiplier="21:20" id="1Yf-Eq-V3c"/>
+                                            <constraint firstAttribute="width" constant="18" id="CSt-z2-OLH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
-                                        <state key="normal" title="Done"/>
+                                        <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="doneButtonPressed:" destination="YXH-5x-qfI" eventType="touchUpInside" id="9zp-4c-5oj"/>
                                         </connections>
@@ -211,14 +211,13 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="rBd-Wj-dgq" secondAttribute="trailing" id="36O-vC-o3n"/>
                                     <constraint firstItem="rBd-Wj-dgq" firstAttribute="top" secondItem="bZZ-F8-XA3" secondAttribute="top" constant="33" id="3lf-Fw-ebx"/>
-                                    <constraint firstItem="pCG-9h-SDF" firstAttribute="top" secondItem="bZZ-F8-XA3" secondAttribute="top" id="MHB-qX-0RO"/>
+                                    <constraint firstItem="pCG-9h-SDF" firstAttribute="leading" secondItem="bZZ-F8-XA3" secondAttribute="leading" constant="8" id="Cee-gi-TPJ"/>
+                                    <constraint firstItem="pCG-9h-SDF" firstAttribute="top" secondItem="bZZ-F8-XA3" secondAttribute="top" constant="9" id="MHB-qX-0RO"/>
+                                    <constraint firstAttribute="trailing" secondItem="SbC-ov-4ZT" secondAttribute="trailing" constant="8" id="X2Z-za-aXa"/>
                                     <constraint firstItem="rBd-Wj-dgq" firstAttribute="leading" secondItem="bZZ-F8-XA3" secondAttribute="leading" id="cKx-fc-5LL"/>
-                                    <constraint firstItem="SbC-ov-4ZT" firstAttribute="leading" secondItem="bZZ-F8-XA3" secondAttribute="leading" constant="10" id="dFc-0H-hyD"/>
-                                    <constraint firstAttribute="trailing" secondItem="pCG-9h-SDF" secondAttribute="trailing" constant="10" id="dMf-WO-5vh"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="hjK-F7-qEB"/>
-                                    <constraint firstItem="pCG-9h-SDF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bZZ-F8-XA3" secondAttribute="leading" constant="253" id="mRf-CH-uLK"/>
                                     <constraint firstAttribute="bottom" secondItem="rBd-Wj-dgq" secondAttribute="bottom" id="mc3-Zy-Rsz"/>
-                                    <constraint firstItem="SbC-ov-4ZT" firstAttribute="top" secondItem="bZZ-F8-XA3" secondAttribute="top" id="xmY-lQ-P3W"/>
+                                    <constraint firstItem="SbC-ov-4ZT" firstAttribute="top" secondItem="bZZ-F8-XA3" secondAttribute="top" constant="8" id="xmY-lQ-P3W"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -244,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zcr-Jh-8lE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6707.5" y="-734.5"/>
+            <point key="canvasLocation" x="6706.3999999999996" y="-735.38230884557731"/>
         </scene>
         <!--Schedule Table View Controller-->
         <scene sceneID="plL-wp-CvI">
@@ -539,7 +538,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Uz-v6-n11">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="389.5"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="390.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HeW-d7-uFG">
                                                 <rect key="frame" x="15" y="0.0" width="345" height="140"/>
@@ -637,14 +636,14 @@
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" usesAttributedText="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVM-vj-OhI">
-                                                <rect key="frame" x="15" y="246.5" width="345" height="33"/>
+                                                <rect key="frame" x="15" y="246.5" width="345" height="34"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Event Description">
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <font key="NSFont" size="14" name="Larsseit"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.5"/>
                                                         </attributes>
                                                     </fragment>
@@ -653,7 +652,7 @@
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
                                             <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-7A-I69" userLabel="MapView" customClass="MapLocationView" customModule="hackertracker" customModuleProvider="target">
-                                                <rect key="frame" x="137.5" y="289.5" width="100" height="100"/>
+                                                <rect key="frame" x="137.5" y="290.5" width="100" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -746,12 +745,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-GC-26N">
-                                            <rect key="frame" x="37" y="11" width="271" height="24"/>
+                                            <rect key="frame" x="37" y="11" width="264.5" height="25.5"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Name of the conference  here!">
                                                     <attributes>
                                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <font key="NSFont" metaFont="system" size="20"/>
+                                                        <font key="NSFont" size="20" name="Larsseit"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -759,12 +758,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-TY-4f7">
-                                            <rect key="frame" x="37" y="37" width="44" height="21"/>
+                                            <rect key="frame" x="37" y="38.5" width="165" height="22"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="Dates">
+                                                <fragment content="01/01/2018 - 12/31/2018">
                                                     <attributes>
                                                         <color key="NSColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" metaFont="system" size="17"/>
+                                                        <font key="NSFont" size="17" name="Larsseit"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -794,8 +793,9 @@
                                         <constraint firstItem="o3J-TY-4f7" firstAttribute="top" secondItem="L4G-GC-26N" secondAttribute="bottom" constant="2" id="Qdb-1Q-DYD"/>
                                         <constraint firstAttribute="topMargin" secondItem="L4G-GC-26N" secondAttribute="top" id="WCS-04-xYl"/>
                                         <constraint firstAttribute="topMargin" secondItem="7L2-25-YGa" secondAttribute="top" id="Y9v-cX-xKI"/>
-                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="leading" secondItem="L4G-GC-26N" secondAttribute="trailing" constant="8" id="kLX-yj-KIu"/>
+                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L4G-GC-26N" secondAttribute="trailing" constant="8" id="kLX-yj-KIu"/>
                                         <constraint firstItem="L4G-GC-26N" firstAttribute="leading" secondItem="7L2-25-YGa" secondAttribute="trailing" constant="8" id="nFP-Dk-zEM"/>
+                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o3J-TY-4f7" secondAttribute="trailing" constant="10" id="pIV-ud-mmm"/>
                                         <constraint firstItem="7L2-25-YGa" firstAttribute="leading" secondItem="hsO-wL-G7J" secondAttribute="leadingMargin" constant="7" id="uWe-7j-hwn"/>
                                         <constraint firstAttribute="trailing" secondItem="U2X-Rg-0Yr" secondAttribute="trailing" constant="10" id="zoc-3Y-gRJ"/>
                                     </constraints>
@@ -1236,6 +1236,8 @@
     <resources>
         <image name="calendar-active" width="40" height="40"/>
         <image name="calendar-inactive" width="40" height="40"/>
+        <image name="check" width="25" height="25"/>
+        <image name="close" width="25" height="25"/>
         <image name="external_link" width="30" height="30"/>
         <image name="faq" width="40" height="40"/>
         <image name="filter" width="40" height="40"/>

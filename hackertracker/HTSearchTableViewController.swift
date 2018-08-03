@@ -29,7 +29,6 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
 
     func reloadEvents() {
-        let selectedIndexPath = tableView.indexPathForSelectedRow
 
         self.tableView.reloadData()
 
@@ -100,27 +99,34 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
         
         let dataRequest = DataRequestManager(managedContext: getContext())
         
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-
-        fr.predicate = NSPredicate(format: "location.name contains[cd] %@ OR title contains[cd] %@ OR desc contains[cd] %@ OR includes contains[cd] %@", argumentArray: [searchText,searchText, searchText, searchText])
-        currentEvents = try! context.fetch(fr) as! Array<Event>
+        if let con = dataRequest.getSelectedConference() {
         
-        let frs = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
-        frs.returnsObjectsAsFaults = false
-        frs.predicate = NSPredicate(format: "name contains[cd] %@", argumentArray: [searchText])
-        let ret = try! context.fetch(frs) as! [Speaker]
-        if (ret.count > 0) {
-            for s in ret {
-                let events = s.events?.allObjects as! [Event]
-                for e in events {
-                    currentEvents.append(e)
+            let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+            fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
+            fr.returnsObjectsAsFaults = false
+            
+            let search_predicate = NSPredicate(format: "conference = %@ AND (location.name contains[cd] %@ OR title contains[cd] %@ OR desc contains[cd] %@ OR includes contains[cd] %@)", argumentArray: [con,searchText,searchText,searchText,searchText])
+
+            fr.predicate = search_predicate
+            currentEvents = try! context.fetch(fr) as! Array<Event>
+            
+            let frs = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
+            frs.returnsObjectsAsFaults = false
+            frs.predicate = NSPredicate(format: "conference = %@ AND name contains[cd] %@", argumentArray: [con,searchText])
+            let ret = try! context.fetch(frs) as! [Speaker]
+            if (ret.count > 0) {
+                for s in ret {
+                    let events = s.events?.allObjects as! [Event]
+                    for e in events {
+                        if !self.filteredEvents.contains(e) {
+                            currentEvents.append(e)
+                        }
+                    }
                 }
             }
+            
+            self.filteredEvents = currentEvents as NSArray
         }
-        
-        self.filteredEvents = currentEvents as NSArray
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

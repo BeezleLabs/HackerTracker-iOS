@@ -36,7 +36,7 @@ public class UpdateCell : UITableViewCell {
     }
     
     func bind(vendor: Vendor) {
-        let date = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: vendor.updated_at!)
+        //let date = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: vendor.updated_at!)
         
         if let n = vendor.name, let d = vendor.desc {
             titleLabel.text = n
