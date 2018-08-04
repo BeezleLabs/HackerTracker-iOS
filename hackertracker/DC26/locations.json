@@ -1,89 +1,209 @@
 {
+  "updated_at": "2018-08-03T15:28+0000",
   "locations": [
     {
-      "name": "Track 2",
+      "name": "Track 2 - Octavius - Caesar's",
       "id": 26001,
-      "conference": "DC26",
-      "updated_at": "2018-06-30T18:57+0000"
+      "updated_at": "2018-08-03T15:21+0000",
+      "conference": "DC26"
     },
     {
-      "name": "101 Track, Flamingo",
+      "name": "101 Track - Sunset - Flamingo",
       "id": 26002,
-      "conference": "DC26",
-      "updated_at": "2018-06-30T18:57+0000"
+      "updated_at": "2018-08-02T22:42+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Track 1",
+      "name": "Track 1 - Palace - Caesar's",
       "id": 26003,
-      "conference": "DC26",
-      "updated_at": "2018-06-30T18:57+0000"
+      "updated_at": "2018-08-02T22:42+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Track 3",
+      "name": "Track 3 - Forum - Caesar's",
       "id": 26004,
-      "conference": "DC26",
-      "updated_at": "2018-06-30T18:57+0000"
+      "updated_at": "2018-08-02T22:42+0000",
+      "conference": "DC26"
     },
     {
       "name": "Location:TBA",
       "id": 26005,
-      "conference": "DC26",
-      "updated_at": "2018-06-30T18:57+0000"
+      "updated_at": "2018-06-30T18:57+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Icon F",
+      "name": "Icon F - Linq",
       "id": 26006,
-      "conference": "DC26",
-      "updated_at": "2018-07-02T15:05+0000"
+      "updated_at": "2018-08-02T22:43+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Icon D",
+      "name": "Icon D - Linq",
       "id": 26007,
-      "conference": "DC26",
-      "updated_at": "2018-07-02T15:05+0000"
+      "updated_at": "2018-08-02T22:43+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Icon B",
+      "name": "Icon B - Linq",
       "id": 26008,
-      "conference": "DC26",
-      "updated_at": "2018-07-02T15:05+0000"
+      "updated_at": "2018-08-02T22:43+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Icon C",
+      "name": "Icon C - Linq",
       "id": 26009,
-      "conference": "DC26",
-      "updated_at": "2018-07-02T15:05+0000"
+      "updated_at": "2018-08-02T22:43+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Icon E",
+      "name": "Icon E - Linq",
       "id": 26010,
-      "conference": "DC26",
-      "updated_at": "2018-07-02T15:05+0000"
+      "updated_at": "2018-08-02T22:43+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Icon A",
+      "name": "Icon A - Linq",
       "id": 26011,
-      "conference": "DC26",
-      "updated_at": "2018-07-02T15:05+0000"
+      "updated_at": "2018-08-02T22:43+0000",
+      "conference": "DC26"
     },
     {
-      "name": "Demo Labs",
+      "name": "Demo Labs - Pre-Con Area - Caesar's",
       "id": 26012,
-      "conference": "DC26",
-      "updated_at": "2018-07-02T23:44+0000"
+      "updated_at": "2018-08-02T22:44+0000",
+      "conference": "DC26"
     },
     {
       "name": "Location In Description",
       "id": 26013,
-      "conference": "DC26",
-      "updated_at": "2018-07-21T22:43+0000"
+      "updated_at": "2018-07-21T22:43+0000",
+      "conference": "DC26"
     },
     {
       "name": "Skytalks",
       "id": 26014,
-      "conference": "DC26",
-      "updated_at": "2018-07-30T23:26+0000"
+      "updated_at": "2018-07-30T23:26+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "AI Village - Florentine III - Caesar's",
+      "id": 26015,
+      "updated_at": "2018-08-02T22:44+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Hardware Hacking Village - Forum 17-21 - Caesar's",
+      "id": 26016,
+      "updated_at": "2018-08-02T22:44+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Contest Area - Augustus - Caesar's",
+      "id": 26017,
+      "updated_at": "2018-08-02T22:44+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Blue Team Village - Savoy - Flamingo",
+      "id": 26018,
+      "updated_at": "2018-08-02T03:03+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Wireless Village - Milano V/VI - Caesar's",
+      "id": 26019,
+      "updated_at": "2018-08-02T03:28+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Ethics Village - Caesar's",
+      "id": 26020,
+      "updated_at": "2018-08-02T04:12+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Crypto & Privacy Village - Caesar's",
+      "id": 26021,
+      "updated_at": "2018-08-02T04:38+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "ICS Village - Red Rock - Flamingo",
+      "id": 26022,
+      "updated_at": "2018-08-02T16:39+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Cannabis Village - Flamingo",
+      "id": 26023,
+      "updated_at": "2018-08-03T00:07+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Social Engineer Village - Octavios 3-8 - Caesar's",
+      "id": 26024,
+      "updated_at": "2018-08-02T16:49+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "IOT Village - Turin, Verona, & Trevi - Caesars",
+      "id": 26025,
+      "updated_at": "2018-08-02T17:13+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Recon Village - Caesar's",
+      "id": 26026,
+      "updated_at": "2018-08-02T17:28+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Chillout - Roman - Caesar's",
+      "id": 26027,
+      "updated_at": "2018-08-02T22:45+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Car Hacking Village - Flamingo",
+      "id": 26028,
+      "updated_at": "2018-08-03T01:40+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "VX (Chip-off) Village - Caesar's",
+      "id": 26029,
+      "updated_at": "2018-08-03T03:43+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "CAAD Village - Flamingo",
+      "id": 26030,
+      "updated_at": "2018-08-03T04:13+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Data Duplication Village - Caesar's",
+      "id": 26031,
+      "updated_at": "2018-08-03T04:40+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "r00tz - Caesar's",
+      "id": 26032,
+      "updated_at": "2018-08-03T13:52+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Vendor Area - Caesar's",
+      "id": 26033,
+      "updated_at": "2018-08-03T15:21+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Packet Hacking Village - Caesar's",
+      "id": 26034,
+      "updated_at": "2018-08-03T15:28+0000",
+      "conference": "DC26"
     }
-  ],
-  "updated_at": "2018-07-30T23:26+0000"
+  ]
 }

@@ -49,3 +49,44 @@ extension UIColor {
         return String(format:"#%06x", rgb)
     }
 }
+
+extension UIFont {
+    static var bungee: UIFont {
+        get {
+            guard let customFont = UIFont(name: "Bungee", size: 17.0) else {
+                fatalError("Failed to load Bungee font")
+            }
+            if #available(iOS 11.0, *) {
+                return UIFontMetrics.default.scaledFont(for: customFont)
+            } else {
+                return customFont
+            }
+        }
+    }
+    
+    static var larseittBold: UIFont {
+        get {
+            guard let customFont = UIFont(name: "Larseitt Bold", size: 17.0) else {
+                fatalError("Failed to load Larseitt font")
+            }
+            if #available(iOS 11.0, *) {
+                return UIFontMetrics.default.scaledFont(for: customFont)
+            } else {
+                return customFont
+            }
+        }
+    }
+    
+    static var larseitt: UIFont {
+        get {
+            guard let customFont = UIFont(name: "Larseitt", size: 14.0) else {
+                fatalError("Failed to load Larseitt font")
+            }
+            if #available(iOS 11.0, *) {
+                return UIFontMetrics.default.scaledFont(for: customFont)
+            } else {
+                return customFont
+            }
+        }
+    }
+}

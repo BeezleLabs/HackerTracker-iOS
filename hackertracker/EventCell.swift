@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol EventCellDelegate : class {
+    func updatedEvents()
+}
+
 public class EventCell : UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
@@ -18,6 +22,7 @@ public class EventCell : UITableViewCell {
     @IBOutlet weak var et_label: UILabel!
     @IBOutlet weak var favorited: UIImageView!
     
+    weak var eventCellDelegate : EventCellDelegate? 
     var myEvent: Event?
     
     
@@ -120,6 +125,10 @@ public class EventCell : UITableViewCell {
 
             
             saveContext()
+            
+            if let ed = self.eventCellDelegate {
+                ed.updatedEvents()
+            }
         } else {
             NSLog("No event defined on star tap")
         }

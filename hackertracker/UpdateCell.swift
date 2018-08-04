@@ -44,6 +44,11 @@ public class UpdateCell : UITableViewCell {
         }
         
     }
+    
+    func bind(title: String, desc: String) {
+        titleLabel.text = title
+        descriptionLabel.text = desc
+    }
 
 
 }

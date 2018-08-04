@@ -404,7 +404,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
     public override func emptyState() -> UIView {
         if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
-            emptyState.bind(description: "No events for this date yet. Pull to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
+            emptyState.bind(description: "No events for this date yet. Pull down to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
             return emptyState
         }
         return UIView()
@@ -415,7 +415,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@", argumentArray: [filteredtypes, startofDay, endofDay])
+        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND start_date > %@", argumentArray: [filteredtypes, startofDay, endofDay, Date()])
         
         
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]

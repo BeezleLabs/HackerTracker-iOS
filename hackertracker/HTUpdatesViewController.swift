@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SafariServices
 
-class HTUpdatesViewController: UIViewController, EventDetailDelegate {
+class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellDelegate {
 
     @IBOutlet weak var updatesTableView: UITableView!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -20,9 +20,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
     @IBOutlet weak var conName: UILabel!
 
     var messages: [Article] = []
-    var eventSections: [String] = ["News","Upcoming Starred","Upcoming"]
+    var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now"]
     var starred: [Event] = []
     var upcoming: [Event] = []
+    var liveNow: [Event] = []
     var data = NSMutableData()
     var myCon: Conference?
     var lastContentOffset: CGPoint?
@@ -109,11 +110,25 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
 
         let fru:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
         fru.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fru.predicate = NSPredicate(format: "conference = %@ and start_date > %@", argumentArray: [myCon, Date(), true])
+        fru.predicate = NSPredicate(format: "conference = %@ and start_date > %@", argumentArray: [myCon, Date()])
         fru.returnsObjectsAsFaults = false
         fru.fetchLimit = 3
         self.upcoming = (try! getContext().fetch(fru)) as! [Event]
+        
+        let curTime = Date()
+        let frl:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+        frl.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
+        frl.predicate = NSPredicate(format: "conference = %@ and start_date <= %@ and end_date >= %@", argumentArray: [myCon, curTime, curTime])
+        frl.returnsObjectsAsFaults = false
+        //frl.fetchLimit = 3
+        self.liveNow = (try! getContext().fetch(frl)) as! [Event]
+        //self.liveNow = self.starred
 
+    }
+    
+    func updatedEvents() {
+        self.reloadEvents()
+        updatesTableView.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,8 +145,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate {
             if let indexPath = sender as? IndexPath {
                 if indexPath.section == 1 {
                     dv.event = self.starred[indexPath.row]
-                } else {
+                } else if indexPath.section == 2 {
                     dv.event = self.upcoming[indexPath.row]
+                } else if indexPath.section == 3 {
+                    dv.event = self.liveNow[indexPath.row]
                 }
             }
 
@@ -151,24 +168,50 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-
-            cell.bind(message: messages[indexPath.row])
-
+            if messages.count > 0 {
+                cell.bind(message: messages[indexPath.row])
+            } else {
+                cell.bind(title: "No News is Good News", desc: "Or maybe you just need to update your database")
+            }
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-            let event : Event = starred[indexPath.row]
+            if starred.count > 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+                let event : Event = starred[indexPath.row]
+                cell.bind(event: event)
+                cell.eventCellDelegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+                cell.bind(title: "No Events", desc: "Explore #hackertracker and maybe you will find something interesting to attend. Tap the star to have the event show up here on the home screen and in your schedule of events.")
+                return cell
+            }
 
-            cell.bind(event: event)
-
-            return cell
         } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-            let event : Event = upcoming[indexPath.row]
+            if upcoming.count > 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+                let event : Event = upcoming[indexPath.row]
+                cell.bind(event: event)
+                cell.eventCellDelegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+                cell.bind(title: "No Events", desc: "Is the conference cancelled?")
+                return cell
+            }
 
-            cell.bind(event: event)
-
-            return cell
+        } else if indexPath.section == 3 {
+            if liveNow.count > 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+                let event : Event = liveNow[indexPath.row]
+                cell.bind(event: event)
+                cell.eventCellDelegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+                cell.bind(title: "No Live Events", desc: "Hmmmm, maybe DEF CON got cancelled?")
+                return cell
+            }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             return cell
@@ -195,23 +238,46 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return messages.count
+            if messages.count > 0 {
+                return messages.count
+            } else {
+                return 1
+            }
+            
         } else if section == 1 {
-            return starred.count
+            if starred.count > 0 {
+                return starred.count
+            } else {
+                return 1
+            }
         } else if section == 2 {
-            return upcoming.count
+            if upcoming.count > 0 {
+                return upcoming.count
+            } else {
+                return 1
+            }
+        } else if section == 3 {
+            if liveNow.count > 0 {
+                return liveNow.count
+            } else {
+                return 1
+            }
         } else {
             return 0
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 || indexPath.section == 2 {
+        if ( indexPath.section == 1 && starred.count > 0 )
+            || ( indexPath.section == 2 && upcoming.count > 0 )
+            || ( indexPath.section == 3 && liveNow.count > 0 ) {
             if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
                 if indexPath.section == 1 {
                     eventController.event = self.starred[indexPath.row]
-                } else {
+                } else if indexPath.section == 2 {
                     eventController.event = self.upcoming[indexPath.row]
+                } else if indexPath.section == 3 {
+                    eventController.event = self.liveNow[indexPath.row]
                 }
                 self.navigationController?.pushViewController(eventController, animated: true)
             }

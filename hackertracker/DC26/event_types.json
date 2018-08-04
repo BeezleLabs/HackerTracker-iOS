@@ -1,61 +1,61 @@
 {
   "event_types": [
     {
-      "color": "#c77228",
       "name": "Official",
       "id": 1,
+      "updated_at": "2018-08-02T06:28+0000",
       "conference": "DC26",
-      "updated_at": "2018-06-30T19:25+0000"
+      "color": "#fc853f"
     },
     {
-      "color": "#AD1457",
       "name": "Workshop",
       "id": 3,
+      "updated_at": "2018-06-30T19:26+0000",
       "conference": "DC26",
-      "updated_at": "2018-06-30T19:26+0000"
+      "color": "#AD1457"
     },
     {
-      "color": "#653fff",
       "name": "Demo Lab",
       "id": 4,
+      "updated_at": "2018-07-03T14:36+0000",
       "conference": "DC26",
-      "updated_at": "2018-07-03T14:36+0000"
+      "color": "#653fff"
     },
     {
-      "color": "#5c74ff",
       "name": "Party/Meetup",
       "id": 5,
+      "updated_at": "2018-07-22T19:05+0000",
       "conference": "DC26",
-      "updated_at": "2018-07-22T19:05+0000"
+      "color": "#5c74ff"
     },
     {
-      "color": "#5c74ff",
       "name": "Village",
       "id": 6,
+      "updated_at": "2018-07-31T18:41+0000",
       "conference": "DC26",
-      "updated_at": "2018-07-31T18:41+0000"
+      "color": "#5c74ff"
     },
     {
-      "color": "#42d2bc",
       "name": "Contest",
       "id": 7,
+      "updated_at": "2018-07-31T18:54+0000",
       "conference": "DC26",
-      "updated_at": "2018-07-31T18:54+0000"
+      "color": "#42d2bc"
     },
     {
-      "color": "#9a3290",
       "name": "Event",
       "id": 8,
+      "updated_at": "2018-07-31T18:54+0000",
       "conference": "DC26",
-      "updated_at": "2018-07-31T18:54+0000"
+      "color": "#9a3290"
     },
     {
-      "color": "#76d6ff",
       "name": "Skytalk",
       "id": 9,
+      "updated_at": "2018-07-30T23:41+0000",
       "conference": "DC26",
-      "updated_at": "2018-07-30T23:41+0000"
+      "color": "#76d6ff"
     }
   ],
-  "updated_at": "2018-07-31T18:54+0000"
+  "updated_at": "2018-08-02T06:28+0000"
 }
