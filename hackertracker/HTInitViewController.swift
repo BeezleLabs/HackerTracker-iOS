@@ -55,7 +55,7 @@ class HTInitViewController: UIViewController {
             importComplete = true
         }
 
-        Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(HTInitViewController.timerComplete), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(timerComplete), userInfo: nil, repeats: false)
     }
     
     func loadData() {

@@ -55,7 +55,6 @@ public enum Location
         } else if lc.contains("track 3") {
             return .track3
         } else if lc.contains("101 track") {
-            NSLog("101 Track")
             return .track101
         } else if lc.contains("icon a") {
             return .icona
@@ -148,10 +147,8 @@ enum MapFile {
     case linq
     
     static func mapFile(_ l: Location) -> URL {
-        print(l)
         if l == .track101 || l == .blueteam || l == .cannabis || l == .chv || l == .caadv || l == .skytalks || l == .ics
         {
-            NSLog("using flamingo map")
             return Bundle.main.url(forResource: "dc-26-flamingo-public-1", withExtension: "pdf", subdirectory: "maps")!
         } else if l == .icona || l == .iconb || l == .iconc || l == .icond || l == .icone || l == .iconf {
             return Bundle.main.url(forResource: "dc-26-linq-workshops", withExtension: "pdf", subdirectory: "maps")!
@@ -206,11 +203,11 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
                 break
             case .iconc:
                 mapZoomLevel = 3.0
-                mapOffset = CGPoint(x: 500, y: 450)
+                mapOffset = CGPoint(x: 425, y: 450)
                 break
             case .icond:
                 mapZoomLevel = 3.0
-                mapOffset = CGPoint(x: 450, y: 475)
+                mapOffset = CGPoint(x: 425, y: 475)
                 break
             case .icone:
                 mapZoomLevel = 3.0
@@ -352,8 +349,6 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         webView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        NSLog("setup is called and location is:")
-        print(currentLocation)
         webView.loadRequest(URLRequest(url: MapFile.mapFile(currentLocation)))
         webView.delegate = self
         webView.scalesPageToFit = true
@@ -377,8 +372,8 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-        print(scrollView.zoomScale)
+        //print(scrollView.contentOffset)
+        //print(scrollView.zoomScale)
     }
 
 }
