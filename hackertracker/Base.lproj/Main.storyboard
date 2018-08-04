@@ -13,6 +13,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Bungee-Regular.ttf">
+            <string>Bungee-Regular</string>
+        </array>
         <array key="Larsseit-Bold.ttf">
             <string>Larsseit-Bold</string>
         </array>
@@ -139,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWF-fe-EhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6630" y="879"/>
+            <point key="canvasLocation" x="7568.8000000000002" y="878.41079460269873"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="D24-WK-AJj">
@@ -722,7 +725,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3j-ea-u36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5541.6000000000004" y="841.52923538230891"/>
+            <point key="canvasLocation" x="6480.8000000000002" y="841.52923538230891"/>
         </scene>
         <!--Conferences-->
         <scene sceneID="rW0-R1-IMV">
@@ -885,7 +888,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwv-vH-OfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5271" y="65"/>
+            <point key="canvasLocation" x="6208.8000000000002" y="64.31784107946028"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="i93-iB-gUR">
@@ -1010,7 +1013,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kc4-n7-hwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2409" y="798"/>
+            <point key="canvasLocation" x="3348" y="797.45127436281871"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="4uI-13-dFR">
@@ -1092,7 +1095,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWU-AW-Ffa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3946" y="842"/>
+            <point key="canvasLocation" x="4884" y="841.52923538230891"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="qT4-pX-Wks">
@@ -1110,7 +1113,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Hv-rc-DkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="799"/>
+            <point key="canvasLocation" x="2192.8000000000002" y="798.35082458770626"/>
         </scene>
         <!--News-->
         <scene sceneID="g1o-Hs-t3L">
@@ -1181,6 +1184,70 @@
             </objects>
             <point key="canvasLocation" x="-457" y="-494"/>
         </scene>
+        <!--DEF CON WIFI-->
+        <scene sceneID="DND-Jo-Hce">
+            <objects>
+                <viewController storyboardIdentifier="HTWifiViewController" id="qJ2-sU-VU3" customClass="HTWiFiViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dXI-8M-Fve"/>
+                        <viewControllerLayoutGuide type="bottom" id="dpa-4q-dMW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b4G-aM-dGQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="rXy-yP-CZO">
+                                <rect key="frame" x="25" y="97" width="325" height="473"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull-active" translatesAutoresizingMaskIntoConstraints="NO" id="FKE-HZ-a9V">
+                                        <rect key="frame" x="142.5" y="10" width="40" height="40"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Connect to DEF CON WiFi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-8J-VbI">
+                                        <rect key="frame" x="16" y="59" width="293" height="26.5"/>
+                                        <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkJ-fk-zZY">
+                                        <rect key="frame" x="12.5" y="94.5" width="300" height="339"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="KBF-Y9-ucN"/>
+                                        </constraints>
+                                        <mutableString key="text">Tap on this screen to be taken to the DEF CON WiFi registration site.  You can sign-up for the 802.1x/WPA2 WiFi at https://wifireg.defcon.org anytime starting a couple of days before the conference.
+ Detailed instructions are provided, but the short is:  - create your credentials (don't use the same as in important stuff!);  - download and install the digital certificate (or configuration profile for Apple devices).
+ Setup your device to REQUIRE server validation and don't accept ANY certificates provided when connected to the WiFi.   Don't make security insecure.</mutableString>
+                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONNECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kk-yE-Xec">
+                                        <rect key="frame" x="114.5" y="442.5" width="96" height="20"/>
+                                        <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="5xh-19-txl"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="10" left="8" bottom="10" right="8"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rXy-yP-CZO" firstAttribute="centerY" secondItem="b4G-aM-dGQ" secondAttribute="centerY" id="cI1-97-d0n"/>
+                            <constraint firstItem="rXy-yP-CZO" firstAttribute="centerX" secondItem="b4G-aM-dGQ" secondAttribute="centerX" id="rQn-Bg-zb7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="DEF CON WIFI" id="bHT-rh-fdH"/>
+                    <connections>
+                        <outlet property="vertStackView" destination="rXy-yP-CZO" id="iSd-4U-7RJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Gv-TE-Sp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="400.74962518740631"/>
+        </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="nMQ-TS-iRf">
             <objects>
@@ -1232,6 +1299,24 @@
             </objects>
             <point key="canvasLocation" x="-3015" y="-494"/>
         </scene>
+        <!--Events Nav View Controller-->
+        <scene sceneID="N4z-BO-pBZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ace-EH-Qh0" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="E0s-i1-anC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qJ2-sU-VU3" kind="relationship" relationship="rootViewController" id="vkZ-wi-QyT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6u-Jf-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-639.20000000000005" y="400.74962518740631"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar-active" width="40" height="40"/>
@@ -1259,7 +1344,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
-        <segue reference="a0t-7o-Cnk"/>
+        <segue reference="M7t-3x-HF9"/>
         <segue reference="XQt-9W-ade"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

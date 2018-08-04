@@ -49,7 +49,7 @@ class HTHamburgerMenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(displayP3Red: 45.0/255.0, green: 53.0/255.0, blue: 67.0/255.0, alpha: 1)
+        self.view.backgroundColor = UIColor.backgroundGray
     }
     
     override func viewWillAppear(_ animated: Bool) {

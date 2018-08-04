@@ -85,6 +85,7 @@ class HTEventDetailViewController: UIViewController {
         } else {
             locationMapView.currentLocation = .unknown
         }
+        locationMapView.setup()
         
         eventDetailTextView.text = event.desc
 
@@ -115,19 +116,19 @@ class HTEventDetailViewController: UIViewController {
         }
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
         
-        if let start = event.start_date, let end = event.end_date {
+        if let start = event.start_date, let end = event.end_date, let l = event.location?.name {
             let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: start)
             let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
             eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
-            locationMapView.timeOfDay = TimeOfDay.timeOfDay(for: event.start_date!)
+            locationMapView.currentLocation = Location.valueFromString(l)
         } else {
             eventDateLabel.text = "To Be Announced"
         }
         
         // Hiding Map View on the event details page for the initial launch.
         // Enable this before launching the maps functionality.
-        locationMapView.isHidden = true
+        //locationMapView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -209,7 +210,6 @@ class HTEventDetailViewController: UIViewController {
                 
                 if let twitter = s.twitter {
                     if twitter != "" {
-                        NSLog("adding twitter button for \(twitter)")
                         let twitButton = UIButton()
                         twitButton.setTitle(twitter, for: .normal)
                         twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
@@ -238,11 +238,10 @@ class HTEventDetailViewController: UIViewController {
             eventNameLabel.layer.cornerRadius = 5
         }
         
-        /*
         let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
         touchGesture.minimumPressDuration = 0.0
         touchGesture.cancelsTouchesInView = false
-        locationMapView.addGestureRecognizer(touchGesture) */
+        locationMapView.addGestureRecognizer(touchGesture)
     }
 
     @objc func expand() {
@@ -454,7 +453,6 @@ class HTEventDetailViewController: UIViewController {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
                 mapView.mapLocation = locationMapView.currentLocation
-                mapView.timeOfDay = locationMapView.timeOfDay
                 let navigationController = HTEventsNavViewController(rootViewController: mapView)
                 self.present(navigationController, animated: true, completion: nil)
             }

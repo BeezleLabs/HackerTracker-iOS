@@ -38,7 +38,8 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
                 "Map" : "HTMapsViewController",
                 "FAQ" : "HTFAQTableViewController",
                 "News" : "HTNewsTableViewController",
-                "Vendors": "HTVendorTableViewController"
+                "Vendors": "HTVendorTableViewController",
+                "WiFi": "HTWifiViewController"
                 //"Settings": "HTConferenceTableViewController" // Include this after DEFCON
     ];
     
@@ -50,7 +51,8 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         HamburgerItem(title:"Map", imageID:"map-active"),
         HamburgerItem(title:"FAQ", imageID:"faq"),
         HamburgerItem(title:"News", imageID:"news"),
-        HamburgerItem(title: "Vendors", imageID: "vendor")
+        HamburgerItem(title: "Vendors", imageID: "vendor"),
+        HamburgerItem(title: "WiFi", imageID: "wifi")
         //HamburgerItem(title: "Settings", imageID: "filter") // Include this after DEFCON
     ]
     

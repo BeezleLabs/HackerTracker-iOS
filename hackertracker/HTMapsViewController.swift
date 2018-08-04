@@ -101,11 +101,46 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyDoneButtonIfNeeded()
-        if let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0 {
+        /*if let roomDimensions = roomDimensions, roomDimensions.width > 0, roomDimensions.height > 0 {
             zoomToLocation(roomDimensions)
-        }
+        }*/
         
-        mapChanged(mapSwitch)
+        if mapLocation == .unknown {
+            mapChanged(mapSwitch)
+        } else {
+            let l = mapLocation
+            if l == .track101 || l == .blueteam || l == .cannabis || l == .chv || l == .caadv || l == .skytalks || l == .ics
+            {
+                caesarsMapView?.isHidden = true
+                flamingoMapView?.isHidden = false
+                nightMapView?.isHidden = true
+                linqMapView?.isHidden = true
+                caesarsMapView?.isUserInteractionEnabled = false
+                flamingoMapView?.isUserInteractionEnabled = true
+                nightMapView?.isUserInteractionEnabled = false
+                linqMapView?.isUserInteractionEnabled = false
+                mapSwitch.selectedSegmentIndex = 1
+            } else if l == .icona || l == .iconb || l == .iconc || l == .icond || l == .icone || l == .iconf {
+                caesarsMapView?.isHidden = true
+                flamingoMapView?.isHidden = true
+                nightMapView?.isHidden = true
+                linqMapView?.isHidden = false
+                caesarsMapView?.isUserInteractionEnabled = false
+                flamingoMapView?.isUserInteractionEnabled = false
+                nightMapView?.isUserInteractionEnabled = false
+                linqMapView?.isUserInteractionEnabled = true
+                mapSwitch.selectedSegmentIndex = 3
+            } else {
+                caesarsMapView?.isHidden = false
+                flamingoMapView?.isHidden = true
+                nightMapView?.isHidden = true
+                linqMapView?.isHidden = true
+                caesarsMapView?.isUserInteractionEnabled = true
+                flamingoMapView?.isUserInteractionEnabled = false
+                nightMapView?.isUserInteractionEnabled = false
+                linqMapView?.isUserInteractionEnabled = false
+            }
+        }
         
     }
     

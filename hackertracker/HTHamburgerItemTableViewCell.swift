@@ -17,7 +17,7 @@ class HTHamburgerItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
         originalBackgroundColor = self.backgroundColor
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor(displayP3Red: 102.0/255.0, green: 98.0/255.0, blue: 189.0/255.0, alpha: 1.0)
+        backgroundView.backgroundColor = UIColor(hexString: "#7389c1")
         selectedBackgroundView = backgroundView
     }
 }

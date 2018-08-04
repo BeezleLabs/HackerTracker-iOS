@@ -45,7 +45,7 @@ class HTFAQTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
         
@@ -70,6 +70,7 @@ class HTFAQTableViewController: UITableViewController {
         popup.addAction(doneItem)
         
         self.present(popup, animated: true, completion: nil)
+
     }
     
     func alertControllerBackgroundTapped()
@@ -85,4 +86,5 @@ class HTFAQTableViewController: UITableViewController {
         
         faqs = try! getContext().fetch(fr) as! [FAQ]
     }
+    
 }
