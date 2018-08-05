@@ -117,8 +117,13 @@ class HTEventDetailViewController: UIViewController {
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
         
         if let start = event.start_date, let end = event.end_date, let l = event.location?.name {
-            let eventLabel = DateFormatterUtility.dayOfWeekMonthTimeFormatter.string(from: start)
-            let eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
+            let eventLabel = DateFormatterUtility.shortDayMonthDayTimeOfWeekFormatter.string(from: start)
+            var eventEnd = ""
+            if Calendar.current.isDate(end, inSameDayAs: start) {
+                eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
+            } else {
+                eventEnd = DateFormatterUtility.dayOfWeekTimeFormatter.string(from: end)
+            }
             eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
             locationMapView.currentLocation = Location.valueFromString(l)

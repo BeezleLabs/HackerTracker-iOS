@@ -23,12 +23,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="393" height="73.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSJ-jy-nOE">
-                        <rect key="frame" x="21" y="28" width="48" height="18"/>
-                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXo-64-2b2">
                         <rect key="frame" x="7" y="5" width="6" height="64"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,7 +51,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="00:00-00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyY-eq-7NT">
-                        <rect key="frame" x="74" y="28" width="73.5" height="18"/>
+                        <rect key="frame" x="21" y="28" width="73.5" height="18"/>
+                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSJ-jy-nOE">
+                        <rect key="frame" x="99.5" y="28.5" width="48" height="18"/>
                         <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -67,20 +67,18 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="PHv-5M-LqV" secondAttribute="trailing" constant="20" id="0aD-6C-fKw"/>
                     <constraint firstItem="PHv-5M-LqV" firstAttribute="leading" secondItem="EXo-64-2b2" secondAttribute="trailing" constant="8" id="4VS-vf-yGx"/>
-                    <constraint firstItem="FyY-eq-7NT" firstAttribute="height" secondItem="nSJ-jy-nOE" secondAttribute="height" id="633-hb-r5e"/>
+                    <constraint firstItem="FyY-eq-7NT" firstAttribute="leading" secondItem="EXo-64-2b2" secondAttribute="trailing" constant="8" id="6bD-fd-MUJ"/>
                     <constraint firstItem="EXo-64-2b2" firstAttribute="leading" secondItem="PpO-Wu-Irt" secondAttribute="leading" constant="7" id="6lZ-3a-Hi1"/>
                     <constraint firstItem="nSJ-jy-nOE" firstAttribute="top" secondItem="PHv-5M-LqV" secondAttribute="bottom" constant="5" id="9ca-Hb-Jor"/>
-                    <constraint firstItem="LzO-1B-Yi0" firstAttribute="top" secondItem="FyY-eq-7NT" secondAttribute="bottom" constant="5" id="BFb-2h-4aT"/>
                     <constraint firstAttribute="trailing" secondItem="7RD-YH-mLw" secondAttribute="trailing" constant="10" id="b28-iF-UUG"/>
                     <constraint firstAttribute="bottom" secondItem="PHv-5M-LqV" secondAttribute="bottom" constant="50" id="dvx-H2-dgM"/>
+                    <constraint firstItem="nSJ-jy-nOE" firstAttribute="leading" secondItem="FyY-eq-7NT" secondAttribute="trailing" constant="5" id="eFN-MM-d9r"/>
+                    <constraint firstItem="FyY-eq-7NT" firstAttribute="top" secondItem="PHv-5M-LqV" secondAttribute="bottom" constant="5" id="ee4-dj-Ier"/>
                     <constraint firstItem="LzO-1B-Yi0" firstAttribute="leading" secondItem="EXo-64-2b2" secondAttribute="trailing" constant="8" id="h9e-gC-Xfc"/>
                     <constraint firstItem="7RD-YH-mLw" firstAttribute="top" secondItem="PpO-Wu-Irt" secondAttribute="top" constant="10" id="har-mp-jb3"/>
-                    <constraint firstItem="FyY-eq-7NT" firstAttribute="leading" secondItem="nSJ-jy-nOE" secondAttribute="trailing" constant="5" id="lk2-Wy-eGn"/>
                     <constraint firstItem="EXo-64-2b2" firstAttribute="top" secondItem="PpO-Wu-Irt" secondAttribute="top" constant="5" id="lta-B6-qYb"/>
                     <constraint firstItem="PHv-5M-LqV" firstAttribute="top" secondItem="PpO-Wu-Irt" secondAttribute="top" constant="10" id="tdh-Bc-t23"/>
-                    <constraint firstItem="FyY-eq-7NT" firstAttribute="top" secondItem="PHv-5M-LqV" secondAttribute="bottom" constant="5" id="u6r-vj-LH3"/>
-                    <constraint firstItem="nSJ-jy-nOE" firstAttribute="top" secondItem="FyY-eq-7NT" secondAttribute="top" id="xFb-ny-Ccu"/>
-                    <constraint firstItem="nSJ-jy-nOE" firstAttribute="leading" secondItem="EXo-64-2b2" secondAttribute="trailing" constant="8" id="xnr-Yw-twH"/>
+                    <constraint firstItem="LzO-1B-Yi0" firstAttribute="top" secondItem="FyY-eq-7NT" secondAttribute="bottom" constant="5" id="xtE-y8-cBS"/>
                     <constraint firstAttribute="bottom" secondItem="EXo-64-2b2" secondAttribute="bottom" constant="5" id="ywV-fR-EXH"/>
                 </constraints>
             </tableViewCellContentView>

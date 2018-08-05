@@ -20,7 +20,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     @IBOutlet weak var conName: UILabel!
 
     var messages: [Article] = []
-    var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now"]
+    var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now", "About"]
     var starred: [Event] = []
     var upcoming: [Event] = []
     var liveNow: [Event] = []
@@ -46,21 +46,13 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         updatesTableView.rowHeight = UITableViewAutomaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+        updatesTableView.register(UINib.init(nibName: "AboutCell", bundle: nil), forCellReuseIdentifier: "AboutCell")
 
         updatesTableView.delegate = self
         updatesTableView.dataSource = self
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
-        if let footer = Bundle.main.loadNibNamed("ContributorsFooterView", owner: self, options: nil)?.first as? ContributorsFooterView {
-            updatesTableView.tableFooterView = footer
-            if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                footer.versionLabel.text = "Hackertracker iOS v\(v) (\(b))"
-            }
-
-            footer.footerDelegate = self
-            self.footer = footer
-        }
         reloadEvents()
     }
 
@@ -212,6 +204,13 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                 cell.bind(title: "No Live Events", desc: "Hmmmm, maybe DEF CON got cancelled?")
                 return cell
             }
+        } else if indexPath.section == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
+            if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                cell.versionLabel.setTitle("Hackertracker iOS v\(v) (\(b))", for: UIControlState.normal)
+            }
+            cell.aboutDelegate = self
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             return cell
@@ -262,6 +261,8 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             } else {
                 return 1
             }
+        } else if section == 4 {
+            return 1
         } else {
             return 0
         }
@@ -294,35 +295,11 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 
 }
 
-extension HTUpdatesViewController : ContributorsFooterDelegate {
-    func linkTapped(link: LinkType) {
-        var url : URL? = nil
-        switch link {
-        case .chrismays94:
-            url = URL(string: "https://twitter.com/chrismays94")!
-        case .imachumphries:
-            url = URL(string: "https://twitter.com/imachumphries")!
-        case .macerameg:
-            url = URL(string: "https://twitter.com/macerameg")!
-            break
-        case .sethlaw:
-            url = URL(string: "https://twitter.com/sethlaw")!
-            break
-        case .version:
-            rick = rick + 1
-            if rick > 6 {
-                url = URL(string: "https://www.youtube.com/watch?v=oHg5SJYRHA0")
-                rick = 0
-            }
-            break
-        }
-
-        if let url = url {
-            let safariVC = SFSafariViewController(url: url)
-            safariVC.preferredBarTintColor = UIColor.backgroundGray
-            safariVC.preferredControlTintColor = UIColor.white
-            self.present(safariVC, animated: true, completion: nil)
-        }
-
+extension HTUpdatesViewController: AboutCellDelegate {
+    func followUrl(url: URL) {
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredBarTintColor = UIColor.backgroundGray
+        safariVC.preferredControlTintColor = UIColor.white
+        present(safariVC, animated: true, completion: nil)
     }
 }

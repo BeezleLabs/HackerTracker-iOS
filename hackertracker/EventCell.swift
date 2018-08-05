@@ -63,7 +63,12 @@ public class EventCell : UITableViewCell {
         myEvent = event
         var eventTime = "TBD"
         if let start = event.start_date, let end = event.end_date {
-            eventTime = DateFormatterUtility.hourMinuteTimeFormatter.string(from:start) + "-" + DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
+            eventTime = DateFormatterUtility.dayOfWeekTimeFormatter.string(from:start) + "-"
+            if Calendar.current.isDate(end, inSameDayAs: start) {
+                eventTime = eventTime + DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
+            } else {
+                eventTime = eventTime + DateFormatterUtility.dayOfWeekTimeFormatter.string(from: end)
+            }
         }
         
         title.text = event.title
@@ -86,9 +91,9 @@ public class EventCell : UITableViewCell {
             subtitle.text = "Location in description"
         } else {
             if let n = event.location?.name {
-                subtitle.text = "\(n) |"
+                subtitle.text = "| \(n)"
             } else {
-                subtitle.text = "TBA |"
+                subtitle.text = "| TBA"
             }
         }
         

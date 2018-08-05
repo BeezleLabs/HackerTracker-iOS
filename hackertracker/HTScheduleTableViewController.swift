@@ -21,11 +21,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var updated : [String] = []
 
     var pullDownAnimation: PongScene?
+    var nowPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
-
         reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
     }
@@ -398,6 +398,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadEvents()
+        
         tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
     }
@@ -415,7 +416,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND start_date > %@", argumentArray: [filteredtypes, startofDay, endofDay, Date()])
+        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND end_date > %@", argumentArray: [filteredtypes, startofDay, endofDay, Date()])
+        //fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@", argumentArray: [filteredtypes, startofDay, endofDay])
         
         
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
