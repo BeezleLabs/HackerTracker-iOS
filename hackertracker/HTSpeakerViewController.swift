@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class HTSpeakerViewController: UIViewController {
+class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var twitterButton: UIButton!
     @IBOutlet weak var talkButton: UIButton!
@@ -27,7 +27,7 @@ class HTSpeakerViewController: UIViewController {
             bioLabel.text = d
             if let events = speaker?.events?.allObjects {
                 if let e = events[0] as? Event {
-                    talkButton.titleLabel?.numberOfLines = 0
+                    talkButton.titleLabel?.numberOfLines = 3
                     talkButton.titleLabel?.lineBreakMode = .byWordWrapping
                     talkButton.setTitle(e.title, for: UIControlState.normal)
                 }
@@ -63,14 +63,29 @@ class HTSpeakerViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "eventSegue") {
+            
+            let dv : HTEventDetailViewController
+            
+            if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
+                dv = _dv
+            } else {
+                dv = segue.destination as! HTEventDetailViewController
+            }
+            
+            if let events = speaker?.events?.allObjects {
+                if let e = events[0] as? Event {
+                    dv.event = e
+                }
+            }
+            dv.transitioningDelegate = self
+            
+        }
     }
-    */
 
 }
