@@ -45,6 +45,8 @@ class HTEventsNavViewController: UINavigationController {
         if let windowSize = UIApplication.shared.keyWindow?.frame.size {
             setNavBarImage(screenSize: windowSize)
         }
+        let attr = [NSAttributedStringKey.font: UIFont.bungee, NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationBar.titleTextAttributes = attr
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

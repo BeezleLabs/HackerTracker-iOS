@@ -14,10 +14,6 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        guard let font = UIFont(name: "Bungee", size: 24.0) else {
-            NSLog("whoops")
-            return
-        }
         reloadEvents()
     }
 

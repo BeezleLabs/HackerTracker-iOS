@@ -51,5 +51,9 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         }
     }
     
+    public func bind(_ headerLabel: String) {
+        dateLabel.text = "    \(headerLabel)"
+    }
+    
 
 }

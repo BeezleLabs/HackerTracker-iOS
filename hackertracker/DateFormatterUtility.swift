@@ -93,6 +93,14 @@ class DateFormatterUtility {
         return formatter
     }()
     
+    static let shortDayOfMonthFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "PDT")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "d"
+        return formatter
+    }()
+    
     //DOW format
     static let dayMonthDayOfWeekFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()

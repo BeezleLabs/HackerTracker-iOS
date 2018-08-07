@@ -53,7 +53,7 @@ extension UIColor {
 extension UIFont {
     static var bungee: UIFont {
         get {
-            guard let customFont = UIFont(name: "Bungee", size: 17.0) else {
+            guard let customFont = UIFont(name: "Bungee", size: 20.0) else {
                 fatalError("Failed to load Bungee font")
             }
             if #available(iOS 11.0, *) {

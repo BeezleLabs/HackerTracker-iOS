@@ -382,6 +382,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     var filteredtypes: [EventType] = []
     var filterView: HTFilterViewController?
     
+    var showSectionIndexTitles = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -411,12 +413,24 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         return UIView()
     }
     
+    /*public override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+
+            var ret : [String] = []
+            for es in eventSections {
+                if let date = DateFormatterUtility.yearMonthDayFormatter.date(from: es.date) {
+                    let out = DateFormatterUtility.shortDayOfMonthFormatter.string(from: date)
+                    ret.append(out)
+                }
+            }
+            return ret
+    }*/
+    
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND end_date > %@", argumentArray: [filteredtypes, startofDay, endofDay, Date()])
+        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND end_date > %@ AND event_type.name != 'Contest'", argumentArray: [filteredtypes, startofDay, endofDay, Date()])
         //fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@", argumentArray: [filteredtypes, startofDay, endofDay])
         
         
