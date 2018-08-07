@@ -131,9 +131,6 @@ class HTEventDetailViewController: UIViewController {
             eventDateLabel.text = "To Be Announced"
         }
         
-        // Hiding Map View on the event details page for the initial launch.
-        // Enable this before launching the maps functionality.
-        //locationMapView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -349,7 +346,6 @@ class HTEventDetailViewController: UIViewController {
                 let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
                 {
                     (action:UIAlertAction) in
-                    NSLog("No")
                 })
                 
                 alert.addAction(yesItem)
@@ -396,7 +392,6 @@ class HTEventDetailViewController: UIViewController {
     
     @IBAction func followLink(_ sender: Any) {
         if let e = event, let l = e.link {
-            //NSLog("followLink touched for \(l)")
             if let u = URL(string: l) {
                 let svc = SFSafariViewController(url: u)
                 svc.preferredBarTintColor = UIColor.backgroundGray
@@ -411,9 +406,6 @@ class HTEventDetailViewController: UIViewController {
             
             let time = DateFormatterUtility.dayOfWeekTimeFormatter.string(from: start)
             let item = "\(c): Attending '\(t)' on \(time) in \(l) #hackertracker"
-            //let secondActivityItem : NSURL = NSURL(string: "http//:urlyouwant")!
-            // If you want to put an image
-            //let image : UIImage = #imageLiteral(resourceName: "skull_share")
             
             let activityViewController : UIActivityViewController = UIActivityViewController(
                 activityItems: [item], applicationActivities: nil)

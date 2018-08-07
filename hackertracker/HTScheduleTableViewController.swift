@@ -304,7 +304,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                         request = URLRequest(url: linkURL!)
                                         request.httpMethod = "GET"
                                         NSLog("Getting data from \(link)")
-                                        //cDispatchGroup.enter()
                                         
                                         session.dataTask(with: request, completionHandler: { (data, response, error) in
                                             
@@ -413,25 +412,38 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         return UIView()
     }
     
-    /*public override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+    public override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
 
             var ret : [String] = []
             for es in eventSections {
                 if let date = DateFormatterUtility.yearMonthDayFormatter.date(from: es.date) {
                     let out = DateFormatterUtility.shortDayOfMonthFormatter.string(from: date)
-                    ret.append(out)
+                    if out.contains("Mon") {
+                            ret.append("M")
+                    } else if out.contains("Tue") {
+                            ret.append("T")
+                    } else if out.contains("Wed") {
+                            ret.append("W")
+                    } else if out.contains("Thu") {
+                            ret.append("H")
+                    } else if out.contains("Fri") {
+                            ret.append("F")
+                    } else if out.contains("Sat") {
+                            ret.append("S")
+                    } else if out.contains("Sun") {
+                            ret.append("S")
+                    }
                 }
             }
             return ret
-    }*/
+    }
     
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let startofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
         let endofDay: Date =  DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND end_date > %@ AND event_type.name != 'Contest'", argumentArray: [filteredtypes, startofDay, endofDay, Date()])
-        //fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@", argumentArray: [filteredtypes, startofDay, endofDay])
+        fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND end_date > %@", argumentArray: [filteredtypes, startofDay, endofDay, Date()])
         
         
         fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]

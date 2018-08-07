@@ -46,7 +46,6 @@ class HTVendorTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let l = vendors[indexPath.row].link {
-            //NSLog("follow vendor link to \(l)")
             if let u = URL(string: l) {
                 let svc = SFSafariViewController(url: u)
                 svc.preferredBarTintColor = UIColor.backgroundGray
@@ -78,14 +77,5 @@ class HTVendorTableViewController: UITableViewController {
             vendors = try! getContext().fetch(fr) as! [Vendor]
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

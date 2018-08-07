@@ -37,7 +37,6 @@ class ConferenceCell: UITableViewCell {
     
     @IBAction func selectConference(_ sender: Any) {
         if let conference = con {
-            NSLog("setting selected to \(!conference.selected)")
             conSelected.setOn(!conference.selected, animated: true)
             conference.selected = !conference.selected
             do {

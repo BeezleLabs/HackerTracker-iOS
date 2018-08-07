@@ -398,41 +398,6 @@
             </objects>
             <point key="canvasLocation" x="-1090" y="2892"/>
         </scene>
-        <!--CONTESTS-->
-        <scene sceneID="H8G-Dg-lci">
-            <objects>
-                <tableViewController storyboardIdentifier="HTContestsTableViewController" id="GVZ-ql-8ls" customClass="HTContestsTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9G3-jK-o91">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" id="SGp-OE-07S">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SGp-OE-07S" id="zls-l1-NUb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="GVZ-ql-8ls" id="URJ-Pk-P0c"/>
-                            <outlet property="delegate" destination="GVZ-ql-8ls" id="lBP-MY-5N3"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="CONTESTS" id="pvy-9l-SnX"/>
-                    <connections>
-                        <segue destination="nGb-HO-gXP" kind="presentation" identifier="eventDetailSegue" id="BSt-8q-x05"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q79-jj-sRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4722" y="1890"/>
-        </scene>
         <!--SPEAKERS-->
         <scene sceneID="JN7-yn-HOM">
             <objects>
@@ -1469,24 +1434,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6u-Jf-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-639.20000000000005" y="400.74962518740631"/>
-        </scene>
-        <!--Events Nav View Controller-->
-        <scene sceneID="5Gh-jE-DfH">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q4B-Wt-AAe" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="I2N-u9-09U">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GVZ-ql-8ls" kind="relationship" relationship="rootViewController" id="ETG-n9-kDb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wPN-7G-tw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3900" y="1891"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="nfE-zU-Jeb">

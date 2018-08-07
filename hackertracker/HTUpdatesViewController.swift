@@ -33,7 +33,6 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //NSLog("HTUpdates.viewDidLoad")
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         
@@ -58,18 +57,15 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        //NSLog("HTUpdates.viewWillTransition")
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //self.footer.frame.size.height = 360
         updatesTableView.tableFooterView = self.footer
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //NSLog("HTUpdates.viewWillAppear")
 
         if isViewLoaded && !animated  {
             reloadEvents()
@@ -112,9 +108,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         frl.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
         frl.predicate = NSPredicate(format: "conference = %@ and start_date <= %@ and end_date >= %@", argumentArray: [myCon, curTime, curTime])
         frl.returnsObjectsAsFaults = false
-        //frl.fetchLimit = 3
         self.liveNow = (try! getContext().fetch(frl)) as! [Event]
-        //self.liveNow = self.starred
 
     }
     
@@ -153,8 +147,6 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 {
     func numberOfSections(in tableView: UITableView) -> Int {
         return eventSections.count
-        // News
-        //
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

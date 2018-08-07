@@ -806,7 +806,6 @@ class DataImportManager: NSObject {
             
             if isNew {
                 if let articles = conference["articles"] as? [String: Any] {
-                    //updateArticles(managedConference: managedConference, data: articles)
                     if let date_string = articles["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.articles_updated_at = date
                     }
@@ -815,7 +814,6 @@ class DataImportManager: NSObject {
                     }
                 }
                 if let event_types = conference["event_types"] as? [String: Any] {
-                    //updateEventTypes(managedConference: managedConference, data: event_types)
                     if let date_string = event_types["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.event_types_updated_at = date
                     }
@@ -824,7 +822,6 @@ class DataImportManager: NSObject {
                     }
                 }
                 if let faqs = conference["faqs"] as? [String: Any] {
-                    //updateFAQs(managedConference: managedConference, data: faqs)
                     if let date_string = faqs["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.faqs_updated_at = date
                     }
@@ -833,7 +830,6 @@ class DataImportManager: NSObject {
                     }
                 }
                 if let locations = conference["locations"] as? [String: Any] {
-                    //updateLocations(managedConference: managedConference, data: locations)
                     if let date_string = locations["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.locations_updated_at = date
                     }
@@ -842,7 +838,6 @@ class DataImportManager: NSObject {
                     }
                 }
                 if let notifications = conference["notifications"] as? [String: Any] {
-                    //pdateNotifications(managedConference: managedConference, data: notifications)
                     if let date_string = notifications["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.notifications_updated_at = date
                     }
@@ -851,7 +846,6 @@ class DataImportManager: NSObject {
                     }
                 }
                 if let speakers = conference["speakers"] as? [String: Any] {
-                    //updateSpeakers(managedConference: managedConference, data: speakers)
                     if let date_string = speakers["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.speakers_updated_at = date
                     }
@@ -860,7 +854,6 @@ class DataImportManager: NSObject {
                     }
                 }
                 if let vendors = conference["vendors"] as? [String: Any] {
-                    //updateVendors(managedConference: managedConference, data: vendors)
                     if let date_string = vendors["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.vendors_updated_at = date
                     }
@@ -869,7 +862,6 @@ class DataImportManager: NSObject {
                     }
                 }
                 if let events = conference["events"] as? [String: Any] {
-                    //updateEvents(managedConference: managedConference, data: events)
                     if let date_string = events["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                         managedConference.events_updated_at = date
                     }
@@ -883,7 +875,6 @@ class DataImportManager: NSObject {
             print("conference \(managedConference.name!) details haven't changed")
         }
         
-        // Check to see if any of the conference items have changed
         if let item = conference["articles"] as? [String: Any] {
             if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
                 if managedConference.articles_updated_at! < date {

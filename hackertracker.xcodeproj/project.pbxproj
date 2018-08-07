@@ -22,7 +22,6 @@
 		5D6707EB21161C6F0007F01F /* HTWiFiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707EA21161C6F0007F01F /* HTWiFiViewController.swift */; };
 		5D6707F6211787E10007F01F /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707F4211787E10007F01F /* AboutCell.swift */; };
 		5D6707F7211787E10007F01F /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D6707F5211787E10007F01F /* AboutCell.xib */; };
-		5D6707F92118864F0007F01F /* HTContestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707F82118864F0007F01F /* HTContestsTableViewController.swift */; };
 		5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */; };
 		5D6707FD2119059E0007F01F /* HTSpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */; };
 		5D67EBFC20E1CD30004E5D19 /* Bungee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */; };
@@ -121,7 +120,6 @@
 		5D6707EA21161C6F0007F01F /* HTWiFiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTWiFiViewController.swift; sourceTree = "<group>"; };
 		5D6707F4211787E10007F01F /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		5D6707F5211787E10007F01F /* AboutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
-		5D6707F82118864F0007F01F /* HTContestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTContestsTableViewController.swift; sourceTree = "<group>"; };
 		5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
 		5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSpeakerViewController.swift; sourceTree = "<group>"; };
 		5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 			children = (
 				5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */,
 				5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */,
-				5D6707F82118864F0007F01F /* HTContestsTableViewController.swift */,
 				83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */,
 				5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */,
 				B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */,
@@ -682,7 +679,6 @@
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
-				5D6707F92118864F0007F01F /* HTContestsTableViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
 				8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */,

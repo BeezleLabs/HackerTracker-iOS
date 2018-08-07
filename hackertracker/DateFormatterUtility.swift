@@ -97,7 +97,7 @@ class DateFormatterUtility {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "PDT")
         formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "d"
+        formatter.dateFormat = "E"
         return formatter
     }()
     
