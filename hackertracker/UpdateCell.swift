@@ -28,7 +28,8 @@ public class UpdateCell : UITableViewCell {
     }
 
     func bind(message: Article) {
-        let date = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.updated_at!)
+        let dfu = DateFormatterUtility.shared
+        let date = dfu.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.updated_at!)
 
         titleLabel.text = message.name
         descriptionLabel.text = "[\(date)]: \(message.text!)"
@@ -36,7 +37,6 @@ public class UpdateCell : UITableViewCell {
     }
     
     func bind(vendor: Vendor) {
-        //let date = DateFormatterUtility.yearMonthDayNoTimeZoneTimeFormatter.string(from: vendor.updated_at!)
         
         if let n = vendor.name, let d = vendor.desc {
             titleLabel.text = n

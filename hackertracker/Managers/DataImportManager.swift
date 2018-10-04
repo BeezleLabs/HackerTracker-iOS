@@ -15,10 +15,12 @@ class DataImportManager: NSObject {
     }
     let managedContext : NSManagedObjectContext
     let dataManager : DataRequestManager
+    let dfu : DateFormatterUtility
     
     public init(managedContext : NSManagedObjectContext) {
         self.managedContext = managedContext
         self.dataManager = DataRequestManager(managedContext: self.managedContext)
+        self.dfu = DateFormatterUtility.shared
         super.init()
     }
     
@@ -73,7 +75,7 @@ class DataImportManager: NSObject {
             managedItem.text = ""
         }
         
-        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedItem.updated_at = updated_at
         } else {
             managedItem.updated_at = Date()
@@ -134,7 +136,7 @@ class DataImportManager: NSObject {
             managedItem.name = ""
         }
         
-        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedItem.updated_at = updated_at
         } else {
             managedItem.updated_at = Date()
@@ -195,7 +197,7 @@ class DataImportManager: NSObject {
             managedItem.question = ""
         }
         
-        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedItem.updated_at = updated_at
         } else {
             managedItem.updated_at = Date()
@@ -250,7 +252,7 @@ class DataImportManager: NSObject {
             managedItem.name = ""
         }
         
-        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedItem.updated_at = updated_at
         } else {
             managedItem.updated_at = Date()
@@ -305,13 +307,13 @@ class DataImportManager: NSObject {
             managedItem.text = ""
         }
         
-        if let _time = input["time"] as? String, let time =  DateFormatterUtility.iso8601Formatter.date(from: _time) {
+        if let _time = input["time"] as? String, let time =  dfu.iso8601Formatter.date(from: _time) {
             managedItem.time = time
         } else {
             managedItem.time = Date()
         }
         
-        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedItem.updated_at = updated_at
         } else {
             managedItem.updated_at = Date()
@@ -384,7 +386,7 @@ class DataImportManager: NSObject {
             managedItem.partner = false
         }
         
-        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = input["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedItem.updated_at = updated_at
         } else {
             managedItem.updated_at = Date()
@@ -464,7 +466,7 @@ class DataImportManager: NSObject {
             managedSpeaker.twitter = ""
         }
         
-        if let lastUpdateString = speaker["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = speaker["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedSpeaker.updated_at = updated_at
         } else {
             managedSpeaker.updated_at = Date()
@@ -554,10 +556,10 @@ class DataImportManager: NSObject {
             managedEvent.desc = ""
         }
         
-        if let endDateString = event["end_date"] as? String, let endDate =  DateFormatterUtility.iso8601Formatter.date(from: endDateString) {
+        if let endDateString = event["end_date"] as? String, let endDate =  dfu.iso8601Formatter.date(from: endDateString) {
             managedEvent.end_date = endDate
         } else {
-            managedEvent.end_date = DateFormatterUtility.iso8601Formatter.date(from: "2018-01-21T10:00:00-07:00")!
+            managedEvent.end_date = dfu.iso8601Formatter.date(from: "2018-01-21T10:00:00-07:00")!
         }
         
         if let id = event["event_type"] as? Int32, let event_type = self.dataManager.getEventType(id: id) {
@@ -580,11 +582,10 @@ class DataImportManager: NSObject {
             managedEvent.location = location
         }
         
-        if let startDateString = event["start_date"] as? String, let startDate =  DateFormatterUtility.iso8601Formatter.date(from: startDateString) {
-            //print("startdate: \(String(describing:startDateString))")
+        if let startDateString = event["start_date"] as? String, let startDate =  dfu.iso8601Formatter.date(from: startDateString) {
             managedEvent.start_date = startDate
         } else {
-            managedEvent.start_date = DateFormatterUtility.iso8601Formatter.date(from: "2018-01-19T10:00:00-07:00")!
+            managedEvent.start_date = dfu.iso8601Formatter.date(from: "2018-01-19T10:00:00-07:00")!
         }
         
         if var title = event["title"] as? String {
@@ -639,7 +640,7 @@ class DataImportManager: NSObject {
 
         }
         
-        if let lastUpdateString = event["updated_at"] as? String, let updated_at =  DateFormatterUtility.iso8601Formatter.date(from: lastUpdateString) {
+        if let lastUpdateString = event["updated_at"] as? String, let updated_at =  dfu.iso8601Formatter.date(from: lastUpdateString) {
             managedEvent.updated_at = updated_at
         } else {
             managedEvent.updated_at = Date()
@@ -757,7 +758,7 @@ class DataImportManager: NSObject {
         }
         let upStr = conference["updated_at"] as! String
         print("Con updated_at string: \(upStr)")
-        let updatedAt =  DateFormatterUtility.iso8601Formatter.date(from: upStr)!
+        let updatedAt =  dfu.iso8601Formatter.date(from: upStr)!
         
         if updatedAt > managedConference.updated_at! {
             managedConference.updated_at = updatedAt
@@ -774,7 +775,7 @@ class DataImportManager: NSObject {
                 managedConference.desc = ""
             }
             
-            if let end_date_string = conference["end_date"] as? String, let end_date =  DateFormatterUtility.yearMonthDayFormatter.date(from: end_date_string) {
+            if let end_date_string = conference["end_date"] as? String, let end_date =  dfu.yearMonthDayFormatter.date(from: end_date_string) {
                 managedConference.end_date = end_date
             } else {
                 managedConference.end_date = Date()
@@ -792,7 +793,7 @@ class DataImportManager: NSObject {
                 managedConference.name = ""
             }
             
-            if let date_string = conference["start_date"] as? String, let start_date =  DateFormatterUtility.yearMonthDayFormatter.date(from: date_string) {
+            if let date_string = conference["start_date"] as? String, let start_date =  dfu.yearMonthDayFormatter.date(from: date_string) {
                 managedConference.start_date = start_date
             } else {
                 managedConference.start_date = Date()
@@ -805,68 +806,78 @@ class DataImportManager: NSObject {
             }
             
             if isNew {
-                if let articles = conference["articles"] as? [String: Any] {
-                    if let date_string = articles["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
-                        managedConference.articles_updated_at = date
-                    }
-                    if let link = articles["link"] as? String {
-                        managedConference.articles_link = link
-                    }
-                }
-                if let event_types = conference["event_types"] as? [String: Any] {
-                    if let date_string = event_types["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
-                        managedConference.event_types_updated_at = date
-                    }
-                    if let link = event_types["link"] as? String {
-                        managedConference.event_types_link = link
-                    }
-                }
-                if let faqs = conference["faqs"] as? [String: Any] {
-                    if let date_string = faqs["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
-                        managedConference.faqs_updated_at = date
-                    }
-                    if let link = faqs["link"] as? String {
-                        managedConference.faqs_link = link
-                    }
-                }
-                if let locations = conference["locations"] as? [String: Any] {
-                    if let date_string = locations["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
-                        managedConference.locations_updated_at = date
-                    }
-                    if let link = locations["link"] as? String {
-                        managedConference.locations_link = link
-                    }
-                }
-                if let notifications = conference["notifications"] as? [String: Any] {
-                    if let date_string = notifications["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
-                        managedConference.notifications_updated_at = date
-                    }
-                    if let link = notifications["link"] as? String {
-                        managedConference.notifications_link = link
-                    }
-                }
                 if let speakers = conference["speakers"] as? [String: Any] {
-                    if let date_string = speakers["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+                    if let date_string = speakers["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                         managedConference.speakers_updated_at = date
                     }
                     if let link = speakers["link"] as? String {
                         managedConference.speakers_link = link
+                        updated.append(link)
+                    }
+                }
+                
+                if let event_types = conference["event_types"] as? [String: Any] {
+                    if let date_string = event_types["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
+                        managedConference.event_types_updated_at = date
+                    }
+                    if let link = event_types["link"] as? String {
+                        managedConference.event_types_link = link
+                        updated.append(link)
+                    }
+                }
+
+                if let locations = conference["locations"] as? [String: Any] {
+                    if let date_string = locations["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
+                        managedConference.locations_updated_at = date
+                    }
+                    if let link = locations["link"] as? String {
+                        managedConference.locations_link = link
+                        updated.append(link)
+                    }
+                }
+                if let articles = conference["articles"] as? [String: Any] {
+                    if let date_string = articles["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
+                        managedConference.articles_updated_at = date
+                    }
+                    if let link = articles["link"] as? String {
+                        managedConference.articles_link = link
+                        updated.append(link)
+                    }
+                }
+                if let faqs = conference["faqs"] as? [String: Any] {
+                    if let date_string = faqs["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
+                        managedConference.faqs_updated_at = date
+                    }
+                    if let link = faqs["link"] as? String {
+                        managedConference.faqs_link = link
+                        updated.append(link)
+                    }
+                }
+                if let notifications = conference["notifications"] as? [String: Any] {
+                    if let date_string = notifications["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
+                        managedConference.notifications_updated_at = date
+                    }
+                    if let link = notifications["link"] as? String {
+                        managedConference.notifications_link = link
+                        updated.append(link)
                     }
                 }
                 if let vendors = conference["vendors"] as? [String: Any] {
-                    if let date_string = vendors["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+                    if let date_string = vendors["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                         managedConference.vendors_updated_at = date
                     }
                     if let link = vendors["link"] as? String {
                         managedConference.vendors_link = link
+                        updated.append(link)
                     }
                 }
                 if let events = conference["events"] as? [String: Any] {
-                    if let date_string = events["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+                    if let date_string = events["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                         managedConference.events_updated_at = date
                     }
                     if let link = events["link"] as? String {
                         managedConference.events_link = link
+                        updated.append(link)
                     }
                 }
             }
@@ -875,8 +886,24 @@ class DataImportManager: NSObject {
             print("conference \(managedConference.name!) details haven't changed")
         }
         
+        // Add data directory to hold downloaded files
+        let fm = FileManager.default
+        let docDir = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let conDir = docDir.appendingPathComponent(managedConference.code!)
+        if !(fm.fileExists(atPath: conDir.path)) {
+            do
+            {
+                print("creating doc directory for \(managedConference.code!)")
+                try fm.createDirectory(atPath: conDir.path, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch let error as NSError
+            {
+                NSLog("Unable to create directory \(error.debugDescription)")
+            }
+        }
+        
         if let item = conference["articles"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.articles_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.articles_updated_at = date
@@ -888,7 +915,7 @@ class DataImportManager: NSObject {
         }
         
         if let item = conference["event_types"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.event_types_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.event_types_updated_at = date
@@ -900,7 +927,7 @@ class DataImportManager: NSObject {
         }
 
         if let item = conference["faqs"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.faqs_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.faqs_updated_at = date
@@ -912,7 +939,7 @@ class DataImportManager: NSObject {
         }
         
         if let item = conference["locations"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.locations_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.locations_updated_at = date
@@ -924,7 +951,7 @@ class DataImportManager: NSObject {
         }
         
         if let item = conference["notifications"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.notifications_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.notifications_updated_at = date
@@ -936,7 +963,7 @@ class DataImportManager: NSObject {
         }
         
         if let item = conference["speakers"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.speakers_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.speakers_updated_at = date
@@ -948,7 +975,7 @@ class DataImportManager: NSObject {
         }
         
         if let item = conference["vendors"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.vendors_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.vendors_updated_at = date
@@ -960,7 +987,7 @@ class DataImportManager: NSObject {
         }
         
         if let item = conference["events"] as? [String: Any] {
-            if let date_string = item["updated_at"] as? String, let date =  DateFormatterUtility.iso8601Formatter.date(from: date_string) {
+            if let date_string = item["updated_at"] as? String, let date =  dfu.iso8601Formatter.date(from: date_string) {
                 if managedConference.events_updated_at! < date {
                     if let link = item["link"] as? String {
                         managedConference.events_updated_at = date
@@ -1011,6 +1038,5 @@ class DataImportManager: NSObject {
 
         try managedContext.save()
     }
-    
     
 }

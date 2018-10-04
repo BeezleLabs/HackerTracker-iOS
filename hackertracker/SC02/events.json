@@ -1,0 +1,679 @@
+{
+  "updated_at": "2018-09-21T15:12+0000",
+  "schedule": [
+    {
+      "includes": "",
+      "speakers": [
+        29042
+      ],
+      "start_date": "2018-09-21T16:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29100,
+      "location": 29911,
+      "title": "Keynote - DIY Blue Teaming",
+      "end_date": "2018-09-21T17:00+0000",
+      "event_type": 29901,
+      "description": "\"White hat\", \"black hat\", \"corporate\", \"criminal\", no matter the context, \"red\" or offensive security practitioners tend to build their own tools in order to be successful. Weather it's to avoid paying high costs for \"enterprise\" level solutions, prototype new concepts, or simply \"glue\" solutions together that are otherwise not designed to play well with others, the accomplished attacker is also a tool smith. \"What about the blue team!?\" This talk aims to address just that by providing practical solutions to defender tasks that include but are not limited to: IPS/IDS, malware detection and defense, forensics, system hardening, and practical and expedient reverse engineering techniques.",
+      "link": "https://shellcon.io/talks/#keynote",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29037
+      ],
+      "start_date": "2018-09-22T17:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29101,
+      "location": 29912,
+      "title": "A Day in the Life of a CISO",
+      "end_date": "2018-09-22T17:50+0000",
+      "event_type": 29901,
+      "description": "The CISO's role has been evolving over the years. It is moving away from so much emphasis on compliance and monitoring towards a more strategic role, particularly as CISOs get more and more access to the C-Suite.\n\nA key to success as a CISO is collaboration with and understanding the work of other business units. A large part of the job is not about technology at all. It is about relationships, project management, and learning about several parts of the business.\n\nIt is a good CISO's job to adequately assess and point out the risks to the business of various projects and business practices.\n\nWhat are other key elements that are part of the strategy of a successful CISO? Have you initiated a balanced Security Awareness Program? Is security baked in to your company's SDLC? Are you regularly running scans of both your network and your applications? Are you monitoring your network to detect unusual activity? What about when that dreaded intrusion into your network occurs? Do you know what to do? What about third party risk? Do you have adequate InfoSec policies, standards, and procedures?\n\nJoin me as we take a look at A Day in the Life of a CISO and find out what should be happening at your company.",
+      "link": "https://shellcon.io/talks/#a-day-in-the-life-of-a-ciso",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29004,
+        29006
+      ],
+      "start_date": "2018-09-22T16:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29102,
+      "location": 29912,
+      "title": "Automated Bug Finding in Practice",
+      "end_date": "2018-09-22T16:50+0000",
+      "event_type": 29901,
+      "description": "Over the past decade there have been a number of automatic and semi-automatic approaches used to help security professionals find bugs including dataflow analysis, blackbox web application scanning, fuzzing, and more. Despite the fact that a number of these techniques are now widely used, there tends to be a lack of discussion and clarity around the fundamental underpinnings of the approaches and their inherent tradeoffs.\n\nIn this talk, we'll provide an overview of a number of automated bug finding techniques ranging from the well known, such as fuzzing, dataflow analysis, and blackbox scanning, to less common techniques that are gaining traction, such as symbolic execution, model checking, and abstract interpretation.\n\nFor each technique we'll give a high level introduction that provides you with an intuition for how and why the technique works. Then, we'll discuss the strengths and weaknesses of the technique including the types of bugs and classes of problems it's effective at finding and those it's not. We'll also describe inherent implementation tradeoffs any creator of such a tool needs to make and link to open source tools you can play with as well as conference talks and academic papers you can review to learn more.\n\nYou'll leave this talk with an understanding of the wide variety of automated bug finding approaches out there. You'll know which techniques might be applicable in your own work and you'll have the background knowledge necessary to make more informed decisions when assessing potential open source or commercial tools.",
+      "link": "https://shellcon.io/talks/#automated-bug-finding-in-practice",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29028
+      ],
+      "start_date": "2018-09-21T21:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29103,
+      "location": 29911,
+      "title": "Breaking LTE on Layer 1, 2, and 3",
+      "end_date": "2018-09-21T21:50+0000",
+      "event_type": 29901,
+      "description": "This talk will be a general overview of the known attacks on the LTE cellular protocol starting with a general description of how the cellular protocol works followed by discussion of attacks that can be done at layers 1, 2, and 3.\n\n\nLayer 1: Jamming LTE using a power-limited smart jammer\nLayer 2: User redirection by altering the destination IP of DNS requests\nLayer 3: Downgrading, denial of service, location tracking, channel hijacking, and sending fake SMS/emergency messages\n\n\nLastly there will be a brief discussion about the decreasing price in Software Defined Radios and how this is affecting the security of cellular protocols as the barrier to entry to launch these attacks is dropping rapidly.",
+      "link": "https://shellcon.io/talks/#breaking-lte-on-layer-1-2-and-3",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29030
+      ],
+      "start_date": "2018-09-22T21:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29104,
+      "location": 29911,
+      "title": "Building and Breaking Blockchains",
+      "end_date": "2018-09-22T21:50+0000",
+      "event_type": 29901,
+      "description": "Learn what it takes to create a basic blockchain, explore ways to break it, and look at some attacks on production blockchains and smart contracts. This talk will demonstrate the properties and source code of a basic blockchain in Python. Theoretical weaknesses and potential attacks are discussed, then implemented and executed. With this foundation in place, we will look at various attacks in the wild on production blockchains and their machinery, such as smart contracts. Finally, we'll discuss some best practices and mitigations for your own blockchain projects.",
+      "link": "https://shellcon.io/talks/#building-and-breaking-blockchains",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29040
+      ],
+      "start_date": "2018-09-21T18:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29105,
+      "location": 29911,
+      "title": "Building Identity for an Open Perimeter",
+      "end_date": "2018-09-21T18:50+0000",
+      "event_type": 29901,
+      "description": "Netflix is a 100% cloud first company. The traditional corporate network security perimeter no longer meets our needs. In this talk, I will be covering the core building blocks comprising of identity, single sign-on using standards like SAML, OIDC and, OAuth, multi-factor authentication, adaptive authentication, device health and authorization we have invested in, to make identity as the new security perimeter.",
+      "link": "https://shellcon.io/talks/#building-identity-for-an-open-perimeter",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29001,
+        29032
+      ],
+      "start_date": "2018-09-22T18:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29106,
+      "location": 29911,
+      "title": "Cloud Security on the Dollar Menu",
+      "end_date": "2018-09-22T18:50+0000",
+      "event_type": 29901,
+      "description": "Are we in the cloud yet? Yes. It's not raining yet, but it will soon. In recent years, Fortune 500 organizations have suffered breaches and leaked data making the cloud scary. If you've got the big bucks, you can get fancy toys with pretty dashboards to protect your cloud, but what about the rest of us on the dollar menu budget? How do we protect our cloud? This talk will focus on basic AWS cloud security methodologies, benchmarks, and using free/cheap tools to blue-ify your cloud.",
+      "link": "https://shellcon.io/talks/#cloud-security-on-the-dollar-menu",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29018
+      ],
+      "start_date": "2018-09-22T21:40+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29107,
+      "location": 29912,
+      "title": "Do you wanna build a challenge? We can CTF today!",
+      "end_date": "2018-09-22T22:10+0000",
+      "event_type": 29901,
+      "description": "While there are many ways to solidify a role in the community, without a doubt Capture the Flag competitions occupy a critical position in hacker culture. With a combination of technical challenge and raw puzzle solving skill, CTF events provide an opportunity for individuals to simultaneously learn and compete with one another.\n\n The purpose of this talk is to provide attendees with a general overview of the challenge creation process for CTFs, in order to enable their participation in this sort of event from the position of a designer/organizer rather than a competitor. Alternatively, for competitors this talk may improve understanding of the challenge creation process.\n\nThis talk will encompass:\n\n\nDifferent creative processes for brainstorming challenges\nVarious technical processes for implementing challenges\nAn overview of different collaborative methods which may be used by CTF organizers\nDifferent infrastructure approaches for challenge maintenance",
+      "link": "https://shellcon.io/talks/#do-you-wanna-build-a-challenge-we-can-ctf-today",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29011
+      ],
+      "start_date": "2018-09-22T22:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29108,
+      "location": 29911,
+      "title": "Efforts in Scaling Application Security Programs",
+      "end_date": "2018-09-22T22:50+0000",
+      "event_type": 29901,
+      "description": "With organizational success comes the exciting period of ever-increasing scale and scope. This talk will cover some of the past and current efforts that Eric personally took on while creating and scaling the application security program at Hulu. A retrospective look will be taken at the focus points, tradeoffs and decisions made by the application security team while keeping up with the growth and continued success of Hulu.",
+      "link": "https://shellcon.io/talks/#efforts-in-scaling-applicaion-security-programs",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29002
+      ],
+      "start_date": "2018-09-21T21:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29109,
+      "location": 29912,
+      "title": "Exploiting Vulnerabilities Through Proper Reconnaissance",
+      "end_date": "2018-09-21T21:30+0000",
+      "event_type": 29901,
+      "description": "Reconnaissance plays a huge role while hacking. While there are 100s of different tools available to make this process easier, you may not be maximizing your recon process without a working methodology. This methodology helps create an automated process that will actively look for vulnerabilities using OSINT and other well known recon tools.",
+      "link": "https://shellcon.io/talks/#exploiting-vulnerabilities-through-proper-reconnaissance",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29003,
+        29035
+      ],
+      "start_date": "2018-09-22T16:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29110,
+      "location": 29911,
+      "title": "How NOT to suck at Vulnerability Management",
+      "end_date": "2018-09-22T16:50+0000",
+      "event_type": 29901,
+      "description": "In the current cyber landscape several vulnerabilities are discovered every day. The volume and multiple sources from which to consume this information creates interesting challenges for any security team. Poor vulnerability management has become a serious fundamental problem and a common factor in most data breaches in the past months.\n\nVulnerability management is often disregarded, improperly staffed, and rarely discussed in some circles of the infosec community. Badly implemented programs are the source of nightmares for blue teams and the joy of red teams, pentesters, and bad guys alike. Under these circumstances, are you prepared to deal with vulnerabilities accordingly?\n\nIn this talk, we'll share our experiences building a program to address and deal with vulnerabilities at scale. What works, what does not and why. More importantly, what actions you should consider to improve or build your Vulnerability program. In addition, we'll be releasing a vulnerability management tool and show how it can be use in your own program. Whether you are a seasoned infosec professional or new to the field, there is something for you to take away.",
+      "link": "https://shellcon.io/talks/#how-not-to-suck-at-vulerability-management",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29022
+      ],
+      "start_date": "2018-09-21T22:20+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29111,
+      "location": 29912,
+      "title": "How the hell does Monero work?",
+      "end_date": "2018-09-21T22:50+0000",
+      "event_type": 29901,
+      "description": "Monero is a privacy focused cryptocurrency that uses 3 distinct cryptography techniques to provide user security: 1. Ring Signatures 2. Stealth Addresses 3. RingCT (Ring Confidential Transactions)\n\nEach will be discussed with a technical overview of how they work and what benefit they provide. I'll also briefly touch on the fact that most extortion malware and crypto-mining malware is using Monero and how this compares to previous cryptography protocol advances such as HTTPS used by porn sites early on, but then eventually by banks.\n\nMonero Kovri developer Anonimal will also join me on stage to discuss Monero's i2p router project Kovri, how it helps obscure meta-data about transactions, and how this enhances user privacy in a post-Snowden world.",
+      "link": "https://shellcon.io/talks/#how-the-hell-does-monero-work",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29036
+      ],
+      "start_date": "2018-09-22T18:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29112,
+      "location": 29912,
+      "title": "Intro to Python for Security Professionals",
+      "end_date": "2018-09-22T18:50+0000",
+      "event_type": 29901,
+      "description": "Python is a fantastic programming language that is extensively used in many domains and widely used in the cybersecurity/infosec industry. A good grasp of Python will help automate numerous tasks and open up the use of libraries that in some cases are easier to use than the bash variant. E.g. Python HTTP requests vs curl.\n\nIn this interactive talk we will be walking through the Python language by building a tool similar to a pared down version of BruteSpray in 50 minutes. BruteSpray was chosen because it's a tool that is now included in Kali by default and is a great example of Python's functionality. By the end of this talk you will be able to write similarly useful programs in Python yourself.\n\nBruteSpray on GitHub.",
+      "link": "https://shellcon.io/talks/#intro-to-python-for-security-professionals",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29015
+      ],
+      "start_date": "2018-09-22T22:20+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29113,
+      "location": 29912,
+      "title": "Open-Source Facial Recognition and Mass Surveillance",
+      "end_date": "2018-09-22T22:50+0000",
+      "event_type": 29901,
+      "description": "Facial recognition and biometric data systems are being integrated worldwide on a massive scale. While these existing systems are only operated by a relative few, the technologies which form these systems are widely available, and even open-source. Utilizing machine learning, facial recognition, data crawling, and modern database management, this same style of surveillance system can be integrated by practically anyone.",
+      "link": "https://shellcon.io/talks/#open-source-facial-recognition-and-mass-surveillance",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29027
+      ],
+      "start_date": "2018-09-21T21:40+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29114,
+      "location": 29912,
+      "title": "Purple Team: Exposed",
+      "end_date": "2018-09-21T22:10+0000",
+      "event_type": 29901,
+      "description": "Are you looking to rapidly improve your security posture or train a new member of your security organization? Are you a Blue Team member looking to cross train with Red Team or vice versa? Purple Teaming could be the answer to your problems. You may have already heard about Purple Teaming through a spare think piece online, casual mentions or even rage tweets, but few know what makes a Purple Team. In this talk I will cover how to build your own Purple Team function from the ground up using applied gap analysis, creating meaningful test cases, modifying tools, cross-training possibilities, and automation frameworks. We'll walk through the methodology together so you leave with the tools and experience you need to do it yourself. If implemented, this can give you a better knowledge of your security baseline, improvements in defenses, opportunities for internal training and mentorship, and an increased dialogue between Red and Blue.",
+      "link": "https://shellcon.io/talks/#purple-team-exposed",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29010
+      ],
+      "start_date": "2018-09-22T17:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29115,
+      "location": 29911,
+      "title": "Python for OSINT Tooling",
+      "end_date": "2018-09-22T17:50+0000",
+      "event_type": 29901,
+      "description": "The practice of Open Source Intelligence (OSINT) gathering can be tedious when done manually. Fortunately, there are several ways to script out some of the more time-consuming tasks, and make them a breeze. This talk will discuss several Python libraries that can be used to script out various OSINT tasks. We will discuss how to use the Google Custom Search API to get what amounts to an API for Google searches, as well as using BeautifulSoup to parse results, the NLTK or Google Cloud Language API to do sentiment analysis, and a few other libraries that can help speed up your OSINT work.",
+      "link": "https://shellcon.io/talks/#python-for-osint-tooling",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29041
+      ],
+      "start_date": "2018-09-21T22:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29116,
+      "location": 29911,
+      "title": "Shells on Cells",
+      "end_date": "2018-09-21T22:50+0000",
+      "event_type": 29901,
+      "description": "For my talk I'll be going into how to setup a Raspberry Pi Zero W with a Cellular modem to provide out of band persistence inside a target network for the purpose of using it as a pen test drop box. On the technical side of things I'll provide a hardware summary and demo along with code examples to get it all working.\n\nThe setup is super basic. Using a cellular hat for the PI you can connect it via GPIO to the Pi, install PPP for whatever distro (my demo uses a Raspbian image), and configure the cellular modem with a PPP peer configuration for your cell provider. I'll also go over how to configure autossh so you can remote back from your C2.\n\nThings that don't work yet are the direct cellular connection to the boxes using server mode on the modems allowing a tester direct shell access over cellular. I will be able to demonstrate how to connect to the hardware directly from within the cellular network. Additionally, with a properly provisioned SIM, you would get a routeable IP address from your provider.\n\nYou should walk away from this talk with the ability to configure a cellular modem with PPP and the ability to have it auto dial an SSH tunnel on boot. As well as a platform to build your pen test tools on.",
+      "link": "https://shellcon.io/talks/#shells-on-cells",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29005
+      ],
+      "start_date": "2018-09-21T23:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29117,
+      "location": 29911,
+      "title": "The Beginner's Guide to ICS: How to Never Sleep Soundly Again",
+      "end_date": "2018-09-21T23:50+0000",
+      "event_type": 29901,
+      "description": "Are you tired of missing the Modbus? Do you think DALI is a weird artist? You  want to bring sexy BAC? Go from novice to clueful on one of the hottest  hacking targets of 2018, and see what all the fuss is about. Learn what  exactly is SCADA/ICS/PCN, why it's important, and just how horrifyingly  ancient it all is. If you've ever wondered why Stuxnet was so devastatingly  effective, or want to lose sleep over chemical plants on your commute, this  is your chance.",
+      "link": "https://shellcon.io/talks/#the-beginners-guide-to-ics-how-to-never-sleep-soundly-again",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29016,
+        29031
+      ],
+      "start_date": "2018-09-22T21:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29118,
+      "location": 29912,
+      "title": "Tracy: Because Tracing User Input Through JavaScript is for Tools",
+      "end_date": "2018-09-22T21:30+0000",
+      "event_type": 29901,
+      "description": "Being able to comprehend causal relationships between sources of user input and their corresponding output is a distinguishing characteristic that separates the master web hacker from the novice script kiddy. The better a tester can grasp these relationships, the faster they can abuse lapses in input sanitization, identify dangerous programming patterns, and understand the overall attack surface of the application.\n\nHowever, enumerating these relationships is difficult and time intensive to do by hand, especially with JavaScript-heavy apps. Security scanning tools have tried to automate this procedure, but they face several problems in modern web applications:\n\nTo solve these problems, we need a tool that augments, not automates, a manual penetration tester by helping them understand all of the inputs and outputs of a web application. To this end, we present Tracy, a tool for assisting penetration testers with enumerating every sink of output for all user input sources.",
+      "link": "https://shellcon.io/talks/#tracy-because-tracing-user-input-through-javascript-is-for-tools",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29021
+      ],
+      "start_date": "2018-09-21T18:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29119,
+      "location": 29912,
+      "title": "We detected a severe vulnerability, why is nobody listening?",
+      "end_date": "2018-09-21T18:50+0000",
+      "event_type": 29901,
+      "description": "Have you ever wondered why one of your high-priority vulnerabilities got rejected or delayed even though you thought it was foolish of your company not to implement it in a timely fashion? You probably got slowed down or stopped by the gatekeepers to engineering resources namely product management. However, what product management entails and what the goals of product management are, is rarely explained. I lead a group of product managers in a medical software company, and it is my job to decide which projects make it into the engineering/R&amp;D backlog and which ones are being delayed or even eliminated. I will share the decision-making process and critical questions that need to be answered by any project to make it onto the shortlist. In this presentation, I will provide a view of product management from the inside. Once everybody understands what product management is, what product managers do, why he or she does it, and what his or her decision process is, we can improve the chances of critical IT projects or vulnerability fixes to be completed on time. I believe that together we can build better and more secure products when we understand each other's motivators and goals.",
+      "link": "https://shellcon.io/talks/#we-detected-a-severe-vulnerability-why-is-nobody-listening",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29014
+      ],
+      "start_date": "2018-09-21T23:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29120,
+      "location": 29912,
+      "title": "Where do I start? The first 365 days of building a security program",
+      "end_date": "2018-09-21T23:50+0000",
+      "event_type": 29901,
+      "description": "Scenario: You've been put in charge of InfoSec for a business with no existing security posture and the executive team thinks that Antivirus and Firewall is a sufficient InfoSec budget. They expect results in one year.\n\nIf you're thinking \"Oh $(*7, I have to do what?\", this talk is for you. At the end of this talk you will have a roadmap for the first year of implementing a security program, with some understanding of what those who have come before you have done. I hope to explain my mistakes so that you don't have to make mine; you can make your own.",
+      "link": "https://shellcon.io/talks/#where-do-i-start-the-first-365-days-of-building-a-security-program",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29038
+      ],
+      "start_date": "2018-09-22T21:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29200,
+      "location": 29915,
+      "title": "Breaking In",
+      "end_date": "2018-09-22T22:00+0000",
+      "event_type": 29901,
+      "description": "The world of Information Security has a variety of rewarding and high paying opportunities, but there is no clear path to success. Based on the experience of a technology educator, mentor, and hiring manager, this\u00a0talk will describe the professional qualities and activities that will help accelerate your career.\u00a0Critical job hunting gatekeepers such as college and certification are explained. The speaker will contrast long and short-term goals to reveal how to align your career to your passions. Explore the case studies of one student who stood out in a training module, and a graduate's journey through Cisco's partnership program that develops college graduates into Associate Engineers. Observing this experience permanently changed the perspective of his hiring manager- one of the biggest indicators of success is personal investment in technology hobbies and projects, such as attending conferences like this.",
+      "link": "https://shellcon.io/raiseme/talks/#breaking-in",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29026
+      ],
+      "start_date": "2018-09-21T21:30+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29201,
+      "location": 29915,
+      "title": "Crash and Burn: Common Job Hunting Advice that Fails",
+      "end_date": "2018-09-21T22:00+0000",
+      "event_type": 29901,
+      "description": "The Infosec industry is an eccentric field, and you may have found that following standard job placement advice has you in a stall. Don\u2019t crash and burn. Whether you\u2019re a security professional looking for a new situation, or just trying to break in, here\u2019s the job hunting dogma you need to avoid.",
+      "link": "https://shellcon.io/raiseme/talks/#crash-and-burn",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29019
+      ],
+      "start_date": "2018-09-21T18:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29202,
+      "location": 29915,
+      "title": "Hack Your Cybersecurity Career",
+      "end_date": "2018-09-21T19:00+0000",
+      "event_type": 29901,
+      "description": "A career change to cybersecurity doesn't mean you have to start your career over. In this session we will discuss how to leverage your current job skills and life experiences to help you transition your career to the exciting world of cybersecurity.\n\nThere is a high demand for skilled cybersecurity professionals, and not enough qualified candidates to meet this demand. There are also many people who are looking to transition their career to cybersecurity, but do not know how to best approach this transition. This interest is demonstrated by the number of peoplewho enroll in my Ethical Hacking course to help support this transition, as well as the \"newbies\" who attend conferences such as BSides, LayerOne, and (hopefully) ShellCon. The goal of this talk is to help attendees evaluate their existing portfolio of skills and determine how to leverage these skills to transition to a career in cybersecurity. As an example, a software developer would be a natural to transition to helping implement secure coding practices, and a system administrator would be an excellent candidate for evaluating operating systems for security compliance. As a less obvious example, a person with a background in accounting or financing could be great candidates for forensics accounting or evaluating a company's compliance with standards such as SOX.",
+      "link": "https://shellcon.io/raiseme/talks/#hack-your-cyber",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29033
+      ],
+      "start_date": "2018-09-22T18:30+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29203,
+      "location": 29915,
+      "title": "Hard at any Rank: Making the Transition",
+      "end_date": "2018-09-22T19:00+0000",
+      "event_type": 29901,
+      "description": "The transition from military to commercial is difficult at any rank and specialty, and trying to do that at the same time you attempt to join a career field as varied and vast as information security can be difficult and confusing.  Though I have successfully made the jump, it was far harder and more frustrating than I expected.  During my talk--which is intended as an open session of back and forth between me and you--I'll go over why I chose information security, how I prepared myself to enter the industry, the good and the bad of choices I made that affect me today, the problems I faced going the direction I wanted to, and how I eventually got to a place I like.  I'm also going to talk about mental health; I was an emotionally rock-solid senior officer and may have been successful in my transition, but I faced darker depression than I expected after transition and I want to have an open talk about this thing we never really want to talk about on active duty.",
+      "link": "https://shellcon.io/raiseme/talks/#hard-at-any-rank",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29007,
+        29020,
+        29024,
+        29025
+      ],
+      "start_date": "2018-09-21T17:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29204,
+      "location": 29915,
+      "title": "Recruiter Panel",
+      "end_date": "2018-09-21T18:00+0000",
+      "event_type": 29901,
+      "description": "Moderated by: Lisa Kendall\n\n\nSeasoned industry recruiters reveal all their secrets, such as the top reasons clients reject candidates, which skills and training are the hottest, how to exploit keyword searches, how to talk about money to counter a job offer or promotion, and how they manage diversity and bias.",
+      "link": "https://shellcon.io/raiseme/talks/#recruiter-panel",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29039
+      ],
+      "start_date": "2018-09-22T16:00+0000",
+      "updated_at": "2018-09-21T15:12+0000",
+      "id": 29205,
+      "location": 29915,
+      "title": "Salute! Keynote in Brief",
+      "end_date": "2018-09-22T17:00+0000",
+      "event_type": 29901,
+      "description": "Keynote in Brief for the Salute! session by our conference chairman, on his transition to a civilian career in information security.",
+      "link": "https://shellcon.io/raiseme/talks/#salute-keynote-in-brief",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29013
+      ],
+      "start_date": "2018-09-22T22:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29206,
+      "location": 29915,
+      "title": "Teaching \"The Cyber\" in a Hostile Environment",
+      "end_date": "2018-09-22T23:00+0000",
+      "event_type": 29901,
+      "description": "The infosec skills deficit is old news. Schools aren't pumping out enough qualified grads, and it's all doom and gloom. But have we considered how we can effectively teach our skillset to the next generation? Howard created a college infosec club to educate his classmates on the ins and outs of security, and threw a bunch of things at the wall to see what stuck. Find out what it took to \"reach these keeds\" and get them interested and involved in the field.",
+      "link": "https://shellcon.io/raiseme/talks/#teaching-the-cyber-in-a-hostile-environment",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29023
+      ],
+      "start_date": "2018-09-21T23:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29207,
+      "location": 29915,
+      "title": "The Certification Myth",
+      "end_date": "2018-09-22T00:00+0000",
+      "event_type": 29901,
+      "description": "Technology careers in the Information Age require a strategy that is far different from previous generations. Young people entering business will find their skills rapidly outpaced by changing technological demands on their abilities. How do you keep pace working towards an occupation that may not exist for years? In this talk, the strategy for rapid skill development shows how industry certifications can play a role in keeping up with skills that are or will be in demand.",
+      "link": "https://shellcon.io/raiseme/talks/#the-certification-myth",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29008
+      ],
+      "start_date": "2018-09-22T17:30+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29208,
+      "location": 29915,
+      "title": "Tough Talk about Transition",
+      "end_date": "2018-09-22T18:30+0000",
+      "event_type": 29901,
+      "description": "Transitioning from the military to civilian workforce is a challenge. Did you catch yourself expecting a job right away as you transitioned out? The media and American patriotism contribute to this expectation. Many programs assist in the transition, but you still need to prove you are qualified for the position. Worth, not status will get you the job.",
+      "link": "https://shellcon.io/raiseme/talks/#tough-talk-about-transition",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29008,
+        29012,
+        29033,
+        29043
+      ],
+      "start_date": "2018-09-22T16:30+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29209,
+      "location": 29915,
+      "title": "Military Transition Panel",
+      "end_date": "2018-09-22T17:30+0000",
+      "event_type": 29901,
+      "description": "Moderated by: Mike Rich\n\n\nVeterans representing multiple branches of military service and a wide breadth of personal experience share their stories and advice about transitioning to careers in Information Security.",
+      "link": "https://shellcon.io/raiseme/talks/#transition-panel",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29029
+      ],
+      "start_date": "2018-09-21T21:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29210,
+      "location": 29915,
+      "title": "&quot;Wecurity&quot;",
+      "end_date": "2018-09-21T21:30+0000",
+      "event_type": 29901,
+      "description": "How to find a diverse and inclusive employer in security. As a diverse candidate, identify who your allies are in the community and where to find them. As a non-diverse candidate, how you can help and how diversity benefits you.",
+      "link": "https://shellcon.io/raiseme/talks/#wecurity",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29009
+      ],
+      "start_date": "2018-09-21T20:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29211,
+      "location": 29915,
+      "title": "WTF, a Personal Board of Directors?!?",
+      "end_date": "2018-09-21T23:00+0000",
+      "event_type": 29901,
+      "description": "Building a Personal Board of Directors will guide and accelerate your infosec career ambitions and goals.A Personal Board of Directors is different from just having a Mentor in your office. We will show you how to build advice and guidance in depth, not just a half baked perimeter with a single point of failure.\n\nWe will break down the different types of Board Members that you want to bring onboard, how to approach them about joining your Board and the best practices working with and managing your Personal Board of Directors to propel your success in the Information Security industry.",
+      "link": "https://shellcon.io/raiseme/talks/#wtf-a-personal-board-of-directors",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29034
+      ],
+      "start_date": "2018-09-22T21:30+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29300,
+      "location": 29914,
+      "title": "Linux Essentials Cram Session",
+      "end_date": "2018-09-22T23:00+0000",
+      "event_type": 29903,
+      "description": "The LPI Linux Essential Cram Session will be lead by Mike Weilgart, Vertical Sysadmin, Inc. Mike will cover the published list of LPIC-1 exam Objectives and field technical questions to help prepare attendees to take the test. But attendees who aren't exam bound will also find this class an eye-opening general survey of what the profession considers essential Blue Team material.\n\nExam bound or not, this is a great refresher for pros who haven't studied their Linux craft in awhile. Fill in those critical gaps that arose as technology advanced. Attendees planning on investing in the LPIC-1 will learn about the importance of understanding the objectives, the test structure, and how obtaining this certification is beneficial to Information Security professionals.\n\nTake it as a personal challenge to find out how much Linux you know.  And bring your questions!\n\nExam Objectives\nTarget Audience:\nEveryone\n\nRegister Here!",
+      "link": "https://shellcon.io/raiseme/university/#linux-essentials-cram-session",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29000
+      ],
+      "start_date": "2018-09-22T16:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29301,
+      "location": 29914,
+      "title": "LPI DevOps Tool Engineer Exam Cram Session",
+      "end_date": "2018-09-22T17:30+0000",
+      "event_type": 29903,
+      "description": "Integrating security with the development and deployment process begins with a fundamental understanding of the tools DevOps uses. This competence is highly desired by companies, but often missing in the Information Security discipline. Get your DevOps down with this LPI DevOps Tool Engineer lead by Aleksey Tsalolikhin, Vertical Sysadmin, Inc.\n\nThis content is for infosec engineers working in a DevOps environment with Software Engineering, Container Deployment, Configuration Management and Monitoring. Even attendees who aren't exam bound will appreciate learning about Blue Team tools like Docker, Vagrant, Ansible, Puppet, Git, and Jenkins.\n\nAleksey will field technical questions and help prepare attendees for taking the exam. He will explain the importance of understanding the objectives, the test structure, and how obtaining the certification is professionally beneficial. Bring your questions!\n\nExam Objectives\nTarget Audience:\nEveryone\n\nRegister Here!",
+      "link": "https://shellcon.io/raiseme/university/#lpi-devops-tool-engineer-exam-cram-session",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29026
+      ],
+      "start_date": "2018-09-22T17:30+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29302,
+      "location": 29914,
+      "title": "Perfect Fit Hiring Practices",
+      "end_date": "2018-09-22T18:30+0000",
+      "event_type": 29903,
+      "description": "Managers:  Is your team\u2019s workload growing faster than you can hire new talent?  Do you agonize over which candidate would be best for your team?  Do you have trouble persuading candidates to say yes, even when it looks like a perfect fit?  We will overview job posting, phone screening, evaluating, and selecting candidates-  to give attendees a distillation of best practices for creating new job positions and filling them.\n\nRegister Here!",
+      "link": "https://shellcon.io/raiseme/university/#perfect-fit",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29017
+      ],
+      "start_date": "2018-09-21T17:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29303,
+      "location": 29914,
+      "title": "Exercises in Tactical Attack and Defense - Purple Team Scenarios",
+      "end_date": "2018-09-21T19:00+0000",
+      "event_type": 29903,
+      "description": "This training is comprised of attack and defense exercises in modern Windows environments. Using the virtual enterprise environment provided by SANS, participants will first attack the infrastructure, then detect and defeat the same attack.  They will step through each attack scenario, then step through detailed instructions to defeat the attack.  This training is excerpted from SANS SEC599: Defeating Advanced Adversaries - Purple Team Tactics &amp; Kill Chain Defenses.\n\nExercises include:\n\nNTLVMv2 Sniffing and Relays vs. Enterprise Hardening\nMalicious scripts vs. Applocker + JEA\nCredential theft: mimikatz vs. Credential Guard\n\nRegister Here!",
+      "link": "https://shellcon.io/raiseme/university/#sans",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [
+        29034
+      ],
+      "start_date": "2018-09-22T20:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29304,
+      "location": 29914,
+      "title": "Shell Scripting: Under the Hood",
+      "end_date": "2018-09-22T21:30+0000",
+      "event_type": 29903,
+      "description": "We've all heard of the shell, and we've all used it at least a little bit. But what IS a shell, really? What makes shell scripting fundamentally different from any other programming language? What really happens when you type a command into your shell--and how does this relate to the mistake found in over 50% of production shell scripts? Attend this talk, demystify the shell and learn to use it right!\n\nThis presentation will give particular attention to security, such as dangers of globbing and dangers of unquoted variables.  The instructor will also take questions- adjusting to the skill level of attendees, each class can go deep and will be unique.\n\nTarget Audience:\nEveryone\nRequired Equipment:\nAn inquiring mind and a willingness to learn.\n\nRegister Here!",
+      "link": "https://shellcon.io/raiseme/university/#shell-scripting-under-the-hood",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [],
+      "start_date": "2018-09-22T15:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29400,
+      "location": 29916,
+      "title": "RFID",
+      "end_date": "2018-09-22T19:00+0000",
+      "event_type": 29902,
+      "description": "RFID\nTime: Saturday 0800-1200\nIntructor: Valentine Leon (@vleonbonne)\nSummary: This training will cover the basics of RFID, provide hands on labs using Proxmark3 devices, and provide a fun environment for attendees to learn about different RFID communication protocol attacks. Upon completion of the training, students will:\n-Understand the technologies involved in RFID\n-Be able to perform clones of prox RFID\n-Be able to reverse engineer unknown prox formats\n-Be able to clone vulnerable ISO/IEC 14443 RFID\n-Be familiar with the use of the proxmark tool/hardware\n\nPre-Requisites:\n-Laptop with VMWare and a Kali Linux VM (preferably with proxmark3 tools already installed)\n-Basic understanding of linux command line\n-General understanding of binary and hexadecimal and their conversions",
+      "link": "https://shellcon.io/workshops/#RFID",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [],
+      "start_date": "2018-09-21T20:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29401,
+      "location": 29916,
+      "title": "PowerShell",
+      "end_date": "2018-09-22T00:00+0000",
+      "event_type": 29902,
+      "description": "Powershell\nTime: Friday 1300-1700 PowerShell\nInstructors: Pookie Bear/Bad2Beef (@bad2beef and @0xpookie)\n\nSummary:  Microsoft systems are in use by most companies around the world. As technology professionals especially, Windows is almost unavoidable. In recent generations, PowerShell has become deeply tied to the Windows operating system and its management. The aim of this workshop is to make you competent in PowerShell quickly. Our approach is simple: We\u2019ll walk through some programming concepts and language particulars. If you\u2019re the curious type, you\u2019ll dig deeper into each area on your own or help us guide the class conversation. If not, you should still be able to stumble though most of the content with us. By the end of the workshop, you should have a working knowledge of PowerShell, the ability to comprehend others' code, as well as the fundamental skills to build your own tools.\n\nPre-Requisites:\n- Laptop with a windows install or VM\n- General understanding of Windows OS and programming concepts",
+      "link": "https://shellcon.io/workshops/#powershell",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [],
+      "start_date": "2018-09-22T20:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29402,
+      "location": 29916,
+      "title": "Process Hollowing and Malware Unpacking",
+      "end_date": "2018-09-23T00:00+0000",
+      "event_type": 29902,
+      "description": "Process Hollowing\nTime: Saturday 1300-1700\nInstructor: Marcus Hutchins (@MalwareTechBlog)\n\nSummary:  An introduction to process hollowing works, how it is used by malware, and why. The main exercise will focus on teaching you how to spot process hollowing, as well as some dynamic analysis techniques to unpack malware using this knowledge.\n\nPre-Requisites:\n- Basic knowledge of x86 Assembly and the ability to use a disassembler\n- A laptop capable of running a 64-bit Windows 7 Virtual Machine\n- Some familiarity with VMWare or Virtual Box (enough to run a VM)",
+      "link": "https://shellcon.io/workshops/#process-hollowing-and-malware-unpacking",
+      "conference": "SC02"
+    },
+    {
+      "includes": "",
+      "speakers": [],
+      "start_date": "2018-09-21T15:00+0000",
+      "updated_at": "2018-09-19T03:49+0000",
+      "id": 29403,
+      "location": 29916,
+      "title": "Static Analysis",
+      "end_date": "2018-09-21T19:00+0000",
+      "event_type": 29902,
+      "description": "Static Analysis\nTime: Friday 0800-1200\nInstructors: Clint Gibler (@clintgibler) and Daniel DeFreez (@defreez)\n\nSummary:\n- Quick intro to threat modeling - when given a new application, where should you focus your time?\n- Outside in vs inside out testing - tips on what's useful to test dynamically and confirm via source review vs locating an issue through source review and PoC-ing via dynamic testing\n- Looking for common issues via source review - present some issues whose origin cannot be expressed with grep (e.g. a controller method not calling an authz method, ordering of methods being called, missing annotations, etc.)\n- These issues motivate the usefulness of being able to search code in a way that has some syntactic understanding of the underlying language (i.e. not just string searching)\n- Overview of static and dynamic analysis - strengths and limitations\n- Static analysis - the big picture, taint analysis-type problems: sources, sinks, and transfer and cleanse functions\n- Static analysis fundamentals - lexing, parsing, building Abstract Syntax Trees (ASTs), ...\n - Challenges when performing static analysis - supporting many languages, dynamic typing, eval/reflection constructs, container types, precision vs. memory and speed trade-offs\n- A brief tour of other types of program analysis - fuzzing, symbolic execution, model checking, etc. - basically, what are all the ways you can build tools to find bugs?\n- Hands-on exercise of doing some lightweight static analysis\n\nPre-Requisites:\n- Laptop with VirtualBox or VMware capable of running a Linux VM\n- Basic understanding of Linux command line\n- Basic Programming skills in 1 language\n- InfoSec vocabulary (OWASP Top 10)",
+      "link": "https://shellcon.io/workshops/#static-analysis",
+      "conference": "SC02"
+    }
+  ]
+}

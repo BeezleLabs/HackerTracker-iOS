@@ -193,7 +193,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-                cell.bind(title: "No Live Events", desc: "Hmmmm, maybe DEF CON got cancelled?")
+                cell.bind(title: "No Live Events", desc: "Nothing is going on right now, maybe try again later?")
                 return cell
             }
         } else if indexPath.section == 4 {

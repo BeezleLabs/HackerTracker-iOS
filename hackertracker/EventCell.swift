@@ -62,12 +62,13 @@ public class EventCell : UITableViewCell {
     func bind(event : Event) {
         myEvent = event
         var eventTime = "TBD"
+        let dfu = DateFormatterUtility.shared
         if let start = event.start_date, let end = event.end_date {
-            eventTime = DateFormatterUtility.dayOfWeekTimeFormatter.string(from:start) + "-"
+            eventTime = dfu.dayOfWeekTimeFormatter.string(from:start) + "-"
             if Calendar.current.isDate(end, inSameDayAs: start) {
-                eventTime = eventTime + DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
+                eventTime = eventTime + dfu.hourMinuteTimeFormatter.string(from: end)
             } else {
-                eventTime = eventTime + DateFormatterUtility.dayOfWeekTimeFormatter.string(from: end)
+                eventTime = eventTime + dfu.dayOfWeekTimeFormatter.string(from: end)
             }
         }
         

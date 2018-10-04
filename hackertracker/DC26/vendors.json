@@ -1,5 +1,5 @@
 {
-  "updated_at": "2018-08-03T00:03+0000",
+  "updated_at": "2018-08-06T09:22+0000",
   "vendors": [
     {
       "id": 1,
@@ -87,9 +87,9 @@
       "partner": false,
       "description": "HackerBoxes is the subscription box service for DIY electronics and hardware hacking. Each monthly HackerBox includes a carefully curated collection of projects, components, modules, tools, supplies, and exclusive items. HackerBox Hackers are electronics hobbyists, makers, hardware hackers, and computer enthusiasts. Many connect through social media channels to create a community of experience, support, and ideas. Let's see what you make with your HackerBoxes.",
       "name": "Hackerboxes",
-      "link": "www.hackerboxes.com",
+      "link": "https://hackerboxes.com/",
       "conference": "DC26",
-      "updated_at": "2018-07-25T20:41+0000"
+      "updated_at": "2018-08-06T09:22+0000"
     },
     {
       "id": 11,

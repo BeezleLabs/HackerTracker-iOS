@@ -1,0 +1,35 @@
+{
+  "updated_at": "2018-08-31T19:00+0000",
+  "locations": [
+    {
+      "id": 26049,
+      "updated_at": "2018-08-31T19:00+0000",
+      "name": "Track 1",
+      "conference": "DC80"
+    },
+    {
+      "id": 26050,
+      "updated_at": "2018-08-31T19:00+0000",
+      "name": "Track 2",
+      "conference": "DC80"
+    },
+    {
+      "id": 26051,
+      "updated_at": "2018-08-31T19:00+0000",
+      "name": "Track 3",
+      "conference": "DC80"
+    },
+    {
+      "id": 26052,
+      "updated_at": "2018-08-31T19:00+0000",
+      "name": "Track 4",
+      "conference": "DC80"
+    },
+    {
+      "id": 26053,
+      "updated_at": "2018-08-31T19:00+0000",
+      "name": "Stable Talks",
+      "conference": "DC80"
+    }
+  ]
+}

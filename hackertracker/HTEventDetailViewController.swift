@@ -80,12 +80,12 @@ class HTEventDetailViewController: UIViewController {
         eventTypeLabel.layer.cornerRadius = 5
         
         
-        if let l = event.location, let n = l.name {
+        /*if let l = event.location, let n = l.name {
             locationMapView.currentLocation = Location.valueFromString(n)
         } else {
             locationMapView.currentLocation = .unknown
         }
-        locationMapView.setup()
+        locationMapView.setup()*/
         
         eventDetailTextView.text = event.desc
 
@@ -116,17 +116,18 @@ class HTEventDetailViewController: UIViewController {
         }
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
         
+        let dfu = DateFormatterUtility.shared
         if let start = event.start_date, let end = event.end_date, let l = event.location?.name {
-            let eventLabel = DateFormatterUtility.shortDayMonthDayTimeOfWeekFormatter.string(from: start)
+            let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: start)
             var eventEnd = ""
             if Calendar.current.isDate(end, inSameDayAs: start) {
-                eventEnd = DateFormatterUtility.hourMinuteTimeFormatter.string(from: end)
+                eventEnd = dfu.hourMinuteTimeFormatter.string(from: end)
             } else {
-                eventEnd = DateFormatterUtility.dayOfWeekTimeFormatter.string(from: end)
+                eventEnd = dfu.dayOfWeekTimeFormatter.string(from: end)
             }
             eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
-            locationMapView.currentLocation = Location.valueFromString(l)
+            //locationMapView.currentLocation = Location.valueFromString(l)
         } else {
             eventDateLabel.text = "To Be Announced"
         }
@@ -240,10 +241,10 @@ class HTEventDetailViewController: UIViewController {
             eventNameLabel.layer.cornerRadius = 5
         }
         
-        let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
-        touchGesture.minimumPressDuration = 0.0
-        touchGesture.cancelsTouchesInView = false
-        locationMapView.addGestureRecognizer(touchGesture)
+        //let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
+        //touchGesture.minimumPressDuration = 0.0
+        //touchGesture.cancelsTouchesInView = false
+        //locationMapView.addGestureRecognizer(touchGesture)
     }
 
     @objc func expand() {
@@ -402,9 +403,9 @@ class HTEventDetailViewController: UIViewController {
     }
     
     @IBAction func shareEvent(_ sender: Any) {
+        let dfu = DateFormatterUtility.shared
         if let e = event, let t = e.title, let l = e.location?.name, let start = e.start_date, let c = e.conference?.name {
-            
-            let time = DateFormatterUtility.dayOfWeekTimeFormatter.string(from: start)
+            let time = dfu.dayOfWeekTimeFormatter.string(from: start)
             let item = "\(c): Attending '\(t)' on \(time) in \(l) #hackertracker"
             
             let activityViewController : UIActivityViewController = UIActivityViewController(

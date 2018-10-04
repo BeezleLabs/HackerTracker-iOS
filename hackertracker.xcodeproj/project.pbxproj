@@ -10,6 +10,8 @@
 		49730E4B1E2929BC0029438C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4A1E2929BC0029438C /* EventCell.swift */; };
 		49730E4E1E2D1AB50029438C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4D1E2D1AB50029438C /* Theme.swift */; };
 		49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */; };
+		5D0194A6213C96F60017244D /* TC20 in Resources */ = {isa = PBXBuildFile; fileRef = 5D0194A5213C96F60017244D /* TC20 */; };
+		5D0194A8213C97000017244D /* DC80 in Resources */ = {isa = PBXBuildFile; fileRef = 5D0194A7213C97000017244D /* DC80 */; };
 		5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */; };
 		5D02761820FC346000E5ED6A /* maps in Resources */ = {isa = PBXBuildFile; fileRef = 5D02761720FC346000E5ED6A /* maps */; };
 		5D027620210160F400E5ED6A /* HTNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */; };
@@ -29,6 +31,7 @@
 		5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
+		5DAD0A26215542D500BF7F61 /* SC02 in Resources */ = {isa = PBXBuildFile; fileRef = 5DAD0A25215542D500BF7F61 /* SC02 */; };
 		5DBA8C1320EEEA8B00D82D9A /* DC26 in Resources */ = {isa = PBXBuildFile; fileRef = 5DBA8C1220EEEA8B00D82D9A /* DC26 */; };
 		5DBA8C1520EEEAC100D82D9A /* conferences.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DBA8C1420EEEAC100D82D9A /* conferences.json */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
@@ -108,6 +111,8 @@
 		49730E4D1E2D1AB50029438C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
 		4A297DEF49BFDC47D04261A0 /* Pods-hackertrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackertrackerTests/Pods-hackertrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D0194A5213C96F60017244D /* TC20 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TC20; sourceTree = "<group>"; };
+		5D0194A7213C97000017244D /* DC80 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DC80; sourceTree = "<group>"; };
 		5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFilterViewController.swift; sourceTree = "<group>"; };
 		5D02761720FC346000E5ED6A /* maps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maps; sourceTree = "<group>"; };
 		5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTNewsTableViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 		5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Larsseit-Bold.ttf"; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5DAD0A25215542D500BF7F61 /* SC02 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SC02; sourceTree = "<group>"; };
 		5DBA8C1220EEEA8B00D82D9A /* DC26 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DC26; sourceTree = "<group>"; };
 		5DBA8C1420EEEAC100D82D9A /* conferences.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = conferences.json; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +322,9 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5DAD0A25215542D500BF7F61 /* SC02 */,
+				5D0194A7213C97000017244D /* DC80 */,
+				5D0194A5213C96F60017244D /* TC20 */,
 				5D02761720FC346000E5ED6A /* maps */,
 				5DBA8C1420EEEAC100D82D9A /* conferences.json */,
 				5DBA8C1220EEEA8B00D82D9A /* DC26 */,
@@ -508,11 +517,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DAD0A26215542D500BF7F61 /* SC02 in Resources */,
 				78C72FAB1F1869F100AFC0B6 /* Furore.otf in Resources */,
+				5D0194A6213C96F60017244D /* TC20 in Resources */,
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				5DBA8C1320EEEA8B00D82D9A /* DC26 in Resources */,
 				83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */,
+				5D0194A8213C97000017244D /* DC80 in Resources */,
 				5D67EBFC20E1CD30004E5D19 /* Bungee-Regular.ttf in Resources */,
 				5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,

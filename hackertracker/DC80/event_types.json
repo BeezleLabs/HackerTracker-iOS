@@ -1,0 +1,12 @@
+{
+  "updated_at": "2018-08-31T19:02+0000",
+  "event_types": [
+    {
+      "id": 10,
+      "updated_at": "2018-08-31T19:02+0000",
+      "name": "Official",
+      "color": "#fc853f",
+      "conference": "DC80"
+    }
+  ]
+}

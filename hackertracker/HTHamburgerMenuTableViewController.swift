@@ -19,11 +19,7 @@ class HTHamburgerMenuTableViewController: UITableViewController {
     var selectedItem : HamburgerItem?
     var conferenceName : String?
   
-    init(hamburgerItems : [HamburgerItem]) {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        conferenceName = DataRequestManager(managedContext: context).getSelectedConference()?.name
-        
+    init(hamburgerItems : [HamburgerItem]) {        
         items = hamburgerItems
         super.init(style: UITableViewStyle.plain)
         tableView.estimatedRowHeight = 254
@@ -67,7 +63,6 @@ class HTHamburgerMenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Header") as! HTHamburgerHeaderTableViewCell
-            cell.conferenceTitle.text = conferenceName
             return cell;
         } else {
             let currentItem = items[indexPath.row - 1]

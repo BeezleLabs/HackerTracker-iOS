@@ -1,5 +1,5 @@
 {
-  "updated_at": "2018-08-03T15:58+0000",
+  "updated_at": "2018-08-08T18:59+0000",
   "speakers": [
     {
       "name": "0x200b",
@@ -842,12 +842,12 @@
       "link": ""
     },
     {
-      "name": "RobJoyce",
-      "updated_at": "2018-07-03T17:46+0000",
-      "description": "",
+      "name": "Rob Joyce",
+      "updated_at": "2018-08-05T22:52+0000",
+      "description": "Rob Joyce (@RGB_Lights) has been with the Nation Security Agency (NSA) for 29 years and has led organizations doing both foreign intelligence and cybersecurity work.  He is the Senior Advisor for Cybersecurity, having recently returned from the White House as the Cybersecurity Coordinator where he worked national policy, synchronizing activity across the government and partners.  His previous assignment was leading Tailored Access Operations (TAO), the organization developing tools, techniques and capabilities to exploit computers for NSA's foreign intelligence mission.  Prior to that, he was the Deputy Director for Information Assurance, overseeing the protection of national security systems, which includes the nation's cryptographic key material, classified networks and warfighting networks.  In his spare time, Rob builds a computerized Christmas light show.  His most recent display was likely visible from the International Space Station. In addition to an infatuation with Christmas light displays, he helped a Boy Scout troop built catapults for the annual Punkin Chunkin competition until lawyers ruined it for all of us.",
       "title": "",
       "id": 26085,
-      "twitter": "",
+      "twitter": "@RGB_Lights",
       "conference": "DC26",
       "link": ""
     },
@@ -2503,8 +2503,8 @@
     },
     {
       "name": "David Pearson",
-      "updated_at": "2018-07-03T17:46+0000",
-      "description": "Having used Wireshark ever since it was Ethereal, David has been analyzing network traffic for well over a decade. He has spent the majority of his professional career understanding how networks and applications work, currently as Principal Threat Researcher for Awake Security. David holds computer security degrees from the Rochester Institute of Technology (BS) and Carnegie Mellon University (MS).\n \n \n",
+      "updated_at": "2018-08-07T23:43+0000",
+      "description": "Having used Wireshark ever since it was Ethereal, David has been analyzing network traffic for well over a decade. He has spent the majority of his professional career understanding how networks and applications work, currently as Principal Threat Researcher for Awake Security. David holds computer security degrees from the Rochester Institute of Technology (BS) and Carnegie Mellon University (MS).",
       "title": "Principal Threat Researcher, Awake Security",
       "id": 26255,
       "twitter": "",
@@ -2713,8 +2713,8 @@
     },
     {
       "name": "Isao Takaesu",
-      "updated_at": "2018-07-03T17:46+0000",
-      "description": "We are working in Mitsui Bussan Secure Directions, Inc. as security engineer and researcher. In the past, we found out numerous vulnerabilities in server of client and we proposed countermeasures to client. We think that there's more and want to efficiently find out vulnerabilities. Therefore, we are focusing on artificial intelligence technology and developing fully automated penetration testing tool using machine learning.\n",
+      "updated_at": "2018-08-06T05:09+0000",
+      "description": "Isao Takaesu is CISSP. He is working in Mitsui Bussan Secure Directions, Inc. as security engineer and researcher. He found many vulnerabilities in client\u2019s server and proposed countermeasures to client. He thinks that there\u2019s more and wants to find vulnerabilities. Therefore, he is focused on artificial intelligence technology for cyber security. Now, he is developing the penetration test tool using machine learning.\r\n\r\n",
       "title": "",
       "id": 26293,
       "twitter": "",
@@ -2973,8 +2973,8 @@
     },
     {
       "name": "Chris Porter",
-      "updated_at": "2018-07-30T00:30+0000",
-      "description": "Chris is an Android dev from Canada, where he has worked for various tech start-ups. In his spare time, Chris has developed a few Android apps that have a total combined download count of over 1.5 million with an average rating of 4.6. \r\n\r\nHe first attended DEF CON at DEF CON 24, where he was introduced to Whitney Champion, the creator of the Hacker Tracker app. He then decided to join the Hacker Tracker team, and took over the Android version. He has since rebuilt the app from the ground up to be the best schedule app possible, from the database to the UI/UX, he's done everything.\r\n\r\nCurrently, he is in charge of the Android version of the Hacker Tracker app.",
+      "updated_at": "2018-08-04T23:57+0000",
+      "description": "Chris is an Android dev from Canada, where he has worked for various tech start-ups. In his spare time, Chris has developed a few Android apps that have a total combined download count of over 1.5 million. \r\n\r\nHe first attended DEF CON at DEF CON 24, where he was introduced to Whitney Champion, the creator of the Hacker Tracker app. He then decided to join the Hacker Tracker team, and took over the Android version. He has since rebuilt the app from the ground up to be the best schedule app possible, from the database to the UI/UX, he's done everything.\r\n\r\nCurrently, he is in charge of the Android version of the Hacker Tracker app.",
       "title": "Senior Android Developer",
       "id": 26320,
       "twitter": "@_advice_dog",
@@ -5703,8 +5703,8 @@
     },
     {
       "name": "Sven Cattell",
-      "updated_at": "2018-08-03T13:53+0000",
-      "description": "",
+      "updated_at": "2018-08-06T05:09+0000",
+      "description": "I got my Ph.D. in algebraic topology in 2016 and immediately moved into machine learning to work on something useful to people. I then completed a post-doc in mathematical machine learning where I worked on medical data. I now work at endgame.\r\n\r\n",
       "title": "",
       "id": 26605,
       "twitter": "",
@@ -6017,6 +6017,1516 @@
       "description": "",
       "title": "",
       "id": 26636,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jen Ellis",
+      "updated_at": "2018-08-06T01:00+0000",
+      "description": "Jen Ellis is the vice president of community and public policy at Rapid7, a leading provider of analytics and automation for security and IT operations. Jen\u2019s primary focus is on building productive collaboration between those in the security community and those operating outside it. She works extensively with security researchers, technology providers and operators, and various government entities to help them understand and address cybersecurity challenges. She believes effective collaboration is our only path forward to reducing cybercrime and protecting consumers and businesses. She has testified before Congress and spoken at a number of security industry events including SXSW, RSA, Derbycon, Shmoocon, SOURCE, UNITED, and various BSides. ",
+      "title": "",
+      "id": 26637,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Christian \"quaddi\" Dameff MD ",
+      "updated_at": "2018-08-06T01:02+0000",
+      "description": "Christian (quaddi) Dameff MD is an emergency medicine doctor, former open capture the flag champion, prior DEF CON speaker, and researcher. Published works include topics such as therapeutic hypothermia after cardiac arrest, novel drug targets for myocardial infarction patients, and other Emergency Medicine related works with an emphasis on CPR optimization. Security research topics including hacking critical healthcare infrastructure, medical devices and the effects of malware on patient care. This is his fourteenth DEF CON. ",
+      "title": "",
+      "id": 26638,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Beau Woods",
+      "updated_at": "2018-08-06T01:02+0000",
+      "description": "Beau Woods is a leader with the I Am The Cavalry grassroots initiative, a Cyber Safety Innovation Fellow with the Atlantic Council, Entrepreneur in Residence at the US Food and Drug Administration, and Founder/CEO of Stratigos Security. Beau has consulted with Global 100 corporations, the White House, members of Congress, foreign governments, and NGOs on some of the most critical cybersecurity issues of our time. Beau's focus is on Internet of Things (IoT) technologies where cybersecurity intersects public safety and human life issues, including healthcare, automotive, energy, oil and gas, aviation, transportation, and other sectors. Beau is a published author, frequent public speaker, often quoted in media, and is often engaged for public or private speaking venues. ",
+      "title": "",
+      "id": 26639,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Dr. Leslie Saxon",
+      "updated_at": "2018-08-06T01:02+0000",
+      "description": "Dr. Leslie Saxon is a Professor of Medicine, Clinical Scholar, at the Keck School of Medicine of USC. Dr. Saxon specializes in the diagnosis and treatment of cardiac arrhythmias and preventing sudden cardiac death. Dr. Saxon received her medical degree from the Ross University School of Medicine. She completed her internship and residency at St. Luke\u2019s Hospital Washington University, and fellowships in cardiology at Rush-Presbyterian-St. Luke\u2019s Medical Center in Chicago and UCLA. Dr. Saxon has completed over 100 publications in various medical journals and is an active member of a multitude of organizations, including the American Heart Association, and the Heart Failure Society of America. She is also a fellow of the American College of Cardiology and the Heart Rhythm Society. ",
+      "title": "",
+      "id": 26640,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Mr. Br!ml3y",
+      "updated_at": "2018-08-06T01:03+0000",
+      "description": "",
+      "title": "",
+      "id": 26641,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Prof Andrea M. Matwyshyn",
+      "updated_at": "2018-08-06T01:03+0000",
+      "description": "Andrea Matwyshyn is an academic and author whose work focuses on technology and innovation policy, particularly information security and consumer privacy. She is a (tenured full) professor of law / professor of computer science (by courtesy) at Northeastern University, where she is the co-director of the Center for Law, Innovation, and Creativity (CLIC). Andrea is also a faculty affiliate of the Center for Internet and Society at Stanford Law School. She is a Senior Fellow of the Cyber Statecraft Initiative at the Atlantic Council's Brent Scowcroft Center on International Security and a US-UK Fulbright Commission Cyber Security Scholar award recipient in 2016-2017. In 2014, she served as the Senior Policy Advisor/ Academic in Residence at the U.S. Federal Trade Commission. Prior to entering academia, she was a corporate attorney in private practice. She is the legal specialty reviewer for the DEFCON CFP board. ",
+      "title": "",
+      "id": 26642,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Prof Stephanie Pell",
+      "updated_at": "2018-08-06T01:03+0000",
+      "description": "Stephanie Pell is an Assistant Professor and Cyber Ethics Fellow at West Point\u2019s Army Cyber Institute (ACI). She writes about privacy, surveillance and security law and policy, and is particularly interested in the tensions inherent in enabling traditional law enforcement efforts and making our communications networks more secure. Prior to joining the ACI faculty, Stephanie served as Counsel to the House Judiciary Committee, where she was lead counsel on Electronic Communications Privacy Act (ECPA) reform and PATRIOT Act reauthorization during the 111th Congress. Stephanie was also a federal prosecutor for over fourteen years, working as a Senior Counsel to the Deputy Attorney General, as a Counsel to the Assistant Attorney General of the National Security Division, and as an Assistant U.S. Attorney in the U.S. Attorney\u2019s Office for the Southern District of Florida. She was a lead prosecutor in U.S. v. Jose Padilla (American Citizen detained as an enemy combatant prior to criminal indictment and trial), for which she received the Attorney General\u2019s Exceptional Service Award, and in U.S. v. Conor Claxton (IRA operatives who purchased weapons in South Florida and smuggled them into Belfast, Northern Ireland during peace process negotiations). Stephanie received her undergraduate, master\u2019s and law degrees from the University of North Carolina at Chapel Hill. ",
+      "title": "",
+      "id": 26643,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Dr. Suzanne Schwartz",
+      "updated_at": "2018-08-06T01:03+0000",
+      "description": "Dr. Suzanne Schwartz is the Associate Director for Science & Strategic Partnerships at FDA\u2019s Center for Devices & Radiological Health (CDRH). In this role, she assists the CDRH Director and Deputy Director for Science in the development, execution and evaluation of the Center\u2019s biomedical science and engineering programs. Suzanne is passionate about cultivating critical dialogue across sectors and across entities towards advancing innovation in the biomedical space and within healthcare, where complex multifaceted problems exist. Suzanne joined FDA in October 2010. Initially recruited as a Commissioner\u2019s Fellow, she became a Medical Officer in the Office of Device Evaluation, transitioning in September 2012 to become the Director of CDRH\u2019s Emergency Preparedness/Operations and Medical Countermeasures (EMCM) Program in the Office of the Center Director for the past 4 years. Among other public health concerns, her portfolio has most notably included medical device cybersecurity, for which she chairs CDRH\u2019s Cybersecurity Working Group. She also co-chairs the Government Coordinating Council for Healthcare & Public Health critical infrastructure sector. Before FDA, Suzanne was a full time surgical faculty member at Weill Cornell Medical College, New York. Suzanne\u2019s career has spanned the private sector as well, having served as Medical Director & Tissue Bank Director of Ortec International, a development stage medical device company focused on tissue engineering therapeutic approaches to burns and chronic wounds. Suzanne earned an MD from Albert Einstein College of Medicine, trained in General Surgery & Burn Trauma at the New York Presbyterian Hospital - Weill Cornell Medical Center; an executive MBA from NYU Stern School of Business, and completed the National Preparedness Leadership Initiative \u2013 Harvard School of Public Health & Kennedy School of Government. ",
+      "title": "",
+      "id": 26644,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Rebecca Slaughter",
+      "updated_at": "2018-08-06T01:06+0000",
+      "description": "Prior to joining the Commission, she served as Chief Counsel to Senator Charles Schumer of New York, the Democratic Leader. A native New Yorker, she advised Leader Schumer on legal, competition, telecom, privacy, consumer protection, and intellectual property matters, among other issues. Prior to joining Senator Schumer's office, Ms. Slaughter was an associate in the D.C. office of Sidley Austin LLP. Ms. Slaughter received her B.A. in Anthropology magna cum laude from Yale University. She received her J.D. from Yale Law School, where she served as an editor on the Yale Law Journal. ",
+      "title": "",
+      "id": 26645,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Nick - GraphX",
+      "updated_at": "2018-08-06T01:06+0000",
+      "description": "",
+      "title": "",
+      "id": 26646,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jeffrey Ladish",
+      "updated_at": "2018-08-06T01:06+0000",
+      "description": "",
+      "title": "",
+      "id": 26647,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Debra Laefer",
+      "updated_at": "2018-08-06T01:06+0000",
+      "description": "",
+      "title": "",
+      "id": 26648,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Andy Coravos",
+      "updated_at": "2018-08-06T01:06+0000",
+      "description": "",
+      "title": "",
+      "id": 26649,
+      "twitter": "@andreacoravos",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Robert Portvliet",
+      "updated_at": "2018-08-06T01:07+0000",
+      "description": "Robert Portvliet is the Director of Red Team services at Cylance, with a decade of experience in various disciplines of penetration testing. His focus is on embedded systems and wireless penetration testing and reverse engineering. Prior to joining Cylance, he was the network security service line lead for Foundstone and taught the \u2018Ultimate Hacking: Wireless\u2019 class at BlackHat 2011-2013. ",
+      "title": "",
+      "id": 26650,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "BiaSciLab ",
+      "updated_at": "2018-08-06T01:07+0000",
+      "description": "BiaSciLab is an 11 yr old girl who loves hacking, science, technology, and learning. She is constantly inventing new things, researching interesting unexplored topics, teaching kids and adults electronics and programming. She was the youngest speaker ever at H.O.P.E. with her talk \"Inspiring The Next Next Generation Of Hackers\". When she's not working on talks, hacking, or inventing new things, she enjoys fencing, archery, singing and acting. ",
+      "title": "",
+      "id": 26651,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Gerry Scott",
+      "updated_at": "2018-08-06T01:07+0000",
+      "description": "",
+      "title": "",
+      "id": 26652,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "BJ",
+      "updated_at": "2018-08-06T01:08+0000",
+      "description": "Chris currently works at Lares, prior to that he founded or worked with a number of companies specializing in DarkNet research, intelligence gathering, cryptography, deception technologies, and providers of security services and threat intelligence. Since the late 90\u2019s Chris has been deeply involved with security R&D, consulting, and advisory services in his quest to protect and defend businesses and individuals against cyber attack. Prior to that he jumped out of planes for a living, visiting all sorts of interesting countries and cultures while doing his best to avoid getting shot at too often. Roberts is considered one of the world\u2019s foremost experts on counter threat intelligence and vulnerability research within the Information Security industry. ",
+      "title": "",
+      "id": 26653,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "siDragon",
+      "updated_at": "2018-08-06T01:08+0000",
+      "description": "",
+      "title": "",
+      "id": 26654,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "John Dunlap",
+      "updated_at": "2018-08-06T01:08+0000",
+      "description": "",
+      "title": "",
+      "id": 26655,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Joel Murphy",
+      "updated_at": "2018-08-06T01:08+0000",
+      "description": "",
+      "title": "",
+      "id": 26656,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Mix\u00e6l Laufer",
+      "updated_at": "2018-08-06T01:08+0000",
+      "description": "Chief spokesman for the Four Thieves Vinegar Collective, Mix\u00e6l Laufer worked in mathematics and high energy physics until he decided to use his background in science to tackle problems of global health and other social issues. Perpetually disruptive, his most recent project makes it possible for people to manufacture their own medications at home. Open-source, and made from off-the-shelf parts, the Apothecary MicroLab puts many medications within the reach of those who would otherwise not have them. ",
+      "title": "",
+      "id": 26657,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Erin Hefley",
+      "updated_at": "2018-08-06T01:09+0000",
+      "description": "Erin Hefley is a resident physician in her final year of training with the Phoenix Integrated Residency in Obstetrics & Gynecology. She has a background in public health and women's health, and obtained a Master of Public Health degree from the University of Northern Colorado prior to attending medical school at the University of Arizona - Phoenix. This is her 6th Defcon attendance over the past decade, and she is thrilled to have witnessed the development and expansion of the Biohacking Village. Her current interests include reproductive health technology, women's health policy, running, and vampire erotica ",
+      "title": "",
+      "id": 26658,
+      "twitter": "@erintoxicating",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Gabriel Bergel ",
+      "updated_at": "2018-08-06T01:09+0000",
+      "description": "Gabriel Bergel is a System Engineer, Master in Cybersecurity from the IMF Business School and the Camilo Jos\u00e9 Cela University (Spain) and has 15 years of experience in different areas of information security. He regularly speakers in courses, workshops and forums on information security in different institutions, universities and national and international events. Currently he is Chief Executive Officer (CEO) of Vulnscope, Chief Strategy Officer (CSO) of Dreamlab Technologies, and Chief Security Ambassador (CSA) of Eleven Paths, Director of Public Policies in Whilolab and Founder and Organizer of 8.8 Computer Security Conference. ",
+      "title": "",
+      "id": 26659,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Rodrigo Quevedo",
+      "updated_at": "2018-08-06T01:10+0000",
+      "description": "Specialist in technological architecture and management, entrepreneur, teacher, inventor and mentor of scientific talents, with a high social and service vocation, fully dedicated to the development of mechatronics and robotics technology in different fields, for 10 years he has trained more than 3000 young people in Chile, Peru, Bolivia and Colombia, allowing more than 700 young people to travel to the USA to compete in robotic tournaments, forming 34 teams that have competed in national and international tournaments, obtaining various awards in Japan, USA and Chile. Speaker at various universities, colleges, innovation and entrepreneurship events, national and international. Interviewed by different means of print and television, national and international. Guest writer of technological columns in various specialized magazines. Inventor of 14 products, including MIVOS, bidirectional automatic translator of signlanguage for deaf people. ",
+      "title": "",
+      "id": 26660,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Katherine Pratt ",
+      "updated_at": "2018-08-06T01:10+0000",
+      "description": "Katherine Pratt received her B.S. in aerospace engineering from MIT in 2008, where she received the MIT Women\u2019s League Laya Weisner Award for public service to the university, and the MIT Aero/Astro James Means Memorial Award for Space Systems Engineering. She completed several internships with the private space venture Blue Origin, working in systems and propulsion engineering. After graduation, she served four years in the United States Air Force, working primarily as an operational flight test engineer on the F-35 Joint Strike Fighter. She is now a PhD Candidate in the BioRobotics Lab in the Electrical Engineering department of the University of Washington, and currently spending six months in Congress as a Congressional Innovation Scholar. Her work focuses on the privacy, ethics, and policy of neural data. In addition to research, Katherine is passionate about getting younger students, especially girls and minorities, interested in science and technology. She also competes in triathlons as a member of the Husky Triathlon Club and iracelikeagirl teams. ",
+      "title": "",
+      "id": 26661,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Nick Deluski ",
+      "updated_at": "2018-08-06T01:10+0000",
+      "description": "",
+      "title": "",
+      "id": 26662,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Guy Propper ",
+      "updated_at": "2018-08-06T01:10+0000",
+      "description": "",
+      "title": "",
+      "id": 26663,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Vlad Gostomelsky ",
+      "updated_at": "2018-08-06T01:11+0000",
+      "description": "",
+      "title": "",
+      "id": 26664,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Anne Kim ",
+      "updated_at": "2018-08-06T01:11+0000",
+      "description": "Anne Kim is a researcher and graduate student specializing in Computer Science and Molecular Biology at MIT. Professor Alex \"Sandy\" Pentland, head of the Human Dynamics Group at the MIT Media Lab, is the advisor for her thesis focusing on blockchain solutions for clinical trial optimization. Outside of her thesis work, Anne has done a number of different projects in quantum chemistry simulations, genome-wide association studies, natural language processing for electronic health records, and a startup in secure data sharing. Anne sees accessibility to healthcare as a right, and believes that the interface between biology, healthcare policy, and technology is a promising way to achieve that mission ",
+      "title": "",
+      "id": 26665,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Cyberlass",
+      "updated_at": "2018-08-06T01:11+0000",
+      "description": "As an IT professional and biohacker Amanda Plimpton is delighted by the surge of citizen scientists who are driven to investigate, experiment and seek answers. She is interested in how the biohacking/body augmenting community can help its growing pool of talented, passionate individuals contribute to their fields from the commercial, academic or non-profit sectors. As Chief Operating Officer at Livestock Labs she is helping build a company that showcases one way biohackers can enter commercial spaces. Hoping to bring back lessons learned, she wants to keep helping grow a community that supports each other and promotes successes.",
+      "title": "",
+      "id": 26666,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Veronica Schmit",
+      "updated_at": "2018-08-06T01:11+0000",
+      "description": "Veronica or Vee is a Partner at DFIRLABS. She is a forensicator, avid researcher and quite literally the superglue that holds DFIRLABS together. She was previously in charge of the Free State Cyber Forensic Laboratory of the Special Investigating Unit. After deciding that this title on its own wasn\u2019t already too much of a mouthful, she departed the SIU in order to add Malware (Reverse) Engineer, Photographer, Seamstress, Super Mom and Sleep-deprived MSc Chaser to her list. She PWN\u2019s to own her own medical device which aids her broken heart beats, into a different rhythm, sometimes this beat is much like that of drums beating. She is passionate about medical device security and does not believe in security through obscurity. In between attending Metallica concerts and being converted into a cyborg (no really, ask her about her metal bits sometime), she completed a Diploma in Criminal Justice and Forensic Investigation from the University of Johannesburg. Deciding to brave foreign climes and curiosities, she went on to receive training in Europe on digital forensics and cyber crime investigation from the United States Department of Homeland Security. She is an Associate Member of a number of professional bodies, including the Institute of Information Technology of Professionals of South Africa, the Association of Certified Fraud Examiners, and the International Association of Computer Investigative Specialists. Veronica has contributed to several publications, including the ISC2 CCFP : Certified Computer Forensic Practitioner. She is currently juggling a Master\u2019s thesis on ransomware, several digital forensics cases, getting a quality forensics training company off the ground, and reverse engineering ransomware whilst also keeping her two year old from walking into things. You can contact her by lighting up the night sky with the P10z0n_P1x13 beacon mounted on the top of the Twitter police department, or alternatively by email. ",
+      "title": "",
+      "id": 26667,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Howard (hyc) Chu",
+      "updated_at": "2018-08-06T01:56+0000",
+      "description": "",
+      "title": "",
+      "id": 26668,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Parasew",
+      "updated_at": "2018-08-06T01:56+0000",
+      "description": "",
+      "title": "",
+      "id": 26669,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "MSvB",
+      "updated_at": "2018-08-06T01:56+0000",
+      "description": "",
+      "title": "",
+      "id": 26670,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Robin \"midipoet\" Renwick",
+      "updated_at": "2018-08-06T02:01+0000",
+      "description": "",
+      "title": "",
+      "id": 26671,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Marko Bencun",
+      "updated_at": "2018-08-06T01:57+0000",
+      "description": "",
+      "title": "",
+      "id": 26672,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Michael Schloh",
+      "updated_at": "2018-08-06T01:57+0000",
+      "description": "",
+      "title": "",
+      "id": 26673,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Stephanie Stroka ",
+      "updated_at": "2018-08-06T01:57+0000",
+      "description": "",
+      "title": "",
+      "id": 26674,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Marko Bencun",
+      "updated_at": "2018-08-06T01:57+0000",
+      "description": "",
+      "title": "",
+      "id": 26675,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Francisco \"ArticMine\" Caba\u00f1as",
+      "updated_at": "2018-08-06T01:57+0000",
+      "description": "",
+      "title": "",
+      "id": 26676,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Devin \"Bearded Warrior\" Pearson",
+      "updated_at": "2018-08-06T01:57+0000",
+      "description": "",
+      "title": "",
+      "id": 26677,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Felix \"Crypto_Cat\" Honigwachs",
+      "updated_at": "2018-08-06T01:57+0000",
+      "description": "",
+      "title": "",
+      "id": 26678,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Philip Martin",
+      "updated_at": "2018-08-06T01:59+0000",
+      "description": "VP Security, COINBASE",
+      "title": "",
+      "id": 26679,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Fluffy Pony",
+      "updated_at": "2018-08-06T01:59+0000",
+      "description": "",
+      "title": "",
+      "id": 26680,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Justin Ehrenhofer",
+      "updated_at": "2018-08-06T01:59+0000",
+      "description": "",
+      "title": "",
+      "id": 26681,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Zhiniang Peng",
+      "updated_at": "2018-08-06T01:59+0000",
+      "description": "",
+      "title": "",
+      "id": 26682,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Anonimal",
+      "updated_at": "2018-08-06T01:59+0000",
+      "description": "",
+      "title": "",
+      "id": 26683,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Shamiq",
+      "updated_at": "2018-08-06T02:00+0000",
+      "description": "App Sec Manager, COINBASE",
+      "title": "",
+      "id": 26684,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Paul Shapiro",
+      "updated_at": "2018-08-06T02:00+0000",
+      "description": "",
+      "title": "",
+      "id": 26685,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Cinnamonflower",
+      "updated_at": "2018-08-06T02:00+0000",
+      "description": "",
+      "title": "",
+      "id": 26686,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "pwrcycle",
+      "updated_at": "2018-08-06T02:00+0000",
+      "description": "",
+      "title": "",
+      "id": 26687,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Sarang Noether",
+      "updated_at": "2018-08-06T02:00+0000",
+      "description": "",
+      "title": "",
+      "id": 26688,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Rod Soto ",
+      "updated_at": "2018-08-06T02:01+0000",
+      "description": "",
+      "title": "",
+      "id": 26689,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jason Malley",
+      "updated_at": "2018-08-06T02:01+0000",
+      "description": "",
+      "title": "",
+      "id": 26690,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Diego \"rehrar\" Salazar",
+      "updated_at": "2018-08-06T02:01+0000",
+      "description": "",
+      "title": "",
+      "id": 26691,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jo Langford, M.A.",
+      "updated_at": "2018-08-06T02:47+0000",
+      "description": "Jo Langford, M.A. is a dad, a Master\u2019s-level therapist, and sex educator. He is the author of \u201cThe Pride Guide,\u201d an encompassing guide to sexual and social development, safety, and health for queer youth and their families. Covering all aspects of LGBT adolescence, both online and off, this book is the first puberty book written with queer (and specifically trans) youth in mind.\r\n\r\nJo speaks internationally using information, education, and humor to help people navigate the intersection of sexuality and technology, emphasizing proactive and prosocial behavior whether using a screen or not.\r\n\r\n",
+      "title": "",
+      "id": 26692,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Trever Faden",
+      "updated_at": "2018-08-06T02:47+0000",
+      "description": "Trever Faden is the Founder and CEO of Atlas Lane - an venture-backed Experience-based Housing Startup based in Washington, DC. Trever is a firm believer in rigorously testing the credibility of today\u2019s best practices in pursuit of more societally impactful solutions, across industries. Trever has Founded numerous venture-backed companies, with his prior company, RebelMail, raising over $5 Million in institutional funding and working with clients such as The Home Depot, Ebay, WeWork, and Diane Von Furstenberg. Trever is a software developer by trade, holds a patent for Interactive Email technology, and has had his work featured on NBC News, Forbes, Slate, TechCrunch, New York Post, The Advocate, Out Magazine, and Gizmodo among others.\r\n\r\n",
+      "title": "",
+      "id": 26693,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jesse Hitch",
+      "updated_at": "2018-08-06T02:47+0000",
+      "description": "Jesse Hitch is a trans and queer DevOps Engineer specialized in full stack development aimed at automation, and IT tooling. He nerds out on the back end of the internet, wearing hats like Linux Admin, InfoSec Analyst, and Software Engineer (specializing in Python). His primary focus has been on optimizing and securing Linux based infrastructure in favor of availability and reliability. In his spare time, he researches security and privacy for the average user, creating and distributing easily digestible materials to keep everyone anonymous and safe from \"bad people\".\r\n\r\n",
+      "title": "",
+      "id": 26694,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Christina Luconi",
+      "updated_at": "2018-08-06T02:48+0000",
+      "description": "Christina Luconi leads Rapid7\u2019s strategic people initiatives as its Chief People Officer. She is responsible for the entire employee lifecycle, with critical focus on recruiting stellar talent, building and inspiring corporate culture, acquisition integration and \u201cscaling with soul.\u201d Prior to joining Rapid7, Christina was the owner of People Innovations, an independent consulting firm focused on the creation of innovative people strategies for start-ups and high growth companies, primarily in the high technology industry. Christina also served as Chief People Officer at @stake, a professional services security firm which she helped build from the launch through its acquisition to Symantec.",
+      "title": "",
+      "id": 26695,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Subterfuge",
+      "updated_at": "2018-08-06T02:48+0000",
+      "description": "Subterfuge enjoys learning the finer details of classic cryptology, and as of late has become a bit of an oenophile. He also occasionally makes noise on drums, as part of a small band of fellow tech folk, that makes no headlines, but enjoys playing various B-rated venues in Seattle.",
+      "title": "",
+      "id": 26696,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jason Painter ",
+      "updated_at": "2018-08-06T02:48+0000",
+      "description": "Jason Painter Cyber Ninja by day and dedicated volunteer and cat herder by night.  Jason is the current President and head of operations for Queercon.  Jason has been part of Queercon for 10 years now and manages the entire team of volunteers who make Queercon the largest LGBTQ hacker event in the world. \r\n\r\n",
+      "title": "",
+      "id": 26697,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Evan MacKay",
+      "updated_at": "2018-08-06T02:53+0000",
+      "description": "",
+      "title": "",
+      "id": 26698,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "George Louthan",
+      "updated_at": "2018-08-06T02:53+0000",
+      "description": "",
+      "title": "",
+      "id": 26699,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jonathan Nelson",
+      "updated_at": "2018-08-06T02:53+0000",
+      "description": "",
+      "title": "",
+      "id": 26700,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Ryan Kovar",
+      "updated_at": "2018-08-06T03:26+0000",
+      "description": "",
+      "title": "",
+      "id": 26701,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "John Stoner",
+      "updated_at": "2018-08-06T03:26+0000",
+      "description": "",
+      "title": "",
+      "id": 26702,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Ryan Mitchell",
+      "updated_at": "2018-08-06T03:26+0000",
+      "description": "",
+      "title": "",
+      "id": 26703,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Davin Potts",
+      "updated_at": "2018-08-06T03:26+0000",
+      "description": "",
+      "title": "",
+      "id": 26704,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Johnny Long",
+      "updated_at": "2018-08-06T03:26+0000",
+      "description": "",
+      "title": "",
+      "id": 26705,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Omar Santos ",
+      "updated_at": "2018-08-06T03:26+0000",
+      "description": "",
+      "title": "",
+      "id": 26706,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Ron Taylor",
+      "updated_at": "2018-08-06T03:45+0000",
+      "description": "",
+      "title": "",
+      "id": 26707,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Harri Hursti",
+      "updated_at": "2018-08-06T04:03+0000",
+      "description": "",
+      "title": "",
+      "id": 26708,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Robert Karas",
+      "updated_at": "2018-08-06T04:04+0000",
+      "description": "Director, NCATS, Office of Cybersecurity and\r\nCommunications, Department of Homeland Security",
+      "title": "",
+      "id": 26709,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "J. Alex Halderman",
+      "updated_at": "2018-08-06T04:05+0000",
+      "description": "Professor of Computer Science &\r\nEngineering, University of Michigan; Director, University of\r\nMichigan Center for Computer Security and Society",
+      "title": "",
+      "id": 26710,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Carsten Schurmann",
+      "updated_at": "2018-08-06T04:05+0000",
+      "description": "Associate Professor, Member of the\r\nProgramming, Logics , and Semantics Group (PLS), IT\r\nUniversity of Copenhagen",
+      "title": "",
+      "id": 26711,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Margaret MacAlpine",
+      "updated_at": "2018-08-06T04:05+0000",
+      "description": "Founding Partner, Nordic Innovation Labs",
+      "title": "",
+      "id": 26712,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Joseph Kiniry",
+      "updated_at": "2018-08-06T04:06+0000",
+      "description": "Joseph Kiniry, Principal Scientist, Galois, Inc.; Principled CEO and Chief Scientist, Free & Fair",
+      "title": "",
+      "id": 26713,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Matt Blaze",
+      "updated_at": "2018-08-06T04:07+0000",
+      "description": "Co-Organizer, DEFCON Voting Village",
+      "title": "",
+      "id": 26714,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Mark Mager",
+      "updated_at": "2018-08-06T05:07+0000",
+      "description": "Throughout his career in software engineering and computer security, Mark has served in prominent technical leadership roles in the research and development of advanced computer network operations tools and has provided malware analysis and reverse engineering subject matter expertise to a diverse range of government and commercial clients in the Washington, D.C. metropolitan area.\r\n\r\n",
+      "title": "",
+      "id": 26715,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Rob Brandon",
+      "updated_at": "2018-08-06T05:06+0000",
+      "description": "Rob is a threat hunter and data scientist with Booz Allen Hamilton\u2019s Dark Labs group. He has over 20 years of experience in the tech industry and holds a PhD in computer science from the University of Maryland, Baltimore County. His hobbies include studying the ways that complex systems fall apart and building machines that do his thinking for him so that he can spend more time brewing beer and playing bass.\r\n\r\n",
+      "title": "",
+      "id": 26716,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Mansour Ahmadi",
+      "updated_at": "2018-08-06T05:03+0000",
+      "description": "I am a postdoctoral Research Associate at the Northeastern University. I achieved my Ph.D. from the University of Cagliari. I am co-author of more than 10 research papers mostly about the application of machine learning for malware classification. Two of my works received awards from Kaspersky, and the Anti-Virus I developed received media coverage.",
+      "title": "",
+      "id": 26717,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Fedor Sakharov",
+      "updated_at": "2018-08-06T05:03+0000",
+      "description": "Fedor is a software developer from Moscow, Russia. He takes interest in various aspects of low-level programming and information security. For some time he has contributed to opensource reverse-engineering framework radare2, his diploma thesis is about transparent application CFG control in runtime and he has a solid experience with Linux kernel programming, drivers as well as kernel subsystems. That\u2019s not all, since recently he leads the security-focused machine learning research at Positive Technologies.\u201d\r\n\r\n",
+      "title": "",
+      "id": 26718,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Sebastian Garcia",
+      "updated_at": "2018-08-06T05:10+0000",
+      "description": "Sebastian is a malware researcher and security teacher that has extensive experience in machine learning applied on network traffic. He created the Stratosphere IPS project, the first machine learning-based, free-software IPS. Its goal its to protect the civil society. As a researcher in the Artificial Intelligence group of the Czech Technical University in Prague, he believes that free software and machine learning tools can help better protect users from the abuse of their digital rights. He has been teaching in several countries and Universities and working on penetration testing for both corporations and governments. He was lucky enough to talk and give workshops in CCC, BSides Budapest, Ekoparty, DeepSec, Hacktivity, Botconf, Hacklu, InBot, SecuritySessions, ECAI, CitizenLab, ArgenCor, Free Software Foundation Europe, VirusBulletin, BSides Vienna, HITB Singapore, CACIC, etc. As a co-founder of the MatesLab hackspace he worked on honeypots, malware detection, distributed scanning (creator of dnmap) keystroke dynamics, Bluetooth analysis, privacy protection, intruder detection, robotics, microphone detection with SDR (Salamandra) and biohacking. He is also a proud co-founder of the Independent Fund for Women in Tech.\r\n\r\n",
+      "title": "",
+      "id": 26719,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "dj beep code",
+      "updated_at": "2018-08-06T05:09+0000",
+      "description": "With a BS in Applied Mathematics, and a MS in computer science, dj launched her career in engineering in working on the Thirty Meter Telescope project. Over the next 12 years, she specialized in remote sensing algorithms, culminating as the principle investigator in an Office of Naval Research contract on the classification of signals. In 2014 she took her breadth of machine learning knowledge in applied research to the IBM Watson group. Within IBM Watson she leads teams that create AI applications for business, and on the side hacks on The Watson Beat code base. She also plays bass guitar in a bad cover band.",
+      "title": "",
+      "id": 26720,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Evan Yang",
+      "updated_at": "2018-08-06T05:10+0000",
+      "description": "Evan Yang is a security researcher in Intel Privacy & Security Lab. He had worked on Windows and Android security related topics for past few years. His latest focus is around the deep learning application on Windows ransomware. He also had been a database architect and software developer to provide solutions and build applications in production.\r\n\r\n",
+      "title": "",
+      "id": 26721,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "infosecanon",
+      "updated_at": "2018-08-06T05:02+0000",
+      "description": "Heather Lawrence is a cyber data scientist working with NARI. She earned her undergraduate and MS degrees in Computer Engineering from the University of Central Florida focusing on computer security. She is pursuing a PhD in Computer Engineering from the University of Nebraska Lincoln. Her previous experience in cyber threat intelligence modeling, darknet marketplace research, IT/OT testbed development, data mining, and machine learning has led to several awards from capture-the-flag competitions including the National Collegiate Cyber Defense Competition, CSI CyberSEED, and SANS Netwars Tournament. Her current research interests focus on the application of machine learning to cybersecurity problem sets.\r\n\r\n",
+      "title": "",
+      "id": 26722,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Chris Gardner",
+      "updated_at": "2018-08-06T05:04+0000",
+      "description": "Chris recently graduated from UMBC, where he found a passion for malware analysis and binary exploitation. In his spare time he plays CTFs and bikes his way around Washington DC.\r\n\r\n",
+      "title": "",
+      "id": 26723,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Ivan Torroledo",
+      "updated_at": "2018-08-06T05:05+0000",
+      "description": "Ivan Torroledo is the lead data scientist in the Cyxtera Research organization. In this role, he develops and implements Machine and Deep Learning algorithms to enhance phishing detection, network security, fraud detection, and malware mitigation. Ivan is also highly interested in research on the application of Machine and Deep Learning in high energy physics and astrophysics. Before joining Cyxtera, he worked at the Central Bank of Colombia, applying high performance computing tools to monetary policy analysis. He is passionate about applying the most advanced scientific knowledge to cyber security industry. Ivan holds degrees in Economics and Physics.\r\n\r\n",
+      "title": "",
+      "id": 26724,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Ariel Herbert-Voss",
+      "updated_at": "2018-08-06T05:07+0000",
+      "description": "Ariel Herbert-Voss is a PhD student at Harvard University, where she specializes in deep learning, cybersecurity, and mathematical optimization. Like many machine learning researchers, she spent plenty of time thinking about deep learning from a computational neuroscience point of view without realizing that skulls make biological neural networks a lot less hackable than artificial ones. Now she thinks about securing deep learning algorithms and offensive applications.\r\n\r\n",
+      "title": "",
+      "id": 26725,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Kang Li",
+      "updated_at": "2018-08-06T05:05+0000",
+      "description": "Kang Li is a professor of computer science and the director of the Institute for Cybersecurity and Privacy at the University of Georgia.  His research results have been published at academic venues, such as IEEE S&P, ACM CCS and NDSS, as well as industrial conferences, such as BlackHat, SyScan, and ShmooCon.  Dr. Kang Li is the founder and mentor of multiple CTF security teams, including SecDawg and Blue-Lotus.  He was also a founder and player of the Team Disekt, a finalist team in the 2016 DARPA Cyber Grand Challenge.",
+      "title": "",
+      "id": 26726,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Ram Shankar Siva Kumar",
+      "updated_at": "2018-08-06T05:08+0000",
+      "description": "Ram Shankar is a Data Cowboy on the Azure Security Data Science team at Microsoft, where his primary focus is modeling massive amounts of security logs to surface malicious activity. His work has appeared in industry conferences like BlueHat, DerbyCon, MIRCon, Strata+Hadoop World Practice of Machine Learning as well as academic conferences like NIPS, IEEE Usenix, ACM - CCS. Ram graduated from Carnegie Mellon University with a Masters in Electrical and Computer Engineering. If you work in the intersection of Machine Learning and Security, he wants to learn about your work!\r\n\r\n",
+      "title": "",
+      "id": 26727,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Raphael Norwitz",
+      "updated_at": "2018-08-06T05:02+0000",
+      "description": "I am a recent graduate from Columbia Univserity with a BA in Computer Science and MS in Machine Learning, and an incoming engineer on the Acropolis Hypervisor team at Nutanix. I have experience with Linux Kernel development, data science and malware analysis. I have interned at Google, Drawbridge and Nimbledroid, and have published research with Columbia\u2019s Wireless and Mobile Networking lab. For fun, I like to be outdoors and train Brazilian Ju-Jitsu.\r\n\r\n",
+      "title": "",
+      "id": 26728,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "TonTon Huang",
+      "updated_at": "2018-08-06T05:04+0000",
+      "description": "Chia-Mu Yu received his Ph.D degree from National Taiwan University in 2012. He is currently an assistant professor at National Chung Hsing University, Taiwan. He was a research assistant in the Institute of Information Science, Academia Sinica. He was a visiting scholar at Harvard University, Imperial College London, Waseda University, and University of Padova. He was a postdoc researcher at IBM Thomas J. Watson Research Center. He serves as an associate editor of IEEE Access and Security and Communication Networks. His research interests include cloud storage security, IoT security, and differential privacy.\r\n\r\n",
+      "title": "",
+      "id": 26729,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Pranshu Bajpai",
+      "updated_at": "2018-08-06T05:02+0000",
+      "description": "Pranshu Bajpai is a security researcher working towards his PhD in Computer Science and Engineering at Michigan State University. His research interests lie in computer and network security, malware analysis, machine learning, privacy, digital forensics, and cyber crimes. In the past, he worked as an independent penetration tester for clients. He has authored several research papers in security magazines and journals and has served as a technical reviewer for books within the security domain. He enjoys working in the security industry and the challenge of testing new technologies for potential weaknesses. In his spare time, he likes solving CTF challenges while listening to classic rock. Connect with him on Twitter: @amirootyet\r\n\r\n",
+      "title": "",
+      "id": 26730,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Brian Genz",
+      "updated_at": "2018-08-06T05:06+0000",
+      "description": "Brian Genz is a Security Engineer focused on threat hunting, security data science, threat intelligence, and security orchestration, automation & response. He brings experience in the defense intelligence, manufacturing, and financial sectors in the areas of incident response, digital forensics, vulnerability management, and security architecture consulting. He has presented at Derby Con, Circle City Con, CypherCon, the ISSA International Conference, ISACA, InfraGard, and other venues. Brian also serves as adjunct faculty in the information security program at Milwaukee Area Technical College.\r\n\r\n",
+      "title": "",
+      "id": 26731,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Alex Long",
+      "updated_at": "2018-08-06T05:06+0000",
+      "description": "Alex Long is currently working as a programmer on the Sophos Datascience Team where he builds tools, scalable backends, and cool visualizations to support the team\u2019s research. His latest work has been on creating an online platform for researchers to publish, evaluate, and distribute their latest AI models, thus streamlining the process of productizing AI breakthroughs.",
+      "title": "",
+      "id": 26732,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Li Chen",
+      "updated_at": "2018-08-06T05:08+0000",
+      "description": "Li Chen is a data scientist and research scientist in the Security and Privacy Lab at Intel Labs, where she focuses on developing state-of-the-art robust machine learning and deep learning algorithms for security analytics including applications in malware detection and image classification in the adversarial setting. She is also the co-primary investigator (PI) and research lead at the Intel Science & Technology Center for Adversary-Resilient Security Analytics. She designs the roadmaps with Intel and Georgia Tech PIs to jointly meet both industrial and academic research objectives. She provides research direction and in-depth technical guidance to advance the ARSA research agenda. Prior to joining Intel Labs, Li was a Data Scientist in Software and Services Group at Intel, where she focused on developing advanced and principled machine learning methods for cloud workload characterization and cloud computing performance. Li Chen received her Ph.D. degree in Applied Mathematics and Statistics from Johns Hopkins University. Her research interests primarily include machine learning, statistical pattern recognition, random graph inference, data mining, and inference for high-dimensional data. Her research has been featured in a number of pioneering scientific and engineering journals and conferences including IEEE Transactions on Pattern Analysis and Machine Intelligence, Annals of Applied Statistics, Parallel Computing, AAAI Conference on Artificial Intelligence and SPIE. She has given more than 30 technical presentations, including at the Joint Statistical Meeting (the largest statistics conference in North America), AAAI conference, International Joint Conference on Artificial Intelligence, and Spring Research Conference on Statistics and Industry Technology.\r\n\r\n",
+      "title": "",
+      "id": 26733,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Matt Maisel",
+      "updated_at": "2018-08-06T05:03+0000",
+      "description": "Matt Maisel is a data scientist passionate about the intersection of machine learning, software engineering, and computer security domains. He\u2019s currently the manager of Security Data Science at Cylance. Matt recently architected a scalable malware analysis and modeling service used to process customer malware detections. He\u2019s worked in several organization within Cylance including research engineering as a software architect and consulting as the technical director of the incident response practice. Matt holds a M.S. in Computer Science with a focus in machine learning and distributed systems from Johns Hopkins University.\r\n\r\n",
+      "title": "",
+      "id": 26734,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "H0M3L3SS H@CK3R",
+      "updated_at": "2018-08-06T05:47+0000",
+      "description": "",
+      "title": "",
+      "id": 26735,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "CAPTAIN KAVEMAN",
+      "updated_at": "2018-08-06T05:48+0000",
+      "description": "",
+      "title": "",
+      "id": 26736,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "WINN SCHWARTAU",
+      "updated_at": "2018-08-06T05:48+0000",
+      "description": "",
+      "title": "",
+      "id": 26737,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "DARKSKYZ",
+      "updated_at": "2018-08-06T05:48+0000",
+      "description": "",
+      "title": "",
+      "id": 26738,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "LUKE FOX",
+      "updated_at": "2018-08-06T05:48+0000",
+      "description": "",
+      "title": "",
+      "id": 26739,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "WHITEFOX",
+      "updated_at": "2018-08-06T05:49+0000",
+      "description": "",
+      "title": "",
+      "id": 26740,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "IN2PLACES@ONCE",
+      "updated_at": "2018-08-06T05:49+0000",
+      "description": "",
+      "title": "",
+      "id": 26741,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Travis Hartman",
+      "updated_at": "2018-08-06T05:49+0000",
+      "description": "",
+      "title": "",
+      "id": 26742,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Chris Walach",
+      "updated_at": "2018-08-06T05:49+0000",
+      "description": "",
+      "title": "",
+      "id": 26743,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "MC DIVESTICK",
+      "updated_at": "2018-08-06T05:50+0000",
+      "description": "",
+      "title": "",
+      "id": 26744,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Shannon Morse",
+      "updated_at": "2018-08-06T14:46+0000",
+      "description": "Shannon Morse leads the largest information security podcast and video series on the web, educating countless individuals about security and privacy for the masses. With over 1500+ videos produced, Shannon has developed a career in infosec as an influencer and cheer captain for up and coming professionals. Using her years of experience creating a new job title that didn't exist a decade ago, Shannon shares her thoughts on personal branding in the infosec industry, not only to get the job you want, but to be respected as an equal in the community.\r\n\r\nShannon Morse is Hak5\u2019s host, producer, and lead editor. Her focus is on security, technology, and DIY for hackers and consumers alike. Shannon is an advocate for women in tech and she welcomes beginners with her easy to understand tutorials.",
+      "title": "",
+      "id": 26745,
+      "twitter": "@snubs",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Emily Crose ",
+      "updated_at": "2018-08-06T14:47+0000",
+      "description": "Emily Crose (Hunt Specialist at Ironnet Cybersecurity)\r\nEmily Crose is a network security professional and researcher with 10 years experience in the field. Emily has been a technical intelligence officer at the CIA, NSA, & Cyber Command and now works for a network security startup in the DC area.\r\n\r\nWhen Emily isn't working, she's the director of the Nemesis project, and she cares for her wife and two babies who she loves very much <3.",
+      "title": "",
+      "id": 26746,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jessica Hyde",
+      "updated_at": "2018-08-06T14:47+0000",
+      "description": "Jessica Hyde (Adjunct Professor / Director, Forensica at George Mason University / Magnet Forensics)\r\nJessica Hyde has experience performing computer and mobile device forensics in both the commercial and government sectors. Jessica has 14 years\u2019 technical experience and holds an MS in Computer Forensics from George Mason University. She is the Director of Forensics for Magnet Forensics (USA) and an Adjunct Professor at George Mason University where she teaches Mobile Forensics. She is currently working on a book on Digital Forensics for the Internet of Things anticipated for release at the end of 2018.",
+      "title": "",
+      "id": 26747,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Sam Bowne",
+      "updated_at": "2018-08-06T14:48+0000",
+      "description": "Sam Bowne (Instructor at CCSF)\r\nSam Bowne is an instructor at City College San Francisco, and has been teaching hacking and security classes for ten years. He has presented talks and workshops at Defcon, HOPE, RSA, BSidesLV, BSidesSF, and many other conferences. He has a CISSP and a PhD and is like, really smart.",
+      "title": "",
+      "id": 26748,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Elizabeth Biddlecome",
+      "updated_at": "2018-08-06T14:48+0000",
+      "description": "Elizabeth Biddlecome is a consultant and instructor, delivering technical training and mentorship to students and professionals. She leverages her enthusiasm for architecture, security, and code to design and implement comprehensive information security solutions for business needs. Elizabeth enjoys wielding everything from soldering irons to scripting languages in cybersecurity competitions, hackathons, and CTFs.",
+      "title": "",
+      "id": 26749,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Dylan James Smith",
+      "updated_at": "2018-08-06T14:48+0000",
+      "description": "Dylan James Smith has assisted Sam Bowne with classes as a tutor and TA and at hands-on workshops at DEF CON, RSA, B-Sides LV and other conferences. He has worked in and around the computer support and network administration industries since adolescence. Now he\u2019s old(er.) Currently tearing things apart and putting them back together and seeking opportunities to practice and teach \"the cybers\".",
+      "title": "",
+      "id": 26750,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Anne Oikarinen ",
+      "updated_at": "2018-08-06T14:48+0000",
+      "description": "Anne Oikarinen (Senior Security Consultant at Nixu Corporation)\r\nAnne Oikarinen is a Senior Security Consultant who works with security and software development teams to help them design and develop secure software. Anne believes that cyber security is an essential part of software quality.\r\n\r\nAfter working several years in a security software development team in various duties such as testing, test management, training, network design and product owner tasks, Anne focused her career fully on cyber security. In her current job at Nixu Corporation, Anne divides her time between hacking and threat analysis - although as a network geek, she will also ensure that your network architecture is secure. Anne also has experience on incident response and security awareness after working in the National Cyber Security Centre of Finland.\r\n\r\nAnne holds a Master of Science (Technology) degree in Communication Networks and Protocols from Tampere University of Technology, Finland.",
+      "title": "",
+      "id": 26751,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Elizabeth Wharton",
+      "updated_at": "2018-08-06T14:49+0000",
+      "description": "Elizabeth Wharton (Senior Assistant City Attorney at Atlanta's Aviation Group)\r\nElizabeth Wharton (@lawyerliz) is a technology-focused policy and transaction attorney specializing in the development and scale of drone, smart city, autonomous vehicle, and other emerging technologies. As a Senior Assistant City Attorney with the City of Atlanta\u2019s Aviation Group she advises Hartsfield-Jackson Atlanta International Airport and the City.\r\n\r\nElizabeth is host of the \u201cBuzz Off with Lawyer Liz\u201d radio show and \u201cLawyer Liz\u201d podcast and is a frequent speaker on IoT, drone, and aviation cybersecurity issues at conferences and events including SXSW 2018, ShmooCon, Airports Council International-North America, and GSMA Global Innovation Forum. She is President of the Atlanta Chapter of the Association for Unmanned Vehicle Systems International and a member of Business Executives for National Security. She serves on various national technology and information security regulatory working groups and is a mentor for CyberLaunch VC\u2019s startup accelerator. Elizabeth received her J.D. from Georgia State University College of Law and her B.A. from Virginia Tech.",
+      "title": "",
+      "id": 26752,
+      "twitter": "@lawyerliz",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Kathleen Smith",
+      "updated_at": "2018-08-06T14:50+0000",
+      "description": "Kathleen Smith (CMO at CyberSecJobs.Com)\r\nKathleen Smith, CMO, CyberSecJobs.Com/ClearedJobs.Net, has coached thousands of job seekers and employers on how to better connect and work together to achieve the mutual goal of employment. Kathleen presents at several security conferences each year on recruiting and job search. Some of the conferences she has presented at as a sole presenter or a moderator include BSidesLV, BSidesTampa, BSidesSATX, WIE IEEE, BSidesDE, FedCyber, Cyber912 and CyberSecureGov. Kathleen firmly believes that giving back is the best way to move forward and volunteers in many capacities; she is the Director, HireGround, BSidesLV\u2019s two day career track; Women in Cybersecurity, National Conference Planning Committee, Cyber912, Women in Cybersecurity Celebration Planning Committee and several fabulous BSides events around the country. Kathleen is well respected within the recruiting community and is President,recruitDC, the largest community of recruiters in the Washington DC area.",
+      "title": "",
+      "id": 26753,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Nicole Schwartz",
+      "updated_at": "2018-08-06T14:50+0000",
+      "description": "Nicole Schwartz (Scrum Master)\r\nAmazonV has more than twelve years experience facilitating Agile teams in various companies. She is currently a Scrum Master for an insurance company. She was formerly a Technical Product Manager at Rackspace since 2011, owner of The Devotea USA tea company, member of the board for Hacksburg (a local non-profit makerspace), and teacher for Let's Code Blacksburg and Hacksburg. She holds a Master of Science in Information Technology from Clarkson University. She has been attending hacker conventions for over half her life, enjoys home brewing, shooting, whiskey, rabbits and crafting. Yes she has the first TARDIS corset by her lovely friend MayFaire Moon that was turned into the BoobyTrap by WarCollar.",
+      "title": "",
+      "id": 26754,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Andrea Little Limbago",
+      "updated_at": "2018-08-06T14:50+0000",
+      "description": "Dr. Andrea Little Limbago is the Chief Social Scientist at Endgame, where she researches and writes on geopolitics and cybersecurity, and data science, while also directing the company\u2019s technical content. Her writing has been featured in numerous outlets, including Politico, the Hill, VentureBeat, Forbes, and Dark Reading, and she has presented at a range of security conferences (e.g., Enigma, DerbyCon BSidesLV), government conferences (e.g. SOCOM\u2019s Global Synchronization), and in academia (e.g. International Studies Association Annual Conference). She has previously worked in academia and at the Joint Warfare Analysis Center. While at JWAC, Andrea received the Command\u2019s top award for technical excellence for her analytic support across the Department of Defense. Andrea holds a PhD in Political Science from the University of Colorado at Boulder, where she taught a variety of international relations and foreign policy courses, and a bachelor\u2019s degree from Bowdoin College.",
+      "title": "",
+      "id": 26755,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Heidi Winter",
+      "updated_at": "2018-08-06T14:51+0000",
+      "description": "Heidi Winter (Senior Cyber Security Analyst)\r\nHeidi is an Australian security professional currently specialising in cyber security risk management, incident management and operations. She has worked in IT project management, system administration, telecommunications and compliance, before making the switch to cyber security, where she has had the opportunity to experience both government and enterprise environments. She has a strong interest in offensive and deceptive security projects and has recently been delving into malware analysis and cyber threat intel. While also being a self-declared perpetual n00b, Heidi spends her time giving back to the infosec community by volunteering at conferences across Australia and New Zealand, organising meet ups and CTFs, and running various other community projects to educate young and old on the joys of the cybers. When all of that is done, she uses whatever energy she has left to spam cat gifs on twitter.",
+      "title": "",
+      "id": 26756,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Jennifer Edmondson",
+      "updated_at": "2018-08-06T14:51+0000",
+      "description": "Jennifer Edmondson (Program Manager at Intel)\r\nJennifer Edmondson is a 23 year veteran of a Fortune 500 company and is currently an Information Security Program Manager for several large initiatives. Jen holds a BA in Anthropology and a minor in Psychology from the University of New Mexico. She has been most recently spotted in the spaces of a Cyber Security Data Lake, Application Security, Cryptography and Identity and Access. She's passionate about security and motivating her teams. Jen studies Penetration Testing for fun and is non apologetic about being from New Jersey. Due to the increased desire to understand the relationship between technology and behavior, she now gets the last laugh about how \u2018relevant\u2019 her degree is at her technology company.",
+      "title": "",
+      "id": 26757,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Makenzie Peterson",
+      "updated_at": "2018-08-06T14:52+0000",
+      "description": "Makenzie Peterson holds an MSc in Health Promotion & Education from the University of Utah with her masters\u2019 project focusing on assessing the leadership style and effectiveness of humanitarian, nonprofit, health programs in rural area Ghana. Her expertise focuses on the health and wellness field including being a sexual health specialist for an MIT/Harvard sponsored start-up in the Harvard Innovation Lab focusing on educating college students on health topics. Makenzie is a certified rape crisis counselor and was a community advocate and prevention specialist with the Boston Area Rape Crisis Center. Currently, Makenzie works at Hampshire College as the Coordinator for Wellness Programs and works with students around such topics including emotional and physical health, stress reduction, suicide prevention, sexual health, resilience, alcohol and substance use, and a variety of other topics.",
+      "title": "",
+      "id": 26758,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Keirsten Brager",
+      "updated_at": "2018-08-06T14:52+0000",
+      "description": "Keirsten Brager is a security technology lead at a Fortune 500 power utility company and was recently named one of Dark Reading\u2019s top women in security quietly changing the game. She is also the author Secure The InfoSec Bag: Six Figure Career Guide for Women in Security. She produced this guide to empower women with the strategies needed maximize their earning potential. Keirsten holds a M.S. in Cybersecurity from UMUC and several industry certifications, including the CISSP and CASP. As an active member of the Houston security community, Mrs. Brager has participated in a number of panels and public speaking engagements promoting strategies for success. In her free time, she loves sharing career advice on her blog (www.keirstenbrager.tech), cooking New Orleans food, and convincing women not to quit the industry.",
+      "title": "",
+      "id": 26759,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Kat Fitzgerald ",
+      "updated_at": "2018-08-06T14:52+0000",
+      "description": "Kat Fitzgerald (Principal Security Architect at Zebra Technologies)\r\nBased in Chicago and a natural creature of winter, you can typically find me sipping Casa Noble Anejo whilst simultaneously defending my systems using OSS, magic spells and Dancing Flamingos against a barrage of attackers.",
+      "title": "",
+      "id": 26760,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Kristen Tsolis",
+      "updated_at": "2018-08-06T14:53+0000",
+      "description": "Kristen Tsolis is Director of the RoboDojo, a Naval Postgraduate School open community venue where \u201ctinkerers\u201d of all abilities can explore and learn more about robotics and electronics. She is also a Lecturer in the Department of Defense Analysis where she teaches officers about geospatial analysis and computer network security. She may someday finish her PhD in Software Engineering.",
+      "title": "",
+      "id": 26761,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Elissa Shevinsky",
+      "updated_at": "2018-08-06T14:53+0000",
+      "description": "Elissa Shevinsky (Author at OR Books)\r\nElissa Shevinsky is a successful serial entrepreneur, best known for her work launching the crypto startups Brave ($35M ICO) and Glimpse (e2e encrypted messenger.) Shevinsky also helped launch Everyday Health (IPO) and Geekcorps (acquired.) Shevinsky is the Editor of \"Lean Out: The Struggle for Gender Equaity in Tech and Startup Culture.\" Elissa is COO and co-founder of SoHo Token Labs.",
+      "title": "",
+      "id": 26762,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Lidia Giuliano",
+      "updated_at": "2018-08-06T14:53+0000",
+      "description": "Lidia Giuliano (Information Security Professional)\r\nLidia Giuliano has 15 years\u2019 experience in Information Security. She has strong interest in vulnerability management, data security and malware analysis with a focus on defensive security. She holds a BAppSci in CS and a MAppSci in IT from RMIT University in Melbourne Australia. In her personal time, she enjoys mentoring for FiTT Australia and AWSN, being involved in community activities and personal security research.",
+      "title": "",
+      "id": 26763,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Evelyn Evergreene",
+      "updated_at": "2018-08-06T14:54+0000",
+      "description": "Evelyn Evergreene (Internal Devops support admin at Evernym, Sovrin Foundation)\r\nI am a self-taught hacker, and IT professional with 8 years of professional experience. I'm excited to work for Evernym, and the Sovrin foundation to train my knowledge of encryption, distributed computing and blockchain architecture.I like to work with the Sovrin foundation in bringing strong distributed cryptographic architecture to the public for everyone.",
+      "title": "",
+      "id": 26764,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Tanya Janca",
+      "updated_at": "2018-08-06T14:54+0000",
+      "description": "Tanya Janca (Senior Cloud Developer Advocate at Microsoft)\r\nTanya Janca is a senior cloud advocate for Microsoft, specializing in application security; evangelizing software security and advocating for developers through public speaking, her open source project OWASP DevSlop, and various forms of teaching via workshops, blogs and community events. As an ethical hacker, OWASP Project and Chapter Leader, software developer, effective altruist and professional computer geek of 20+ years, she is a person who is truly fascinated by the \u2018science\u2019 of computer science.",
+      "title": "",
+      "id": 26765,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Amanda Berlin",
+      "updated_at": "2018-08-06T14:55+0000",
+      "description": "Amanda Berlin is a Sr. Security Analyst for a consulting firm in Southern Michigan. She is the author for a Blue Team best practices book called \"Defensive Security Handbook: Best Practices for Securing Infrastructure\u201d with Lee Brotherston through O'Reilly Media. She is a co-host on the Brakeing Down Security podcast and writes for several blogs. She has spent over a decade in different areas of technology and sectors providing infrastructure support, triage, and design. Amanda has been involved in implementing a secure PCI DSS process and HIPAA compliance as well as building a comprehensive phishing and awards-based user education program.\r\n\r\nAmanda is an avid volunteer and has also presented at a large number of conventions, meetings and industry events. Some examples of these are: DerbyCon, O\u2019Reilly Security, GrrCon, and DEFCON. While she doesn't have the credentials or notoriety that others might have, she hopes to make up for it with her wit, sense of humor, and knack for catching on quick to new technologies.",
+      "title": "",
+      "id": 26766,
+      "twitter": "@infosystir",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Rebecca Long ",
+      "updated_at": "2018-08-06T14:56+0000",
+      "description": "Rebecca Long (President / Founder at Future Ada)\r\nRebecca Long is a software engineer with 15 years experience focusing on quality assurance and devops at a cyber-risk assessment company in Spokane, Washington. She holds undergraduate and master's degrees in computer science with her thesis on social engineering and phishing within a financial institution. While having been a leader in the Spokane tech community for most of the last decade, in 2018 she finally launched her dream of a non-profit called Future Ada which supports and advocates for women and non-binaries in STEAM (science, technology, engineering, art, and mathematics). She lives with two cats, who are the true masters of the household.",
+      "title": "",
+      "id": 26767,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Kate Brew",
+      "updated_at": "2018-08-06T14:57+0000",
+      "description": "Kate Brew (Editor of Blog at AlienVault)\r\nKate Brew has over 15 years experience in product management and marketing, primarily in information security. She's been the editor of AlienVault's corporate blog for the past 4 years, and has volunteered for OWASP and LASCON for the past 4 years as well.",
+      "title": "",
+      "id": 26768,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Dena Haritos Tsamitis ",
+      "updated_at": "2018-08-06T14:57+0000",
+      "description": "Dena Haritos Tsamitis (Director, Information Networking Institute; Barbara Lazarus Professor in Information Networking; Founding Director, Education, Training and Outreach, Carnegie Mellon Cylab at Information Networking Institute, Carnegie Mellon University)\r\nDr. Dena Haritos Tsamitis has led the College of Engineering\u2019s Information Networking Institute (INI) at Carnegie Mellon University (CMU) since 2004. She is the child of Greek immigrants, raised to marry and have babies, not have a professional career. Instead, Dena became the first in her family to attend college and followed her dreams as a single mother of three working full-time while pursuing her education.\r\n\r\nDena joined CMU in 2000, serving first as the INI\u2019s associate director in 2002 before assuming the role of director in 2004. As the institute director, she leads the INI\u2019s master\u2019s degree programs in information networking, security and mobility. Her efforts have touched the lives of over 1,800 INI alumni worldwide, prepared the next generation of STEM professionals and created a welcoming and diverse community at CMU.\r\n\r\nFor her full bio, please visit: https://www.cmu.edu/ini/about/team/tsamitis.html",
+      "title": "",
+      "id": 26769,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Manju Mude",
+      "updated_at": "2018-08-06T14:57+0000",
+      "description": "Manju Mude (Head of Security Engagement at Oath)\r\nManju Mude is an industry Security leader with nearly 20 years of experience in building information security, risk management frameworks and vulnerability reduction programs. She is a \u201cParanoid\u201d Security Leader at Oath, where she helps lead an essential security team defend against adversaries to protect billions of users. Prior to joining Oath, Manju held several leadership positions, including Chief Security Officer of Splunk, Security Leader at Apple, RSA, and Bank of America.",
+      "title": "",
+      "id": 26770,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Leila Powell ",
+      "updated_at": "2018-08-06T14:57+0000",
+      "description": "Leila Powell (Security Data Scientist at Panaseer)\r\nI'm a data scientist working in security. I used to use supercomputers to study the evolution of galaxies as an astrophysicist. Now I tackle more down-to-earth challenges, helping companies use different data sets to understand and address security risk. As part of the team at Panaseer (a London-based security start up), I work with security functions in global financial firms, applying data science to help solve strategic and operational challenges.\r\n\r\nWhen I joined the infosec industry ~3 years ago and attended events where there were often just one or two other women I found it incredibly disappointing \u2013 so these days I am proactive in trying to redress the balance. This involves trying to be visible as a woman in security and communicate what I do, as well as working to drive in-house diversity initiatives and build an inclusive culture with my colleagues at Panaseer.",
+      "title": "",
+      "id": 26771,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Sarah Gibson ",
+      "updated_at": "2018-08-06T14:58+0000",
+      "description": "Sarah Gibson (Senior Application Security Consultant at Veracode)\r\nSarah Gibson is an Application Security Consultant at Veracode, where she helps developers fix their security findings, and better understand the security posture of their applications.",
+      "title": "",
+      "id": 26772,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Saleema Syed",
+      "updated_at": "2018-08-06T14:58+0000",
+      "description": "Saleema Syed (Director - Business Applications at Duo Security)\r\nSaleema Syed is the Director of Business Services at Duo Security. She has over 18 years of experience in the business consultation and tech industry, and focuses on sales, go-to-market strategies, product development and IT transformations for the information security industry. Saleema Syed is the Director of Business Services at Duo Security. She has over 18 years of experience in the business consultation and tech industry, and focuses on sales, go-to-market strategies, product development and IT transformations for the information security industry. She has also led various community reach programs in the Dallas and Fort Worth area to promote cyber security awareness for children. Saleema has her Instrumentation and Controls Engineering Degree. She is also pursuing her Executive MBA at SMU COX business school - Dallas.",
+      "title": "",
+      "id": 26773,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Fahmida Rashid",
+      "updated_at": "2018-08-06T14:58+0000",
+      "description": "Fahmida Rashid (Senior Managing Editor at Decipher)",
+      "title": "",
+      "id": 26774,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Marcelle Lee",
+      "updated_at": "2018-08-06T14:59+0000",
+      "description": "Marcelle Lee (Threat Researcher at LookingGlass Cyber Solutions)\r\nMarcelle Lee is a threat researcher with LookingGlass Cyber Solutions, an adjunct professor in digital forensics and network security, and she also provides security consulting and training services through her company, Fractal Security Group, LLC. She is involved with many industry organizations, working groups, and boards, including the Women\u2019s Society of Cyberjutsu, the NIST Cyber Competitions Working Group, and the ISACA CSX Certification Task Force.\r\nMarcelle has earned the CISSP, CSX-P, GCFA, GCIA, GCIH, GPEN, GISF, GSEC, GCCC, C|EH, CCNA, Security+, Network+, and ACE industry certifications. She holds four degrees, including a master\u2019s degree in cybersecurity. In 2016 she received the Chesapeake Regional Tech Council Women in Tech (WIT) Award. Marcelle frequently presents at conferences and training events, and is an active volunteer in the cybersecurity community.",
+      "title": "",
+      "id": 26775,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Esha Kanekar",
+      "updated_at": "2018-08-06T14:59+0000",
+      "description": "Esha Kanekar (Senior Technical Program Manager at Netflix)\r\nEsha Kanekar is a Senior Technical Program Manager at Netflix, where she helps the Product and Application Security team build security programs and drive large cross-functional security initiatives organization wide. Previously, she has held a variety of roles including as a security consultant with Cigital, leading the Application Security team with NVIDIA, and managing vendor assessments and other large scale data security initiatives with LinkedIn. With 10 years in security, Esha has a wide range of experience including running penetration tests, vulnerability management, implementing security solutions (static and dynamic analysis tools), and program management.",
+      "title": "",
+      "id": 26776,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Scott Behrens",
+      "updated_at": "2018-08-06T14:59+0000",
+      "description": "Scott Behrens (Senior Application Security Engineer at Netflix)\r\nScott Behrens is a Senior Application Security engineer for Netflix. Before Netflix, Scott worked as a senior security consultant at Neohapsis (Cisco) and as an adjunct professor at DePaul University. Scott's expertise lies in application security, security automation, and penetration testing. As an avid coder and researcher, he has contributed to many open source tools for both attack and defense. Scott has presented security research at DEF CON, DerbyCon, Shakacon, ShmooCon, SOURCE Boston, OWASP AppSec USA, Security B-sides Chicago, and many other conferences.",
+      "title": "",
+      "id": 26777,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Rowan Cota",
+      "updated_at": "2018-08-06T14:59+0000",
+      "description": "Rowan Cota (Site Reliability Engineer at BuzzFeed)\r\nRowan is a Site Reliability Engineer at BuzzFeed. When she's not provisioning infrastructure, helping service owners, or arguing about dress colors (#TeamBlackAndBlue) she's an award-winning pen and paper roleplaying game designer. While she's currently focused on observability, she's always thinking about how to capture new perspectives and ideas, and how to secure the things she's building.",
+      "title": "",
+      "id": 26778,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "MaraJade",
+      "updated_at": "2018-08-07T18:46+0000",
+      "description": "",
+      "title": "",
+      "id": 26779,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "B1un7",
+      "updated_at": "2018-08-07T18:46+0000",
+      "description": "",
+      "title": "",
+      "id": 26780,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "TwinkleTwinkle",
+      "updated_at": "2018-08-07T18:47+0000",
+      "description": "",
+      "title": "",
+      "id": 26781,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Keith Howell",
+      "updated_at": "2018-08-08T18:58+0000",
+      "description": "",
+      "title": "",
+      "id": 26782,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Preston Thomas",
+      "updated_at": "2018-08-08T18:58+0000",
+      "description": "",
+      "title": "",
+      "id": 26783,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Michael Rich",
+      "updated_at": "2018-08-08T18:58+0000",
+      "description": "",
+      "title": "",
+      "id": 26784,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Max Power",
+      "updated_at": "2018-08-08T18:59+0000",
+      "description": "",
+      "title": "",
+      "id": 26785,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Deviant Ollam",
+      "updated_at": "2018-08-08T18:59+0000",
+      "description": "",
+      "title": "",
+      "id": 26786,
+      "twitter": "",
+      "conference": "DC26",
+      "link": ""
+    },
+    {
+      "name": "Matt Ploessel",
+      "updated_at": "2018-08-08T18:59+0000",
+      "description": "",
+      "title": "",
+      "id": 26787,
       "twitter": "",
       "conference": "DC26",
       "link": ""

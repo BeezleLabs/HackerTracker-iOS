@@ -1,48 +1,134 @@
 {
-  "updated_at": "2018-07-01T19:16+0000",
+  "updated_at": "2018-08-31T16:47+0000",
   "conferences": [
     {
-      "event_types": {
-        "link": "https://hackertracker.app/DC26/event_types.json",
-        "updated_at": "2018-08-02T06:28+0000"
+      "name": "DEFCON 26",
+      "end_date": "2018-08-12",
+      "speakers": {
+        "updated_at": "2018-08-08T18:59+0000",
+        "link": "https://hackertracker.app/DC26/speakers.json"
       },
-      "start_date": "2018-08-09",
+      "notifications": {
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/DC26/notifications.json"
+      },
+      "updated_at": "2018-07-01T19:16+0000",
       "code": "DC26",
-      "events": {
-        "link": "https://hackertracker.app/DC26/events.json",
-        "updated_at": "2018-08-04T00:09+0000"
-      },
-      "description": "DEF CON is one of the oldest continuously running hacker conventions around, and also one of the largest.",
-      "articles": {
-        "link": "https://hackertracker.app/DC26/articles.json",
-        "updated_at": "2018-07-12T20:39+0000"
+      "locations": {
+        "updated_at": "2018-08-09T20:52+0000",
+        "link": "https://hackertracker.app/DC26/locations.json"
       },
       "id": 1,
-      "link": "https://defcon.org/html/defcon-26/dc-26-index.html",
-      "faqs": {
-        "link": "https://hackertracker.app/DC26/faqs.json",
-        "updated_at": "2018-07-03T05:52+0000"
+      "start_date": "2018-08-09",
+      "event_types": {
+        "updated_at": "2018-08-02T06:28+0000",
+        "link": "https://hackertracker.app/DC26/event_types.json"
       },
-      "speakers": {
-        "link": "https://hackertracker.app/DC26/speakers.json",
-        "updated_at": "2018-08-03T15:58+0000"
+      "events": {
+        "updated_at": "2018-08-12T18:00+0000",
+        "link": "https://hackertracker.app/DC26/events.json"
+      },
+      "articles": {
+        "updated_at": "2018-08-11T16:52+0000",
+        "link": "https://hackertracker.app/DC26/articles.json"
+      },
+      "vendors": {
+        "updated_at": "2018-08-06T09:22+0000",
+        "link": "https://hackertracker.app/DC26/vendors.json"
+      },
+      "description": "DEF CON is one of the oldest continuously running hacker conventions around, and also one of the largest.",
+      "faqs": {
+        "updated_at": "2018-07-03T05:52+0000",
+        "link": "https://hackertracker.app/DC26/faqs.json"
       },
       "timezone": "America/Los_Angeles",
-      "end_date": "2018-08-12",
+      "link": "https://defcon.org/html/defcon-26/dc-26-index.html"
+    },
+    {
+      "name": "DerbyCon 8.0",
+      "end_date": "2018-10-07",
+      "speakers": {
+        "updated_at": "2018-08-31T19:01+0000",
+        "link": "https://hackertracker.app/DC80/speakers.json"
+      },
       "notifications": {
-        "link": "https://hackertracker.app/DC26/notifications.json",
-        "updated_at": "2018-01-01T01:00+0000"
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/DC80/notifications.json"
       },
+      "updated_at": "2018-08-21T19:09+0000",
+      "code": "DC80",
       "locations": {
-        "link": "https://hackertracker.app/DC26/locations.json",
-        "updated_at": "2018-08-03T15:28+0000"
+        "updated_at": "2018-08-31T19:00+0000",
+        "link": "https://hackertracker.app/DC80/locations.json"
       },
-      "name": "DEFCON 26",
-      "updated_at": "2018-07-01T19:16+0000",
+      "id": 2,
+      "start_date": "2018-10-03",
+      "event_types": {
+        "updated_at": "2018-08-31T19:02+0000",
+        "link": "https://hackertracker.app/DC80/event_types.json"
+      },
+      "events": {
+        "updated_at": "2018-08-31T19:07+0000",
+        "link": "https://hackertracker.app/DC80/events.json"
+      },
+      "articles": {
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/DC80/articles.json"
+      },
       "vendors": {
-        "link": "https://hackertracker.app/DC26/vendors.json",
-        "updated_at": "2018-08-03T00:03+0000"
-      }
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/DC80/vendors.json"
+      },
+      "description": "DerbyCon 8.0\u2019s theme this year is \u201cEvolution\u201d. We picked evolution this year partially because of DerbyCon evolving (changing) and moving to a new venue but also (and primarily) because of the evolution of the information security industry and how it is always changing and our desire to try to make it better. Evolution to us, is simply and exactly how it is defined: the gradual development of something, especially from a simple to a more complex form. The information security space started from something simple, and is becoming more and more complex each and everyday. How we handle the complexities and tackle situations is all apart of how we grow as an industry, and DerbyCon is a place where anyone who is remotely interested or someone who is well established in information security can experience it.\r\n\r\nThe idea of DerbyCon started in a pizza shop in Louisville after a few of us thought how awesome it would be to create a conference in Louisville Kentucky. The 4th street live area was awesome and we had been to so many conferences that we felt we could make one where everyone was welcome. DerbyCon has and continues to be a conference put together and run by awesome people in the security industry and by its attendees. We believe that DerbyCon is a central location for everyone to come share their research \u2013 hang with friends \u2013 and meet new ones. We hope to see you this year",
+      "faqs": {
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/DC80/faqs.json"
+      },
+      "timezone": "America/New_York",
+      "link": "https://www.derbycon.com"
+    },
+    {
+      "name": "ToorCon 20",
+      "end_date": "2018-09-16",
+      "speakers": {
+        "updated_at": "2018-08-31T18:18+0000",
+        "link": "https://hackertracker.app/TC20/speakers.json"
+      },
+      "notifications": {
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/TC20/notifications.json"
+      },
+      "updated_at": "2018-08-31T16:47+0000",
+      "code": "TC20",
+      "locations": {
+        "updated_at": "2018-08-31T18:18+0000",
+        "link": "https://hackertracker.app/TC20/locations.json"
+      },
+      "id": 3,
+      "start_date": "2018-09-10",
+      "event_types": {
+        "updated_at": "2018-09-02T21:56+0000",
+        "link": "https://hackertracker.app/TC20/event_types.json"
+      },
+      "events": {
+        "updated_at": "2018-08-31T18:18+0000",
+        "link": "https://hackertracker.app/TC20/events.json"
+      },
+      "articles": {
+        "updated_at": "2018-09-02T22:00+0000",
+        "link": "https://hackertracker.app/TC20/articles.json"
+      },
+      "vendors": {
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/TC20/vendors.json"
+      },
+      "description": "",
+      "faqs": {
+        "updated_at": "2018-01-01T01:00+0000",
+        "link": "https://hackertracker.app/TC20/faqs.json"
+      },
+      "timezone": "America/Los_Angeles",
+      "link": "https://sandiego.toorcon.net"
     }
   ]
 }

@@ -22,8 +22,12 @@ class HTInitViewController: UIViewController {
         
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
+        let dfu = DateFormatterUtility.shared
+        if let tz = DataRequestManager(managedContext: context).getSelectedConference()?.timezone {
+            dfu.update(identifier: tz)
+        }
         
-        let dc26_update = DateFormatterUtility.yearMonthDayFormatter.date(from: "2018-07-01")
+        let dc26_update = dfu.yearMonthDayFormatter.date(from: "2018-07-01")
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
@@ -66,7 +70,6 @@ class HTInitViewController: UIViewController {
                 
                 let dataManager = DataImportManager(managedContext: context)
                 let requestManager = DataRequestManager(managedContext: context)
-                let dir: String = "DC26"
                 // If we are loading data, it's the initial load, so specify which conference we should load by the conference code
                 
                 let conferences_file = Bundle.main.path(forResource: "conferences", ofType: "json")!
@@ -77,19 +80,24 @@ class HTInitViewController: UIViewController {
                 } catch {
                     print("Failed to import conferences: \(error)")
                 }
-                let myCon = requestManager.getConference(dir)!
-                myCon.selected = true
+                // Pick the next upcoming conference as the initial display
+                if let myCon = requestManager.getConference("DC80") {
+                    myCon.selected = true
+                }
                 
-                for i in ["articles","event_types", "faqs", "locations", "notifications", "speakers", "vendors", "events"] {
-                    let a_file = Bundle.main.path(forResource: i, ofType: "json", inDirectory: dir)!
-                    let a_content = try! String(contentsOfFile: a_file)
-                    let a_data = a_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                    do {
-                        try dataManager.importData(data: a_data)
-                    } catch {
-                        print("Failed to import \(i): \(error)")
-                    }
+                // alright, initial load of defcon 26, toorcon xx, derbycon 8.0, shellcon.io
+                for d in ["DC26","TC20","DC80","SC02"] {
+                    for i in ["speakers","articles","event_types", "faqs", "locations", "notifications", "vendors", "events"] {
+                        let a_file = Bundle.main.path(forResource: i, ofType: "json", inDirectory: d)!
+                        let a_content = try! String(contentsOfFile: a_file)
+                        let a_data = a_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+                        do {
+                            try dataManager.importData(data: a_data)
+                        } catch {
+                            print("Failed to import \(i): \(error)")
+                        }
 
+                    }
                 }
                 
                 do {

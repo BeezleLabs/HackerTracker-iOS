@@ -81,6 +81,9 @@ class HTFAQTableViewController: UITableViewController {
     func loadFAQs() {
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"FAQ")
+        if let con = DataRequestManager(managedContext: getContext()).getSelectedConference() {
+            fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [con])
+        }
         fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
         fr.returnsObjectsAsFaults = false
         

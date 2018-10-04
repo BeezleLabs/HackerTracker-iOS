@@ -19,8 +19,9 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
 
     override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        let startofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 00:00:00 PDT")!
-        let endofDay: Date = DateFormatterUtility.yearMonthDayTimeFormatter.date(from: "\(dateString) 23:59:59 PDT")!
+        let dfu = DateFormatterUtility.shared
+        let startofDay: Date = dfu.yearMonthDayNoTimeZoneTimeFormatter.date(from: "\(dateString) 00:00:00")!
+        let endofDay: Date = dfu.yearMonthDayNoTimeZoneTimeFormatter.date(from: "\(dateString) 23:59:59")!
         
         if let con = DataRequestManager(managedContext: getContext()).getSelectedConference() {
             fr.predicate = NSPredicate(format: "start_date >= %@ AND start_date <= %@ AND starred == YES AND conference = %@", argumentArray: [startofDay, endofDay,con])

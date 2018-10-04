@@ -9,13 +9,14 @@
 import UIKit
 import SafariServices
 
-class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var twitterButton: UIButton!
     @IBOutlet weak var talkButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var vertStackView: UIStackView!
+    @IBOutlet weak var eventTableView: UITableView!
     
     var speaker: Speaker?
     
@@ -26,10 +27,12 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             nameLabel.text = n
             bioLabel.text = d
             if let events = speaker?.events?.allObjects {
-                if let e = events[0] as? Event {
+                if events.count > 0, let e = events[0] as? Event {
                     talkButton.titleLabel?.numberOfLines = 3
                     talkButton.titleLabel?.lineBreakMode = .byWordWrapping
                     talkButton.setTitle(e.title, for: UIControlState.normal)
+                } else {
+                    talkButton.isHidden = true
                 }
             }
             twitterButton.isHidden = true
@@ -39,10 +42,21 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
                     twitterButton.isHidden = false
                 }
             }
-            vertStackView.layoutSubviews()
+            
         }
+        
+        eventTableView.rowHeight = UITableViewAutomaticDimension
+        eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil),  forCellReuseIdentifier: "EventCell")
+        eventTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
 
-        // Do any additional setup after loading the view.
+        eventTableView.delegate = self
+        eventTableView.dataSource = self
+        eventTableView.backgroundColor = UIColor.clear
+        eventTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        eventTableView.reloadData()
+
+        vertStackView.layoutSubviews()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +76,9 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
         }
     }
     
-
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+    }
     
     // MARK: - Navigation
 
@@ -78,7 +94,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             }
             
             if let events = speaker?.events?.allObjects {
-                if let e = events[0] as? Event {
+                if events.count > 0, let e = events[0] as? Event {
                     dv.event = e
                 }
             }
@@ -86,5 +102,36 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             
         }
     }
+    
+    // Table Functions
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let c = speaker?.events?.allObjects.count {
+            return c
+        }
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let events = speaker?.events?.allObjects as? [Event], events.count > 0 {
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+            let event : Event = events[indexPath.row]
+            cell.bind(event: event)
+            return cell
+
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+            cell.bind(title: "No Events", desc: "No events for this speaker, check with the #hackertracker team")
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }

@@ -1,0 +1,29 @@
+{
+  "updated_at": "2018-08-31T18:18+0000",
+  "locations": [
+    {
+      "id": 28001,
+      "updated_at": "2018-08-31T18:18+0000",
+      "name": "Track 1",
+      "conference": "TC20"
+    },
+    {
+      "id": 28002,
+      "updated_at": "2018-08-31T18:18+0000",
+      "name": "Track 2",
+      "conference": "TC20"
+    },
+    {
+      "id": 28003,
+      "updated_at": "2018-08-31T18:18+0000",
+      "name": "Seminars",
+      "conference": "TC20"
+    },
+    {
+      "id": 28004,
+      "updated_at": "2018-08-31T18:18+0000",
+      "name": "Around The Con",
+      "conference": "TC20"
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "updated_at": "2018-08-31T18:18+0000",
+  "speakers": [
+    {
+      "id": 28001,
+      "name": "Ian Foster",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Ian enjoys researching systems and networking problems and solutions in an effort to make the world more secure. He has published research papers analyzing the new gTLD land rush and crawling and parsing most WHOIS records. From demonstrating how insecure aftermarket OBD \"dongles\" can be used to compromise and take over automobiles; to measuring the paths an email traverses online with encryption in an effort to increase integrity, authenticity, and confidentiality; and more. During the day Ian is a Security Engineer fighting for the users.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28004,
+      "name": "David Bryan - VideoMan",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "David M. N. Bryan is the Global Managing Consultant in charge of Technology with X-Force Red, IBM\u2019s elite security testing team. His responsibilities include establishing standardized tool sets and environments for project delivery, and delivering on pentest projects. \r\n\r\nDavid has over 17+ years of professional Information Security experience. From being a defender of security at a top ten bank, to securing the DEF CON network. David has been a participant in the information security community for 18+ years, first starting out as a DEF CON volunteer (Goon) - and now is on the board that runs Thotcon, a Chicago Information Security conference. For the last ten years David has been the attacker in many scenarios as a penetration tester covering: network, embedded, wireless, web applications, and physical security. David has presented at BlackHat, DEF CON, ToorCon, LayerOne, ToorCamp, BSides Events, and AppSecUSA. David lives in cold, but beautiful Minneapolis Minnesota.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28050,
+      "name": "Dylan",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "I work at Cruise Automation as a Senior Security Engineer. Recently I've spoken at Devops Day Boston and Bsides SF. I contribute a lot to the open source community, my <a href=\"https://github.com/dxa4481/truffleHog\" onmouseover=prompt(1)>github profile</a>",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28075,
+      "name": "Patrick Ventuzelo",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Patrick is a French security researcher working for Quoscient GmbH. He is mainly focused on Reverse Engineering and Vulnerability Research on various platforms with a strong interest on new research areas such as WebAssembly, Smart Contracts and Blockchain.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28077,
+      "name": "Pranshu Bajpai",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Pranshu Bajpai is a security researcher working towards his PhD in Computer Science and Engineering at Michigan State University. His research interests lie in computer and network security, malware analysis, digital forensics, and cyber crimes. In the past, he worked as a penetration tester. He has authored several papers in security magazines and journals and has served as a technical reviewer for books within the security domain. He has been an active speaker at industry and academic conferences and spoken at DEF CON, IEEE APWG eCrime conference, GrrCon, BSides and others.  He holds an MS in Information Security and an MBA in Marketing.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28079,
+      "name": "Soya Aoyama",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": " Soya Aoyama is security researcher at Fujitsu System Integration Laboratories Limited.\r\n Soya has been working for Fujitsu more than 20 years as software developer of Windows, and had been writing NDIS drivers, Bluetooth profiles, Winsock application, and more, and started security research about 3 years ago.\r\n Soya has gave presentation in AVTOKYO 2016 and BSides Las Vegas 2017 in the past.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28080,
+      "name": "Tom Samstag (tecknicaltom)",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Tom Samstag (tecknicaltom) is a Principal Security Engineer at Security Innovation in Seattle and member of the Neg9 CTF team. A Perl hacker and C programmer at heart, his interests tend to gravitate towards reverse engineering, exploitation, static analysis, and other bit-fu aspects of software and security. He enjoys attending hacker conferences and has not yet figured out how to do so as a full-time job.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28082,
+      "name": "hackimedes",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Morgan Roman works on the application security team at DocuSign. He started his career writing integration tests for web applications and APIs as a software development engineer in test. He is passionate about finding ways to automate security testing and make it part of the deployment process.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28083,
+      "name": "Josh Stroschein",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Josh Stroschein is an Assistant Professor in Cyber Operations in the Beacom college. He holds a DSc in Cyber Security from Dakota State University. Josh has spoken about reverse engineering/malware analysis at top security conferences and has also been a trainer in application security, malware analysis and software exploitation at Black Hat USA, DerbyCon and Hack-in-the-Box.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28084,
+      "name": "Zach Miller",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28085,
+      "name": "funsized",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "funsized is an engineer by day, and a chaos demon by night. He loves cryptography, circuit design, robotics and metal music. He has been helping with tamper evident villages at west coast cons for many years, and now helps organize ShellCon. ",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28086,
+      "name": "Alex",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28087,
+      "name": "Joe Slowik",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Joe Slowik is an avid Blue Teamer and Threat Hunter, currently fighting ICS threats with Dragos.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28088,
+      "name": "Rick Ramgattie",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Rick Ramgattie is a Security Analyst at Independent Security Evaluators (ISE), where he conducts high-end, custom security assessments of computer hardware,  software products, and manages a team of security researchers. Rick recognizes that it isn't all that easy to get into the information security community. In a self-taught manner he strived to learn what he could. Now, as someone who appreciates the art of reverse engineering, he has taken part in hands-on security assessments of complex systems, IoT devices, and many different native and mobile applications. Rick enjoys reverse engineering, occasional CTFs, and reading.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28089,
+      "name": "irish.masms",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "IrishMASMS is an old school hacker, fighting the good fight in Computer Network Defense (CND)/blue team efforts for more than 18 years. He has been lurking about since DEFCON 10, a panel member at HOPE 5, a presenter at a couple of Notacons, and a few other conferences where it may be hard to remember what really occurred. Having progressed through the ranks from a Security Operations Center (SOC) analyst to manager and director of Information Security risk management programs, he has experienced the wide opportunities for pain in our industry \u2014 and desires to help improve rather than perpetuate, nurture rather than exclude. (Is this where we mention cyberderp?)\r\n",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28090,
+      "name": "Aditya K Sood",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Aditya K. Sood is an information security practitioner and researcher by profession. He has research interests in malware automation and analysis, cloud security, secure software design, and cybercrime research. He is also a founder of SecNiche Security Labs, an independent web portal for sharing research with the security community. Currently, he directs the security efforts for the cloud security division at Symantec. He obtained his Ph.D. from Michigan State University in computer sciences.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28091,
+      "name": "Joshua Meyer",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Joshua Meyer has had a passion for technology since an early age. Growing up in a small town in Maryland, Josh spent a lot of his time learning about different computing concepts. Josh graduated from University of Maryland, Baltimore County with a bachelors degree in computer science and likes to remark that he studied how to write code, but spends his days breaking software. Josh is an Associate Security Analyst at Independent Security Evaluators, a firm of security specialists that provide a wide range of services including custom security assessments and software development. ",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28093,
+      "name": "Jacob Thompson",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Jacob Thompson is a Principal Security Analyst for Independent Security Evaluators, where he specializes in high-end, custom security assessments of computer hardware and software products. With over 10 years\u2019 experience, Mr. Thompson has a propensity toward hands-on security assessment, and proficiencies in reverse engineering, DRM systems, cryptography, system and application security, and secure system design. Through his 6 years\u2019 work with ISE, Mr. Thompson has partaken in multiple major vulnerabilities and assessments, customer visits, and progress presentations. He has presented his research at DEF CON, BSides DC, DERBYCON, and ToorCon.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28094,
+      "name": "Sham",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "appsec ",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28099,
+      "name": "Anshuman Bhartiya",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Anshuman Bhartiya has been in the IT industry for about 11 years now and has had the opportunity to wear multiple hats. Anshuman has been a web developer, cloud consultant, systems engineer and security engineer to name a few. Anshuman has a varied skillset and he likes to tinker with the latest technology coming up with innovative solutions for difficult and challenging problems. Security, Automation and Innovation are some things he is really passionate about and he firmly believes in sharing knowledge and the Open Source community. You can find some of Anshuman's work at his Github here - https://github.com/anshumanbh where he has open sourced tools such as \u201cgit-all-secrets\u201d, \u201cbrutesubs\u201d, \u201ckubebot\u201d, \u201ctkosubs\u201d, etc. Anshuman has also participated and submitted vulnerabilities to some of the top bug bounty platforms like Bugcrowd, HackerOne and Synack.\r\n\r\nTwitter - @anshuman_bh\r\nWebsite - www.anshumanbhartiya.com\r\nLinkedIn - https://www.linkedin.com/in/anshumanbhartiya/ ",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28100,
+      "name": "Tom Arnold",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "The presenter has over 20-years in digital forensic investigation and is specifically training as a network forensic examiner. He's presented cases to the US FBI, US Secret Service, UK NCA, and Interpol for action.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28101,
+      "name": "Dave Dittrich",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28102,
+      "name": "zv",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "A tri-brained unix philosophy radical.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28104,
+      "name": "Rob Glew",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Rob Glew is a Senior Security Consultant at NCC Group in Chicago. He has been exploring security in a wide variety of areas for the last 5 years and has most recently begun digging into the internals of Docker and other container platforms. He has developed tools to assist in performing security audits for numerous types of applications and for fun enjoys working on reverse engineering challenges for security competitions.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28105,
+      "name": "Vikas Kumar",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Vikas Kumar is a Senior Security Consultant at NCC Group. His interests including low-level application security, containers, embedded security, and cryptography.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28106,
+      "name": "Gene Erik",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Gene Erik is a hacker with many variety interests spanning the gamut of hacking topic, including wireless networking, software defined radio, embedded device hacking, phone phreaking, application security, social engineering, and much more.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28111,
+      "name": "Jeff Dileo",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Jeff Dileo is a security consultant by day, and sometimes by night. He hacks on embedded systems, mobile apps and devices, web apps, and complicated things that don't have names. He also likes exotic candies.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28112,
+      "name": "Jay Beale",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Jay Beale created two tools used by hundreds of thousands of individuals, companies and governments, Bastille Linux and the Center for Internet Security's first Linux/UNIX scoring tool. He has led training classes on Linux security at the Black Hat, CanSecWest, RSA, and IDG conferences, as well as in private corporate training, since 2000. As an author, series editor and speaker, Jay has contributed to nine books and two columns and given roughly one hundred public talks. He is a co-founder, COO and CTO of the information security consulting company InGuardians.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28113,
+      "name": "Michael Wylie",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Michael Wylie, MBA, CISSP is the co-founder of Corporate Blue, an Information Systems and Security consulting firm that serves clients in their pursuit of mitigating cyber threats. In his role, Michael is responsible for delivering information assurance by means of vulnerability assessments, risk management, and training. Michael has developed and taught numerous courses for the Department of Defense, CSUN, Moorpark College, and clients around the world. Michael holds credentials from certifying bodies such as ISC2, Cisco, VMware, Dell, EC-Council, CompTIA, and more.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28114,
+      "name": "Steve Werby",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "I've been around the block - angel-funded dotcom era startup co-owner, independent security consultant, (CISO)^3, (enterprise security architect)^2, pen-tester, security product startup director, MSSP advisory services director. Virginia native who's been in San Diego a year. @stevewerby @todayininfosec @[OBFUSCATED] Eager and open to swapping stories and ideas at [barcon|lobbycon|hallwaycon].",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28115,
+      "name": "Ben Schmidt",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "I\u2019m CSO at PolySwarm, a security startup that is working to create a decentralized threat intelligence marketplace. My position requires I stay very current on the state of security in the space, and have talked previously on various smart contract vulnerabilities. This isn\u2019t a new interest as mine though; I\u2019ve been involved in cryptocurrency since 2009, pretty consistently with an eye towards security.",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28116,
+      "name": "Raghav Gurbaxani",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "",
+      "conference": "TC20",
+      "link": ""
+    },
+    {
+      "id": 28117,
+      "name": "Spencer Michaels",
+      "title": "",
+      "twitter": "",
+      "updated_at": "2018-08-31T18:18+0000",
+      "description": "Spencer Michaels is a Security Consultant at NCC Group, an information security firm specializing in application, network, and mobile security. At NCC, Spencer performs network and web application penetration testing and code review, as well as research into various low-level technologies. He specializes in virtualization, embedded systems and low-power RF protocols, with <a href=\"https://ieeexplore.ieee.org/document/7860527/\">his research on the latter</a> having been published in the proceedings of IEEE CNS 2016. In his spare time, Spencer enjoys speaking Mandarin and collecting obscure recordings of comically talentless opera singers.",
+      "conference": "TC20",
+      "link": ""
+    }
+  ]
+}

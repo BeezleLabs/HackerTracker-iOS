@@ -12,10 +12,14 @@ import CoreData
 class HTConferenceTableViewController: UITableViewController {
     
     var conferences: [Conference] = []
+    var selectCon: Conference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let c = DataRequestManager(managedContext: getContext()).getSelectedConference() {
+            selectCon = c
+        }
         self.loadConferences()
     }
 
@@ -36,6 +40,42 @@ class HTConferenceTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 68
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            let c = conferences[indexPath.row]
+            if cell.accessoryType == .checkmark, c == selectCon {
+                //NSLog("already checked")
+            } else {
+                selectConference(con: c)
+                //cell.accessoryType = .checkmark
+            }
+        }
+    }
+    
+    func selectConference(con: Conference) {
+        for i in 0...(conferences.count-1) {
+            let c = conferences[i]
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = tableView.cellForRow(at: indexPath) as! ConferenceCell
+            if c == con {
+                c.selected = true
+                //print("trying to update tz to \(c.timezone!)")
+                DateFormatterUtility.shared.update(identifier: c.timezone ?? "America/Los_Angeles")
+                cell.accessoryType = .checkmark
+                cell.color.isHidden = false
+            } else {
+                c.selected = false
+                cell.accessoryType = .none
+                cell.color.isHidden = true
+            }
+        }
+        do {
+            try getContext().save()
+        } catch {
+            NSLog("couldn't save context")
+        }
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,8 +86,12 @@ class HTConferenceTableViewController: UITableViewController {
         c = self.conferences[indexPath.row]
         cell.setConference(conference: c)
         
-        if conferences.count == 1 {
-            cell.conSelected.isEnabled = false
+        if let s = selectCon, c == s {
+            cell.accessoryType = .checkmark
+            cell.color.isHidden = false
+        } else {
+            cell.accessoryType = .none
+            cell.color.isHidden = true
         }
 
         return cell

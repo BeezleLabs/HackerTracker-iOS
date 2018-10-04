@@ -1,34 +1,34 @@
 {
-  "updated_at": "2018-08-03T15:28+0000",
+  "updated_at": "2018-08-09T20:52+0000",
   "locations": [
     {
-      "name": "Track 2 - Octavius - Caesar's",
+      "name": "Track 2 - Caesar's",
       "id": 26001,
-      "updated_at": "2018-08-03T15:21+0000",
+      "updated_at": "2018-08-05T16:56+0000",
       "conference": "DC26"
     },
     {
-      "name": "101 Track - Sunset - Flamingo",
+      "name": "101 Track - Flamingo",
       "id": 26002,
-      "updated_at": "2018-08-02T22:42+0000",
+      "updated_at": "2018-08-05T16:57+0000",
       "conference": "DC26"
     },
     {
-      "name": "Track 1 - Palace - Caesar's",
+      "name": "Track 1 - Caesar's",
       "id": 26003,
-      "updated_at": "2018-08-02T22:42+0000",
+      "updated_at": "2018-08-05T16:57+0000",
       "conference": "DC26"
     },
     {
-      "name": "Track 3 - Forum - Caesar's",
+      "name": "Track 3 - Caesar's",
       "id": 26004,
-      "updated_at": "2018-08-02T22:42+0000",
+      "updated_at": "2018-08-05T16:57+0000",
       "conference": "DC26"
     },
     {
-      "name": "Location:TBA",
+      "name": "TBA",
       "id": 26005,
-      "updated_at": "2018-06-30T18:57+0000",
+      "updated_at": "2018-08-05T16:57+0000",
       "conference": "DC26"
     },
     {
@@ -86,33 +86,33 @@
       "conference": "DC26"
     },
     {
-      "name": "AI Village - Florentine III - Caesar's",
+      "name": "AI Village - Caesar's",
       "id": 26015,
-      "updated_at": "2018-08-02T22:44+0000",
+      "updated_at": "2018-08-05T16:58+0000",
       "conference": "DC26"
     },
     {
-      "name": "Hardware Hacking Village - Forum 17-21 - Caesar's",
+      "name": "Hardware Hacking Village - Caesar's",
       "id": 26016,
-      "updated_at": "2018-08-02T22:44+0000",
+      "updated_at": "2018-08-05T16:58+0000",
       "conference": "DC26"
     },
     {
-      "name": "Contest Area - Augustus - Caesar's",
+      "name": "Contest Area - Caesar's",
       "id": 26017,
-      "updated_at": "2018-08-02T22:44+0000",
+      "updated_at": "2018-08-05T16:58+0000",
       "conference": "DC26"
     },
     {
-      "name": "Blue Team Village - Savoy - Flamingo",
+      "name": "Blue Team Village - Flamingo",
       "id": 26018,
-      "updated_at": "2018-08-02T03:03+0000",
+      "updated_at": "2018-08-05T16:58+0000",
       "conference": "DC26"
     },
     {
-      "name": "Wireless Village - Milano V/VI - Caesar's",
+      "name": "Wireless Village - Caesar's",
       "id": 26019,
-      "updated_at": "2018-08-02T03:28+0000",
+      "updated_at": "2018-08-05T16:58+0000",
       "conference": "DC26"
     },
     {
@@ -128,9 +128,9 @@
       "conference": "DC26"
     },
     {
-      "name": "ICS Village - Red Rock - Flamingo",
+      "name": "ICS Village - Flamingo",
       "id": 26022,
-      "updated_at": "2018-08-02T16:39+0000",
+      "updated_at": "2018-08-05T16:58+0000",
       "conference": "DC26"
     },
     {
@@ -140,15 +140,15 @@
       "conference": "DC26"
     },
     {
-      "name": "Social Engineer Village - Octavios 3-8 - Caesar's",
+      "name": "Social Engineer Village - Caesar's",
       "id": 26024,
-      "updated_at": "2018-08-02T16:49+0000",
+      "updated_at": "2018-08-05T16:59+0000",
       "conference": "DC26"
     },
     {
-      "name": "IOT Village - Turin, Verona, & Trevi - Caesars",
+      "name": "IOT Village - Caesars",
       "id": 26025,
-      "updated_at": "2018-08-02T17:13+0000",
+      "updated_at": "2018-08-05T16:59+0000",
       "conference": "DC26"
     },
     {
@@ -158,9 +158,9 @@
       "conference": "DC26"
     },
     {
-      "name": "Chillout - Roman - Caesar's",
+      "name": "Chillout - Caesar's",
       "id": 26027,
-      "updated_at": "2018-08-02T22:45+0000",
+      "updated_at": "2018-08-05T16:59+0000",
       "conference": "DC26"
     },
     {
@@ -203,6 +203,90 @@
       "name": "Packet Hacking Village - Caesar's",
       "id": 26034,
       "updated_at": "2018-08-03T15:28+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Bio Hacking Village - Caesar's",
+      "id": 26035,
+      "updated_at": "2018-08-06T01:16+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "BCOS Village - Caesar's",
+      "id": 26036,
+      "updated_at": "2018-08-06T02:04+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Queercon Main - Caesar's, Forum Tower 5416",
+      "id": 26037,
+      "updated_at": "2018-08-09T20:52+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Queercon Lounge - Caesar's, Forum Tower 5416",
+      "id": 26038,
+      "updated_at": "2018-08-09T20:52+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Queercon Chill 1 - Caesar's, Forum Tower 5416",
+      "id": 26039,
+      "updated_at": "2018-08-09T20:51+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Queercon Chill 2 - Caesar's, Forum Tower 5416",
+      "id": 26040,
+      "updated_at": "2018-08-09T20:52+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Palms Place Pool",
+      "id": 26041,
+      "updated_at": "2018-08-06T02:56+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Queercon Equality - Caesar's, Forum Tower 5416",
+      "id": 26042,
+      "updated_at": "2018-08-09T20:52+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Voting Machine Hacking Village - Caesar's",
+      "id": 26043,
+      "updated_at": "2018-08-06T04:02+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "DroneWarz - Caesar's",
+      "id": 26044,
+      "updated_at": "2018-08-06T05:47+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Anzio, Caesars",
+      "id": 26045,
+      "updated_at": "2018-08-06T06:02+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Diana Initiative - Caesar's - Forum Tower 6316",
+      "id": 26046,
+      "updated_at": "2018-08-09T20:51+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Soldering Skills Village - Caesar's",
+      "id": 26047,
+      "updated_at": "2018-08-07T18:34+0000",
+      "conference": "DC26"
+    },
+    {
+      "name": "Lockpicking Village - Caesar's",
+      "id": 26048,
+      "updated_at": "2018-08-08T19:01+0000",
       "conference": "DC26"
     }
   ]

@@ -178,15 +178,15 @@
                                         <rect key="frame" x="0.0" y="33" width="300" height="367"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="filterCell" textLabel="QLT-xa-MkL" style="IBUITableViewCellStyleDefault" id="dOb-1J-r1H">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="filterCell" textLabel="QLT-xa-MkL" style="IBUITableViewCellStyleDefault" id="dOb-1J-r1H">
                                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dOb-1J-r1H" id="Fyl-F9-hyt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="261" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="eventType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QLT-xa-MkL">
-                                                            <rect key="frame" x="15" y="0.0" width="246" height="44"/>
+                                                            <rect key="frame" x="15" y="0.0" width="270" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -375,24 +375,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="eTb-OG-eb5">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="xb3-s5-YsK">
-                            <rect key="frame" x="48" y="7.5" width="279" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Caesars"/>
-                                <segment title="Flamingo"/>
-                                <segment title="Night"/>
-                                <segment title="Linq"/>
-                            </segments>
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="mapChanged:" destination="9uk-jY-kfH" eventType="valueChanged" id="Aic-FN-ip1"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
-                    <connections>
-                        <outlet property="mapSwitch" destination="xb3-s5-YsK" id="TRG-kB-qqr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5k-1E-Sh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -454,58 +437,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h3p-o5-haC">
-                                <rect key="frame" x="26" y="89" width="323" height="133.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yr-yH-duz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPf-am-4yB">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="20"/>
-                                        <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="8"/>
-                                        <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCO-d8-wQN">
-                                        <rect key="frame" x="0.0" y="30" width="323" height="30"/>
-                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
-                                        <state key="normal" title="@twitter">
-                                            <color key="titleColor" red="0.56862745100000001" green="0.69411764710000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="twitterTapped:" destination="ESF-7v-ggp" eventType="touchUpInside" id="Yp2-x0-lAu"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Bio Goes Here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF0-Vq-BVz">
-                                        <rect key="frame" x="0.0" y="70" width="323" height="19.5"/>
-                                        <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="8"/>
-                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rf-xf-0J5">
-                                        <rect key="frame" x="0.0" y="99.5" width="323" height="34"/>
-                                        <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
-                                        <state key="normal" title="talkLink">
-                                            <color key="titleColor" red="0.56862745100000001" green="0.69411764710000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="nGb-HO-gXP" kind="presentation" identifier="eventSegue" id="SXO-Ad-k7M"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h3p-o5-haC">
+                                        <rect key="frame" x="10" y="8" width="355" height="271.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Name Goes Here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPf-am-4yB">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="20"/>
+                                                <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="8"/>
+                                                <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCO-d8-wQN">
+                                                <rect key="frame" x="0.0" y="30" width="355" height="30"/>
+                                                <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
+                                                <state key="normal" title="@twitter">
+                                                    <color key="titleColor" red="0.56862745100000001" green="0.69411764710000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="twitterTapped:" destination="ESF-7v-ggp" eventType="touchUpInside" id="Yp2-x0-lAu"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Bio Goes Here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF0-Vq-BVz">
+                                                <rect key="frame" x="0.0" y="70" width="355" height="19.5"/>
+                                                <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="8"/>
+                                                <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rf-xf-0J5">
+                                                <rect key="frame" x="0.0" y="99.5" width="355" height="34"/>
+                                                <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="17"/>
+                                                <state key="normal" title="talkLink">
+                                                    <color key="titleColor" red="0.56862745100000001" green="0.69411764710000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="nGb-HO-gXP" kind="presentation" identifier="eventSegue" id="SXO-Ad-k7M"/>
+                                                </connections>
+                                            </button>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="83H-rW-j1T">
+                                                <rect key="frame" x="0.0" y="143.5" width="355" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="h3p-o5-haC" firstAttribute="leading" secondItem="4yr-yH-duz" secondAttribute="leading" constant="10" id="1EU-ou-DIl"/>
+                                    <constraint firstItem="h3p-o5-haC" firstAttribute="centerX" secondItem="4yr-yH-duz" secondAttribute="centerX" id="7fC-hN-jtq"/>
+                                    <constraint firstItem="h3p-o5-haC" firstAttribute="top" secondItem="4yr-yH-duz" secondAttribute="top" constant="8" id="Pw4-5v-aG7"/>
+                                    <constraint firstAttribute="trailing" secondItem="h3p-o5-haC" secondAttribute="trailing" constant="10" id="x7z-1q-hUf"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="h3p-o5-haC" firstAttribute="centerX" secondItem="1I4-eI-eYA" secondAttribute="centerX" id="3b8-W8-OIJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="h3p-o5-haC" secondAttribute="trailing" constant="10" id="VV7-ZW-A0K"/>
-                            <constraint firstItem="h3p-o5-haC" firstAttribute="top" secondItem="g7q-4D-8Vw" secondAttribute="bottom" constant="25" id="Zbj-tO-mZi"/>
-                            <constraint firstItem="h3p-o5-haC" firstAttribute="leading" secondItem="1I4-eI-eYA" secondAttribute="leadingMargin" constant="10" id="yfL-Jv-IEW"/>
+                            <constraint firstItem="4yr-yH-duz" firstAttribute="bottom" secondItem="Ii1-Qt-1Qp" secondAttribute="top" id="BzI-OG-fz6"/>
+                            <constraint firstItem="4yr-yH-duz" firstAttribute="leading" secondItem="1I4-eI-eYA" secondAttribute="leading" id="YC8-vQ-8E5"/>
+                            <constraint firstItem="4yr-yH-duz" firstAttribute="top" secondItem="g7q-4D-8Vw" secondAttribute="bottom" id="uDy-Qk-Y5H"/>
+                            <constraint firstAttribute="trailing" secondItem="4yr-yH-duz" secondAttribute="trailing" id="xAs-Yc-Ufj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sPY-ps-kaQ"/>
                     <connections>
                         <outlet property="bioLabel" destination="fF0-Vq-BVz" id="cc2-eX-FUL"/>
+                        <outlet property="eventTableView" destination="83H-rW-j1T" id="O9i-fg-hO7"/>
                         <outlet property="nameLabel" destination="NPf-am-4yB" id="doU-W9-iEy"/>
                         <outlet property="talkButton" destination="3Rf-xf-0J5" id="if1-8V-d8I"/>
                         <outlet property="twitterButton" destination="RCO-d8-wQN" id="vje-QQ-rT1"/>
@@ -514,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5n-rn-pUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9223" y="1890"/>
+            <point key="canvasLocation" x="9221.6000000000004" y="1889.5052473763119"/>
         </scene>
         <!--VENDORS-->
         <scene sceneID="zBb-Qx-XfV">
@@ -849,7 +848,7 @@
         <scene sceneID="rW0-R1-IMV">
             <objects>
                 <tableViewController storyboardIdentifier="HTConferenceTableViewController" id="PSi-m9-7in" customClass="HTConferenceTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zTv-d6-5Un">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zTv-d6-5Un">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -858,11 +857,11 @@
                         <color key="sectionIndexColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="conferenceCell" rowHeight="68" id="3r5-xn-JU2" userLabel="conferenceCell" customClass="ConferenceCell" customModule="hackertracker" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="conferenceCell" rowHeight="68" id="3r5-xn-JU2" userLabel="conferenceCell" customClass="ConferenceCell" customModule="hackertracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3r5-xn-JU2" id="hsO-wL-G7J">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-GC-26N">
@@ -899,33 +898,22 @@
                                                 <constraint firstAttribute="height" constant="47" id="mKv-yn-1or"/>
                                             </constraints>
                                         </view>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2X-Rg-0Yr">
-                                            <rect key="frame" x="316" y="18" width="51" height="31"/>
-                                            <connections>
-                                                <action selector="selectConference:" destination="3r5-xn-JU2" eventType="valueChanged" id="q3U-Se-gGv"/>
-                                            </connections>
-                                        </switch>
                                     </subviews>
                                     <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="centerY" secondItem="hsO-wL-G7J" secondAttribute="centerY" id="8d7-Ui-P1m"/>
                                         <constraint firstItem="o3J-TY-4f7" firstAttribute="leading" secondItem="7L2-25-YGa" secondAttribute="trailing" constant="8" id="O9T-er-kuK"/>
                                         <constraint firstItem="o3J-TY-4f7" firstAttribute="top" secondItem="L4G-GC-26N" secondAttribute="bottom" constant="2" id="Qdb-1Q-DYD"/>
                                         <constraint firstAttribute="topMargin" secondItem="L4G-GC-26N" secondAttribute="top" id="WCS-04-xYl"/>
                                         <constraint firstAttribute="topMargin" secondItem="7L2-25-YGa" secondAttribute="top" id="Y9v-cX-xKI"/>
-                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L4G-GC-26N" secondAttribute="trailing" constant="8" id="kLX-yj-KIu"/>
                                         <constraint firstItem="L4G-GC-26N" firstAttribute="leading" secondItem="7L2-25-YGa" secondAttribute="trailing" constant="8" id="nFP-Dk-zEM"/>
-                                        <constraint firstItem="U2X-Rg-0Yr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o3J-TY-4f7" secondAttribute="trailing" constant="10" id="pIV-ud-mmm"/>
                                         <constraint firstItem="7L2-25-YGa" firstAttribute="leading" secondItem="hsO-wL-G7J" secondAttribute="leadingMargin" constant="7" id="uWe-7j-hwn"/>
-                                        <constraint firstAttribute="trailing" secondItem="U2X-Rg-0Yr" secondAttribute="trailing" constant="10" id="zoc-3Y-gRJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="color" destination="7L2-25-YGa" id="60j-Up-2S1"/>
-                                    <outlet property="conSelected" destination="U2X-Rg-0Yr" id="TmG-ZL-bHh"/>
                                     <outlet property="dates" destination="o3J-TY-4f7" id="bBy-o1-2oA"/>
                                     <outlet property="name" destination="L4G-GC-26N" id="E1P-FA-JWh"/>
                                 </connections>
@@ -955,7 +943,7 @@
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" searchBarStyle="prominent" text="" id="Ymw-ng-JHs">
+                        <searchBar key="tableHeaderView" contentMode="redraw" misplaced="YES" barStyle="black" searchBarStyle="prominent" text="" id="Ymw-ng-JHs">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1315,7 +1303,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="rXy-yP-CZO">
-                                <rect key="frame" x="25" y="97" width="325" height="473"/>
+                                <rect key="frame" x="25" y="97.5" width="325" height="472.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull-active" translatesAutoresizingMaskIntoConstraints="NO" id="FKE-HZ-a9V">
                                         <rect key="frame" x="142.5" y="10" width="40" height="40"/>
@@ -1331,9 +1319,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="KBF-Y9-ucN"/>
                                         </constraints>
-                                        <mutableString key="text">Tap on this screen to be taken to the DEF CON WiFi registration site.  You can sign-up for the 802.1x/WPA2 WiFi at https://wifireg.defcon.org anytime starting a couple of days before the conference.
+                                        <string key="text">Tap on this screen to be taken to the DEF CON WiFi registration site.  You can sign-up for the 802.1x/WPA2 WiFi at https://wifireg.defcon.org anytime starting a couple of days before the conference.
  Detailed instructions are provided, but the short is:  - create your credentials (don't use the same as in important stuff!);  - download and install the digital certificate (or configuration profile for Apple devices).
- Setup your device to REQUIRE server validation and don't accept ANY certificates provided when connected to the WiFi.   Don't make security insecure.</mutableString>
+ Setup your device to REQUIRE server validation and don't accept ANY certificates provided when connected to the WiFi.   Don't make security insecure.</string>
                                         <fontDescription key="fontDescription" name="Larsseit" family="Larsseit" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

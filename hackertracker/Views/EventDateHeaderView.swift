@@ -43,7 +43,8 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
             } else if Calendar.current.isDateInTomorrow(date) {
                 dateLabel.text = "    Tomorrow".uppercased()
             } else {
-                let dt = DateFormatterUtility.dayMonthDayOfWeekFormatter.string(from: date).uppercased()
+                let dfu = DateFormatterUtility.shared
+                let dt = dfu.dayMonthDayOfWeekFormatter.string(from: date).uppercased()
                 dateLabel.text = "    \(dt)"
             }
         } else {

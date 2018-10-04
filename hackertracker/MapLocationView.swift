@@ -324,9 +324,6 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         super.init(frame: CGRect.zero)
        
         currentLocation = location
-        //let r = URLRequest(url: MapFile.mapFile(currentLocation))
-        //webView.loadRequest(r)
-        //setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -372,8 +369,7 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print(scrollView.contentOffset)
-        //print(scrollView.zoomScale)
+        
     }
 
 }

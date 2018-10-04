@@ -1,0 +1,47 @@
+{
+  "updated_at": "2018-09-19T03:49+0000",
+  "locations": [
+    {
+      "id": 29911,
+      "updated_at": "2018-09-19T03:49+0000",
+      "name": "Salon A",
+      "conference": "SC02"
+    },
+    {
+      "id": 29912,
+      "updated_at": "2018-09-19T03:49+0000",
+      "name": "Salon B",
+      "conference": "SC02"
+    },
+    {
+      "id": 29913,
+      "updated_at": "2018-09-19T03:49+0000",
+      "name": "Crowne",
+      "conference": "SC02"
+    },
+    {
+      "id": 29914,
+      "updated_at": "2018-09-19T03:49+0000",
+      "name": "Beacon",
+      "conference": "SC02"
+    },
+    {
+      "id": 29915,
+      "updated_at": "2018-09-19T03:49+0000",
+      "name": "Harbor",
+      "conference": "SC02"
+    },
+    {
+      "id": 29916,
+      "updated_at": "2018-09-19T03:49+0000",
+      "name": "Salon D",
+      "conference": "SC02"
+    },
+    {
+      "id": 29917,
+      "updated_at": "2018-09-19T03:49+0000",
+      "name": "Other",
+      "conference": "SC02"
+    }
+  ]
+}

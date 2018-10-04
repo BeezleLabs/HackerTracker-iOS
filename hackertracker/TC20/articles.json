@@ -1,0 +1,12 @@
+{
+  "updated_at": "2018-09-02T22:00+0000",
+  "articles": [
+    {
+      "id": 5,
+      "updated_at": "2018-09-02T22:00+0000",
+      "name": "Welcome to ToorCon XX",
+      "text": "It's time to go back to sunny San Diego for ToorCon 20. Hackertracker should have the majority of the events loaded, but keep us updated on all things con related via email to info@hackertracker.app.",
+      "conference": "TC20"
+    }
+  ]
+}

@@ -51,11 +51,12 @@ class DataRequestManager: NSObject {
         var ret: [String] = []
         
         let components = calendar.dateComponents([.day], from: conference.start_date!, to: conference.end_date!)
-        ret.append(DateFormatterUtility.yearMonthDayFormatter.string(from: conference.start_date!))
+        let dfu = DateFormatterUtility.shared
+        ret.append(dfu.yearMonthDayFormatter.string(from: conference.start_date!))
         var cur = conference.start_date!
         for _ in 1...components.day! {
             cur = calendar.date(byAdding: Calendar.Component.day, value: 1, to: cur)!
-            ret.append(DateFormatterUtility.yearMonthDayFormatter.string(from: cur))
+            ret.append(dfu.yearMonthDayFormatter.string(from: cur))
         }
         return ret
     }
@@ -80,12 +81,53 @@ class DataRequestManager: NSObject {
         
         do {
             let ret = try managedContext.fetch(fre) as! [Conference]
-            
             return ret.first
         } catch {
             print("Failed to fetch conferences")
             return nil
         }
+    }
+    
+    func getConferenceMap(code: String) -> URL? {
+        if let u = Bundle.main.url(forResource: "map", withExtension: "pdf", subdirectory: code){
+            return u
+        } else {
+            let fm = FileManager.default
+            let docDir = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let u = docDir.appendingPathComponent("\(code)/map.pdf")
+            if fm.fileExists(atPath: u.path) {
+                return u
+            } else {
+                if fetchConferenceMap(code: code) {
+                    return u
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    func fetchConferenceMap(code: String) -> Bool {
+        let envPlist = Bundle.main.path(forResource: "Connections", ofType: "plist")
+        let envs = NSDictionary(contentsOfFile: envPlist!)!
+        let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let mapFile = docDir.appendingPathComponent("\(code)/map.pdf")
+        
+        
+        let base = envs.value(forKey: "base") as! String
+        if let url = URL(string: "\(base)/\(code)/map.pdf"), let data = try? Data.init(contentsOf: url) {
+            do {
+                try data.write(to: mapFile, options: .atomic)
+                print("map successfully saved!")
+                return true
+
+            } catch {
+                print("map could not be saved")
+                return false
+            }
+        }
+        
+        return false
     }
     
     func getEventTypes(con: Conference) -> [EventType]{
