@@ -1,0 +1,395 @@
+{
+  "speakers": [
+    {
+      "id": 30301,
+      "name": "Sheila Berta",
+      "title": "",
+      "description": "Sheila Ayelen Berta is an Information Security Specialist and Developer, who started at 12 years-old by herself. At the age of 15, she wrote her first book about Web Hacking, published by RedUSERS Editorial in several countries. Over the years, she has discovered lots of vulnerabilities in popular web applications and software. She also has given courses of Hacking Techniques in universities and private institutes. Sheila currently works as Security Researcher who specializes in offensive techniques, reverse engineering and exploit writing. She is also a developer in ASM (microcontrollers, x32/x64), C/C++ and Python. Sheila is an international speaker who has spoken at important security conferences such as Black Hat EU 2017, DEFCON 26, DEFCON 25 CHV, HITBSecConf, HackInParis, Ekoparty Security Conference, IEEE ArgenCon, Hack.Lu, OWASP Latam Tour and others.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30302,
+      "name": "Ryan D. Clarke (AKA LOSTBOY, \u674e\u667a\u4e0a, 1O57)",
+      "title": "",
+      "description": "In the corporate world, Mr. Clarke draws on his extensive background that spans over 27 years of government, academia, and private industry experience. He currently functions as the CSO for an as of yet undisclosed company. In government circles, Mr. Clarke worked for the Department of Defense while residing in Maryland (do the math). His roles included work at a global scale, and joint efforts included connections with DHS, FBI and other agencies. Upon departure from government service Mr. Clarke worked for Intel in the Advanced Programs Group. Work with the APG included data center validation and intrusion detection and prevention. The APG also functioned as a liaison to various groups and agencies (do the math). Mr. Clarke separated from Intel when an opportunity to work with colleagues at the Department of Energy presented itself. Mr. Clarke conducted cyber and physical intrusion assessments of U.S. DoE facilities, including national science laboratories, U.S. power grid facilities, and *other* facilities under the authority of the DoE (do the math). Previously in academia, Mr. Clarke was the Professor of Robotics and Embedded Systems for the University of Advancing Technology, a National Security Agency Center of Excellence school. Mr. Clarke was recruited to create an embedded systems security degree program for the university. Mr. Clarke's academic background includes degrees and emphasis in Computational Mathematics, Electrical Engineering, Computer Systems Engineering and Physics. He speaks fluent Korean and has proficiency in multiple other languages. Mr. Clarke is a consultant for \"Mr. Robot\", a hacker based cable television program, and a founding member of the educational group Curious Codes. He regularly presents at cyber conferences around the world. Is that enough of the corporate bio? Ok. I self identify as a hacker. Knowledge of any kind is good. You may have seen my work at Defcon, where I co-created the Hardware Hacking Village, ran the \"Mystery Challenge\", and for many years created the Defcon badges and cryptographic puzzles. I have multiple Defcon Black Badges, and was awarded a Black Badge for a contest I created (a long story, and a Defcon first). I also hold one of the records for the most times speaking at a single Defcon besides DT, although I've never verified this. You can learn something from anyone, and you can teach something to anyone.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30303,
+      "name": "Josh Corman",
+      "title": "",
+      "description": "Joshua Corman is a Founder of I am The Cavalry (dot org) and CSO for PTC. Corman previously served as Director of the Cyber Statecraft Initiative for the Atlantic Council, CTO for Sonatype, Director of Security Intelligence for Akamai, and in senior research, analyst, & strategy roles. He co-founded RuggedSoftware and IamTheCavalry to encourage new security approaches in response to the world's increasing dependence on digital infrastructure. Josh's unique approach to security in the context of human factors, adversary motivations, and social impact has helped position him as one of the most trusted names in security. He also serves as an adjunct faculty for Carnegie Mellon's Heinz College and on the Congressional Task Force for Healthcare Industry Cybersecurity.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30304,
+      "name": "Rachel Tobac",
+      "title": "",
+      "description": "Rachel is the CEO & Co-founder of SocialProof Security where she helps people and companies keep their data safe by training and pentesting them on social engineering risks. Rachel was also a winner of DEF CON's wild spectator sport, the Social Engineering Capture the Flag contest, 3 years in a row. Rachel has shared her real life social engineering stories with NPR, Huffington Post, Business Insider, TWiT, USA Today and many more. In her remaining spare time, Rachel works as the Chair of the Board for the nonprofit Women in Security and Privacy (WISP) where she works to advance women to lead in the fields.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30305,
+      "name": "B_meson && RiotDoge",
+      "title": "",
+      "description": "Freddy Martinez is a security researcher and investigative reporter. Christopher Schiano is a reporter with Unicorn Riot.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30306,
+      "name": "Steve Eisen && Nick Lehman",
+      "title": "",
+      "description": "Steve and Nick come from a long line of Steve's and Nick's respectively. They enjoy candlelit dinners, and bios longer than 140 characters.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30307,
+      "name": "Kat Fitzgerald",
+      "title": "",
+      "description": "You can typically find me sipping Casa Noble Anejo whilst simultaneously defending my systems using OSS, magic spells and Dancing Flamingos.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30308,
+      "name": "G. Mark Hardy && Dave Russell",
+      "title": "",
+      "description": "G. Mark has probably been hacking longer than you have been alive, and is the voice of Hacker Jeopardy. He knows way too many things.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30309,
+      "name": "Marcus Hodges (meta)",
+      "title": "",
+      "description": "Marcus Hodges (meta) is the Director of Research at Security Innovation, Neg9 CTF team, and enjoys math, Linux, Python, & binary exploits.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30310,
+      "name": "Kurt Kincaid",
+      "title": "",
+      "description": "Encryption geek, infosec guy, medieval English literature nerd, artist, author, martial artist. Runs with scissors.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30311,
+      "name": "Karl Koscher (supersat)",
+      "title": "",
+      "description": "Karl Koscher is a research scientist working at the University of Washington where he specializes in wireless and embedded systems security.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30312,
+      "name": "Chloe Messdaghi",
+      "title": "",
+      "description": "Security Researcher promoter @Bugcrowd, UN Volunteer advisor, board member for 4 nonprofits, heads WIST, mentors, and Drop Labels founder.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30313,
+      "name": "Priyank Nigam",
+      "title": "",
+      "description": "Priyank is a Senior Security Analyst at Bishop Fox and focuses mainly on secure code reviews, (web/mobile) app sec and network sec. Research interests include anything offensive - RE, mobile, IoT. He also contributes to bug bounties/responsible disclosure at regular intervals.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30314,
+      "name": "0penwir3",
+      "title": "",
+      "description": "I did the security for healthcare, hedge funds, crypto, and non-profits.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30315,
+      "name": "Eldridge Alexander",
+      "title": "",
+      "description": "Eldridge is currently a manager of Duo Labs, and is a security and consumer technology enthusiast, with a focus on IoT and home automation.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30316,
+      "name": "Rey Bango (LilBitEvil)",
+      "title": "",
+      "description": "Rey is a security advocate at Microsoft focused on helping the community build secure systems & being a voice for researchers within MS.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30317,
+      "name": "David Bryan (VideoMan)",
+      "title": "",
+      "description": "David works for IBM's Elite Hacking team named X-Force Red. He oversees all of THOTCON A/V setup.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30318,
+      "name": "Celeste",
+      "title": "",
+      "description": "Celeste is a cybersecurity researcher, has a Ph.D. in Human-centered Computing, and works for the government.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30319,
+      "name": "Julian Cohen",
+      "title": "",
+      "description": "Current: Risk philosopher, Building thoughtful/effective defensive teams. Past: Vulnerability researcher, CTF organizer and competitor, DoD.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30320,
+      "name": "Daniel \"unicornfurnace\" Crowley",
+      "title": "",
+      "description": "Daniel has worked in infosec since 2004, is the author of FeatherDuster, and denies all allegations of unicorn smuggling.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30321,
+      "name": "Rebecca Deck",
+      "title": "",
+      "description": "Rebecca is an AppSec consultant at DirectDefense. She tests software, writes app exploits, and works on fixing SDLC issues.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30322,
+      "name": "effffn",
+      "title": "",
+      "description": "Security Enthusiast, Con organizer, Beer lover https://about.me/effffn",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30323,
+      "name": "EvilMog",
+      "title": "",
+      "description": "EvilMog is a member of Team Hashcat and Bishop of the Church of Wifi, doer of things yada yada certifications and stuff",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30324,
+      "name": "Agnes Klus",
+      "title": "",
+      "description": "Agnes has been part of the IT Audit/governance, IT, and Security world over 10 years in various industries. She got here by stroke of luck.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30325,
+      "name": "Ben Lampere (Fl0rbu5)",
+      "title": "",
+      "description": "Android developer professionally. Computer Security hobbyist. B0tchsec CTF member. Lock sport athlete and addict. Avid conference attendee.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30326,
+      "name": "Jason Martinsen",
+      "title": "",
+      "description": "My kids call me the fixer. I like to understand how things work so that I can either fix it or tear it apart (those are closely related).",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30327,
+      "name": "Anita Nikolich",
+      "title": "",
+      "description": "Security and privacy researcher who spent a fair amount of time in operations.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30328,
+      "name": "rob rehr",
+      "title": "",
+      "description": "Hardware hacker by day, design deliriant by night. Senior Electrical Engineer at IDEO.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30329,
+      "name": "Hannah Robbins (robbinbs) && Scott Brink (sandw1ch)",
+      "title": "",
+      "description": "Hannah is a junior at University of Tulsa and Scott is a senior at RIT. They'll work with X-Force Red again this summer.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30330,
+      "name": "Kelley Robinson",
+      "title": "",
+      "description": "Kelley is a developer, educator, and advocate for secure software development. She currently works on the Account Security team at Twilio.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30331,
+      "name": "Guillaume Ross",
+      "title": "",
+      "description": "Guillaume has been a consultant helping companies secure their stuff, managed blue teams, and researches IT defense problems.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30332,
+      "name": "Dimitry Snezhkov",
+      "title": "",
+      "description": "X-Force Red @IBM. Offensive security testing, code hacking and tool building",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30333,
+      "name": "Caleb Tennis",
+      "title": "",
+      "description": "Caleb is the Security Lead for Chicago based Reverb.com, an online marketplace for musical gear.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30334,
+      "name": "Jon Gear",
+      "title": "",
+      "description": "Jon Gear is a Solutions Architect for JDK Technologies. Jon's core passions are serverless development, machine learning, and robotics.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30335,
+      "name": "Jay Margalus && Rudy Ristich",
+      "title": "",
+      "description": "Jay: Faculty Director at DePaul, Designer Rudy: Vice President at Workshop 88",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30336,
+      "name": "Price McDonald && Justin Berry",
+      "title": "",
+      "description": "Price is a perpetually curious person with interests in Hardware Hacking, Penetration Testing, Digital Forensics and Reverse Engineering.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30337,
+      "name": "David Pearson",
+      "title": "",
+      "description": "David has spent most of his career understanding how networks & apps work, currently as Head of Threat Research for Awake Security.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30338,
+      "name": "Edgar Pek",
+      "title": "",
+      "description": "Edgar Pek is a security researcher working on application security. During his PhD he worked on correctness of systems software.",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30339,
+      "name": "North Shore Radio Club",
+      "title": "",
+      "description": "http://ns9rc.org",
+      "twitter": "",
+      "link": "",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    }
+  ],
+  "updated_at": "2019-04-19T01:02+0000"
+}

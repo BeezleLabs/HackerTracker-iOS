@@ -18,8 +18,11 @@
 		5D02762821078B8600E5ED6A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02762621078B8500E5ED6A /* Crashlytics.framework */; };
 		5D02762921078B8600E5ED6A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02762721078B8600E5ED6A /* Fabric.framework */; };
 		5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */; };
+		5D280709219CEC600081D8AF /* CACTUSCON2018 in Resources */ = {isa = PBXBuildFile; fileRef = 5D280708219CEC600081D8AF /* CACTUSCON2018 */; };
+		5D28070B219CEC780081D8AF /* SAINTCON2018 in Resources */ = {isa = PBXBuildFile; fileRef = 5D28070A219CEC780081D8AF /* SAINTCON2018 */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
+		5D3C2830227003F00060DEBC /* THOTCON0xA in Resources */ = {isa = PBXBuildFile; fileRef = 5D3C282F227003F00060DEBC /* THOTCON0xA */; };
 		5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D47A2B020EEB7DD0015401B /* ht2018.xcdatamodeld */; };
 		5D6707EB21161C6F0007F01F /* HTWiFiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707EA21161C6F0007F01F /* HTWiFiViewController.swift */; };
 		5D6707F6211787E10007F01F /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707F4211787E10007F01F /* AboutCell.swift */; };
@@ -29,6 +32,7 @@
 		5D67EBFC20E1CD30004E5D19 /* Bungee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */; };
 		5D67EBFF20E1CFE6004E5D19 /* Larsseit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFD20E1CFE6004E5D19 /* Larsseit.ttf */; };
 		5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */; };
+		5D8B4E4A21A8F197002016D8 /* SWV4 in Resources */ = {isa = PBXBuildFile; fileRef = 5D8B4E4921A8F197002016D8 /* SWV4 */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DAD0A26215542D500BF7F61 /* SC02 in Resources */ = {isa = PBXBuildFile; fileRef = 5DAD0A25215542D500BF7F61 /* SC02 */; };
@@ -119,8 +123,11 @@
 		5D02762621078B8500E5ED6A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		5D02762721078B8600E5ED6A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTVendorTableViewController.swift; sourceTree = "<group>"; };
+		5D280708219CEC600081D8AF /* CACTUSCON2018 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CACTUSCON2018; sourceTree = "<group>"; };
+		5D28070A219CEC780081D8AF /* SAINTCON2018 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SAINTCON2018; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
+		5D3C282F227003F00060DEBC /* THOTCON0xA */ = {isa = PBXFileReference; lastKnownFileType = folder; path = THOTCON0xA; sourceTree = "<group>"; };
 		5D47A2B120EEB7DD0015401B /* ht2018.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ht2018.xcdatamodel; sourceTree = "<group>"; };
 		5D6707EA21161C6F0007F01F /* HTWiFiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTWiFiViewController.swift; sourceTree = "<group>"; };
 		5D6707F4211787E10007F01F /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
@@ -130,6 +137,7 @@
 		5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
 		5D67EBFD20E1CFE6004E5D19 /* Larsseit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Larsseit.ttf; sourceTree = "<group>"; };
 		5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Larsseit-Bold.ttf"; sourceTree = "<group>"; };
+		5D8B4E4921A8F197002016D8 /* SWV4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SWV4; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DAD0A25215542D500BF7F61 /* SC02 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SC02; sourceTree = "<group>"; };
@@ -322,6 +330,10 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5D3C282F227003F00060DEBC /* THOTCON0xA */,
+				5D8B4E4921A8F197002016D8 /* SWV4 */,
+				5D28070A219CEC780081D8AF /* SAINTCON2018 */,
+				5D280708219CEC600081D8AF /* CACTUSCON2018 */,
 				5DAD0A25215542D500BF7F61 /* SC02 */,
 				5D0194A7213C97000017244D /* DC80 */,
 				5D0194A5213C96F60017244D /* TC20 */,
@@ -519,6 +531,8 @@
 			files = (
 				5DAD0A26215542D500BF7F61 /* SC02 in Resources */,
 				78C72FAB1F1869F100AFC0B6 /* Furore.otf in Resources */,
+				5D8B4E4A21A8F197002016D8 /* SWV4 in Resources */,
+				5D280709219CEC600081D8AF /* CACTUSCON2018 in Resources */,
 				5D0194A6213C96F60017244D /* TC20 in Resources */,
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
@@ -529,7 +543,9 @@
 				5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
+				5D3C2830227003F00060DEBC /* THOTCON0xA in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
+				5D28070B219CEC780081D8AF /* SAINTCON2018 in Resources */,
 				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
 				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,

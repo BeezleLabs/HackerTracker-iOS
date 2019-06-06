@@ -1,0 +1,1619 @@
+{
+  "updated_at": "2018-09-26T19:00+0000",
+  "schedule": [
+    {
+      "end_date": "2018-09-27T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30001,
+      "event_type": 30005,
+      "description": "Bio:<br><br>Alan Jex (CISSP, CCSP, GCIH, CIPP/E) is a Chief Security Architect at HP Inc. He is responsible for security & privacy best practices and compliance for HP Development teams. Alan worked at Symantec as a Principle Software Engineer on enterprise security products. He worked at Novell as a Senior Software Engineer on desktop and server management. Alan graduated from BYU with a B.S. in Computer Science. He participates in the local Salt Lake OWASP chapter.<br><br>Presentation:<br><br>Define your role as a penetration tester, security architect, or cloud/privacy expert and learn what it takes to earn and maintain a security certification. Invest time and effort in the security community to help you stand out and give you opportunities for education and growth in your career.",
+      "speakers": [
+        30001
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/003b2a5dd1023b7c61e4ac9ab9e3d081",
+      "includes": "[]",
+      "title": "Are Security Certifications Worth the Effort?",
+      "start_date": "2018-09-27T17:30+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-26T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30002,
+      "event_type": 30008,
+      "description": "We will discuss a reference architecture, with some extra context on additional options.",
+      "speakers": [
+        30002
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/03979b8ea46fb2fcfdf690381d0b8a0b",
+      "includes": "[]",
+      "title": "Docker Security",
+      "start_date": "2018-09-26T17:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-27T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30003,
+      "event_type": 30003,
+      "description": "Each Federal and State law governing the protection of student and employee information will be discussed. &nbsp;The steps that Canyons School District has taken and continues to work towards to meet this expectations will be discussed.<br><br>Group conversation is encouraged.",
+      "speakers": [
+        30003
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/067a7f497589683d9c00111b570f16a2",
+      "includes": "[]",
+      "title": "Discussion on Handling Policy and Rules for the Board (FERPA, COPA, HIPPA, PCA, CIPA, State Law, Etc.)",
+      "start_date": "2018-09-27T16:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-25T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30004,
+      "event_type": 30002,
+      "description": "Bio:<br><br>Bryce Kunz (@TweekFawkes) loves researching and red teaming bleeding edge IT services. Bryce is currently the Chief Hacker & President at Stage2Sec.com where he released various open source tools (e.g. soMeta, lolrusLove, yupPhrasing, etc\u00e2\u20ac\u00a6) and has contributed several modules to open source projects (e.g. empire). Previously, Bryce has supported the NSA (network exploitation & vulnerability research), Adobe (built red teaming program for cloud services), and DHS (incident response). Bryce holds numerous certifications (e.g. OSCP, CISSP, ...), and has spoken at various security conferences (i.e. BlackHat, DerbyCon, BSidesLV, etc...).<br>Presentation:<br><br>On-demand IT services are being publicized as the new normal, but often times these services are misunderstood and hence misconfigured by engineers which can frequently enable red teams to gain, expand, and persist access within Azure environments. In this talk we will dive into how Azure services are commonly breached (e.g. discovering insecure blob storage), and then show how attackers are pivoting between the data & control planes (e.g. mounting hard disks, swapping keys, etc...) to expand access. Finally we will demonstrate some unique techniques for persisting access within Azure environments for prolonged periods of time.",
+      "speakers": [
+        30004
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/0734c2b646a94e98b12ac9c0286c25a1",
+      "includes": "[]",
+      "title": "Blue cloud of Death: Red Teaming Azure",
+      "start_date": "2018-09-25T19:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30005,
+      "event_type": 30003,
+      "description": "CoSN, a national organization that supports district and school educational technology leaders, has many resources and tools to help districts provide data security for teachers, staff and students, we will be sharing and discussing these CoSN resources in this presentation.<br><br>Slides - https://goo.gl/oL2rit<br><br><br>",
+      "speakers": [
+        30005
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/0ff61279a7f6c5e81d9164f480369d23",
+      "includes": "[]",
+      "title": "CoSN and Other Security Resources for Administrators",
+      "start_date": "2018-09-27T20:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-27T21:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30006,
+      "event_type": 30002,
+      "description": "In this presentation will will discuss the latest password recommendations from NIST. &nbsp;<br>Surprise, they changed again!",
+      "speakers": [
+        30006
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/1037b27ff9a8f836bf7b2a04e07bdc76",
+      "includes": "[]",
+      "title": "Password Standards. Yes, they have changed again.",
+      "start_date": "2018-09-27T20:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-27T21:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30007,
+      "event_type": 30002,
+      "description": "Bio:<br>Chris has decades of software development, natural language processing, and machine learning experience. At Symantec, he's an Architect and Research Engineer on the WebPulse threat research team, and a long-time security blogger. He loves looking at logs. He's spoken at RSA, ShmooCon, DerbyCon, HackCon, SaintCon, and other conferences. He cancelled his World of Warcraft account years ago, after realizing it was more fun to spend his gaming time hunting actual bad guys.<br><br>Presentation:<br>IPv6 support is built in throughout the Internet now, so there's not as much talk about it as a few years ago. Things are pretty quiet out there. Too quiet. In the last year, some advanced attackers abused IPv6 in some way. We'll take a look at a few of those, and talk about the need to ensure IPv6 visibility and control in your network, so you don't leave a door open.<br>",
+      "speakers": [
+        30007
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/125b817ad2cd24b24fb83c023fb3dd4b",
+      "includes": "[]",
+      "title": "IPv6: Is there an open door in your network?",
+      "start_date": "2018-09-27T20:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30008,
+      "event_type": 30007,
+      "description": "Explore binaries to new depths with this beginner's introduction to Reverse Engineering (RE) in Linux! During this course tailored for beginners, we will introduce the core concepts of static and dynamic binary triage. These skills will help you answer the following questions, which have been burning inside you for all those years: - Is this suspicious binary malicious? - What does this binary do under the hood? - Does this binary that my \"friend\" gave me contain anything extra?",
+      "speakers": [
+        30008
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/125f5d38f090438a6ba6652f6df5f842",
+      "includes": "[]",
+      "title": "Discovering Elf Magic: Reverse Engineering and Exploit Development on Linux Systems",
+      "start_date": "2018-09-26T14:00+0000",
+      "location": 30006
+    },
+    {
+      "end_date": "2018-09-26T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30009,
+      "event_type": 30003,
+      "description": "Communication in a Breach will overview crisis communication planning for data breaches and other incidents. Participants will learn types and phases of a crisis, discuss three case studies from the UETN archives and receive seven step template for communication team-building, practice and evaluation. This interactive session will emphasize the stress-busting affirmation \u201cWith a Plan You Can!\u201d",
+      "speakers": [
+        30009
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/12cc1cb503f31492bee77a80f3983e54",
+      "includes": "[]",
+      "title": "Communication in a Breach",
+      "start_date": "2018-09-26T20:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-26T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30010,
+      "event_type": 30003,
+      "description": "Legislatures are increasingly trying to grapple with data security, and we\u2019re even seeing tech companies advocate for regulation of AI and facial recognition technologies. Plus there\u2019s the fact that FERPA is a law that was written in 1974 and barely mentions data security. It seems like the law is always playing catchup with technology. In this session, we plan to discuss the current relationship between the law and technology before looking to the future.<br><strong>&nbsp;</strong>",
+      "speakers": [
+        30010,
+        30011,
+        30012
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/14700478287758e86b6832a82872140e",
+      "includes": "[]",
+      "title": "Legal Issues and Data Security Discussion (USBE)",
+      "start_date": "2018-09-26T16:00+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-25T21:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30011,
+      "event_type": 30003,
+      "description": "",
+      "speakers": [
+        30013
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/180d9fd7971da060162caebf4ea427d0",
+      "includes": "[]",
+      "title": "Leadership Discussion and Q&A with Keynote Presenters",
+      "start_date": "2018-09-25T19:00+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-28T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30012,
+      "event_type": 30002,
+      "description": "Bio:<br>I'm a Certified Information Systems Security Professional (CISSP). I love security, business, IT, and computer science (not necessarily in that order). I like to tinker, and am generally dissatisfied with most solutions, though I like best the ones that require the least amount of upkeep. I love to do research and share the results of that with those around me.<br><br>Presentation:<br><br>End-users care that your site looks nice, and that your name hasn't recently been in the news for a security breach. More sophisticated users care that your website is HTTPS and doesn't show any warnings. But now we're talking about enterprise-class security. What kind of security features open up the Fortune-500 market? Come and listen as we review many of the security gotcha's and lessons Lucidchart.com has learned on the road to Enterprise. &nbsp; &nbsp;",
+      "speakers": [
+        30014
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/1adfb0dc2ace01e94bb2765579857cfe",
+      "includes": "[]",
+      "title": "Building A Security Program for Enterprise",
+      "start_date": "2018-09-28T17:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-27T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30013,
+      "event_type": 30003,
+      "description": "A discussion on the current cyber claims trends and what to do about it; includes what trends are seen worldwide and nationwide.",
+      "speakers": [
+        30015
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/1da5d9e4a74e61739c0d33f121ee28d4",
+      "includes": "[]",
+      "title": "Cyber Breach Insurance Claim Trends",
+      "start_date": "2018-09-27T19:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-27T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30014,
+      "event_type": 30005,
+      "description": "You are constantly being scanned, every single day. &nbsp;It's often fully automated and never sleeps. &nbsp;In this track we will discuss one method of automatically blocking those who maliciously scan your network by building and leveraging a dark-net address space. &nbsp;The presentation will focus on how to accomplish this task using a standard linux logging host and the Palo Alto Firewall's Dynamic Address Lists.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/1e9ab29f793bba862f5cd8db1a0c0706",
+      "includes": "[]",
+      "title": "Leverage the Dark Side of your Network",
+      "start_date": "2018-09-27T16:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-25T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30015,
+      "event_type": 30006,
+      "description": "Get the most out of SAINTCON 2018. &nbsp;The complete run down of the Conference.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/2a6be0c4211087951d32925cee4d68db",
+      "includes": "[]",
+      "title": "Own the Con",
+      "start_date": "2018-09-25T17:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30016,
+      "event_type": 30002,
+      "description": "Presentation:<br><br>This panel of security service providers will discuss the hot new intel from their threat intelligence teams. Ever wonder what happens on the BlackHat network? We will give you a sneak peek on the shenanigans we observed. The session will end with open mike for panel Q&A.",
+      "speakers": [
+        30016,
+        30017,
+        30018,
+        30019,
+        30020,
+        30021,
+        30022,
+        30023
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/2c30e7e543e245cca3a6603683e531b5",
+      "includes": "[]",
+      "title": "Do you see what we see? The latest & greatest from the Threat Intelligence Labs",
+      "start_date": "2018-09-26T21:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-26T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30017,
+      "event_type": 30002,
+      "description": "Over the last decade we have seen a rapid rise in virtualization-based tools in which a hypervisor is used to gain insight into the runtime execution of a system. With these advances in introspection techniques, it is no longer a question of whether a hypervisor can be used to peek inside or even manipulate the VMs it executes. Thus, how can we trust that a hypervisor deployed by a cloud provider will respect the privacy of their customers? While there are hardware-based protection mechanisms with the goal of guaranteeing data privacy even in the presence of such an \"introspecting\" hypervisor, there are currently no tools that can check whether the hypervisor is introspecting when it shouldn't. We have developed a software package that analyzes instructions and memory accesses on an unprivileged guest system which has been deployed onto a hypervisor to determine the potential presence (or lack) of introspection. These techniques are developed to examine properties of modern x86 systems, such as cache-based memory access timing and privileged instruction benchmarking to examine the behavior of the hypervisor. Moreover, we have developed timing methods such as thread racing to determine whether a hypervisor is monitoring regions of memory or hooking instructions. &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30024
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/2d247c3b16c4a7e729e720c7aacb5a89",
+      "includes": "[]",
+      "title": "Who Watches the Watcher? Detecting Hypervisor Introspection from Unprivileged Guests",
+      "start_date": "2018-09-26T17:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-28T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30018,
+      "event_type": 30002,
+      "description": "Come join Troy Jessup ( jup1t3r ), Jeremy Cox (supertechguy), Kevin Howard (l3@n), and Seth Johnson (SJ) in this panel. &nbsp;",
+      "speakers": [
+        30025,
+        30026,
+        30027
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/301677cb30971ce3615133ca4e9d0ef9",
+      "includes": "[]",
+      "title": "SAINTCON Panel",
+      "start_date": "2018-09-28T16:00+0000",
+      "location": 30007
+    },
+    {
+      "end_date": "2018-09-27T16:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30019,
+      "event_type": 30003,
+      "description": "In this presentation, we will review federal and state laws that address the appropriate use of technology in schools (including CIPA, COPPA, and FERPA) and also discuss emerging technologies (virtual reality, artificial intelligence) and how we can find the balance between using the latest technology and maintaining our students\u2019 privacy.<strong>Employee Privacy</strong> As public entities, schools must find the right balance between transparency and safeguarding the privacy of their employees. In this presentation, we will apply different privacy and legal frameworks as well as best practices to an educational context and ultimately make recommendations as to how to best strike this balance. <br><strong>&nbsp;</strong>",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/32668c623fbc7835fab84d4c1e88a43b",
+      "includes": "[]",
+      "title": "Legal Issues and Data Security Discussion (USBE) -\u2022 Inappropriate use of technology in schools \u2022 Employee privacy (or lack of it, posting on social media, etc.)",
+      "start_date": "2018-09-27T15:00+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-28T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30020,
+      "event_type": 30002,
+      "description": "Bio:<br><br>Aaron Sherman currently serves as Senior Director of Cyber Threat Intelligence at Braintrace. Bringing nearly 15 years of cyber threat detection and neutralization success for the U.S. government, Sherman most recently held the position as Cyber Special Agent with the Federal Bureau of Investigation in the Washington, DC and Salt Lake City Field Offices. While at the FBI, Sherman responded to and investigated cyber intrusions and data breaches perpetrated by Advanced Persistent Threat (APT) actors originating from China and elsewhere. Prior to that role, he was a Counterintelligence Special Agent in the US Army, where he conducted intelligence operations to detect, identify and neutralize threats to the United States military. Sherman has successfully led investigations into criminal cyber intrusions, data breaches, denial of service attacks, ransomware, botnets, business email compromise, identity theft, insider threats, dark web criminal services, account takeovers and payment card fraud. As a leading authority on emerging threats, he has implemented new methodologies for targeting and monitoring cybercriminals on the dark and deep web. His efforts have resulted in the detection and disruption of numerous cybercriminal campaigns targeting US organizations.<br>Presentation:<br><br>Business Email Compromises (BEC) continue to plague organizations world-wide, inflicting catastrophic, financial damages. This presentation will be live demo of an actual BEC using the same TTP\u2019s criminal organizations are currently employing to attack their victims. We will dissected each step of the scheme and learn how to identify pre-attack signatures to help detect and defend against an imminent attack. We will explore several tools and methods to conduct incident response to identify the attacker and his/her actions on your system. Of interest, we will explore the previously undocumented Office365 Activities API to access once-undisclosed logs that are incredibly detailed and helpful when conducting BEC incident response. Lastly, we will discuss tips and best practices when coordinating with law enforcement.",
+      "speakers": [
+        30028
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/37ad329851ec77a039ef3c3eb6316616",
+      "includes": "[]",
+      "title": "Anatomy of a Business Email Compromise (BEC) and tools for Incident Response",
+      "start_date": "2018-09-28T16:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-25T21:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30021,
+      "event_type": 30002,
+      "description": "You have been tasked with building a security awareness program for your organization. Where do you start? You can forage for fruit and nuts with the other forest creatures, get lost down a spiraling staircase with no end in sight, throwing out idea after idea, Wall of Sheep, Security Shepherd, pulling from your plethora of security buddies to come do a lunch with your staff on why phishing is bad, very very bad! Or\u00e2\u20ac\u00a6you can build a program based on some sound logic and practicality. Not to say having your buddy talk on phishing techniques isn't a good start, but where do you go from there? So, how many licks does it take to get to the center of a good security awareness program? You can be that wise old owl, and go with three, but a really good program has a few more layers than that. Having done my own research on where to start, and what tools to use, I stumbled upon a few industry standards and recommendations from our friends in security awareness like SANS, KnowBe4, as well as a few others. But with all things, you have to add your own spin to it. This talk will focus on security awareness best practice, where to start, and how to build a mature program everyone( especially the business) can benefit from.",
+      "speakers": [
+        30029
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/38f7fcebcaa167fcf29c032a8ff74789",
+      "includes": "[]",
+      "title": "How Many Licks Does it take to get to the Center of Security Awareness?",
+      "start_date": "2018-09-25T20:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30022,
+      "event_type": 30002,
+      "description": "I have worked on cracking the message on the Kryptos statue at the CIA headquarters. The fourth section has not been solved \"publicly\", but I have come up with a methodical way to decrypt the text. In doing so I have identified general troubleshooting patterns that can help solve complex problems in a systematic way.",
+      "speakers": [
+        30030
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/392e02558b165bc864d19603dcd2c718",
+      "includes": "[]",
+      "title": "How to Solve Kryptos \"Incorrectly\"",
+      "start_date": "2018-09-26T20:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-27T16:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30023,
+      "event_type": 30008,
+      "description": "Convert Inkscapt artwork to KiCAD modules with svg2mod",
+      "speakers": [
+        30031
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/4111c84eb2b7a2ac7c248cc657cdf49f",
+      "includes": "[]",
+      "title": "KiCAD artwork",
+      "start_date": "2018-09-27T16:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-26T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30024,
+      "event_type": 30002,
+      "description": "In this presentation, we will go over the basics of writing shellcode, focusing on writing shellcode for Linux 32/64 bit operating systems. We will go over the basics of setting up a development environment along with common troubleshooting techniques. &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30032
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/41748d001db27f92a82c8e379c7dc361",
+      "includes": "[]",
+      "title": "Introduction to Shellcode",
+      "start_date": "2018-09-26T19:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-25T03:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30025,
+      "event_type": 30008,
+      "description": "",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/4331902b86856fdabccd683edc101115",
+      "includes": "[]",
+      "title": "Hardware Hacking Community - OPEN",
+      "start_date": "2018-09-24T23:00+0000",
+      "location": 30008
+    },
+    {
+      "end_date": "2018-09-25T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30026,
+      "event_type": 30005,
+      "description": "Presentation:<br><br>Helping you see what a hacker sees and putting yourself in their mindset",
+      "speakers": [
+        30033
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/4393cfe575b370959f12708d204426bc",
+      "includes": "[]",
+      "title": "Thinking like a Hacker",
+      "start_date": "2018-09-25T19:30+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-25T02:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30027,
+      "event_type": 30004,
+      "description": "Come the night before, register and build your badge. &nbsp; We'll have a DJ, great music, and food.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/44d3f324356d14911a7d12e4539959de",
+      "includes": "[]",
+      "title": "Pre-Conference Registration Event",
+      "start_date": "2018-09-24T23:00+0000",
+      "location": 30009
+    },
+    {
+      "end_date": "2018-09-28T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30028,
+      "event_type": 30007,
+      "description": "Bio:<br><br>Matthew Toth is a Senior Security Engineer at Splunk with over 20 years of experience in the Information Technology industry, with a focus on Cyber Security. Working with the US Department of Defense, he has led teams in CyberWar simulations, and has advised senior leadership on new attack vectors and threat actors. He has architected and deployed solutions that protect enterprise networks, and SCADA/ICS systems. With a passion for security, Matthew is deeply engaged with the community to educate and prepare the next generation of Cyber Warrior.<br><br>Presentation:<br><br>The chances are very high that hidden threats are already in your organization's networks. Prevention systems and tools help reduce opportunities for adversaries and enable analysts to operate more effectively. The key, however, is to constantly look for attacks that get past security systems and to catch intrusions in progress rather than after attackers have completed their objectives and done worse damage to the business. This process is referred to as \"Threat Hunting\". Armed with an understanding of the general methodologies that the attacker utilizes in modern Advanced Persistent Threats (APT), we can better equip ourselves to defend and disrupt this type of attack. The goal of this workshop is to help train analysts and defenders how to hunt for these threats. Defenders need to choose data sources wisely so that they can see across all of the phases of an attack to give them the best chance of detecting an adversary.",
+      "speakers": [
+        30034
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/452c67001f966402084361101c36100f",
+      "includes": "[]",
+      "title": "Threat Hunting 101",
+      "start_date": "2018-09-28T14:00+0000",
+      "location": 30006
+    },
+    {
+      "end_date": "2018-09-27T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30029,
+      "event_type": 30002,
+      "description": "Bio:<br>Nathan Smith: You can find me on Twitter @n8zwn. Currently working as a Sr. Security Analyst for the past few years. My current position has me doing both red and blue team activities. Love everything information security related as well as being outdoors with my family. Colin Jackson: d1dymu5. Security Engineer for large education and training technology company. I'm a locksport enthusiast, inventor, and security fanboy. He's been doing infosec for 10 years. More blue than red. Husband and father of 4, enjoys spending time with family and friends.<br>Presentation:<br>At a recent conference, a few of us were discussing how there are a ton of great info security peeps in the area that have really cool ideas and project, yet many don't feel comfortable presenting them or submitting papers about their ideas. We've also felt that many of the same people present due to lack of submissions. The overall goal of this presentation will be about stepping out of our comfort zone, overcoming your imposter syndrome and offering some tips of giving your 1st or your 20th conference talk.<br><br>",
+      "speakers": [
+        30035,
+        30036
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/474f0cdb3071524710e27a707f568b96",
+      "includes": "[]",
+      "title": "Dr. StrangeTalk, or How I Learned to Stop Worrying and Present at the Con",
+      "start_date": "2018-09-27T21:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-27T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30030,
+      "event_type": 30002,
+      "description": "Bio:<br>Security consulting, threat hunting and proving technology solution worth. This is a day in the life of Bill Clay III, a Cisco Consulting Security Engineer. Bill has been helping secure networks for over 8 years in roles ranging from security engineering to technical pre-sales. Although Bill\u2019s origin is the Midwest he currently resides in Denver where he DJs, hikes, enjoys VR games and mentors students via the Cyber Patriot program. &nbsp;Certified Ethical Hacker.<br><br>Abstract:<br>With the upcoming ratification of TLS 1.3, network based detection of malware within encrypted tunnels will become increasingly difficult pushing more and more focus on the endpoint. Stopping malicious payloads before they reach the endpoint on the wire can still be achieved without decryption by correlating multiple metadata-points around the flow together including a measurement of the sequence of packet lengths and times. With a rich set of information around the TLS header, traffic telemetry details and public destination reputation, a score can be formed and relied upon to detect certain malicious payloads on the wire without decryption.",
+      "speakers": [
+        30037
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/4b8e9dcba3728241ff35b3a3ed007711",
+      "includes": "[]",
+      "title": "Using metadata and telemetry to detect malware in encrypted traffic",
+      "start_date": "2018-09-27T17:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-26T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30031,
+      "event_type": 30005,
+      "description": "An introduction to Cross Site Request Forgery, why it is an issue and why you shouldn't assume your framework is protecting you.",
+      "speakers": [
+        30038
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/539a93edb1097462239a05e74d61169d",
+      "includes": "[]",
+      "title": "Cross Site Request Forgery 101",
+      "start_date": "2018-09-26T17:30+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-27T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30032,
+      "event_type": 30008,
+      "description": "Digispark: Make this $8 microcontroller run (almost) all your USB Rubber Ducky payloads",
+      "speakers": [
+        30039
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/54874cd4273edf848285d2ff49095952",
+      "includes": "[]",
+      "title": "$8 rubber ducky",
+      "start_date": "2018-09-27T22:30+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-27T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30033,
+      "event_type": 30008,
+      "description": "Come learn the basics of oscilloscopes",
+      "speakers": [
+        30040
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/60ee149219e874238ab08a9336bfa8c1",
+      "includes": "[]",
+      "title": "Oscilloscopes and you",
+      "start_date": "2018-09-27T21:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-28T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30034,
+      "event_type": 30002,
+      "description": "Bio:<br><br>Zevlag is the GameMaster for Hackers Challenge. SAINTCON and DEF CON black badge holder. &nbsp;<br><br>Presentation:<br><br>We will walkthrough several challenges and answer questions about the stumpers and more complex Hackers Challenge puzzles",
+      "speakers": [
+        30041
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/6476096b64772eaebe16fd191b15549a",
+      "includes": "[]",
+      "title": "Hackers Challenge Shakedown",
+      "start_date": "2018-09-28T17:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30035,
+      "event_type": 30002,
+      "description": "In this presentation, we will go over the basics of bluetooth, with a focus on vulnerabilities. We will go over the basics of setting up an environment to monitor bluetooth packets.",
+      "speakers": [
+        30042
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/66a126d2ef30798a9da2c6a6f9fd99bd",
+      "includes": "[]",
+      "title": "Bluetooth: From basics to vulnerabilities",
+      "start_date": "2018-09-27T17:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-27T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30036,
+      "event_type": 30002,
+      "description": "Bio:<br>James is a Security Analyst with more than 10 years experience dealing with malware of all sorts; he's currently employed by Symantec.<br>Presentation:<br>Locky is dead, and Coinhive has replaced it. Here's a look at the types of Cryptomining that has become the threat du jour.<br><br>",
+      "speakers": [
+        30043
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/6976ce9a1e4d83d24e6f77ad7802df72",
+      "includes": "[]",
+      "title": "CryptoMining has replaced Ransomware",
+      "start_date": "2018-09-27T21:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-27T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30037,
+      "event_type": 30002,
+      "description": "Bio:<br><br>Dan McInerney is a senior penetration tester/red teamer at Coalfire. He runs a top 100 Python Github account, is a BlackHat instructor, and DC801 member.<br><br>Presentation:<br><br>Icebreaker is a tool for when you have a compromised box on an internal network, but no Active Directory credentials. It automatically performs 5 network attacks to gain usable AD credentials.<br>",
+      "speakers": [
+        30044
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/6acd24833f5cf5c691dec3794f2556c2",
+      "includes": "[]",
+      "title": "Icebreaker.py - Gaining a foothold in Active Directory in one command",
+      "start_date": "2018-09-27T21:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30038,
+      "event_type": 30003,
+      "description": "Mobile Device Management (MDM) - School owned devices inside and outside of the classroom.<br>Panel discussion with UETN stakeholders each using a different MDM solution to meet the filtering requirements of their school district. &nbsp;The discussion will focus on successes, challenges and the consideration required to ensure students are properly filtered, managed and protected when using a district owned device on and off campus.",
+      "speakers": [
+        30045
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/6b2bfc1ecb00d7b830c033019746e6a6",
+      "includes": "[]",
+      "title": "Mobile Device Management (MDM) in Classroom and with Take-Home Devices",
+      "start_date": "2018-09-27T21:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-26T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30039,
+      "event_type": 30002,
+      "description": "The quantum computing era is upon us. So, what does that mean for the cybersecurity space? Are all of our secrets on the verge of being easily revealed through quantum power? Is our secure internet about to be ransacked by nation states with large quantum machines? Are you prepared for quantum cryptology Armageddon? The future isn't as bleak as some may paint it. Come learn about what is really going on and where we are headed. We will bring you up to speed on the very basics of quantum physics and how they apply to the cybersecurity industry. We will discuss the current state of quantum computing and the success of China and American in turning this new technology into real world applications. We will also cover cryptology research and recommendations by the National Institute of Standards and Technology (NIST). Learn what you can do now to protect your data and prepare for the future.",
+      "speakers": [
+        30046
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/6b710309c125f0ffad1a520e009b2aa2",
+      "includes": "[]",
+      "title": "Quantum Cryptology Armageddon",
+      "start_date": "2018-09-26T16:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30040,
+      "event_type": 30005,
+      "description": "In this session we will discuss the importance of network segmentation, how to plan for it, and how to implement.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/71bfb7db8cd06f047ec77b7993020a83",
+      "includes": "[]",
+      "title": "Secure Network Segmentation",
+      "start_date": "2018-09-26T17:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-25T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30041,
+      "event_type": 30002,
+      "description": "Instrumenting cloud for security issues with cloud first strategy - ways to instrument the cloud for security to enable incident response and forensics - network traffic techniques and traffic agents - cloud log collection - show/talk about configuration monitoring and compliance &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30047
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/72a196887bfda5194be82e2336649093",
+      "includes": "[]",
+      "title": "Security in AWS, Azure, Google, Oracle and IBM is cloudy",
+      "start_date": "2018-09-25T21:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-26T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30042,
+      "event_type": 30008,
+      "description": "This panel will discuss volunteerism within infosec and answer any questions you have.",
+      "speakers": [
+        30048
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/73015ed52cc4ce4fa6087287444064ad",
+      "includes": "[]",
+      "title": "Volunteerism in InfoSec Panel Discussion",
+      "start_date": "2018-09-26T20:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-25T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30043,
+      "event_type": 30006,
+      "description": "Bio:<br><br>Tanner Purves is a 20 year old college student majoring in Computer Science with an emphasis in Cyber Security at Boise State University in Boise, Idaho. He has been a part of NeverLAN since its founding. There are many other things he could try to include in this statement to make him sound cool but in reality he is just another ordinary guy trying to hack all the things.",
+      "speakers": [
+        30049,
+        30050,
+        30051
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/76109221747cc12f95064b79657c1c65",
+      "includes": "[]",
+      "title": "Teach them to Hack",
+      "start_date": "2018-09-25T16:50+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-25T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30044,
+      "event_type": 30007,
+      "description": "Bio:<br><br>Seth Law is an experienced Application Security Professional with over 15 years of experience in the computer security industry. During this time, Seth has worked within multiple disciplines in the security field, from software development to network protection, both as a manager and individual contributor. Seth has honed his application security skills using offensive and defensive techniques, including tool development. Seth currently hosts the Absolute AppSec podcast with Ken Johnson and is a regular speaker at developer meetups and security events, including Blackhat, Defcon, CactusCon, and other regional conferences.<br><br>Training:<br><br>Web Hacking and exploitation of vulnerabilities on the web have been around for years. From the first exposure to SQL injection to the hipster vulnerabilities like server-side request forgery, hands-on experience with any of these vulnerabilities is hard fought and haphazard. Experience with any of these issues and their related tools depends on your ability to either find an instance to play with or work through an intentionally vulnerable application. This Web Hacking Workshop will feature common vulnerabilities taken from the OWASP Top 10 and work through explanations and hands-on exploitation of each type using common tools. Attendees are welcome to attend the whole time or just during vulnerabilities they are interested in. Requirements: Attendees are required to bring their own system with Kali Linux installed.<br><br>",
+      "speakers": [
+        30052
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/77d41e3a3b095db8ee5d6d7c331e7bfc",
+      "includes": "[]",
+      "title": "Hands-on Web Hacking",
+      "start_date": "2018-09-25T19:00+0000",
+      "location": 30006
+    },
+    {
+      "end_date": "2018-09-25T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30045,
+      "event_type": 30005,
+      "description": "New to lock picking? Just curious? Why would you want to learn this? Why is there always a LPV at security cons? Legal concerns? This and more will be addressed in this quick intro to lock picking. We\u2019ll cover basic locks, mechanisms, parts, lock picking tools, and methods.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/7a9c61b0ec475261bfa40380edb33394",
+      "includes": "[]",
+      "title": "Lock Picking 101",
+      "start_date": "2018-09-25T21:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-27T04:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30046,
+      "event_type": 30001,
+      "description": "In years past, we have held an after-dark event to get people involved in many of the contests and events, learn more about communities, and have a unique SAINTCON experience. &nbsp;This event has returned for 2018, and will occur on Wednesday Evening from 6:30p till 10:00p. &nbsp;DJ/Music, Light Food, and fun projects for all participants.<br><br>Event Includes: <br>DonkeyCart Racing, <br>Hardware Hacking, <br>Specialized Vault Scenarios, <br>Hackers Challenge Walkthroughs, <br>Lock Picking, <br>and Much Much More!",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/7c34f087fd751360e2904b3b75a8614b",
+      "includes": "[]",
+      "title": "AfterDark Event",
+      "start_date": "2018-09-27T00:30+0000",
+      "location": 30010
+    },
+    {
+      "end_date": "2018-09-26T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30047,
+      "event_type": 30003,
+      "description": "",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/7da3b6c33b04aac0b5a384716793d046",
+      "includes": "[]",
+      "title": "Attend Track Two Talk - Lesson Learned: Top 10 critical pentest findings",
+      "start_date": "2018-09-26T17:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-25T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30048,
+      "event_type": 30002,
+      "description": "Bios:<br><br>capt8bit has been wearing tinfoil hats for most of his life. This unhealthy paranoia somehow qualified him to be a professional Penetration Tester for the last 8 years. He is also a life-long Open Source advocate, and former SAINTCON presenter. <br><br>Forbo is an infosec admin, former pentester, and all-around activist. He has previously presented on anonymous computing at the Crypto & Privacy Village, where he has also volunteered, and at SAINTCON, about Nmap techniques. His motivation for this talk was rooted in the fact that he has drunkenly generated and forgotten about more GPG key pairs than he cares to admit (that doesn't make him an expert, just an idiot).<br>Presentation:<br><br>The various Ministries-of-Positive-Nouns and their Large Relatives are engaging in illegal backroom exchanges of your information. Governments and ultra-capitalists around the globe have seized the means of communication and are snorting our traffic like it's Columbian nose candy. What are the Winston Smiths of the world to do in order to avoid landing in Miniluv's Room 101? Learn how to make your own USB-based hardware GPG token that is easy to assemble, cheap, feature-rich, open, and secure. Many people keep their GPG/SSH private keys on their primary storage. This provides a large attack surface, whereas using a hardware token can prevent key extraction. Considerations include using open source cryptography libraries, firmware, and hardware, as well as tamper resistance and EMI shielding.<br><br><br><br>",
+      "speakers": [
+        30053,
+        30054
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/7dcf2cd357e7d9d21843b8eb79cf595b",
+      "includes": "[]",
+      "title": "The Theory and Practice of Building A Privacy Token",
+      "start_date": "2018-09-25T19:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-26T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30049,
+      "event_type": 30007,
+      "description": "Have you heard your friends or colleagues talk about \"sniffing\" network traffic? Do you want to know if that new \"smart\"-X device is actually just a way for companies to \"steal\" more of your private information. Find out what is really happening on your networks with this introduction to Wireshark, one of the most popular tools used in industry for network analysis. No prior knowledge is necessary. We will start with a brief introduction to Wireshark, its capabilities and uses. Next, we will discuss where and how to monitor your network with Wireshark and what factors affect those decisions. At this point we are now ready to start applying capture filters, display filters, and custom colorization rules to highlight the information we are interested in seeing. We will focus on understanding several popular network protocols including ARP, IP, ICMP, TCP, UDP, HTTP and others. We will also take a look at recently disclosed vulnerability such as the DNS rebinding attacks targeting Roku, Google Home and other devices. The entire workshop will be very hands on with many different sample captures to work from as we identify both normal and abnormal traffic. We will not be doing any live captures.",
+      "speakers": [
+        30055
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/7ef1a9c15fdfeb9354d2cb1660bb0292",
+      "includes": "[]",
+      "title": "Wireshark: A Beginners Introduction",
+      "start_date": "2018-09-26T19:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-27T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30050,
+      "event_type": 30002,
+      "description": "Bio:<br>@compukidmike is a father, electrical engineer, IT manager, and Defcon black badge winner. He doesn't like long walks on the beach, but prefers to be indoors with a fast internet connection.<br><br>Presentation:<br>What parts were used this year and why - Short timeframe - New Designer - IoT integrations - Minibadges - Feedback - Next year ideas/plans",
+      "speakers": [
+        30056,
+        30057
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/81a58eb5862d0abaa7bccd103cfe110b",
+      "includes": "[]",
+      "title": "The Badge Talk",
+      "start_date": "2018-09-27T16:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30051,
+      "event_type": 30002,
+      "description": "Social engineering is a real threat to each of us and our organizations and groups. Social engineering is often referred to as a universally human vulnerability.<br><br>How can we work to protect ourselves? This presentation will share seven specific actions and tactics you can use to inoculate yourself and potentially others against these kinds of attacks.<br><br>",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/81dc642388aca3781cdf4fc3ee9af759",
+      "includes": "[]",
+      "title": "Amygdala Lowjacking - 7 Real Techniques to Join the Resistance",
+      "start_date": "2018-09-26T20:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30052,
+      "event_type": 30008,
+      "description": "Artwork in KiCad. How to do it easily and avoid common pitfalls.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/8217878f2f80140926253a99304b88f2",
+      "includes": "[]",
+      "title": "KiCAD artwork",
+      "start_date": "2018-09-26T22:30+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-25T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30053,
+      "event_type": 30005,
+      "description": "We will discuss different career paths that ultimately lead toward becoming a pentester and beyond. We'll discuss options for schooling, training, and initial career moves. We'll also talk about ways to improve your skills and I'll share some hard lessons I learned on my own that I wish someone shared with me early in my career. This will be somewhat of a Q&A format so bring all questions. &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30058
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/845c6236f25ebab9449e9793ce6d15b3",
+      "includes": "[]",
+      "title": "Intro to Pentesting: How you can get the career you want (and break stuff)",
+      "start_date": "2018-09-25T21:30+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-25T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30054,
+      "event_type": 30008,
+      "description": "Learn the basics of rolling your own crypto.",
+      "speakers": [
+        30059
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/8629ff827b776d2fdfda0559a6830896",
+      "includes": "[]",
+      "title": "Bring Your Own Cypher",
+      "start_date": "2018-09-25T22:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-25T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30055,
+      "event_type": 30008,
+      "description": "Come see how the latest features of Kismet are used to power the WiFi Cactus",
+      "speakers": [
+        30060
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/873105d5e528825a7a816b4900918251",
+      "includes": "[]",
+      "title": "Latest features of Kismet",
+      "start_date": "2018-09-25T20:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-27T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30056,
+      "event_type": 30002,
+      "description": "Undoubtably you've heard of the OWASP Top 10. But do you know what they really are? Do you know why they're a concern? Do you know how to fix them? I'll show you what's changed, what's been added, how each vulnerability works, and how to prevent them in your code and applications. This is for any developer who has to write code for public consumption, and any InfoSec professional who either has to help the developers or is paid to break stuff.",
+      "speakers": [
+        30061
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/88cb9e148fbd59e986a143197f727da1",
+      "includes": "[]",
+      "title": "The OWASP Top 10 in Review (New and Improved in 2017)",
+      "start_date": "2018-09-27T16:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-25T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30057,
+      "event_type": 30002,
+      "description": "Beginning last year, a honeypot I run on the DMZ of my lab network started receiving a lot of traffic on a TCP port I wasn't familiar with. Out of curiosity, I investigated and discovered that the machine was getting hit, over and over again, by an elaborate, automated attack that used a sequence of Microsoft SQL database commands in an attempt to commandeer what it thought was an MS-SQL server. In this talk, I'll step attendees through the attack from its initial connection to the delivery of the malicious payload, and what I was able to determine about the IP addresses from which the attack originated and their checkered history. &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30062
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/8d1b771091aff37189eba587d4207c5e",
+      "includes": "[]",
+      "title": "Hey, You Got Your SQL In My Honeypot!",
+      "start_date": "2018-09-25T21:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30058,
+      "event_type": 30003,
+      "description": "As the Internet continues to be filled with content that is inappropriate for work and harmful to minors, the demands on content filtering continue to increase. &nbsp;Combine that with encryption technologies that make it more difficult to filter and you have a picture of the landscape of content filtering in 2018. &nbsp;How do we deal with this and what technologies/techniques are available to combat this ever growing issue?",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/8d85571ba35fa3c9998dd36c03584313",
+      "includes": "[]",
+      "title": "Path and Future of Content Filtering (issues, concerns, and next steps)",
+      "start_date": "2018-09-26T19:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-27T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30059,
+      "event_type": 30008,
+      "description": "Q&A about the SAINTCON radio",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/8f3e3c447f2c0ea74048185b2b177898",
+      "includes": "[]",
+      "title": "SAINTCON Radio",
+      "start_date": "2018-09-27T22:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-26T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30060,
+      "event_type": 30002,
+      "description": "We live in a world of smart phones, smart TVs, smart kitchen appliances and security ignorance users. The main target of all cyber attacks is human--people like you and me who are driven to exploit the millions of data that's being captured today. User behavior plays a key role in many security breaches and incidents because humans are the biggest threat to data security. The tremendous increase of cyber security attacks due to human error is often depicted as a security pandemic. &nbsp;Past research has shown that lack of training, support, motivation and the increase use of social media platforms are all human habits that weaken security. Therefore, it is important to first understand the essential link between privacy and security in a cyber security context and identify the human factors that may weaken this link.apowers@cyphras.com &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30063
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/902c0868b13dad70f13e90cace947df8",
+      "includes": "[]",
+      "title": "Human is the weakest link in cyber security",
+      "start_date": "2018-09-26T19:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30061,
+      "event_type": 30008,
+      "description": "",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/906f0a7962de4554ed4d03b08256938c",
+      "includes": "[]",
+      "title": "Packet Capture Community",
+      "start_date": "2018-09-27T15:00+0000",
+      "location": 30008
+    },
+    {
+      "end_date": "2018-09-25T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30062,
+      "event_type": 30003,
+      "description": "",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/966578c3d5aa5bbc6861ca79ea609b0d",
+      "includes": "[]",
+      "title": "How to secure your own devices from external threats",
+      "start_date": "2018-09-25T21:00+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-25T16:50+0000",
+      "conference": "SAINTCON2018",
+      "id": 30063,
+      "event_type": 30006,
+      "description": "Bio:<br><br>Richard Thieme (www.thiemeworks.com) is an author/professional speaker who addresses challenges posed by new technologies, how to redesign ourselves to meet these challenges, and creativity in response to radical change. His speaking generally addresses \u00e2\u20ac\u0153the human in the machine,\u00e2\u20ac\u009d technology-related security and intelligence issues as they come home to our humanity. He has published hundreds of articles, dozens of stories, five books, and has delivered hundreds of speeches. A novel, FOAM, was published in 2015 and \u00e2\u20ac\u0153A Richard Thieme Reader,\u00e2\u20ac\u009d fiction and non-fiction, was published on Amazon Kindle in 2016. His column, \"Islands in the Clickstream,\" was distributed to thousands in sixty countries before collection as a book in 2004. When a friend at NSA said, \"The only way you can tell the truth is through fiction,\" he returned to writing short stories (35 published) and \"Mind Games,\" a collection of nineteen stories about anomalies, infosec, professional intelligence and edgy realities, was published in 2010. More realities are illuminated in the critically extolled \u00e2\u20ac\u0153UFOs and Government: A Historical Inquiry\u00e2\u20ac\u009d a 5-year team project using material from inside the military and intelligence communities to document government responses over 50 years, It is currently in 90+ university libraries. A sequel, \u00e2\u20ac\u0153The UFO Phenomenon,\u00e2\u20ac\u009d with Thieme as associate editor and contributor, is due in late 2018. Many speeches address creativity, shifts in identities, and technology-related security and intelligence issues. He spoke in 2017 at Def Con for the 22nd year. He has keynoted conferences around the world and clients range from GE, Microsoft, Medtronic, and Johnson Controls to the NSA, FBI, US Dept of the Treasury. Los Alamos Lab, and the US Secret Service.<br><br>Keynote:<br><br>We will explore the relationship of context to content in a world transformed by new technologies. It challenges traditional thinking rooted in prior technologies and explore how new technologies do not merely extend our senses and cognitive abilities but change us into human beings with new ways of experiencing ourselves. Those changes have profound implications for warfighting and for geopolitical thinking as they do for every aspect of our work and lives.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/96764b5c55e435496674a9e2e2057b83",
+      "includes": "[]",
+      "title": "Freeing the Mind: Security and power in a world without walls",
+      "start_date": "2018-09-25T16:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-28T16:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30064,
+      "event_type": 30002,
+      "description": "Bio:<br>Jonathan has worked professionally in the audit and information security realm for the last 9 years. During that time, he has assisted mom and pop shops to some of the largest household names in various audit and information security endeavors. Prior to this stage of his life, he was a systems administrator - which was a natural progression from his teen and pre-teen years of scrapping together whatever computer components he could find in an attempt have the latest and greatest in computing. In his spare time, he enjoys tinkering with his security camera system, segmenting his home network, playing video games with his wife and kids, and working on never-ending home improvement projects.<br><br>Presentation:<br>At face value, the PCI Data Security Standard seems very black-and-white. But as anyone involved in PCI compliance or Information Security knows, there is a great amount of nuance that can sometimes escape folks attempting to comply with the standard. I have compiled a list of \"gotcha's\" that I intend to explain to help attendees of the conference more fully comply with the PCI Standard in order to protect the payment ecosystem (and more easily pass those audits!).<br>",
+      "speakers": [
+        30064
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/97e7dd9f32af03fd8186833bb38da77c",
+      "includes": "[]",
+      "title": "PCI Gotchas!: Deciphering PCI Nuances",
+      "start_date": "2018-09-28T16:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30065,
+      "event_type": 30005,
+      "description": "Bio:<br><br>Young security enthusiast passionate about open source.<br><br>Presentation:<br><br>Port scanning is a simple way to find vulnerable targets within a network. Learn how to use tools like nmap, masscan and Shodan to do external scanning of your network and find the low-hanging fruit before somebody else does.<br>",
+      "speakers": [
+        30065
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/987e92a95ab2920e4fef0ff35cc70c26",
+      "includes": "[]",
+      "title": "A Hacker's First Look at Your Network: Port Scanning",
+      "start_date": "2018-09-27T17:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-27T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30066,
+      "event_type": 30002,
+      "description": "Bio:<br><br>Mike is a mad scientist hacker who likes to meddle with hardware and software. He is particularly obsessed with wireless. He has a degree in computer science from SUU which he has put to use building and breaking a wide array of systems. These include web application pentesting, wireless system monitoring and tracking and good old fashioned reverse engineering. He has presented at a number of security conferences including DEF CON and DEF CON China.<br>Presentation:<br><br>The #WiFiCactus is a wireless monitoring tool that is capable of listening to 50+ channels of WiFi at the same time. This talk will discuss the events and data from the last year traveling with the #WiFiCactus including warwalking at DEF CON China. This talk will discuss why wireless monitoring is important to the security of your network and the interesting things you can find when you have 100+ antennas strapped to your back while traveling the world. This talk will breakdown upgrades and optimizations that have been added in order to make it more effective and discuss the results of those upgrades. This talk will also discuss wireless tools like Kismet and how to get the most out of them.<br><br>",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/9aa20f9261d3b84334e62018c8b1d55c",
+      "includes": "[]",
+      "title": "Year of the #WiFiCactus",
+      "start_date": "2018-09-27T21:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-25T16:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30067,
+      "event_type": 30006,
+      "description": "Bio:<br><br>Bonnie Brinton Anderson is the Douglas and Effie Drigss Professor of Information Systems in the Marriott School of Business at Brigham Young University. She also serves as the department chair of the Information Systems Department. She has been at BYU since receiving her PhD from Carnegie Mellon University in 2001. In addition to teaching classes on user experience design and technical leadership, Dr. Anderson is currently engaged in research in the intersection of neuroscience (fMRI, EEG, eye-tracking) and behavioral information systems security. Dr. Anderson and her colleagues use these neurophysiological tools to examine not only how computer users respond to computer security messages, but also why users respond the way they do. Her work is funded by the National Science Foundation and the White House Brain Initiative as well as a Google Faculty Research Grant. She has presented her work internationally and published in MIS Quarterly, Information Systems Research, and other top journals. Dr. Anderson has a husband and four daughters. Her hobbies include traveling, playing the harp, family activities and the occasional shark encounter.<br>Keynote:<br><br>In information security, users are often described as being careless, clueless, or lazy. Fortunately, this dim view of users is changing to recognize that usable security has a lot to do with users' security decisions. At the Neurosecurity Research Lab at Brigham Young University, we're finding that this user stereotype is unfair on a whole different level, specifically, the neurobiological level. The way our brains work drives much of our behavior even security behavior without our being conscious of it. In this talk, I'll share the results of a series of experiments that combine functional magnetic resonance imaging (or fMRI), eye tracking, and traditional usability testing, to show how the way our brains work can sometimes make us the weakest link the security chain. I'll also discuss how these results suggest practical take-aways that you can use to make your security UI more usable.",
+      "speakers": [
+        30066
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/9b884e7b20f295044893637795f24a37",
+      "includes": "[]",
+      "title": "Using Neuroscience to improve the usability of Information Security",
+      "start_date": "2018-09-25T15:15+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30068,
+      "event_type": 30007,
+      "description": "Training:<br><br>Have you ever had to defend against a DDoS attack taking down your connectivity and availability? Do you think it won\u2019t happen to you? Come join the leaders in DDoS defense solutions for a session of learning today's critical DDoS defense skills. You\u2019ll learn how DDoS countermeasures work, followed by a role playing session where you will get to be both the defender and the attacker during several rounds of wargames. Your takeaway will be the knowledge of how attackers make their moves and how to use many of the current best practices in DDoS defense today.",
+      "speakers": [
+        30067,
+        30068
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/9d6dc59d9a354ac1a59f4dc4332c9451",
+      "includes": "[]",
+      "title": "DDoS War Game",
+      "start_date": "2018-09-27T14:00+0000",
+      "location": 30011
+    },
+    {
+      "end_date": "2018-09-25T21:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30069,
+      "event_type": 30002,
+      "description": "ATM Jackpotting isn't something new, as security researcher Barnaby Jack famously demonstrated jackpotting an ATM machine at Black Hat 2010. However, in the past year there has been a significant rise of jackpotting ATM machines across the United States. Most criminals that try to rob money out of an ATM machine use less technical means, such as skimming credit card numbers or physically trying to break open an ATM machine. This presentation sheds light on both the technical means of jackpotting an ATM machine, as well as the organized crime nature of how teams are assembled to accomplish this task. &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30069
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/9deeb6ff9aaff4f8bd275ac7ec5f8eee",
+      "includes": "[]",
+      "title": "ATM Jackpotting",
+      "start_date": "2018-09-25T20:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-28T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30070,
+      "event_type": 30005,
+      "description": "Bios:<br><br>John is an Information Security Engineer currently working for the County of Salt Lake. He holds a Bachelor of Science degree in Computer Science, a Master of Science degree in Information Assurance, a Graduate Certificate in Penetration Testing & Ethical Hacking, and numerous IT security certifications (GXPN, GPEN, GWAPT, GCIH, GCIA, GSEC, CISSP, CEH). He has 8 years of experience working with the United States Military and local government agencies on numerous IT security initiatives including system hardening, threat hunting, incident handling, intrusion detection, vulnerability assessments, and penetration testing.<br><br>Chris received his undergraduate degree from University of Utah and served in the Peace Corps for 2 years after graduating. He began working at Salt Lake County in 1998 at Criminal Justice Services, Transferred to the District Attorney's office in 2003 and then to Information Services in 2006. Chris has earned Certifications with Microsoft (MCITP Enterprise and Server), CISSP, GIAC SNA, GIAC GSEC, GIAC CIH, GIAC CIA and ITIL v3.<br><br>Presentation:<br><br>The adversary is actively targeting end-users and endpoints and they are getting quite proficient at bypassing traditional methods of prevention, such as antivirus. To detect advanced attack vectors, more than ever, defenders need visibility into endpoint activities to monitor behaviors and spot abnormal activity that can be indicative of malicious activity. While commercial products can provide organizations insight into this endpoint activity, they also can be cost-prohibitive. So what options are available to companies that don't have the hundreds of thousands of dollars necessary to purchase a commercial product? This presentation will show that with the combination of Sysmon (free SysInternls system monitoring tool) and the Elastic Stack (open source data analytics platform) the insight into endpoint activity across the enterprise can be obtained without huge licensing costs. Sysmon grants defenders the capability to record endpoint activity such as process creations, network connections, file writes, process injections, and registry modifications. Combine this with Elastic Stack's ability to ingest, enrich, store, search, visualize, and alert on these records from across the enterprise and suddenly defenders can obtain enterprise-wide endpoint insight at a low cost. Given the power of Sysmon + Elastic Stack, defenders can start to identify malicious scripting, credential theft, scanning, lateral movement, attacker persistence, and attackers covering their tracks throughout their environments.<br>",
+      "speakers": [
+        30070,
+        30071
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/9f62b935b634144031275b9999ab9647",
+      "includes": "[]",
+      "title": "Tactical Endpoint Monitoring 101",
+      "start_date": "2018-09-28T17:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-26T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30071,
+      "event_type": 30002,
+      "description": "Information Security has a near 0% unemployment rate. We are increasing the demand while reducing the entry requirements, and it is still extremely difficult to find enough bodies to fill the seats. This talk will be summary of the hiring issues we face today along with some solutions to help ease the pain for organizations trying to step into this industry.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/a01edbfa704a8b2ef3957fa87d0f5d42",
+      "includes": "[]",
+      "title": "Mentoring the Next Generation",
+      "start_date": "2018-09-26T21:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30072,
+      "event_type": 30002,
+      "description": "Bio:<br><br>Brian Contos is the CISO & VP Technology Innovation at Verodin. He has over two decades of experience in the security industry. He is a seasoned executive, board advisor, security company entrepreneur and author. After getting his start in security with the Defense Information Systems Agency (DISA) and later Bell Labs, Brian began the process of building security startups and taking multiple companies through successful IPOs and acquisitions including: Riptech, ArcSight, Imperva, McAfee and Solera Networks. Brian has worked in over 50 countries across six continents. He is a strategic board advisor for multiple companies including Cylance and Appdome. He has authored several security books, his latest with the former Deputy Director of the NSA, spoken at leading security events globally and is a Distinguished Fellow with the Ponemon Institute. Brian frequently appears in the news and has been featured in CNBC, C-SPAN, Fox, NPR, Forbes, Wall Street Journal, The London Times and many others. He most recently appeared in a cyberwar documentary alongside General Michael Hayden (former Director NSA and CIA).<br>Presentation:<br><br>By leveraging security instrumentation platforms, you are bringing together red and blue teaming initiatives with greater symbiotic mutualism across three major areas. First, you can validate the efficacy of security controls such as firewalls, WAFs, DLPs, EDRs, and SIEMs. If those controls aren't working as needed, you can leverage perspective analytics to instrument them. Second, you can apply configuration assurance to verify that a change that has been made actually does what's desired. You can also determine if that change negatively impacts other facets of security. Third, you can utilize automated, ongoing checks to ensure that what was working continues working in perpetuity. Should something stop functioning, blocking, detecting, correlating, etc., as needed, alerts will be generated in response to the environmental drift. We need to readjust so that we are focusing on security effectiveness and the efficacy of our security controls. We need to industrialize our approach to red and blue teaming with security instrumentation through automation, environmental drift detection, prescriptive actions, and analytics that enable us to finally and empirically manage, measure, and improve security effectiveness.<br>",
+      "speakers": [
+        30072
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/a0e35cbad6155e6b4f245113cea4dcaa",
+      "includes": "[]",
+      "title": "THE INDUSTRIALIZATION OF RED AND BLUE TEAMING",
+      "start_date": "2018-09-27T19:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-28T20:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30073,
+      "event_type": 30006,
+      "description": "",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/a8ecfffe837626a066cc799bcdd7c7fb",
+      "includes": "[]",
+      "title": "Closing Session",
+      "start_date": "2018-09-28T18:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30074,
+      "event_type": 30002,
+      "description": "Lesson Learned: Top 10 critical pentest findings",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/ade96bb222552a5ede09cad26d70cfd6",
+      "includes": "[]",
+      "title": "Lesson Learned: Top 10 critical pentest findings",
+      "start_date": "2018-09-26T17:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30075,
+      "event_type": 30007,
+      "description": "Step up your information security practice in this concentrated training. Whether you're making your first steps or just need a technical refresher, this hands-on class will leave you with a practical, solid understanding of infosec fundamentals. Topics cover: networking and common protocols, AWS, application and database security, Windows and Active Directory, and scripting with Powershell. We'll also look at how companies monitor for suspicious events and SIEM. Attack strategies and data exfiltration techniques will be demonstrated and analyzed as well. Prerequisites: Come hungry! No prior experience required. This course is super hands-on, and students will need to bring their own laptop, capable of running a VM, to follow all exercises.",
+      "speakers": [
+        30073
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/b23ea6c6a4554d6bd3ecb1677e9b98a3",
+      "includes": "[]",
+      "title": "Information Security Total Immersion Bootcamp",
+      "start_date": "2018-09-26T14:00+0000",
+      "location": 30007
+    },
+    {
+      "end_date": "2018-09-28T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30076,
+      "event_type": 30002,
+      "description": "Bio:<br><br>Shaunak Shah is a recent graduate from Northeastern University and completed his Masters in Information Assurance and Cyber Security. During his Masters he worked at Dell EMC as a Product Security Engineer Intern and is currently working with Lucid Software as a Security Engineer. His interests lies in Application Security and hopes to become a full-time penetration tester one day.<br>Presentation:<br><br>Information security is fast growing discipline. However, the weakest link still remains the human element. Social Engineering is the art of exploiting human behavior in order to gain access to sensitive information and breach security. This presentation highlights about one such recent experience I had with social engineering where in a person stole a laptop from a company and took free lunch to avoid suspicion. I will be highlighting what are the key takeaways from it and through this presentation I also want to emphasize on why physical security still matters and steps one should be taking to avoid social engineering attacks.(NOTE:I will be anonymizing the company and the person in the video to avoid any legal issues).<br>",
+      "speakers": [
+        30074
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/b384a85914ad60c35dceaf36ec583526",
+      "includes": "[]",
+      "title": "Social Engineering: How to steal a laptop and have lunch while at it!",
+      "start_date": "2018-09-28T16:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30077,
+      "event_type": 30002,
+      "description": "Bio:<br><br>I've been in the industry for various years in different capacities. I'm a Senior Network Engineer for a large web hosting company. My main personal areas of interests are security and wireless. &nbsp; &nbsp;<br><br>Presentation:<br><br>There are many ways to disrupt WiFi. I will go over the different types of attacks used against WiFi and different types of mitigation that can be used.<br>",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/b535cb224896b2c50e55372037069e6a",
+      "includes": "[]",
+      "title": "Lets Play with some WiFi",
+      "start_date": "2018-09-27T17:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T16:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30078,
+      "event_type": 30008,
+      "description": "We will be diving into home automation with Samsung's Smartthings",
+      "speakers": [
+        30075
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/b95ad255be47c2654b5f288c1209b91e",
+      "includes": "[]",
+      "title": "Making your house work for you",
+      "start_date": "2018-09-26T16:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-27T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30079,
+      "event_type": 30002,
+      "description": "Bio:<br><br>David is a day-time hacker and night-time coder, writer, futurist, serial entrepreneur, and nerd. For over 20 years he has been writing code, hacking things, or founding businesses. David currently serves as a Principal Security Architect for Henry Schein One working on cloud and hybrid cloud security. David also served as the President of the InfraGard and board member of UtahSec. He has spoken at AFCEA, Data Connectors, and presented at other venues like BlackHat Arsenal 2017. In David's most recent talk he gave the keynote at ProcureCon 2018 for IT procurement experts from many of the nations top 100 companies. During the keynote, David unveiled a preview of the \"Death Star\" version of the Black Hat Arsenal tool for Amazon Alexa. David enjoys participating in bug bounty programs and community groups as time permits and has privately reported security issues to numerous companies. David currently holds a few certifications: CISSP, GWAPT, GPEN, GCIH, ISTQB and hopes to shortly add GPYC to the list<br><br>Presentation:<br><br>A live demo of HackerMode 2 for Amazon Alexa an Open Source Kali-integrated skill that can hack a machine and retrieve passwords with a single command. Forget working smarter; don't work at all, and don't tell anyone!<br>",
+      "speakers": [
+        30076
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/bb996ab11b466995989b1c62df417849",
+      "includes": "[]",
+      "title": "Alexa: take over my job; a red teamer's dream in action",
+      "start_date": "2018-09-27T17:30+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-25T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30080,
+      "event_type": 30002,
+      "description": "First an Intro to self driving cars, hardware, software, meetups and handy URLS, then inside the defcon26 Mad Max Valhalla Self Driving Car Challenge",
+      "speakers": [
+        30077
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/bf5f85aa62126d8ea3fd7a7e9c97bc81",
+      "includes": "[]",
+      "title": "Inside the Defcon 26 Mad Max Valhalla Self Driving Car Challenge",
+      "start_date": "2018-09-25T21:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-26T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30081,
+      "event_type": 30003,
+      "description": "Panel and group discussion centered around the steps that each organization is taking to systematically improve and implement security. &nbsp;The conversation will be led by Scot McCombs.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/d102b27b35e80ee0766c91dab03ac4a4",
+      "includes": "[]",
+      "title": "What we are doing with security in general to protect us",
+      "start_date": "2018-09-26T21:30+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-26T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30082,
+      "event_type": 30005,
+      "description": "Covering the basics and low hanging fruit for network security.",
+      "speakers": [
+        30078
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/d24ab73a601bf2916768667682b10ee9",
+      "includes": "[]",
+      "title": "Network Security 101",
+      "start_date": "2018-09-26T16:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-28T16:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30083,
+      "event_type": 30005,
+      "description": "Bio:<br><br>Samuel Kimmons is a Network Forensic Analyst and Enterprise Vulnerability Analyst at the Air Force Computer Emergency Response Team (AFCERT). His introduction to Cyber Security within the Air Force came from his first assignment where he was responsible for remediating vulnerabilities for 10K end user devices. Samuel is currently a Staff Sergeant and holds the Air Force Specialty Code (AFSC) of Cyber Warfare Operator (1B4X1). He is responsible for analyzing alerts from various security devices and conducting thorough investigations on potentially malicious activity. In addition to his experience as an analyst he is also responsible for conducting Red/Blue Team assessments on the Air Force's DMZ assets.<br>Presentation:<br><br>Does this alert warrant an investigation? What may seem like benign or normal traffic can be your worst nightmare. Maybe it's an APT doing some type of DNS C2 or maybe it's a malicious piece of JavaScript on a web page. What if the script/file/data is obfuscated? As an Analyst how would we approach this? Would we simply follow the same cut and dry analysis that we follow for every investigation? Join me on a journey through the ups and downs of dealing with this type of investigation, and how changing our thought processes and mind set can lead us to better identify nefarious actions.",
+      "speakers": [
+        30079
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/d3cbadd039bcc4e6f9f9ec183a270884",
+      "includes": "[]",
+      "title": "Following the Bread Crumbs... How an Investigation Should Change Our Mind Set.",
+      "start_date": "2018-09-28T16:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-26T16:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30084,
+      "event_type": 30003,
+      "description": "The state of security for the Utah State Government, including the cyber threats the State of Utah faces regularly.",
+      "speakers": [
+        30080
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/d836f87a4e7d36663d777f2d6335ed26",
+      "includes": "[]",
+      "title": "State of Security in Utah",
+      "start_date": "2018-09-26T15:00+0000",
+      "location": 30003
+    },
+    {
+      "end_date": "2018-09-27T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30085,
+      "event_type": 30007,
+      "description": "Training:<br><br>This training takes place inside a dedicated network, simulating a production environment with a complete Windows/Active Directory deployment. Students will assume the roles of both an adversary and the defender, starting as a regular desktop user and gradually escalating privelges and moving laterally across the enterprise. We'll review reconnaisance techniques, discover blind spots, pivot and eventually compromise otherwise-segregated servers. Students will gain invaluable insight into how Active Directory attacks work, understanding the artifacts that they leave behind and practical preventative and monitoring controls. To reduce attack footprint and simulate a real adversary, the playbook is exclusively built on Windows scripts and tools. We will not use Metasploit, Cobalt Strike, etc. Prerequisites: As an introduction class, no previous red or blue-team experience is required. However, students are expected to be familiar with basic Windows and network infrastructure. Basic Powershell and command-line experience is recommended. Equipment: Please bring a laptop computer capable of running at least two Windows 10 VMs (VM image will be distributed prior to class). Your laptop must have at least 8GB of RAM and run a 64-bit OS.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/dcdeff0bde94f314837bf4143750d9c4",
+      "includes": "[]",
+      "title": "Enterprise Attack Playbook for Red and Blue Teams",
+      "start_date": "2018-09-27T14:00+0000",
+      "location": 30006
+    },
+    {
+      "end_date": "2018-09-26T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30086,
+      "event_type": 30008,
+      "description": "Come learn about TLS1.3.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/e23ca241f30f9b412f4ff693ff118f51",
+      "includes": "[]",
+      "title": "Everything you need to know about TLS1.3",
+      "start_date": "2018-09-26T21:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-27T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30087,
+      "event_type": 30007,
+      "description": "Presentation:<br><br>The intention of this demonstration is to illustrate how quickly and easily you can get the system up and running, and starting connecting your users and devices. We'll go through the principles of securing wireless and discuss the benefits/challenges associated with the different approaches to secure your wireless. You'll go through scenarios showing you how to simply and quickly set up Guest, BYOD and Secure Access in as little as five minutes. We'll discuss how to configure common settings on ISE and the WLC. We'll also show how to customize this experience to best represent your company and kill off all PSK SSIDs!",
+      "speakers": [
+        30081
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/e5cbd1c3f6084bb797398a3f9beb78ed",
+      "includes": "[]",
+      "title": "NO MORE PSK!!! Learn how to secure your wireless using Cisco ISE!",
+      "start_date": "2018-09-27T19:00+0000",
+      "location": 30011
+    },
+    {
+      "end_date": "2018-09-28T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30088,
+      "event_type": 30005,
+      "description": "Bio:<br><br>Chase Palmer is a Utah native and lives in Orem with his wife and son. Chase has worked in the cyber security field for over 10 years with a focus on security compliance and governance. He has worked for SecurityMetrics and for the Defense Information Systems Agency at Hill Air Force Base. He currently works as a Security Engineer for Lucid Software and is the president of a local non-profit organization. Chase is a Certified Information Systems Security Professional (CISSP).<br>Presentation:<br><br>For those new to cyber security, is easy to get into the mindset that all hacks are big, targeted hacks and that hackers generally don't go after the small guys. The reality is, hackers will often times just go after what is easy and available. If you are connected to the internet, you are a target. Just how big of a target depends on many different factors. Are you low-hanging fruit? What can you do to reduce your chances of being a hacker's next target?<br><br>",
+      "speakers": [
+        30082
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/e8cb94b8641dc4047d954709834ee34a",
+      "includes": "[]",
+      "title": "Objective #1: Don't Be Low-Hanging Fruit",
+      "start_date": "2018-09-28T16:30+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-26T17:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30089,
+      "event_type": 30002,
+      "description": "Off-the-shelf malware, custom developed malware, or just living off the land are ways to attackers to not only compromise your environment, but also reside within it. Attackers are regularly able to breach perimeters, and easily maintain access due to a lack of defensive technologies preventing them from doing so. Anti-Virus, EDR? These can be effective, but aren't a brick wall. What if there's another way, and it's likely built right into the operating system you are running? Let's talk about Windows Defender Application Control (WDAC). WDAC is a highly effective application whitelisting technology that's built right into Windows 10 and Server 2016. WDAC easily stops attacks from ever beginning, or provides you with the audit capabilities to know when it did. This talk will cover exactly what Windows Defender Application Control is, how policies are created, how to distribute policies within an environment, and demo its effectiveness against modern attacks. &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30083
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/e9e59091b0f2a8ce847d7742fcfb5e4a",
+      "includes": "[]",
+      "title": "Introducing Effective Controls in your Environment with Windows Defender Application Control",
+      "start_date": "2018-09-26T16:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-25T21:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30090,
+      "event_type": 30008,
+      "description": "Learn the basics of hacking the free (as in beer - for up to 100 sensors) monitoring tool PRTG",
+      "speakers": [
+        30084
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/ea9d9f3709964f5b9639abe0783d9d0d",
+      "includes": "[]",
+      "title": "PRTG hacking",
+      "start_date": "2018-09-25T21:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-26T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30091,
+      "event_type": 30008,
+      "description": "Whether you just want to participate in the password cracking challenge or are looking to add cracking to your pen-test and audit toolkit, this short demo will help get you started with Hashcat.",
+      "speakers": [
+        30085
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/ead939f1654672991e881e726cc6b560",
+      "includes": "[]",
+      "title": "Hashcat 101",
+      "start_date": "2018-09-26T22:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-26T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30092,
+      "event_type": 30002,
+      "description": "If you are like the many organizations out there, you have a large number of unaddressed vulnerabilities. The question lies, where to start? Which vulnerabilities are most important and why? Can you rely on CVSS or an arbitrary risk score alone? This presentation and discussion will address how I have worked with organizations in the past to tackle these challenges and what your organization can do about it.",
+      "speakers": [
+        30086
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/ebb09e4d7dd4fb306f9fa9dd843a39fe",
+      "includes": "[]",
+      "title": "To Be FAIR About It - Using FAIR and other risk models to prioritize your security initiatives",
+      "start_date": "2018-09-26T17:00+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-27T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30093,
+      "event_type": 30007,
+      "description": "Have you ever wanted to own a computer system in 60 seconds or less? Come out to our Backdoor training class to learn how. We will teach you the dark arts of backdooring operating systems. By the end of the class, we're going to test your skills by leaving a computer unattended for 2 minutes and see how well you can do. See if you can gain control of the system and walk away unnoticed before we return.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/edbacc4d0b45fddb86dfe22e051abd8e",
+      "includes": "[]",
+      "title": "Introduction to Backdooring",
+      "start_date": "2018-09-27T19:00+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-27T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30094,
+      "event_type": 30002,
+      "description": "When news first started to break about a ransomware infection named SamSam, it focused on the high-profile victims, and not so much on the ransomware itself or its operations. Large organizations in the public, healthcare, and education sector, like the City of Atlanta, Adams Memorial Hospital, or Missippippi Valley State University, released breach notifications and information about the ransomware attacks, including how much ransom they paid. In fact, those three sectors of the economy account for only 48% of all victims, fewer than half of the total. Other businesses in the private sector, by comparison, have not made any SamSam-related breach disclosures, though as a result of the research we will present in this talk, we know they comprise 52% of the victim organizations. SamSam came to our attention soon after its appearance. We quickly realized the threat posed by this ransomware was compounded with the single-minded attention of an active attacker who fought hard to bypass multiple layers of network and endpoint security until they succeeded, and then waited until the wee hours in the victims' time zone to begin what turned into an expensive night for the victims. In this talk, we will discuss the stages of a SamSam attack, dissect the malware's quirky behavioral characteristics and evolution, and present our profile of a focused, determined, and slightly paranoid threat actor who learns from mistakes and increasingly builds opsec into each subsequent attack. To track the victims' assets, we engaged a third party who specialize in bitcoin tracking, and discovered a trove of cryptocurrency wallets which, in turn, led to still more victims.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/ef9d5f9e9b1ece59305a683160b25a78",
+      "includes": "[]",
+      "title": "SamSam: The (Almost) Six Million Dollar Malware",
+      "start_date": "2018-09-27T19:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-25T21:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30095,
+      "event_type": 30005,
+      "description": "",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f12407ff6d6a55288538fcaaa89d7392",
+      "includes": "[]",
+      "title": "Beginning Hackers Challenge",
+      "start_date": "2018-09-25T20:30+0000",
+      "location": 30001
+    },
+    {
+      "end_date": "2018-09-27T18:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30096,
+      "event_type": 30007,
+      "description": "Some have suggested that privacy is dead or unimportant. &nbsp;I believe that privacy is a fundamental pillar of society (from ancient to modern). This workshop will cover the following material: <br>* Privacy: what is it and why does it matter? <br>* Lessons from history about privacy <br>* Paradigms to make informed decisions about privacy-related matters <br>* Strategies to apply informed privacy decisions <br>* Datasets that present privacy vulnerabilities <br>* Notable threats to privacy choices <br>* Community resources available to maintain my privacy choices and how to contribute/help <br>* Detractors that are the result of privacy choices <br>* Tools to use to enact privacy choices <br>* Actions to take to enact privacy choices while using common devices, operating systems, and other products",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f1b4c1daade967c65ab1d875db7e0bdc",
+      "includes": "[]",
+      "title": "Digital Privacy and Security",
+      "start_date": "2018-09-27T14:00+0000",
+      "location": 30007
+    },
+    {
+      "end_date": "2018-09-26T15:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30097,
+      "event_type": 30001,
+      "description": "Looking for a job in security? &nbsp; Needing to find great security people for an open position? &nbsp;This is an open-forum Job fair for attendees of the SAINTCON conference and businesses in the community. &nbsp;The format is very informal but allows you to come and mingle, network, and perhaps find your next best professional relationship.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f26a6c8421d472180fd4014dcfe12246",
+      "includes": "[]",
+      "title": "Attendee Job Fair Event",
+      "start_date": "2018-09-26T14:00+0000",
+      "location": 30010
+    },
+    {
+      "end_date": "2018-09-25T15:15+0000",
+      "conference": "SAINTCON2018",
+      "id": 30098,
+      "event_type": 30006,
+      "description": "",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f26e9bc8440ac427a8bb11b598dd2e8d",
+      "includes": "[]",
+      "title": "Conference Opener introduction of the MC",
+      "start_date": "2018-09-25T15:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-25T22:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30099,
+      "event_type": 30002,
+      "description": "Where is the line between convenience and intrusion? What is your expectation of privacy? There are those who argue that your data is already collected on servers across the globe, and with social media like Facebook, Snapchat, and Instagram many have willing given up their data. With all of the breaches in the last five years, society is now asking, \u00e2\u20ac\u0153How do we put the genie back in the bottle? &nbsp;New privacy laws are driving requirements to update standards. We'll look at the history of privacy, current events, and the coming standards we can leverage to help ensure privacy. &nbsp; &nbsp; &nbsp; &nbsp;",
+      "speakers": [
+        30087
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f4f4edc05edd36d23d8d2d6cf60bee69",
+      "includes": "[]",
+      "title": "Privacy - Security's Bedfellow: A look at the upcoming changes to data standards.",
+      "start_date": "2018-09-25T21:30+0000",
+      "location": 30005
+    },
+    {
+      "end_date": "2018-09-26T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30100,
+      "event_type": 30002,
+      "description": "First, Dragnet collects dozens of OSINT data points on past and present social engineering targets. Then, using conversion data from previous engagements, Dragnet provides recommendations for use on your current targets: phishing templates, vishing scripts and physical pretexts- all to increase conversions with minimal effort. Finally, features like landing page cloning and domain registration (alongside your standard infrastructure deployment, call scheduling and email delivery) make Dragnet one hell of a catch.",
+      "speakers": [
+        30088
+      ],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f5a9c3a2f6418d67195f3535d1c736c6",
+      "includes": "[]",
+      "title": "Dragnet \u2013 Your Social Engineering Sidekick",
+      "start_date": "2018-09-26T17:00+0000",
+      "location": 30004
+    },
+    {
+      "end_date": "2018-09-27T17:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30101,
+      "event_type": 30008,
+      "description": "A look at Project Crostini and how to turn your chrome OS laptop into a powerful portable pentest rig",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f83b9492a969a9f76d214090325dff83",
+      "includes": "[]",
+      "title": "Pwning on the Pixelbook",
+      "start_date": "2018-09-27T17:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-27T20:30+0000",
+      "conference": "SAINTCON2018",
+      "id": 30102,
+      "event_type": 30008,
+      "description": "We all have a cool badge. &nbsp;What should you do with it after you take it home?",
+      "speakers": [],
+      "updated_at": "2018-09-26T14:50+0000",
+      "link": "https://saintcon2018.sched.com/event/f84dec6a212694335d9e5054b1dc3461",
+      "includes": "[]",
+      "title": "Getting starting programming^H^H^H^H^H hacking the SAINTCON badge",
+      "start_date": "2018-09-27T20:00+0000",
+      "location": 30002
+    },
+    {
+      "end_date": "2018-09-27T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30103,
+      "event_type": 30007,
+      "description": "Bio:<br><br>Michael Whiteley @compukidmike is a father, electrical engineer, IT manager, and Defcon black badge winner. He doesn't like long walks on the beach, but prefers to be indoors with a fast internet connection.<br><br><br>Training:<br>This will be an intro to designing PCBs in KiCad. The goal of this workshop is to have everyone design a basic minibadge. We will cover schematic, board layout, and generating fabrication files. There will also be time for you to work on your own designs, ask questions, and get some one-on-one instruction.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/f8a37ed48eca27aa08bf516ca395245e",
+      "includes": "[]",
+      "title": "PCB 101",
+      "start_date": "2018-09-27T19:00+0000",
+      "location": 30007
+    },
+    {
+      "end_date": "2018-09-25T23:00+0000",
+      "conference": "SAINTCON2018",
+      "id": 30104,
+      "event_type": 30007,
+      "description": "Bios:<br><br>Christopher Truncer (@ChrisTruncer) is a co-founder and red team lead with FortyNorth Security. He is a co-founder and current developer of the Veil-Framework, a project aimed to bridge the gap between advanced red team and penetration testing toolsets, WMImplant, EyeWitness, and other open-source software. Chris began developing tools that are not only designed for the offensive community, but can enhance the defensive community's ability to defend their network as well. <br><br>Jared Blatt is the president and co-founder of FortyNorth Security. His leadership, business development experience, and passion for information security are vital to FortyNorth Security\u00e2\u20ac\u2122s success. His ability to take technical subject matter and make it relatable to business leaders who don\u00e2\u20ac\u2122t have the time to become security experts is invaluable in a fast -paced corporate environment. Jared is committed to educating businesses that a proactive approach to cybersecurity far exceeds the alternative!<br><br>Training:<br><br>With its rise in popularity over the past few years, attackers, both white hat and black hat, have embraced the functionality of WMI and are leveraging it to enumerate information, attack systems, and gather sensitive data. This will be a lab driven workshop where we will walk attendees from interacting with WMI, gathering data on remote systems, code execution, interacting with remote processes, manipulating services, and more. This workshop will require attendees to have a either a Windows computer, or Windows virtual machine, as we will be writing code throughout the workshop.<br><br>WMI has recently been publicized for its offensive use cases. Attackers, and now red teams, are discovering how powerful WMI can be when used beyond its original intent. Even with the recent surge in WMI use, not everyone knows how to interact with it. This workshop intends to showcase how you can leverage WMI on assessments to do nearly anything you would want to do in a post-exploitation scenario. Want to read files, perform a directory listing, detect active user accounts, run commands (and receive their output), download/upload files, and do all of the above (plus more) remotely? The goal for this workshop will be to enable students to walk away with an understanding of how WMI, a service installed and enabled by default since Windows 2000, is utilized by attackers, demystify interacting with the service locally and remotely, give students the ability to leverage WMI in the same manner as attackers, and walk through the use of WMImplant, a tool which automates this process for users. I want to walk through how and what WMI is for all students. I plan on showing how basic commands can be done through WMI, such as identifying active network interfaces, performing a directory listing, listing running processes, and more. This will largely be done through PowerShell scripting, which I will demo to all students, and students will perform labs throughout the entire workshop. After the initial demos are performed, I plan to showcase more advanced use cases of WMI, such as leveraging WMI for C2, using WMI for data storage, and tying the two together when data storage is required for actions that leverage WMI.",
+      "speakers": [],
+      "updated_at": "2018-09-26T19:00+0000",
+      "link": "https://saintcon2018.sched.com/event/ffbb7820c805c4ea8db46bb829c0c5e0",
+      "includes": "[]",
+      "title": "WMImplant and A Guide for using WMI Offensively",
+      "start_date": "2018-09-25T19:00+0000",
+      "location": 30007
+    }
+  ]
+}

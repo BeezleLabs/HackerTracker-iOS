@@ -1,0 +1,41 @@
+{
+  "locations": [
+    {
+      "id": 30301,
+      "name": "Track 1",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30302,
+      "name": "Track 2",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30303,
+      "name": "Track X",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30304,
+      "name": "Villages 109",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30305,
+      "name": "Villages 111",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30306,
+      "name": "Room 302",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    }
+  ],
+  "updated_at": "2019-04-19T01:02+0000"
+}

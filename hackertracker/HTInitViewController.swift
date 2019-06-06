@@ -86,7 +86,7 @@ class HTInitViewController: UIViewController {
                 }
                 
                 // alright, initial load of defcon 26, toorcon xx, derbycon 8.0, shellcon.io
-                for d in ["DC26","TC20","DC80","SC02"] {
+                for d in ["DC26","TC20","DC80","SC02","SAINTCON2018","CACTUSCON2018","SWV4","THOTCON0xA"] {
                     for i in ["speakers","articles","event_types", "faqs", "locations", "notifications", "vendors", "events"] {
                         let a_file = Bundle.main.path(forResource: i, ofType: "json", inDirectory: d)!
                         let a_content = try! String(contentsOfFile: a_file)

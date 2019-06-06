@@ -1,0 +1,12 @@
+{
+  "articles": [
+    {
+      "name": "Welcome to CactusCon 7",
+      "conference": "CACTUSCON2018",
+      "updated_at": "2018-09-27T02:36+0000",
+      "id": 8,
+      "text": "Welcome to sunny AZ for CactusCon 7. Hackertracker should have the majority of the events loaded, but keep us updated on all things con related via email to info@hackertracker.app."
+    }
+  ],
+  "updated_at": "2018-09-27T02:36+0000"
+}

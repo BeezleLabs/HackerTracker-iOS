@@ -1,0 +1,47 @@
+{
+  "event_types": [
+    {
+      "id": 30301,
+      "name": "Keynote",
+      "color": "#fc853f",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30302,
+      "name": "Talk",
+      "color": "#5c74ff",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30303,
+      "name": "Turbo Talk",
+      "color": "#9a3290",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30304,
+      "name": "Contest",
+      "color": "#42d2bc",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30305,
+      "name": "Village",
+      "color": "#AD1457",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    },
+    {
+      "id": 30306,
+      "name": "Exam",
+      "color": "#9a3290",
+      "conference": "THOTCON0xA",
+      "updated_at": "2019-04-19T01:02+0000"
+    }
+  ],
+  "updated_at": "2019-04-19T01:02+0000"
+}

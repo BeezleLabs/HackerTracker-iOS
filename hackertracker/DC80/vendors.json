@@ -1,4 +1,482 @@
 {
-  "updated_at": "2018-01-01T01:00+0000",
-  "vendors": []
+  "updated_at": "2018-10-02T15:06+0000",
+  "vendors": [
+    {
+      "updated_at": "2018-10-02T14:46+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Rapid7",
+      "id": 38,
+      "link": "https://www.rapid7.com/",
+      "description": "With Rapid7, technology professionals gain the clarity, command, and confidence to safely drive innovation and protect against risk. We make it simple to collect operational data across systems, eliminating blind spots and unlocking the information required to securely develop, operate, and manage today\u2019s sophisticated applications and services. Our analytics and science transform your data into key insights so you can quickly predict, deter, detect, and remediate attacks and obstacles to productivity. Armed with Rapid7, technology professionals finally gain the insights needed to safely move their business forward."
+    },
+    {
+      "updated_at": "2018-10-02T14:47+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Binary Defense",
+      "id": 39,
+      "link": "https://www.binarydefense.com/",
+      "description": "Get the ultimate end-to-end security solution: human driven, technology-assisted managed security services providing cutting edge fully managed EDR; SIEM deployment, management, and monitoring; and actionable Counterintelligence. Our world-renowned, attack-ready team features around-the-clock expertise with eyes on glass for detection, protection, deception, and response. Analysis and review conducted on all alerts by cyber security professionals who then provide detailed, actionable intelligence, tuning out the noise so you can focus on rapid response and mitigation in order to protect your business.\r\n\r\nBinary Defense was founded with the purpose to change the security industry for the better and help organizations defend against threats of all kinds. Built from the minds of the industry\u2019s top security researchers and continuously evolving to detect next-generation threats. We accomplish this by maximizing the effectiveness of industry experts\u2019 knowledge and experience, combining that with customer built, proprietary software and tools.\r\n\r\nBinary Defense. Real people detecting real threats in real time every second of every minute of every day protecting your data, your brand, and your people."
+    },
+    {
+      "updated_at": "2018-10-02T14:47+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "TrustedSec",
+      "id": 40,
+      "link": "https://www.trustedsec.com/",
+      "description": "TrustedSec is an information security consulting team at the forefront of attack simulations with a focus on strategic risk-management to help organizations defend against threats of all kinds and change the security industry for the better.\r\n\r\nTrustedSec\u2019s expert senior consultants utilize pioneering insights developed by our Adversary Emulation, Threat & Research team to find and diagnose vulnerabilities, then create a comprehensive roadmap for holistically improving clients\u2019 security programs.\r\n\r\nOur reputation as a relationship-driven organization is a testament to our team\u2019s passion and commitment to helping our partners improve their defensive postures. Beyond custom diagnostics and detailed remediation programs for clients, TrustedSec conducts industry research, develops new tools, administers training classes, and keynotes, presents, and hosts security conferences throughout the world.\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:48+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Secureworks",
+      "id": 41,
+      "link": "https://www.secureworks.com/",
+      "description": "Secureworks Adversary Group (SwAG) is a part of the Secureworks\u2019 Security Consulting organization. SwAG is responsible for adversarial testing services such as penetration tests, red team engagements, collaborative adversarial defense training, application security testing, hardware testing, and long-term threat actor simulation. SwAG employs tactics and techniques used by real world threat actors in order to provide clients with valuable information about their ability to defend against such attacks.\r\nSecureworks (NASDAQ: SCWX) is a leading global cybersecurity company that keeps organizations safe in a digitally connected world. We combine visibility from thousands of clients, artificial intelligence and automation from our industry-leading SecureWorks Counter Threat Platform\u2122, and actionable insights from our team of elite researchers and analysts to create a powerful network effect that provides increasingly strong protection for our clients. By aggregating and analyzing data from any source, anywhere, we prevent security breaches, detect malicious activity in real time, respond rapidly, and predict emerging threats. We offer our clients a cyber-defense that is Collectively Smarter. Exponentially Safer."
+    },
+    {
+      "updated_at": "2018-10-02T14:49+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Milton Security",
+      "id": 42,
+      "link": "https://www.miltonsecurity.com",
+      "description": "READY. RELEVANT. RESPONSIVE.\r\nThreat hunting must be done 24 hours a day, 7 days a week. Attackers don\u2019t take time off.\r\n\r\nDETECT. DETER. DESTROY.\r\nMiltonSec is the Force Multiplier that enables your organization to focus your Cyber Security efforts in mitigating threats. We will detect, deter and help destroy those potential threats.\r\n\r\nMILTONSEC. YOUR HUNT TEAM.\r\nIf you are not already Threat Hunting 24*7, you may have already lost the battle. MiltonSec provides real-time reports and actionable counter measures. We help you win.\r\n\r\nMilton Security is a proud SDVOSB that hires Veterans First.\r\n\r\nVisit us at www.miltonsecurity.com to learn more"
+    },
+    {
+      "updated_at": "2018-10-02T14:49+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Strategic Cyber",
+      "id": 43,
+      "link": "https://www.cobaltstrike.com/",
+      "description": "Strategic Cyber LLC develops Cobalt Strike, a platform for red team\r\noperations and adversary simulations."
+    },
+    {
+      "updated_at": "2018-10-02T14:49+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "GuidePoint Security",
+      "id": 44,
+      "link": "https://www.guidepointsecurity.com.",
+      "description": "GuidePoint Security LLC provides innovative and valuable cybersecurity solutions and expertise that enable organizations to successfully achieve their missions. By embracing new technologies, GuidePoint Security helps clients recognize the threats, understand the solutions, and mitigate the risks present in their evolving IT environments. Learn more at: www.guidepointsecurity.com."
+    },
+    {
+      "updated_at": "2018-10-02T14:49+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Cisco",
+      "id": 45,
+      "link": "https://www.cisco.com.",
+      "description": "Cisco Umbrella is a cloud security platform that provides the first line of defense against threats on the internet wherever users go. Because it\u2019s built into the foundation of the internet, Umbrella delivers complete visibility into internet activity across all locations, devices, and users. By analyzing and learning from this activity, Umbrella automatically uncovers attacker infrastructure staged for current and emerging threats, and proactively blocks requests before a connection is established. With Umbrella, you can stop attacks earlier, identify already infected devices faster, and prevent data exfiltration. Umbrella provides an effective solution that is open, automated, and simple to use."
+    },
+    {
+      "updated_at": "2018-10-02T14:50+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Lockheed Martin",
+      "id": 46,
+      "link": "https://www.lockheedmartin.com/en-us/index.html",
+      "description": "Lockheed Martin is a global leader delivering full spectrum cyber capabilities \u2014 supporting the offensive and defensive efforts of our defense and intelligence community customers. Cyber is ingrained in all aspects of the modern battlespace, and our Cyber Solutions team has the expertise to help defend and exploit enterprise IT networks, radiofrequency spectrums, and military platforms on land, sea and air.\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:50+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Wal-Mart",
+      "id": 47,
+      "link": "https://www.walmart.com",
+      "description": "To safely serve more than 260 million multi-channel customers weekly and a workforce of 2.3 million, Walmart Technology employs top Infosec professionals to detect and respond to cyber-security events for the world\u2019s largest retailer. With highly specialized teams and a fully accredited digital forensics crime laboratory, our security practitioners deliver innovative, secure and compliant solutions on a global scale."
+    },
+    {
+      "updated_at": "2018-10-02T14:51+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Endgame",
+      "id": 48,
+      "link": "https://www.endgame.com",
+      "description": "Endgame\u2019s endpoint protection platform brings certainty to security with the most powerful scope of protections and simplest user experience, ensuring analysts of any skill level can stop targeted attacks before information theft. Endgame unifies prevention, detection, and threat hunting to stop known and unknown attacker behaviors at scale with a single agent. For more information, visit www.endgame.com and follow us on Twitter @EndgameInc."
+    },
+    {
+      "updated_at": "2018-10-02T14:51+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Microsoft",
+      "id": 49,
+      "link": "https://www.microsoft.com",
+      "description": "As a leader in cloud-enabled applications and infrastructure, Microsoft is by necessity also a leader in cybersecurity. Our holistic view spans identity and access management, threat protection and response, information protection and intelligent security management. At our Microsoft Secure site (https://www.microsoft.com/en-us/security/default.aspx), we share security guidance for scenarios ranging from planning for the Security Development Lifecycle to coping with cyberattacks to applying the security features built into our products and services.\r\n\r\nOur cybersecurity knowledge isn\u2019t just based on our internal knowledge and experience, but on what we learn from customer feedback and reports from independent and industry security researchers. We greatly appreciate our partnership with the security community to protect customers around the globe."
+    },
+    {
+      "updated_at": "2018-10-02T14:51+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Security Risk Advisors",
+      "id": 50,
+      "link": "https://securityriskadvisors.com/",
+      "description": "Security Risk Advisors specializes in red and purple team engagements, tactical assessments, cyber security roadmaps, compliance initiatives, and defensive toolset selection, implementation, engineering and operations across all industries.\r\n\r\nOur approach emphasizes knowledge transfer, clear documentation and an ongoing consultation after our engagement period. We look forward to meeting you at the conference whether you\u2019re in search of a new opportunity or want to hear more about our services."
+    },
+    {
+      "updated_at": "2018-10-02T14:52+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Securonix",
+      "id": 51,
+      "link": "https://securonix.com/",
+      "description": "Securonix is re-defining the next generation of cyber-threat detection using the power of entity context, machine learning, and big data. Our purpose-built, security analytics platform mines, enriches, analyzes, scores and visualizes data into actionable intelligence on the highest risk threats. Using machine learning techniques that track users, account and system behavior, Securonix detects the most advanced insider threats, cyber threats and fraud attacks in real-time. Globally, customers are using Securonix to address needs around insider threat detection, privileged misuse, cloud security, cyber threat detection, patient data monitoring, fraud detection and application security monitoring. For more information visit www.securonix.com."
+    },
+    {
+      "updated_at": "2018-10-02T14:52+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Express Scripts",
+      "id": 52,
+      "link": "https://careers.express-scripts.com/us/en/c/technology-innovation-jobs",
+      "description": "Express Scripts is a Fortune 25 healthcare opportunity company with 27,000 employees united by one goal: to help make healthcare simpler, more accessible and more affordable for 100 million Americans. As an organization that deals with highly sensitive patient information, we are committed to protecting the clients, patients, and companies we serve from security breaches and cyber-attacks. Our cyber defenders are challenged and trusted with maintaining our secure infrastructure day in and day out, while leveraging internal and external threat intelligence to continuously improve our security posture.\r\n\r\nIf you want to be at the center of our noble mission to make healthcare safe and more affordable, while delivering an enterprise computing environment that is resilient to breaches and disruptions, explore our opportunities.\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:52+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "SCYTHE",
+      "id": 53,
+      "link": "https://scythe.io",
+      "description": "SCYTHE is disrupting the traditional approach to information security by taking assessments to the next level. The SCYTHE platform provides continuous breach and attack simulation which delivers quantifiable portfolio management for CISOs, giving organizations real-time understanding of where their defenses stack up to current and future threats to the enterprise. For more information, visit https://scythe.io, or follow us on Twitter @scythe_io.\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:52+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Sophos",
+      "id": 54,
+      "link": "https://www.sophos.com/en-us.aspx",
+      "description": "Sophos makes IT security simple with next-generation solutions that protect networks, servers, and devices, wherever they are. Today, more than 100 million users in 150 countries and a global network of channel partners trust Sophos to deliver simple solutions to complex security challenges. Focused on innovation and backed by a global network of SophosLabs threat intelligence centers and industry-leading support, Sophos delivers solutions that are simple to deploy, maintain, and manage, enabling organizations to focus on performance and growth. Sophos \u2014 Cybersecurity made simple.\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:53+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "ITS Partners",
+      "id": 55,
+      "link": "https://www.itsdelivers.com/",
+      "description": "Hello. We\u2019re ITS. We believe that the best IT and security advisors to work with are practitioners who have lived in your shoes. People who know their stuff. People who will get their hands dirty. People who care about outcomes more than billable hours. That\u2019s the team we\u2019ve built at ITS. How can we help you? We\u2019ve lived in your shoes. Clients and partners love us because we\u2019re a team of practitioners. That means we speak your language and we understand your pain. Leverage our 25-years of experience rocketing IT to higher levels of maturity."
+    },
+    {
+      "updated_at": "2018-10-02T14:53+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "VMRay",
+      "id": 56,
+      "link": "https://www.vmray.com/",
+      "description": "VMRay delivers advanced threat analysis and detection that combines a unique agentless hypervisor-based network sandbox with a real-time reputation engine. The combination provides both fast, high volume file classification and deep malware analysis. The VMRay Analyzer is platform independent and highly scalable, the result of a decade of R&D by some of the world\u2019s leading experts on dynamic malware analysis. By monitoring at the hypervisor level, it is undetectable by malware running in the target operating system. VMRay serves leading enterprises around the world."
+    },
+    {
+      "updated_at": "2018-10-02T14:54+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Booz Allen Hamilton",
+      "id": 57,
+      "link": "https://www.BoozAllen.com",
+      "description": "For more than 100 years, business, government, and military leaders have turned to Booz Allen Hamilton to solve their most complex problems. They trust us to bring together the right minds: those who devote themselves to the challenge at hand, who speak with relentless candor, and who act with courage and character. They expect original solutions where there are no roadmaps. They rely on us because they know that\u2014together\u2014we will find the answers and change the world. To learn more, visit BoozAllen.com.\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:54+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "SANS",
+      "id": 58,
+      "link": "https://www.sans.org/security-resources/",
+      "description": "The SANS Institute is the most trusted source for information security training, certification, and research.\r\n\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:55+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "(ISC)\u00b2",
+      "id": 59,
+      "link": "https://www.isc2.org",
+      "description": "25-Word Company Description\r\n(ISC)\u00b2 is an international nonprofit membership association focused on inspiring a safe and secure cyber world. (ISC)\u00b2 is best known for the acclaimed CISSP\u00ae. www.isc2.org\r\n\r\n50-Word Company Description\r\n(ISC)\u00b2 is an international nonprofit membership association focused on inspiring a safe and secure cyber world. Best known for the acclaimed Certified Information Systems Security Professional (CISSP\u00ae) certification, (ISC)2 offers a portfolio of credentials that are part of a holistic, programmatic approach to security. www.isc2.org\r\n\r\n100-Word Company Description\r\n(ISC)\u00b2 is an international nonprofit membership association focused on inspiring a safe and secure cyber world. Best known for the acclaimed Certified Information Systems Security Professional (CISSP\u00ae) certification, (ISC)2 offers a portfolio of credentials that are part of a holistic, programmatic approach to security. Our membership, over 130,000 strong, is made up of certified cyber, information, software and infrastructure security professionals who are making a difference and helping to advance the industry. Our vision is supported by our commitment to educate and reach the general public through our charitable foundation \u2013 The Center for Cyber Safety and EducationTM. Visit www.isc2.org."
+    },
+    {
+      "updated_at": "2018-10-02T14:55+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "DomainTools",
+      "id": 60,
+      "link": "http://www.domaintools.com",
+      "description": "DomainTools helps security analysts turn threat data into threat intelligence. We take indicators from your network, including domains and IPs, and connect them with nearly every active domain on the Internet. Those connections inform risk assessments, help profile attackers, guide online fraud investigations, and map cyber activity to attacker infrastructure. Fortune 1000 companies, global government agencies, and leading security solution vendors use the DomainTools platform as a critical ingredient in their threat investigation and mitigation work. Learn more about how to connect the dots on malicious activity at http://www.domaintools.com or follow us on Twitter:@domaintools"
+    },
+    {
+      "updated_at": "2018-10-02T14:55+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Bricata",
+      "id": 61,
+      "link": "https://bricata.com/",
+      "description": "Bricata is the leader in comprehensive network protection. Bricata\u2019s flagship solution provides unparalleled network visibility, full-spectrum threat detection, true threat hunting, and threat resolution capabilities in an intuitive, tightly-integrated and self-managing system. Its automated detection, intuitive GUIs, and expert system workflows make it easy-to-use for novices; while granular control of its engines, access to rich network metadata and PCAPs, and true threat hunting capabilities give experts the power and control they demand.\r\n\r\nBricata has been proven to speed incident resolution by 8 times by reliably detecting threats and providing the context necessary to get to the truth quickly and act. Bricata\u2019s mission is to protect your network protection with the fastest time-to-value on the market."
+    },
+    {
+      "updated_at": "2018-10-02T14:56+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "WarCollar",
+      "id": 62,
+      "link": "http://warcollar.com/",
+      "description": "Since 2015, WarCollar Industries has provided highly technical and comprehensive offensive and defensive cyber security solutions and services to government customers and commercial industry.  As a veteran-owned, small business, we focus on our client\u2019s key business drivers by delivering the highest quality and trained cyber security experts. WarCollar\u2019s unique name was derived from a DefCon 22 presentation entitled \u201cWeaponizing your Pets\u201d\u2014which outlined our CEO\u2019s efforts to design and manufacture of a miniature Wi-Fi scanning solution small enough to fit on a cat collar.  This presentation helped launch the company."
+    },
+    {
+      "updated_at": "2018-10-02T14:56+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Crowe",
+      "id": 63,
+      "link": "http://www.crowe.com/",
+      "description": "Crowe LLP (www.crowe.com) is a public accounting, consulting and technology firm with offices around the world. Crowe uses its deep industry expertise to provide audit services to public and private entities. The firm and its subsidiaries also help clients make smart decisions that lead to lasting value with its tax, advisory, risk and performance services. Crowe is recognized by many organizations as one of the best places to work in the U.S. As an independent member of Crowe Global, one of the largest global accounting networks in the world, Crowe serves clients worldwide. The network consists of more than 200 independent accounting and advisory services firms in more than 130 countries around the world."
+    },
+    {
+      "updated_at": "2018-10-02T14:56+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "InGuardians",
+      "id": 64,
+      "link": "https://www.inguardians.com/",
+      "description": "InGuardians is an independent information security consulting company providing high-value services. Our specialties include RedTeam penetration testing, hardware & application security assessments, threat hunting and incident response.\r\n\r\nInGuardians strives to assemble the best and the brightest minds in information security. Our aim is to channel the collective talents of our team in providing actionable business focused information security consulting.\r\n\r\nEstablished in 2003 by industry veterans, InGuardians brings technical experience and business acumen to your projects.  Our information security professionals have authored tools, books, testing frameworks and training programs. InGuardians consultants teach and mentor the community through SANS, BlackHat and private courses."
+    },
+    {
+      "updated_at": "2018-10-02T14:57+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Trimarc",
+      "id": 65,
+      "link": "http://www.TrimarcSecurity.com.",
+      "description": "Trimarc was founded by Sean Metcalf, a Microsoft Certified Master in Active Directory, to help organizations better secure their Microsoft platform, specifically on-premises Active Directory (AD) and the Microsoft cloud environment (Azure AD & Office 365). We have decades of systems engineering experience in enterprise environments combined with security vision and know-how and this expertise more quickly and effectively improves the security posture of our customers.\r\n\r\nTrimarc provides leading expertise in security solutions including security reviews, strategy, architecture, and implementation. Our methodology leverages our internal research and custom tooling which better discovers multiple security issues attackers could exploit to compromise the environment. Trimarc security services fit between traditional compliance/audit reviews and standard penetration testing/red teaming engagements, providing deep understanding of Microsoft technologies, typical security issues and misconfigurations, and provide recommendations based on our own best practices custom-tailored to balance operational and security challenges.\r\n\r\nTrimarc\u2019s Active Directory security review and assessment scans the AD environment shining a light on the dark, forgotten corners and unravels the spider-web of permissions collected over many years. We identify multiple potential AD escalation paths and provide recommendations that are actionable, prioritized, and customized to the environment so they can be implemented more quickly (and phased in over time) to effectively mitigate them. Our reporting methodology and approach provide clear paths to resolution and most of the critical issues we discover in our customer environments are resolved in days to weeks, not years.\r\n\r\nPlease visit our website for more information and our published security research: www.TrimarcSecurity.com."
+    },
+    {
+      "updated_at": "2018-10-02T14:57+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Counter Hack",
+      "id": 66,
+      "link": "https://www.counterhackchallenges.com/",
+      "description": "Counter Hack is dedicated to creating world-class educational, interactive challenges, competitions, and cyber ranges to help organizations and individuals develop cyber security skills. We build the SANS NetWars system, CyberCity, the Holiday Hack Challenge, Cyber Aces, and Cyber Quests. Our team also provides exceptional penetration testing and expert witness services in a variety of industries."
+    },
+    {
+      "updated_at": "2018-10-02T14:58+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Carbon Black",
+      "id": 67,
+      "link": "https://www.carbonblack.com/",
+      "description": "Carbon Black is a leading provider of next-generation endpoint security. Carbon Black serves more than 3,700 customers globally, including 33 of the Fortune 100. As a cybersecurity innovator, Carbon Black has pioneered multiple endpoint security categories, including application control, endpoint detection and response (EDR), and next-generation antivirus (NGAV). Leveraging its newly introduced big data and analytics cloud platform \u2013 the Cb Predictive Security Cloud \u2013 Carbon Black solutions enable customers to defend against the most advanced cyber threats, including malware, ransomware, and non-malware attacks. Deployed via the cloud, on premise, or as a managed service, customers use Carbon Black solutions to lock down critical systems, hunt threats, and replace legacy antivirus. For more information, please visit www.carbonblack.com or follow us on Twitter at @CarbonBlack_Inc."
+    },
+    {
+      "updated_at": "2018-10-02T14:58+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Qualys",
+      "id": 68,
+      "link": "https://www.qualys.com/",
+      "description": "Qualys, Inc. (NASDAQ: QLYS) is a pioneer and leading provider of cloud-based security and compliance solutions with over 10,300 customers in more than 130 countries, including a majority of each of the Forbes Global 100 and Fortune 100. Qualys helps organizations streamline and consolidate their security and compliance solutions in a single platform and build security into digital transformation initiatives for greater agility, better business outcomes and substantial cost savings. The Qualys Cloud Platform and its integrated Cloud Apps deliver businesses critical security intelligence continuously, enabling them to automate the full spectrum of auditing, compliance and protection for IT systems and web applications on premises, on endpoints and elastic clouds. Founded in 1999 as one of the first SaaS security companies, Qualys has established strategic partnerships with leading managed service providers and consulting organizations including Accenture, BT, Cognizant Technology Solutions, Deutsche Telekom, Fujitsu, HCL Technologies, HP Enterprise, IBM, Infosys, NTT, Optiv, SecureWorks, Tata Communications, Verizon and Wipro. The Company is also a founding member of the Cloud Security Alliance. For more information, please visit www.qualys.com.\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T14:58+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Sprocket Security ",
+      "id": 69,
+      "link": "https://www.sprocketsecurity.com/",
+      "description": "Sprocket Security provides continuous security testing services. Attackers don\u2019t stop, and your business changes throughout the year. Assessing security once a year is a failed approach. Our platform detects changes in your organization and prompts human-driven testing to identify security risks.\r\n\r\nTesting adapts as your security posture matures. This includes red teaming, adversary simulations, security awareness, tabletop exercises, and more. Sprocket Security is purposely built for continuous testing and operates very differently than traditional firms. This allows us to offer affordable subscription prices for high-quality testing.\r\n\r\nIt\u2019s time you get more value out of your security testing. Get in touch with us at www.sprocketsecurity.com or on twitter @sprocketsec"
+    },
+    {
+      "updated_at": "2018-10-02T14:59+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "IBM Resilient",
+      "id": 70,
+      "link": "https://www.resilientsystems.com/",
+      "description": "IBM Resilient\u2019s mission is to help organizations thrive in the face of any cyberattack or business crisis. The industry\u2019s leading Incident Response Platform (IRP) empowers security teams to analyze, respond to, and mitigate incidents faster, more intelligently, and more efficiently. The Resilient IRP is the industry\u2019s only complete IR orchestration and automation platform, enabling teams to integrate and align people, processes, and technologies into a single incident response hub. With Resilient, security teams can have best-in-class response capabilities. IBM Resilient has more than 150 global customers, including 50 of the Fortune 500, and hundreds of partners globally. Learn more at www.resilientsystems.com"
+    },
+    {
+      "updated_at": "2018-10-02T14:59+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "IronNet",
+      "id": 71,
+      "link": "https://www.ironnetcyber.com/",
+      "description": "IronNet\u2019s mission is to develop cutting-edge cybersecurity solutions that defend industries and nations from advanced cyber threats. We deliver best-in-class cyber defense solutions through the use of complex behavioral modeling, big-data analytics, and advanced computing capabilities. Our solutions provide unprecedented network visibility, early threat detection, and collective defense across multiple companies and sectors to inform businesses and mitigate threats.\r\n\r\nThe company was founded in 2014 by General (Ret.) Keith Alexander, the former Director of the National Security Agency and founding Commander of U.S. Cyber Command. Our team consists of highly experienced strategic, operational, and technical cybersecurity experts with unmatched experience defending commercial and government networks against advanced threats. IronNet is backed by blue-chip investors C5 Capital, ForgePoint Capital, and Kleiner Perkins. For more information, visit www.ironnetcyber.com."
+    },
+    {
+      "updated_at": "2018-10-02T14:59+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "IMF Security",
+      "id": 72,
+      "link": "https://www.imfsecurity.com/",
+      "description": "IMF Security, the home of LOG-MD is a provider of Windows incident response, auditing, security assessment and malicious discovery hunting tool. LOG-MD helps administrators and analysts audit and evaluate their Windows audit log configuration, and provides recommendations for improvements, helping the overall security posture in the process. For users of log management and SIEM solutions, LOG-MD can help discover the right things to collect, and help to reduce the noise, saving on licensing fees. LOG-MD also provides advanced Windows incident response capabilities to discover malicious artifacts and process flow of what executed on the system. LOG-MD is also popular for malware labs, able to discover important artifacts that can be used in other enterprise tools for threat hunting. A standalone program, nothing to install, no cloud requirements, LOG-MD allows administrators to discover audit log weaknesses, configure the system and discover malicious artifacts on any Windows Vista, Server 2008 and newer systems. LOG-MD can also be pushed to every system in the organization to investigate suspicious behavior, or validate there are no new suspicious artifacts, such as a null byte in the registry, large registry keys, malicious PowerShell, and new suspicious autorun or WMI persistence items. IMF Security also provides training and consulting on the use of LOG-MD in small, medium, and large organizations to help them improve their Windows incident response capabilities and improve Windows malicious discovery."
+    },
+    {
+      "updated_at": "2018-10-02T15:00+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Black Hills Information Security",
+      "id": 73,
+      "link": "https://www.blackhillsinfosec.com/",
+      "description": "Information Security can be treacherous. We\u2019re not here to just offer you a map and send you on your way, but to be a guide for the long journey. Let us help you understand where to go from here, what tools might be useful along the way, and how best to use them. Can you trust us? You already do! We\u2019ve been doing penetration testing with a large percentage of the top Fortune companies for over a decade. From healthcare, insurance, transportation, to banking and finance, you\u2019re already doing business with businesses that have trusted us with their most precious resources \u2013 their information."
+    },
+    {
+      "updated_at": "2018-10-02T15:00+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Bank of America",
+      "id": 74,
+      "link": "https://www.bankofamerica.com/",
+      "description": "At Bank of America, we have a clear purpose: To help make financial lives better through the power of every connection. Technology is at the core of everything we do.\r\n\r\nWe provide unmatched convenience in the United States and globally:\r\n\r\nServing approximately 47 million consumer and small business relationships.\r\nA global leader in wealth management, corporate and investment banking and trading.\r\nServing companies, governments, institutions and individuals around the world, and through operations in all 50 states and more than 35 countries.\r\n\r\nWith this size and scope, your passion for innovation and skills in technology can make a huge difference in transforming financial services \u2013 whether you\u2019re moving our award-winning digital platforms forward or making our systems more secure.\r\n\r\nSkills we need include Java/SQL, Java, Perl and Python.\r\n\r\nWe\u2019re recruiting the best and the brightest. Does that describe you? Let\u2019s talk!"
+    },
+    {
+      "updated_at": "2018-10-02T15:00+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Graylog",
+      "id": 75,
+      "link": "https://www.graylog.org/",
+      "description": "Graylog is a leading centralized log management solution built to open standards for capturing, storing, and enabling real-time analysis against terabytes of machine data. We deliver a better user experience by making analysis ridiculously fast and efficient using a less expensive and more flexible architecture. Thousands of IT professionals rely on Graylog\u2019s efficiency at scale and exceptional user experience to solve security, compliance, operational, and DevOps issues every day.\r\n\r\nPurpose-built for modern log analytics, Graylog removes complexity from data exploration, compliance audits, and threat hunting so you can find meaning in data more easily and take action faster."
+    },
+    {
+      "updated_at": "2018-10-02T15:01+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "NetSPI",
+      "id": 76,
+      "link": "https://www.netspi.com/",
+      "description": "NetSPI delivers application and network security solutions to enterprise organizations, globally. Our security testing experts and proprietary technology platform empower organizations to scale and operationalize their security testing programs. Contact us today to learn how we can help you catapult the sophistication of your programs and improve your organizations security posture."
+    },
+    {
+      "updated_at": "2018-10-02T15:01+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "REDLattice",
+      "id": 77,
+      "link": "https://redlattice.com/",
+      "description": "REDLattice is an agile, mission-focused provider of services and technology solutions serving the Fortune 500 and government marketplace. Our expertise is software development, vulnerability research, malware analysis, open source architectures, and unique logistics challenges. We also work as management consultants conducting due diligence and global market analysis for select Fortune 500 firms. Our people are recognized leaders in the design, development and implementation of cutting-edge technology solutions and are experienced in delivering rapid prototyping solutions across a range of customer needs."
+    },
+    {
+      "updated_at": "2018-10-02T15:01+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Squarespace",
+      "id": 78,
+      "link": "https://www.squarespace.com/",
+      "description": "Squarespace makes beautiful products to help people with creative ideas succeed. Our platform empowers millions of people to share their stories and create an impactful, stylish, and easy-to-manage online presence.\r\n\r\n"
+    },
+    {
+      "updated_at": "2018-10-02T15:02+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Versive",
+      "id": 79,
+      "link": "https://www.versive.com/",
+      "description": "Malware. Blockchain. Exploit. APT. Cryptocurrency. Implant. Artificial Intelligence. Threats. Packets. Bears. Pandas. Kittens. Phish. Machine Learning. Linux. Compromise. Sophisticated. DNS. Firewall. Data. Proxy. PCAP. Credentials. Metasploit. Active Directory. Kill chain. Threat actor. Host. Router. Password. WMI. Kernel. Windows. Registry.\r\n\r\nBuzzword bingo is a game that we are all tired of playing. If we cut through the noise, we can all agree that machine-scale problems require machine-scale solutions. When applied in the right way, machine learning can augment the analyst, not replace them. It is not a black box, it is not magic, it is math. We built our product to be explainable, use well-known and well-understood open source frameworks like Spark and Hadoop. You can deploy it on-premises, or in the cloud, and its function is bespoke to its unique network environment.\r\n\r\nSo what is it? The Versive Security Engine. We see it as the critical missing piece in a company\u2019s security portfolio, as it discovers and makes sense of ongoing adversary campaigns inside corporate networks, instead of filling dashboards with hundreds of alerts. Adversary behavior within a network inevitably leaves a digital \u201cpaper trail\u201d in internal network data (netflow, proxy and DNS). VSE looks for unexpected internal reconnaissance, collection and exfil behaviors and understands how they relate across time and across the network. This is how VSE is able to detect unfolding adversary campaigns regardless of what tools, tactics, or exploits they use."
+    },
+    {
+      "updated_at": "2018-10-02T15:02+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Check Point",
+      "id": 80,
+      "link": "https://www.checkpoint.com/",
+      "description": "Check Point Software Technologies Ltd. (www.checkpoint.com) is a leading provider of cyber security solutions to governments and corporate enterprises globally. Its solutions protect customers from cyber-attacks with an industry leading catch rate of malware, ransomware and other types of attacks. Check Point offers a multilevel security architecture that defends enterprises\u2019 cloud, network and mobile device held information, plus the most comprehensive and intuitive one point of control security management system. Check Point protects over 100,000 organizations of all sizes."
+    },
+    {
+      "updated_at": "2018-10-02T15:03+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Oath",
+      "id": 81,
+      "link": "https://www.oath.com/",
+      "description": "Oath, a subsidiary of Verizon, is a values-led company committed to building brands people love. We reach over one billion people around the world with a dynamic house of 50+ media and technology brands. A global leader in digital and mobile, Oath is shaping the future of media.\r\n\r\nWhen you impact millions of people every day, you become a large target for adversaries of all types within all layers of the stack. Our job is to keep our users safe and make Oath one of the safest places on the Internet.\r\n\r\nWe are the information security team at Oath; known as \\\u201dThe Paranoids\\\u201d."
+    },
+    {
+      "updated_at": "2018-10-02T15:03+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Pluralsight",
+      "id": 82,
+      "link": "https://www.pluralsight.com/",
+      "description": "Pluralsight is the technology learning platform critical to success in the digital age. Enterprise organizations partner with us to enhance their employees\u2019 expertise, align learning to key business objectives and close skills gaps in critical areas, including cloud, mobile, security, design and data. With the largest network of expert technologists worldwide and more than 6,500 courses, Pluralsight enables technology skills at scale."
+    },
+    {
+      "updated_at": "2018-10-02T15:03+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "CrowdStrike",
+      "id": 83,
+      "link": "https://www.crowdstrike.com/",
+      "description": "CrowdStrike is the leader in cloud-delivered endpoint protection. The CrowdStrike Falcon\u00ae platform offers instant visibility and protection across the enterprise and prevents attacks on endpoints on or off the network. CrowdStrike Falcon deploys in minutes to deliver actionable intelligence and real-time protection from Day One. CrowdStrike Falcon seamlessly unifies next-generation AV with best-in-class endpoint detection and response, backed by 24/7 managed hunting. Its cloud infrastructure and single-agent architecture take away complexity and add scalability, manageability, and speed. CrowdStrike Falcon protects customers against all cyberattack types, using sophisticated signatureless artificial intelligence/machine learning and Indicator-of-Attack (IOA) based threat prevention to stop known and unknown threats in real time. Powered by the CrowdStrike Threat Graph\u2122, Falcon instantly correlates more than 70 billion security events from across the globe to immediately prevent and detect threats."
+    },
+    {
+      "updated_at": "2018-10-02T15:03+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "MailChimp",
+      "id": 84,
+      "link": "https://mailchimp.com/",
+      "description": "MailChimp is the world\u2019s largest marketing automation platform. It\u2019s like a second brain that helps millions of customers\u2014from small e-commerce shops to big online retailers\u2014find their audience, engage their customers, and build their brand."
+    },
+    {
+      "updated_at": "2018-10-02T15:04+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Nexum",
+      "id": 85,
+      "link": "https://www.nexuminc.com/",
+      "description": "Nexum, Inc. is a cybersecurity and networking company that builds and secures global networks for organizations across multiple verticals around the world. In addition to its Chicago headquarters, Nexum has sales, training and support presence in Kentucky, Michigan, New Hampshire, New York, Minnesota, Ohio, Wisconsin and Indiana as well as the Security and Network Operations Command Centers (SNOCC) in New Mexico and Illinois.\r\nNexum believes that by remaining absolutely focused on its clients\u2019 needs, success necessarily follows. Nexum meets those needs through a holistic, value-based approach that includes best-in-breed products, professional services, Nexum-branded manufacturer support, authorized training, and monitored and managed security services. At Nexum, We Mean Security."
+    },
+    {
+      "updated_at": "2018-10-02T15:04+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Synack",
+      "id": 86,
+      "link": "https://www.synack.com/",
+      "description": "Synack, the leader in crowdsourced security testing, provides real security to the modern enterprise. We leverage the world\u2019s most trusted ethical hackers and an industry-leading platform to find critical security issues before criminals can exploit them. Companies no longer have to choose between working with the best security talent and a lack of time, resources, or trust. Headquartered in Silicon Valley with regional offices around the world, Synack has protected over 100 global organizations by reducing companies\u2019 security risk and increasing their resistance to cyber attack."
+    },
+    {
+      "updated_at": "2018-10-02T15:05+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Nuspire",
+      "id": 87,
+      "link": "https://www.nuspire.com/",
+      "description": "Nuspire is a state-of-the-science Managed Security Service Provider with nearly two decades of industry experience, providing network management, monitoring, and security services for some of the largest and most distinctive companies in the world. Beyond the classic monitor and support models, Nuspire utilizes big data, cloud-driven technologies, custom-built and integrated threat intelligence, and human analytics to meet the managed security needs of enterprise organizations with geographically dispersed networks. Solutions are delivered with service level commitments for network security, performance and compliance. With its custom-built monitoring systems, a team of experts available 24/7/365 and a deep security knowledge and expertise, Nuspire is the benchmark for managed security services and maintains unparalleled cybersecurity technologies deployed globally. To learn more, visit www.nuspire.com"
+    },
+    {
+      "updated_at": "2018-10-02T15:05+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Exeter Government Services",
+      "id": 88,
+      "link": "http://www.exetergov.com/",
+      "description": "Exeter Government Services (Exeter) is a privately held Veteran-owned Small Business led by an executive management team with an extensive track record of achievement in government and the private sector.  This experience has led to numerous customer successes directly attributable to our proven proprietary methodologies and service delivery excellence.  The company embodies the positive aspects of small business: small enough to allow direct client and employee access to management, yet large enough to meet every client commitment. Headquartered in Gaithersburg, MD, the company has a presence in 22 states and 3 countries, including a local Kentucky presence at Fort Knox. Exeter achieved an International Standards Organization (ISO) 9001:2015 (Quality) certification in 2016 and has been independently appraised at Capability Maturity Model Integration for Development (CMMI-DEV) Maturity Level 3 since 2009.\r\n\r\nExeter provides end-to-end solutions and services for a variety of Department of Defense and Federal civilian agencies clients, including the U.S. Army, U.S. Air Force, Defense Information Systems Agency (DISA), National Institute of Standards and Technology (NIST), and the Department of Veterans Affairs (VA). Cybersecurity is an Exeter core competency, along with software development and system integration. Exeter provides ongoing cybersecurity support to Federal Government customers at every level, including individual IT programs; DoD major command and service-wide support; Joint Defense agency-level and combatant command J6 support; and the National Institute of Standards and Technology\u2019s (NIST) Computer Security Division. Exeter has influenced cybersecurity policy and standards across the Federal Government, including assisting development of the Cybersecurity Framework Executive Order."
+    },
+    {
+      "updated_at": "2018-10-02T15:05+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "R9B",
+      "id": 89,
+      "link": "https://www.root9b.com/",
+      "description": "R9B (root9B, LLC) is the leader in advanced cybersecurity solutions, enhancing the way global organizations detect, pursue, isolate and eliminate threats to enterprise infrastructure. As the company that introduced HUNT to commercial markets in 2013, R9B products and services are trusted by both governments and Fortune 500 brands to produce tangible results in the security of information systems. Founded by professionals with backgrounds in the defense, intelligence and commercial communities, R9B delivers expert knowledge, next-generation technology and in-depth training through a security-as-a-service model. R9B is headquartered in Colorado Springs, Colorado with offices across the United States and in Canada."
+    },
+    {
+      "updated_at": "2018-10-02T15:06+0000",
+      "conference": "DC80",
+      "partner": false,
+      "name": "Chenega Mios",
+      "id": 90,
+      "link": "http://www.chenegamios.com/",
+      "description": "Chenega Corporation\u2019s Military, Intelligence, and Operations Support (MIOS) Strategic Business Unit (SBU) is pleased to be a sponsor of DerbyCon 8.0. We are a leading professional services and solutions provider for government and commercial customers around the globe. With 14 subsidiary companies, Chenega MIOS SBU offers small business speed and agility backed by big business capabilities to consistently deliver exceptional services and solutions across a diverse portfolio ranging from Systems Engineering, Information Technology, and Cloud Computing to Training, Strategic Communications, Social Media Marketing, and eLearning.\r\n\r\nOur Cybersecurity services and capabilities include Cybersecurity Engineering, Computer Network Defense, Threat Detection & Mitigation, Risk Management, Auditing & Assessments, Network Certification & Accreditation, and Testing & Integration support.\r\n\r\nVisit us at www.chenegamios.com to learn more."
+    }
+  ]
 }

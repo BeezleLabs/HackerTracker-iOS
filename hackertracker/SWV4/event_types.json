@@ -1,0 +1,40 @@
+{
+  "event_types": [
+    {
+      "id": 30211,
+      "updated_at": "2018-10-17T22:42+0000",
+      "name": "Talk",
+      "color": "#fc853f",
+      "conference": "SWV4"
+    },
+    {
+      "id": 30212,
+      "updated_at": "2018-10-17T22:42+0000",
+      "name": "Village",
+      "color": "#5c74ff",
+      "conference": "SWV4"
+    },
+    {
+      "id": 30213,
+      "updated_at": "2018-10-17T22:42+0000",
+      "name": "Event",
+      "color": "#9a3290",
+      "conference": "SWV4"
+    },
+    {
+      "id": 30214,
+      "updated_at": "2018-10-17T22:42+0000",
+      "name": "Contest",
+      "color": "#42d2bc",
+      "conference": "SWV4"
+    },
+    {
+      "id": 30215,
+      "updated_at": "2018-10-17T22:42+0000",
+      "name": "Training",
+      "color": "#AD1457",
+      "conference": "SWV4"
+    }
+  ],
+  "updated_at": "2018-10-17T22:42+0000"
+}
