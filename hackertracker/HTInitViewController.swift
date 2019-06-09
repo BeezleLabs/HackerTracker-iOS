@@ -27,8 +27,6 @@ class HTInitViewController: UIViewController {
             dfu.update(identifier: tz)
         }
         
-        let dc26_update = dfu.yearMonthDayFormatter.date(from: "2018-07-01")
-        
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
         fr.returnsObjectsAsFaults = false
         
@@ -46,15 +44,6 @@ class HTInitViewController: UIViewController {
             } catch {
                 NSLog("Error setting sync date: \(error)")
             }
-        } else if (status[0].lastsync! < dc26_update!) {
-            NSLog("Database older than dc26 update, resetting")
-            do {
-                try DataImportManager(managedContext: context).resetDB()
-                try context.save()
-            } catch {
-                NSLog("Error resetting the database \(error)")
-            }
-            self.loadData()
         } else {
             importComplete = true
         }
@@ -64,52 +53,15 @@ class HTInitViewController: UIViewController {
     
     func loadData() {
             let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = delegate.backgroundManagedObjectContext!
-            
-            context.perform {
-                
-                let dataManager = DataImportManager(managedContext: context)
-                let requestManager = DataRequestManager(managedContext: context)
-                // If we are loading data, it's the initial load, so specify which conference we should load by the conference code
-                
-                let conferences_file = Bundle.main.path(forResource: "conferences", ofType: "json")!
-                let conferences_content = try! String(contentsOfFile: conferences_file)
-                let conferences_data = conferences_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                do {
-                    try _ = dataManager.importConferences(conData: conferences_data)
-                } catch {
-                    print("Failed to import conferences: \(error)")
-                }
-                // Pick the next upcoming conference as the initial display
-                if let myCon = requestManager.getConference("DC80") {
-                    myCon.selected = true
-                }
-                
-                // alright, initial load of defcon 26, toorcon xx, derbycon 8.0, shellcon.io
-                for d in ["DC26","TC20","DC80","SC02","SAINTCON2018","CACTUSCON2018","SWV4","THOTCON0xA"] {
-                    for i in ["speakers","articles","event_types", "faqs", "locations", "notifications", "vendors", "events"] {
-                        let a_file = Bundle.main.path(forResource: i, ofType: "json", inDirectory: d)!
-                        let a_content = try! String(contentsOfFile: a_file)
-                        let a_data = a_content.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                        do {
-                            try dataManager.importData(data: a_data)
-                        } catch {
-                            print("Failed to import \(i): \(error)")
-                        }
-
+            let db = delegate.db!
+        
+            let conferences = db.collection("conferences").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        NSLog("\(document.documentID) => \(document.data())")
                     }
-                }
-                
-                do {
-                    try context.save()
-                } catch let error as NSError {
-                    NSLog("error: \(error)")
-                }
-            
-
-                self.importComplete = true
-                DispatchQueue.main.async {
-                    self.go()
                 }
             }
     }
