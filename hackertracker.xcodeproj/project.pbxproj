@@ -50,6 +50,9 @@
 		8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */; };
 		8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */; };
 		8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */; };
+		8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */; };
+		8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8C22B9BC1600EC44CC /* Document.swift */; };
+		8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8E22B9C29500EC44CC /* EventModel.swift */; };
 		8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D21F1297D4006761BE /* MapLocationView.swift */; };
 		8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D51F15BDA3006761BE /* DataImportManager.swift */; };
 		834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D31F17113C0092C2FE /* DataRequestManager.swift */; };
@@ -153,6 +156,9 @@
 		8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleEmptyStateView.swift; path = Views/ScheduleEmptyStateView.swift; sourceTree = "<group>"; };
 		8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleEmptyStateView.xib; sourceTree = "<group>"; };
 		8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventCell.xib; path = Views/EventCell.xib; sourceTree = "<group>"; };
+		8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceModel.swift; sourceTree = "<group>"; };
+		8318FE8C22B9BC1600EC44CC /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		8318FE8E22B9C29500EC44CC /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
 		8345F2D51F15BDA3006761BE /* DataImportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImportManager.swift; sourceTree = "<group>"; };
@@ -299,6 +305,7 @@
 		5DD6425B1AC3C62300ED3256 /* hackertracker */ = {
 			isa = PBXGroup;
 			children = (
+				8318FE8922B9BAAA00EC44CC /* FireBaseModels */,
 				83679CE5210CED76000CADE4 /* HamburgerMenu */,
 				83B0F8431F19B9D1006493A6 /* PDFViewer */,
 				8345F2D41F15BD7B006761BE /* Managers */,
@@ -360,6 +367,16 @@
 				8B924A8880B54182A6446BF1 /* Pods_hackertrackerTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8318FE8922B9BAAA00EC44CC /* FireBaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */,
+				8318FE8C22B9BC1600EC44CC /* Document.swift */,
+				8318FE8E22B9C29500EC44CC /* EventModel.swift */,
+			);
+			name = FireBaseModels;
 			sourceTree = "<group>";
 		};
 		8345F2D41F15BD7B006761BE /* Managers */ = {
@@ -629,12 +646,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */,
+				8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */,
 				5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */,
 				5D6707F6211787E10007F01F /* AboutCell.swift in Sources */,
 				5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */,
 				834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */,
 				5D027620210160F400E5ED6A /* HTNewsTableViewController.swift in Sources */,
 				B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */,
+				8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */,
 				5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */,
 				5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
@@ -663,6 +682,7 @@
 				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */,
+				8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */,
 				5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */,

@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var db: Firestore?
-    
+    var conferences : Collection<ConferenceModel>!
+    var events : Collection<HTEventModel>!
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let attributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
@@ -31,6 +33,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         db = Firestore.firestore()
+        db?.collection("conferences");
+        
+        if let query = db?.collection("conferences") {
+            self.conferences = Collection<ConferenceModel>(query: query) { [unowned self] (changes) in
+                if let firstConference = self.conferences.items.first {
+                    self.events = Collection(query: self.conferences.documents[0].reference.collection("events"))  { [unowned self] (changes) in
+                        var items = self.events.items;
+                        var eventModel = items.first;
+                    }
+                    self.events.listen()
+                }
+            }
+            self.conferences.listen()
+        }
+        
 
         return true
     }
