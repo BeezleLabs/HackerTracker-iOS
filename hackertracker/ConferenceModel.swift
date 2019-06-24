@@ -14,6 +14,7 @@ struct ConferenceModel {
     var code : String
     var endDate : String
     var startDate : String
+    var tz : String
     var maps : [HTMapModel]
 }
 
@@ -24,6 +25,7 @@ extension ConferenceModel : Document {
         let code = dictionary["code"] as? String ?? ""
         let endDate = dictionary["end_date"] as? String ?? ""
         let startDate = dictionary["start_date"] as? String ?? ""
+        let tz = dictionary["timezone"] as? String ?? ""
         var maps : [HTMapModel] = []
         
         if let mapValues = dictionary["maps"] as? Array<Any>  {
@@ -36,7 +38,7 @@ extension ConferenceModel : Document {
             }
         }
         
-        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, maps: maps)
+        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, tz: tz, maps: maps)
     }
 }
 
