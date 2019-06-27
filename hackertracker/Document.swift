@@ -25,9 +25,7 @@ final class Collection<T : Document> {
     private(set) var documents : [DocumentSnapshot] = []
     
     let query: Query
-    
-    private let updateHandler: ([DocumentChange]) -> ()
-    
+        
     private var listener: ListenerRegistration? {
         didSet {
             oldValue?.remove()
@@ -42,10 +40,9 @@ final class Collection<T : Document> {
         return self.items[index]
     }
     
-    init(query: Query, updateHandler: @escaping ([DocumentChange]) -> ()) {
+    init(query: Query) {
         self.items = []
         self.query = query
-        self.updateHandler = updateHandler
     }
     
     func index(of document: DocumentSnapshot) -> Int? {
@@ -58,7 +55,7 @@ final class Collection<T : Document> {
         return nil
     }
     
-    func listen() {
+    func listen(updateHandler: @escaping ([DocumentChange]) -> ()) {
         guard listener == nil else { return }
         listener = query.addSnapshotListener { [unowned self] querySnapshot, error in
             guard let snapshot = querySnapshot else {
@@ -75,7 +72,7 @@ final class Collection<T : Document> {
             }
             self.items = models
             self.documents = snapshot.documents
-            self.updateHandler(snapshot.documentChanges)
+            updateHandler(snapshot.documentChanges)
         }
     }
     

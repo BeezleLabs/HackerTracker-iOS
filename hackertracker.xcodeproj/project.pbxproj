@@ -53,6 +53,7 @@
 		8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */; };
 		8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8C22B9BC1600EC44CC /* Document.swift */; };
 		8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8E22B9C29500EC44CC /* EventModel.swift */; };
+		8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */; };
 		8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D21F1297D4006761BE /* MapLocationView.swift */; };
 		8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D51F15BDA3006761BE /* DataImportManager.swift */; };
 		834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D31F17113C0092C2FE /* DataRequestManager.swift */; };
@@ -159,6 +160,7 @@
 		8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceModel.swift; sourceTree = "<group>"; };
 		8318FE8C22B9BC1600EC44CC /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		8318FE8E22B9C29500EC44CC /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSConferenceDataController.swift; sourceTree = "<group>"; };
 		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
 		8345F2D51F15BDA3006761BE /* DataImportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImportManager.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		5DD6425B1AC3C62300ED3256 /* hackertracker */ = {
 			isa = PBXGroup;
 			children = (
+				8318FE9022BAFDB400EC44CC /* DataControllers */,
 				8318FE8922B9BAAA00EC44CC /* FireBaseModels */,
 				83679CE5210CED76000CADE4 /* HamburgerMenu */,
 				83B0F8431F19B9D1006493A6 /* PDFViewer */,
@@ -377,6 +380,14 @@
 				8318FE8E22B9C29500EC44CC /* EventModel.swift */,
 			);
 			name = FireBaseModels;
+			sourceTree = "<group>";
+		};
+		8318FE9022BAFDB400EC44CC /* DataControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */,
+			);
+			name = DataControllers;
 			sourceTree = "<group>";
 		};
 		8345F2D41F15BD7B006761BE /* Managers */ = {
@@ -645,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */,
 				5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */,
 				8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */,
 				5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */,
