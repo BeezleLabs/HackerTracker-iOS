@@ -183,23 +183,23 @@ class HTEventDetailViewController: UIViewController {
                 let whoAttributedString = NSMutableAttributedString(string:n)
                 let whoParagraphStyle = NSMutableParagraphStyle()
                 whoParagraphStyle.alignment = .left
-                whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (n as NSString).length))
                 
                 let titleAttributedString = NSMutableAttributedString(string:t)
                 let titleParagraphStyle = NSMutableParagraphStyle()
                 titleParagraphStyle.alignment = .left
-                titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Bungee", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
+                titleAttributedString.addAttribute(.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
+                titleAttributedString.addAttribute(.font, value: UIFont(name: "Bungee", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
+                titleAttributedString.addAttribute(.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
                 
                 let bioAttributedString = NSMutableAttributedString(string:d)
                 let bioParagraphStyle = NSMutableParagraphStyle()
                 bioParagraphStyle.alignment = .left
-                bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Larsseit", size: 14)!, range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
+                bioAttributedString.addAttribute(.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
+                bioAttributedString.addAttribute(.font, value: UIFont(name: "Larsseit", size: 14)!, range: NSRange(location: 0, length: (d as NSString).length))
+                bioAttributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
                 
                 
                 speakerBios.append(whoAttributedString)
@@ -226,7 +226,7 @@ class HTEventDetailViewController: UIViewController {
             i = i+1
         }
         
-        self.eventNameLabel.contentMode = UIViewContentMode.top
+        self.eventNameLabel.contentMode = .top
         
         if speakers.count == 0 {
             speakerList = NSMutableAttributedString(string: "Anonymous")
@@ -326,16 +326,16 @@ class HTEventDetailViewController: UIViewController {
                 let messageText = NSMutableAttributedString(
                     string: alertBody,
                     attributes: [
-                        NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                        NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14)!,
-                        NSAttributedStringKey.foregroundColor : UIColor.black
+                        .paragraphStyle: paragraphStyle,
+                        .font: UIFont(name: "Larsseit", size: 14)!,
+                        .foregroundColor : UIColor.black
                     ]
                 )
                 
-                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:"", preferredStyle: UIAlertControllerStyle.alert)
+                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:"", preferredStyle: .alert)
                 alert.setValue(messageText, forKey: "attributedMessage")
                 
-                let yesItem : UIAlertAction = UIAlertAction(title: "Add Anyway", style: UIAlertActionStyle.default, handler: {
+                let yesItem : UIAlertAction = UIAlertAction(title: "Add Anyway", style: .default, handler: {
                     (action:UIAlertAction) in
                     event.starred = true
                     self.eventStarredButton.image = #imageLiteral(resourceName: "star_active")
@@ -344,7 +344,7 @@ class HTEventDetailViewController: UIViewController {
                     self.reloadEvents()
                 })
                 
-                let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
+                let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: .default, handler:
                 {
                     (action:UIAlertAction) in
                 })
@@ -420,14 +420,14 @@ class HTEventDetailViewController: UIViewController {
             
             // Anything you want to exclude
             activityViewController.excludedActivityTypes = [
-                UIActivityType.postToWeibo,
-                UIActivityType.print,
-                UIActivityType.assignToContact,
-                UIActivityType.saveToCameraRoll,
-                UIActivityType.addToReadingList,
-                UIActivityType.postToFlickr,
-                UIActivityType.postToVimeo,
-                UIActivityType.postToTencentWeibo
+                .postToWeibo,
+                .print,
+                .assignToContact,
+                .saveToCameraRoll,
+                .addToReadingList,
+                .postToFlickr,
+                .postToVimeo,
+                .postToTencentWeibo
             ]
             
             self.present(activityViewController, animated: true, completion: nil)

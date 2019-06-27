@@ -83,7 +83,7 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
             if cell.accessoryType == .checkmark
             {
                 cell.accessoryType = .none
-                if let index = filtered.index(of: et) {
+                if let index = filtered.firstIndex(of: et) {
                     filtered.remove(at: index)
                 }
             }

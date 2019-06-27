@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var db: Firestore?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let attributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = attributes
         
         Fabric.with([Crashlytics.self])

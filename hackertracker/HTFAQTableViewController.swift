@@ -57,16 +57,16 @@ class HTFAQTableViewController: UITableViewController {
         let messageText = NSMutableAttributedString(
             string: body,
             attributes: [
-                NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14)!,
-                NSAttributedStringKey.foregroundColor : UIColor.black
+                .paragraphStyle: paragraphStyle,
+                .font: UIFont(name: "Larsseit", size: 14)!,
+                .foregroundColor : UIColor.black
             ]
         )
         
-        let popup : UIAlertController = UIAlertController(title: "FAQ", message:"", preferredStyle: UIAlertControllerStyle.alert)
+        let popup : UIAlertController = UIAlertController(title: "FAQ", message:"", preferredStyle: .alert)
         popup.setValue(messageText, forKey: "attributedMessage")
         
-        let doneItem : UIAlertAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil)
+        let doneItem : UIAlertAction = UIAlertAction(title: "Done", style: .default, handler: nil)
         popup.addAction(doneItem)
         
         self.present(popup, animated: true, completion: nil)

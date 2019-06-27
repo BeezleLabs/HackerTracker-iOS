@@ -26,8 +26,8 @@ public class EventCell : UITableViewCell {
     var myEvent: Event?
     
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
         initialize()
     }
     
@@ -99,11 +99,11 @@ public class EventCell : UITableViewCell {
         }
         
         if event.starred {
-            favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             favorited.tintColor = UIColor.white
 
         } else {
-            favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             favorited.tintColor = UIColor.gray
         }
 
@@ -120,11 +120,11 @@ public class EventCell : UITableViewCell {
         if let e = myEvent {
             e.starred = !e.starred
             if e.starred {
-                favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 favorited.tintColor = UIColor.white
                 scheduleNotification(at: (myEvent?.start_date?.addingTimeInterval(-600))!,myEvent!)
             } else {
-                favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 favorited.tintColor = UIColor.gray
                 removeNotification(myEvent!)
             }

@@ -21,7 +21,7 @@ class HTHamburgerMenuTableViewController: UITableViewController {
   
     init(hamburgerItems : [HamburgerItem]) {        
         items = hamburgerItems
-        super.init(style: UITableViewStyle.plain)
+        super.init(style: .plain)
         tableView.estimatedRowHeight = 254
         
         tableView.register(UINib(nibName:"HTHamburgerHeaderTableViewCell", bundle:nil), forCellReuseIdentifier: "Header")
@@ -30,7 +30,7 @@ class HTHamburgerMenuTableViewController: UITableViewController {
     
     func setSelectedItem(hamburgerItem : HamburgerItem) {
         selectedItem = hamburgerItem
-        guard let index = items.index(where: { (item) -> Bool in
+        guard let index = items.firstIndex(where: { (item) -> Bool in
             return item == hamburgerItem
         }) else {
             return;

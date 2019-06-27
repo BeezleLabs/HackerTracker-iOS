@@ -12,7 +12,7 @@ class Animation {
 
     let context: CIContext = {
         let eaglContext = EAGLContext(api: .openGLES2)
-        return CIContext(eaglContext: eaglContext!, options: [kCIContextWorkingColorSpace : NSNull()])
+        return CIContext(eaglContext: eaglContext!, options: [.workingColorSpace: NSNull()])
     }()
 
     let pixelScaleFactor = 50.0
@@ -68,7 +68,7 @@ class Animation {
         originalSplashImage = image
         transitionStartTime = CACurrentMediaTime()
 
-        displayLink.add(to: .main, forMode: .commonModes)
+        displayLink.add(to: .main, forMode: .common)
         isPlaying = true
     }
 
@@ -108,7 +108,7 @@ class Animation {
         originalSplashImage = image
         transitionStartTime = CACurrentMediaTime()
 
-        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        displayLink.add(to: .main, forMode: .default)
 
         isPlaying = true
     }
@@ -266,4 +266,3 @@ class Animation {
     }
 
 }
-

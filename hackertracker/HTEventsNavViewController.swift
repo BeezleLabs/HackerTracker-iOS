@@ -45,7 +45,7 @@ class HTEventsNavViewController: UINavigationController {
         if let windowSize = UIApplication.shared.keyWindow?.frame.size {
             setNavBarImage(screenSize: windowSize)
         }
-        let attr = [NSAttributedStringKey.font: UIFont.bungee, NSAttributedStringKey.foregroundColor: UIColor.white]
+        let attr = [NSAttributedString.Key.font: UIFont.bungee, NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationBar.titleTextAttributes = attr
     }
     

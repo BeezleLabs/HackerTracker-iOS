@@ -30,7 +30,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
                 if events.count > 0, let e = events[0] as? Event {
                     talkButton.titleLabel?.numberOfLines = 3
                     talkButton.titleLabel?.lineBreakMode = .byWordWrapping
-                    talkButton.setTitle(e.title, for: UIControlState.normal)
+                    talkButton.setTitle(e.title, for: UIControl.State.normal)
                 } else {
                     talkButton.isHidden = true
                 }
@@ -45,7 +45,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             
         }
         
-        eventTableView.rowHeight = UITableViewAutomaticDimension
+        eventTableView.rowHeight = UITableView.automaticDimension
         eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil),  forCellReuseIdentifier: "EventCell")
         eventTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
 
@@ -132,6 +132,6 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 }

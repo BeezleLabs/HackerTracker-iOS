@@ -42,7 +42,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
             }
         }
 
-        updatesTableView.rowHeight = UITableViewAutomaticDimension
+        updatesTableView.rowHeight = UITableView.automaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
         updatesTableView.register(UINib.init(nibName: "AboutCell", bundle: nil), forCellReuseIdentifier: "AboutCell")
@@ -199,7 +199,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
             if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                cell.versionLabel.setTitle("Hackertracker iOS v\(v) (\(b))", for: UIControlState.normal)
+                cell.versionLabel.setTitle("Hackertracker iOS v\(v) (\(b))", for: .normal)
             }
             cell.aboutDelegate = self
             return cell
@@ -282,7 +282,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
 }
