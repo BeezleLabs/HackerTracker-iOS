@@ -32,7 +32,7 @@ func scheduleNotification(at date: Date,_ event:Event) {
     let content = UNMutableNotificationContent()
     content.title = "Upcoming Event"
     content.body = "\(String(describing: event.title)) in \(String(describing: event.location?.name!))"
-    content.sound = UNNotificationSound.default()
+    content.sound = UNNotificationSound.default
     
     let request = UNNotificationRequest(identifier: "hackertracker-\(event.id)", content: content, trigger: trigger)
     

@@ -28,7 +28,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         reloadEvents()
-        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,10 +49,10 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
         if pullDownAnimation == nil {
             refreshControl = UIRefreshControl()
-            let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
+            let attr: Dictionary = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
             refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
             refreshControl?.tintColor = .clear
-            refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControlEvents.valueChanged)
+            refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControl.Event.valueChanged)
 
             let view = SKView(frame: refreshControl!.frame)
             if let scene = SKScene(fileNamed: "scene") as? PongScene {
@@ -141,7 +141,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
         if let refreshControl = refreshControl,
             tableView.subviews.contains(refreshControl) {
-            tableView.sendSubview(toBack: refreshControl)
+            tableView.sendSubviewToBack(refreshControl)
         }
     }
 
@@ -246,7 +246,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -270,7 +270,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         let cURL = (envs.value(forKey: "base") as! String) + (envs.value(forKey: "conferences") as! String)
         let conURL = Foundation.URL(string: cURL)
         var request = URLRequest(url: conURL!)
-        let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
+        let attr: Dictionary = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
         let dfu = DateFormatterUtility.shared
         let n = dfu.monthDayTimeFormatter.string(from: Date())
 
@@ -316,7 +316,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                             
                                             session.dataTask(with: request, completionHandler: { (data, response, error) in
                                                 
-                                                let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
+                                                let attr: Dictionary = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
                                                 let dfu = DateFormatterUtility.shared
                                                 let n = dfu.monthDayTimeFormatter.string(from: Date())
                                                 
@@ -392,7 +392,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 
                 session.dataTask(with: request, completionHandler: { (data, response, error) in
                     
-                    let attr: Dictionary = [ NSAttributedStringKey.foregroundColor : UIColor.white ]
+                    let attr: Dictionary = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
                     let dfu = DateFormatterUtility.shared
                     let n = dfu.monthDayTimeFormatter.string(from: Date())
                     
@@ -474,7 +474,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         super.viewWillAppear(animated)
         reloadEvents()
         
-        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
     }
 

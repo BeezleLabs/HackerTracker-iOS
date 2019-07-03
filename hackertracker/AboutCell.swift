@@ -18,8 +18,8 @@ class AboutCell: UITableViewCell {
     var rick = 0
     weak var aboutDelegate: AboutCellDelegate?
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
         initialize()
     }
     

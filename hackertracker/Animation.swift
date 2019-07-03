@@ -12,7 +12,7 @@ class Animation {
 
     let context: CIContext = {
         let eaglContext = EAGLContext(api: .openGLES2)
-        return CIContext(eaglContext: eaglContext!, options: [kCIContextWorkingColorSpace : NSNull()])
+        return CIContext(eaglContext: eaglContext!, options: convertToOptionalCIContextOptionDictionary([convertFromCIContextOption(CIContextOption.workingColorSpace) : NSNull()]))
     }()
 
     let pixelScaleFactor = 50.0
@@ -68,7 +68,7 @@ class Animation {
         originalSplashImage = image
         transitionStartTime = CACurrentMediaTime()
 
-        displayLink.add(to: .main, forMode: .commonModes)
+        displayLink.add(to: .main, forMode: RunLoop.Mode.common)
         isPlaying = true
     }
 
@@ -108,7 +108,7 @@ class Animation {
         originalSplashImage = image
         transitionStartTime = CACurrentMediaTime()
 
-        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        displayLink.add(to: .main, forMode: RunLoop.Mode.default)
 
         isPlaying = true
     }
@@ -267,3 +267,14 @@ class Animation {
 
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalCIContextOptionDictionary(_ input: [String: Any]?) -> [CIContextOption: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (CIContextOption(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCIContextOption(_ input: CIContextOption) -> String {
+	return input.rawValue
+}

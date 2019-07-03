@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var conferencesToken : UpdateToken<ConferenceModel>?
     var eventsToken : UpdateToken<HTEventModel>?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let attributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = attributes
         
         Fabric.with([Crashlytics.self])

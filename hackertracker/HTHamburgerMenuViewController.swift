@@ -28,7 +28,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let hamburgerNavigationController: HTEventsNavViewController
     let alphaView = UIView()
 
-    let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(hamburgerMenuItemPressed))
+    let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(hamburgerMenuItemPressed))
     let intialTab = "Home"
     //This is a mapping of tabs to vcs
     let tabs = [
@@ -74,7 +74,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         
         hamburgerTableViewController.delegate = self
         setCurrentViewController(tabID: intialTab)
-        self.addChildViewController(hamburgerNavigationController)
+        self.addChild(hamburgerNavigationController)
         self.view.addSubview(hamburgerNavigationController.view)
         alphaView.backgroundColor = UIColor.black
         alphaView.alpha = 0.0
@@ -98,7 +98,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         panGesture.addTarget(self, action: #selector(edgeSwipe(sender:)))
         self.view.addGestureRecognizer(panGesture)
         
-        self.addChildViewController(hamburgerTableViewController)
+        self.addChild(hamburgerTableViewController)
         self.view.addSubview(hamburgerTableViewController.view)
         hamburgerTableViewController.view.translatesAutoresizingMaskIntoConstraints = false
         hamburgerTableViewController.view.widthAnchor.constraint(equalToConstant: hamburgerMenuWidth).isActive = true

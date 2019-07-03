@@ -20,7 +20,7 @@ class HTSpeakersTableViewController: UITableViewController {
         super.viewDidLoad()
 
         reloadSpeakers()
-        tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: false)
+        tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         self.clearsSelectionOnViewWillAppear = false
     }
 
