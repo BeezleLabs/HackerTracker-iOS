@@ -41,6 +41,15 @@ class FSConferenceDataController {
         return UpdateToken<ConferenceModel>(conferences);
     }
     
+    func requestConferenceByCode(forCode conCode: String, updateHandler: @escaping (Result<ConferenceModel, Error>) -> Void) -> UpdateToken<ConferenceModel> {
+        let query = db.collection("conferences").whereField("code", isEqualTo: conCode)
+        let conferences = Collection<ConferenceModel>(query: query)
+        conferences.listen() { (changes) in
+            updateHandler(Result<ConferenceModel, Error>.success(conferences.items.first!))
+        }
+        return UpdateToken<ConferenceModel>(conferences);
+    }
+    
     func requestEvents(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken<HTEventModel> {
         let query = document(forConference: conference).collection("events")
         let events = Collection<HTEventModel>(query: query)
@@ -69,6 +78,6 @@ class FSConferenceDataController {
     }
     
     private func document(forConference conference: ConferenceModel) -> DocumentReference {
-        return db.collection("conferences").document(String(conference.id));
+        return db.collection("conferences").document(conference.code);
     }
 }

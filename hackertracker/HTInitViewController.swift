@@ -30,18 +30,6 @@ class HTInitViewController: UIViewController {
         let timeBeforeSegue = hackerAnimationDuration
         playAnimation()
 
-        /*if status.count < 1 {
-            NSLog("Database not setup, preloading with initial schedule")
-            //self.loadData()
-            do {
-                try DataImportManager(managedContext: context).setSyncDate(Date())
-                try context.save()
-            } catch {
-                NSLog("Error setting sync date: \(error)")
-            }
-        } else {
-            importComplete = true
-        } */
 
         Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(timerComplete), userInfo: nil, repeats: false)
     }
