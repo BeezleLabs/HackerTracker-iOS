@@ -59,6 +59,15 @@ class FSConferenceDataController {
         return UpdateToken<HTEventModel>(events);
     }
     
+    func requestEvents(forConference conference: ConferenceModel, limit: Int, updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken<HTEventModel> {
+        let query = document(forConference: conference).collection("events").limit(to: limit)
+        let events = Collection<HTEventModel>(query: query)
+        events.listen() { (changes) in
+            updateHandler(Result<[HTEventModel], Error>.success(events.items))
+        }
+        return UpdateToken<HTEventModel>(events);
+    }
+    
     func requestLocations(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTLocationModel], Error>) -> Void) -> UpdateToken<HTLocationModel> {
         let query = document(forConference: conference).collection("locations")
         let events = Collection<HTLocationModel>(query: query)

@@ -23,7 +23,7 @@ public class EventCell : UITableViewCell {
     @IBOutlet weak var favorited: UIImageView!
     
     weak var eventCellDelegate : EventCellDelegate? 
-    var myEvent: Event?
+    var myEvent: HTEventModel?
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -59,53 +59,39 @@ public class EventCell : UITableViewCell {
         et_label.backgroundColor = oldColor
     }
 
-    func bind(event : Event) {
+    func bind(event : HTEventModel) {
         myEvent = event
         var eventTime = "TBD"
         let dfu = DateFormatterUtility.shared
-        if let start = event.start_date, let end = event.end_date {
-            eventTime = dfu.dayOfWeekTimeFormatter.string(from:start) + "-"
-            if Calendar.current.isDate(end, inSameDayAs: start) {
-                eventTime = eventTime + dfu.hourMinuteTimeFormatter.string(from: end)
-            } else {
-                eventTime = eventTime + dfu.dayOfWeekTimeFormatter.string(from: end)
-            }
+        eventTime = dfu.dayOfWeekTimeFormatter.string(from:event.beginDate) + "-"
+        if Calendar.current.isDate(event.endDate, inSameDayAs: event.beginDate) {
+            eventTime = eventTime + dfu.hourMinuteTimeFormatter.string(from: event.endDate)
+        } else {
+            eventTime = eventTime + dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
         }
+
         
         title.text = event.title
 
-        if let et = event.event_type, let col = et.color {
-            color.backgroundColor = UIColor(hexString: (col))
-            et_label.layer.borderColor = UIColor(hexString: col).cgColor
-            et_label.layer.borderWidth = 1.0
-            et_label.backgroundColor = UIColor(hexString: col)
-            et_label.text = " \((event.event_type?.name!)!) "
-            et_label.layer.masksToBounds = true
-            et_label.layer.cornerRadius = 5
+        color.backgroundColor = UIColor(hexString: (event.type.color))
+        et_label.layer.borderColor = UIColor(hexString: event.type.color).cgColor
+        et_label.layer.borderWidth = 1.0
+        et_label.backgroundColor = UIColor(hexString: event.type.color)
+        et_label.text = " \(event.type.name) "
+        et_label.layer.masksToBounds = true
+        et_label.layer.cornerRadius = 5
             
-        } else {
-            color.backgroundColor = UIColor.gray
-            et_label.text = " "
-        }
+        subtitle.text = "| \(event.location.name)"
+
         
-        if event.location?.id == 0 {
-            subtitle.text = "Location in description"
-        } else {
-            if let n = event.location?.name {
-                subtitle.text = "| \(n)"
-            } else {
-                subtitle.text = "| TBA"
-            }
-        }
-        
-        if event.starred {
+        /*if event.starred {
             favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             favorited.tintColor = UIColor.white
 
         } else {
             favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             favorited.tintColor = UIColor.gray
-        }
+        }*/
 
         
         let tr = UITapGestureRecognizer(target: self, action: #selector(tappedStar(sender:)))
@@ -118,7 +104,7 @@ public class EventCell : UITableViewCell {
     
     @objc func tappedStar(sender: AnyObject) {
         if let e = myEvent {
-            e.starred = !e.starred
+            /*e.starred = !e.starred
             if e.starred {
                 favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 favorited.tintColor = UIColor.white
@@ -134,7 +120,7 @@ public class EventCell : UITableViewCell {
             
             if let ed = self.eventCellDelegate {
                 ed.updatedEvents()
-            }
+            } */
         } else {
             NSLog("No event defined on star tap")
         }

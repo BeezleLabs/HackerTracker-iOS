@@ -55,9 +55,9 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
        
-        var event: Event
+        var event: HTEventModel
         
-        event = self.filteredEvents.object(at: indexPath.row) as! Event
+        event = self.filteredEvents.object(at: indexPath.row) as! HTEventModel
         
         cell.bind(event: event)
         
@@ -66,7 +66,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = self.filteredEvents.object(at: indexPath.row) as? Event
+            eventController.event = self.filteredEvents.object(at: indexPath.row) as? HTEventModel
             eventController.delegate = self
             self.navigationController?.pushViewController(eventController, animated: true)
         }
@@ -93,9 +93,9 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
     
     func filterEvents(_ searchText: String) {
-        let context = getContext()
+        /*let context = getContext()
         
-        var currentEvents : Array<Event> = []
+        
         
         let dataRequest = DataRequestManager(managedContext: getContext())
         
@@ -124,9 +124,12 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                     }
                 }
             }
-            
-            self.filteredEvents = currentEvents as NSArray
-        }
+
+         */
+        var currentEvents : Array<HTEventModel> = []
+        self.filteredEvents = currentEvents as NSArray
+ 
+        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -176,7 +179,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                 indexPath = sender as! IndexPath
             }
 
-            dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
+            dv.event = self.filteredEvents.object(at: indexPath.row) as? HTEventModel
             dv.delegate = self
         }
     }

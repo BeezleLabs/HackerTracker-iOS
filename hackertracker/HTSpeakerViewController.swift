@@ -93,11 +93,11 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
                 dv = segue.destination as! HTEventDetailViewController
             }
             
-            if let events = speaker?.events?.allObjects {
-                if events.count > 0, let e = events[0] as? Event {
+            /*if let events = speaker?.events?.allObjects {
+                if events.count > 0, let e = events[0] as? HTEventModel {
                     dv.event = e
                 }
-            }
+            }*/
             dv.transitioningDelegate = self
             
         }
@@ -113,10 +113,10 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let events = speaker?.events?.allObjects as? [Event], events.count > 0 {
+        if let events = speaker?.events?.allObjects as? [HTEventModel], events.count > 0 {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-            let event : Event = events[indexPath.row]
+            let event : HTEventModel = events[indexPath.row]
             cell.bind(event: event)
             return cell
 

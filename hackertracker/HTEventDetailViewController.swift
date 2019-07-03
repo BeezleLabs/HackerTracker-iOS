@@ -37,7 +37,7 @@ class HTEventDetailViewController: UIViewController {
     var speakerList = NSMutableAttributedString(string: "")
 
     var delegate: EventDetailDelegate?
-    var event: Event?
+    var event: HTEventModel?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
 
@@ -60,22 +60,16 @@ class HTEventDetailViewController: UIViewController {
         
         eventTitleLabel.text = event.title
         
-        setupSpeakers(event: event)
+        //setupSpeakers(event: event)
         
-        eventLocationLabel.text = event.location?.name
-        if let col = event.event_type?.color {
-            eventTypeLabel.layer.borderColor = UIColor(hexString: col).cgColor
-            eventTypeLabel.layer.backgroundColor = UIColor(hexString: col).cgColor
-        } else {
-            eventTypeLabel.layer.borderColor = UIColor.gray.cgColor
-            eventTypeLabel.layer.backgroundColor = UIColor.gray.cgColor
-        }
+        eventLocationLabel.text = event.location.name
+
+        eventTypeLabel.layer.borderColor = UIColor(hexString: event.type.color).cgColor
+        eventTypeLabel.layer.backgroundColor = UIColor(hexString: event.type.color).cgColor
+
         eventTypeLabel.layer.borderWidth = 1.0
-        if let n = event.event_type?.name {
-            eventTypeLabel.text = " \(n) "
-        } else {
-            eventTypeLabel.text = " TBD"
-        }
+        eventTypeLabel.text = " \(event.type.name) "
+
         eventTypeLabel.layer.masksToBounds = true
         eventTypeLabel.layer.cornerRadius = 5
         
@@ -87,50 +81,44 @@ class HTEventDetailViewController: UIViewController {
         }
         locationMapView.setup()*/
         
-        eventDetailTextView.text = event.desc
+        eventDetailTextView.text = event.description
 
-        if (event.starred) {
+        /*if (event.starred) {
             eventStarredButton.image = #imageLiteral(resourceName: "star_active")
         } else {
             eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-        }
+        }*/
         
-        if let i = event.includes {
-            if !i.lowercased().contains("tool") { toolImage.isHidden = true }
-            if !i.lowercased().contains("demo") { demoImage.isHidden = true }
-            if !i.lowercased().contains("exploit") { exploitImage.isHidden = true }
-            if i != "" {
-                if let t = eventDetailTextView.text {
-                    eventDetailTextView.text = "\(t)\n\nIncludes: \(i.uppercased())"
-                }
+        let i = event.includes
+        if !i.lowercased().contains("tool") { toolImage.isHidden = true }
+        if !i.lowercased().contains("demo") { demoImage.isHidden = true }
+        if !i.lowercased().contains("exploit") { exploitImage.isHidden = true }
+        if i != "" {
+            if let t = eventDetailTextView.text {
+                eventDetailTextView.text = "\(t)\n\nIncludes: \(i.uppercased())"
             }
         }
         
-        if let l = event.link {
-            if l == "" {
-                linkButton.isHidden = true
-                linkButton.isEnabled = false
-            } else {
-                linkButton.isEnabled = true
-            }
+        if event.links == "" {
+            linkButton.isHidden = true
+            linkButton.isEnabled = false
+        } else {
+            linkButton.isEnabled = true
         }
+        
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
         
         let dfu = DateFormatterUtility.shared
-        if let start = event.start_date, let end = event.end_date, let l = event.location?.name {
-            let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: start)
-            var eventEnd = ""
-            if Calendar.current.isDate(end, inSameDayAs: start) {
-                eventEnd = dfu.hourMinuteTimeFormatter.string(from: end)
-            } else {
-                eventEnd = dfu.dayOfWeekTimeFormatter.string(from: end)
-            }
-            eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
-        
-            //locationMapView.currentLocation = Location.valueFromString(l)
+        let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: event.beginDate)
+        var eventEnd = ""
+        if Calendar.current.isDate(event.endDate, inSameDayAs: event.beginDate) {
+            eventEnd = dfu.hourMinuteTimeFormatter.string(from: event.endDate)
         } else {
-            eventDateLabel.text = "To Be Announced"
+            eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
         }
+        eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
+        
+
         
     }
 
@@ -286,7 +274,7 @@ class HTEventDetailViewController: UIViewController {
             }
         }
         
-        if (event.starred) {
+        /*if (event.starred) {
             event.starred = false
             eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
             saveContext()
@@ -366,7 +354,7 @@ class HTEventDetailViewController: UIViewController {
                 reloadEvents()
             }
 
-        }
+        } */
 
     }
 
@@ -392,8 +380,9 @@ class HTEventDetailViewController: UIViewController {
     }
     
     @IBAction func followLink(_ sender: Any) {
-        if let e = event, let l = e.link {
-            if let u = URL(string: l) {
+        if let e = event {
+            
+            if let u = URL(string: e.links) {
                 let svc = SFSafariViewController(url: u)
                 svc.preferredBarTintColor = UIColor.backgroundGray
                 svc.preferredControlTintColor = UIColor.white
@@ -404,9 +393,9 @@ class HTEventDetailViewController: UIViewController {
     
     @IBAction func shareEvent(_ sender: Any) {
         let dfu = DateFormatterUtility.shared
-        if let e = event, let t = e.title, let l = e.location?.name, let start = e.start_date, let c = e.conference?.name {
-            let time = dfu.dayOfWeekTimeFormatter.string(from: start)
-            let item = "\(c): Attending '\(t)' on \(time) in \(l) #hackertracker"
+        if let e = event {
+            let time = dfu.dayOfWeekTimeFormatter.string(from: e.beginDate)
+            let item = "\(e.conferenceName): Attending '\(e.title)' on \(time) in \(e.location.name) #hackertracker"
             
             let activityViewController : UIActivityViewController = UIActivityViewController(
                 activityItems: [item], applicationActivities: nil)

@@ -21,11 +21,14 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     var messages: [Article] = []
     var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now", "About"]
-    var starred: [Event] = []
-    var upcoming: [Event] = []
-    var liveNow: [Event] = []
+    var starred: [HTEventModel] = []
+    var upcoming: [HTEventModel] = []
+    var liveNow: [HTEventModel] = []
     var data = NSMutableData()
-    var myCon: Conference?
+    var conferencesToken : UpdateToken<ConferenceModel>?
+    var eventsToken : UpdateToken<HTEventModel>?
+    var myCon: ConferenceModel?
+    var myConCode: String?
     var lastContentOffset: CGPoint?
     var rick: Int = 0
 
@@ -33,26 +36,38 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
         
-        if let con = DataRequestManager(managedContext: context).getSelectedConference() {
-            if let name = con.name {
-                self.title = name
-            }
-        }
-
         updatesTableView.rowHeight = UITableView.automaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
         updatesTableView.register(UINib.init(nibName: "AboutCell", bundle: nil), forCellReuseIdentifier: "AboutCell")
-
+        
         updatesTableView.delegate = self
         updatesTableView.dataSource = self
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
-        reloadEvents()
+        
+        if let conCode = UserDefaults.standard.string(forKey: "conference"){
+            self.title = conCode
+            conferencesToken = FSConferenceDataController.shared.requestConferenceByCode(forCode: conCode) { (result) in
+                switch result {
+                case .success(let con):
+                    self.myCon = con
+                    self.title = con.name
+                    self.reloadEvents()
+                case .failure(let _):
+                    NSLog("")
+                }
+            }
+        } else {
+            NSLog("No conference set, send to conferences")
+            guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
+                NSLog("Couldn't find parent view controller")
+                return
+            }
+            menuvc.setCurrentViewController(tabID: "Conferences")
+        }
+        
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -78,10 +93,23 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     }
 
     func reloadEvents() {
-        guard let myCon = DataRequestManager(managedContext: getContext()).getSelectedConference() else {
-            NSLog("No conference selected")
-            return
+        if let con = myCon {
+            eventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, limit: 3) { (result) in
+                switch result {
+                case .success(let eventList):
+                    self.starred.append(contentsOf: eventList)
+                    self.upcoming.append(contentsOf: eventList)
+                    self.liveNow.append(contentsOf: eventList)
+                    NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
+                    self.updatesTableView.reloadData()
+                case .failure(let _):
+                    NSLog("")
+                }
+            }
+        } else {
+            NSLog("No conference set yet")
         }
+        /*
         let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Article")
         fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
         fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [myCon])
@@ -109,6 +137,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         frl.predicate = NSPredicate(format: "conference = %@ and start_date <= %@ and end_date >= %@", argumentArray: [myCon, curTime, curTime])
         frl.returnsObjectsAsFaults = false
         self.liveNow = (try! getContext().fetch(frl)) as! [Event]
+        */
 
     }
     
@@ -161,7 +190,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 1 {
             if starred.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : Event = starred[indexPath.row]
+                let event : HTEventModel = starred[indexPath.row]
                 cell.bind(event: event)
                 cell.eventCellDelegate = self
                 return cell
@@ -174,7 +203,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 2 {
             if upcoming.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : Event = upcoming[indexPath.row]
+                let event : HTEventModel = upcoming[indexPath.row]
                 cell.bind(event: event)
                 cell.eventCellDelegate = self
                 return cell
@@ -187,7 +216,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 3 {
             if liveNow.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : Event = liveNow[indexPath.row]
+                let event : HTEventModel = liveNow[indexPath.row]
                 cell.bind(event: event)
                 cell.eventCellDelegate = self
                 return cell

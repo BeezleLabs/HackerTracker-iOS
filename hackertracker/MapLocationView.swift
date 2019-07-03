@@ -146,7 +146,7 @@ enum MapFile {
     case flamnight
     case linq
     
-    static func mapFile(_ l: Location) -> URL {
+    /*static func mapFile(_ l: Location) -> URL {
         if l == .track101 || l == .blueteam || l == .cannabis || l == .chv || l == .caadv || l == .skytalks || l == .ics
         {
             return Bundle.main.url(forResource: "dc-26-flamingo-public-1", withExtension: "pdf", subdirectory: "maps")!
@@ -155,7 +155,7 @@ enum MapFile {
         } else {
             return Bundle.main.url(forResource: "dc-26-caesars-public-1", withExtension: "pdf", subdirectory: "maps")!
         }
-    }
+    }*/
 }
 
 
@@ -346,7 +346,7 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         webView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        webView.loadRequest(URLRequest(url: MapFile.mapFile(currentLocation)))
+        //webView.loadRequest(URLRequest(url: MapFile.mapFile(currentLocation)))
         webView.delegate = self
         webView.scalesPageToFit = true
         webView.scrollView.delegate = self
