@@ -73,7 +73,13 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         self.view.addGestureRecognizer(edgeSwipe)
         
         hamburgerTableViewController.delegate = self
-        setCurrentViewController(tabID: intialTab)
+        if let c = UserDefaults.standard.string(forKey: "conference") {
+            NSLog("Conference set to \(c), sending to Home tab")
+            setCurrentViewController(tabID: intialTab)
+        } else {
+            NSLog("No conference set, sending to Conference tab")
+            setCurrentViewController(tabID: "Conferences")
+        }
         self.addChild(hamburgerNavigationController)
         self.view.addSubview(hamburgerNavigationController.view)
         alphaView.backgroundColor = UIColor.black

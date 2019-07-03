@@ -38,7 +38,6 @@
 		5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */; };
 		5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */; };
 		5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */; };
-		5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */; };
 		5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */; };
 		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
 		60A6D390A580651F9617539B /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAA20A085F20D1BE409030D /* Pods_hackertracker.framework */; };
@@ -144,7 +143,6 @@
 		5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFAQTableViewController.swift; sourceTree = "<group>"; };
 		5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTInitViewController.swift; sourceTree = "<group>"; };
 		5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTUpdatesViewController.swift; sourceTree = "<group>"; };
-		5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTHomeTabBarController.swift; sourceTree = "<group>"; };
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
 		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
 		7820245C1F05B7CE0092ED07 /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 				786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */,
 				5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */,
 				5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */,
-				5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */,
 				5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */,
 				5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */,
 				5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */,
@@ -674,7 +671,6 @@
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,
 				83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */,
 				83B0F84E1F19BA07006493A6 /* CGPDFDocument.m in Sources */,
-				5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */,
 				5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */,
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,

@@ -45,7 +45,13 @@ class HTConferenceTableViewController: UITableViewController {
             if cell.accessoryType == .checkmark, c.code == selectCon?.code {
                 //NSLog("already checked")
             } else {
+                UserDefaults.standard.set(c.code, forKey: "conference")
                 selectConference(code: c.code)
+                guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
+                    NSLog("Couldn't find parent view controller")
+                    return
+                }
+                menuvc.setCurrentViewController(tabID: "Home")
             }
         }
     }

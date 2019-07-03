@@ -26,18 +26,13 @@ class HTInitViewController: UIViewController {
         if let tz = DataRequestManager(managedContext: context).getSelectedConference()?.timezone {
             dfu.update(identifier: tz)
         }
-        
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
-        fr.returnsObjectsAsFaults = false
-        
-        let status = try! context.fetch(fr) as! [Status]
 
         let timeBeforeSegue = hackerAnimationDuration
         playAnimation()
 
-        if status.count < 1 {
+        /*if status.count < 1 {
             NSLog("Database not setup, preloading with initial schedule")
-            self.loadData()
+            //self.loadData()
             do {
                 try DataImportManager(managedContext: context).setSyncDate(Date())
                 try context.save()
@@ -46,7 +41,7 @@ class HTInitViewController: UIViewController {
             }
         } else {
             importComplete = true
-        }
+        } */
 
         Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(timerComplete), userInfo: nil, repeats: false)
     }
@@ -80,7 +75,7 @@ class HTInitViewController: UIViewController {
     }
 
     func go() {
-        if importComplete && timerUp {
+        if timerUp {
             self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
         }
     }
