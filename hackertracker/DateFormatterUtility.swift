@@ -139,5 +139,19 @@ class DateFormatterUtility {
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
+    
+    func getConferenceDates(start: Date, end: Date) -> [String] {
+        let calendar = NSCalendar.current
+        var ret: [String] = []
+        
+        let components = calendar.dateComponents([.day], from: start, to: end)
+        ret.append(self.yearMonthDayFormatter.string(from: start))
+        var cur = start
+        for _ in 1...components.day! {
+            cur = calendar.date(byAdding: Calendar.Component.day, value: 1, to: cur)!
+            ret.append(self.yearMonthDayFormatter.string(from: cur))
+        }
+        return ret
+    }
 
 }

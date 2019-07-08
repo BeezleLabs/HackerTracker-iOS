@@ -59,8 +59,75 @@ class FSConferenceDataController {
         return UpdateToken<HTEventModel>(events);
     }
     
-    func requestEvents(forConference conference: ConferenceModel, limit: Int, updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken<HTEventModel> {
-        let query = document(forConference: conference).collection("events").limit(to: limit)
+    func requestEvents(forConference conference: ConferenceModel,
+                       limit: Int = 0,
+                       descending: Bool = false,
+                       updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken<HTEventModel> {
+        var query: Query?
+        if limit > 0 {
+            query = document(forConference: conference).collection("events").order(by: "begin_timestamp", descending: descending).limit(to: limit)
+        } else {
+            query = document(forConference: conference).collection("events").order(by: "begin_timestamp", descending: descending)
+        }
+        
+        let events = Collection<HTEventModel>(query: query!)
+        events.listen() { (changes) in
+            updateHandler(Result<[HTEventModel], Error>.success(events.items))
+        }
+        return UpdateToken<HTEventModel>(events);
+    }
+    
+    func requestEvents(forConference conference: ConferenceModel,
+                       startDate: Date,
+                       limit: Int = 0,
+                       descending: Bool = false,
+                       updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken<HTEventModel> {
+        var query: Query?
+        if limit > 0 {
+            query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: startDate).order(by: "begin_timestamp", descending: descending).limit(to: limit)
+        } else {
+            query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: startDate).order(by: "begin_timestamp", descending: descending)
+        }
+        
+        let events = Collection<HTEventModel>(query: query!)
+        events.listen() { (changes) in
+            updateHandler(Result<[HTEventModel], Error>.success(events.items))
+        }
+        return UpdateToken<HTEventModel>(events);
+    }
+    
+    func requestEvents(forConference conference: ConferenceModel,
+                       inDate: Date,
+                       limit: Int = 0,
+                       descending: Bool = false,
+                       updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken<HTEventModel> {
+        var query: Query?
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: inDate)
+        let start = calendar.date(from: components)!
+        let end = calendar.date(byAdding: .day, value: 1, to: start)!
+        
+        if limit > 0 {
+            query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: start).whereField("begin_timestamp", isLessThan: end).order(by: "begin_timestamp", descending: descending).limit(to: limit)
+        } else {
+            query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: start).whereField("begin_timestamp", isLessThan: end).order(by: "begin_timestamp", descending: descending)
+        }
+        
+        let events = Collection<HTEventModel>(query: query!)
+        events.listen() { (changes) in
+            updateHandler(Result<[HTEventModel], Error>.success(events.items))
+        }
+        return UpdateToken<HTEventModel>(events);
+    }
+    
+    func requestEvents(forConference conference: ConferenceModel,
+                       endDate: Date,
+                       limit: Int = 0,
+                       descending: Bool = false,
+                       updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken<HTEventModel> {
+        let query = document(forConference: conference).collection("events").whereField("end_timestamp", isLessThan: endDate).order(by: "end_timestamp", descending: descending).limit(to: limit)
+        
         let events = Collection<HTEventModel>(query: query)
         events.listen() { (changes) in
             updateHandler(Result<[HTEventModel], Error>.success(events.items))

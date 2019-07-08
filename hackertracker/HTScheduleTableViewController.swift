@@ -20,6 +20,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var lastContentOffset: CGPoint?
     var updated : [String] = []
     var later : [String] = []
+    
+    var myCon: ConferenceModel?
+    var conferencesToken : UpdateToken<ConferenceModel>?
+    var eventTokens : [UpdateToken<HTEventModel>] = []
+
 
     var pullDownAnimation: PongScene?
     var nowPath: IndexPath?
@@ -27,7 +32,26 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
-        reloadEvents()
+        if let conCode = UserDefaults.standard.string(forKey: "conference"){
+            self.title = conCode
+            conferencesToken = FSConferenceDataController.shared.requestConferenceByCode(forCode: conCode) { (result) in
+                switch result {
+                case .success(let con):
+                    self.myCon = con
+                    self.title = con.name
+                    self.reloadEvents()
+                case .failure(let _):
+                    NSLog("")
+                }
+            }
+        } else {
+            NSLog("No conference set, send to conferences")
+            guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
+                NSLog("Couldn't find parent view controller")
+                return
+            }
+            menuvc.setCurrentViewController(tabID: "Conferences")
+        }
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
     }
 
@@ -78,16 +102,29 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         if let selectedIndexPath = selectedIndexPath {
             event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
         }
-
-        eventSections.removeAll()
         
-
-        let drm = DataRequestManager(managedContext: getContext())
-        let myCon = drm.getSelectedConference()
-        for day in drm.getConferenceDates(myCon!) {
-            let events = retrieveEventsForDay(day)
-            if events.count > 0 {
-                eventSections.append((date: day, events: events))
+        if eventSections.count > 0 {
+            eventSections.removeAll()
+        }
+        
+        let dfu = DateFormatterUtility.shared
+        if let c = myCon, let start = dfu.yearMonthDayFormatter.date(from: c.startDate), let end = dfu.yearMonthDayFormatter.date(from: c.endDate) {
+            for day in dfu.getConferenceDates(start: start, end: end) {
+                var events : [HTEventModel] = []
+                let dayToken = FSConferenceDataController.shared.requestEvents(forConference: c, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
+                    switch result {
+                    case .success(let eventList):
+                        events.append(contentsOf: eventList)
+                        //NSLog("Got \(eventList.count) events for \(c.code):\(c.id)")
+                        if events.count > 0 {
+                            self.eventSections.append((date: day, events: events))
+                        }
+                        self.tableView.reloadData()
+                    case .failure(let _):
+                        NSLog("")
+                    }
+                }
+                eventTokens.append(dayToken)
             }
         }
         
@@ -162,25 +199,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         cell.bind(event: e)
 
         return cell
-    }
-
-    func retrieveEventsForDay(_ dateString: String) -> [HTEventModel] {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        
-        /*do {
-            if let eventsForDay = try context.fetch(fetchRequestForDay(dateString)) as? [HTEventModel] {
-                //print("Got \(eventsForDay.count) events for \(dateString)")
-                return eventsForDay
-            } else {
-                assert(false, "Failed to convert fetch response to events array")
-                return []
-            }
-        } catch {
-            assert(false, "Failed to fetch events.")
-        }*/
-        
-        return []
     }
 
     func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {

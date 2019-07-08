@@ -13,6 +13,7 @@ struct HTEventModel {
     var conferenceName : String
     var description : String
     var beginDate : Date
+    var begin : Date
     var endDate : Date
     var includes : String
     var links : String
@@ -28,6 +29,7 @@ extension HTEventModel : Document {
         let tmp_date = dfu.iso8601Formatter.date(from: "2019-01-01T00:00:00.000-0000")!
         let id = dictionary["id"] as? Int ?? 0
         let beginDate = dfu.iso8601Formatter.date(from: dictionary["begin"] as! String) ?? tmp_date
+        let begin = dictionary["begin_timestamp"] as? Date ?? tmp_date
         let conferenceName = dictionary["conference"] as? String ?? ""
         let description = dictionary["description"] as? String ?? ""
         let endDate =  dfu.iso8601Formatter.date(from: dictionary["end"] as! String) ?? tmp_date
@@ -61,7 +63,7 @@ extension HTEventModel : Document {
             return nil;
         }
         
-        self.init(id: id, conferenceName: conferenceName, description: description, beginDate: beginDate, endDate: endDate, includes: includes, links: link, title: title, location: locationVal, speakers: speakersVal, type: typeVal)
+        self.init(id: id, conferenceName: conferenceName, description: description, beginDate: beginDate, begin: begin, endDate: endDate, includes: includes, links: link, title: title, location: locationVal, speakers: speakersVal, type: typeVal)
     }
 }
 

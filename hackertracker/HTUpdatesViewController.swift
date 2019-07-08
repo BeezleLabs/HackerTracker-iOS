@@ -26,7 +26,9 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     var liveNow: [HTEventModel] = []
     var data = NSMutableData()
     var conferencesToken : UpdateToken<ConferenceModel>?
-    var eventsToken : UpdateToken<HTEventModel>?
+    var upcomingEventsToken : UpdateToken<HTEventModel>?
+    var starredEventsToken : UpdateToken<HTEventModel>?
+    var liveEventsToken : UpdateToken<HTEventModel>?
     var myCon: ConferenceModel?
     var myConCode: String?
     var lastContentOffset: CGPoint?
@@ -94,13 +96,33 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     func reloadEvents() {
         if let con = myCon {
-            eventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, limit: 3) { (result) in
+            //let curTime = Date()
+            let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
+            starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, limit: 3) { (result) in
                 switch result {
                 case .success(let eventList):
                     self.starred.append(contentsOf: eventList)
+                    //NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
+                    self.updatesTableView.reloadData()
+                case .failure(let _):
+                    NSLog("")
+                }
+            }
+            upcomingEventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, startDate: curTime, limit: 3) { (result) in
+                switch result {
+                case .success(let eventList):
                     self.upcoming.append(contentsOf: eventList)
+                    //NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
+                    self.updatesTableView.reloadData()
+                case .failure(let _):
+                    NSLog("")
+                }
+            }
+            liveEventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, endDate: curTime, limit: 3, descending: true) { (result) in
+                switch result {
+                case .success(let eventList):
                     self.liveNow.append(contentsOf: eventList)
-                    NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
+                    //NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
                     self.updatesTableView.reloadData()
                 case .failure(let _):
                     NSLog("")
