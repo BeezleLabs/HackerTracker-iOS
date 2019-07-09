@@ -59,6 +59,15 @@ class FSConferenceDataController {
         return UpdateToken<HTEventModel>(events);
     }
     
+    func requestSpeaker(forConference conference: ConferenceModel, speakerId: Int, updateHandler: @escaping (Result<HTSpeaker, Error>) -> Void) -> UpdateToken<HTSpeaker> {
+        let query = document(forConference: conference).collection("speakers").whereField("id", isEqualTo: speakerId)
+        let speakers = Collection<HTSpeaker>(query: query)
+        speakers.listen() { (changes) in
+            updateHandler(Result<HTSpeaker, Error>.success(speakers.items.first!))
+        }
+        return UpdateToken<HTSpeaker>(speakers);
+    }
+    
     func requestEvents(forConference conference: ConferenceModel,
                        limit: Int? = nil,
                        descending: Bool = false,

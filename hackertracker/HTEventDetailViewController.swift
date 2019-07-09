@@ -38,6 +38,10 @@ class HTEventDetailViewController: UIViewController {
 
     var delegate: EventDetailDelegate?
     var event: HTEventModel?
+    var speakers: [HTSpeaker] = []
+    var speakerTokens : [UpdateToken<HTSpeaker>] = []
+    var myCon: ConferenceModel?
+    var conferencesToken : UpdateToken<ConferenceModel>?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
 
@@ -60,7 +64,8 @@ class HTEventDetailViewController: UIViewController {
         
         eventTitleLabel.text = event.title
         
-        //setupSpeakers(event: event)
+        getSpeakers()
+        setupSpeakerNames()
         
         eventLocationLabel.text = event.location.name
 
@@ -152,28 +157,74 @@ class HTEventDetailViewController: UIViewController {
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
-    func setupSpeakers(event : Event) {
+    func getSpeakers() {
+        
+        for s in event!.speakers {
+            NSLog("Getting speaker \(s.name):\(s.id)")
+            let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: s.id) { (result) in
+                switch result {
+                case .success(let speaker):
+                    self.speakers.append(speaker)
+                    NSLog("Got \(speaker.name) for \(s.id)")
+                case .failure(let _):
+                    NSLog("")
+                }
+            }
+            speakerTokens.append(sToken)
+        }
+        
+    }
+    
+    func setupSpeakerNames() {
         eventNameLabel.textColor = UIColor(hexString: "#98b7e1")
         
-        let speakers = event.speakers?.allObjects as! [Speaker]
-        
         eventNameLabel.text = ""
+        for s in event!.speakers {
+            if (s.id != event!.speakers.first!.id) {
+                speakerList.append(NSAttributedString(string:", "))
+            }
+            NSLog("adding \(s.name) to speakerlist")
+            let whoAttributedString = NSMutableAttributedString(string:s.name)
+            let whoParagraphStyle = NSMutableParagraphStyle()
+            whoParagraphStyle.alignment = .left
+            whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.name as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.name as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (s.name as NSString).length))
+            speakerList.append(whoAttributedString)
+        }
+        
+        eventNameLabel.contentMode = UIView.ContentMode.top
+        
+        if event!.speakers.count == 0 {
+            speakerList = NSMutableAttributedString(string: "Anonymous")
+            eventNameLabel.isHidden = true
+        } else {
+            NSLog("here, why no show?")
+            let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
+            eventNameLabel.isUserInteractionEnabled = true
+            eventNameLabel.addGestureRecognizer(touchSpeaker)
+            eventNameLabel.attributedText = speakerList
+            eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
+            eventNameLabel.layer.borderWidth = 0.5
+            eventNameLabel.layer.cornerRadius = 5
+        }
+    }
+    
+    func setupSpeakers() {
         
         var i = 1
         for s in speakers {
-            if (s != speakers.first) {
-                speakerList.append(NSAttributedString(string:", "))
-            }
             
-            if let n = s.name, let t = s.title, let d = s.desc {
-                speakerList.append(NSAttributedString(string:n))
+            let n = s.name
+            let t = s.title
+            let d = s.description
                 
                 let whoAttributedString = NSMutableAttributedString(string:n)
                 let whoParagraphStyle = NSMutableParagraphStyle()
                 whoParagraphStyle.alignment = .left
                 whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
                 whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (n as NSString).length))
                 
                 let titleAttributedString = NSMutableAttributedString(string:t)
                 let titleParagraphStyle = NSMutableParagraphStyle()
@@ -192,15 +243,19 @@ class HTEventDetailViewController: UIViewController {
                 
                 speakerBios.append(whoAttributedString)
                 speakerBios.append(NSAttributedString(string:"\n"))
+            if t != "" {
                 speakerBios.append(titleAttributedString)
                 speakerBios.append(NSAttributedString(string:"\n\n"))
+            } else {
+                speakerBios.append(NSAttributedString(string:"\n"))
+            }
                 speakerBios.append(bioAttributedString)
                 if speakers.count > 1, i < speakers.count {
                     speakerBios.append(NSAttributedString(string:"\n\n"))
                 }
                 
-                if let twitter = s.twitter {
-                    if twitter != "" {
+                let twitter = s.twitter
+                if twitter != "" {
                         let twitButton = UIButton()
                         twitButton.setTitle(twitter, for: .normal)
                         twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
@@ -208,25 +263,10 @@ class HTEventDetailViewController: UIViewController {
                         twitButton.titleLabel?.font = UIFont(name: "Larsseit", size: 14)
                         twitButton.sizeToFit()
                         twitterStackView.addArrangedSubview(twitButton)
-                    }
                 }
-            }
+            
+            
             i = i+1
-        }
-        
-        self.eventNameLabel.contentMode = UIView.ContentMode.top
-        
-        if speakers.count == 0 {
-            speakerList = NSMutableAttributedString(string: "Anonymous")
-            eventNameLabel.isHidden = true
-        } else {
-            let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
-            eventNameLabel.isUserInteractionEnabled = true
-            eventNameLabel.addGestureRecognizer(touchSpeaker)
-            eventNameLabel.attributedText = speakerList
-            eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
-            eventNameLabel.layer.borderWidth = 0.5
-            eventNameLabel.layer.cornerRadius = 5
         }
         
         //let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
@@ -237,6 +277,9 @@ class HTEventDetailViewController: UIViewController {
 
     @objc func expand() {
         if self.eventNameLabel.attributedText == speakerList {
+            if speakerBios.length < 1 {
+                setupSpeakers()
+            }
             self.eventNameLabel.attributedText = speakerBios
             twitterStackView.isHidden = false // TODO
             
