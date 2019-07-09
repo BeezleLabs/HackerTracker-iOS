@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HTEventModel {
+struct HTEventModel : Codable {
     var id : Int
     var conferenceName : String
     var description : String
@@ -67,7 +67,7 @@ extension HTEventModel : Document {
     }
 }
 
-struct HTLocationModel {
+struct HTLocationModel : Codable {
     var id : Int
     var conferenceName : String
     var name : String
@@ -83,7 +83,7 @@ extension HTLocationModel : Document {
     }
 }
 
-struct HTSpeaker {
+struct HTSpeaker : Codable {
     var id : Int
     var conferenceName : String
     var description : String
@@ -107,7 +107,7 @@ extension HTSpeaker : Document {
     }
 }
 
-struct HTEventType {
+struct HTEventType : Codable {
     var id : Int
     var color : String
     var conferenceName : String

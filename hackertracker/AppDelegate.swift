@@ -17,11 +17,6 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var db: Firestore?
-    var conferences : Collection<ConferenceModel>!
-    var events : Collection<HTEventModel>!
-    var conferencesToken : UpdateToken<ConferenceModel>?
-    var eventsToken : UpdateToken<HTEventModel>?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -32,28 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: self.backgroundManagedObjectContext, queue: OperationQueue.main) { (notifaction) in
             self.managedObjectContext?.mergeChanges(fromContextDidSave: notifaction)
         }
-        
-        conferencesToken = FSConferenceDataController.shared.requestConferences { (result) in
-            switch result {
-            case .success(let conferenceList):
-                self.requestEvents(conferences: conferenceList)
-            case .failure(let _):
-                NSLog("")
-            }
-        }
 
         return true
-    }
-    
-    func requestEvents(conferences : [ConferenceModel]) {
-        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: conferences.first!) { (result) in
-            switch result {
-            case .success(let eventList):
-                NSLog(eventList.description)
-            case .failure(let _):
-                NSLog("")
-            }
-        }
     }
 
     // MARK: - Core Data stack

@@ -120,7 +120,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         toggleHamburgerMenu()
     }
     
-    func setCurrentViewController(tabID : String) {
+    private func setCurrentViewController(tabID : String) {
         if let storyboardID = tabs[tabID] {
             currentViewController = storyboard?.instantiateViewController(withIdentifier: storyboardID)
         } else {
@@ -135,6 +135,16 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     
     @objc func hamburgerMenuItemPressed() {
         toggleHamburgerMenu()
+    }
+    
+    func didSelectID(tabID : String) {
+        let item = self.displayedTabs.first { (item) -> Bool in
+            return item.title == tabID;
+        }
+        
+        if let item = item {
+            didSelectItem(item: item);
+        }
     }
     
     func didSelectItem(item: HamburgerItem) {

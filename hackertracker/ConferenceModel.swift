@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ConferenceModel {
+struct ConferenceModel : Codable {
     var id : Int
     var name : String
     var code : String
@@ -42,7 +42,7 @@ extension ConferenceModel : Document {
     }
 }
 
-struct HTMapModel {
+struct HTMapModel : Codable {
     var file : String
     var name : String
 }

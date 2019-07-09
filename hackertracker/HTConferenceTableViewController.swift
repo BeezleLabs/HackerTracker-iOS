@@ -9,15 +9,22 @@
 import UIKit
 import CoreData
 
+protocol HTConferenceTableViewControllerDelegate : class {
+    func didSelect(conference: ConferenceModel)
+}
+
 class HTConferenceTableViewController: UITableViewController {
     
     var conferences: [ConferenceModel] = []
     var conferencesToken : UpdateToken<ConferenceModel>?
     var selectCon: ConferenceModel?
+    weak var delegate : HTConferenceTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if AnonymousSession.shared != nil {
+            selectCon = AnonymousSession.shared.currentConference
+        }
         self.loadConferences()
     }
 
@@ -41,50 +48,31 @@ class HTConferenceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let c = conferences[indexPath.row]
-            if cell.accessoryType == .checkmark, c.code == selectCon?.code {
+            let selectedConference = conferences[indexPath.row]
+            if cell.accessoryType == .checkmark, selectedConference.code == selectCon?.code {
                 //NSLog("already checked")
             } else {
-                UserDefaults.standard.set(c.code, forKey: "conference")
-                selectConference(code: c.code)
+                UserDefaults.standard.set(selectedConference.code, forKey: "conference")
+                if AnonymousSession.shared != nil {
+                    AnonymousSession.shared.currentConference = selectedConference
+                }
+                delegate?.didSelect(conference: selectedConference)
                 guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
                     NSLog("Couldn't find parent view controller")
                     return
                 }
-                menuvc.setCurrentViewController(tabID: "Home")
+                menuvc.didSelectID(tabID: "Home")
             }
         }
     }
-    
-    func selectConference(code: String) {
-
-        
-        for i in 0...(conferences.count-1) {
-            let c = conferences[i]
-            let indexPath = IndexPath(row: i, section: 0)
-            let cell = tableView.cellForRow(at: indexPath) as! ConferenceCell
-            if c.code == code {
-                DateFormatterUtility.shared.update(identifier: c.tz )
-                cell.accessoryType = .checkmark
-                cell.color.isHidden = false
-            } else {
-                cell.accessoryType = .none
-                cell.color.isHidden = true
-            }
-        }
-
-    }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "conferenceCell", for: indexPath) as! ConferenceCell
-
-        var c: ConferenceModel
         
-        c = self.conferences[indexPath.row]
-        cell.setConference(conference: c)
+        let conferenceModel = self.conferences[indexPath.row]
+        cell.setConference(conference: conferenceModel)
         
-        if let s = selectCon, c.code == s.code {
+        if let selectCon = selectCon, conferenceModel.code == selectCon.code {
             cell.accessoryType = .checkmark
             cell.color.isHidden = false
         } else {
@@ -96,16 +84,12 @@ class HTConferenceTableViewController: UITableViewController {
     }
     
     func loadConferences() {
-        
         conferencesToken = FSConferenceDataController.shared.requestConferences { (result) in
             switch result {
             case .success(let conferenceList):
                 self.conferences.append(contentsOf: conferenceList)
                 NSLog("Total conferences \(self.conferences.count)")
                 self.tableView.reloadData()
-                if let c = UserDefaults.standard.string(forKey: "conference") {
-                    self.selectConference(code: c)
-                }
             case .failure(let _):
                 NSLog("")
             }

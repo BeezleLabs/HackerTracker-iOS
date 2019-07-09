@@ -28,8 +28,6 @@ class HTSpeakersTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return speakerSections.count
     }
@@ -112,9 +110,6 @@ class HTSpeakersTableViewController: UITableViewController {
         }
         
     }
-
-    
-    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "speakerSegue") {

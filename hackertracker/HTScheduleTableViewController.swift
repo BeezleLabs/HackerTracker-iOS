@@ -21,7 +21,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var updated : [String] = []
     var later : [String] = []
     
-    var myCon: ConferenceModel?
     var conferencesToken : UpdateToken<ConferenceModel>?
     var eventTokens : [UpdateToken<HTEventModel>] = []
 
@@ -32,26 +31,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
-        if let conCode = UserDefaults.standard.string(forKey: "conference"){
-            self.title = conCode
-            conferencesToken = FSConferenceDataController.shared.requestConferenceByCode(forCode: conCode) { (result) in
-                switch result {
-                case .success(let con):
-                    self.myCon = con
-                    self.title = con.name
-                    self.reloadEvents()
-                case .failure(let _):
-                    NSLog("")
-                }
-            }
-        } else {
-            NSLog("No conference set, send to conferences")
-            guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
-                NSLog("Couldn't find parent view controller")
-                return
-            }
-            menuvc.setCurrentViewController(tabID: "Conferences")
-        }
+        self.title = AnonymousSession.shared.currentConference.code
+        self.reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
     }
 
@@ -108,10 +89,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         }
         
         let dfu = DateFormatterUtility.shared
-        if let c = myCon, let start = dfu.yearMonthDayFormatter.date(from: c.startDate), let end = dfu.yearMonthDayFormatter.date(from: c.endDate) {
+        let conference = AnonymousSession.shared.currentConference!
+        if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
             for day in dfu.getConferenceDates(start: start, end: end) {
                 var events : [HTEventModel] = []
-                let dayToken = FSConferenceDataController.shared.requestEvents(forConference: c, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
+                let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
                     switch result {
                     case .success(let eventList):
                         events.append(contentsOf: eventList)
@@ -212,7 +194,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         }
         
         let dayText = eventSections[section].date
-        let delegate = UIApplication.shared.delegate as! AppDelegate
         let dfu = DateFormatterUtility.shared
         let date = dfu.yearMonthDayFormatter.date(from: dayText)
         

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class HTInitViewController: UIViewController {
+class HTInitViewController: UIViewController, HTConferenceTableViewControllerDelegate {
 
     @IBOutlet weak var splashView: UIImageView!
     let hackerAnimationDuration = 2.0
@@ -26,27 +26,39 @@ class HTInitViewController: UIViewController {
         if let tz = DataRequestManager(managedContext: context).getSelectedConference()?.timezone {
             dfu.update(identifier: tz)
         }
-
-        let timeBeforeSegue = hackerAnimationDuration
+        
         playAnimation()
-
-
-        Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(timerComplete), userInfo: nil, repeats: false)
     }
     
-    func loadData() {
-            let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-            let db = delegate.db!
-        
-            let conferences = db.collection("conferences").getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadCon()
+    }
+    
+    func loadCon() {
+        if let conCode = UserDefaults.standard.string(forKey: "conference") {
+            AnonymousSession.initialize(conCode: conCode) { (session) in
+                if let _ = session {
+                    self.timerComplete()
                 } else {
-                    for document in querySnapshot!.documents {
-                        NSLog("\(document.documentID) => \(document.data())")
-                    }
+                    self.displayConferencePicker()
                 }
             }
+        } else {
+            displayConferencePicker()
+        }
+    }
+    
+    func displayConferencePicker() {
+        if let currentViewController = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as? HTConferenceTableViewController {
+            currentViewController.delegate = self
+            self.present(currentViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func didSelect(conference: ConferenceModel) {
+        self.dismiss(animated: true, completion: nil);
+        loadCon()
     }
     
     @objc func timerComplete() {

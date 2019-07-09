@@ -29,8 +29,6 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     var upcomingEventsToken : UpdateToken<HTEventModel>?
     var starredEventsToken : UpdateToken<HTEventModel>?
     var liveEventsToken : UpdateToken<HTEventModel>?
-    var myCon: ConferenceModel?
-    var myConCode: String?
     var lastContentOffset: CGPoint?
     var rick: Int = 0
 
@@ -49,27 +47,8 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-        if let conCode = UserDefaults.standard.string(forKey: "conference"){
-            self.title = conCode
-            conferencesToken = FSConferenceDataController.shared.requestConferenceByCode(forCode: conCode) { (result) in
-                switch result {
-                case .success(let con):
-                    self.myCon = con
-                    self.title = con.name
-                    self.reloadEvents()
-                case .failure(let _):
-                    NSLog("")
-                }
-            }
-        } else {
-            NSLog("No conference set, send to conferences")
-            guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
-                NSLog("Couldn't find parent view controller")
-                return
-            }
-            menuvc.setCurrentViewController(tabID: "Conferences")
-        }
-        
+        self.title = AnonymousSession.shared.currentConference.code
+        self.reloadEvents()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -95,72 +74,35 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     }
 
     func reloadEvents() {
-        if let con = myCon {
-            //let curTime = Date()
-            let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
-            starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, limit: 3) { (result) in
-                switch result {
-                case .success(let eventList):
-                    self.starred.append(contentsOf: eventList)
-                    //NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
-                    self.updatesTableView.reloadData()
-                case .failure(let _):
-                    NSLog("")
-                }
+        //let curTime = Date()
+        let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
+        starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, limit: 3) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.starred = eventList
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
             }
-            upcomingEventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, startDate: curTime, limit: 3) { (result) in
-                switch result {
-                case .success(let eventList):
-                    self.upcoming.append(contentsOf: eventList)
-                    //NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
-                    self.updatesTableView.reloadData()
-                case .failure(let _):
-                    NSLog("")
-                }
-            }
-            liveEventsToken = FSConferenceDataController.shared.requestEvents(forConference: con, endDate: curTime, limit: 3, descending: true) { (result) in
-                switch result {
-                case .success(let eventList):
-                    self.liveNow.append(contentsOf: eventList)
-                    //NSLog("Got \(eventList.count) events for \(con.code):\(con.id)")
-                    self.updatesTableView.reloadData()
-                case .failure(let _):
-                    NSLog("")
-                }
-            }
-        } else {
-            NSLog("No conference set yet")
         }
-        /*
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Article")
-        fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
-        fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [myCon])
-        fr.returnsObjectsAsFaults = false
-        fr.fetchLimit = 2
-        self.messages = (try! getContext().fetch(fr)) as! [Article]
-
-        let frs:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        frs.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        frs.predicate = NSPredicate(format: "conference = %@ and start_date > %@ and starred = %@", argumentArray: [myCon, Date(), true])
-        frs.returnsObjectsAsFaults = false
-        frs.fetchLimit = 3
-        self.starred = (try! getContext().fetch(frs)) as! [Event]
-
-        let fru:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fru.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fru.predicate = NSPredicate(format: "conference = %@ and start_date > %@", argumentArray: [myCon, Date()])
-        fru.returnsObjectsAsFaults = false
-        fru.fetchLimit = 3
-        self.upcoming = (try! getContext().fetch(fru)) as! [Event]
-        
-        let curTime = Date()
-        let frl:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        frl.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        frl.predicate = NSPredicate(format: "conference = %@ and start_date <= %@ and end_date >= %@", argumentArray: [myCon, curTime, curTime])
-        frl.returnsObjectsAsFaults = false
-        self.liveNow = (try! getContext().fetch(frl)) as! [Event]
-        */
-
+        upcomingEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, startDate: curTime, limit: 3) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.upcoming = eventList
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
+        }
+        liveEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, endDate: curTime, limit: 3, descending: true) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.liveNow = eventList
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
+        }
     }
     
     func updatedEvents() {
