@@ -68,6 +68,15 @@ class FSConferenceDataController {
         return UpdateToken<HTSpeaker>(speakers);
     }
     
+    func requestSpeakers(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTSpeaker], Error>) -> Void) -> UpdateToken<HTSpeaker> {
+        let query = document(forConference: conference).collection("speakers").order(by: "name")
+        let speakers = Collection<HTSpeaker>(query: query)
+        speakers.listen() { (changes) in
+            updateHandler(Result<[HTSpeaker], Error>.success(speakers.items))
+        }
+        return UpdateToken<HTSpeaker>(speakers);
+    }
+    
     func requestEvents(forConference conference: ConferenceModel,
                        limit: Int? = nil,
                        descending: Bool = false,
@@ -137,15 +146,6 @@ class FSConferenceDataController {
             updateHandler(Result<[HTLocationModel], Error>.success(events.items))
         }
         return UpdateToken<HTLocationModel>(events);
-    }
-    
-    func requestSpeakers(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTSpeaker], Error>) -> Void) -> UpdateToken<HTSpeaker> {
-        let query = document(forConference: conference).collection("speakers")
-        let events = Collection<HTSpeaker>(query: query)
-        events.listen() { (changes) in
-            updateHandler(Result<[HTSpeaker], Error>.success(events.items))
-        }
-        return UpdateToken<HTSpeaker>(events);
     }
     
     private func document(forConference conference: ConferenceModel) -> DocumentReference {

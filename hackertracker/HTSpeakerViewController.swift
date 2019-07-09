@@ -18,15 +18,17 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     @IBOutlet weak var vertStackView: UIStackView!
     @IBOutlet weak var eventTableView: UITableView!
     
-    var speaker: Speaker?
+    var speaker: HTSpeaker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let s = speaker, let n = s.name, let d = s.desc {
+        if let s = speaker {
+            let n = s.name
+            let d = s.description
             nameLabel.text = n
             bioLabel.text = d
-            if let events = speaker?.events?.allObjects {
+            /*if let events = speaker?.events?.allObjects {
                 if events.count > 0, let e = events[0] as? Event {
                     talkButton.titleLabel?.numberOfLines = 3
                     talkButton.titleLabel?.lineBreakMode = .byWordWrapping
@@ -34,14 +36,13 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
                 } else {
                     talkButton.isHidden = true
                 }
-            }
+            }*/
             twitterButton.isHidden = true
-            if let t = s.twitter {
-                if t != "" {
-                    twitterButton.setTitle(t, for: .normal)
+                if s.twitter != "" {
+                    twitterButton.setTitle(s.twitter, for: .normal)
                     twitterButton.isHidden = false
                 }
-            }
+
             
         }
         
@@ -106,25 +107,26 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     // Table Functions
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let c = speaker?.events?.allObjects.count {
+        /*if let c = speaker?.events?.allObjects.count {
             return c
         }
-        return 1
+        return 1*/
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let events = speaker?.events?.allObjects as? [HTEventModel], events.count > 0 {
+        /*if let events = speaker?.events?.allObjects as? [HTEventModel], events.count > 0 {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event : HTEventModel = events[indexPath.row]
             cell.bind(event: event)
             return cell
 
-        } else {
+        } else {*/
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
             cell.bind(title: "No Events", desc: "No events for this speaker, check with the #hackertracker team")
             return cell
-        }
+        //}
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

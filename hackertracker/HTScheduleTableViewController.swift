@@ -21,7 +21,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var updated : [String] = []
     var later : [String] = []
     
-    var conferencesToken : UpdateToken<ConferenceModel>?
     var eventTokens : [UpdateToken<HTEventModel>] = []
 
 
