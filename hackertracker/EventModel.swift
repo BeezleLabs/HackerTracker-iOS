@@ -104,7 +104,7 @@ extension HTSpeaker : Document {
         let title = dictionary["title"] as? String ?? ""
         let twitter = dictionary["twitter"] as? String ?? ""
 
-        var events : [HTEventModel]?;
+        var events : [HTEventModel] = []
         if let eventsValues = dictionary["events"] as? Array<Any>  {
             
             events = eventsValues.compactMap { (element) -> HTEventModel? in
@@ -116,11 +116,7 @@ extension HTSpeaker : Document {
             }
         }
         
-        guard let eventsVal = events else {
-            return nil;
-        }
-        
-        self.init(id: id, conferenceName: conferenceName, description: description, link: link, name: name, title: title, twitter: twitter, events: eventsVal)
+        self.init(id: id, conferenceName: conferenceName, description: description, link: link, name: name, title: title, twitter: twitter, events: events)
     }
 }
 
