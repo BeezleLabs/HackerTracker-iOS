@@ -160,12 +160,10 @@ class HTEventDetailViewController: UIViewController {
     func getSpeakers() {
         
         for s in event!.speakers {
-            NSLog("Getting speaker \(s.name):\(s.id)")
             let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: s.id) { (result) in
                 switch result {
                 case .success(let speaker):
                     self.speakers.append(speaker)
-                    NSLog("Got \(speaker.name) for \(s.id)")
                 case .failure(let _):
                     NSLog("")
                 }
@@ -179,11 +177,12 @@ class HTEventDetailViewController: UIViewController {
         eventNameLabel.textColor = UIColor(hexString: "#98b7e1")
         
         eventNameLabel.text = ""
+        NSLog("made it here, have \(event!.speakers.count) speakers to add")
         for s in event!.speakers {
+            NSLog("adding \(s.name) to list")
             if (s.id != event!.speakers.first!.id) {
                 speakerList.append(NSAttributedString(string:", "))
             }
-            NSLog("adding \(s.name) to speakerlist")
             let whoAttributedString = NSMutableAttributedString(string:s.name)
             let whoParagraphStyle = NSMutableParagraphStyle()
             whoParagraphStyle.alignment = .left
@@ -199,7 +198,6 @@ class HTEventDetailViewController: UIViewController {
             speakerList = NSMutableAttributedString(string: "Anonymous")
             eventNameLabel.isHidden = true
         } else {
-            NSLog("here, why no show?")
             let touchSpeaker = UITapGestureRecognizer(target: self, action: #selector(expand))
             eventNameLabel.isUserInteractionEnabled = true
             eventNameLabel.addGestureRecognizer(touchSpeaker)

@@ -26,13 +26,13 @@ struct HTEventModel : Codable {
 extension HTEventModel : Document {
     init?(dictionary: [String : Any]) {
         let dfu = DateFormatterUtility.shared
-        let tmp_date = dfu.iso8601Formatter.date(from: "2019-01-01T00:00:00.000-0000")!
+        let tmp_date = "2019-01-01T00:00:00.000-0000"
         let id = dictionary["id"] as? Int ?? 0
-        let beginDate = dfu.iso8601Formatter.date(from: dictionary["begin"] as! String) ?? tmp_date
-        let begin = dictionary["begin_timestamp"] as? Date ?? tmp_date
+        let beginDate = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmp_date)!
+        let begin = dictionary["begin_timestamp"] as? Date ?? dfu.iso8601Formatter.date(from: tmp_date)!
         let conferenceName = dictionary["conference"] as? String ?? ""
         let description = dictionary["description"] as? String ?? ""
-        let endDate =  dfu.iso8601Formatter.date(from: dictionary["end"] as! String) ?? tmp_date
+        let endDate =  dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmp_date)!
         let includes = dictionary["includes"] as? String ?? ""
         let link = dictionary["link"] as? String ?? ""
         let title = dictionary["title"] as? String ?? ""
@@ -91,6 +91,7 @@ struct HTSpeaker : Codable {
     var name : String
     var title : String
     var twitter : String
+    var events: [HTEventModel]
 }
 
 extension HTSpeaker : Document {
@@ -102,8 +103,20 @@ extension HTSpeaker : Document {
         let name = dictionary["name"] as? String ?? ""
         let title = dictionary["title"] as? String ?? ""
         let twitter = dictionary["twitter"] as? String ?? ""
+
+        var events : [HTEventModel] = []
+        if let eventsValues = dictionary["events"] as? Array<Any>  {
+            
+            events = eventsValues.compactMap { (element) -> HTEventModel? in
+                if let element = element as? Dictionary<String, Any>, let event = HTEventModel(dictionary: element) {
+                    return event
+                }
+                
+                return nil
+            }
+        }
         
-        self.init(id: id, conferenceName: conferenceName, description: description, link: link, name: name, title: title, twitter: twitter)
+        self.init(id: id, conferenceName: conferenceName, description: description, link: link, name: name, title: title, twitter: twitter, events: events)
     }
 }
 
