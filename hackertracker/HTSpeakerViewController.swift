@@ -18,6 +18,8 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     @IBOutlet weak var vertStackView: UIStackView!
     @IBOutlet weak var eventTableView: UITableView!
     
+    var eventTokens : [UpdateToken<HTEventModel>] = []
+    var events: [HTEventModel] = []
     var speaker: HTSpeaker?
     
     override func viewDidLoad() {
@@ -28,6 +30,14 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             let d = s.description
             nameLabel.text = n
             bioLabel.text = d
+            eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil),  forCellReuseIdentifier: "EventCell")
+            eventTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
+            
+            eventTableView.delegate = self
+            eventTableView.dataSource = self
+            eventTableView.backgroundColor = UIColor.clear
+            eventTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            addEventList()
 
                 if s.events.count > 0 {
                     let e = s.events[0]
@@ -47,18 +57,33 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             
         }
         
-        eventTableView.rowHeight = UITableView.automaticDimension
-        eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil),  forCellReuseIdentifier: "EventCell")
-        eventTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
-
-        eventTableView.delegate = self
-        eventTableView.dataSource = self
-        eventTableView.backgroundColor = UIColor.clear
-        eventTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        eventTableView.reloadData()
-
+        //eventTableView.rowHeight = UITableView.automaticDimension
+        //eventTableView.reloadData()
+        //self.vertStackView.addSubview(self.eventTableView)
         vertStackView.layoutSubviews()
+    }
+    
+    func addEventList() {
+        for e in speaker!.events {
+            let eToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: e.id) { (result) in
+                switch result {
+                case .success(let event):
+                    self.events.append(event)
+                    NSLog("Got \(event.title) \(event.id)")
+                    //DispatchQueue.main.async {
+                        self.eventTableView.reloadData()
+                        self.vertStackView.layoutSubviews()
+                    //}
+                    //self.eventTableView.reloadData()
+                    //self.eventTableView.isHidden = false
+                    
+                case .failure(let _):
+                    NSLog("")
+                }
+                
+            }
+            eventTokens.append(eToken)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,25 +134,38 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     // Table Functions
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let c = speaker?.events.count {
-            return c
+        if (events.count > 0 ) {
+            NSLog("Ok \(events.count) events")
+            return events.count
+        } else {
+            NSLog("only one row")
+            return 1
         }
-        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let s = speaker, s.events.count > 0 {
-            let events = s.events
-
+        NSLog("made it here")
+        if events.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event : HTEventModel = events[indexPath.row]
+            NSLog("adding cell for \(event.id)")
             cell.bind(event: event)
             return cell
 
         } else {
+            NSLog("no events, adding the update cell")
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
             cell.bind(title: "No Events", desc: "No events for this speaker, check with the #hackertracker team")
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event : HTEventModel = events[indexPath.row]
+
+        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+            eventController.event = event
+            self.navigationController?.pushViewController(eventController, animated: true)
         }
     }
     
@@ -137,5 +175,9 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }
