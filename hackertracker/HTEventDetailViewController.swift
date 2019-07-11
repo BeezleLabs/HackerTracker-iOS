@@ -41,7 +41,7 @@ class HTEventDetailViewController: UIViewController {
     var speakers: [HTSpeaker] = []
     var speakerTokens : [UpdateToken<HTSpeaker>] = []
     var myCon: ConferenceModel?
-    var conferencesToken : UpdateToken<ConferenceModel>?
+    var eventToken : UpdateToken<HTEventModel>?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
 
@@ -53,6 +53,23 @@ class HTEventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let _ = eventToken {
+            loadEvent()
+        } else {
+            eventToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: event!.id) { (result) in
+                switch result {
+                case .success(let retEvent):
+                    self.event = retEvent
+                    self.loadEvent()
+                case .failure(let _):
+                    NSLog("")
+                }
+            }
+        }
+        
+    }
+    
+    func loadEvent() {
         guard let event = event else {
             print("HTEventDetailViewController: Event is nil")
             return
@@ -68,31 +85,31 @@ class HTEventDetailViewController: UIViewController {
         setupSpeakerNames()
         
         eventLocationLabel.text = event.location.name
-
+        
         eventTypeLabel.layer.borderColor = UIColor(hexString: event.type.color).cgColor
         eventTypeLabel.layer.backgroundColor = UIColor(hexString: event.type.color).cgColor
-
+        
         eventTypeLabel.layer.borderWidth = 1.0
         eventTypeLabel.text = " \(event.type.name) "
-
+        
         eventTypeLabel.layer.masksToBounds = true
         eventTypeLabel.layer.cornerRadius = 5
         
         
         /*if let l = event.location, let n = l.name {
-            locationMapView.currentLocation = Location.valueFromString(n)
-        } else {
-            locationMapView.currentLocation = .unknown
-        }
-        locationMapView.setup()*/
+         locationMapView.currentLocation = Location.valueFromString(n)
+         } else {
+         locationMapView.currentLocation = .unknown
+         }
+         locationMapView.setup()*/
         
         eventDetailTextView.text = event.description
-
+        
         /*if (event.starred) {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-        } else {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-        }*/
+         eventStarredButton.image = #imageLiteral(resourceName: "star_active")
+         } else {
+         eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
+         }*/
         
         let i = event.includes
         if !i.lowercased().contains("tool") { toolImage.isHidden = true }
@@ -122,9 +139,6 @@ class HTEventDetailViewController: UIViewController {
             eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
         }
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
-        
-
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -177,9 +191,7 @@ class HTEventDetailViewController: UIViewController {
         eventNameLabel.textColor = UIColor(hexString: "#98b7e1")
         
         eventNameLabel.text = ""
-        NSLog("made it here, have \(event!.speakers.count) speakers to add")
         for s in event!.speakers {
-            NSLog("adding \(s.name) to list")
             if (s.id != event!.speakers.first!.id) {
                 speakerList.append(NSAttributedString(string:", "))
             }
