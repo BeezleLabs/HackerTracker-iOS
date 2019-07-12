@@ -14,6 +14,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
     var filteredEvents:NSArray = []
+    var eventsToken : UpdateToken<HTEventModel>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,42 +94,30 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
     
     func filterEvents(_ searchText: String) {
-        /*let context = getContext()
-        
-        
-        
-        let dataRequest = DataRequestManager(managedContext: getContext())
-        
-        if let con = dataRequest.getSelectedConference() {
-        
-            let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-            fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-            fr.returnsObjectsAsFaults = false
-            
-            let search_predicate = NSPredicate(format: "conference = %@ AND (location.name contains[cd] %@ OR title contains[cd] %@ OR desc contains[cd] %@ OR includes contains[cd] %@)", argumentArray: [con,searchText,searchText,searchText,searchText])
 
-            fr.predicate = search_predicate
-            currentEvents = try! context.fetch(fr) as! Array<Event>
-            
-            let frs = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
-            frs.returnsObjectsAsFaults = false
-            frs.predicate = NSPredicate(format: "conference = %@ AND name contains[cd] %@", argumentArray: [con,searchText])
-            let ret = try! context.fetch(frs) as! [Speaker]
-            if (ret.count > 0) {
-                for s in ret {
-                    let events = s.events?.allObjects as! [Event]
-                    for e in events {
-                        if !self.filteredEvents.contains(e) {
-                            currentEvents.append(e)
+        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!) { (result) in
+            switch result {
+            case .success(let eventList):
+                var currentEvents: Array<HTEventModel> = []
+                for e in eventList {
+                    if e.title.contains(searchText) {
+                        currentEvents.append(e)
+                    } else if e.description.contains(searchText) {
+                        currentEvents.append(e)
+                    } else {
+                        for s in e.speakers {
+                            if s.name.contains(searchText) {
+                                currentEvents.append(e)
+                            }
                         }
                     }
                 }
+                self.filteredEvents = currentEvents as NSArray
+                self.tableView.reloadData()
+            case .failure(let _):
+                NSLog("")
             }
-
-         */
-        var currentEvents : Array<HTEventModel> = []
-        self.filteredEvents = currentEvents as NSArray
- 
+        }
         
     }
     

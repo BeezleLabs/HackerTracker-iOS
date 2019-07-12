@@ -37,16 +37,8 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             eventTableView.dataSource = self
             eventTableView.backgroundColor = UIColor.clear
             eventTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
             addEventList()
-
-                if s.events.count > 0 {
-                    let e = s.events[0]
-                    talkButton.titleLabel?.numberOfLines = 3
-                    talkButton.titleLabel?.lineBreakMode = .byWordWrapping
-                    talkButton.setTitle(e.title, for: UIControl.State.normal)
-                } else {
-                    talkButton.isHidden = true
-                }
             
             twitterButton.isHidden = true
                 if s.twitter != "" {
@@ -56,11 +48,6 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
 
             
         }
-        
-        //eventTableView.rowHeight = UITableView.automaticDimension
-        //eventTableView.reloadData()
-        //self.vertStackView.addSubview(self.eventTableView)
-        vertStackView.layoutSubviews()
     }
     
     func addEventList() {
@@ -70,12 +57,8 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
                 case .success(let event):
                     self.events.append(event)
                     NSLog("Got \(event.title) \(event.id)")
-                    //DispatchQueue.main.async {
-                        self.eventTableView.reloadData()
-                        self.vertStackView.layoutSubviews()
-                    //}
-                    //self.eventTableView.reloadData()
-                    //self.eventTableView.isHidden = false
+                    self.eventTableView.reloadData()
+                    self.vertStackView.layoutSubviews()
                     
                 case .failure(let _):
                     NSLog("")
@@ -135,7 +118,6 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (events.count > 0 ) {
-            NSLog("Ok \(events.count) events")
             return events.count
         } else {
             NSLog("only one row")
