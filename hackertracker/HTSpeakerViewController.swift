@@ -120,22 +120,18 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
         if (events.count > 0 ) {
             return events.count
         } else {
-            NSLog("only one row")
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        NSLog("made it here")
         if events.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event : HTEventModel = events[indexPath.row]
-            NSLog("adding cell for \(event.id)")
             cell.bind(event: event)
             return cell
 
         } else {
-            NSLog("no events, adding the update cell")
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
             cell.bind(title: "No Events", desc: "No events for this speaker, check with the #hackertracker team")
             return cell
