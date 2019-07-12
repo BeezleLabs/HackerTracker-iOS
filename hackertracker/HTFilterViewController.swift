@@ -15,8 +15,8 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var fadeView: UIView!
     @IBOutlet weak var toggleButton: UIButton!
     
-    var all: [EventType] = []
-    var filtered: [EventType] = []
+    var all: [HTEventType] = []
+    var filtered: [HTEventType] = []
     var delegate: FilterViewControllerDelegate?
     var toggle: Bool = true
     
@@ -63,9 +63,8 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
         
         let et = self.all[indexPath.section]
-        if let n = et.name {
-            cell.textLabel?.text = n
-        }
+        cell.textLabel?.text = et.name
+        
 
         if filtered.contains(et) {
             cell.accessoryType = .checkmark
@@ -132,5 +131,5 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 protocol FilterViewControllerDelegate {
-    func filterList(filteredEventTypes: [EventType])
+    func filterList(filteredEventTypes: [HTEventType])
 }

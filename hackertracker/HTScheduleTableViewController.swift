@@ -15,6 +15,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     typealias EventSection = (date: String, events: [HTEventModel])
 
     var eventSections : [EventSection] = []
+    var allEventSections : [EventSection] = []
     var data = NSMutableData()
     var emptyStateView : UIView?
     var lastContentOffset: CGPoint?
@@ -99,6 +100,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                         //NSLog("Got \(eventList.count) events for \(c.code):\(c.id)")
                         if events.count > 0 {
                             self.eventSections.append((date: day, events: events))
+                            self.allEventSections.append((date: day, events: events))
                         }
                         self.tableView.reloadData()
                     case .failure(let _):
@@ -269,23 +271,17 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate {
     
     var eType : EventType?
-    var alltypes: [EventType] = []
-    var filteredtypes: [EventType] = []
+    var alltypes: [HTEventType] = []
+    var filteredtypes: [HTEventType] = []
     var filterView: HTFilterViewController?
+    
+    var typesToken: UpdateToken<HTEventType>?
     
     var showSectionIndexTitles = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let drm = DataRequestManager(managedContext: getContext())
-        if let con = drm.getSelectedConference() {
-            if let n = con.name {
-                self.title = n
-            }
-            alltypes = drm.getEventTypes(con: con)
-            filteredtypes = alltypes
-        }
+        getEventTypes()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -294,6 +290,17 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
+    }
+    
+    func getEventTypes() {
+        typesToken = FSConferenceDataController.shared.requestEventTypes(forConference: AnonymousSession.shared.currentConference!) { (result) in
+            switch result {
+            case .success(let typeList):
+                self.alltypes.append(contentsOf: typeList)
+            case .failure(let _):
+                NSLog("")
+            }
+        }
     }
 
     public override func emptyState() -> UIView {
@@ -331,31 +338,27 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         return ret
     }
     
-    override func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
-        let dfu = DateFormatterUtility.shared
-        let startofDay: Date =  dfu.yearMonthDayNoTimeZoneTimeFormatter.date(from: "\(dateString) 00:00:00")!
-        let endofDay: Date =  dfu.yearMonthDayNoTimeZoneTimeFormatter.date(from: "\(dateString) 23:59:59")!
-        
-        let con = DataRequestManager(managedContext: getContext()).getSelectedConference()!
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        let now = Date()
-        if now > con.start_date! && now < con.end_date! {
-            fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ AND end_date > %@ and conference = %@", argumentArray: [filteredtypes, startofDay, endofDay, Date(), con])
-        } else {
-            fr.predicate = NSPredicate(format: "event_type IN %@ AND start_date > %@ AND start_date < %@ and conference = %@", argumentArray: [filteredtypes, startofDay, endofDay, con])
+    func reloadFilteredEvents() {
+        var newEventSections : [EventSection] = []
+        for es in allEventSections {
+            var newEvents : [HTEventModel] = []
+            for e in es.events {
+                if filteredtypes.contains(e.type) {
+                    newEvents.append(e)
+                }
+            }
+            if newEvents.count > 0 {
+                newEventSections.append((date: es.date, events: newEvents))
+            }
         }
-        
-        
-        fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fr.returnsObjectsAsFaults = false
-
-        return fr
+        self.eventSections = newEventSections
+        self.tableView.reloadData()
     }
 
     
-    func filterList(filteredEventTypes: [EventType]) {
+    func filterList(filteredEventTypes: [HTEventType]) {
         self.filteredtypes = filteredEventTypes
-        self.reloadEvents()
+        self.reloadFilteredEvents()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -363,10 +366,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         if segue.identifier == "filterSegue" {
             let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
             fvc.delegate = self
-            let drm = DataRequestManager(managedContext: getContext())
-            if let con = drm.getSelectedConference() {
-                fvc.all = drm.getEventTypes(con: con)
-            }
+            fvc.all = alltypes
             fvc.filtered = filteredtypes
             present(fvc, animated:false, completion:nil)
             

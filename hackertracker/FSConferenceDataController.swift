@@ -157,6 +157,15 @@ class FSConferenceDataController {
         return UpdateToken<HTLocationModel>(events);
     }
     
+    func requestEventTypes(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTEventType], Error>) -> Void) -> UpdateToken<HTEventType> {
+        let query = document(forConference: conference).collection("types")
+        let types = Collection<HTEventType>(query: query)
+        types.listen() { (changes) in
+            updateHandler(Result<[HTEventType], Error>.success(types.items))
+        }
+        return UpdateToken<HTEventType>(types);
+    }
+    
     private func document(forConference conference: ConferenceModel) -> DocumentReference {
         return db.collection("conferences").document(conference.code);
     }
