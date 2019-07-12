@@ -88,7 +88,6 @@ class HTConferenceTableViewController: UITableViewController {
             switch result {
             case .success(let conferenceList):
                 self.conferences.append(contentsOf: conferenceList)
-                NSLog("Total conferences \(self.conferences.count)")
                 self.tableView.reloadData()
             case .failure(let _):
                 NSLog("")

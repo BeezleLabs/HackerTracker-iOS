@@ -192,6 +192,19 @@ class FSConferenceDataController {
         return UpdateToken<HTFAQModel>(faqs);
     }
     
+    func requestVendors(forConference conference: ConferenceModel,
+                     limit: Int? = nil,
+                     descending: Bool = false,
+                     updateHandler: @escaping (Result<[HTVendorModel], Error>) -> Void) -> UpdateToken<HTVendorModel> {
+        var query: Query?
+        query = document(forConference: conference).collection("faqs").order(by: "name", descending: descending).limit(to: limit ?? Int.max)
+        let vendors = Collection<HTVendorModel>(query: query!)
+        vendors.listen() { (changes) in
+            updateHandler(Result<[HTVendorModel], Error>.success(vendors.items))
+        }
+        return UpdateToken<HTVendorModel>(vendors);
+    }
+    
     private func document(forConference conference: ConferenceModel) -> DocumentReference {
         return db.collection("conferences").document(conference.code);
     }

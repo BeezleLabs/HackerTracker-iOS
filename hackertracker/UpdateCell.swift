@@ -36,13 +36,9 @@ public class UpdateCell : UITableViewCell {
 
     }
     
-    func bind(vendor: Vendor) {
-        
-        if let n = vendor.name, let d = vendor.desc {
-            titleLabel.text = n
-            descriptionLabel.text = d
-        }
-        
+    func bind(vendor: HTVendorModel) {
+        titleLabel.text = vendor.name
+        descriptionLabel.text = vendor.desc
     }
     
     func bind(title: String, desc: String) {
