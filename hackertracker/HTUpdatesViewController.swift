@@ -19,7 +19,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     @IBOutlet weak var skullBackground: UIImageView!
     @IBOutlet weak var conName: UILabel!
 
-    var messages: [Article] = []
+    var messages: [HTArticleModel] = []
     var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now", "About"]
     var starred: [HTEventModel] = []
     var upcoming: [HTEventModel] = []
@@ -29,6 +29,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     var upcomingEventsToken : UpdateToken<HTEventModel>?
     var starredEventsToken : UpdateToken<HTEventModel>?
     var liveEventsToken : UpdateToken<HTEventModel>?
+    var articlesToken : UpdateToken<HTArticleModel>?
     var lastContentOffset: CGPoint?
     var rick: Int = 0
 
@@ -98,6 +99,15 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
             switch result {
             case .success(let eventList):
                 self.liveNow = eventList
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
+        }
+        articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, limit: 2, descending: true) { (result) in
+            switch result {
+            case .success(let articles):
+                self.messages = articles
                 self.updatesTableView.reloadData()
             case .failure(_):
                 NSLog("")

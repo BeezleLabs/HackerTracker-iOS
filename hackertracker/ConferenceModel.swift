@@ -55,3 +55,39 @@ extension HTMapModel : Document {
         self.init(file: file, name: name)
     }
 }
+
+struct HTArticleModel : Codable {
+    var name: String
+    var text: String
+    var updated_at: Date
+    
+}
+
+extension HTArticleModel : Document {
+    init?(dictionary: [String : Any]) {
+        let name = dictionary["name"] as? String ?? ""
+        let text = dictionary["text"] as? String ?? ""
+        let tmp_date = "2019-01-01T00:00:00.000-0000"
+        let updated_at = dictionary["updated_at"] as? Date ?? DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        
+        self.init(name: name, text: text, updated_at: updated_at)
+    }
+}
+
+struct HTFAQModel : Codable {
+    var question: String
+    var answer: String
+    var updated_at: Date
+    
+}
+
+extension HTFAQModel : Document {
+    init?(dictionary: [String : Any]) {
+        let question = dictionary["question"] as? String ?? ""
+        let answer = dictionary["answer"] as? String ?? ""
+        let tmp_date = "2019-01-01T00:00:00.000-0000"
+        let updated_at = dictionary["updated_at"] as? Date ?? DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        
+        self.init(question: question, answer: answer, updated_at: updated_at)
+    }
+}

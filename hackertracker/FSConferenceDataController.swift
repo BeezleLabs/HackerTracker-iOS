@@ -166,6 +166,32 @@ class FSConferenceDataController {
         return UpdateToken<HTEventType>(types);
     }
     
+    func requestArticles(forConference conference: ConferenceModel,
+                         limit: Int? = nil,
+                         descending: Bool = false,
+                         updateHandler: @escaping (Result<[HTArticleModel], Error>) -> Void) -> UpdateToken<HTArticleModel> {
+        var query: Query?
+        query = document(forConference: conference).collection("articles").order(by: "updated_at", descending: descending).limit(to: limit ?? Int.max)
+        let articles = Collection<HTArticleModel>(query: query!)
+        articles.listen() { (changes) in
+            updateHandler(Result<[HTArticleModel], Error>.success(articles.items))
+        }
+        return UpdateToken<HTArticleModel>(articles);
+    }
+    
+    func requestFAQs(forConference conference: ConferenceModel,
+                         limit: Int? = nil,
+                         descending: Bool = false,
+                         updateHandler: @escaping (Result<[HTFAQModel], Error>) -> Void) -> UpdateToken<HTFAQModel> {
+        var query: Query?
+        query = document(forConference: conference).collection("faqs").order(by: "updated_at", descending: descending).limit(to: limit ?? Int.max)
+        let faqs = Collection<HTFAQModel>(query: query!)
+        faqs.listen() { (changes) in
+            updateHandler(Result<[HTFAQModel], Error>.success(faqs.items))
+        }
+        return UpdateToken<HTFAQModel>(faqs);
+    }
+    
     private func document(forConference conference: ConferenceModel) -> DocumentReference {
         return db.collection("conferences").document(conference.code);
     }
