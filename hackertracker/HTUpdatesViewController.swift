@@ -21,14 +21,14 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     var messages: [Article] = []
     var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now", "About"]
-    var starred: [HTEventModel] = []
-    var upcoming: [HTEventModel] = []
-    var liveNow: [HTEventModel] = []
+    var starred: [UserEventModel] = []
+    var upcoming: [UserEventModel] = []
+    var liveNow: [UserEventModel] = []
     var data = NSMutableData()
-    var conferencesToken : UpdateToken<ConferenceModel>?
-    var upcomingEventsToken : UpdateToken<HTEventModel>?
-    var starredEventsToken : UpdateToken<HTEventModel>?
-    var liveEventsToken : UpdateToken<HTEventModel>?
+    var conferencesToken : UpdateToken?
+    var upcomingEventsToken : UpdateToken?
+    var starredEventsToken : UpdateToken?
+    var liveEventsToken : UpdateToken?
     var lastContentOffset: CGPoint?
     var rick: Int = 0
 
@@ -123,11 +123,14 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
             if let indexPath = sender as? IndexPath {
                 if indexPath.section == 1 {
-                    dv.event = self.starred[indexPath.row]
+                    dv.event = self.starred[indexPath.row].event
+                    dv.bookmark = self.starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    dv.event = self.upcoming[indexPath.row]
+                    dv.event = self.upcoming[indexPath.row].event
+                    dv.bookmark = self.upcoming[indexPath.row].bookmark
                 } else if indexPath.section == 3 {
-                    dv.event = self.liveNow[indexPath.row]
+                    dv.event = self.liveNow[indexPath.row].event
+                    dv.bookmark = self.liveNow[indexPath.row].bookmark
                 }
             }
 
@@ -154,8 +157,8 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 1 {
             if starred.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : HTEventModel = starred[indexPath.row]
-                cell.bind(event: event)
+                let event = starred[indexPath.row]
+                cell.bind(userEvent: event)
                 cell.eventCellDelegate = self
                 return cell
             } else {
@@ -167,8 +170,8 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 2 {
             if upcoming.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : HTEventModel = upcoming[indexPath.row]
-                cell.bind(event: event)
+                let event = upcoming[indexPath.row]
+                cell.bind(userEvent: event)
                 cell.eventCellDelegate = self
                 return cell
             } else {
@@ -180,8 +183,8 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 3 {
             if liveNow.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : HTEventModel = liveNow[indexPath.row]
-                cell.bind(event: event)
+                let event = liveNow[indexPath.row]
+                cell.bind(userEvent: event)
                 cell.eventCellDelegate = self
                 return cell
             } else {
@@ -259,11 +262,14 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             || ( indexPath.section == 3 && liveNow.count > 0 ) {
             if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
                 if indexPath.section == 1 {
-                    eventController.event = self.starred[indexPath.row]
+                    eventController.event = self.starred[indexPath.row].event
+                    eventController.bookmark = self.starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    eventController.event = self.upcoming[indexPath.row]
+                    eventController.event = self.upcoming[indexPath.row].event
+                    eventController.bookmark = self.upcoming[indexPath.row].bookmark
                 } else if indexPath.section == 3 {
-                    eventController.event = self.liveNow[indexPath.row]
+                    eventController.event = self.liveNow[indexPath.row].event
+                    eventController.bookmark = self.liveNow[indexPath.row].bookmark
                 }
                 self.navigationController?.pushViewController(eventController, animated: true)
             }

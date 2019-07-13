@@ -8,6 +8,20 @@
 
 import Foundation
 
+struct Bookmark : Codable {
+    var id : String
+    var value : Bool
+}
+
+extension Bookmark : Document {
+    init?(dictionary: [String : Any]) {
+        let id = dictionary["id"] as? String ?? "0"
+        let value = dictionary["value"] as? Bool ?? false
+
+        self.init(id: id, value: value)
+    }
+}
+
 struct HTEventModel : Codable {
     var id : Int
     var conferenceName : String
@@ -21,6 +35,11 @@ struct HTEventModel : Codable {
     var location : HTLocationModel
     var speakers : [HTSpeaker]
     var type : HTEventType
+}
+
+struct UserEventModel : Codable {
+    var event : HTEventModel
+    var bookmark : Bookmark
 }
 
 extension HTEventModel : Document {

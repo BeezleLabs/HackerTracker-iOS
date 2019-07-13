@@ -16,7 +16,7 @@ class HTSpeakersTableViewController: UITableViewController {
     
     var speakerSections : [SpeakerSection] = []
     
-    var speakerToken : UpdateToken<HTSpeaker>?
+    var speakerToken : UpdateToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,21 +8,33 @@
 
 import Foundation
 
+import Firebase
+
 class AnonymousSession {
     
     static private(set) var shared : AnonymousSession!
-    static private var conferencesToken : UpdateToken<ConferenceModel>?
+    static private var conferencesToken : UpdateToken?
 
     var currentConference : ConferenceModel!
 
+    var user : User?
+    
     static func initialize(conCode: String, completion: @escaping (AnonymousSession?) -> Void) {
-        conferencesToken = FSConferenceDataController.shared.requestConferenceByCode(forCode: conCode) { (result) in
-            switch result {
-            case .success(let con):
-                shared = AnonymousSession(conference:con)
-                completion(shared)
-            case .failure(_):
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            if let _ = error {
                 completion(nil)
+                return
+            }
+            
+            self.conferencesToken = FSConferenceDataController.shared.requestConferenceByCode(forCode: conCode) { (result) in
+                switch result {
+                case .success(let con):
+                    shared = AnonymousSession(conference:con)
+                    shared.user = authResult
+                    completion(shared)
+                case .failure(_):
+                    completion(nil)
+                }
             }
         }
     }

@@ -55,18 +55,19 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
        
-        var event: HTEventModel
+        var event: UserEventModel
         
-        event = self.filteredEvents.object(at: indexPath.row) as! HTEventModel
+        event = self.filteredEvents.object(at: indexPath.row) as! UserEventModel
         
-        cell.bind(event: event)
+        cell.bind(userEvent: event)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = self.filteredEvents.object(at: indexPath.row) as? HTEventModel
+            eventController.event = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.event
+            eventController.bookmark = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.bookmark
             eventController.delegate = self
             self.navigationController?.pushViewController(eventController, animated: true)
         }
@@ -126,7 +127,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             }
 
          */
-        var currentEvents : Array<HTEventModel> = []
+        var currentEvents : Array<UserEventModel> = []
         self.filteredEvents = currentEvents as NSArray
  
         
@@ -179,7 +180,8 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                 indexPath = sender as! IndexPath
             }
 
-            dv.event = self.filteredEvents.object(at: indexPath.row) as? HTEventModel
+            dv.event = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.event
+            dv.bookmark = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.bookmark
             dv.delegate = self
         }
     }

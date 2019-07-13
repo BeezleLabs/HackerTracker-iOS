@@ -16,7 +16,7 @@ protocol HTConferenceTableViewControllerDelegate : class {
 class HTConferenceTableViewController: UITableViewController {
     
     var conferences: [ConferenceModel] = []
-    var conferencesToken : UpdateToken<ConferenceModel>?
+    var conferencesToken : UpdateToken?
     var selectCon: ConferenceModel?
     weak var delegate : HTConferenceTableViewControllerDelegate?
     

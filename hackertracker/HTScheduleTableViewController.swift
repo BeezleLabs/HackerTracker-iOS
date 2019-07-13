@@ -12,7 +12,7 @@ import SpriteKit
 
 class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate {
     
-    typealias EventSection = (date: String, events: [HTEventModel])
+    typealias EventSection = (date: String, events: [UserEventModel])
 
     var eventSections : [EventSection] = []
     var data = NSMutableData()
@@ -21,7 +21,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var updated : [String] = []
     var later : [String] = []
     
-    var eventTokens : [UpdateToken<HTEventModel>] = []
+    var eventTokens : [UpdateToken] = []
 
 
     var pullDownAnimation: PongScene?
@@ -77,7 +77,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     func reloadEvents() {
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        var event: HTEventModel?
+        var event: UserEventModel?
 
         if let selectedIndexPath = selectedIndexPath {
             event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
@@ -91,7 +91,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         let conference = AnonymousSession.shared.currentConference!
         if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
             for day in dfu.getConferenceDates(start: start, end: end) {
-                var events : [HTEventModel] = []
+                var events : [UserEventModel] = []
                 let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
                     switch result {
                     case .success(let eventList):
@@ -99,6 +99,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                         //NSLog("Got \(eventList.count) events for \(c.code):\(c.id)")
                         if events.count > 0 {
                             self.eventSections.append((date: day, events: events))
+                        }
+                        for event in events {
+                            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event.event, isFavorite: true, session: AnonymousSession.shared, updateHandler: { (error) in
+                                
+                            })
                         }
                         self.tableView.reloadData()
                     case .failure(let _):
@@ -122,7 +127,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count {
 
             let newEvent = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
-            if newEvent.id == event.id {
+            if newEvent.event.id == event.event.id {
                 tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
             }
         }
@@ -175,9 +180,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-        let e : HTEventModel = self.eventSections[indexPath.section].events[indexPath.row]
+        let e = self.eventSections[indexPath.section].events[indexPath.row]
 
-        cell.bind(event: e)
+        cell.bind(userEvent: e)
 
         return cell
     }
@@ -213,7 +218,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = self.eventSections[indexPath.section].events[indexPath.row]
+            eventController.event = self.eventSections[indexPath.section].events[indexPath.row].event
+            eventController.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
             eventController.delegate = self
             self.navigationController?.pushViewController(eventController, animated: true)
         }
@@ -239,7 +245,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 indexPath = sender as! IndexPath
             }
 
-            dv.event = self.eventSections[indexPath.section].events[indexPath.row]
+            dv.event = self.eventSections[indexPath.section].events[indexPath.row].event
+            dv.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
             dv.delegate = self
         }
     }
@@ -387,7 +394,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                 indexPath = sender as! IndexPath
             }
             
-            dv.event = self.eventSections[indexPath.section].events[indexPath.row]
+            dv.event = self.eventSections[indexPath.section].events[indexPath.row].event
+            dv.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
             dv.delegate = self
         }
     }

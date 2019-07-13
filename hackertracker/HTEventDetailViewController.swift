@@ -38,10 +38,11 @@ class HTEventDetailViewController: UIViewController {
 
     var delegate: EventDetailDelegate?
     var event: HTEventModel?
+    var bookmark : Bookmark?
     var speakers: [HTSpeaker] = []
-    var speakerTokens : [UpdateToken<HTSpeaker>] = []
+    var speakerTokens : [UpdateToken] = []
     var myCon: ConferenceModel?
-    var eventToken : UpdateToken<HTEventModel>?
+    var eventToken : UpdateToken?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
 
@@ -56,13 +57,16 @@ class HTEventDetailViewController: UIViewController {
         if let _ = eventToken {
             loadEvent()
         } else {
-            eventToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: event!.id) { (result) in
-                switch result {
-                case .success(let retEvent):
-                    self.event = retEvent
-                    self.loadEvent()
-                case .failure(let _):
-                    NSLog("")
+            if let event = event {
+                eventToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: event.id) { (result) in
+                    switch result {
+                    case .success(let retEvent):
+                        self.event = retEvent.event
+                        self.bookmark = retEvent.bookmark
+                        self.loadEvent()
+                    case .failure(let _):
+                        NSLog("")
+                    }
                 }
             }
         }
@@ -105,11 +109,11 @@ class HTEventDetailViewController: UIViewController {
         
         eventDetailTextView.text = event.description
         
-        /*if (event.starred) {
+        if let bookmark = bookmark, bookmark.value == true {
          eventStarredButton.image = #imageLiteral(resourceName: "star_active")
          } else {
          eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-         }*/
+         }
         
         let i = event.includes
         if !i.lowercased().contains("tool") { toolImage.isHidden = true }
@@ -327,88 +331,11 @@ class HTEventDetailViewController: UIViewController {
             }
         }
         
-        /*if (event.starred) {
-            event.starred = false
-            eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-            saveContext()
-            removeNotification(event)
-
-            reloadEvents()
-        } else {
-            
-            let _duplicates = dataRequest.findConflictingStarredEvents(event)
-            
-            if let duplicates = _duplicates, duplicates.count > 0
-            {
-                let duplicateTitles = duplicates.reduce("", { (result, event) -> String in
-                    
-                    if let t = event.title {
-                        if result == ""
-                        {
-                            return "• \(t)"
-                        }
-                        else
-                        {
-                            return result + "\n" + "• \(t)"
-                        }
-                    } else {
-                        return "• Title Not Found"
-                    }
-                    
-                })
+        if let bookmark = bookmark {
+            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (error) in
                 
-                var alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd 'Title Not Found' to schedule?"
-                if let t = event.title {
-                    alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(t)\'" + " to schedule?"
-                }
-                
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.alignment = NSTextAlignment.left
-                let messageText = NSMutableAttributedString(
-                    string: alertBody,
-                    attributes: [
-                        NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                        NSAttributedString.Key.font: UIFont(name: "Larsseit", size: 14)!,
-                        NSAttributedString.Key.foregroundColor : UIColor.black
-                    ]
-                )
-                
-                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:"", preferredStyle: UIAlertController.Style.alert)
-                alert.setValue(messageText, forKey: "attributedMessage")
-                
-                let yesItem : UIAlertAction = UIAlertAction(title: "Add Anyway", style: UIAlertAction.Style.default, handler: {
-                    (action:UIAlertAction) in
-                    event.starred = true
-                    self.eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-                    self.saveContext()
-                    scheduleNotification(at: (event.start_date?.addingTimeInterval(-600))!,event)
-                    self.reloadEvents()
-                })
-                
-                let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler:
-                {
-                    (action:UIAlertAction) in
-                })
-                
-                alert.addAction(yesItem)
-                alert.addAction(noItem)
-
-                self.present(alert, animated: true, completion: nil)
             }
-            else
-            {
-                event.starred = true
-                eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-                saveContext()
-                if let start = event.start_date {
-                    scheduleNotification(at: start.addingTimeInterval(-600),event)
-                }
-
-                reloadEvents()
-            }
-
-        } */
-
+        }
     }
 
     func reloadEvents() {

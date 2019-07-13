@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class HTInitViewController: UIViewController, HTConferenceTableViewControllerDelegate {
 
@@ -16,10 +17,13 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
 
     private var timerUp = false
     private var importComplete = false
+    private var token : AnyObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FirebaseApp.configure()
+
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         let dfu = DateFormatterUtility.shared

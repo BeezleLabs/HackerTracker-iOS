@@ -8,7 +8,7 @@ target 'hackertracker' do
   # Pods for hackertracker
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-
+  pod 'Firebase/Auth'
   target 'hackertrackerTests' do
     inherit! :search_paths
     # Pods for testing

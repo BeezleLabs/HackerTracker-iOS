@@ -18,8 +18,8 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     @IBOutlet weak var vertStackView: UIStackView!
     @IBOutlet weak var eventTableView: UITableView!
     
-    var eventTokens : [UpdateToken<HTEventModel>] = []
-    var events: [HTEventModel] = []
+    var eventTokens : [UpdateToken] = []
+    var events: [UserEventModel] = []
     var speaker: HTSpeaker?
     
     override func viewDidLoad() {
@@ -69,14 +69,13 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
                 switch result {
                 case .success(let event):
                     self.events.append(event)
-                    NSLog("Got \(event.title) \(event.id)")
+                    NSLog("Got \(event.event.title) \(event.event.id)")
                     //DispatchQueue.main.async {
                         self.eventTableView.reloadData()
                         self.vertStackView.layoutSubviews()
                     //}
                     //self.eventTableView.reloadData()
                     //self.eventTableView.isHidden = false
-                    
                 case .failure(let _):
                     NSLog("")
                 }
@@ -147,9 +146,8 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
         NSLog("made it here")
         if events.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-            let event : HTEventModel = events[indexPath.row]
-            NSLog("adding cell for \(event.id)")
-            cell.bind(event: event)
+            let event : UserEventModel = events[indexPath.row]
+            cell.bind(userEvent: event)
             return cell
 
         } else {
@@ -161,10 +159,11 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let event : HTEventModel = events[indexPath.row]
+        let event : UserEventModel = events[indexPath.row]
 
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = event
+            eventController.event = event.event
+            eventController.bookmark = event.bookmark
             self.navigationController?.pushViewController(eventController, animated: true)
         }
     }

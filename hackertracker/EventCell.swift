@@ -23,7 +23,7 @@ public class EventCell : UITableViewCell {
     @IBOutlet weak var favorited: UIImageView!
     
     weak var eventCellDelegate : EventCellDelegate? 
-    var myEvent: HTEventModel?
+    var userEvent: UserEventModel?
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -59,8 +59,9 @@ public class EventCell : UITableViewCell {
         et_label.backgroundColor = oldColor
     }
 
-    func bind(event : HTEventModel) {
-        myEvent = event
+    func bind(userEvent : UserEventModel) {
+        self.userEvent = userEvent
+        let event = userEvent.event
         var eventTime = "TBD"
         let dfu = DateFormatterUtility.shared
         eventTime = dfu.dayOfWeekTimeFormatter.string(from:event.beginDate) + "-"
@@ -84,14 +85,13 @@ public class EventCell : UITableViewCell {
         subtitle.text = "| \(event.location.name)"
 
         
-        /*if event.starred {
+        if userEvent.bookmark.value {
             favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             favorited.tintColor = UIColor.white
-
         } else {
             favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             favorited.tintColor = UIColor.gray
-        }*/
+        }
 
         
         let tr = UITapGestureRecognizer(target: self, action: #selector(tappedStar(sender:)))
@@ -103,24 +103,10 @@ public class EventCell : UITableViewCell {
     }
     
     @objc func tappedStar(sender: AnyObject) {
-        if let e = myEvent {
-            /*e.starred = !e.starred
-            if e.starred {
-                favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-                favorited.tintColor = UIColor.white
-                scheduleNotification(at: (myEvent?.start_date?.addingTimeInterval(-600))!,myEvent!)
-            } else {
-                favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-                favorited.tintColor = UIColor.gray
-                removeNotification(myEvent!)
+        if let e = userEvent {
+            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: e.event, isFavorite: !e.bookmark.value, session: AnonymousSession.shared) { (error) in
+           
             }
-
-            
-            saveContext()
-            
-            if let ed = self.eventCellDelegate {
-                ed.updatedEvents()
-            } */
         } else {
             NSLog("No event defined on star tap")
         }
