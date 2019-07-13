@@ -103,7 +103,7 @@ struct HTVendorModel : Codable {
 extension HTVendorModel : Document {
     init?(dictionary: [String : Any]) {
         let name = dictionary["name"] as? String ?? ""
-        let desc = dictionary["desc"] as? String ?? ""
+        let desc = dictionary["description"] as? String ?? ""
         let link = dictionary["link"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
         let updated_at = dictionary["updated_at"] as? Date ?? DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!

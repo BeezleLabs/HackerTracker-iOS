@@ -197,7 +197,7 @@ class FSConferenceDataController {
                      descending: Bool = false,
                      updateHandler: @escaping (Result<[HTVendorModel], Error>) -> Void) -> UpdateToken<HTVendorModel> {
         var query: Query?
-        query = document(forConference: conference).collection("faqs").order(by: "name", descending: descending).limit(to: limit ?? Int.max)
+        query = document(forConference: conference).collection("vendors").order(by: "name", descending: descending).limit(to: limit ?? Int.max)
         let vendors = Collection<HTVendorModel>(query: query!)
         vendors.listen() { (changes) in
             updateHandler(Result<[HTVendorModel], Error>.success(vendors.items))

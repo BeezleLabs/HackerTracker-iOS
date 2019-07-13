@@ -62,6 +62,7 @@ class HTConferenceTableViewController: UITableViewController {
                     return
                 }
                 menuvc.didSelectID(tabID: "Home")
+                menuvc.backgroundTapped()
             }
         }
     }
