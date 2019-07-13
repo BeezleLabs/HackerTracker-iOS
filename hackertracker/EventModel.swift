@@ -139,11 +139,19 @@ extension HTSpeaker : Document {
     }
 }
 
-struct HTEventType : Codable {
+struct HTEventType : Codable, Equatable {
     var id : Int
     var color : String
     var conferenceName : String
     var name : String
+    
+    static func ==(lhs: HTEventType, rhs: HTEventType) -> Bool {
+        if lhs.id == rhs.id && lhs.name == rhs.name {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 extension HTEventType : Document {

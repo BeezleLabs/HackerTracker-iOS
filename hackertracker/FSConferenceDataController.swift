@@ -45,13 +45,9 @@ class FSConferenceDataController {
         return UpdateToken(conferences);
     }
     
-    func requestEvents(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTEventModel], Error>) -> Void) -> UpdateToken {
+    func requestEvents(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken {
         let query = document(forConference: conference).collection("events")
-        let events = Collection<HTEventModel>(query: query)
-        events.listen() { (changes) in
-            updateHandler(Result<[HTEventModel], Error>.success(events.items))
-        }
-        return UpdateToken(events);
+        return requestEvents(forConference: conference, query: query, updateHandler: updateHandler)
     }
     
     func requestEvents(forConference conference: ConferenceModel, eventId: Int, updateHandler: @escaping (Result<UserEventModel, Error>) -> Void) -> UpdateToken {
@@ -237,6 +233,54 @@ class FSConferenceDataController {
                 updateHandler(nil)
             }
         }
+    }
+    
+    func requestEventTypes(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTEventType], Error>) -> Void) -> UpdateToken {
+        let query = document(forConference: conference).collection("types")
+        let types = Collection<HTEventType>(query: query)
+        types.listen() { (changes) in
+            updateHandler(Result<[HTEventType], Error>.success(types.items))
+        }
+        return UpdateToken(types);
+    }
+    
+    func requestArticles(forConference conference: ConferenceModel,
+                         limit: Int? = nil,
+                         descending: Bool = false,
+                         updateHandler: @escaping (Result<[HTArticleModel], Error>) -> Void) -> UpdateToken {
+        var query: Query?
+        query = document(forConference: conference).collection("articles").order(by: "updated_at", descending: descending).limit(to: limit ?? Int.max)
+        let articles = Collection<HTArticleModel>(query: query!)
+        articles.listen() { (changes) in
+            updateHandler(Result<[HTArticleModel], Error>.success(articles.items))
+        }
+        return UpdateToken(articles);
+    }
+    
+    func requestFAQs(forConference conference: ConferenceModel,
+                         limit: Int? = nil,
+                         descending: Bool = false,
+                         updateHandler: @escaping (Result<[HTFAQModel], Error>) -> Void) -> UpdateToken {
+        var query: Query?
+        query = document(forConference: conference).collection("faqs").order(by: "updated_at", descending: descending).limit(to: limit ?? Int.max)
+        let faqs = Collection<HTFAQModel>(query: query!)
+        faqs.listen() { (changes) in
+            updateHandler(Result<[HTFAQModel], Error>.success(faqs.items))
+        }
+        return UpdateToken(faqs);
+    }
+    
+    func requestVendors(forConference conference: ConferenceModel,
+                     limit: Int? = nil,
+                     descending: Bool = false,
+                     updateHandler: @escaping (Result<[HTVendorModel], Error>) -> Void) -> UpdateToken {
+        var query: Query?
+        query = document(forConference: conference).collection("vendors").order(by: "name", descending: descending).limit(to: limit ?? Int.max)
+        let vendors = Collection<HTVendorModel>(query: query!)
+        vendors.listen() { (changes) in
+            updateHandler(Result<[HTVendorModel], Error>.success(vendors.items))
+        }
+        return UpdateToken(vendors);
     }
     
     private func document(forConference conference: ConferenceModel) -> DocumentReference {

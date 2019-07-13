@@ -11,7 +11,8 @@ import CoreData
 
 class HTNewsTableViewController: UITableViewController {
 
-    var articles: [Article] = []
+    var articles: [HTArticleModel] = []
+    var articlesToken : UpdateToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class HTNewsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell", for: indexPath) as! UpdateCell
         
-        var a: Article
+        var a: HTArticleModel
         
         a = self.articles[indexPath.row]
         cell.bind(message: a)
@@ -56,13 +57,14 @@ class HTNewsTableViewController: UITableViewController {
     }
     
     func loadArticles() {
-        if let con = DataRequestManager(managedContext: getContext()).getSelectedConference() {
-            let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Article")
-            fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [con])
-            fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
-            fr.returnsObjectsAsFaults = false
-            
-            articles = try! getContext().fetch(fr) as! [Article]
+        articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, descending: true) { (result) in
+            switch result {
+            case .success(let articlesList):
+                self.articles = articlesList
+                self.tableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
         }
     }
 

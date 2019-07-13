@@ -27,22 +27,18 @@ public class UpdateCell : UITableViewCell {
         selectionStyle = .none
     }
 
-    func bind(message: Article) {
+    func bind(message: HTArticleModel) {
         let dfu = DateFormatterUtility.shared
-        let date = dfu.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.updated_at!)
+        let date = dfu.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.updated_at)
 
         titleLabel.text = message.name
-        descriptionLabel.text = "[\(date)]: \(message.text!)"
+        descriptionLabel.text = "[\(date)]: \(message.text)"
 
     }
     
-    func bind(vendor: Vendor) {
-        
-        if let n = vendor.name, let d = vendor.desc {
-            titleLabel.text = n
-            descriptionLabel.text = d
-        }
-        
+    func bind(vendor: HTVendorModel) {
+        titleLabel.text = vendor.name
+        descriptionLabel.text = vendor.desc
     }
     
     func bind(title: String, desc: String) {

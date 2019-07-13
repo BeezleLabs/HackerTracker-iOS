@@ -12,7 +12,8 @@ import SafariServices
 
 class HTVendorTableViewController: UITableViewController {
 
-    var vendors: [Vendor] = []
+    var vendorsToken : UpdateToken?
+    var vendors: [HTVendorModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +46,11 @@ class HTVendorTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let l = vendors[indexPath.row].link {
-            if let u = URL(string: l) {
-                let svc = SFSafariViewController(url: u)
-                svc.preferredBarTintColor = UIColor.backgroundGray
-                svc.preferredControlTintColor = UIColor.white
-                present(svc, animated: true, completion: nil)
-            }
+        if let u = URL(string: vendors[indexPath.row].link) {
+            let svc = SFSafariViewController(url: u)
+            svc.preferredBarTintColor = UIColor.backgroundGray
+            svc.preferredControlTintColor = UIColor.white
+            present(svc, animated: true, completion: nil)
         }
     }
     
@@ -59,7 +58,7 @@ class HTVendorTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell", for: indexPath) as! UpdateCell
         
-        var v: Vendor
+        var v: HTVendorModel
         
         v = self.vendors[indexPath.row]
         cell.bind(vendor: v)
@@ -68,13 +67,14 @@ class HTVendorTableViewController: UITableViewController {
     }
     
     func loadVendors() {
-        if let con = DataRequestManager(managedContext: getContext()).getSelectedConference() {
-            let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Vendor")
-            fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [con])
-            fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: true)]
-            fr.returnsObjectsAsFaults = false
-            
-            vendors = try! getContext().fetch(fr) as! [Vendor]
+        vendorsToken = FSConferenceDataController.shared.requestVendors(forConference: AnonymousSession.shared.currentConference, descending: true) { (result) in
+            switch result {
+            case .success(let vendorsList):
+                self.vendors = vendorsList
+                self.tableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
         }
     }
 
