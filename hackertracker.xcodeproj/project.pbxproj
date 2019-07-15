@@ -28,6 +28,7 @@
 		5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
+		5DA4DDE622DCD85E00B52EBD /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */; };
 		5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
@@ -130,6 +131,7 @@
 		5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Larsseit-Bold.ttf"; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD6425D1AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */,
 				5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */,
 				7820245C1F05B7CE0092ED07 /* cert.der */,
 				5DFB87BE1B30BBF10083604C /* Connections.plist */,
@@ -544,6 +547,7 @@
 				5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */,
 				5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
+				5DA4DDE622DCD85E00B52EBD /* BebasNeue-Regular.ttf in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
@@ -591,27 +595,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-hackertracker/Pods-hackertracker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

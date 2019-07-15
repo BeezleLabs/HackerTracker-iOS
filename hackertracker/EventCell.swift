@@ -25,6 +25,8 @@ public class EventCell : UITableViewCell {
     weak var eventCellDelegate : EventCellDelegate? 
     var userEvent: UserEventModel?
     
+    var titleAttr = NSMutableAttributedString(string: "")
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
@@ -71,8 +73,37 @@ public class EventCell : UITableViewCell {
             eventTime = eventTime + dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
         }
 
+        var i = 0
+        var stext = ""
+        for s in event.speakers {
+            if i > 0 {
+                stext = "\(stext), \(s.name)"
+            } else {
+                stext = "\(s.name)"
+            }
+            i = i + 1
+        }
         
-        title.text = event.title
+        titleAttr = NSMutableAttributedString(string: "")
+        let titleAttrString = NSMutableAttributedString(string: event.title)
+        let titleParStyle = NSMutableParagraphStyle()
+        titleParStyle.alignment = .left
+        titleAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParStyle, range: NSRange(location: 0, length: (event.title as NSString).length))
+        titleAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold), range: NSRange(location: 0, length: (event.title as NSString).length))
+        
+        titleAttr.append(titleAttrString)
+        
+        if event.speakers.count > 0 {
+            let spAttrString = NSMutableAttributedString(string: stext)
+            let spParStyle = NSMutableParagraphStyle()
+            spParStyle.alignment = .left
+            spAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: spParStyle, range: NSRange(location: 0, length: (stext as NSString).length))
+            spAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.medium), range: NSRange(location: 0, length: (stext as NSString).length))
+            titleAttr.append(NSAttributedString(string:"\n"))
+            titleAttr.append(spAttrString)
+        }
+
+        title.attributedText = titleAttr
 
         color.backgroundColor = UIColor(hexString: (event.type.color))
         et_label.layer.borderColor = UIColor(hexString: event.type.color).cgColor
@@ -104,18 +135,14 @@ public class EventCell : UITableViewCell {
     
     @objc func tappedStar(sender: AnyObject) {
         if let e = userEvent {
+            NSLog("Bookmark: \(e.bookmark.id) \(e.bookmark.value)")
             FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: e.event, isFavorite: !e.bookmark.value, session: AnonymousSession.shared) { (error) in
            
             }
+            
         } else {
             NSLog("No event defined on star tap")
         }
-    }
-    
-    func saveContext() {
-        do {
-            try getContext().save()
-        } catch {}
     }
 
 }

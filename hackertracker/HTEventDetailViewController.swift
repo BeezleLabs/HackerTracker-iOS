@@ -203,7 +203,7 @@ class HTEventDetailViewController: UIViewController {
             let whoParagraphStyle = NSMutableParagraphStyle()
             whoParagraphStyle.alignment = .left
             whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.name as NSString).length))
-            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.name as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "BeBasNeue", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.name as NSString).length))
             whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (s.name as NSString).length))
             speakerList.append(whoAttributedString)
         }
@@ -237,14 +237,14 @@ class HTEventDetailViewController: UIViewController {
                 let whoParagraphStyle = NSMutableParagraphStyle()
                 whoParagraphStyle.alignment = .left
                 whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "BeBasNeue", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
                 whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (n as NSString).length))
                 
                 let titleAttributedString = NSMutableAttributedString(string:t)
                 let titleParagraphStyle = NSMutableParagraphStyle()
                 titleParagraphStyle.alignment = .left
                 titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "Bungee", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
+                titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "BeBasNeue", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
                 titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
                 
                 let bioAttributedString = NSMutableAttributedString(string:d)
@@ -332,6 +332,7 @@ class HTEventDetailViewController: UIViewController {
         }
         
         if let bookmark = bookmark {
+            NSLog("Bookmark: \(bookmark.id) \(bookmark.value) to \(!bookmark.value)")
             FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (error) in
                 
             }

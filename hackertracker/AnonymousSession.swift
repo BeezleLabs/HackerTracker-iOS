@@ -30,7 +30,7 @@ class AnonymousSession {
                 switch result {
                 case .success(let con):
                     shared = AnonymousSession(conference:con)
-                    shared.user = authResult
+                    shared.user = authResult?.user
                     completion(shared)
                 case .failure(_):
                     completion(nil)
