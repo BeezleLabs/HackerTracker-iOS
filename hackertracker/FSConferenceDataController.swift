@@ -59,7 +59,7 @@ class FSConferenceDataController {
         events.listen() { (changes) in
             event = events.items.first
             if let event = event {
-                updateHandler(Result<UserEventModel, Error>.success(UserEventModel(event: event, bookmark: Bookmark(id: String(event.id), value: false))))
+                updateHandler(Result<UserEventModel, Error>.success(UserEventModel(event: event, bookmark: bookmark ?? Bookmark(id: String(event.id), value: false))))
             }
         }
         
@@ -67,12 +67,12 @@ class FSConferenceDataController {
             return UpdateToken(events)
         }
         
-        let bookmarksQuery = document(forConference: conference).collection("users").document(user.uid).collection("bookmarks").whereField("id", isEqualTo: String(eventId))
-        
         let bookmarksToken = AnonymousSession.shared.requestFavorites { (result) in
             switch result {
-            case .success(let bookmarks):
-                bookmark = bookmarks.first
+            case .success(let updatedBookmarks):
+                bookmark = updatedBookmarks.first(where: { (bookmark) -> Bool in
+                    return bookmark.id == String(eventId);
+                })
                 if let event = event, let bookmark = bookmark {
                     updateHandler(Result<UserEventModel, Error>.success(UserEventModel(event: event, bookmark: bookmark)))
                 }
