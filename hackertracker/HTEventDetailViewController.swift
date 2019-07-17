@@ -84,7 +84,6 @@ class HTEventDetailViewController: UIViewController {
         twitterStackView.isHidden = true
         
         eventTitleLabel.text = event.title
-        
         getSpeakers()
         setupSpeakerNames()
         

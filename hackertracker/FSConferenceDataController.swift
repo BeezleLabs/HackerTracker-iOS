@@ -11,8 +11,8 @@ import Foundation
 import Firebase
 
 class UpdateToken {
-    fileprivate let collectionValue : Any;
-    fileprivate init (_ collection : Any) {
+    let collectionValue : Any;
+    init (_ collection : Any) {
         collectionValue = collection;
     }
 }
@@ -68,14 +68,18 @@ class FSConferenceDataController {
         }
         
         let bookmarksQuery = document(forConference: conference).collection("users").document(user.uid).collection("bookmarks").whereField("id", isEqualTo: String(eventId))
-        let bookmarksToken = Collection<Bookmark>(query: bookmarksQuery)
-        bookmarksToken.listen { (changes) in
-            bookmark = bookmarksToken.items.first
-            if let event = event, let bookmark = bookmark {
-                updateHandler(Result<UserEventModel, Error>.success(UserEventModel(event: event, bookmark: bookmark)))
+        
+        let bookmarksToken = AnonymousSession.shared.requestFavorites { (result) in
+            switch result {
+            case .success(let bookmarks):
+                bookmark = bookmarks.first
+                if let event = event, let bookmark = bookmark {
+                    updateHandler(Result<UserEventModel, Error>.success(UserEventModel(event: event, bookmark: bookmark)))
+                }
+            case .failure(_):
+                NSLog("TODO Error")
             }
         }
-        
         
         return UpdateToken([events, bookmarksToken]);
         
@@ -165,12 +169,15 @@ class FSConferenceDataController {
             return UpdateToken(eventsToken)
         }
         
-        let bookmarksQuery = document(forConference: conference).collection("users").document(user.uid).collection("bookmarks")
-        let bookmarksToken = Collection<Bookmark>(query: bookmarksQuery)
-        bookmarksToken.listen { (changes) in
-            bookmarks = bookmarksToken.items
-            if let events = events, let bookmarks = bookmarks {
-                updateHandler(Result<[UserEventModel], Error>.success(self.createUserEvents(events: events, bookmarks: bookmarks)))
+        let bookmarksToken = AnonymousSession.shared.requestFavorites { (result) in
+            switch result {
+            case .success(let updatedBookmarks):
+                bookmarks = updatedBookmarks
+                if let events = events, let bookmarks = bookmarks {
+                    updateHandler(Result<[UserEventModel], Error>.success(self.createUserEvents(events: events, bookmarks: bookmarks)))
+                }
+            case .failure(_):
+                NSLog("TODO Error")
             }
         }
         
