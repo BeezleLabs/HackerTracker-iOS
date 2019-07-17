@@ -202,7 +202,7 @@ class HTEventDetailViewController: UIViewController {
             let whoParagraphStyle = NSMutableParagraphStyle()
             whoParagraphStyle.alignment = .left
             whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.name as NSString).length))
-            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "BeBasNeue", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (s.name as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 17.0, weight: .bold), range: NSRange(location: 0, length: (s.name as NSString).length))
             whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (s.name as NSString).length))
             speakerList.append(whoAttributedString)
         }
@@ -236,21 +236,21 @@ class HTEventDetailViewController: UIViewController {
                 let whoParagraphStyle = NSMutableParagraphStyle()
                 whoParagraphStyle.alignment = .left
                 whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "BeBasNeue", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 17.0, weight: .bold), range: NSRange(location: 0, length: (n as NSString).length))
                 whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (n as NSString).length))
                 
                 let titleAttributedString = NSMutableAttributedString(string:t)
                 let titleParagraphStyle = NSMutableParagraphStyle()
                 titleParagraphStyle.alignment = .left
                 titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "BeBasNeue", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
+                titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
                 titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
                 
                 let bioAttributedString = NSMutableAttributedString(string:d)
                 let bioParagraphStyle = NSMutableParagraphStyle()
                 bioParagraphStyle.alignment = .left
                 bioAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "Larsseit", size: 14)!, range: NSRange(location: 0, length: (d as NSString).length))
+                bioAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14.0), range: NSRange(location: 0, length: (d as NSString).length))
                 bioAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
                 
                 

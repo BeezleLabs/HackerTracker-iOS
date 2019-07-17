@@ -324,9 +324,16 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     
     var showSectionIndexTitles = false
     
+    //Floating button stuff
+    private var filterButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getEventTypes()
+        self.filterButton = UIButton(type: .custom)
+        self.filterButton.setTitleColor(UIColor.orange, for: .normal)
+        self.filterButton.addTarget(self, action: #selector(filterClick(sender:)), for: UIControl.Event.touchUpInside)
+        self.navigationController?.view.addSubview(filterButton)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -337,11 +344,42 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         tableView.backgroundColor = UIColor.backgroundGray
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.filterButton.removeFromSuperview()
+        }
+        super.viewWillDisappear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        filterButton.layer.cornerRadius = filterButton.layer.frame.size.width/2
+        filterButton.backgroundColor = UIColor.black
+        filterButton.clipsToBounds = true
+        filterButton.setImage(UIImage(named:"filter"), for: .normal)
+        filterButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            filterButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            filterButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
+            filterButton.widthAnchor.constraint(equalToConstant: 50),
+            filterButton.heightAnchor.constraint(equalToConstant: 50)])
+    }
+    
+    @objc func filterClick(sender: AnyObject) {
+        let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
+        fvc.delegate = self
+        fvc.all = alltypes
+        fvc.filtered = filteredtypes
+        present(fvc, animated:false, completion:nil)
+    }
+    
     func getEventTypes() {
         typesToken = FSConferenceDataController.shared.requestEventTypes(forConference: AnonymousSession.shared.currentConference!) { (result) in
             switch result {
             case .success(let typeList):
                 self.alltypes.append(contentsOf: typeList)
+                self.filteredtypes.append(contentsOf: typeList)
             case .failure(let _):
                 NSLog("")
             }

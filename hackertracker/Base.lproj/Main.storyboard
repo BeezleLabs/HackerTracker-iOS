@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="au4-zG-Z3M">
-                                <rect key="frame" x="0.0" y="325.5" width="375" height="16"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="rly-3y-2nK">
-                                <rect key="frame" x="0.0" y="0.0" width="375.00000000000011" height="227"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="242.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="peP-Pp-qx0"/>
@@ -96,7 +96,7 @@
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="skw-9w-8jM">
-                                <rect key="frame" x="87.5" y="237" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="252.5" width="200" height="200"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="o4M-Xc-Ytc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -372,7 +372,7 @@
                     <navigationItem key="navigationItem" id="eTb-OG-eb5">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="DwL-hS-fxa">
-                            <rect key="frame" x="127" y="7.5" width="121" height="30"/>
+                            <rect key="frame" x="127" y="7" width="121" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="First"/>
@@ -1031,20 +1031,11 @@
                 <viewController storyboardIdentifier="HTScheduleTableViewController" id="5pr-J2-42a" customClass="HTScheduleTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="EVENTS" id="8kR-GY-6Ub">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="aTB-Lb-iTY">
-                                <connections>
-                                    <segue destination="iF5-Ag-ncp" kind="show" id="81H-HJ-zJl"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="filterBarButton" image="filter" springLoaded="YES" id="gfv-7C-SKb">
-                                <connections>
-                                    <segue destination="YXH-5x-qfI" kind="popoverPresentation" identifier="filterSegue" popoverAnchorBarButtonItem="gfv-7C-SKb" id="EAc-HP-ROo">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="aTB-Lb-iTY">
+                            <connections>
+                                <segue destination="iF5-Ag-ncp" kind="show" id="81H-HJ-zJl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="nGb-HO-gXP" kind="presentation" identifier="eventDetailSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="flipHorizontal" id="a0t-7o-Cnk"/>
@@ -1464,7 +1455,7 @@
         <image name="external_link" width="30" height="30"/>
         <image name="faq" width="40" height="40"/>
         <image name="filter" width="40" height="40"/>
-        <image name="header" width="426.5" height="227"/>
+        <image name="header" width="375" height="242.5"/>
         <image name="icon_demo" width="30" height="30"/>
         <image name="icon_exploit" width="30" height="30"/>
         <image name="icon_tool" width="30" height="30"/>
@@ -1482,7 +1473,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
-        <segue reference="M7t-3x-HF9"/>
+        <segue reference="a0t-7o-Cnk"/>
         <segue reference="XQt-9W-ade"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
