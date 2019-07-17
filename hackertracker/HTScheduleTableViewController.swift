@@ -22,7 +22,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var updated : [String] = []
     var later : [String] = []
     
-    var eventTokens : [UpdateToken] = []
+    var eventTokens : [UpdateToken?] = []
 
 
     var pullDownAnimation: PongScene?
@@ -84,35 +84,73 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
         }
         
+        NSLog("Anonymous session has \(AnonymousSession.shared.events.count) events in it")
+        
         if eventSections.count > 0 {
             eventSections.removeAll()
+        }
+        if allEventSections.count > 0 {
+            allEventSections.removeAll()
         }
         
         let dfu = DateFormatterUtility.shared
         let conference = AnonymousSession.shared.currentConference!
         if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
+            var k = 0
             for day in dfu.getConferenceDates(start: start, end: end) {
-                var events : [UserEventModel] = []
-                let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
-                    switch result {
-                    case .success(let eventList):
-                        events.append(contentsOf: eventList)
-                        //NSLog("Got \(eventList.count) events for \(c.code):\(c.id)")
-                        if events.count > 0 {
-                            self.eventSections.append((date: day, events: events))
-                            self.allEventSections.append((date: day, events: events))
-                        }
-                        for event in events {
-                            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event.event, isFavorite: true, session: AnonymousSession.shared, updateHandler: { (error) in
+                if eventTokens.indices.contains(k) {
+                    //
+                } else {
+                    let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
+                        switch result {
+                        case .success(let eventList):
+                            //events.append(contentsOf: eventList)
+                            NSLog("Got \(eventList.count) events for \(conference.code):\(conference.id)")
+                            if eventList.count > 0 {
+                                var newDay = true
+                                var i = 0
+                                for es in self.eventSections {
+                                    if es.date == day {
+                                        self.eventSections.remove(at: i)
+                                        self.eventSections.insert((date: day, events: eventList), at: i)
+                                        newDay = false
+                                    }
+                                    i = i + 1
+                                }
                                 
-                            })
+                                if newDay {
+                                    self.eventSections.append((date: day, events: eventList))
+                                }
+                                
+                                newDay = true
+                                i = 0
+                                for aes in self.allEventSections {
+                                    if aes.date == day {
+                                        self.allEventSections.remove(at: i)
+                                        self.allEventSections.insert((date: day, events: eventList), at: i)
+                                        newDay = false
+                                    }
+                                    i = i + 1
+                                }
+                                if newDay {
+                                    self.allEventSections.append((date: day, events: eventList))
+                                }
+                                //self.eventSections.append((date: day, events: events))
+                                //self.allEventSections.append((date: day, events: events))
+                            }
+                            /*for event in events {
+                                FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event.event, isFavorite: true, session: AnonymousSession.shared, updateHandler: { (error) in
+                             
+                                })
+                            }*/
+                            self.tableView.reloadData()
+                        case .failure(let _):
+                            NSLog("")
                         }
-                        self.tableView.reloadData()
-                    case .failure(let _):
-                        NSLog("")
                     }
+                    eventTokens.append(dayToken)
                 }
-                eventTokens.append(dayToken)
+                k = k + 1
             }
         }
         
@@ -293,7 +331,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadEvents()
+        //reloadEvents()
         
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class AnonymousSession {
     
@@ -19,8 +20,10 @@ class AnonymousSession {
     
     static private(set) var shared : AnonymousSession!
     static private var conferencesToken : UpdateToken?
+    private var eventsToken: UpdateToken?
     private var bookmarksToken : UpdateToken?
     private var bookmarks : [Bookmark]?
+    var events : [UserEventModel] = []
 
     var currentConference : ConferenceModel! {
         didSet {
@@ -69,6 +72,38 @@ class AnonymousSession {
             for weakContainer in self.currentFavoritesUpdates {
                 if let updateToken = weakContainer.content, let block = updateToken.collectionValue as? FavoritesUpdater {
                     block(result);
+                }
+            }
+        }
+        
+        self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: currentConference, descending: false) { (result) in
+            switch result {
+            case .success(let eventsList):
+                self.events.removeAll()
+                self.events.append(contentsOf: eventsList)
+            case .failure(let _):
+                NSLog("")
+            }
+        }
+        
+        let fm = FileManager.default
+        let docDir = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let storageRef = FSConferenceDataController.shared.storage.reference()
+
+        for m in currentConference.maps {
+            let path = "\(currentConference.code)/\(m.file)"
+            let mRef = storageRef.child(path)
+            let mLocal = docDir.appendingPathComponent(path)
+            if fm.fileExists(atPath: mLocal.path) {
+                // TODO: Add logic to check md5 hash and re-update if it has changed
+                //NSLog("Map file (\(path)) already exists")
+            } else {
+                _ = mRef.write(toFile: mLocal) { url, error in
+                    if let error = error {
+                        NSLog("Error \(error) retrieving \(path)")
+                    } else {
+                        NSLog("Got map \(path)")
+                    }
                 }
             }
         }
