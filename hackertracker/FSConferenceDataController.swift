@@ -9,6 +9,7 @@
 import Foundation
 
 import Firebase
+import FirebaseStorage
 
 class UpdateToken {
     let collectionValue : Any;
