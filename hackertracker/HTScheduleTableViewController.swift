@@ -83,9 +83,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         if let selectedIndexPath = selectedIndexPath {
             event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
         }
-        
-        NSLog("Anonymous session has \(AnonymousSession.shared.events.count) events in it")
-        
+                
         if eventSections.count > 0 {
             eventSections.removeAll()
         }

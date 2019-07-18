@@ -20,10 +20,8 @@ class AnonymousSession {
     
     static private(set) var shared : AnonymousSession!
     static private var conferencesToken : UpdateToken?
-    private var eventsToken: UpdateToken?
     private var bookmarksToken : UpdateToken?
     private var bookmarks : [Bookmark]?
-    var events : [UserEventModel] = []
 
     var currentConference : ConferenceModel! {
         didSet {
@@ -75,17 +73,7 @@ class AnonymousSession {
                 }
             }
         }
-        
-        self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: currentConference, descending: false) { (result) in
-            switch result {
-            case .success(let eventsList):
-                self.events.removeAll()
-                self.events.append(contentsOf: eventsList)
-            case .failure(let _):
-                NSLog("")
-            }
-        }
-        
+
         let fm = FileManager.default
         let docDir = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let storageRef = FSConferenceDataController.shared.storage.reference()
