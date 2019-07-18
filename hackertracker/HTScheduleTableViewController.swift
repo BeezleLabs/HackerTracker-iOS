@@ -40,7 +40,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         super.viewWillAppear(animated)
 
         if isViewLoaded && !animated  {
-            reloadEvents()
+            self.reloadEvents()
 
             if let lastContentOffset = lastContentOffset {
                 tableView.contentOffset = lastContentOffset
