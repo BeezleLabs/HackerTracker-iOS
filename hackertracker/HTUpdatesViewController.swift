@@ -224,7 +224,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 
         let headerLabel = UILabel(frame: CGRect(x: 25, y: 0, width:
             tableView.bounds.size.width, height: tableView.bounds.size.height))
-        headerLabel.font = UIFont(name: "Larsseit", size: 14)
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .body)
         headerLabel.textColor = UIColor.lightGray
         headerLabel.text = eventSections[section].uppercased()
         headerLabel.sizeToFit()

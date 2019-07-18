@@ -55,7 +55,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         if pullDownAnimation == nil {
             refreshControl = UIRefreshControl()
             let attr: Dictionary = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
-            refreshControl?.attributedTitle = NSAttributedString(string: "Sync", attributes: attr)
+            refreshControl?.attributedTitle = NSAttributedString(string: "Pong", attributes: attr)
             refreshControl?.tintColor = .clear
             refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControl.Event.valueChanged)
 
@@ -308,6 +308,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
     
     @objc func timerComplete() {
+        self.refreshControl?.endRefreshing()
         pullDownAnimation?.reset()
     }
 
@@ -325,13 +326,11 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     var showSectionIndexTitles = false
     
     //Floating button stuff
-    private var filterButton = UIButton()
+    private var filterButton = UIButton(type: .custom)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getEventTypes()
-        self.filterButton = UIButton(type: .custom)
-        self.filterButton.setTitleColor(UIColor.orange, for: .normal)
         self.filterButton.addTarget(self, action: #selector(filterClick(sender:)), for: UIControl.Event.touchUpInside)
         self.navigationController?.view.addSubview(filterButton)
     }
@@ -339,6 +338,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //reloadEvents()
+        self.filterButton.isHidden = false
+        self.filterButton.isUserInteractionEnabled = true
         
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
@@ -346,7 +347,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     
     override func viewWillDisappear(_ animated: Bool) {
         DispatchQueue.main.async {
-            self.filterButton.removeFromSuperview()
+            self.filterButton.isHidden = true
+            self.filterButton.isUserInteractionEnabled = false
         }
         super.viewWillDisappear(animated)
     }

@@ -56,7 +56,7 @@ class HTFAQTableViewController: UITableViewController {
             string: body,
             attributes: [
                 NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                NSAttributedString.Key.font: UIFont(name: "Larsseit", size: 14)!,
+                NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
                 NSAttributedString.Key.foregroundColor : UIColor.black
             ]
         )

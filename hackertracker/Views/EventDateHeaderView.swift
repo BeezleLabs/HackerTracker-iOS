@@ -26,7 +26,7 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         dateLabel.backgroundColor = UIColor.backgroundGray
         dateLabel.layer.borderColor = UIColor.lightGray.cgColor
         dateLabel.layer.borderWidth = 0.5
-        dateLabel.font = UIFont(name: "Larsseit", size: 14)
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .body)
     }
     
     required public init?(coder aDecoder: NSCoder) {

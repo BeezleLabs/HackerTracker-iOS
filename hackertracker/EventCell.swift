@@ -17,10 +17,11 @@ public class EventCell : UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
-    @IBOutlet weak var time: UILabel!
     @IBOutlet weak var color: UIView!
     @IBOutlet weak var et_label: UILabel!
     @IBOutlet weak var favorited: UIImageView!
+    @IBOutlet weak var starttime: UILabel!
+    @IBOutlet weak var et_dot: UIView!
     
     weak var eventCellDelegate : EventCellDelegate? 
     var userEvent: UserEventModel?
@@ -49,29 +50,23 @@ public class EventCell : UITableViewCell {
         let oldColor = color.backgroundColor
         super.setSelected(selected, animated: animated)
         color.backgroundColor = oldColor
-        et_label.layer.backgroundColor = oldColor?.cgColor
-        et_label.backgroundColor = oldColor
+        //et_label.layer.backgroundColor = oldColor?.cgColor
+        //et_label.backgroundColor = oldColor
     }
 
     override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
         let oldColor = color.backgroundColor
         super.setHighlighted(highlighted, animated: animated)
         color.backgroundColor = oldColor
-        et_label.layer.backgroundColor = oldColor?.cgColor
-        et_label.backgroundColor = oldColor
+        //et_label.layer.backgroundColor = oldColor?.cgColor
+        //et_label.backgroundColor = oldColor
     }
 
     func bind(userEvent : UserEventModel) {
         self.userEvent = userEvent
         let event = userEvent.event
-        var eventTime = "TBD"
         let dfu = DateFormatterUtility.shared
-        eventTime = dfu.dayOfWeekTimeFormatter.string(from:event.beginDate) + "-"
-        if Calendar.current.isDate(event.endDate, inSameDayAs: event.beginDate) {
-            eventTime = eventTime + dfu.hourMinuteTimeFormatter.string(from: event.endDate)
-        } else {
-            eventTime = eventTime + dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
-        }
+        starttime.text = dfu.hourMinuteTimeFormatter.string(from: event.beginDate)
 
         var i = 0
         var stext = ""
@@ -89,7 +84,7 @@ public class EventCell : UITableViewCell {
         let titleParStyle = NSMutableParagraphStyle()
         titleParStyle.alignment = .left
         titleAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParStyle, range: NSRange(location: 0, length: (event.title as NSString).length))
-        titleAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold), range: NSRange(location: 0, length: (event.title as NSString).length))
+        titleAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3), range: NSRange(location: 0, length: (event.title as NSString).length))
         
         titleAttr.append(titleAttrString)
         
@@ -98,22 +93,25 @@ public class EventCell : UITableViewCell {
             let spParStyle = NSMutableParagraphStyle()
             spParStyle.alignment = .left
             spAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: spParStyle, range: NSRange(location: 0, length: (stext as NSString).length))
-            spAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.medium), range: NSRange(location: 0, length: (stext as NSString).length))
+            spAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (stext as NSString).length))
             titleAttr.append(NSAttributedString(string:"\n"))
             titleAttr.append(spAttrString)
         }
 
         title.attributedText = titleAttr
 
-        color.backgroundColor = UIColor(hexString: (event.type.color))
-        et_label.layer.borderColor = UIColor(hexString: event.type.color).cgColor
-        et_label.layer.borderWidth = 1.0
-        et_label.backgroundColor = UIColor(hexString: event.type.color)
+        color.backgroundColor = UIColor(hexString: event.type.color)
+        et_dot.backgroundColor = UIColor(hexString: event.type.color)
+        et_dot.layer.cornerRadius = et_dot.frame.width/2
+        et_dot.layer.masksToBounds = true
+        //et_label.layer.borderColor = UIColor(hexString: event.type.color).cgColor
+        //et_label.layer.borderWidth = 1.0
+        //et_label.backgroundColor = UIColor(hexString: event.type.color)
         et_label.text = " \(event.type.name) "
-        et_label.layer.masksToBounds = true
-        et_label.layer.cornerRadius = 5
+        //et_label.layer.masksToBounds = true
+        //et_label.layer.cornerRadius = 5
             
-        subtitle.text = "| \(event.location.name)"
+        subtitle.text = "\(event.location.name)"
 
         
         if userEvent.bookmark.value {
@@ -130,7 +128,6 @@ public class EventCell : UITableViewCell {
         favorited.addGestureRecognizer(tr)
         favorited.isUserInteractionEnabled = true
 
-        time.text = eventTime
     }
     
     @objc func tappedStar(sender: AnyObject) {
