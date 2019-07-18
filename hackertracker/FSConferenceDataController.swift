@@ -20,10 +20,12 @@ class UpdateToken {
 class FSConferenceDataController {
     static let shared = FSConferenceDataController()
     var db: Firestore
+    var storage: Storage
     let conferenceQuery : Query?
     
     init() {
         db = Firestore.firestore()
+        storage = Storage.storage()
         conferenceQuery = db.collection("conferences")
     }
     
