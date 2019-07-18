@@ -38,7 +38,7 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
                         let range = dayDate...(dayDate.addingTimeInterval(86400))
                         for e in eventsList {
                             if e.bookmark.value, range.contains(e.event.beginDate)  {
-                                NSLog("Adding \(e.event.title) to this schedule")
+                                //NSLog("Adding \(e.event.title) to this schedule")
                                 events.append(e)
                             } else {
                                 //NSLog("\(e.event.title) not bookmarked")
