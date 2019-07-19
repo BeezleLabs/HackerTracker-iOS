@@ -102,7 +102,7 @@ extension HTLocationModel : Document {
     }
 }
 
-struct HTSpeaker : Codable {
+struct HTSpeaker : Codable, Equatable {
     var id : Int
     var conferenceName : String
     var description : String
@@ -111,6 +111,14 @@ struct HTSpeaker : Codable {
     var title : String
     var twitter : String
     var events: [HTEventModel]
+    
+    static func ==(lhs: HTSpeaker, rhs: HTSpeaker) -> Bool {
+        if lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 extension HTSpeaker : Document {

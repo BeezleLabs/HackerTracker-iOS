@@ -33,10 +33,10 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     //This is a mapping of tabs to vcs
     let tabs = [
                 "Home" : "HTUpdatesViewController",
-                "Events" : "HTScheduleTableViewController",
-                "Speakers": "HTSpeakersTableViewController",
-                "My Schedule" : "HTMyScheduleTableViewController",
+                "Schedule" : "HTScheduleTableViewController",
+                "Bookmarked" : "HTMyScheduleTableViewController",
                 "Map" : "HTMapsViewController",
+                "Speakers": "HTSpeakersTableViewController",
                 "Conferences": "HTConferenceTableViewController",
                 "News" : "HTNewsTableViewController",
                 "Vendors": "HTVendorTableViewController",
@@ -47,10 +47,10 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     //This is a list of tabs we will display in the hamburger menu
     let displayedTabs = [
         HamburgerItem(title:"Home", imageID:"skull-active"),
-        HamburgerItem(title:"Events", imageID:"calendar-active"),
-        HamburgerItem(title:"Speakers", imageID:"icon_user"),
-        HamburgerItem(title:"My Schedule", imageID:"star_active"),
+        HamburgerItem(title:"Schedule", imageID:"calendar-active"),
+        HamburgerItem(title:"Bookmarked", imageID:"star_active"),
         HamburgerItem(title:"Map", imageID:"map-active"),
+        HamburgerItem(title:"Speakers", imageID:"icon_user"),
         HamburgerItem(title:"Conferences", imageID: "filter"),
         HamburgerItem(title:"News", imageID:"news"),
         HamburgerItem(title:"Vendors", imageID: "vendor"),

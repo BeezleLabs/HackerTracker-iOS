@@ -144,6 +144,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
             eventController.event = event.event
             eventController.bookmark = event.bookmark
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
             self.navigationController?.pushViewController(eventController, animated: true)
         }
     }

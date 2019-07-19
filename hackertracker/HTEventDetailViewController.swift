@@ -83,7 +83,7 @@ class HTEventDetailViewController: UIViewController {
         
         eventTitleLabel.text = event.title
         getSpeakers()
-        
+        setupSpeakerNames()
         eventLocationLabel.text = event.location.name
         
         eventTypeLabel.layer.borderColor = UIColor(hexString: event.type.color).cgColor
@@ -145,6 +145,7 @@ class HTEventDetailViewController: UIViewController {
             eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
         }
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -187,7 +188,11 @@ class HTEventDetailViewController: UIViewController {
                 let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: s.id) { (result) in
                     switch result {
                     case .success(let speaker):
-                        self.speakers.append(speaker)
+                        if self.speakers.contains(speaker) {
+                            //NSLog("Speaker \(speaker.name) is already in the list")
+                        } else {
+                            self.speakers.append(speaker)
+                        }
                         self.setupSpeakerNames()
                     case .failure(let _):
                         NSLog("")
@@ -204,6 +209,7 @@ class HTEventDetailViewController: UIViewController {
         eventNameLabel.textColor = UIColor(hexString: "#98b7e1")
         
         eventNameLabel.text = ""
+        speakerList = NSMutableAttributedString(string: "")
         for s in event!.speakers {
             if (s.id != event!.speakers.first!.id) {
                 speakerList.append(NSAttributedString(string:", "))
@@ -230,6 +236,12 @@ class HTEventDetailViewController: UIViewController {
             eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
             eventNameLabel.layer.borderWidth = 0.5
             eventNameLabel.layer.cornerRadius = 5
+        }
+        
+        if (event?.speakers.count)! > 0 {
+            eventNameLabel.isHidden = false
+        } else {
+            eventNameLabel.isHidden = true
         }
     }
     
