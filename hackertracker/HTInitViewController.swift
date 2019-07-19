@@ -8,18 +8,22 @@
 
 import UIKit
 import CoreData
+import Firebase
 
-class HTInitViewController: UIViewController {
+class HTInitViewController: UIViewController, HTConferenceTableViewControllerDelegate {
 
     @IBOutlet weak var splashView: UIImageView!
     let hackerAnimationDuration = 2.0
 
     private var timerUp = false
     private var importComplete = false
+    private var token : AnyObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FirebaseApp.configure()
+
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
         let dfu = DateFormatterUtility.shared
@@ -27,43 +31,38 @@ class HTInitViewController: UIViewController {
             dfu.update(identifier: tz)
         }
         
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Status")
-        fr.returnsObjectsAsFaults = false
-        
-        let status = try! context.fetch(fr) as! [Status]
-
-        let timeBeforeSegue = hackerAnimationDuration
         playAnimation()
-
-        if status.count < 1 {
-            NSLog("Database not setup, preloading with initial schedule")
-            self.loadData()
-            do {
-                try DataImportManager(managedContext: context).setSyncDate(Date())
-                try context.save()
-            } catch {
-                NSLog("Error setting sync date: \(error)")
-            }
-        } else {
-            importComplete = true
-        }
-
-        Timer.scheduledTimer(timeInterval: TimeInterval(timeBeforeSegue), target: self, selector: #selector(timerComplete), userInfo: nil, repeats: false)
     }
     
-    func loadData() {
-            let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-            let db = delegate.db!
-        
-            let conferences = db.collection("conferences").getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadCon()
+    }
+    
+    func loadCon() {
+        if let conCode = UserDefaults.standard.string(forKey: "conference") {
+            AnonymousSession.initialize(conCode: conCode) { (session) in
+                if let _ = session {
+                    self.timerComplete()
                 } else {
-                    for document in querySnapshot!.documents {
-                        NSLog("\(document.documentID) => \(document.data())")
-                    }
+                    self.displayConferencePicker()
                 }
             }
+        } else {
+            displayConferencePicker()
+        }
+    }
+    
+    func displayConferencePicker() {
+        if let currentViewController = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as? HTConferenceTableViewController {
+            currentViewController.delegate = self
+            self.present(currentViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func didSelect(conference: ConferenceModel) {
+        self.dismiss(animated: true, completion: nil);
+        loadCon()
     }
     
     @objc func timerComplete() {
@@ -80,7 +79,7 @@ class HTInitViewController: UIViewController {
     }
 
     func go() {
-        if importComplete && timerUp {
+        if timerUp {
             self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
         }
     }

@@ -19,13 +19,17 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     @IBOutlet weak var skullBackground: UIImageView!
     @IBOutlet weak var conName: UILabel!
 
-    var messages: [Article] = []
+    var messages: [HTArticleModel] = []
     var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now", "About"]
-    var starred: [Event] = []
-    var upcoming: [Event] = []
-    var liveNow: [Event] = []
+    var starred: [UserEventModel] = []
+    var upcoming: [UserEventModel] = []
+    var liveNow: [UserEventModel] = []
     var data = NSMutableData()
-    var myCon: Conference?
+    var conferencesToken : UpdateToken?
+    var upcomingEventsToken : UpdateToken?
+    var starredEventsToken : UpdateToken?
+    var liveEventsToken : UpdateToken?
+    var articlesToken : UpdateToken?
     var lastContentOffset: CGPoint?
     var rick: Int = 0
 
@@ -33,26 +37,19 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
         
-        if let con = DataRequestManager(managedContext: context).getSelectedConference() {
-            if let name = con.name {
-                self.title = name
-            }
-        }
-
-        updatesTableView.rowHeight = UITableViewAutomaticDimension
+        updatesTableView.rowHeight = UITableView.automaticDimension
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
         updatesTableView.register(UINib.init(nibName: "AboutCell", bundle: nil), forCellReuseIdentifier: "AboutCell")
-
+        
         updatesTableView.delegate = self
         updatesTableView.dataSource = self
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
-        reloadEvents()
+        
+        self.title = AnonymousSession.shared.currentConference.name
+        self.reloadEvents()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -78,38 +75,54 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     }
 
     func reloadEvents() {
-        guard let myCon = DataRequestManager(managedContext: getContext()).getSelectedConference() else {
-            NSLog("No conference selected")
-            return
+        //let curTime = Date()
+        let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
+        starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.starred = []
+                eLoop: for e in eventList {
+                    if self.starred.count > 2 {
+                        break eLoop
+                    } else {
+                        if e.bookmark.value {
+                            self.starred.append(e)
+                        }
+                    }
+                }
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
         }
-        let fr:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Article")
-        fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
-        fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [myCon])
-        fr.returnsObjectsAsFaults = false
-        fr.fetchLimit = 2
-        self.messages = (try! getContext().fetch(fr)) as! [Article]
-
-        let frs:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        frs.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        frs.predicate = NSPredicate(format: "conference = %@ and start_date > %@ and starred = %@", argumentArray: [myCon, Date(), true])
-        frs.returnsObjectsAsFaults = false
-        frs.fetchLimit = 3
-        self.starred = (try! getContext().fetch(frs)) as! [Event]
-
-        let fru:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        fru.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        fru.predicate = NSPredicate(format: "conference = %@ and start_date > %@", argumentArray: [myCon, Date()])
-        fru.returnsObjectsAsFaults = false
-        fru.fetchLimit = 3
-        self.upcoming = (try! getContext().fetch(fru)) as! [Event]
         
-        let curTime = Date()
-        let frl:NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-        frl.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-        frl.predicate = NSPredicate(format: "conference = %@ and start_date <= %@ and end_date >= %@", argumentArray: [myCon, curTime, curTime])
-        frl.returnsObjectsAsFaults = false
-        self.liveNow = (try! getContext().fetch(frl)) as! [Event]
-
+        upcomingEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, startDate: curTime, limit: 3) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.upcoming = eventList
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
+        }
+        liveEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, endDate: curTime, limit: 3, descending: true) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.liveNow = eventList
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
+        }
+        articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, limit: 2, descending: true) { (result) in
+            switch result {
+            case .success(let articles):
+                self.messages = articles
+                self.updatesTableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
+        }
     }
     
     func updatedEvents() {
@@ -130,11 +143,14 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
             if let indexPath = sender as? IndexPath {
                 if indexPath.section == 1 {
-                    dv.event = self.starred[indexPath.row]
+                    dv.event = self.starred[indexPath.row].event
+                    dv.bookmark = self.starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    dv.event = self.upcoming[indexPath.row]
+                    dv.event = self.upcoming[indexPath.row].event
+                    dv.bookmark = self.upcoming[indexPath.row].bookmark
                 } else if indexPath.section == 3 {
-                    dv.event = self.liveNow[indexPath.row]
+                    dv.event = self.liveNow[indexPath.row].event
+                    dv.bookmark = self.liveNow[indexPath.row].bookmark
                 }
             }
 
@@ -161,8 +177,8 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 1 {
             if starred.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : Event = starred[indexPath.row]
-                cell.bind(event: event)
+                let event = starred[indexPath.row]
+                cell.bind(userEvent: event)
                 cell.eventCellDelegate = self
                 return cell
             } else {
@@ -174,8 +190,8 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 2 {
             if upcoming.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : Event = upcoming[indexPath.row]
-                cell.bind(event: event)
+                let event = upcoming[indexPath.row]
+                cell.bind(userEvent: event)
                 cell.eventCellDelegate = self
                 return cell
             } else {
@@ -187,8 +203,8 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 3 {
             if liveNow.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event : Event = liveNow[indexPath.row]
-                cell.bind(event: event)
+                let event = liveNow[indexPath.row]
+                cell.bind(userEvent: event)
                 cell.eventCellDelegate = self
                 return cell
             } else {
@@ -199,7 +215,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
         } else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
             if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                cell.versionLabel.setTitle("Hackertracker iOS v\(v) (\(b))", for: UIControlState.normal)
+                cell.versionLabel.setTitle("Hackertracker iOS v\(v) (\(b))", for: UIControl.State.normal)
             }
             cell.aboutDelegate = self
             return cell
@@ -218,7 +234,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 
         let headerLabel = UILabel(frame: CGRect(x: 25, y: 0, width:
             tableView.bounds.size.width, height: tableView.bounds.size.height))
-        headerLabel.font = UIFont(name: "Larsseit", size: 14)
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .body)
         headerLabel.textColor = UIColor.lightGray
         headerLabel.text = eventSections[section].uppercased()
         headerLabel.sizeToFit()
@@ -266,11 +282,14 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             || ( indexPath.section == 3 && liveNow.count > 0 ) {
             if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
                 if indexPath.section == 1 {
-                    eventController.event = self.starred[indexPath.row]
+                    eventController.event = self.starred[indexPath.row].event
+                    eventController.bookmark = self.starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    eventController.event = self.upcoming[indexPath.row]
+                    eventController.event = self.upcoming[indexPath.row].event
+                    eventController.bookmark = self.upcoming[indexPath.row].bookmark
                 } else if indexPath.section == 3 {
-                    eventController.event = self.liveNow[indexPath.row]
+                    eventController.event = self.liveNow[indexPath.row].event
+                    eventController.bookmark = self.liveNow[indexPath.row].bookmark
                 }
                 self.navigationController?.pushViewController(eventController, animated: true)
             }
@@ -282,7 +301,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
 }

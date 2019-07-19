@@ -64,6 +64,19 @@ extension UIFont {
         }
     }
     
+    static var bebas: UIFont {
+        get {
+            guard let customFont = UIFont(name: "BeBasNeue", size: 20.0) else {
+                fatalError("Failed to load BeBas Neue font")
+            }
+            if #available(iOS 11.0, *) {
+                return UIFontMetrics.default.scaledFont(for: customFont)
+            } else {
+                return customFont
+            }
+        }
+    }
+    
     static var larseittBold: UIFont {
         get {
             guard let customFont = UIFont(name: "Larseitt Bold", size: 17.0) else {

@@ -37,7 +37,12 @@ class HTEventDetailViewController: UIViewController {
     var speakerList = NSMutableAttributedString(string: "")
 
     var delegate: EventDetailDelegate?
-    var event: Event?
+    var event: HTEventModel?
+    var bookmark : Bookmark?
+    var speakers: [HTSpeaker] = []
+    var speakerTokens : [UpdateToken] = []
+    var myCon: ConferenceModel?
+    var eventToken : UpdateToken?
     
     private let dataRequest = DataRequestManager(managedContext: getContext())
 
@@ -49,6 +54,26 @@ class HTEventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let _ = eventToken {
+            loadEvent()
+        } else {
+            if let event = event {
+                eventToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: event.id) { (result) in
+                    switch result {
+                    case .success(let retEvent):
+                        self.event = retEvent.event
+                        self.bookmark = retEvent.bookmark
+                        self.loadEvent()
+                    case .failure(let _):
+                        NSLog("")
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func loadEvent() {
         guard let event = event else {
             print("HTEventDetailViewController: Event is nil")
             return
@@ -59,79 +84,70 @@ class HTEventDetailViewController: UIViewController {
         twitterStackView.isHidden = true
         
         eventTitleLabel.text = event.title
+        getSpeakers()
+        setupSpeakerNames()
         
-        setupSpeakers(event: event)
+        eventLocationLabel.text = event.location.name
         
-        eventLocationLabel.text = event.location?.name
-        if let col = event.event_type?.color {
-            eventTypeLabel.layer.borderColor = UIColor(hexString: col).cgColor
-            eventTypeLabel.layer.backgroundColor = UIColor(hexString: col).cgColor
-        } else {
-            eventTypeLabel.layer.borderColor = UIColor.gray.cgColor
-            eventTypeLabel.layer.backgroundColor = UIColor.gray.cgColor
-        }
+        eventTypeLabel.layer.borderColor = UIColor(hexString: event.type.color).cgColor
+        eventTypeLabel.layer.backgroundColor = UIColor(hexString: event.type.color).cgColor
+        
         eventTypeLabel.layer.borderWidth = 1.0
-        if let n = event.event_type?.name {
-            eventTypeLabel.text = " \(n) "
-        } else {
-            eventTypeLabel.text = " TBD"
-        }
+        eventTypeLabel.text = " \(event.type.name) "
+        
         eventTypeLabel.layer.masksToBounds = true
         eventTypeLabel.layer.cornerRadius = 5
         
         
         /*if let l = event.location, let n = l.name {
-            locationMapView.currentLocation = Location.valueFromString(n)
-        } else {
-            locationMapView.currentLocation = .unknown
-        }
-        locationMapView.setup()*/
+         locationMapView.currentLocation = Location.valueFromString(n)
+         } else {
+         locationMapView.currentLocation = .unknown
+         }
+         locationMapView.setup()*/
         
-        eventDetailTextView.text = event.desc
-
-        if (event.starred) {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-        } else {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-        }
+        let eventAttributedString = NSMutableAttributedString(string:event.description)
+        let eventParagraphStyle = NSMutableParagraphStyle()
+        eventParagraphStyle.alignment = .left
+        eventAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: eventParagraphStyle, range: NSRange(location: 0, length: (event.description as NSString).length))
+        eventAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (event.description as NSString).length))
+        eventAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (event.description as NSString).length))
+        eventDetailTextView.attributedText = eventAttributedString
         
-        if let i = event.includes {
-            if !i.lowercased().contains("tool") { toolImage.isHidden = true }
-            if !i.lowercased().contains("demo") { demoImage.isHidden = true }
-            if !i.lowercased().contains("exploit") { exploitImage.isHidden = true }
-            if i != "" {
-                if let t = eventDetailTextView.text {
-                    eventDetailTextView.text = "\(t)\n\nIncludes: \(i.uppercased())"
-                }
+        if let bookmark = bookmark, bookmark.value == true {
+         eventStarredButton.image = #imageLiteral(resourceName: "star_active")
+         } else {
+         eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
+         }
+        
+        let i = event.includes
+        if !i.lowercased().contains("tool") { toolImage.isHidden = true }
+        if !i.lowercased().contains("demo") { demoImage.isHidden = true }
+        if !i.lowercased().contains("exploit") { exploitImage.isHidden = true }
+        if i != "" {
+            if let t = eventDetailTextView.text {
+                eventDetailTextView.text = "\(t)\n\nIncludes: \(i.uppercased())"
             }
         }
         
-        if let l = event.link {
-            if l == "" {
-                linkButton.isHidden = true
-                linkButton.isEnabled = false
-            } else {
-                linkButton.isEnabled = true
-            }
+        if event.links == "" {
+            linkButton.isHidden = true
+            linkButton.isEnabled = false
+        } else {
+            linkButton.isEnabled = true
         }
+        
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
         
         let dfu = DateFormatterUtility.shared
-        if let start = event.start_date, let end = event.end_date, let l = event.location?.name {
-            let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: start)
-            var eventEnd = ""
-            if Calendar.current.isDate(end, inSameDayAs: start) {
-                eventEnd = dfu.hourMinuteTimeFormatter.string(from: end)
-            } else {
-                eventEnd = dfu.dayOfWeekTimeFormatter.string(from: end)
-            }
-            eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
-        
-            //locationMapView.currentLocation = Location.valueFromString(l)
+        let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: event.beginDate)
+        var eventEnd = ""
+        if Calendar.current.isDate(event.endDate, inSameDayAs: event.beginDate) {
+            eventEnd = dfu.hourMinuteTimeFormatter.string(from: event.endDate)
         } else {
-            eventDateLabel.text = "To Be Announced"
+            eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
         }
-        
+        eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -164,71 +180,42 @@ class HTEventDetailViewController: UIViewController {
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
-    func setupSpeakers(event : Event) {
-        eventNameLabel.textColor = UIColor(hexString: "#98b7e1")
+    func getSpeakers() {
         
-        let speakers = event.speakers?.allObjects as! [Speaker]
-        
-        eventNameLabel.text = ""
-        
-        var i = 1
-        for s in speakers {
-            if (s != speakers.first) {
-                speakerList.append(NSAttributedString(string:", "))
-            }
-            
-            if let n = s.name, let t = s.title, let d = s.desc {
-                speakerList.append(NSAttributedString(string:n))
-                
-                let whoAttributedString = NSMutableAttributedString(string:n)
-                let whoParagraphStyle = NSMutableParagraphStyle()
-                whoParagraphStyle.alignment = .left
-                whoAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Bungee", size: 17) ?? UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: eventNameLabel.textColor, range: NSRange(location: 0, length: (n as NSString).length))
-                
-                let titleAttributedString = NSMutableAttributedString(string:t)
-                let titleParagraphStyle = NSMutableParagraphStyle()
-                titleParagraphStyle.alignment = .left
-                titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Bungee", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-                
-                let bioAttributedString = NSMutableAttributedString(string:d)
-                let bioParagraphStyle = NSMutableParagraphStyle()
-                bioParagraphStyle.alignment = .left
-                bioAttributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Larsseit", size: 14)!, range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
-                
-                
-                speakerBios.append(whoAttributedString)
-                speakerBios.append(NSAttributedString(string:"\n"))
-                speakerBios.append(titleAttributedString)
-                speakerBios.append(NSAttributedString(string:"\n\n"))
-                speakerBios.append(bioAttributedString)
-                if speakers.count > 1, i < speakers.count {
-                    speakerBios.append(NSAttributedString(string:"\n\n"))
-                }
-                
-                if let twitter = s.twitter {
-                    if twitter != "" {
-                        let twitButton = UIButton()
-                        twitButton.setTitle(twitter, for: .normal)
-                        twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
-                        twitButton.addTarget(self, action: #selector(twitterFollow), for: .touchUpInside)
-                        twitButton.titleLabel?.font = UIFont(name: "Larsseit", size: 14)
-                        twitButton.sizeToFit()
-                        twitterStackView.addArrangedSubview(twitButton)
-                    }
+        for s in event!.speakers {
+            let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: s.id) { (result) in
+                switch result {
+                case .success(let speaker):
+                    self.speakers.append(speaker)
+                case .failure(let _):
+                    NSLog("")
                 }
             }
-            i = i+1
+            speakerTokens.append(sToken)
         }
         
-        self.eventNameLabel.contentMode = UIViewContentMode.top
+    }
+    
+    func setupSpeakerNames() {
+        eventNameLabel.textColor = UIColor(hexString: "#98b7e1")
         
-        if speakers.count == 0 {
+        eventNameLabel.text = ""
+        for s in event!.speakers {
+            if (s.id != event!.speakers.first!.id) {
+                speakerList.append(NSAttributedString(string:", "))
+            }
+            let whoAttributedString = NSMutableAttributedString(string:s.name)
+            let whoParagraphStyle = NSMutableParagraphStyle()
+            whoParagraphStyle.alignment = .left
+            whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.name as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3), range: NSRange(location: 0, length: (s.name as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (s.name as NSString).length))
+            speakerList.append(whoAttributedString)
+        }
+        
+        eventNameLabel.contentMode = UIView.ContentMode.top
+        
+        if event!.speakers.count == 0 {
             speakerList = NSMutableAttributedString(string: "Anonymous")
             eventNameLabel.isHidden = true
         } else {
@@ -240,6 +227,66 @@ class HTEventDetailViewController: UIViewController {
             eventNameLabel.layer.borderWidth = 0.5
             eventNameLabel.layer.cornerRadius = 5
         }
+    }
+    
+    func setupSpeakers() {
+        
+        var i = 1
+        for s in speakers {
+            
+            let n = s.name
+            let t = s.title
+            let d = s.description
+                
+                let whoAttributedString = NSMutableAttributedString(string:n)
+                let whoParagraphStyle = NSMutableParagraphStyle()
+                whoParagraphStyle.alignment = .left
+                whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3) , range: NSRange(location: 0, length: (n as NSString).length))
+                whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (n as NSString).length))
+                
+                let titleAttributedString = NSMutableAttributedString(string:t)
+                let titleParagraphStyle = NSMutableParagraphStyle()
+                titleParagraphStyle.alignment = .left
+                titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
+                titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .subheadline), range: NSRange(location: 0, length: (t as NSString).length))
+                titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
+                
+                let bioAttributedString = NSMutableAttributedString(string:d)
+                let bioParagraphStyle = NSMutableParagraphStyle()
+                bioParagraphStyle.alignment = .left
+                bioAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
+                bioAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (d as NSString).length))
+                bioAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
+                
+                
+                speakerBios.append(whoAttributedString)
+                speakerBios.append(NSAttributedString(string:"\n"))
+            if t != "" {
+                speakerBios.append(titleAttributedString)
+                speakerBios.append(NSAttributedString(string:"\n\n"))
+            } else {
+                speakerBios.append(NSAttributedString(string:"\n"))
+            }
+                speakerBios.append(bioAttributedString)
+                if speakers.count > 1, i < speakers.count {
+                    speakerBios.append(NSAttributedString(string:"\n\n"))
+                }
+                
+                let twitter = s.twitter
+                if twitter != "" {
+                        let twitButton = UIButton()
+                        twitButton.setTitle(twitter, for: .normal)
+                        twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
+                        twitButton.addTarget(self, action: #selector(twitterFollow), for: .touchUpInside)
+                        twitButton.titleLabel?.font = UIFont(name: "Larsseit", size: 14)
+                        twitButton.sizeToFit()
+                        twitterStackView.addArrangedSubview(twitButton)
+                }
+            
+            
+            i = i+1
+        }
         
         //let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
         //touchGesture.minimumPressDuration = 0.0
@@ -249,6 +296,9 @@ class HTEventDetailViewController: UIViewController {
 
     @objc func expand() {
         if self.eventNameLabel.attributedText == speakerList {
+            if speakerBios.length < 1 {
+                setupSpeakers()
+            }
             self.eventNameLabel.attributedText = speakerBios
             twitterStackView.isHidden = false // TODO
             
@@ -286,88 +336,17 @@ class HTEventDetailViewController: UIViewController {
             }
         }
         
-        if (event.starred) {
-            event.starred = false
-            eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-            saveContext()
-            removeNotification(event)
-
-            reloadEvents()
-        } else {
-            
-            let _duplicates = dataRequest.findConflictingStarredEvents(event)
-            
-            if let duplicates = _duplicates, duplicates.count > 0
-            {
-                let duplicateTitles = duplicates.reduce("", { (result, event) -> String in
-                    
-                    if let t = event.title {
-                        if result == ""
-                        {
-                            return "• \(t)"
-                        }
-                        else
-                        {
-                            return result + "\n" + "• \(t)"
-                        }
-                    } else {
-                        return "• Title Not Found"
-                    }
-                    
-                })
-                
-                var alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd 'Title Not Found' to schedule?"
-                if let t = event.title {
-                    alertBody = "Duplicate event" + (duplicates.count > 1 ? "s" : "") + ":\n" + duplicateTitles +  "\n\nAdd " + "\'\(t)\'" + " to schedule?"
-                }
-                
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.alignment = NSTextAlignment.left
-                let messageText = NSMutableAttributedString(
-                    string: alertBody,
-                    attributes: [
-                        NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                        NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14)!,
-                        NSAttributedStringKey.foregroundColor : UIColor.black
-                    ]
-                )
-                
-                let alert : UIAlertController = UIAlertController(title: "Schedule Conflict", message:"", preferredStyle: UIAlertControllerStyle.alert)
-                alert.setValue(messageText, forKey: "attributedMessage")
-                
-                let yesItem : UIAlertAction = UIAlertAction(title: "Add Anyway", style: UIAlertActionStyle.default, handler: {
-                    (action:UIAlertAction) in
-                    event.starred = true
-                    self.eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-                    self.saveContext()
-                    scheduleNotification(at: (event.start_date?.addingTimeInterval(-600))!,event)
-                    self.reloadEvents()
-                })
-                
-                let noItem : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
-                {
-                    (action:UIAlertAction) in
-                })
-                
-                alert.addAction(yesItem)
-                alert.addAction(noItem)
-
-                self.present(alert, animated: true, completion: nil)
+        if let bookmark = bookmark {
+            //NSLog("Bookmark: \(bookmark.id) \(bookmark.value) to \(!bookmark.value)")
+            if bookmark.value {
+                removeNotification(event)
+            } else {
+                scheduleNotification(at: event.beginDate, event)
             }
-            else
-            {
-                event.starred = true
-                eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-                saveContext()
-                if let start = event.start_date {
-                    scheduleNotification(at: start.addingTimeInterval(-600),event)
-                }
-
-                reloadEvents()
+            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (error) in
+                
             }
-
         }
-
     }
 
     func reloadEvents() {
@@ -392,8 +371,9 @@ class HTEventDetailViewController: UIViewController {
     }
     
     @IBAction func followLink(_ sender: Any) {
-        if let e = event, let l = e.link {
-            if let u = URL(string: l) {
+        if let e = event {
+            
+            if let u = URL(string: e.links) {
                 let svc = SFSafariViewController(url: u)
                 svc.preferredBarTintColor = UIColor.backgroundGray
                 svc.preferredControlTintColor = UIColor.white
@@ -404,9 +384,9 @@ class HTEventDetailViewController: UIViewController {
     
     @IBAction func shareEvent(_ sender: Any) {
         let dfu = DateFormatterUtility.shared
-        if let e = event, let t = e.title, let l = e.location?.name, let start = e.start_date, let c = e.conference?.name {
-            let time = dfu.dayOfWeekTimeFormatter.string(from: start)
-            let item = "\(c): Attending '\(t)' on \(time) in \(l) #hackertracker"
+        if let e = event {
+            let time = dfu.dayOfWeekTimeFormatter.string(from: e.beginDate)
+            let item = "\(e.conferenceName): Attending '\(e.title)' on \(time) in \(e.location.name) #hackertracker"
             
             let activityViewController : UIActivityViewController = UIActivityViewController(
                 activityItems: [item], applicationActivities: nil)
@@ -420,14 +400,14 @@ class HTEventDetailViewController: UIViewController {
             
             // Anything you want to exclude
             activityViewController.excludedActivityTypes = [
-                UIActivityType.postToWeibo,
-                UIActivityType.print,
-                UIActivityType.assignToContact,
-                UIActivityType.saveToCameraRoll,
-                UIActivityType.addToReadingList,
-                UIActivityType.postToFlickr,
-                UIActivityType.postToVimeo,
-                UIActivityType.postToTencentWeibo
+                UIActivity.ActivityType.postToWeibo,
+                UIActivity.ActivityType.print,
+                UIActivity.ActivityType.assignToContact,
+                UIActivity.ActivityType.saveToCameraRoll,
+                UIActivity.ActivityType.addToReadingList,
+                UIActivity.ActivityType.postToFlickr,
+                UIActivity.ActivityType.postToVimeo,
+                UIActivity.ActivityType.postToTencentWeibo
             ]
             
             self.present(activityViewController, animated: true, completion: nil)

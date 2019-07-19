@@ -28,7 +28,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let hamburgerNavigationController: HTEventsNavViewController
     let alphaView = UIView()
 
-    let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(hamburgerMenuItemPressed))
+    let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(hamburgerMenuItemPressed))
     let intialTab = "Home"
     //This is a mapping of tabs to vcs
     let tabs = [
@@ -73,8 +73,14 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         self.view.addGestureRecognizer(edgeSwipe)
         
         hamburgerTableViewController.delegate = self
-        setCurrentViewController(tabID: intialTab)
-        self.addChildViewController(hamburgerNavigationController)
+        if let c = UserDefaults.standard.string(forKey: "conference") {
+            NSLog("Conference set to \(c), sending to Home tab")
+            setCurrentViewController(tabID: intialTab)
+        } else {
+            NSLog("No conference set, sending to Conference tab")
+            setCurrentViewController(tabID: "Conferences")
+        }
+        self.addChild(hamburgerNavigationController)
         self.view.addSubview(hamburgerNavigationController.view)
         alphaView.backgroundColor = UIColor.black
         alphaView.alpha = 0.0
@@ -98,7 +104,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         panGesture.addTarget(self, action: #selector(edgeSwipe(sender:)))
         self.view.addGestureRecognizer(panGesture)
         
-        self.addChildViewController(hamburgerTableViewController)
+        self.addChild(hamburgerTableViewController)
         self.view.addSubview(hamburgerTableViewController.view)
         hamburgerTableViewController.view.translatesAutoresizingMaskIntoConstraints = false
         hamburgerTableViewController.view.widthAnchor.constraint(equalToConstant: hamburgerMenuWidth).isActive = true
@@ -114,7 +120,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         toggleHamburgerMenu()
     }
     
-    func setCurrentViewController(tabID : String) {
+    private func setCurrentViewController(tabID : String) {
         if let storyboardID = tabs[tabID] {
             currentViewController = storyboard?.instantiateViewController(withIdentifier: storyboardID)
         } else {
@@ -129,6 +135,16 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     
     @objc func hamburgerMenuItemPressed() {
         toggleHamburgerMenu()
+    }
+    
+    func didSelectID(tabID : String) {
+        let item = self.displayedTabs.first { (item) -> Bool in
+            return item.title == tabID;
+        }
+        
+        if let item = item {
+            didSelectItem(item: item);
+        }
     }
     
     func didSelectItem(item: HamburgerItem) {

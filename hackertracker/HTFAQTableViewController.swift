@@ -11,7 +11,8 @@ import CoreData
 
 class HTFAQTableViewController: UITableViewController {
 
-    var faqs: [FAQ] = []
+    var faqsToken : UpdateToken?
+    var faqs: [HTFAQModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +38,7 @@ class HTFAQTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "faqCell", for: indexPath)
 
-        if let q = self.faqs[indexPath.row].question {
-            cell.textLabel?.text = q
-        }
+        cell.textLabel?.text = self.faqs[indexPath.row].question
 
         return cell
     }
@@ -50,23 +49,22 @@ class HTFAQTableViewController: UITableViewController {
         paragraphStyle.alignment = NSTextAlignment.left
         
         var body = "Frequently Asked Question Not Found"
-        if let q = self.faqs[indexPath.row].question, let a = self.faqs[indexPath.row].answer {
-            body = "Q: \(q)\n\nA: \(a)"
-        }
+        body = "Q: \(self.faqs[indexPath.row].question)\n\nA: \(self.faqs[indexPath.row].answer)"
+        
         
         let messageText = NSMutableAttributedString(
             string: body,
             attributes: [
-                NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                NSAttributedStringKey.font: UIFont(name: "Larsseit", size: 14)!,
-                NSAttributedStringKey.foregroundColor : UIColor.black
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
+                NSAttributedString.Key.foregroundColor : UIColor.black
             ]
         )
         
-        let popup : UIAlertController = UIAlertController(title: "FAQ", message:"", preferredStyle: UIAlertControllerStyle.alert)
+        let popup : UIAlertController = UIAlertController(title: "FAQ", message:"", preferredStyle: UIAlertController.Style.alert)
         popup.setValue(messageText, forKey: "attributedMessage")
         
-        let doneItem : UIAlertAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil)
+        let doneItem : UIAlertAction = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil)
         popup.addAction(doneItem)
         
         self.present(popup, animated: true, completion: nil)
@@ -80,14 +78,15 @@ class HTFAQTableViewController: UITableViewController {
     
     func loadFAQs() {
         
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"FAQ")
-        if let con = DataRequestManager(managedContext: getContext()).getSelectedConference() {
-            fr.predicate = NSPredicate(format: "conference = %@", argumentArray: [con])
+        faqsToken = FSConferenceDataController.shared.requestFAQs(forConference: AnonymousSession.shared.currentConference, descending: true) { (result) in
+            switch result {
+            case .success(let faqsList):
+                self.faqs = faqsList
+                self.tableView.reloadData()
+            case .failure(_):
+                NSLog("")
+            }
         }
-        fr.sortDescriptors = [NSSortDescriptor(key: "updated_at", ascending: false)]
-        fr.returnsObjectsAsFaults = false
-        
-        faqs = try! getContext().fetch(fr) as! [FAQ]
     }
     
 }

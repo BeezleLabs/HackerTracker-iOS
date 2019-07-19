@@ -28,6 +28,7 @@
 		5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
+		5DA4DDE622DCD85E00B52EBD /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */; };
 		5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
@@ -38,7 +39,6 @@
 		5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */; };
 		5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */; };
 		5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */; };
-		5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */; };
 		5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */; };
 		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
 		60A6D390A580651F9617539B /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAA20A085F20D1BE409030D /* Pods_hackertracker.framework */; };
@@ -50,6 +50,11 @@
 		8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */; };
 		8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */; };
 		8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */; };
+		83177DC322D41E8A00EE9624 /* AnonymousSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83177DC222D41E8A00EE9624 /* AnonymousSession.swift */; };
+		8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */; };
+		8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8C22B9BC1600EC44CC /* Document.swift */; };
+		8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8E22B9C29500EC44CC /* EventModel.swift */; };
+		8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */; };
 		8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D21F1297D4006761BE /* MapLocationView.swift */; };
 		8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D51F15BDA3006761BE /* DataImportManager.swift */; };
 		834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D31F17113C0092C2FE /* DataRequestManager.swift */; };
@@ -126,6 +131,7 @@
 		5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Larsseit-Bold.ttf"; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD6425D1AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,7 +146,6 @@
 		5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFAQTableViewController.swift; sourceTree = "<group>"; };
 		5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTInitViewController.swift; sourceTree = "<group>"; };
 		5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTUpdatesViewController.swift; sourceTree = "<group>"; };
-		5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTHomeTabBarController.swift; sourceTree = "<group>"; };
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
 		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
 		7820245C1F05B7CE0092ED07 /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
@@ -153,6 +158,11 @@
 		8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleEmptyStateView.swift; path = Views/ScheduleEmptyStateView.swift; sourceTree = "<group>"; };
 		8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleEmptyStateView.xib; sourceTree = "<group>"; };
 		8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventCell.xib; path = Views/EventCell.xib; sourceTree = "<group>"; };
+		83177DC222D41E8A00EE9624 /* AnonymousSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSession.swift; sourceTree = "<group>"; };
+		8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceModel.swift; sourceTree = "<group>"; };
+		8318FE8C22B9BC1600EC44CC /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		8318FE8E22B9C29500EC44CC /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSConferenceDataController.swift; sourceTree = "<group>"; };
 		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
 		8345F2D51F15BDA3006761BE /* DataImportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImportManager.swift; sourceTree = "<group>"; };
@@ -241,7 +251,6 @@
 				786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */,
 				5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */,
 				5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */,
-				5DE7B40D1ACA4FFE00F8A655 /* HTHomeTabBarController.swift */,
 				5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */,
 				5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */,
 				5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */,
@@ -299,6 +308,8 @@
 		5DD6425B1AC3C62300ED3256 /* hackertracker */ = {
 			isa = PBXGroup;
 			children = (
+				8318FE9022BAFDB400EC44CC /* DataControllers */,
+				8318FE8922B9BAAA00EC44CC /* FireBaseModels */,
 				83679CE5210CED76000CADE4 /* HamburgerMenu */,
 				83B0F8431F19B9D1006493A6 /* PDFViewer */,
 				8345F2D41F15BD7B006761BE /* Managers */,
@@ -318,6 +329,7 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */,
 				5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */,
 				7820245C1F05B7CE0092ED07 /* cert.der */,
 				5DFB87BE1B30BBF10083604C /* Connections.plist */,
@@ -360,6 +372,25 @@
 				8B924A8880B54182A6446BF1 /* Pods_hackertrackerTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8318FE8922B9BAAA00EC44CC /* FireBaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */,
+				8318FE8C22B9BC1600EC44CC /* Document.swift */,
+				8318FE8E22B9C29500EC44CC /* EventModel.swift */,
+			);
+			name = FireBaseModels;
+			sourceTree = "<group>";
+		};
+		8318FE9022BAFDB400EC44CC /* DataControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */,
+				83177DC222D41E8A00EE9624 /* AnonymousSession.swift */,
+			);
+			name = DataControllers;
 			sourceTree = "<group>";
 		};
 		8345F2D41F15BD7B006761BE /* Managers */ = {
@@ -472,13 +503,13 @@
 					5DD642581AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = MJ97FDMT75;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					5DD642701AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = MJ97FDMT75;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						TestTargetID = 5DD642581AC3C62300ED3256;
 					};
 				};
@@ -516,6 +547,7 @@
 				5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */,
 				5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
+				5DA4DDE622DCD85E00B52EBD /* BebasNeue-Regular.ttf in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
@@ -563,25 +595,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-hackertracker/Pods-hackertracker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -628,13 +658,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */,
 				5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */,
+				8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */,
 				5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */,
 				5D6707F6211787E10007F01F /* AboutCell.swift in Sources */,
 				5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */,
 				834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */,
 				5D027620210160F400E5ED6A /* HTNewsTableViewController.swift in Sources */,
 				B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */,
+				8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */,
 				5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */,
 				5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
@@ -643,7 +676,6 @@
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,
 				83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */,
 				83B0F84E1F19BA07006493A6 /* CGPDFDocument.m in Sources */,
-				5DE7B40E1ACA4FFE00F8A655 /* HTHomeTabBarController.swift in Sources */,
 				5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */,
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
@@ -663,6 +695,8 @@
 				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */,
+				8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */,
+				83177DC322D41E8A00EE9624 /* AnonymousSession.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */,
 				5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */,
@@ -834,8 +868,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -863,8 +896,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -888,8 +920,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hackertracker.app/hackertracker";
 			};
 			name = Debug;
@@ -909,8 +940,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.beezle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hackertracker.app/hackertracker";
 			};
 			name = Release;

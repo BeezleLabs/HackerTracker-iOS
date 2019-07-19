@@ -14,6 +14,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
     var filteredEvents:NSArray = []
+    var eventsToken : UpdateToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,25 +56,26 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
        
-        var event: Event
+        var event: UserEventModel
         
-        event = self.filteredEvents.object(at: indexPath.row) as! Event
+        event = self.filteredEvents.object(at: indexPath.row) as! UserEventModel
         
-        cell.bind(event: event)
+        cell.bind(userEvent: event)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = self.filteredEvents.object(at: indexPath.row) as? Event
+            eventController.event = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.event
+            eventController.bookmark = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.bookmark
             eventController.delegate = self
             self.navigationController?.pushViewController(eventController, animated: true)
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -93,40 +95,35 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
     
     func filterEvents(_ searchText: String) {
-        let context = getContext()
-        
-        var currentEvents : Array<Event> = []
-        
-        let dataRequest = DataRequestManager(managedContext: getContext())
-        
-        if let con = dataRequest.getSelectedConference() {
-        
-            let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
-            fr.sortDescriptors = [NSSortDescriptor(key: "start_date", ascending: true)]
-            fr.returnsObjectsAsFaults = false
-            
-            let search_predicate = NSPredicate(format: "conference = %@ AND (location.name contains[cd] %@ OR title contains[cd] %@ OR desc contains[cd] %@ OR includes contains[cd] %@)", argumentArray: [con,searchText,searchText,searchText,searchText])
 
-            fr.predicate = search_predicate
-            currentEvents = try! context.fetch(fr) as! Array<Event>
-            
-            let frs = NSFetchRequest<NSFetchRequestResult>(entityName:"Speaker")
-            frs.returnsObjectsAsFaults = false
-            frs.predicate = NSPredicate(format: "conference = %@ AND name contains[cd] %@", argumentArray: [con,searchText])
-            let ret = try! context.fetch(frs) as! [Speaker]
-            if (ret.count > 0) {
-                for s in ret {
-                    let events = s.events?.allObjects as! [Event]
-                    for e in events {
-                        if !self.filteredEvents.contains(e) {
-                            currentEvents.append(e)
+        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!) { (result) in
+            switch result {
+            case .success(let eventList):
+                var currentEvents: [UserEventModel] = []
+                for userEvent in eventList {
+                    if userEvent.event.title.contains(searchText) {
+                        currentEvents.append(userEvent)
+                    } else if userEvent.event.description.contains(searchText) {
+                        currentEvents.append(userEvent)
+                    } else {
+                        for s in userEvent.event.speakers {
+                            if s.name.contains(searchText) {
+                                currentEvents.append(userEvent)
+                            }
                         }
                     }
                 }
+                self.filteredEvents = currentEvents as NSArray
+                self.tableView.reloadData()
+            case .failure(let _):
+                NSLog("")
             }
             
-            self.filteredEvents = currentEvents as NSArray
+        var currentEvents : Array<UserEventModel> = []
+        self.filteredEvents = currentEvents as NSArray
+ 
         }
+        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -176,7 +173,8 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                 indexPath = sender as! IndexPath
             }
 
-            dv.event = self.filteredEvents.object(at: indexPath.row) as? Event
+            dv.event = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.event
+            dv.bookmark = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.bookmark
             dv.delegate = self
         }
     }
