@@ -77,15 +77,25 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     func reloadEvents() {
         //let curTime = Date()
         let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
-        starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, limit: 3) { (result) in
+        starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
             switch result {
             case .success(let eventList):
-                self.starred = eventList
+                self.starred = []
+                eLoop: for e in eventList {
+                    if self.starred.count > 2 {
+                        break eLoop
+                    } else {
+                        if e.bookmark.value {
+                            self.starred.append(e)
+                        }
+                    }
+                }
                 self.updatesTableView.reloadData()
             case .failure(_):
                 NSLog("")
             }
         }
+        
         upcomingEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, startDate: curTime, limit: 3) { (result) in
             switch result {
             case .success(let eventList):

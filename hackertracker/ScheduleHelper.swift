@@ -22,7 +22,7 @@ func getBackgroundContext() -> NSManagedObjectContext {
         return delegate.backgroundManagedObjectContext!
 }
 
-func scheduleNotification(at date: Date,_ event:Event) {
+func scheduleNotification(at date: Date,_ event:HTEventModel) {
     let calendar = Calendar(identifier: .gregorian)
     let components = calendar.dateComponents(in: .current, from: date)
     let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
@@ -31,7 +31,7 @@ func scheduleNotification(at date: Date,_ event:Event) {
     
     let content = UNMutableNotificationContent()
     content.title = "Upcoming Event"
-    content.body = "\(String(describing: event.title)) in \(String(describing: event.location?.name!))"
+    content.body = "\(event.title) in \(String(describing: event.location.name))"
     content.sound = UNNotificationSound.default
     
     let request = UNNotificationRequest(identifier: "hackertracker-\(event.id)", content: content, trigger: trigger)
@@ -43,7 +43,7 @@ func scheduleNotification(at date: Date,_ event:Event) {
     }
 }
 
-func removeNotification(_ event:Event) {
+func removeNotification(_ event:HTEventModel) {
     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
 }
 

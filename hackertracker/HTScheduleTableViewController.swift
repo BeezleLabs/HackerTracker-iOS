@@ -102,8 +102,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                     let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
                         switch result {
                         case .success(let eventList):
-                            //events.append(contentsOf: eventList)
-                            NSLog("Got \(eventList.count) events for \(conference.code):\(conference.id)")
                             if eventList.count > 0 {
                                 var newDay = true
                                 var i = 0
@@ -133,14 +131,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                 if newDay {
                                     self.allEventSections.append((date: day, events: eventList))
                                 }
-                                //self.eventSections.append((date: day, events: events))
-                                //self.allEventSections.append((date: day, events: events))
+
                             }
-                            /*for event in events {
-                                FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event.event, isFavorite: true, session: AnonymousSession.shared, updateHandler: { (error) in
-                             
-                                })
-                            }*/
+ 
                             self.tableView.reloadData()
                         case .failure(let _):
                             NSLog("")
@@ -335,7 +328,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //reloadEvents()
+        
         self.filterButton.isHidden = false
         self.filterButton.isUserInteractionEnabled = true
         

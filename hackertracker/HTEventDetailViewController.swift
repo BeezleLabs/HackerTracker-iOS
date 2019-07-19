@@ -337,7 +337,12 @@ class HTEventDetailViewController: UIViewController {
         }
         
         if let bookmark = bookmark {
-            NSLog("Bookmark: \(bookmark.id) \(bookmark.value) to \(!bookmark.value)")
+            //NSLog("Bookmark: \(bookmark.id) \(bookmark.value) to \(!bookmark.value)")
+            if bookmark.value {
+                removeNotification(event)
+            } else {
+                scheduleNotification(at: event.beginDate, event)
+            }
             FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (error) in
                 
             }

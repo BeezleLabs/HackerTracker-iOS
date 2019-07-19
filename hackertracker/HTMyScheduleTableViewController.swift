@@ -24,7 +24,7 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
     override func reloadEvents() {
         //super.reloadEvents()
       
-        self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!, descending: false) { (result) in
+        self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
             switch result {
             case .success(let eventsList):
                 self.events.removeAll()

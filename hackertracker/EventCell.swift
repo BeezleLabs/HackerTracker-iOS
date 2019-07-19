@@ -50,16 +50,14 @@ public class EventCell : UITableViewCell {
         let oldColor = color.backgroundColor
         super.setSelected(selected, animated: animated)
         color.backgroundColor = oldColor
-        //et_label.layer.backgroundColor = oldColor?.cgColor
-        //et_label.backgroundColor = oldColor
+        et_dot.backgroundColor = oldColor
     }
 
     override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
         let oldColor = color.backgroundColor
         super.setHighlighted(highlighted, animated: animated)
         color.backgroundColor = oldColor
-        //et_label.layer.backgroundColor = oldColor?.cgColor
-        //et_label.backgroundColor = oldColor
+        et_dot.backgroundColor = oldColor
     }
 
     func bind(userEvent : UserEventModel) {
@@ -132,7 +130,6 @@ public class EventCell : UITableViewCell {
     
     @objc func tappedStar(sender: AnyObject) {
         if let e = userEvent {
-            NSLog("Bookmark: \(e.bookmark.id) \(e.bookmark.value)")
             FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: e.event, isFavorite: !e.bookmark.value, session: AnonymousSession.shared) { (error) in
            
             }
