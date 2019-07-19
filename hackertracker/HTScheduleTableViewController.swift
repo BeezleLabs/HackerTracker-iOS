@@ -307,7 +307,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
 class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate {
     
-    var eType : EventType?
     var alltypes: [HTEventType] = []
     var filteredtypes: [HTEventType] = []
     var filterView: HTFilterViewController?

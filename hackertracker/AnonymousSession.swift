@@ -73,6 +73,8 @@ class AnonymousSession {
                 }
             }
         }
+        
+        DateFormatterUtility.shared.update(identifier: currentConference.tz)
 
         let fm = FileManager.default
         let docDir = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]

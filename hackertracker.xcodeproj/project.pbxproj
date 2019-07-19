@@ -17,7 +17,7 @@
 		5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
-		5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D47A2B020EEB7DD0015401B /* ht2018.xcdatamodeld */; };
+		5D47A2B220EEB7DD0015401B /* ht2019.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D47A2B020EEB7DD0015401B /* ht2019.xcdatamodeld */; };
 		5D6707EB21161C6F0007F01F /* HTWiFiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707EA21161C6F0007F01F /* HTWiFiViewController.swift */; };
 		5D6707F6211787E10007F01F /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707F4211787E10007F01F /* AboutCell.swift */; };
 		5D6707F7211787E10007F01F /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D6707F5211787E10007F01F /* AboutCell.xib */; };
@@ -56,8 +56,6 @@
 		8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8E22B9C29500EC44CC /* EventModel.swift */; };
 		8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */; };
 		8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D21F1297D4006761BE /* MapLocationView.swift */; };
-		8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D51F15BDA3006761BE /* DataImportManager.swift */; };
-		834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D31F17113C0092C2FE /* DataRequestManager.swift */; };
 		834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D51F1818240092C2FE /* EventDateHeaderView.swift */; };
 		83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */; };
 		83679CE7210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CE6210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift */; };
@@ -165,8 +163,6 @@
 		8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSConferenceDataController.swift; sourceTree = "<group>"; };
 		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
-		8345F2D51F15BDA3006761BE /* DataImportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImportManager.swift; sourceTree = "<group>"; };
-		834713D31F17113C0092C2FE /* DataRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestManager.swift; sourceTree = "<group>"; };
 		834713D51F1818240092C2FE /* EventDateHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDateHeaderView.swift; path = Views/EventDateHeaderView.swift; sourceTree = "<group>"; };
 		83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerMenuViewController.swift; sourceTree = "<group>"; };
 		83679CE6210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -312,14 +308,13 @@
 				8318FE8922B9BAAA00EC44CC /* FireBaseModels */,
 				83679CE5210CED76000CADE4 /* HamburgerMenu */,
 				83B0F8431F19B9D1006493A6 /* PDFViewer */,
-				8345F2D41F15BD7B006761BE /* Managers */,
 				5DD642651AC3C62300ED3256 /* Main.storyboard */,
 				5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */,
 				498AD73E1E2D2BC900DD5B56 /* ViewControllers */,
 				49730E4C1E2D1A9F0029438C /* Utilities */,
 				498AD73F1E2D2C0400DD5B56 /* Views */,
 				5DD642681AC3C62300ED3256 /* Images.xcassets */,
-				5D47A2B020EEB7DD0015401B /* ht2018.xcdatamodeld */,
+				5D47A2B020EEB7DD0015401B /* ht2019.xcdatamodeld */,
 				5DD6425C1AC3C62300ED3256 /* Supporting Files */,
 				5DA268531D06006400249C63 /* LaunchScreen.storyboard */,
 			);
@@ -391,15 +386,6 @@
 				83177DC222D41E8A00EE9624 /* AnonymousSession.swift */,
 			);
 			name = DataControllers;
-			sourceTree = "<group>";
-		};
-		8345F2D41F15BD7B006761BE /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				8345F2D51F15BDA3006761BE /* DataImportManager.swift */,
-				834713D31F17113C0092C2FE /* DataRequestManager.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		83679CE5210CED76000CADE4 /* HamburgerMenu */ = {
@@ -661,10 +647,9 @@
 				8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */,
 				5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */,
 				8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */,
-				5D47A2B220EEB7DD0015401B /* ht2018.xcdatamodeld in Sources */,
+				5D47A2B220EEB7DD0015401B /* ht2019.xcdatamodeld in Sources */,
 				5D6707F6211787E10007F01F /* AboutCell.swift in Sources */,
 				5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */,
-				834713D41F17113C0092C2FE /* DataRequestManager.swift in Sources */,
 				5D027620210160F400E5ED6A /* HTNewsTableViewController.swift in Sources */,
 				B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */,
 				8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */,
@@ -682,7 +667,6 @@
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
-				8345F2D61F15BDA3006761BE /* DataImportManager.swift in Sources */,
 				83679CEA210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift in Sources */,
 				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,
 				83B0F85D1F1A7490006493A6 /* ReaderThumbView.m in Sources */,
@@ -978,13 +962,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5D47A2B020EEB7DD0015401B /* ht2018.xcdatamodeld */ = {
+		5D47A2B020EEB7DD0015401B /* ht2019.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				5D47A2B120EEB7DD0015401B /* ht2018.xcdatamodel */,
 			);
 			currentVersion = 5D47A2B120EEB7DD0015401B /* ht2018.xcdatamodel */;
-			path = ht2018.xcdatamodeld;
+			path = ht2019.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

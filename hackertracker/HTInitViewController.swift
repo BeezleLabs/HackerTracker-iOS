@@ -26,10 +26,6 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
 
         let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.managedObjectContext!
-        let dfu = DateFormatterUtility.shared
-        if let tz = DataRequestManager(managedContext: context).getSelectedConference()?.timezone {
-            dfu.update(identifier: tz)
-        }
         
         playAnimation()
     }

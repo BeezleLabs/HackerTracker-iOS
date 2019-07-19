@@ -44,8 +44,6 @@ class HTEventDetailViewController: UIViewController {
     var myCon: ConferenceModel?
     var eventToken : UpdateToken?
     
-    private let dataRequest = DataRequestManager(managedContext: getContext())
-
     /*
     //Keep around for map view visual testing
     var eventLocations : [Location] = [.track_101, .track1_101, .track2, .track2_101, .track3, .track4, .capri, .modena, .trevi, .bioHackingVillage, .cryptoAndPrivacyVillage, .hardwareHackingVillage, .icsVillage, .iotVillage, .lockpickVillage, .packetCaptureVillage, .socialEngineerVillage, .tamperEvidentVillage, .wirelessVillage, .unknown]
@@ -85,7 +83,6 @@ class HTEventDetailViewController: UIViewController {
         
         eventTitleLabel.text = event.title
         getSpeakers()
-        setupSpeakerNames()
         
         eventLocationLabel.text = event.location.name
         
@@ -182,16 +179,23 @@ class HTEventDetailViewController: UIViewController {
     
     func getSpeakers() {
         
+        var i = 0
         for s in event!.speakers {
-            let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: s.id) { (result) in
-                switch result {
-                case .success(let speaker):
-                    self.speakers.append(speaker)
-                case .failure(let _):
-                    NSLog("")
+            if speakerTokens.indices.contains(i) {
+                // already have this speaker token
+            } else {
+                let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: s.id) { (result) in
+                    switch result {
+                    case .success(let speaker):
+                        self.speakers.append(speaker)
+                        self.setupSpeakerNames()
+                    case .failure(let _):
+                        NSLog("")
+                    }
                 }
+                speakerTokens.append(sToken)
             }
-            speakerTokens.append(sToken)
+            i = i + 1
         }
         
     }
