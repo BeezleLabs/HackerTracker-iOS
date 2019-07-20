@@ -75,9 +75,9 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     }
 
     func reloadEvents() {
-        //let curTime = Date()
-        let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
-        starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
+        let curTime = Date()
+        //let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
+        starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, startDate: curTime, descending: false) { (result) in
             switch result {
             case .success(let eventList):
                 self.starred = []
@@ -105,6 +105,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
                 NSLog("")
             }
         }
+        
         liveEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, endDate: curTime, limit: 3, descending: true) { (result) in
             switch result {
             case .success(let eventList):
@@ -114,6 +115,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
                 NSLog("")
             }
         }
+        
         articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, limit: 2, descending: true) { (result) in
             switch result {
             case .success(let articles):

@@ -151,7 +151,7 @@ class FSConferenceDataController {
                        limit: Int? = nil,
                        descending: Bool = false,
                        updateHandler:  @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken {
-        let query = document(forConference: conference).collection("events").whereField("end_timestamp", isLessThan: endDate).order(by: "end_timestamp", descending: descending).limit(to: limit ?? Int.max)
+        let query = document(forConference: conference).collection("events").whereField("end_timestamp", isGreaterThan: endDate).order(by: "end_timestamp", descending: descending).limit(to: limit ?? Int.max)
         return requestEvents(forConference: conference, query: query, updateHandler: updateHandler)
     }
     
