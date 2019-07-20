@@ -60,6 +60,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             i = i + 1
         }
         mapSwitch.apportionsSegmentWidthsByContent = true
+        mapSwitch.sizeToFit()
         mapSwitch.selectedSegmentIndex = 0
         mapChanged(mapSwitch)
     }

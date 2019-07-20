@@ -31,7 +31,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
-        self.title = AnonymousSession.shared.currentConference.code
+        self.title = AnonymousSession.shared.currentConference.name
         self.reloadEvents()
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
     }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class HTFAQTableViewController: UITableViewController {
 
@@ -18,6 +17,10 @@ class HTFAQTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.loadFAQs()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {

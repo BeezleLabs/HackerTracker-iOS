@@ -25,7 +25,10 @@ class FSConferenceDataController {
     let conferenceQuery : Query?
     
     init() {
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
         db = Firestore.firestore()
+        db.settings = settings
         storage = Storage.storage()
         conferenceQuery = db.collection("conferences")
     }

@@ -35,13 +35,9 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
                 "Home" : "HTUpdatesViewController",
                 "Schedule" : "HTScheduleTableViewController",
                 "Bookmarked" : "HTMyScheduleTableViewController",
-                "Map" : "HTMapsViewController",
+                "Maps" : "HTMapsViewController",
                 "Speakers": "HTSpeakersTableViewController",
-                "Conferences": "HTConferenceTableViewController",
-                "News" : "HTNewsTableViewController",
-                "Vendors": "HTVendorTableViewController",
-                "FAQ" : "HTFAQTableViewController",
-                //"WiFi": "HTWifiViewController",
+                "More" : "HTInfoTableViewController"
     ];
     
     //This is a list of tabs we will display in the hamburger menu
@@ -49,13 +45,9 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         HamburgerItem(title:"Home", imageID:"skull-active"),
         HamburgerItem(title:"Schedule", imageID:"calendar-active"),
         HamburgerItem(title:"Bookmarked", imageID:"star_active"),
-        HamburgerItem(title:"Map", imageID:"map-active"),
+        HamburgerItem(title:"Maps", imageID:"map-active"),
         HamburgerItem(title:"Speakers", imageID:"icon_user"),
-        HamburgerItem(title:"Conferences", imageID: "filter"),
-        HamburgerItem(title:"News", imageID:"news"),
-        HamburgerItem(title:"Vendors", imageID: "vendor"),
-        HamburgerItem(title:"FAQ", imageID:"faq")
-        //HamburgerItem(title: "WiFi", imageID: "wifi"),
+        HamburgerItem(title:"More", imageID: "filter")
     ]
     
     let hamburgerMenuWidth : CGFloat = 300.0

@@ -15,6 +15,7 @@ struct ConferenceModel : Codable {
     var endDate : String
     var startDate : String
     var tz : String
+    var coc : String
     var maps : [HTMapModel]
 }
 
@@ -26,6 +27,7 @@ extension ConferenceModel : Document {
         let endDate = dictionary["end_date"] as? String ?? ""
         let startDate = dictionary["start_date"] as? String ?? ""
         let tz = dictionary["timezone"] as? String ?? ""
+        let coc = dictionary["codeofconduct"] as? String ?? ""
         var maps : [HTMapModel] = []
         
         if let mapValues = dictionary["maps"] as? Array<Any>  {
@@ -38,7 +40,7 @@ extension ConferenceModel : Document {
             }
         }
         
-        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, tz: tz, maps: maps)
+        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, tz: tz, coc: coc, maps: maps)
     }
 }
 
