@@ -7,21 +7,33 @@
 //
 
 import UIKit
-import CoreData
 
 class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, EventDetailDelegate {
     
     @IBOutlet weak var eventSearchBar: UISearchBar!
     
-    var filteredEvents:NSArray = []
+    var filteredEvents: [UserEventModel] = []
+    var allEvents: [UserEventModel] = []
     var eventsToken : UpdateToken?
+    var st = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
+        
+        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!, descending: false) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.allEvents = eventList
+                self.filterEvents()
+            case .failure(let _):
+                NSLog("")
+            }
+        }
+        
+        tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         eventSearchBar.placeholder = "Search Events"
         eventSearchBar.delegate = self
-        self.title = "SEARCH"
+        self.title = "Search"
         tableView.keyboardDismissMode = .onDrag
     }
 
@@ -58,7 +70,7 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
        
         var event: UserEventModel
         
-        event = self.filteredEvents.object(at: indexPath.row) as! UserEventModel
+        event = self.filteredEvents[indexPath.row]
         
         cell.bind(userEvent: event)
         
@@ -67,8 +79,8 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.event
-            eventController.bookmark = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.bookmark
+            eventController.event = self.filteredEvents[indexPath.row].event
+            eventController.bookmark = self.filteredEvents[indexPath.row].bookmark
             eventController.delegate = self
             self.navigationController?.pushViewController(eventController, animated: true)
         }
@@ -87,63 +99,47 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        let searchText = searchBar.text
+        st = searchBar.text?.lowercased() ?? ""
         
-        filterEvents(searchText!)
-        
-        reloadEvents()
+        filterEvents()
     }
     
-    func filterEvents(_ searchText: String) {
-
-        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!) { (result) in
-            switch result {
-            case .success(let eventList):
-                var currentEvents: [UserEventModel] = []
-                for userEvent in eventList {
-                    if userEvent.event.title.contains(searchText) {
-                        currentEvents.append(userEvent)
-                    } else if userEvent.event.description.contains(searchText) {
-                        currentEvents.append(userEvent)
-                    } else {
-                        for s in userEvent.event.speakers {
-                            if s.name.contains(searchText) {
-                                currentEvents.append(userEvent)
-                            }
-                        }
+    func filterEvents() {
+        var currentEvents: [UserEventModel] = []
+        for e in allEvents {
+            if e.event.title.lowercased().contains(st) {
+                currentEvents.append(e)
+            } else if e.event.description.lowercased().contains(st) {
+                currentEvents.append(e)
+            } else if e.event.location.name.lowercased().contains(st) {
+                currentEvents.append(e)
+            } else {
+                for s in e.event.speakers {
+                    if s.name.lowercased().contains(st) {
+                        currentEvents.append(e)
                     }
                 }
-                self.filteredEvents = currentEvents as NSArray
-                self.tableView.reloadData()
-            case .failure(let _):
-                NSLog("")
             }
-            
-        var currentEvents : Array<UserEventModel> = []
-        self.filteredEvents = currentEvents as NSArray
- 
         }
+        self.filteredEvents = currentEvents
+        self.tableView.reloadData()
         
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let searchText = searchBar.text
+        st = searchBar.text?.lowercased() ?? ""
         
-        filterEvents(searchText!)
-        
-        self.tableView.reloadData()
+        filterEvents()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if (searchText.count > 0) {
-            filterEvents(searchText)
-            
-            self.tableView.reloadData()
+            st = searchBar.text?.lowercased() ?? ""
         } else {
             self.filteredEvents = []
-            self.tableView.reloadData()
         }
+        filterEvents()
     }
 
     func isFiltered() -> Bool {
@@ -173,8 +169,8 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
                 indexPath = sender as! IndexPath
             }
 
-            dv.event = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.event
-            dv.bookmark = (self.filteredEvents.object(at: indexPath.row) as? UserEventModel)?.bookmark
+            dv.event = self.filteredEvents[indexPath.row].event
+            dv.bookmark = self.filteredEvents[indexPath.row].bookmark
             dv.delegate = self
         }
     }

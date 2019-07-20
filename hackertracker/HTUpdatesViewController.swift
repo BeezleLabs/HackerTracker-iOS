@@ -109,6 +109,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         liveEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, endDate: curTime, limit: 3, descending: true) { (result) in
             switch result {
             case .success(let eventList):
+                // TODO: Sort these events for ones that have already started, they just show the next 3 events that end next.
                 self.liveNow = eventList
                 self.updatesTableView.reloadData()
             case .failure(_):
