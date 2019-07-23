@@ -51,9 +51,9 @@ class HTEventsNavViewController: UINavigationController {
         super.viewWillTransition(to: size, with: coordinator)
         
         self.navigationBar.barStyle = .black
-        coordinator.animate(alongsideTransition: { (context) in
+        /*coordinator.animate(alongsideTransition: { (context) in
             self.navigationBar.barStyle = .black
-        }, completion: nil)
+        }, completion: nil) */
         
     }
     

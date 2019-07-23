@@ -47,6 +47,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 tableView.layoutIfNeeded()
             }
         }
+        self.navigationController?.navigationBar.backgroundColor = .black
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.isTranslucent = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -333,7 +336,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
-        self.navigationController?.navigationBar.backgroundColor = .black
     }
     
     override func viewWillDisappear(_ animated: Bool) {
