@@ -25,8 +25,9 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     var upcoming: [UserEventModel] = []
     var liveNow: [UserEventModel] = []
     var data = NSMutableData()
-    var conferencesToken : UpdateToken?
-    var upcomingEventsToken : UpdateToken?
+    var eventsToken : UpdateToken?
+    var allEvents: [UserEventModel] = []
+    var allArticles: [HTArticleModel] = []
     var starredEventsToken : UpdateToken?
     var liveEventsToken : UpdateToken?
     var articlesToken : UpdateToken?
@@ -49,7 +50,27 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         self.title = AnonymousSession.shared.currentConference.name
-        self.reloadEvents()
+        
+        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!, descending: false) { (result) in
+            switch result {
+            case .success(let eventList):
+                self.allEvents = eventList
+                self.reloadEvents()
+            case .failure(let _):
+                NSLog("")
+            }
+        }
+        
+        articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, descending: true) { (result) in
+            switch result {
+            case .success(let articles):
+                self.allArticles = articles
+                self.reloadArticles()
+            case .failure(_):
+                NSLog("")
+            }
+        }
+        //self.reloadEvents()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -73,59 +94,56 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
             }
         }
     }
+    
+    func reloadArticles() {
+        self.messages = []
+        for a in allArticles {
+            if self.messages.count > 1 {
+                break
+            } else {
+                self.messages.append(a)
+            }
+        }
+        self.updatesTableView.reloadData()
+    }
 
     func reloadEvents() {
         let curTime = Date()
+        // To check test data on home screen (set to mid-layerone)
         //let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
-        starredEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, startDate: curTime, descending: false) { (result) in
-            switch result {
-            case .success(let eventList):
-                self.starred = []
-                eLoop: for e in eventList {
-                    if self.starred.count > 2 {
-                        break eLoop
-                    } else {
-                        if e.bookmark.value {
-                            self.starred.append(e)
-                        }
-                    }
+
+        self.starred = []
+        starredLoop: for e in allEvents {
+            if self.starred.count > 2 {
+                break starredLoop
+            } else {
+                if  e.event.beginDate > curTime, e.bookmark.value {
+                    self.starred.append(e)
                 }
-                self.updatesTableView.reloadData()
-            case .failure(_):
-                NSLog("")
             }
         }
         
-        upcomingEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, startDate: curTime, limit: 3) { (result) in
-            switch result {
-            case .success(let eventList):
-                self.upcoming = eventList
-                self.updatesTableView.reloadData()
-            case .failure(_):
-                NSLog("")
+        self.upcoming = []
+        upcomingLoop: for e in allEvents {
+            if self.upcoming.count > 2 {
+                break upcomingLoop
+            } else {
+                if e.event.beginDate > curTime {
+                    self.upcoming.append(e)
+                }
             }
         }
         
-        liveEventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, endDate: curTime, limit: 3, descending: true) { (result) in
-            switch result {
-            case .success(let eventList):
-                // TODO: Sort these events for ones that have already started, they just show the next 3 events that end next.
-                self.liveNow = eventList
-                self.updatesTableView.reloadData()
-            case .failure(_):
-                NSLog("")
+        self.liveNow = []
+        liveLoop: for e in allEvents {
+            let range = e.event.beginDate...e.event.endDate
+            if range.contains(curTime) {
+                self.liveNow.append(e)
             }
         }
         
-        articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, limit: 2, descending: true) { (result) in
-            switch result {
-            case .success(let articles):
-                self.messages = articles
-                self.updatesTableView.reloadData()
-            case .failure(_):
-                NSLog("")
-            }
-        }
+        self.updatesTableView.reloadData()
+        
     }
     
     func updatedEvents() {

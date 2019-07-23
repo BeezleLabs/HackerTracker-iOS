@@ -323,7 +323,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -353,7 +353,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I06-2I-SrF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2508" y="1608"/>
+            <point key="canvasLocation" x="4590" y="1608"/>
         </scene>
         <!--Maps View Controller-->
         <scene sceneID="vGq-Yq-Bvy">
@@ -647,7 +647,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtM-mJ-VLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3348" y="-682"/>
+            <point key="canvasLocation" x="3132" y="-537"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="dcg-US-5Be">
@@ -1031,7 +1031,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LR1-7q-NAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4884" y="-734"/>
+            <point key="canvasLocation" x="4590" y="-537"/>
         </scene>
         <!--EVENTS-->
         <scene sceneID="IHZ-Ax-T76">
@@ -1079,7 +1079,7 @@
                 </tableView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unv-PC-TBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5823.1999999999998" y="-45.42728635682159"/>
+            <point key="canvasLocation" x="5822" y="-537"/>
         </scene>
         <!--Empty Detail View Controller-->
         <scene sceneID="Gs6-yl-O6f">
@@ -1107,7 +1107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kc4-n7-hwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4287.1999999999998" y="797.45127436281871"/>
+            <point key="canvasLocation" x="4590" y="475"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="4uI-13-dFR">
@@ -1133,7 +1133,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vd-bq-LOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="1608"/>
+            <point key="canvasLocation" x="3132" y="1608"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="wTW-Tn-Qo3">
@@ -1150,7 +1150,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UcF-Ez-HTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="1608"/>
+            <point key="canvasLocation" x="1641" y="475"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="W6a-bK-zOb">
@@ -1192,7 +1192,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWU-AW-Ffa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5823.1999999999998" y="841.52923538230891"/>
+            <point key="canvasLocation" x="5823" y="1158"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="qT4-pX-Wks">
@@ -1202,6 +1202,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dtY-8W-mzn">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1210,7 +1211,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Hv-rc-DkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="798.35082458770626"/>
+            <point key="canvasLocation" x="3132" y="475"/>
         </scene>
         <!--Information-->
         <scene sceneID="5eH-tb-yKa">
@@ -1467,7 +1468,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wej-le-Z3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="-421"/>
+            <point key="canvasLocation" x="9455" y="90"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="nfE-zU-Jeb">
@@ -1581,7 +1582,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
         <segue reference="M7t-3x-HF9"/>
-        <segue reference="XQt-9W-ade"/>
+        <segue reference="zzM-58-UQE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

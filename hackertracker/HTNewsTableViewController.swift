@@ -61,7 +61,6 @@ class HTNewsTableViewController: UITableViewController {
             switch result {
             case .success(let articlesList):
                 self.articles = articlesList
-                NSLog("Got \(articlesList.count) articles")
                 self.tableView.reloadData()
             case .failure(_):
                 NSLog("")

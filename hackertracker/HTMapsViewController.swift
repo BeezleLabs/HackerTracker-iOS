@@ -116,7 +116,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
                 mapViews[i].isHidden = true
                 mapViews[i].isUserInteractionEnabled = false
         }
-        NSLog("switching to segment \(sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "")")
+        //NSLog("switching to segment \(sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "")")
         mapViews[sender.selectedSegmentIndex].isHidden = false
         mapViews[sender.selectedSegmentIndex].isUserInteractionEnabled = true
     }

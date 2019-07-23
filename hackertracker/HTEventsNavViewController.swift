@@ -42,9 +42,7 @@ class HTEventsNavViewController: UINavigationController {
         super.viewDidLoad()
 
         view.tintColor = UIColor.white
-        if let windowSize = UIApplication.shared.keyWindow?.frame.size {
-            setNavBarImage(screenSize: windowSize)
-        }
+        self.navigationBar.barStyle = .black
         let attr = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title3), NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationBar.titleTextAttributes = attr
     }
@@ -52,22 +50,20 @@ class HTEventsNavViewController: UINavigationController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
+        self.navigationBar.barStyle = .black
         coordinator.animate(alongsideTransition: { (context) in
-            if let windowSize = UIApplication.shared.keyWindow?.frame.size {
-                self.setNavBarImage(screenSize: windowSize)
-            }
+            self.navigationBar.barStyle = .black
         }, completion: nil)
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        self.navigationBar.barStyle = .black
         
         if self.view.frame.size.width != lastSize.width {
             lastSize = self.view.frame.size
-            if let windowSize = UIApplication.shared.keyWindow?.frame.size {
-                setNavBarImage(screenSize: windowSize)
-            }
+            
         }
     }
 

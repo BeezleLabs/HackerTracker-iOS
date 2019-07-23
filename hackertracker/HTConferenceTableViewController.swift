@@ -88,7 +88,8 @@ class HTConferenceTableViewController: UITableViewController {
         conferencesToken = FSConferenceDataController.shared.requestConferences { (result) in
             switch result {
             case .success(let conferenceList):
-                self.conferences.append(contentsOf: conferenceList)
+                self.conferences = conferenceList
+                //self.conferences.append(contentsOf: conferenceList)
                 self.tableView.reloadData()
             case .failure(let _):
                 NSLog("")
