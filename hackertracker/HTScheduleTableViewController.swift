@@ -332,7 +332,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         self.filterButton.isUserInteractionEnabled = true
         
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
-        //tableView.backgroundColor = UIColor.backgroundGray
+        tableView.backgroundColor = UIColor.backgroundGray
+        self.navigationController?.navigationBar.backgroundColor = .black
     }
     
     override func viewWillDisappear(_ animated: Bool) {
