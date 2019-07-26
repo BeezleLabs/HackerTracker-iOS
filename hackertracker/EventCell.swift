@@ -64,7 +64,7 @@ public class EventCell : UITableViewCell {
         self.userEvent = userEvent
         let event = userEvent.event
         let dfu = DateFormatterUtility.shared
-        starttime.text = dfu.hourMinuteTimeFormatter.string(from: event.beginDate)
+        starttime.text = dfu.hourMinuteTimeFormatter.string(from: event.begin)
 
         var i = 0
         var stext = ""

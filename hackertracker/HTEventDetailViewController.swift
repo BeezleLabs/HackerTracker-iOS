@@ -137,12 +137,12 @@ class HTEventDetailViewController: UIViewController {
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
         
         let dfu = DateFormatterUtility.shared
-        let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: event.beginDate)
+        let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: event.begin)
         var eventEnd = ""
-        if Calendar.current.isDate(event.endDate, inSameDayAs: event.beginDate) {
-            eventEnd = dfu.hourMinuteTimeFormatter.string(from: event.endDate)
+        if Calendar.current.isDate(event.end, inSameDayAs: event.begin) {
+            eventEnd = dfu.hourMinuteTimeFormatter.string(from: event.end)
         } else {
-            eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.endDate)
+            eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.end)
         }
         eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
         
@@ -357,7 +357,7 @@ class HTEventDetailViewController: UIViewController {
             if bookmark.value {
                 removeNotification(event)
             } else {
-                scheduleNotification(at: event.beginDate, event)
+                scheduleNotification(at: event.begin, event)
             }
             FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (error) in
                 
@@ -401,7 +401,7 @@ class HTEventDetailViewController: UIViewController {
     @IBAction func shareEvent(_ sender: Any) {
         let dfu = DateFormatterUtility.shared
         if let e = event {
-            let time = dfu.dayOfWeekTimeFormatter.string(from: e.beginDate)
+            let time = dfu.dayOfWeekTimeFormatter.string(from: e.begin)
             let item = "\(e.conferenceName): Attending '\(e.title)' on \(time) in \(e.location.name) #hackertracker"
             
             let activityViewController : UIActivityViewController = UIActivityViewController(

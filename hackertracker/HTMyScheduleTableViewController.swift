@@ -37,7 +37,7 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
                         let dayDate = dfu.yearMonthDayFormatter.date(from: day)!
                         let range = dayDate...(dayDate.addingTimeInterval(86400))
                         for e in eventsList {
-                            if e.bookmark.value, range.contains(e.event.beginDate)  {
+                            if e.bookmark.value, range.contains(e.event.begin)  {
                                 //NSLog("Adding \(e.event.title) to this schedule")
                                 events.append(e)
                             } else {

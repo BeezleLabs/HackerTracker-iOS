@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDataSource, UITableViewDelegate {
+class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDataSource, UITableViewDelegate, EventCellDelegate {
 
     @IBOutlet weak var twitterButton: UIButton!
     @IBOutlet weak var talkButton: UIButton!
@@ -55,7 +55,20 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             let eToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: e.id) { (result) in
                 switch result {
                 case .success(let event):
-                    self.events.append(event)
+                    var i = 0
+                    var update = false
+                    for e in self.events {
+                        if e.event.id == event.event.id {
+                            self.events.remove(at: i)
+                            self.events.insert(event, at: i)
+                            update = true
+                            break
+                        }
+                        i = i + 1
+                    }
+                    if !update {
+                        self.events.append(event)
+                    }
 
                     self.eventTableView.reloadData()
                     self.vertStackView.layoutSubviews()
@@ -129,6 +142,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
             let event = events[indexPath.row]
             cell.bind(userEvent: event)
+            cell.eventCellDelegate = self
             return cell
 
         } else {
@@ -160,4 +174,10 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    // Event Cell Delegate
+    func updatedEvents() {
+        //self.reloadEvents()
+        self.eventTableView.reloadData()
+    }
+    
 }

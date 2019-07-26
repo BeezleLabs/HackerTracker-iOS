@@ -44,6 +44,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         automaticallyAdjustsScrollViewInsets = false
         var i = 0
         let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fm = FileManager.default
         let storageRef = FSConferenceDataController.shared.storage.reference()
         for m in AnonymousSession.shared.currentConference.maps {
             let path = "\(AnonymousSession.shared.currentConference.code)/\(m.file)"
@@ -51,7 +52,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             let mRef = storageRef.child(path)
             mapSwitch.insertSegment(withTitle: m.name, at: i, animated: false)
             
-            if let rcv = ReaderContentView(frame: self.view.frame, fileURL: mLocal, page: 0, password: "") {
+            if fm.fileExists(atPath: mLocal.path), let rcv = ReaderContentView(frame: self.view.frame, fileURL: mLocal, page: 0, password: "") {
                 view.addSubview(rcv)
                 mapViews.append(rcv)
                 rcv.isHidden = true

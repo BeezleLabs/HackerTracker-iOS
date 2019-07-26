@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct Bookmark : Codable {
     var id : String
@@ -26,9 +27,10 @@ struct HTEventModel : Codable {
     var id : Int
     var conferenceName : String
     var description : String
-    var beginDate : Date
+    //var beginDate : Date
     var begin : Date
-    var endDate : Date
+    //var endDate : Date
+    var end : Date
     var includes : String
     var links : String
     var title : String
@@ -47,11 +49,17 @@ extension HTEventModel : Document {
         let dfu = DateFormatterUtility.shared
         let tmp_date = "2019-01-01T00:00:00.000-0000"
         let id = dictionary["id"] as? Int ?? 0
-        let beginDate = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmp_date)!
-        let begin = dictionary["begin_timestamp"] as? Date ?? dfu.iso8601Formatter.date(from: tmp_date)!
+        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmp_date)!
+        if let begin_timestamp = dictionary["begin_timestamp"] as? Timestamp {
+            begin = begin_timestamp.dateValue()
+        }
+        var end =  dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmp_date)!
+        if let end_timestamp = dictionary["end_timestamp"] as? Timestamp {
+            end = end_timestamp.dateValue()
+        }
         let conferenceName = dictionary["conference"] as? String ?? ""
         let description = dictionary["description"] as? String ?? ""
-        let endDate =  dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmp_date)!
+        
         let includes = dictionary["includes"] as? String ?? ""
         let link = dictionary["link"] as? String ?? ""
         let title = dictionary["title"] as? String ?? ""
@@ -82,7 +90,7 @@ extension HTEventModel : Document {
             return nil;
         }
         
-        self.init(id: id, conferenceName: conferenceName, description: description, beginDate: beginDate, begin: begin, endDate: endDate, includes: includes, links: link, title: title, location: locationVal, speakers: speakersVal, type: typeVal)
+        self.init(id: id, conferenceName: conferenceName, description: description, begin: begin, end: end, includes: includes, links: link, title: title, location: locationVal, speakers: speakersVal, type: typeVal)
     }
 }
 

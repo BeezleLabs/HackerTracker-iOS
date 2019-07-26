@@ -111,13 +111,13 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         let curTime = Date()
         // To check test data on home screen (set to mid-layerone)
         //let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
-
+    
         self.starred = []
         starredLoop: for e in allEvents {
             if self.starred.count > 2 {
                 break starredLoop
             } else {
-                if  e.event.beginDate > curTime, e.bookmark.value {
+                if  e.event.begin > curTime, e.bookmark.value {
                     self.starred.append(e)
                 }
             }
@@ -128,7 +128,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
             if self.upcoming.count > 2 {
                 break upcomingLoop
             } else {
-                if e.event.beginDate > curTime {
+                if e.event.begin > curTime {
                     self.upcoming.append(e)
                 }
             }
@@ -136,7 +136,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         
         self.liveNow = []
         liveLoop: for e in allEvents {
-            let range = e.event.beginDate...e.event.endDate
+            let range = e.event.begin...e.event.end
             if range.contains(curTime) {
                 self.liveNow.append(e)
             }
