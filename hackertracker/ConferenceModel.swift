@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct ConferenceModel : Codable {
     var id : Int
@@ -70,7 +71,10 @@ extension HTArticleModel : Document {
         let name = dictionary["name"] as? String ?? ""
         let text = dictionary["text"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
-        let updated_at = dictionary["updated_at"] as? Date ?? DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        if let updated_ts = dictionary["updated_at"] as? Timestamp {
+            updated_at = updated_ts.dateValue()
+        }
         
         self.init(name: name, text: text, updated_at: updated_at)
     }
