@@ -20,9 +20,8 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     @IBOutlet weak var conName: UILabel!
 
     var messages: [HTArticleModel] = []
-    var eventSections: [String] = ["News", "Up Next On Schedule", "Up Next", "Live Now", "About"]
+    var eventSections: [String] = ["News", "Upcoming Bookmarks", "Live Now", "About"]
     var starred: [UserEventModel] = []
-    var upcoming: [UserEventModel] = []
     var liveNow: [UserEventModel] = []
     var data = NSMutableData()
     var eventsToken : UpdateToken?
@@ -114,22 +113,11 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     
         self.starred = []
         starredLoop: for e in allEvents {
-            if self.starred.count > 2 {
+            if self.starred.count > 4 {
                 break starredLoop
             } else {
                 if  e.event.begin > curTime, e.bookmark.value {
                     self.starred.append(e)
-                }
-            }
-        }
-        
-        self.upcoming = []
-        upcomingLoop: for e in allEvents {
-            if self.upcoming.count > 2 {
-                break upcomingLoop
-            } else {
-                if e.event.begin > curTime {
-                    self.upcoming.append(e)
                 }
             }
         }
@@ -167,9 +155,6 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
                     dv.event = self.starred[indexPath.row].event
                     dv.bookmark = self.starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    dv.event = self.upcoming[indexPath.row].event
-                    dv.bookmark = self.upcoming[indexPath.row].bookmark
-                } else if indexPath.section == 3 {
                     dv.event = self.liveNow[indexPath.row].event
                     dv.bookmark = self.liveNow[indexPath.row].bookmark
                 }
@@ -209,19 +194,6 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             }
 
         } else if indexPath.section == 2 {
-            if upcoming.count > 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event = upcoming[indexPath.row]
-                cell.bind(userEvent: event)
-                cell.eventCellDelegate = self
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-                cell.bind(title: "No Events", desc: "Is the conference cancelled?")
-                return cell
-            }
-
-        } else if indexPath.section == 3 {
             if liveNow.count > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
                 let event = liveNow[indexPath.row]
@@ -233,7 +205,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                 cell.bind(title: "No Live Events", desc: "Nothing is going on right now, maybe try again later?")
                 return cell
             }
-        } else if indexPath.section == 4 {
+        } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
             if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                 cell.versionLabel.setTitle("Hackertracker iOS v\(v) (\(b))", for: UIControl.State.normal)
@@ -279,18 +251,12 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                 return 1
             }
         } else if section == 2 {
-            if upcoming.count > 0 {
-                return upcoming.count
-            } else {
-                return 1
-            }
-        } else if section == 3 {
             if liveNow.count > 0 {
                 return liveNow.count
             } else {
                 return 1
             }
-        } else if section == 4 {
+        } else if section == 3 {
             return 1
         } else {
             return 0
@@ -299,16 +265,12 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if ( indexPath.section == 1 && starred.count > 0 )
-            || ( indexPath.section == 2 && upcoming.count > 0 )
-            || ( indexPath.section == 3 && liveNow.count > 0 ) {
+            || ( indexPath.section == 2 && liveNow.count > 0 ) {
             if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
                 if indexPath.section == 1 {
                     eventController.event = self.starred[indexPath.row].event
                     eventController.bookmark = self.starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    eventController.event = self.upcoming[indexPath.row].event
-                    eventController.bookmark = self.upcoming[indexPath.row].bookmark
-                } else if indexPath.section == 3 {
                     eventController.event = self.liveNow[indexPath.row].event
                     eventController.bookmark = self.liveNow[indexPath.row].bookmark
                 }

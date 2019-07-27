@@ -23,7 +23,7 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         dateLabel.textAlignment = NSTextAlignment.left
         dateLabel.textColor = .lightGray
-        dateLabel.backgroundColor = UIColor.backgroundGray
+        dateLabel.backgroundColor = .black
         dateLabel.layer.borderColor = UIColor.lightGray.cgColor
         dateLabel.layer.borderWidth = 0.5
         dateLabel.font = UIFont.preferredFont(forTextStyle: .body)

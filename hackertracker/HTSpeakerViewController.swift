@@ -17,6 +17,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var vertStackView: UIStackView!
     @IBOutlet weak var eventTableView: UITableView!
+    @IBOutlet weak var eventTableHeightConstraint: NSLayoutConstraint!
     
     var eventTokens : [UpdateToken] = []
     var events: [UserEventModel] = []
@@ -30,6 +31,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             let d = s.description
             nameLabel.text = n
             bioLabel.text = d
+            bioLabel.sizeToFit()
             eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil),  forCellReuseIdentifier: "EventCell")
             eventTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
             
@@ -41,44 +43,51 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             addEventList()
             
             twitterButton.isHidden = true
-                if s.twitter != "" {
-                    twitterButton.setTitle(s.twitter, for: .normal)
-                    twitterButton.isHidden = false
-                }
+            if s.twitter != "" {
+                twitterButton.setTitle(s.twitter, for: .normal)
+                twitterButton.isHidden = false
+            }
 
+            self.eventTableView.reloadData()
+            self.vertStackView.layoutSubviews()
             
         }
     }
     
     func addEventList() {
+        var i = 0
         for e in speaker!.events {
-            let eToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: e.id) { (result) in
-                switch result {
-                case .success(let event):
-                    var i = 0
-                    var update = false
-                    for e in self.events {
-                        if e.event.id == event.event.id {
+            if eventTokens.indices.contains(i) {
+                //NSLog("Already an eventtoken for event \(e.title)")
+            } else {
+                let eToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: e.id) { (result) in
+                    switch result {
+                    case .success(let event):
+                        if self.events.contains(event), let i = self.events.firstIndex(of: event) {
                             self.events.remove(at: i)
                             self.events.insert(event, at: i)
-                            update = true
-                            break
+                        } else {
+                            self.events.append(event)
                         }
-                        i = i + 1
-                    }
-                    if !update {
-                        self.events.append(event)
-                    }
 
-                    self.eventTableView.reloadData()
-                    self.vertStackView.layoutSubviews()
+                        self.eventTableView.reloadData()
+                        self.vertStackView.layoutSubviews()
+                        
+                    case .failure(let _):
+                        NSLog("")
+                    }
                     
-                case .failure(let _):
-                    NSLog("")
                 }
-                
+                eventTokens.append(eToken)
             }
-            eventTokens.append(eToken)
+            i = i + 1
+        }
+        if let s = speaker {
+            if s.events.count > 0 {
+                eventTableHeightConstraint.constant = CGFloat(s.events.count*200)
+            } else {
+                eventTableHeightConstraint.constant = 100
+            }
         }
     }
 
@@ -153,13 +162,16 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let event : UserEventModel = events[indexPath.row]
 
-        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = event.event
-            eventController.bookmark = event.bookmark
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-            self.navigationController?.pushViewController(eventController, animated: true)
+        if let s = speaker, s.events.count > 0 {
+            let event : UserEventModel = events[indexPath.row]
+
+            if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+                eventController.event = event.event
+                eventController.bookmark = event.bookmark
+                self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+                self.navigationController?.pushViewController(eventController, animated: true)
+            }
         }
     }
     
@@ -176,7 +188,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     }
     // Event Cell Delegate
     func updatedEvents() {
-        //self.reloadEvents()
+        //self.addEventList()
         self.eventTableView.reloadData()
     }
     

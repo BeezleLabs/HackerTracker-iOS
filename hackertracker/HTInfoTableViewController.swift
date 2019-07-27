@@ -29,11 +29,27 @@ class HTInfoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        return 7
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 6) {
+            // Contact Us!
+            let email = "hackertracker@defcon.org"
+            if let url = URL(string: "mailto:\(email)") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+
     }
     
 

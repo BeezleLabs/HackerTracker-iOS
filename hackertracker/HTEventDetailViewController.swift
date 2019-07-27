@@ -69,6 +69,10 @@ class HTEventDetailViewController: UIViewController {
             }
         }
         
+        self.navigationController?.navigationBar.backgroundColor = .black
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.isTranslucent = false
+        
     }
     
     func loadEvent() {

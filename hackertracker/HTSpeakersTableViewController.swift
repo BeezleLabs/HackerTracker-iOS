@@ -127,7 +127,7 @@ class HTSpeakersTableViewController: UITableViewController {
             } else {
                 ip = sender as! IndexPath
             }
-            
+
             svc.speaker = self.speakerSections[ip.section].speakers[ip.row]
             
         }

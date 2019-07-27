@@ -39,9 +39,17 @@ struct HTEventModel : Codable {
     var type : HTEventType
 }
 
-struct UserEventModel : Codable {
+struct UserEventModel : Codable, Equatable {
     var event : HTEventModel
     var bookmark : Bookmark
+    
+    static func ==(lhs: UserEventModel, rhs: UserEventModel) -> Bool {
+        if lhs.event.id == rhs.event.id && lhs.event.title == rhs.event.title && lhs.event.description == rhs.event.description {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 extension HTEventModel : Document {
@@ -69,7 +77,7 @@ extension HTEventModel : Document {
             location = HTLocationModel(dictionary: locationValues)
         }
         
-        var speakers : [HTSpeaker]?;
+        var speakers : [HTSpeaker] = [];
         if let speakersValues = dictionary["speakers"] as? Array<Any>  {
             
             speakers = speakersValues.compactMap { (element) -> HTSpeaker? in
@@ -86,11 +94,12 @@ extension HTEventModel : Document {
             type = HTEventType(dictionary: typeValues)
         }
         
-        guard  let typeVal = type, let speakersVal = speakers, let locationVal = location else {
+        guard  let typeVal = type, let locationVal = location else {
             return nil;
         }
         
-        self.init(id: id, conferenceName: conferenceName, description: description, begin: begin, end: end, includes: includes, links: link, title: title, location: locationVal, speakers: speakersVal, type: typeVal)
+        
+        self.init(id: id, conferenceName: conferenceName, description: description, begin: begin, end: end, includes: includes, links: link, title: title, location: locationVal, speakers: speakers, type: typeVal)
     }
 }
 
