@@ -124,9 +124,11 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         
         self.liveNow = []
         liveLoop: for e in allEvents {
-            let range = e.event.begin...e.event.end
-            if range.contains(curTime) {
-                self.liveNow.append(e)
+            if e.event.begin < e.event.end {
+                let range = e.event.begin...e.event.end
+                if range.contains(curTime) {
+                    self.liveNow.append(e)
+                }
             }
         }
         
