@@ -81,7 +81,7 @@ class HTFAQTableViewController: UITableViewController {
     
     func loadFAQs() {
         
-        faqsToken = FSConferenceDataController.shared.requestFAQs(forConference: AnonymousSession.shared.currentConference, descending: true) { (result) in
+        faqsToken = FSConferenceDataController.shared.requestFAQs(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
             switch result {
             case .success(let faqsList):
                 self.faqs = faqsList

@@ -34,7 +34,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let tabs = [
                 "Home" : "HTUpdatesViewController",
                 "Schedule" : "HTScheduleTableViewController",
-                "Bookmarked" : "HTMyScheduleTableViewController",
+                "Bookmarks" : "HTMyScheduleTableViewController",
                 "Maps" : "HTMapsViewController",
                 "Speakers": "HTSpeakersTableViewController",
                 "More" : "HTInfoTableViewController"
@@ -44,7 +44,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let displayedTabs = [
         HamburgerItem(title:"Home", imageID:"skull-active"),
         HamburgerItem(title:"Schedule", imageID:"calendar-active"),
-        HamburgerItem(title:"Bookmarked", imageID:"star_active"),
+        HamburgerItem(title:"Bookmarks", imageID:"star_active"),
         HamburgerItem(title:"Maps", imageID:"map-active"),
         HamburgerItem(title:"Speakers", imageID:"icon_user"),
         HamburgerItem(title:"More", imageID: "filter")

@@ -84,7 +84,6 @@ struct HTFAQModel : Codable {
     var question: String
     var answer: String
     var updated_at: Date
-    
 }
 
 extension HTFAQModel : Document {
@@ -92,8 +91,10 @@ extension HTFAQModel : Document {
         let question = dictionary["question"] as? String ?? ""
         let answer = dictionary["answer"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
-        let updated_at = dictionary["updated_at"] as? Date ?? DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
-        
+        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        if let update_tz = dictionary["updated_at"] as? Timestamp {
+            updated_at = update_tz.dateValue()
+        }
         self.init(question: question, answer: answer, updated_at: updated_at)
     }
 }
@@ -112,7 +113,10 @@ extension HTVendorModel : Document {
         let desc = dictionary["description"] as? String ?? ""
         let link = dictionary["link"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
-        let updated_at = dictionary["updated_at"] as? Date ?? DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        if let update_tz = dictionary["updated_at"] as? Timestamp {
+            updated_at = update_tz.dateValue()
+        }
         
         self.init(name: name, desc: desc, link: link, updated_at: updated_at)
     }

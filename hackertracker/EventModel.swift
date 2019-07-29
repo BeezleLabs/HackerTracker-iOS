@@ -27,9 +27,7 @@ struct HTEventModel : Codable {
     var id : Int
     var conferenceName : String
     var description : String
-    //var beginDate : Date
     var begin : Date
-    //var endDate : Date
     var end : Date
     var includes : String
     var links : String

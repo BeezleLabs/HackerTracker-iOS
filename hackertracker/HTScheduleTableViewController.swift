@@ -471,6 +471,10 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         }
     }
     
+    override func reloadEvents() {
+        self.reloadFilteredEvents()
+    }
+    
 }
 
 

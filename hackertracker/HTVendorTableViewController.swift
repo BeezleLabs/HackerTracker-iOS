@@ -67,7 +67,7 @@ class HTVendorTableViewController: UITableViewController {
     }
     
     func loadVendors() {
-        vendorsToken = FSConferenceDataController.shared.requestVendors(forConference: AnonymousSession.shared.currentConference, descending: true) { (result) in
+        vendorsToken = FSConferenceDataController.shared.requestVendors(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
             switch result {
             case .success(let vendorsList):
                 self.vendors = vendorsList
