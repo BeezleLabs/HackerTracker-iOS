@@ -21,6 +21,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var lastContentOffset: CGPoint?
     var updated : [String] = []
     var later : [String] = []
+    var alltypes: [HTEventType] = []
+    var filteredtypes: [HTEventType] = []
     
     var eventTokens : [UpdateToken?] = []
 
@@ -32,7 +34,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         self.title = AnonymousSession.shared.currentConference.name
+        self.setupTokens()
         self.reloadEvents()
+        self.tableView.reloadData()
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
     }
 
@@ -40,8 +44,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         super.viewWillAppear(animated)
 
         if isViewLoaded && !animated  {
-            self.reloadEvents()
-
+            self.tableView.reloadData()
             if let lastContentOffset = lastContentOffset {
                 tableView.contentOffset = lastContentOffset
                 tableView.layoutIfNeeded()
@@ -54,6 +57,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
+        
+        self.tableView.reloadData()
 
         if pullDownAnimation == nil {
             refreshControl = UIRefreshControl()
@@ -94,13 +99,39 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             allEventSections.removeAll()
         }
         
+        
+        let emptyStateView = self.emptyStateView ?? emptyState()
+
+        self.emptyStateView = emptyStateView
+        emptyStateView.isHidden = eventSections.count != 0
+
+        if let selectedIndexPath = selectedIndexPath,
+            let event = event,
+            selectedIndexPath.section < eventSections.count,
+            selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count {
+
+            let newEvent = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
+            if newEvent.event.id == event.event.id {
+                tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
+            }
+        }
+    }
+    
+    public func emptyState() -> UIView {
+        if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
+            return emptyState
+        }
+        return UIView()
+    }
+    
+    func setupTokens() {
         let dfu = DateFormatterUtility.shared
         let conference = AnonymousSession.shared.currentConference!
         if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
             var k = 0
             for day in dfu.getConferenceDates(start: start, end: end) {
                 if eventTokens.indices.contains(k) {
-                    //
+                    // token already exists, don't need to do anything here
                 } else {
                     let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
                         switch result {
@@ -111,7 +142,13 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                 for es in self.eventSections {
                                     if es.date == day {
                                         self.eventSections.remove(at: i)
-                                        self.eventSections.insert((date: day, events: eventList), at: i)
+                                        var newEvents : [UserEventModel] = []
+                                        for e in es.events {
+                                            if self.filteredtypes.contains(e.event.type) {
+                                                newEvents.append(e)
+                                            }
+                                        }
+                                        self.eventSections.insert((date: day, events: newEvents), at: i)
                                         newDay = false
                                     }
                                     i = i + 1
@@ -134,9 +171,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                 if newDay {
                                     self.allEventSections.append((date: day, events: eventList))
                                 }
-
+                                
                             }
- 
+                            
                             self.tableView.reloadData()
                         case .failure(let _):
                             NSLog("")
@@ -147,31 +184,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 k = k + 1
             }
         }
-        
-        let emptyStateView = self.emptyStateView ?? emptyState()
-
-        self.emptyStateView = emptyStateView
-        emptyStateView.isHidden = eventSections.count != 0
-
-        tableView.reloadData()
-
-        if let selectedIndexPath = selectedIndexPath,
-            let event = event,
-            selectedIndexPath.section < eventSections.count,
-            selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count {
-
-            let newEvent = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
-            if newEvent.event.id == event.event.id {
-                tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
-            }
-        }
-    }
-    
-    public func emptyState() -> UIView {
-        if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
-            return emptyState
-        }
-        return UIView()
     }
     
     // MARK: - Table view data source
@@ -308,10 +320,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
 }
 
-class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate {
+class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate {
     
-    var alltypes: [HTEventType] = []
-    var filteredtypes: [HTEventType] = []
     var filterView: HTFilterViewController?
     
     var typesToken: UpdateToken?
@@ -373,12 +383,31 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         typesToken = FSConferenceDataController.shared.requestEventTypes(forConference: AnonymousSession.shared.currentConference!) { (result) in
             switch result {
             case .success(let typeList):
-                self.alltypes.append(contentsOf: typeList)
-                self.filteredtypes.append(contentsOf: typeList)
+                self.alltypes.removeAll()
+                for t in typeList {
+                    if !t.name.lowercased().contains("bookmark") {
+                        self.alltypes.append(t)
+                    }
+                }
+                self.filteredtypes = self.alltypes
             case .failure(let _):
                 NSLog("")
             }
         }
+    }
+    
+    func updatedEvents() {
+        self.reloadFilteredEvents()
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+        let e = self.eventSections[indexPath.section].events[indexPath.row]
+        
+        cell.bind(userEvent: e)
+        cell.eventCellDelegate = self
+        
+        return cell
     }
 
     public override func emptyState() -> UIView {
@@ -394,8 +423,9 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         var ret : [String] = []
         let dfu = DateFormatterUtility.shared
         for es in eventSections {
-                if let date = dfu.yearMonthDayFormatter.date(from: es.date) {
+                if es.events.count > 0, let date = dfu.yearMonthDayFormatter.date(from: es.date) {
                     let out = dfu.shortDayOfMonthFormatter.string(from: date)
+                    //NSLog("checking date \(es.date) / \(out)")
                     if out.contains("Mon") {
                             ret.append("M")
                     } else if out.contains("Tue") {
@@ -403,6 +433,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                     } else if out.contains("Wed") {
                             ret.append("W")
                     } else if out.contains("Thu") {
+                            //NSLog("got Thu")
                             ret.append("H")
                     } else if out.contains("Fri") {
                             ret.append("F")
@@ -417,6 +448,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     }
     
     func reloadFilteredEvents() {
+        //NSLog("filtered types: \(filteredtypes)")
         var newEventSections : [EventSection] = []
         for es in allEventSections {
             var newEvents : [UserEventModel] = []
@@ -469,10 +501,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
             dv.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
             dv.delegate = self
         }
-    }
-    
-    override func reloadEvents() {
-        self.reloadFilteredEvents()
     }
     
 }

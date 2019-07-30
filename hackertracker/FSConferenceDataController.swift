@@ -249,7 +249,7 @@ class FSConferenceDataController {
     }
     
     func requestEventTypes(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTEventType], Error>) -> Void) -> UpdateToken {
-        let query = document(forConference: conference).collection("types")
+        let query = document(forConference: conference).collection("types").order(by: "name", descending: false)
         let types = Collection<HTEventType>(query: query)
         types.listen() { (changes) in
             updateHandler(Result<[HTEventType], Error>.success(types.items))
