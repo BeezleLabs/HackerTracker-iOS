@@ -18,19 +18,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     var roomDimensions : CGRect?
     var timeOfDay : TimeOfDay?
 
-    var mapLocation : Location = .unknown {
-        didSet {
-            switch mapLocation {
-            case .track1:
-                roomDimensions = CGRect(x: 1196.0, y: 712.0, width: 539.0, height: 338.0)
-                break
-            case .unknown:
-                break
-            default:
-                break
-            }
-        }
-    }
+    var hotel : String? 
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +27,8 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         mapSwitch.removeAllSegments()
         automaticallyAdjustsScrollViewInsets = false
@@ -62,7 +52,17 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         }
         mapSwitch.apportionsSegmentWidthsByContent = true
         mapSwitch.sizeToFit()
-        mapSwitch.selectedSegmentIndex = 0
+        var selectedIndex = 0
+        if let h = hotel {        
+            for i in 0...(mapSwitch.numberOfSegments-1) {
+                if let m = mapSwitch.titleForSegment(at: i) {
+                    if m.contains(h) {
+                        selectedIndex = i
+                    }
+                }
+            }
+        }
+        mapSwitch.selectedSegmentIndex = selectedIndex
         mapChanged(mapSwitch)
     }
     

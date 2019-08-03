@@ -20,7 +20,30 @@ class HTSpeakersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        speakerToken = FSConferenceDataController.shared.requestSpeakers(forConference: AnonymousSession.shared.currentConference) { (result) in
+            switch result {
+            case .success(let speakerList):
+                self.speakerSections.removeAll()
+                for l in "abcdefghijklmnopqrstuvwxyz" {
+                    var speakers : [HTSpeaker] = []
+                    
+                    for s in speakerList {
+                        let fl = s.name.prefix(1).lowercased()
+                        //NSLog("\(l) : \(fl)")
+                        if fl == l.lowercased() {
+                            speakers.append(s)
+                        }
+                    }
+                    if speakers.count > 0 {
+                        self.speakerSections.append((letter: l.uppercased(), speakers: speakers))
+                    }
+                }
+                
+                self.tableView.reloadData()
+            case .failure(let _):
+                NSLog("")
+            }
+        }
         reloadSpeakers()
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         self.clearsSelectionOnViewWillAppear = false
@@ -70,33 +93,6 @@ class HTSpeakersTableViewController: UITableViewController {
         
         if let selectedIndexPath = selectedIndexPath {
             speaker = speakerSections[selectedIndexPath.section].speakers[selectedIndexPath.row]
-        }
-        
-        speakerSections.removeAll()
-        
-        speakerToken = FSConferenceDataController.shared.requestSpeakers(forConference: AnonymousSession.shared.currentConference) { (result) in
-            switch result {
-            case .success(let speakerList):
-
-                for l in "abcdefghijklmnopqrstuvwxyz" {
-                    var speakers : [HTSpeaker] = []
-                    
-                    for s in speakerList {
-                        let fl = s.name.prefix(1).lowercased()
-                        //NSLog("\(l) : \(fl)")
-                        if fl == l.lowercased() {
-                            speakers.append(s)
-                        }
-                    }
-                    if speakers.count > 0 {
-                        self.speakerSections.append((letter: l.uppercased(), speakers: speakers))
-                    }
-                }
-                
-                self.tableView.reloadData()
-            case .failure(let _):
-                NSLog("")
-            }
         }
         
         if let selectedIndexPath = selectedIndexPath,

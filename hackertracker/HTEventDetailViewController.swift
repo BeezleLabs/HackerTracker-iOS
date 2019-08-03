@@ -88,7 +88,10 @@ class HTEventDetailViewController: UIViewController {
         eventTitleLabel.text = event.title
         getSpeakers()
         setupSpeakerNames()
+        let touchLocation = UITapGestureRecognizer(target: self, action: #selector(gotoMap))
         eventLocationLabel.text = event.location.name
+        eventLocationLabel.addGestureRecognizer(touchLocation)
+        eventLocationLabel.isUserInteractionEnabled = true
         
         eventTypeLabel.layer.borderColor = UIColor(hexString: event.type.color).cgColor
         eventTypeLabel.layer.backgroundColor = UIColor(hexString: event.type.color).cgColor
@@ -435,6 +438,15 @@ class HTEventDetailViewController: UIViewController {
 
     }
     
+    @objc func gotoMap() {
+        //NSLog("gotoMap tapped")
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
+        mapView.hotel = event?.location.hotel
+        let navigationController = HTEventsNavViewController(rootViewController: mapView)
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
     @objc func mapDetailTapped(tapGesture : UILongPressGestureRecognizer)
     {
         let touchPoint = tapGesture.location(in: tapGesture.view)
@@ -450,7 +462,7 @@ class HTEventDetailViewController: UIViewController {
             if intersecting {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
-                mapView.mapLocation = locationMapView.currentLocation
+                //mapView.mapLocation = locationMapView.currentLocation
                 let navigationController = HTEventsNavViewController(rootViewController: mapView)
                 self.present(navigationController, animated: true, completion: nil)
             }

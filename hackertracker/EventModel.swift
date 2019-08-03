@@ -105,6 +105,7 @@ struct HTLocationModel : Codable {
     var id : Int
     var conferenceName : String
     var name : String
+    var hotel : String
 }
 
 extension HTLocationModel : Document {
@@ -112,8 +113,9 @@ extension HTLocationModel : Document {
         let id = dictionary["id"] as? Int ?? 0
         let conferenceName = dictionary["conference"] as? String ?? ""
         let name = dictionary["name"] as? String ?? ""
+        let hotel = dictionary["hotel"] as? String ?? ""
 
-        self.init(id: id, conferenceName: conferenceName, name: name)
+        self.init(id: id, conferenceName: conferenceName, name: name, hotel: hotel)
     }
 }
 

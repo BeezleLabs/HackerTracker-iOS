@@ -39,6 +39,9 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         super.viewDidLoad()
         
         updatesTableView.rowHeight = UITableView.automaticDimension
+        updatesTableView.estimatedRowHeight = 75
+        updatesTableView.sectionHeaderHeight = UITableView.automaticDimension
+        updatesTableView.estimatedSectionHeaderHeight = 30
         updatesTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
         updatesTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
         updatesTableView.register(UINib.init(nibName: "AboutCell", bundle: nil), forCellReuseIdentifier: "AboutCell")
@@ -69,7 +72,8 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
                 NSLog("")
             }
         }
-        //self.reloadEvents()
+        
+        updatesTableView.layoutIfNeeded()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -92,6 +96,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
                 updatesTableView.layoutIfNeeded()
             }
         }
+        updatesTableView.layoutIfNeeded()
     }
     
     func reloadArticles() {
@@ -221,21 +226,31 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
 
-        let headerLabel = UILabel(frame: CGRect(x: 25, y: 0, width:
-            tableView.bounds.size.width, height: tableView.bounds.size.height))
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        headerLabel.textColor = UIColor.lightGray
-        headerLabel.text = eventSections[section].uppercased()
+        let headerLabel = UIButton()
+        headerLabel.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        headerLabel.setTitleColor(.lightGray, for: .normal)
+        //headerLabel.titleLabel!.textColor = UIColor.lightGray
+        headerLabel.titleLabel?.numberOfLines = 0
+        headerLabel.titleLabel?.minimumScaleFactor = 0.5
+        headerLabel.titleLabel?.lineBreakMode = .byTruncatingTail
+        
+        headerLabel.contentHorizontalAlignment = .left
+        headerLabel.contentVerticalAlignment = .center
+        headerLabel.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 10, right: 5)
+        headerLabel.setTitle(eventSections[section].uppercased(), for: .normal)
+        headerLabel.isUserInteractionEnabled = false
+        
+        //headerLabel.padding =
+        
+        headerLabel.titleLabel?.sizeToFit()
         headerLabel.sizeToFit()
-        headerView.addSubview(headerLabel)
 
-        return headerView
+        return headerLabel
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -279,10 +294,6 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                 self.navigationController?.pushViewController(eventController, animated: true)
             }
         }
-    }
-
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
