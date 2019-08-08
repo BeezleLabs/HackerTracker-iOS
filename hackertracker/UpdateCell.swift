@@ -29,7 +29,7 @@ public class UpdateCell : UITableViewCell {
 
     func bind(message: HTArticleModel) {
         let dfu = DateFormatterUtility.shared
-        let date = dfu.yearMonthDayNoTimeZoneTimeFormatter.string(from: message.updated_at)
+        let date = dfu.monthDayTimeFormatter.string(from: message.updated_at)
 
         titleLabel.text = message.name
         descriptionLabel.text = "[\(date)]: \(message.text)"

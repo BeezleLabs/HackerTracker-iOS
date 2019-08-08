@@ -86,7 +86,7 @@ class DateFormatterUtility {
     //Year-Month-Day time format
     let yearMonthDayNoTimeZoneTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-d HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()

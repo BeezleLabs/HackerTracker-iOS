@@ -175,6 +175,24 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                             }
                             
                             self.tableView.reloadData()
+                            if let _ = self.tableView.indexPathForSelectedRow {
+                                // don't find a location to jump to, view is already set/loaded
+                            } else {
+                                let curDate = Date()
+                                // Debug below to jump to next events
+                                //let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-08-09T11:43:01.000-0700")!
+                                fullloop: for i in 0...(self.eventSections.count-1) {
+                                    for j in 0...(self.eventSections[i].events.count-1) {
+                                        let e = self.eventSections[i].events[j]
+                                        if e.event.begin > curDate {
+                                            //NSLog("Jumping to \(e.event.title) at \(i):\(j)")
+                                            let ip = IndexPath(row: j, section: i)
+                                            self.tableView.scrollToRow(at: ip, at: .top, animated: false)
+                                            break fullloop
+                                        }
+                                    }
+                                }
+                            }
                         case .failure(let _):
                             NSLog("")
                         }
@@ -343,6 +361,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         
         self.filterButton.isHidden = false
         self.filterButton.isUserInteractionEnabled = true
+        
         
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         tableView.backgroundColor = UIColor.backgroundGray
