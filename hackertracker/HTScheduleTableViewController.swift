@@ -23,6 +23,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var later : [String] = []
     var alltypes: [HTEventType] = []
     var filteredtypes: [HTEventType] = []
+    var firstLoad = true
+    var touchNav : UITapGestureRecognizer!
     
     var eventTokens : [UpdateToken?] = []
 
@@ -33,7 +35,18 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
-        self.title = AnonymousSession.shared.currentConference.name
+        // Create title button
+        let titleViewButton = UIButton(type: .system)
+        titleViewButton.setTitleColor(UIColor.white, for: .normal)
+        titleViewButton.setTitle(AnonymousSession.shared.currentConference.name, for: .normal)
+        titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+        
+        // Create action listener
+        titleViewButton.addTarget(self, action: #selector(scrollToCurrentDate(_:)), for: .touchUpInside)
+        
+        // Set the title view with newly created button
+        navigationItem.titleView = titleViewButton
+        
         self.setupTokens()
         self.reloadEvents()
         self.tableView.reloadData()
@@ -82,6 +95,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             tableView.addSubview(refreshControl!)
         }
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //self.navigationController?.navigationBar.removeGestureRecognizer(touchNav)
     }
 
     func reloadEvents() {
@@ -175,24 +193,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                             }
                             
                             self.tableView.reloadData()
-                            if let _ = self.tableView.indexPathForSelectedRow {
-                                // don't find a location to jump to, view is already set/loaded
-                            } else {
-                                let curDate = Date()
-                                // Debug below to jump to next events
-                                //let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-08-09T11:43:01.000-0700")!
-                                fullloop: for i in 0...(self.eventSections.count-1) {
-                                    for j in 0...(self.eventSections[i].events.count-1) {
-                                        let e = self.eventSections[i].events[j]
-                                        if e.event.begin > curDate {
-                                            //NSLog("Jumping to \(e.event.title) at \(i):\(j)")
-                                            let ip = IndexPath(row: j, section: i)
-                                            self.tableView.scrollToRow(at: ip, at: .top, animated: false)
-                                            break fullloop
-                                        }
-                                    }
-                                }
-                            }
+                            /*if self.firstLoad == true {
+                                self.firstLoad = false
+                                NSLog("nope, neither were set, scrolling to current time")
+                                self.scrollToCurrentDate(self)
+                            }*/
                         case .failure(let _):
                             NSLog("")
                         }
@@ -200,6 +205,30 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                     eventTokens.append(dayToken)
                 }
                 k = k + 1
+            }
+        }
+    }
+    
+    @objc func scrollToCurrentDate(_ sender: Any) {
+        let curDate = Date()
+        // Debug below to jump to next events for DEFCON27 schedule
+        //let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-08-09T11:43:01.000-0700")!
+        if self.eventSections.count > 0 {
+            fullloop: for i in 0...(self.eventSections.count-1) {
+                if self.eventSections[i].events.count > 0 {
+                    for j in 0...(self.eventSections[i].events.count-1) {
+                        let e = self.eventSections[i].events[j]
+                        if e.event.begin > curDate {
+                            //NSLog("Jumping to \(e.event.title) at \(i):\(j)")
+                            let ip = IndexPath(row: j, section: i)
+                            self.tableView.scrollToRow(at: ip, at: .top, animated: false)
+                            break fullloop
+                        }
+                    }
+                }
+                else {
+                    break fullloop
+                }
             }
         }
     }
@@ -361,9 +390,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         
         self.filterButton.isHidden = false
         self.filterButton.isUserInteractionEnabled = true
-        
-        
-        tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
+
         tableView.backgroundColor = UIColor.backgroundGray
     }
     
