@@ -52,8 +52,23 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         }
         mapSwitch.apportionsSegmentWidthsByContent = true
         mapSwitch.sizeToFit()
+        if let _ = hotel {
+            goToHotel()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let _ = hotel {
+            goToHotel()
+        }
+        applyDoneButtonIfNeeded()
+    }
+    
+    func goToHotel() {
+
         var selectedIndex = 0
-        if let h = hotel {        
+        if let h = hotel {
             for i in 0...(mapSwitch.numberOfSegments-1) {
                 if let m = mapSwitch.titleForSegment(at: i) {
                     if m.contains(h) {
@@ -64,11 +79,6 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
         }
         mapSwitch.selectedSegmentIndex = selectedIndex
         mapChanged(mapSwitch)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        applyDoneButtonIfNeeded()
     }
     
     func applyDoneButtonIfNeeded() {

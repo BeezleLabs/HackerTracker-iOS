@@ -34,7 +34,7 @@ class FSConferenceDataController {
     }
     
     func requestConferences(updateHandler: @escaping (Result<[ConferenceModel], Error>) -> Void) -> UpdateToken {
-        let query = db.collection("conferences")
+        let query = db.collection("conferences").order(by: "start_date", descending: true)
         let conferences = Collection<ConferenceModel>(query: query)
         conferences.listen() { (changes) in
             updateHandler(Result<[ConferenceModel], Error>.success(conferences.items))
@@ -138,9 +138,9 @@ class FSConferenceDataController {
         var query: Query?
         
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: inDate)
-        let start = calendar.date(from: components)!
+        let start = inDate
         let end = calendar.date(byAdding: .day, value: 1, to: start)!
+
         query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: start).whereField("begin_timestamp", isLessThan: end).order(by: "begin_timestamp", descending: descending).limit(to: limit ?? Int.max)
         
         return requestEvents(forConference: conference, query: query, updateHandler: updateHandler)

@@ -439,7 +439,6 @@ class HTEventDetailViewController: UIViewController {
     }
     
     @objc func gotoMap() {
-        //NSLog("gotoMap tapped")
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
         mapView.hotel = event?.location.hotel

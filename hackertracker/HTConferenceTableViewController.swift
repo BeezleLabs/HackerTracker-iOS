@@ -55,6 +55,7 @@ class HTConferenceTableViewController: UITableViewController {
                 UserDefaults.standard.set(selectedConference.code, forKey: "conference")
                 if AnonymousSession.shared != nil {
                     AnonymousSession.shared.currentConference = selectedConference
+                    DateFormatterUtility.shared.update(identifier: selectedConference.tz)
                 }
                 delegate?.didSelect(conference: selectedConference)
                 guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
