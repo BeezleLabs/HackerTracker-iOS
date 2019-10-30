@@ -23,17 +23,17 @@ class HTInfoTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 7
+        // # Current More screen has 6 rows, return 7 if you want to show the DEF CON WiFi Setup
+        // TODO: Automate this list
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == 6) {
+        if (indexPath.row == 5) {
             // Contact Us!
             let email = "hackertracker@defcon.org"
             if let url = URL(string: "mailto:\(email)") {

@@ -23,21 +23,10 @@ class ConferenceCell: UITableViewCell {
     func setConference(conference: ConferenceModel) {
         self.con = conference
         self.name.text = self.con?.name
-        //let dfu = DateFormatterUtility.shared
-        //let start = dfu.yearMonthDayFormatter.string(from: (self.con?.startDate)!)
-        //let end = dfu.yearMonthDayFormatter.string(from: (self.con?.endDate)!)
-        let start = self.con?.startDate
-        let end = self.con?.endDate
-        self.dates.text = "\(start!) - \(end!)"
-    }
-    
-    func selectConference(_ sender: Any) {
-        /*if let conference = con {
-            conference.selected = !conference.selected
-            do {
-                try getContext().save()
-            } catch { }
-        }*/
+        let dfu = DateFormatterUtility.shared
+        let start = dfu.monthDayYearFormatter.string(from: (conference.start_timestamp))
+        let end = dfu.monthDayYearFormatter.string(from: (conference.end_timestamp))
+        self.dates.text = "\(start) - \(end)"
     }
     
 

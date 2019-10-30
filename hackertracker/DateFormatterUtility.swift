@@ -47,6 +47,7 @@ class DateFormatterUtility {
         shortDayMonthDayTimeOfWeekFormatter.timeZone = tz
         dayOfWeekTimeFormatter.timeZone = tz
         hourMinuteTimeFormatter.timeZone = tz
+        monthDayYearFormatter.timeZone = tz
     }
 
     // time format
@@ -62,6 +63,14 @@ class DateFormatterUtility {
     let yearMonthDayFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    // Month/Day/Year
+    let monthDayYearFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
