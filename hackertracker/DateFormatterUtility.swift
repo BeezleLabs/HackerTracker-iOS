@@ -156,9 +156,11 @@ class DateFormatterUtility {
         let components = calendar.dateComponents([.day], from: start, to: end)
         ret.append(self.yearMonthDayFormatter.string(from: start))
         var cur = start
-        for _ in 1...components.day! {
-            cur = calendar.date(byAdding: Calendar.Component.day, value: 1, to: cur)!
-            ret.append(self.yearMonthDayFormatter.string(from: cur))
+        if components.day! > 1 {
+            for _ in 1...components.day! {
+                cur = calendar.date(byAdding: Calendar.Component.day, value: 1, to: cur)!
+                ret.append(self.yearMonthDayFormatter.string(from: cur))
+            }
         }
         return ret
     }
