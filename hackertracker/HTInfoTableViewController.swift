@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class HTInfoTableViewController: UITableViewController {
 
@@ -27,9 +28,9 @@ class HTInfoTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // # Current More screen has 6 rows, return 7 if you want to show the DEF CON WiFi Setup
+        // # Current More screen has 7 rows, return 8 if you want to show the DEF CON WiFi Setup
         // TODO: Automate this list
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -52,5 +53,13 @@ class HTInfoTableViewController: UITableViewController {
 
     }
     
-
+    
+    
+    @IBSegueAction func showSettingsView(_ coder: NSCoder) -> UIViewController? {
+        let view = UIHostingController(coder: coder, rootView: SettingsView())
+        view?.view.backgroundColor = UIColor.backgroundGray
+        view?.title = "Settings"
+        return view
+    }
+    
 }

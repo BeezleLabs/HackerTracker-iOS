@@ -9,25 +9,25 @@
 import Foundation
 
 /**
-    This class exists to minimize the number of date formatters that need
-    to be created. The creation of NSDateFormatters are very expensive, and it
-    is noted by some that changing the dateformat after creation is even more
-    expensive than creating a new formatter all together. On top of helping with
-    performance this will help keep date formats consistent throughout the app.
-    
-    Look here for further information:
-    http://www.chibicode.org/?p=41
+ This class exists to minimize the number of date formatters that need
+ to be created. The creation of NSDateFormatters are very expensive, and it
+ is noted by some that changing the dateformat after creation is even more
+ expensive than creating a new formatter all together. On top of helping with
+ performance this will help keep date formats consistent throughout the app.
+ 
+ Look here for further information:
+ http://www.chibicode.org/?p=41
  */
 class DateFormatterUtility {
     
     var tz = TimeZone(identifier: "America/Los_Angeles")
     
     /*static let shared : [String:DateFormatterUtility] =
-        ["America/Los_Angeles": DateFormatterUtility(identifier: "America/Los_Angeles"),
-         "America/Chicago": DateFormatterUtility(identifier: "America/Chicago"),
-         "America/Denver": DateFormatterUtility(identifier: "America/Denver"),
-         "America/New_York": DateFormatterUtility(identifier: "America/New_York")
-    ] */
+     ["America/Los_Angeles": DateFormatterUtility(identifier: "America/Los_Angeles"),
+     "America/Chicago": DateFormatterUtility(identifier: "America/Chicago"),
+     "America/Denver": DateFormatterUtility(identifier: "America/Denver"),
+     "America/New_York": DateFormatterUtility(identifier: "America/New_York")
+     ] */
     
     static let shared = DateFormatterUtility(identifier: "America/Los_Angeles")
     
@@ -36,7 +36,13 @@ class DateFormatterUtility {
     }
     
     func update(identifier: String) {
-        tz = TimeZone(identifier: identifier)
+        
+        if preferLocalTime() {
+            tz = .current
+        } else {
+            tz = TimeZone(identifier: identifier)
+        }
+        
         yearMonthDayTimeFormatter.timeZone = tz
         yearMonthDayFormatter.timeZone = tz
         monthDayTimeFormatter.timeZone = tz
@@ -49,7 +55,11 @@ class DateFormatterUtility {
         hourMinuteTimeFormatter.timeZone = tz
         monthDayYearFormatter.timeZone = tz
     }
-
+    
+    func preferLocalTime() -> Bool {
+        UserDefaults.standard.bool(forKey: "PreferLocalTime")
+    }
+    
     // time format
     let yearMonthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
@@ -99,7 +109,7 @@ class DateFormatterUtility {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-
+    
     
     //DOW format
     let dayOfWeekFormatter = { () -> DateFormatter in
@@ -140,7 +150,7 @@ class DateFormatterUtility {
         formatter.dateFormat = "EE HH:mm"
         return formatter
     }()
-
+    
     //Hour:Minute time format
     let hourMinuteTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
@@ -164,5 +174,5 @@ class DateFormatterUtility {
         }
         return ret
     }
-
+    
 }
