@@ -67,14 +67,7 @@
 		83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CEC210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift */; };
 		83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */; };
 		83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B0F8411F19A673006493A6 /* SafariServices.framework */; };
-		83B0F84E1F19BA07006493A6 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F8451F19BA07006493A6 /* CGPDFDocument.m */; };
-		83B0F84F1F19BA07006493A6 /* ReaderConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F8471F19BA07006493A6 /* ReaderConstants.m */; };
-		83B0F8501F19BA07006493A6 /* ReaderContentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F8491F19BA07006493A6 /* ReaderContentPage.m */; };
-		83B0F8511F19BA07006493A6 /* ReaderContentTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F84B1F19BA07006493A6 /* ReaderContentTile.m */; };
-		83B0F8521F19BA07006493A6 /* ReaderContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F84D1F19BA07006493A6 /* ReaderContentView.m */; };
 		83B0F8541F19BA1B006493A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B0F8531F19BA1B006493A6 /* QuartzCore.framework */; };
-		83B0F85D1F1A7490006493A6 /* ReaderThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F85C1F1A7490006493A6 /* ReaderThumbView.m */; };
-		83B0F85F1F1A74E4006493A6 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 83B0F85E1F1A74E4006493A6 /* LICENSE.md */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */; };
@@ -178,20 +171,7 @@
 		83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HTHamburgerItemTableViewCell.xib; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		83B0F8411F19A673006493A6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		83B0F8441F19BA07006493A6 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
-		83B0F8451F19BA07006493A6 /* CGPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPDFDocument.m; sourceTree = "<group>"; };
-		83B0F8461F19BA07006493A6 /* ReaderConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderConstants.h; sourceTree = "<group>"; };
-		83B0F8471F19BA07006493A6 /* ReaderConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderConstants.m; sourceTree = "<group>"; };
-		83B0F8481F19BA07006493A6 /* ReaderContentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderContentPage.h; sourceTree = "<group>"; };
-		83B0F8491F19BA07006493A6 /* ReaderContentPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderContentPage.m; sourceTree = "<group>"; };
-		83B0F84A1F19BA07006493A6 /* ReaderContentTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderContentTile.h; sourceTree = "<group>"; };
-		83B0F84B1F19BA07006493A6 /* ReaderContentTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderContentTile.m; sourceTree = "<group>"; };
-		83B0F84C1F19BA07006493A6 /* ReaderContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderContentView.h; sourceTree = "<group>"; };
-		83B0F84D1F19BA07006493A6 /* ReaderContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderContentView.m; sourceTree = "<group>"; };
 		83B0F8531F19BA1B006493A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		83B0F85B1F1A7490006493A6 /* ReaderThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbView.h; sourceTree = "<group>"; };
-		83B0F85C1F1A7490006493A6 /* ReaderThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbView.m; sourceTree = "<group>"; };
-		83B0F85E1F1A74E4006493A6 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 		8B924A8880B54182A6446BF1 /* Pods_hackertrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,7 +296,6 @@
 				8318FE9022BAFDB400EC44CC /* DataControllers */,
 				8318FE8922B9BAAA00EC44CC /* FireBaseModels */,
 				83679CE5210CED76000CADE4 /* HamburgerMenu */,
-				83B0F8431F19B9D1006493A6 /* PDFViewer */,
 				5DD642651AC3C62300ED3256 /* Main.storyboard */,
 				5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */,
 				498AD73E1E2D2BC900DD5B56 /* ViewControllers */,
@@ -408,26 +387,6 @@
 				83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */,
 			);
 			name = HamburgerMenu;
-			sourceTree = "<group>";
-		};
-		83B0F8431F19B9D1006493A6 /* PDFViewer */ = {
-			isa = PBXGroup;
-			children = (
-				83B0F85E1F1A74E4006493A6 /* LICENSE.md */,
-				83B0F8441F19BA07006493A6 /* CGPDFDocument.h */,
-				83B0F8451F19BA07006493A6 /* CGPDFDocument.m */,
-				83B0F8461F19BA07006493A6 /* ReaderConstants.h */,
-				83B0F8471F19BA07006493A6 /* ReaderConstants.m */,
-				83B0F8481F19BA07006493A6 /* ReaderContentPage.h */,
-				83B0F8491F19BA07006493A6 /* ReaderContentPage.m */,
-				83B0F84A1F19BA07006493A6 /* ReaderContentTile.h */,
-				83B0F84B1F19BA07006493A6 /* ReaderContentTile.m */,
-				83B0F84C1F19BA07006493A6 /* ReaderContentView.h */,
-				83B0F84D1F19BA07006493A6 /* ReaderContentView.m */,
-				83B0F85B1F1A7490006493A6 /* ReaderThumbView.h */,
-				83B0F85C1F1A7490006493A6 /* ReaderThumbView.m */,
-			);
-			path = PDFViewer;
 			sourceTree = "<group>";
 		};
 		A174866C6E536BB441258156 /* Pods */ = {
@@ -665,10 +624,8 @@
 				5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
 				83679CE7210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift in Sources */,
-				83B0F8511F19BA07006493A6 /* ReaderContentTile.m in Sources */,
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,
 				83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */,
-				83B0F84E1F19BA07006493A6 /* CGPDFDocument.m in Sources */,
 				5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */,
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
@@ -677,13 +634,9 @@
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
 				83679CEA210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift in Sources */,
 				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,
-				83B0F85D1F1A7490006493A6 /* ReaderThumbView.m in Sources */,
-				83B0F84F1F19BA07006493A6 /* ReaderConstants.m in Sources */,
 				786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */,
 				5D6707EB21161C6F0007F01F /* HTWiFiViewController.swift in Sources */,
 				834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */,
-				83B0F8501F19BA07006493A6 /* ReaderContentPage.m in Sources */,
-				83B0F85F1F1A74E4006493A6 /* LICENSE.md in Sources */,
 				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */,
@@ -693,7 +646,6 @@
 				83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */,
 				3C715E0724C83BC200E96D88 /* SettingsView.swift in Sources */,
 				5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */,
-				83B0F8521F19BA07006493A6 /* ReaderContentView.m in Sources */,
 				5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */,
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,

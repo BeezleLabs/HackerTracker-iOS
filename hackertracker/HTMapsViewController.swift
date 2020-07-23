@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import PDFKit
 
 class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var mapSwitch: UISegmentedControl!
     
-    var mapViews : [ReaderContentView] = []
-    var mapView : ReaderContentView?
+    var mapViews : [PDFView] = []
+    var mapView : PDFView?
 
     var roomDimensions : CGRect?
     var timeOfDay : TimeOfDay?
@@ -22,39 +23,50 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
         mapSwitch.removeAllSegments()
-        automaticallyAdjustsScrollViewInsets = false
         var i = 0
         let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fm = FileManager.default
-        let storageRef = FSConferenceDataController.shared.storage.reference()
+        //let storageRef = FSConferenceDataController.shared.storage.reference()
         for m in AnonymousSession.shared.currentConference.maps {
             let path = "\(AnonymousSession.shared.currentConference.code)/\(m.file)"
             let mLocal = docDir.appendingPathComponent(path)
-            let mRef = storageRef.child(path)
+            //let mRef = storageRef.child(path)
             mapSwitch.insertSegment(withTitle: m.name, at: i, animated: false)
             
-            if fm.fileExists(atPath: mLocal.path), let rcv = ReaderContentView(frame: self.view.frame, fileURL: mLocal, page: 0, password: "") {
-                view.addSubview(rcv)
-                mapViews.append(rcv)
-                rcv.isHidden = true
-                rcv.isUserInteractionEnabled = false
+            if fm.fileExists(atPath: mLocal.path) {
+                let pv = PDFView()
+                pv.backgroundColor = UIColor.black
+                pv.autoScales = true
+                pv.translatesAutoresizingMaskIntoConstraints = false
+
+                pv.document = PDFDocument(url: mLocal)
+                self.view.addSubview(pv)
+                
+                pv.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+                pv.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+                pv.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+                pv.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+                
+                mapViews.append(pv)
+                pv.isHidden = true
+                pv.isUserInteractionEnabled = false
+                
+                NSLog("Adding PDFView for \(mLocal.path)")
+            } else {
+                NSLog("Don't have a local copy of the file at \(mLocal.path)")
             }
             i = i + 1
         }
         mapSwitch.apportionsSegmentWidthsByContent = true
         mapSwitch.sizeToFit()
-        if let _ = hotel {
-            goToHotel()
-        }
+        
+        goToHotel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,47 +101,19 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             return
         }
     }
-
-    func zoomToLocation(_ roomDimensions: CGRect) {
-        let size = self.view.frame.size
-
-        let widthScale = size.width/roomDimensions.width
-        let heightScale = size.height/roomDimensions.height
-
-        let maxZoom : CGFloat = mapView?.maximumZoomScale ?? 4
-
-        let scale : CGFloat
-
-        if widthScale * roomDimensions.height < size.height
-        {
-            scale = min(maxZoom, widthScale)
-        } else {
-            scale = min(maxZoom, heightScale)
-        }
-
-        mapView?.zoomScale = scale
-
-        let roomCorner = CGPoint(x: roomDimensions.origin.x * scale, y: roomDimensions.origin.y * scale)
-        let roomSize = CGSize(width: roomDimensions.size.width * scale, height: roomDimensions.size.height * scale)
-
-        let roomCenter = CGPoint(x: roomCorner.x + (roomSize.width / 2), y: roomCorner.y + (roomSize.height / 2))
-
-        mapView?.contentOffset = CGPoint(x: roomCenter.x - (size.width/2), y: roomCenter.y - (size.height/2))
-
-    }
-    
+  
     @objc func doneButtonPressed() {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func mapChanged(_ sender: UISegmentedControl) {
-        guard mapViews.count < 0 else { return }
+        if mapViews.count <= 0 { return }
         
         for i in 0..<AnonymousSession.shared.currentConference.maps.count {
                 mapViews[i].isHidden = true
                 mapViews[i].isUserInteractionEnabled = false
         }
-        //NSLog("switching to segment \(sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "")")
+        NSLog("switching to segment \(sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "")")
         mapViews[sender.selectedSegmentIndex].isHidden = false
         mapViews[sender.selectedSegmentIndex].isUserInteractionEnabled = true
     }

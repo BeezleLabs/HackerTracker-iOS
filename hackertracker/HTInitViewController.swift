@@ -23,10 +23,6 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
         super.viewDidLoad()
         
         FirebaseApp.configure()
-
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        
         playAnimation()
     }
     
@@ -76,7 +72,10 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
 
     func go() {
         if timerUp {
-            self.performSegue(withIdentifier: "HTHomeSegue", sender: self)
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "HTHamburgerMenuViewController") as? HTHamburgerMenuViewController {
+                let kw = UIApplication.shared.windows.first { $0.isKeyWindow }
+                kw?.rootViewController = vc
+            }
         }
     }
 
