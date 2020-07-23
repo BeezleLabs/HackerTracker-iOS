@@ -69,7 +69,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
 
         var selectedIndex = 0
         if let h = hotel {
-            for i in 0...(mapSwitch.numberOfSegments-1) {
+            for i in 0..<mapSwitch.numberOfSegments {
                 if let m = mapSwitch.titleForSegment(at: i) {
                     if m.contains(h) {
                         selectedIndex = i
@@ -123,7 +123,9 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func mapChanged(_ sender: UISegmentedControl) {
-        for i in 0...AnonymousSession.shared.currentConference.maps.count-1 {
+        guard mapViews.count < 0 else { return }
+        
+        for i in 0..<AnonymousSession.shared.currentConference.maps.count {
                 mapViews[i].isHidden = true
                 mapViews[i].isUserInteractionEnabled = false
         }

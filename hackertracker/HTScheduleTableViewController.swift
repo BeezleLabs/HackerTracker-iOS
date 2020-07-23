@@ -215,9 +215,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         // Debug below to jump to next events for DEFCON27 schedule
         //let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-08-09T11:43:01.000-0700")!
         if self.eventSections.count > 0 {
-            fullloop: for i in 0...(self.eventSections.count-1) {
+            fullloop: for i in 0..<self.eventSections.count {
                 if self.eventSections[i].events.count > 0 {
-                    for j in 0...(self.eventSections[i].events.count-1) {
+                    for j in 0..<self.eventSections[i].events.count {
                         let e = self.eventSections[i].events[j]
                         if e.event.begin > curDate {
                             //NSLog("Jumping to \(e.event.title) at \(i):\(j)")
