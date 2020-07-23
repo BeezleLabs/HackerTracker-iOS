@@ -36,7 +36,13 @@ class DateFormatterUtility {
     }
     
     func update(identifier: String) {
-        tz = TimeZone(identifier: identifier)
+        
+        if preferLocalTime() {
+            tz = .current
+        } else {
+            tz = TimeZone(identifier: identifier)
+        }
+        
         yearMonthDayTimeFormatter.timeZone = tz
         yearMonthDayFormatter.timeZone = tz
         monthDayTimeFormatter.timeZone = tz
@@ -49,7 +55,11 @@ class DateFormatterUtility {
         hourMinuteTimeFormatter.timeZone = tz
         monthDayYearFormatter.timeZone = tz
     }
-
+    
+    func preferLocalTime() -> Bool {
+        UserDefaults.standard.bool(forKey: "PreferLocalTime")
+    }
+    
     // time format
     let yearMonthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
