@@ -145,13 +145,14 @@ class HTEventDetailViewController: UIViewController {
         
         let dfu = DateFormatterUtility.shared
         let eventLabel = dfu.shortDayMonthDayTimeOfWeekFormatter.string(from: event.begin)
+        let tzLabel = dfu.timezoneFormatter.string(from: event.begin)
         var eventEnd = ""
         if Calendar.current.isDate(event.end, inSameDayAs: event.begin) {
             eventEnd = dfu.hourMinuteTimeFormatter.string(from: event.end)
         } else {
             eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.end)
         }
-        eventDateLabel.text = "\(eventLabel)-\(eventEnd)"
+        eventDateLabel.text = "\(eventLabel)-\(eventEnd) \(tzLabel)"
         
     }
 

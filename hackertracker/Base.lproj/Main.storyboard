@@ -133,6 +133,7 @@
                         <outlet property="trailingImageConstraint" destination="3IA-mo-LTo" id="eTx-rb-BKj"/>
                         <outlet property="updatesTableView" destination="o4M-Xc-Ytc" id="rj0-JQ-iej"/>
                         <segue destination="6HW-oR-hKq" kind="show" identifier="eventDetailSegue" id="XQt-9W-ade"/>
+                        <segue destination="PSi-m9-7in" kind="show" identifier="conferenceSegue" id="QCx-XB-8Dl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWF-fe-EhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -300,7 +301,7 @@
                         <attributedString key="attributedTitle">
                             <fragment content="Sync Schedule">
                                 <attributes>
-                                    <font key="NSFont" metaFont="controlContent" size="11"/>
+                                    <font key="NSFont" metaFont="label" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -779,7 +780,7 @@
                                                     <fragment content="Event Description">
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <font key="NSFont" metaFont="menu" size="14"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.5"/>
                                                         </attributes>
                                                     </fragment>
@@ -1558,7 +1559,7 @@
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <attributes>
-                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <font key="NSFont" metaFont="menu" size="14"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -1590,7 +1591,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
         <segue reference="a0t-7o-Cnk"/>
-        <segue reference="zzM-58-UQE"/>
+        <segue reference="QCx-XB-8Dl"/>
+        <segue reference="XQt-9W-ade"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

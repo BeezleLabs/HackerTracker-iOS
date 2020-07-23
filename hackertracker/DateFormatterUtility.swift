@@ -44,6 +44,7 @@ class DateFormatterUtility {
         }
         
         yearMonthDayTimeFormatter.timeZone = tz
+        timezoneFormatter.timeZone = tz
         yearMonthDayFormatter.timeZone = tz
         monthDayTimeFormatter.timeZone = tz
         yearMonthDayNoTimeZoneTimeFormatter.timeZone = tz
@@ -65,6 +66,14 @@ class DateFormatterUtility {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "PDT")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss z"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    // Current Timezone
+    let timezoneFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.dateFormat = "z"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()

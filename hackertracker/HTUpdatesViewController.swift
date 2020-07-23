@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SafariServices
 
-class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellDelegate {
+class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate {
 
     @IBOutlet weak var updatesTableView: UITableView!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -51,6 +51,13 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         updatesTableView.backgroundColor = UIColor.clear
         updatesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
+        let titleViewButton = UIButton(type: .system)
+        titleViewButton.setTitleColor(UIColor.white, for: .normal)
+        titleViewButton.setTitle(AnonymousSession.shared.currentConference.name, for: .normal)
+        titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+        titleViewButton.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
+        navigationItem.titleView = titleViewButton
+        
         self.title = AnonymousSession.shared.currentConference.name
         
         eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!, descending: false) { (result) in
@@ -74,6 +81,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         }
         
         updatesTableView.layoutIfNeeded()
+    }
+    
+    @objc func displayConferencePicker(sender: AnyObject) {
+        performSegue(withIdentifier: "conferenceSegue", sender: self)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -145,6 +156,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         self.reloadEvents()
         updatesTableView.reloadData()
     }
+    
+    func didSelect(conference: ConferenceModel) {
+        self.updatedEvents()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         lastContentOffset = self.updatesTableView.contentOffset
@@ -166,6 +181,15 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
                     dv.bookmark = self.liveNow[indexPath.row].bookmark
                 }
             }
+            dv.delegate = self
+        } else if segue.identifier == "conferenceSegue" {
+            let dv : HTConferenceTableViewController
+
+            if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTConferenceTableViewController {
+                dv = _dv
+            } else {
+                dv = segue.destination as! HTConferenceTableViewController
+            }
 
             dv.delegate = self
         }
@@ -184,7 +208,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
             if messages.count > 0 {
                 cell.bind(message: messages[indexPath.row])
             } else {
-                cell.bind(title: "No News is Good News", desc: "Or maybe you just need to update your database")
+                cell.bind(title: "No News is Good News", desc: "The #hackertracker team has no updates for you right now.")
             }
             return cell
         } else if indexPath.section == 1 {
@@ -196,7 +220,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-                cell.bind(title: "No Events", desc: "Explore #hackertracker and maybe you will find something interesting to attend. Tap the star to have the event show up here on the home screen and in your schedule of events.")
+                cell.bind(title: "No Events", desc: "Explore #hackertracker to find something to attend. Tap the star and the event will display here on the home screen and in your bookmarked events.")
                 return cell
             }
 
@@ -209,7 +233,7 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-                cell.bind(title: "No Live Events", desc: "Nothing is going on right now, maybe try again later?")
+                cell.bind(title: "No Live Events", desc: "No ongoing events, try again later.")
                 return cell
             }
         } else if indexPath.section == 3 {
@@ -292,6 +316,14 @@ extension HTUpdatesViewController : UITableViewDataSource, UITableViewDelegate
                     eventController.bookmark = self.liveNow[indexPath.row].bookmark
                 }
                 self.navigationController?.pushViewController(eventController, animated: true)
+            }
+        } else if ( indexPath.section == 0 ) {
+            if let storyboard = self.storyboard, let vc = storyboard.instantiateViewController(withIdentifier: "HTNewsTableViewController") as? HTNewsTableViewController {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else if ( indexPath.section == 1 || indexPath.section == 2 ) {
+            if let storyboard = self.storyboard, let vc = storyboard.instantiateViewController(withIdentifier: "HTScheduleTableViewController") as? HTScheduleTableViewController {
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

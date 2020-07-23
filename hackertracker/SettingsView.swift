@@ -15,7 +15,7 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Toggle(isOn: self.$settings.preferLocalTime) {
-                Text("Prefer Local Time").foregroundColor(.white)
+                Text("Display Local Time").foregroundColor(.white)
             }.padding()
             Spacer()
         }
