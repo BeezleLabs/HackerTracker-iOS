@@ -81,20 +81,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="rly-3y-2nK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="242.5"/>
+                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="rly-3y-2nK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="peP-Pp-qx0"/>
+                                    <constraint firstAttribute="height" constant="125" id="P1w-W8-D4T"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="peP-Pp-qx0"/>
-                                    </mask>
-                                </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="skw-9w-8jM">
-                                <rect key="frame" x="87.5" y="252.5" width="200" height="200"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull_safemode" translatesAutoresizingMaskIntoConstraints="NO" id="skw-9w-8jM">
+                                <rect key="frame" x="37.5" y="150" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="bBh-27-5kO"/>
+                                </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="o4M-Xc-Ytc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
@@ -114,15 +112,16 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="rly-3y-2nK" secondAttribute="trailing" id="3IA-mo-LTo"/>
-                            <constraint firstItem="rly-3y-2nK" firstAttribute="leading" secondItem="GOz-6l-VXo" secondAttribute="leading" id="7m0-Zq-MfX"/>
                             <constraint firstItem="o4M-Xc-Ytc" firstAttribute="leading" secondItem="GOz-6l-VXo" secondAttribute="leading" id="D1o-0S-UI8"/>
-                            <constraint firstItem="skw-9w-8jM" firstAttribute="centerX" secondItem="GOz-6l-VXo" secondAttribute="centerX" id="HuG-8T-9wW"/>
-                            <constraint firstItem="rly-3y-2nK" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="top" id="OjN-A3-T13"/>
+                            <constraint firstItem="rly-3y-2nK" firstAttribute="leading" secondItem="o4M-Xc-Ytc" secondAttribute="leading" id="VnL-vp-5xf"/>
                             <constraint firstAttribute="trailing" secondItem="o4M-Xc-Ytc" secondAttribute="trailing" id="Yah-Ij-400"/>
-                            <constraint firstItem="skw-9w-8jM" firstAttribute="top" secondItem="rly-3y-2nK" secondAttribute="bottom" constant="10" id="gh4-q3-fXZ"/>
+                            <constraint firstItem="rly-3y-2nK" firstAttribute="trailing" secondItem="o4M-Xc-Ytc" secondAttribute="trailing" id="bEt-nb-ZaL"/>
+                            <constraint firstItem="skw-9w-8jM" firstAttribute="centerX" secondItem="rly-3y-2nK" secondAttribute="centerX" id="cQJ-zY-HOk"/>
                             <constraint firstItem="o4M-Xc-Ytc" firstAttribute="top" secondItem="GOz-6l-VXo" secondAttribute="topMargin" id="iei-44-T2f"/>
+                            <constraint firstItem="rly-3y-2nK" firstAttribute="top" secondItem="Uj6-Lb-kp0" secondAttribute="bottom" id="kev-Dj-QhK"/>
+                            <constraint firstItem="skw-9w-8jM" firstAttribute="top" secondItem="Uj6-Lb-kp0" secondAttribute="bottom" constant="150" id="nYT-i7-m5F"/>
                             <constraint firstAttribute="bottomMargin" secondItem="o4M-Xc-Ytc" secondAttribute="bottom" id="tzm-tC-CQI"/>
+                            <constraint firstItem="skw-9w-8jM" firstAttribute="leading" secondItem="GOz-6l-VXo" secondAttribute="leadingMargin" constant="21.5" id="v4I-Eg-TtM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="WmN-5V-9GJ">
@@ -131,7 +130,6 @@
                     <connections>
                         <outlet property="backgroundImage" destination="rly-3y-2nK" id="i6i-DB-qpi"/>
                         <outlet property="skullBackground" destination="skw-9w-8jM" id="qYQ-bp-eyR"/>
-                        <outlet property="trailingImageConstraint" destination="3IA-mo-LTo" id="eTx-rb-BKj"/>
                         <outlet property="updatesTableView" destination="o4M-Xc-Ytc" id="rj0-JQ-iej"/>
                         <segue destination="6HW-oR-hKq" kind="show" identifier="eventDetailSegue" id="XQt-9W-ade"/>
                         <segue destination="PSi-m9-7in" kind="show" identifier="conferenceSegue" id="QCx-XB-8Dl"/>
@@ -1602,7 +1600,7 @@
         <image name="check" width="25" height="25"/>
         <image name="close" width="25" height="25"/>
         <image name="external_link" width="30" height="30"/>
-        <image name="header" width="375" height="242.5"/>
+        <image name="header" width="200" height="66.5"/>
         <image name="icon_demo" width="30" height="30"/>
         <image name="icon_exploit" width="30" height="30"/>
         <image name="icon_tool" width="30" height="30"/>
@@ -1613,6 +1611,7 @@
         <image name="skull-active" width="40" height="40"/>
         <image name="skull-inactive" width="40" height="40"/>
         <image name="skull_lg" width="200" height="200"/>
+        <image name="skull_safemode" width="166.5" height="166.5"/>
         <image name="splash" width="375" height="667"/>
         <image name="star_inactive" width="22" height="22"/>
     </resources>
