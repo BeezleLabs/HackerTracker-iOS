@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C715E0724C83BC200E96D88 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C715E0624C83BC200E96D88 /* SettingsView.swift */; };
+		3CD8840E24CAD87F006B0B90 /* HTSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */; };
 		49730E4B1E2929BC0029438C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4A1E2929BC0029438C /* EventCell.swift */; };
 		49730E4E1E2D1AB50029438C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4D1E2D1AB50029438C /* Theme.swift */; };
 		49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */; };
@@ -103,7 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3C715E0624C83BC200E96D88 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSettingsTableViewController.swift; sourceTree = "<group>"; };
 		49730E4A1E2929BC0029438C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		49730E4D1E2D1AB50029438C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
@@ -245,6 +245,7 @@
 				5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */,
 				5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */,
 				5D6707EA21161C6F0007F01F /* HTWiFiViewController.swift */,
+				3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -628,6 +629,7 @@
 				5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */,
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
+				3CD8840E24CAD87F006B0B90 /* HTSettingsTableViewController.swift in Sources */,
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
