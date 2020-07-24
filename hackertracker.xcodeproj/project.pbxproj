@@ -26,12 +26,10 @@
 		5D6707F7211787E10007F01F /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D6707F5211787E10007F01F /* AboutCell.xib */; };
 		5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */; };
 		5D6707FD2119059E0007F01F /* HTSpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */; };
-		5D67EBFC20E1CD30004E5D19 /* Bungee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */; };
 		5D67EBFF20E1CFE6004E5D19 /* Larsseit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFD20E1CFE6004E5D19 /* Larsseit.ttf */; };
 		5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
-		5DA4DDE622DCD85E00B52EBD /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */; };
 		5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
@@ -43,12 +41,9 @@
 		5DE7B40A1ACA454C00F8A655 /* HTInitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */; };
 		5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */; };
 		5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */; };
-		5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFB87BE1B30BBF10083604C /* Connections.plist */; };
 		60A6D390A580651F9617539B /* Pods_hackertracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAA20A085F20D1BE409030D /* Pods_hackertracker.framework */; };
-		7820245D1F05B7CE0092ED07 /* cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 7820245C1F05B7CE0092ED07 /* cert.der */; };
 		7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
-		78C72FAB1F1869F100AFC0B6 /* Furore.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78C72FAA1F1869F100AFC0B6 /* Furore.otf */; };
 		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
 		8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */; };
 		8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */; };
@@ -123,12 +118,10 @@
 		5D6707F5211787E10007F01F /* AboutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
 		5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSpeakerViewController.swift; sourceTree = "<group>"; };
-		5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
 		5D67EBFD20E1CFE6004E5D19 /* Larsseit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Larsseit.ttf; sourceTree = "<group>"; };
 		5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Larsseit-Bold.ttf"; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD6425D1AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,11 +137,8 @@
 		5DE7B4091ACA454C00F8A655 /* HTInitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTInitViewController.swift; sourceTree = "<group>"; };
 		5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTUpdatesViewController.swift; sourceTree = "<group>"; };
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
-		5DFB87BE1B30BBF10083604C /* Connections.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Connections.plist; sourceTree = "<group>"; };
-		7820245C1F05B7CE0092ED07 /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
 		7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSearchTableViewController.swift; sourceTree = "<group>"; };
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
-		78C72FAA1F1869F100AFC0B6 /* Furore.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Furore.otf; sourceTree = "<group>"; };
 		78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHelper.swift; sourceTree = "<group>"; };
 		7A0EDEDE86FED966C308674E /* Pods-hackertracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackertracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackertracker/Pods-hackertracker.debug.xcconfig"; sourceTree = "<group>"; };
 		7DAA20A085F20D1BE409030D /* Pods_hackertracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackertracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,11 +302,6 @@
 		5DD6425C1AC3C62300ED3256 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5DA4DDE522DCD85E00B52EBD /* BebasNeue-Regular.ttf */,
-				5D67EBFB20E1CD2F004E5D19 /* Bungee-Regular.ttf */,
-				7820245C1F05B7CE0092ED07 /* cert.der */,
-				5DFB87BE1B30BBF10083604C /* Connections.plist */,
-				78C72FAA1F1869F100AFC0B6 /* Furore.otf */,
 				5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */,
 				5DD6425D1AC3C62300ED3256 /* Info.plist */,
 				5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */,
@@ -492,21 +477,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78C72FAB1F1869F100AFC0B6 /* Furore.otf in Resources */,
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */,
-				5D67EBFC20E1CD30004E5D19 /* Bungee-Regular.ttf in Resources */,
 				5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */,
 				5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
-				5DA4DDE622DCD85E00B52EBD /* BebasNeue-Regular.ttf in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
-				5DFB87BF1B30BBF10083604C /* Connections.plist in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
-				7820245D1F05B7CE0092ED07 /* cert.der in Resources */,
 				5D6707F7211787E10007F01F /* AboutCell.xib in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 				5D67EBFF20E1CFE6004E5D19 /* Larsseit.ttf in Resources */,

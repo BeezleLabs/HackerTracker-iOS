@@ -27,7 +27,7 @@ class HTSettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Prefer Local Time"
+        cell.textLabel?.text = "Display Local Time"
         cell.textLabel?.textColor = UIColor.white
         let preferLocalTime = UISwitch()
         preferLocalTime.addTarget(self, action: #selector(setLocalTimePreference(_:)), for: .valueChanged)
