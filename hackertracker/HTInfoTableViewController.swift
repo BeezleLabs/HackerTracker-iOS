@@ -53,13 +53,4 @@ class HTInfoTableViewController: UITableViewController {
 
     }
     
-    
-    
-    @IBSegueAction func showSettingsView(_ coder: NSCoder) -> UIViewController? {
-        let view = UIHostingController(coder: coder, rootView: SettingsView())
-        view?.view.backgroundColor = UIColor.backgroundGray
-        view?.title = "Settings"
-        return view
-    }
-    
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -300,7 +301,7 @@
                         <attributedString key="attributedTitle">
                             <fragment content="Sync Schedule">
                                 <attributes>
-                                    <font key="NSFont" metaFont="message" size="11"/>
+                                    <font key="NSFont" metaFont="label" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -552,16 +553,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="73x-E3-syj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-383" y="272"/>
-        </scene>
-        <!--Hosting Controller-->
-        <scene sceneID="jaz-z8-BIC">
-            <objects>
-                <hostingController id="jOa-o1-3Wx" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="9hK-Tw-0Xd"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xi0-aw-sCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-662" y="-812"/>
         </scene>
         <!--News-->
         <scene sceneID="Q9M-rA-BIO">
@@ -1139,7 +1130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vd-bq-LOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="1608"/>
+            <point key="canvasLocation" x="3079" y="1608"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="wTW-Tn-Qo3">
@@ -1371,7 +1362,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="jOa-o1-3Wx" kind="show" destinationCreationSelector="showSettingsView:" id="bV0-vO-SSB"/>
+                                            <segue destination="zH7-tc-eYD" kind="show" id="Ecj-qw-Psi"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="fcV-d0-oLL" style="IBUITableViewCellStyleDefault" id="tht-rA-9Ho">
@@ -1519,6 +1510,36 @@
             </objects>
             <point key="canvasLocation" x="7309.6000000000004" y="1889.5052473763119"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="bhH-4F-KUG">
+            <objects>
+                <tableViewController id="zH7-tc-eYD" customClass="HTSettingsTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e7j-cg-7FB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="nJv-33-HlF">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nJv-33-HlF" id="1Yl-K6-oSL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="zH7-tc-eYD" id="w7P-Pa-Ben"/>
+                            <outlet property="delegate" destination="zH7-tc-eYD" id="TOd-9r-FvI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="rgI-pO-W2L"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Exk-m9-S8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2862" y="-686"/>
+        </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="Bp4-xX-P0w">
             <objects>
@@ -1584,13 +1605,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXI-cb-vPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-383.19999999999999" y="949.47526236881572"/>
+            <point key="canvasLocation" x="436" y="1203"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
         <segue reference="a0t-7o-Cnk"/>
-        <segue reference="QCx-XB-8Dl"/>
+        <segue reference="3iW-gl-c7N"/>
         <segue reference="XQt-9W-ade"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
