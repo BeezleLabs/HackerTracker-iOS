@@ -553,16 +553,6 @@
             </objects>
             <point key="canvasLocation" x="-383" y="272"/>
         </scene>
-        <!--Hosting Controller-->
-        <scene sceneID="jaz-z8-BIC">
-            <objects>
-                <hostingController id="jOa-o1-3Wx" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="9hK-Tw-0Xd"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xi0-aw-sCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-662" y="-812"/>
-        </scene>
         <!--News-->
         <scene sceneID="Q9M-rA-BIO">
             <objects>

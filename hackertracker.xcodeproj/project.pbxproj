@@ -265,7 +265,6 @@
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
-				3C715E0624C83BC200E96D88 /* SettingsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -644,7 +643,6 @@
 				83177DC322D41E8A00EE9624 /* AnonymousSession.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */,
-				3C715E0724C83BC200E96D88 /* SettingsView.swift in Sources */,
 				5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */,
 				5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */,
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
