@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C18D62224CEC7C20048E88D /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18D62124CEC7C20048E88D /* NotificationUtility.swift */; };
 		3CD8840E24CAD87F006B0B90 /* HTSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */; };
 		49730E4B1E2929BC0029438C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4A1E2929BC0029438C /* EventCell.swift */; };
 		49730E4E1E2D1AB50029438C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4D1E2D1AB50029438C /* Theme.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C18D62124CEC7C20048E88D /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
 		3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSettingsTableViewController.swift; sourceTree = "<group>"; };
 		49730E4A1E2929BC0029438C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		49730E4D1E2D1AB50029438C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */,
 				78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */,
 				49730E4D1E2D1AB50029438C /* Theme.swift */,
+				3C18D62124CEC7C20048E88D /* NotificationUtility.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */,
 				8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */,
+				3C18D62224CEC7C20048E88D /* NotificationUtility.swift in Sources */,
 				83177DC322D41E8A00EE9624 /* AnonymousSession.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */,
