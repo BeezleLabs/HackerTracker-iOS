@@ -353,24 +353,8 @@ class HTEventDetailViewController: UIViewController {
             print("HTEventDetailViewController: Event is nil")
             return
         }
-
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if let error = error {
-                print("Request authorization error: \(error.localizedDescription)")
-            }
-        }
         
-        if let bookmark = bookmark {
-            //NSLog("Bookmark: \(bookmark.id) \(bookmark.value) to \(!bookmark.value)")
-            if bookmark.value {
-                removeNotification(event)
-            } else {
-                scheduleNotification(at: event.begin, event)
-            }
-            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (error) in
-                
-            }
-        }
+        addBookmark(bookmark: bookmark, event: event)
     }
 
     func reloadEvents() {

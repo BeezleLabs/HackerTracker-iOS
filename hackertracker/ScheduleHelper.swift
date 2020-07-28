@@ -46,3 +46,19 @@ func scheduleNotification(at date: Date,_ event:HTEventModel) {
 func removeNotification(_ event:HTEventModel) {
     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
 }
+func addBookmark(bookmark: Bookmark?, event: HTEventModel, eventCell: EventCell? = nil) {
+    if let bookmark = bookmark {
+        //NSLog("Bookmark: \(bookmark.id) \(bookmark.value) to \(!bookmark.value)")
+        if bookmark.value {
+            removeNotification(event)
+        } else {
+            scheduleNotification(at: event.begin, event)
+        }
+        
+        FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (error) in
+            if let eventCell = eventCell {
+                eventCell.eventCellDelegate?.updatedEvents()
+            }
+        }
+    }
+}

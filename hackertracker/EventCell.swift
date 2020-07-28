@@ -130,10 +130,7 @@ public class EventCell : UITableViewCell {
     
     @objc func tappedStar(sender: AnyObject) {
         if let e = userEvent {
-            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: e.event, isFavorite: !e.bookmark.value, session: AnonymousSession.shared) { (error) in
-                self.eventCellDelegate?.updatedEvents()
-            }
-            
+            addBookmark(bookmark: e.bookmark, event: e.event, eventCell: self)
         } else {
             NSLog("No event defined on star tap")
         }
