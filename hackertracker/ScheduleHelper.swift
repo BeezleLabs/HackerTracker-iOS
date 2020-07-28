@@ -6,23 +6,22 @@
 //  Copyright © 2017 Beezle Labs. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 import UIKit
 import UserNotifications
 
 func getContext() -> NSManagedObjectContext {
-    let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     return delegate.managedObjectContext!
-    
 }
 
 func getBackgroundContext() -> NSManagedObjectContext {
-        let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        return delegate.backgroundManagedObjectContext!
+    let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    return delegate.backgroundManagedObjectContext!
 }
 
-func scheduleNotification(at date: Date,_ event:HTEventModel) {
+func scheduleNotification(at date: Date, _ event: HTEventModel) {
     let calendar = Calendar(identifier: .gregorian)
     let components = calendar.dateComponents(in: .current, from: date)
     let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
@@ -36,16 +35,13 @@ func scheduleNotification(at date: Date,_ event:HTEventModel) {
     
     let request = UNNotificationRequest(identifier: "hackertracker-\(event.id)", content: content, trigger: trigger)
     
-    UNUserNotificationCenter.current().add(request) {(error) in
-        if let error = error {
-            NSLog("Error: \(error)")
-        }
-    }
+    NotificationUtility.addNotification(request: request)
 }
 
-func removeNotification(_ event:HTEventModel) {
+func removeNotification(_ event: HTEventModel) {
     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["hackertracker-\(event.id)"])
 }
+
 func addBookmark(bookmark: Bookmark?, event: HTEventModel, eventCell: EventCell? = nil) {
     if let bookmark = bookmark {
         //NSLog("Bookmark: \(bookmark.id) \(bookmark.value) to \(!bookmark.value)")

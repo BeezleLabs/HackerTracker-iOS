@@ -16,7 +16,7 @@ protocol EventDetailDelegate {
 }
 
 class HTEventDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
@@ -35,7 +35,7 @@ class HTEventDetailViewController: UIViewController {
     
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
-
+    
     var delegate: EventDetailDelegate?
     var event: HTEventModel?
     var bookmark : Bookmark?
@@ -45,13 +45,13 @@ class HTEventDetailViewController: UIViewController {
     var eventToken : UpdateToken?
     
     /*
-    //Keep around for map view visual testing
-    var eventLocations : [Location] = [.track_101, .track1_101, .track2, .track2_101, .track3, .track4, .capri, .modena, .trevi, .bioHackingVillage, .cryptoAndPrivacyVillage, .hardwareHackingVillage, .icsVillage, .iotVillage, .lockpickVillage, .packetCaptureVillage, .socialEngineerVillage, .tamperEvidentVillage, .wirelessVillage, .unknown]
-    */
+     //Keep around for map view visual testing
+     var eventLocations : [Location] = [.track_101, .track1_101, .track2, .track2_101, .track3, .track4, .capri, .modena, .trevi, .bioHackingVillage, .cryptoAndPrivacyVillage, .hardwareHackingVillage, .icsVillage, .iotVillage, .lockpickVillage, .packetCaptureVillage, .socialEngineerVillage, .tamperEvidentVillage, .wirelessVillage, .unknown]
+     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let _ = eventToken {
             loadEvent()
         } else {
@@ -119,10 +119,10 @@ class HTEventDetailViewController: UIViewController {
         eventDetailTextView.attributedText = eventAttributedString
         
         if let bookmark = bookmark, bookmark.value == true {
-         eventStarredButton.image = #imageLiteral(resourceName: "star_active")
-         } else {
-         eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
-         }
+            eventStarredButton.image = #imageLiteral(resourceName: "star_active")
+        } else {
+            eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
+        }
         
         let i = event.includes
         if !i.lowercased().contains("tool") { toolImage.isHidden = true }
@@ -155,7 +155,7 @@ class HTEventDetailViewController: UIViewController {
         eventDateLabel.text = "\(eventLabel)-\(eventEnd) \(tzLabel)"
         
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyDoneButtonIfNeeded()
@@ -180,7 +180,7 @@ class HTEventDetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         eventDetailTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
@@ -261,52 +261,52 @@ class HTEventDetailViewController: UIViewController {
             let n = s.name
             let t = s.title
             let d = s.description
-                
-                let whoAttributedString = NSMutableAttributedString(string:n)
-                let whoParagraphStyle = NSMutableParagraphStyle()
-                whoParagraphStyle.alignment = .left
-                whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3) , range: NSRange(location: 0, length: (n as NSString).length))
-                whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (n as NSString).length))
-                
-                let titleAttributedString = NSMutableAttributedString(string:t)
-                let titleParagraphStyle = NSMutableParagraphStyle()
-                titleParagraphStyle.alignment = .left
-                titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .subheadline), range: NSRange(location: 0, length: (t as NSString).length))
-                titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-                
-                let bioAttributedString = NSMutableAttributedString(string:d)
-                let bioParagraphStyle = NSMutableParagraphStyle()
-                bioParagraphStyle.alignment = .left
-                bioAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (d as NSString).length))
-                bioAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
-                
-                
-                speakerBios.append(whoAttributedString)
-                speakerBios.append(NSAttributedString(string:"\n"))
+            
+            let whoAttributedString = NSMutableAttributedString(string:n)
+            let whoParagraphStyle = NSMutableParagraphStyle()
+            whoParagraphStyle.alignment = .left
+            whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3) , range: NSRange(location: 0, length: (n as NSString).length))
+            whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (n as NSString).length))
+            
+            let titleAttributedString = NSMutableAttributedString(string:t)
+            let titleParagraphStyle = NSMutableParagraphStyle()
+            titleParagraphStyle.alignment = .left
+            titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .subheadline), range: NSRange(location: 0, length: (t as NSString).length))
+            titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
+            
+            let bioAttributedString = NSMutableAttributedString(string:d)
+            let bioParagraphStyle = NSMutableParagraphStyle()
+            bioParagraphStyle.alignment = .left
+            bioAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (d as NSString).length))
+            bioAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
+            
+            
+            speakerBios.append(whoAttributedString)
+            speakerBios.append(NSAttributedString(string:"\n"))
             if t != "" {
                 speakerBios.append(titleAttributedString)
                 speakerBios.append(NSAttributedString(string:"\n\n"))
             } else {
                 speakerBios.append(NSAttributedString(string:"\n"))
             }
-                speakerBios.append(bioAttributedString)
-                if speakers.count > 1, i < speakers.count {
-                    speakerBios.append(NSAttributedString(string:"\n\n"))
-                }
-                
-                let twitter = s.twitter
-                if twitter != "" {
-                        let twitButton = UIButton()
-                        twitButton.setTitle(twitter, for: .normal)
-                        twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
-                        twitButton.addTarget(self, action: #selector(twitterFollow), for: .touchUpInside)
-                        twitButton.titleLabel?.font = UIFont(name: "Larsseit", size: 14)
-                        twitButton.sizeToFit()
-                        twitterStackView.addArrangedSubview(twitButton)
-                }
+            speakerBios.append(bioAttributedString)
+            if speakers.count > 1, i < speakers.count {
+                speakerBios.append(NSAttributedString(string:"\n\n"))
+            }
+            
+            let twitter = s.twitter
+            if twitter != "" {
+                let twitButton = UIButton()
+                twitButton.setTitle(twitter, for: .normal)
+                twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
+                twitButton.addTarget(self, action: #selector(twitterFollow), for: .touchUpInside)
+                twitButton.titleLabel?.font = UIFont(name: "Larsseit", size: 14)
+                twitButton.sizeToFit()
+                twitterStackView.addArrangedSubview(twitButton)
+            }
             
             
             i = i+1
@@ -317,7 +317,7 @@ class HTEventDetailViewController: UIViewController {
         //touchGesture.cancelsTouchesInView = false
         //locationMapView.addGestureRecognizer(touchGesture)
     }
-
+    
     @objc func expand() {
         if self.eventNameLabel.attributedText == speakerList {
             if speakerBios.length < 1 {
@@ -332,7 +332,7 @@ class HTEventDetailViewController: UIViewController {
         }
         
         UIView.animate(withDuration: 0.3) {
-           self.view.layoutIfNeeded()
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -356,7 +356,7 @@ class HTEventDetailViewController: UIViewController {
         
         addBookmark(bookmark: bookmark, event: event)
     }
-
+    
     func reloadEvents() {
         if let splitViewController = self.splitViewController,
             !splitViewController.isCollapsed {
@@ -420,7 +420,7 @@ class HTEventDetailViewController: UIViewController {
             
             self.present(activityViewController, animated: true, completion: nil)
         }
-
+        
     }
     
     @objc func gotoMap() {
