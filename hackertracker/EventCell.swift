@@ -14,7 +14,7 @@ protocol EventCellDelegate : class {
 }
 
 public class EventCell : UITableViewCell {
-
+    
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var color: UIView!
@@ -38,34 +38,34 @@ public class EventCell : UITableViewCell {
         super.init(coder: aDecoder)
         initialize()
     }
-
+    
     func initialize() {
         backgroundColor = UIColor.backgroundGray
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         selectedBackgroundView = selectedView
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         let oldColor = color.backgroundColor
         super.setSelected(selected, animated: animated)
         color.backgroundColor = oldColor
         et_dot.backgroundColor = oldColor
     }
-
+    
     override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
         let oldColor = color.backgroundColor
         super.setHighlighted(highlighted, animated: animated)
         color.backgroundColor = oldColor
         et_dot.backgroundColor = oldColor
     }
-
+    
     func bind(userEvent : UserEventModel) {
         self.userEvent = userEvent
         let event = userEvent.event
         let dfu = DateFormatterUtility.shared
         starttime.text = "\(dfu.shortDayOfMonthFormatter.string(from: event.begin))\n\(dfu.hourMinuteTimeFormatter.string(from: event.begin))\n\(dfu.timezoneFormatter.string(from: event.begin))"
-
+        
         var i = 0
         var stext = ""
         for s in event.speakers {
@@ -95,9 +95,9 @@ public class EventCell : UITableViewCell {
             titleAttr.append(NSAttributedString(string:"\n"))
             titleAttr.append(spAttrString)
         }
-
+        
         title.attributedText = titleAttr
-
+        
         color.backgroundColor = UIColor(hexString: event.type.color)
         et_dot.backgroundColor = UIColor(hexString: event.type.color)
         et_dot.layer.cornerRadius = et_dot.frame.width/2
@@ -108,9 +108,9 @@ public class EventCell : UITableViewCell {
         et_label.text = " \(event.type.name) "
         //et_label.layer.masksToBounds = true
         //et_label.layer.cornerRadius = 5
-            
+        
         subtitle.text = "\(event.location.name)"
-
+        
         
         if userEvent.bookmark.value {
             favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
@@ -119,24 +119,20 @@ public class EventCell : UITableViewCell {
             favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             favorited.tintColor = UIColor.gray
         }
-
+        
         
         let tr = UITapGestureRecognizer(target: self, action: #selector(tappedStar(sender:)))
         tr.delegate = self
         favorited.addGestureRecognizer(tr)
         favorited.isUserInteractionEnabled = true
-
+        
     }
     
     @objc func tappedStar(sender: AnyObject) {
         if let e = userEvent {
-            FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: e.event, isFavorite: !e.bookmark.value, session: AnonymousSession.shared) { (error) in
-                self.eventCellDelegate?.updatedEvents()
-            }
-            
+            addBookmark(bookmark: e.bookmark, event: e.event, eventCell: self)
         } else {
             NSLog("No event defined on star tap")
         }
     }
-
 }
