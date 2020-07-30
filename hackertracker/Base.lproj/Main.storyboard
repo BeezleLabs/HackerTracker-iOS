@@ -239,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zcr-Jh-8lE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7645.6000000000004" y="-735.38230884557731"/>
+            <point key="canvasLocation" x="8584.7999999999993" y="-735.38230884557731"/>
         </scene>
         <!--Schedule Table View Controller-->
         <scene sceneID="plL-wp-CvI">
@@ -298,7 +298,7 @@
                         <attributedString key="attributedTitle">
                             <fragment content="Sync Schedule">
                                 <attributes>
-                                    <font key="NSFont" metaFont="label" size="11"/>
+                                    <font key="NSFont" metaFont="message" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -307,7 +307,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agy-pQ-LU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8498.3999999999996" y="-734.48275862068976"/>
+            <point key="canvasLocation" x="9437.6000000000004" y="-734.48275862068976"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="x1L-ac-RFe">
@@ -625,6 +625,38 @@
             </objects>
             <point key="canvasLocation" x="-383.19999999999999" y="-1226.5367316341831"/>
         </scene>
+        <!--Categories-->
+        <scene sceneID="ARR-nk-uhm">
+            <objects>
+                <tableViewController storyboardIdentifier="HTEventTypeTableViewController" id="2Pe-fo-Z3y" customClass="HTEventTypeTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Oi-X3-Xgb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="etCell" id="Um3-Ic-kcu">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Um3-Ic-kcu" id="wJZ-dK-CEb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.16860893369999999" green="0.16863927249999999" blue="0.1686023176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Pe-fo-Z3y" id="E43-0y-lNO"/>
+                            <outlet property="delegate" destination="2Pe-fo-Z3y" id="1JF-Yz-OI9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Categories" id="Fjw-4g-zFD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccr-o0-v8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2580" y="-443.02848575712147"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="Cmg-Lt-nWH">
             <objects>
@@ -641,7 +673,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtM-mJ-VLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="-537"/>
+            <point key="canvasLocation" x="4071.1999999999998" y="-537.48125937031489"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="dcg-US-5Be">
@@ -767,7 +799,7 @@
                                                     <fragment content="Event Description">
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" metaFont="label" size="14"/>
+                                                            <font key="NSFont" metaFont="menu" size="14"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.5"/>
                                                         </attributes>
                                                     </fragment>
@@ -933,7 +965,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBR-U4-ule" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1068" y="1001"/>
+            <point key="canvasLocation" x="-1090" y="1179"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="ncf-MQ-TpN">
@@ -998,7 +1030,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwv-vH-OfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7967.1999999999998" y="89.505247376311857"/>
+            <point key="canvasLocation" x="8906.3999999999996" y="89.505247376311857"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="i93-iB-gUR">
@@ -1025,7 +1057,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LR1-7q-NAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4590" y="-537"/>
+            <point key="canvasLocation" x="5528.8000000000002" y="-537.48125937031489"/>
         </scene>
         <!--EVENTS-->
         <scene sceneID="IHZ-Ax-T76">
@@ -1073,7 +1105,7 @@
                 </tableView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unv-PC-TBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5822" y="-537"/>
+            <point key="canvasLocation" x="6760.8000000000002" y="-537.48125937031489"/>
         </scene>
         <!--Empty Detail View Controller-->
         <scene sceneID="Gs6-yl-O6f">
@@ -1410,19 +1442,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="rXy-yP-CZO">
-                                <rect key="frame" x="25" y="89.5" width="325" height="444.5"/>
+                                <rect key="frame" x="25" y="73.5" width="325" height="476.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull-active" translatesAutoresizingMaskIntoConstraints="NO" id="FKE-HZ-a9V">
                                         <rect key="frame" x="142.5" y="10" width="40" height="40"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Connect to DEF CON WiFi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-8J-VbI">
-                                        <rect key="frame" x="15.5" y="59" width="294.5" height="23.5"/>
+                                        <rect key="frame" x="16" y="59" width="293" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Larsseit-Bold" family="Larsseit" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkJ-fk-zZY">
-                                        <rect key="frame" x="12.5" y="91.5" width="300" height="310"/>
+                                        <rect key="frame" x="12.5" y="94.5" width="300" height="339"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="KBF-Y9-ucN"/>
                                         </constraints>
@@ -1434,7 +1466,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONNECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kk-yE-Xec">
-                                        <rect key="frame" x="113.5" y="410.5" width="98" height="24"/>
+                                        <rect key="frame" x="113.5" y="442.5" width="98" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1484,7 +1516,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wej-le-Z3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9455" y="90"/>
+            <point key="canvasLocation" x="10392.799999999999" y="89.505247376311857"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="nfE-zU-Jeb">
@@ -1576,7 +1608,7 @@
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <attributes>
-                                            <font key="NSFont" metaFont="label" size="14"/>
+                                            <font key="NSFont" metaFont="menu" size="14"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -1604,11 +1636,29 @@
             </objects>
             <point key="canvasLocation" x="436" y="1203"/>
         </scene>
+        <!--Events Nav View Controller-->
+        <scene sceneID="b58-zT-Pr0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aHb-1C-tla" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="m50-xd-GVg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Pe-fo-Z3y" kind="relationship" relationship="rootViewController" id="hBj-bW-Fpi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3g9-8M-GAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640.8" y="-443.02848575712147"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
         <segue reference="a0t-7o-Cnk"/>
-        <segue reference="3iW-gl-c7N"/>
+        <segue reference="QCx-XB-8Dl"/>
         <segue reference="XQt-9W-ade"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
