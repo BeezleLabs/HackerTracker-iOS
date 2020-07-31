@@ -50,11 +50,11 @@ class HTEventTypeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let paragraphStyle = NSMutableParagraphStyle()
+        /*let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
         
         var body = "No Category Found"
-        body = self.et[indexPath.row].name
+        body = self.et[indexPath.row].description
         
         
         let messageText = NSMutableAttributedString(
@@ -66,13 +66,13 @@ class HTEventTypeTableViewController: UITableViewController {
             ]
         )
         
-        let popup : UIAlertController = UIAlertController(title: "Category", message:"", preferredStyle: UIAlertController.Style.alert)
+        let popup : UIAlertController = UIAlertController(title: self.et[indexPath.row].name, message:"", preferredStyle: UIAlertController.Style.alert)
         popup.setValue(messageText, forKey: "attributedMessage")
         
         let doneItem : UIAlertAction = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil)
         popup.addAction(doneItem)
         
-        self.present(popup, animated: true, completion: nil)
+        self.present(popup, animated: true, completion: nil)*/
 
     }
     
@@ -92,6 +92,26 @@ class HTEventTypeTableViewController: UITableViewController {
                 NSLog("")
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if (segue.identifier == "eventTypeSegue") {
+            let etvc: HTEventTypeViewController
+            
+            if let destNav = segue.destination as? UINavigationController, let _etvc = destNav.viewControllers.first as? HTEventTypeViewController {
+                etvc = _etvc
+            } else {
+                etvc = segue.destination as! HTEventTypeViewController
+            }
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                etvc.event_type = self.et[indexPath.row]
+                self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+            }
+            
+        }
+
     }
     
 }

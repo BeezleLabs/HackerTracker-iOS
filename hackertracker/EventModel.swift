@@ -169,6 +169,8 @@ struct HTEventType : Codable, Equatable {
     var color : String
     var conferenceName : String
     var name : String
+    var description: String
+    var tags: String
     
     static func ==(lhs: HTEventType, rhs: HTEventType) -> Bool {
         if lhs.id == rhs.id && lhs.name == rhs.name {
@@ -185,7 +187,9 @@ extension HTEventType : Document {
         let color = dictionary["color"] as? String ?? ""
         let conferenceName = dictionary["conference"] as? String ?? ""
         let name = dictionary["name"] as? String ?? ""
+        let description = dictionary["description"] as? String ?? ""
+        let tags = dictionary["tags"] as? String ?? ""
         
-        self.init(id: id, color: color, conferenceName: conferenceName, name: name)
+        self.init(id: id, color: color, conferenceName: conferenceName, name: name, description: description, tags: tags)
     }
 }
