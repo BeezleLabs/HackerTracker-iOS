@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import UserNotifications
 import SafariServices
+import EventKit
+import EventKitUI
 
 protocol EventDetailDelegate {
     func reloadEvents()
@@ -153,7 +155,11 @@ class HTEventDetailViewController: UIViewController {
             eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.end)
         }
         eventDateLabel.text = "\(eventLabel)-\(eventEnd) \(tzLabel)"
+        eventDateLabel.font = eventDateLabel.font.withSize(18)
         
+        let addCalendarTap = UITapGestureRecognizer(target: self, action: #selector(addToCalendar))
+        eventDateLabel.addGestureRecognizer(addCalendarTap)
+        eventDateLabel.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -457,6 +463,12 @@ class HTEventDetailViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    @objc func addToCalendar() {
+        guard let htEvent = event else { return }
+        let calendarUtility = CalendarUtility()
+        calendarUtility.addEvent(htEvent: htEvent, view: self)
     }
     
 }
