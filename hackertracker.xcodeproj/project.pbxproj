@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AD66B1624D84A470061E985 /* HTEventTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */; };
+		2AD66B1724D84A470061E985 /* HTEventTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */; };
 		3C18D62224CEC7C20048E88D /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18D62124CEC7C20048E88D /* NotificationUtility.swift */; };
 		3CAC7F1224D55E9E00B08579 /* CalendarUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */; };
 		3CD8840E24CAD87F006B0B90 /* HTSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */; };
@@ -100,6 +102,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventTypeViewController.swift; sourceTree = "<group>"; };
+		2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventTypeTableViewController.swift; sourceTree = "<group>"; };
 		3C18D62124CEC7C20048E88D /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
 		3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUtility.swift; sourceTree = "<group>"; };
 		3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 		498AD73E1E2D2BC900DD5B56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */,
+				2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */,
 				83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */,
 				5D4C528B22E27E2E0042E401 /* HTCocViewController.swift */,
 				5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */,
@@ -619,6 +625,7 @@
 				3CD8840E24CAD87F006B0B90 /* HTSettingsTableViewController.swift in Sources */,
 				5DE9038B1B01B32E00A2D565 /* HTMapsViewController.swift in Sources */,
 				49730E4B1E2929BC0029438C /* EventCell.swift in Sources */,
+				2AD66B1724D84A470061E985 /* HTEventTypeTableViewController.swift in Sources */,
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
 				83679CEA210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift in Sources */,
 				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,
@@ -634,6 +641,7 @@
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
 				83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */,
 				5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */,
+				2AD66B1624D84A470061E985 /* HTEventTypeViewController.swift in Sources */,
 				5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */,
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,
