@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C18D62224CEC7C20048E88D /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18D62124CEC7C20048E88D /* NotificationUtility.swift */; };
+		3CAC7F1224D55E9E00B08579 /* CalendarUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */; };
 		3CD8840E24CAD87F006B0B90 /* HTSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */; };
 		49730E4B1E2929BC0029438C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4A1E2929BC0029438C /* EventCell.swift */; };
 		49730E4E1E2D1AB50029438C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4D1E2D1AB50029438C /* Theme.swift */; };
@@ -100,6 +101,7 @@
 
 /* Begin PBXFileReference section */
 		3C18D62124CEC7C20048E88D /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
+		3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUtility.swift; sourceTree = "<group>"; };
 		3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSettingsTableViewController.swift; sourceTree = "<group>"; };
 		49730E4A1E2929BC0029438C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		49730E4D1E2D1AB50029438C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */,
 				49730E4D1E2D1AB50029438C /* Theme.swift */,
 				3C18D62124CEC7C20048E88D /* NotificationUtility.swift */,
+				3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */,
 				8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */,
 				5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */,
+				3CAC7F1224D55E9E00B08579 /* CalendarUtility.swift in Sources */,
 				5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
 				83679CE7210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift in Sources */,
