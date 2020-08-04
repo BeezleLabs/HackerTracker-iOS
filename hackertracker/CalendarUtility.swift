@@ -35,6 +35,7 @@ struct CalendarUtility {
             }
         }
     }
+
     func addEvent(htEvent: HTEventModel, view: HTEventDetailViewController) {
         switch status {
         case .notDetermined:
@@ -42,7 +43,7 @@ struct CalendarUtility {
         case .authorized:
             addEventToCalendar(htEvent: htEvent, view: view)
         case .restricted, .denied:
-            break
+            deniedAccessAlert(view: view)
         @unknown default:
             break
         }
@@ -90,6 +91,21 @@ struct CalendarUtility {
         saveAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         saveAlert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
             try? self.eventStore.save(event, span: .thisEvent)
+        })
+
+        view.present(saveAlert, animated: true, completion: nil)
+    }
+
+    private func deniedAccessAlert(view: HTEventDetailViewController) {
+        let saveAlert = UIAlertController(
+            title: "Calendar access is currently disabled for HackerTracker",
+            message: "Select OK to view application settings", preferredStyle: .alert
+        )
+        saveAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        saveAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) { if UIApplication.shared.canOpenURL(url) { UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            }
         })
 
         view.present(saveAlert, animated: true, completion: nil)
