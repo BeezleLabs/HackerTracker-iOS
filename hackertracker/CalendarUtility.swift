@@ -23,11 +23,22 @@ struct CalendarUtility {
         }
     }
 
+    func requestAuthorizationAndSave(htEvent: HTEventModel, view: HTEventDetailViewController) {
+        eventStore.requestAccess(to: EKEntityType.event) { authorized, error in
+            if authorized {
+                DispatchQueue.main.async {
+                    self.addEventToCalendar(htEvent: htEvent, view: view)
+                }
+            }
+            if let error = error {
+                print("Request authorization error: \(error.localizedDescription)")
+            }
+        }
+    }
     func addEvent(htEvent: HTEventModel, view: HTEventDetailViewController) {
         switch status {
         case .notDetermined:
-            requestAuthorization()
-            addEvent(htEvent: htEvent, view: view)
+            requestAuthorizationAndSave(htEvent: htEvent, view: view)
         case .authorized:
             addEventToCalendar(htEvent: htEvent, view: view)
         case .restricted, .denied:
