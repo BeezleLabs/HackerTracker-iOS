@@ -97,18 +97,18 @@ struct CalendarUtility {
     }
 
     private func deniedAccessAlert(view: HTEventDetailViewController) {
-        let saveAlert = UIAlertController(
+        let deniedAlert = UIAlertController(
             title: "Calendar access is currently disabled for HackerTracker",
             message: "Select OK to view application settings", preferredStyle: .alert
         )
-        saveAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        saveAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+        deniedAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        deniedAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) { if UIApplication.shared.canOpenURL(url) { UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             }
         })
 
-        view.present(saveAlert, animated: true, completion: nil)
+        view.present(deniedAlert, animated: true, completion: nil)
     }
 
     private func duplicateAlert(htEvent: HTEventModel, view: HTEventDetailViewController) {
