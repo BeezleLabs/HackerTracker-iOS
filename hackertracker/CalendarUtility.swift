@@ -13,9 +13,7 @@ import UIKit
 struct CalendarUtility {
     let eventStore = EKEventStore()
 
-    var status: EKAuthorizationStatus {
-        EKEventStore.authorizationStatus(for: EKEntityType.event)
-    }
+    let status: EKAuthorizationStatus = EKEventStore.authorizationStatus(for: EKEntityType.event)
 
     func requestAuthorization() {
         eventStore.requestAccess(to: EKEntityType.event) { _, error in
