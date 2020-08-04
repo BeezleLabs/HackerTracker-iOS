@@ -86,7 +86,7 @@ struct CalendarUtility {
     private func saveAlert(htEvent: HTEventModel, event: EKEvent, view: HTEventDetailViewController) {
         let saveAlert = UIAlertController(
             title: "Add \(htEvent.conferenceName) event to calendar",
-            message: "\(htEvent.title)\n[\(htEvent.type.name)]\n\n\(htEvent.location.name)", preferredStyle: .alert
+            message: htEvent.title, preferredStyle: .alert
         )
         saveAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         saveAlert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
