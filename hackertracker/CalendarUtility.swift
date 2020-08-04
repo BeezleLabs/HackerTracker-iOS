@@ -7,8 +7,8 @@
 //
 
 import EventKit
-import EventKitUI
 import Foundation
+import UIKit
 
 struct CalendarUtility {
     let eventStore = EKEventStore()
