@@ -7,15 +7,13 @@
 //
 
 import EventKit
-import EventKitUI
 import Foundation
+import UIKit
 
 struct CalendarUtility {
     let eventStore = EKEventStore()
 
-    var status: EKAuthorizationStatus {
-        EKEventStore.authorizationStatus(for: EKEntityType.event)
-    }
+    let status: EKAuthorizationStatus = EKEventStore.authorizationStatus(for: EKEntityType.event)
 
     func requestAuthorization() {
         eventStore.requestAccess(to: EKEntityType.event) { _, error in
@@ -25,15 +23,27 @@ struct CalendarUtility {
         }
     }
 
+    func requestAuthorizationAndSave(htEvent: HTEventModel, view: HTEventDetailViewController) {
+        eventStore.requestAccess(to: EKEntityType.event) { authorized, error in
+            if authorized {
+                DispatchQueue.main.async {
+                    self.addEventToCalendar(htEvent: htEvent, view: view)
+                }
+            }
+            if let error = error {
+                print("Request authorization error: \(error.localizedDescription)")
+            }
+        }
+    }
+
     func addEvent(htEvent: HTEventModel, view: HTEventDetailViewController) {
         switch status {
         case .notDetermined:
-            requestAuthorization()
-            addEvent(htEvent: htEvent, view: view)
+            requestAuthorizationAndSave(htEvent: htEvent, view: view)
         case .authorized:
             addEventToCalendar(htEvent: htEvent, view: view)
         case .restricted, .denied:
-            break
+            deniedAccessAlert(view: view)
         @unknown default:
             break
         }
@@ -76,7 +86,7 @@ struct CalendarUtility {
     private func saveAlert(htEvent: HTEventModel, event: EKEvent, view: HTEventDetailViewController) {
         let saveAlert = UIAlertController(
             title: "Add \(htEvent.conferenceName) event to calendar",
-            message: "\(htEvent.title)\n[\(htEvent.type.name)]\n\n\(htEvent.location.name)", preferredStyle: .alert
+            message: htEvent.title, preferredStyle: .alert
         )
         saveAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         saveAlert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
@@ -84,6 +94,21 @@ struct CalendarUtility {
         })
 
         view.present(saveAlert, animated: true, completion: nil)
+    }
+
+    private func deniedAccessAlert(view: HTEventDetailViewController) {
+        let deniedAlert = UIAlertController(
+            title: "Calendar access is currently disabled for HackerTracker",
+            message: "Select OK to view application settings", preferredStyle: .alert
+        )
+        deniedAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        deniedAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) { if UIApplication.shared.canOpenURL(url) { UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            }
+        })
+
+        view.present(deniedAlert, animated: true, completion: nil)
     }
 
     private func duplicateAlert(htEvent: HTEventModel, view: HTEventDetailViewController) {

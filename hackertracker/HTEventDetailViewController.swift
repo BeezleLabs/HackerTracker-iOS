@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 import UserNotifications
 import SafariServices
-import EventKit
-import EventKitUI
 
 protocol EventDetailDelegate {
     func reloadEvents()
