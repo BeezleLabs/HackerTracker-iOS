@@ -40,8 +40,8 @@ class HTSpeakersTableViewController: UITableViewController {
                 }
 
                 self.tableView.reloadData()
-            case .failure(_):
-                NSLog("")
+            case .failure(let error):
+                NSLog("Update speakers table: \(error.localizedDescription)")
             }
         }
         reloadSpeakers()

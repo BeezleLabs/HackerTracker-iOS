@@ -11,6 +11,19 @@ import Foundation
 import Firebase
 import FirebaseStorage
 
+enum HTError: Error {
+    case SpeakerNil
+}
+
+extension HTError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .SpeakerNil:
+            return "Speaker items were nil"
+        }
+    }
+}
+
 class UpdateToken {
     let collectionValue: Any
     init (_ collection: Any) {
@@ -95,7 +108,11 @@ class FSConferenceDataController {
         let query = document(forConference: conference).collection("speakers").whereField("id", isEqualTo: speakerId)
         let speakers = Collection<HTSpeaker>(query: query)
         speakers.listen { (_) in
-            updateHandler(Result<HTSpeaker, Error>.success(speakers.items.first!))
+            if let speaker = speakers.items.first {
+                updateHandler(Result<HTSpeaker, Error>.success(speaker))
+            } else {
+                updateHandler(Result<HTSpeaker, Error>.failure(HTError.SpeakerNil))
+            }
         }
         return UpdateToken(speakers)
     }

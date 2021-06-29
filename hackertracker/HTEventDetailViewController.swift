@@ -204,8 +204,8 @@ class HTEventDetailViewController: UIViewController {
                             self.speakers.append(speaker)
                         }
                         self.setupSpeakerNames()
-                    case .failure(_):
-                        NSLog("")
+                    case .failure(let error):
+                        NSLog("Event detail speaker error: \(error.localizedDescription)")
                     }
                 }
                 speakerTokens.append(sToken)
