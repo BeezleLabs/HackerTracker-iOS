@@ -9,13 +9,13 @@
 import Foundation
 import FirebaseFirestore
 
-struct Bookmark : Codable {
-    var id : String
-    var value : Bool
+struct Bookmark: Codable {
+    var id: String
+    var value: Bool
 }
 
-extension Bookmark : Document {
-    init?(dictionary: [String : Any]) {
+extension Bookmark: Document {
+    init?(dictionary: [String: Any]) {
         let id = dictionary["id"] as? String ?? "0"
         let value = dictionary["value"] as? Bool ?? false
 
@@ -23,24 +23,24 @@ extension Bookmark : Document {
     }
 }
 
-struct HTEventModel : Codable {
-    var id : Int
-    var conferenceName : String
-    var description : String
-    var begin : Date
-    var end : Date
-    var includes : String
-    var links : String
-    var title : String
-    var location : HTLocationModel
-    var speakers : [HTSpeaker]
-    var type : HTEventType
+struct HTEventModel: Codable {
+    var id: Int
+    var conferenceName: String
+    var description: String
+    var begin: Date
+    var end: Date
+    var includes: String
+    var links: String
+    var title: String
+    var location: HTLocationModel
+    var speakers: [HTSpeaker]
+    var type: HTEventType
 }
 
-struct UserEventModel : Codable, Equatable {
-    var event : HTEventModel
-    var bookmark : Bookmark
-    
+struct UserEventModel: Codable, Equatable {
+    var event: HTEventModel
+    var bookmark: Bookmark
+
     static func ==(lhs: UserEventModel, rhs: UserEventModel) -> Bool {
         if lhs.event.id == rhs.event.id && lhs.event.title == rhs.event.title && lhs.event.description == rhs.event.description {
             return true
@@ -50,8 +50,8 @@ struct UserEventModel : Codable, Equatable {
     }
 }
 
-extension HTEventModel : Document {
-    init?(dictionary: [String : Any]) {
+extension HTEventModel: Document {
+    init?(dictionary: [String: Any]) {
         let dfu = DateFormatterUtility.shared
         let tmp_date = "2019-01-01T00:00:00.000-0000"
         let id = dictionary["id"] as? Int ?? 0
@@ -65,51 +65,50 @@ extension HTEventModel : Document {
         }
         let conferenceName = dictionary["conference"] as? String ?? ""
         let description = dictionary["description"] as? String ?? ""
-        
+
         let includes = dictionary["includes"] as? String ?? ""
         let link = dictionary["link"] as? String ?? ""
         let title = dictionary["title"] as? String ?? ""
-        
-        var location : HTLocationModel?;
-        if let locationValues = dictionary["location"] as? Dictionary<String, Any>  {
+
+        var location: HTLocationModel?
+        if let locationValues = dictionary["location"] as? [String: Any] {
             location = HTLocationModel(dictionary: locationValues)
         }
-        
-        var speakers : [HTSpeaker] = [];
-        if let speakersValues = dictionary["speakers"] as? Array<Any>  {
-            
+
+        var speakers: [HTSpeaker] = []
+        if let speakersValues = dictionary["speakers"] as? [Any] {
+
             speakers = speakersValues.compactMap { (element) -> HTSpeaker? in
-                if let element = element as? Dictionary<String, Any>, let speaker = HTSpeaker(dictionary: element) {
+                if let element = element as? [String: Any], let speaker = HTSpeaker(dictionary: element) {
                     return speaker
                 }
-                
+
                 return nil
             }
         }
-        
-        var type : HTEventType?;
-        if let typeValues = dictionary["type"] as? Dictionary<String, Any>  {
+
+        var type: HTEventType?
+        if let typeValues = dictionary["type"] as? [String: Any] {
             type = HTEventType(dictionary: typeValues)
         }
-        
+
         guard  let typeVal = type, let locationVal = location else {
-            return nil;
+            return nil
         }
-        
-        
+
         self.init(id: id, conferenceName: conferenceName, description: description, begin: begin, end: end, includes: includes, links: link, title: title, location: locationVal, speakers: speakers, type: typeVal)
     }
 }
 
-struct HTLocationModel : Codable {
-    var id : Int
-    var conferenceName : String
-    var name : String
-    var hotel : String
+struct HTLocationModel: Codable {
+    var id: Int
+    var conferenceName: String
+    var name: String
+    var hotel: String
 }
 
-extension HTLocationModel : Document {
-    init?(dictionary: [String : Any]) {
+extension HTLocationModel: Document {
+    init?(dictionary: [String: Any]) {
         let id = dictionary["id"] as? Int ?? 0
         let conferenceName = dictionary["conference"] as? String ?? ""
         let name = dictionary["name"] as? String ?? ""
@@ -119,16 +118,16 @@ extension HTLocationModel : Document {
     }
 }
 
-struct HTSpeaker : Codable, Equatable {
-    var id : Int
-    var conferenceName : String
-    var description : String
-    var link : String
-    var name : String
-    var title : String
-    var twitter : String
+struct HTSpeaker: Codable, Equatable {
+    var id: Int
+    var conferenceName: String
+    var description: String
+    var link: String
+    var name: String
+    var title: String
+    var twitter: String
     var events: [HTEventModel]
-    
+
     static func ==(lhs: HTSpeaker, rhs: HTSpeaker) -> Bool {
         if lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description {
             return true
@@ -138,8 +137,8 @@ struct HTSpeaker : Codable, Equatable {
     }
 }
 
-extension HTSpeaker : Document {
-    init?(dictionary: [String : Any]) {
+extension HTSpeaker: Document {
+    init?(dictionary: [String: Any]) {
         let id = dictionary["id"] as? Int ?? 0
         let conferenceName = dictionary["conference"] as? String ?? ""
         let description = dictionary["description"] as? String ?? ""
@@ -148,30 +147,30 @@ extension HTSpeaker : Document {
         let title = dictionary["title"] as? String ?? ""
         let twitter = dictionary["twitter"] as? String ?? ""
 
-        var events : [HTEventModel] = []
-        if let eventsValues = dictionary["events"] as? Array<Any>  {
-            
+        var events: [HTEventModel] = []
+        if let eventsValues = dictionary["events"] as? [Any] {
+
             events = eventsValues.compactMap { (element) -> HTEventModel? in
-                if let element = element as? Dictionary<String, Any>, let event = HTEventModel(dictionary: element) {
+                if let element = element as? [String: Any], let event = HTEventModel(dictionary: element) {
                     return event
                 }
-                
+
                 return nil
             }
         }
-        
+
         self.init(id: id, conferenceName: conferenceName, description: description, link: link, name: name, title: title, twitter: twitter, events: events)
     }
 }
 
-struct HTEventType : Codable, Equatable {
-    var id : Int
-    var color : String
-    var conferenceName : String
-    var name : String
+struct HTEventType: Codable, Equatable {
+    var id: Int
+    var color: String
+    var conferenceName: String
+    var name: String
     var description: String
     var tags: String
-    
+
     static func ==(lhs: HTEventType, rhs: HTEventType) -> Bool {
         if lhs.id == rhs.id && lhs.name == rhs.name {
             return true
@@ -181,15 +180,15 @@ struct HTEventType : Codable, Equatable {
     }
 }
 
-extension HTEventType : Document {
-    init?(dictionary: [String : Any]) {
+extension HTEventType: Document {
+    init?(dictionary: [String: Any]) {
         let id = dictionary["id"] as? Int ?? 0
         let color = dictionary["color"] as? String ?? ""
         let conferenceName = dictionary["conference"] as? String ?? ""
         let name = dictionary["name"] as? String ?? ""
         let description = dictionary["description"] as? String ?? ""
         let tags = dictionary["tags"] as? String ?? ""
-        
+
         self.init(id: id, color: color, conferenceName: conferenceName, name: name, description: description, tags: tags)
     }
 }

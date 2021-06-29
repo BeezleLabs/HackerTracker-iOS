@@ -11,39 +11,39 @@ import Firebase
 import FirebaseStorage
 
 class AnonymousSession {
-    
-    public typealias FavoritesUpdater = (Result<[Bookmark], Error>) -> ()
 
-    struct WeakContainer<T : AnyObject> {
-        weak var content : T?
+    public typealias FavoritesUpdater = (Result<[Bookmark], Error>) -> Void
+
+    struct WeakContainer<T: AnyObject> {
+        weak var content: T?
     }
-    
-    static private(set) var shared : AnonymousSession!
-    static private var conferencesToken : UpdateToken?
-    private var bookmarksToken : UpdateToken?
-    private var bookmarks : [Bookmark]?
 
-    var currentConference : ConferenceModel! {
+    static private(set) var shared: AnonymousSession!
+    static private var conferencesToken: UpdateToken?
+    private var bookmarksToken: UpdateToken?
+    private var bookmarks: [Bookmark]?
+
+    var currentConference: ConferenceModel! {
         didSet {
             setupConference()
         }
     }
-    
-    var currentFavoritesUpdates : [WeakContainer<UpdateToken>] = []
 
-    var user : User?
-    
+    var currentFavoritesUpdates: [WeakContainer<UpdateToken>] = []
+
+    var user: User?
+
     static func initialize(conCode: String, completion: @escaping (AnonymousSession?) -> Void) {
-        Auth.auth().signInAnonymously() { (authResult, error) in
+        Auth.auth().signInAnonymously { (authResult, error) in
             if let _ = error {
                 completion(nil)
                 return
             }
-            
+
             self.conferencesToken = FSConferenceDataController.shared.requestConferenceByCode(forCode: conCode) { (result) in
                 switch result {
                 case .success(let con):
-                    shared = AnonymousSession(conference:con)
+                    shared = AnonymousSession(conference: con)
                     shared.user = authResult?.user
                     shared.setupConference()
                     completion(shared)
@@ -53,11 +53,11 @@ class AnonymousSession {
             }
         }
     }
-    
-    public init(conference : ConferenceModel) {
+
+    public init(conference: ConferenceModel) {
         currentConference = conference
     }
-    
+
     func setupConference() {
         self.currentFavoritesUpdates = []
         self.bookmarksToken = warmFavoritesCache(forConference: currentConference) { (result) in
@@ -69,11 +69,11 @@ class AnonymousSession {
             }
             for weakContainer in self.currentFavoritesUpdates {
                 if let updateToken = weakContainer.content, let block = updateToken.collectionValue as? FavoritesUpdater {
-                    block(result);
+                    block(result)
                 }
             }
         }
-        
+
         DateFormatterUtility.shared.update(identifier: currentConference.tz)
 
         let fm = FileManager.default
@@ -86,9 +86,9 @@ class AnonymousSession {
             let mLocal = docDir.appendingPathComponent(path)
             if fm.fileExists(atPath: mLocal.path) {
                 // TODO: Add logic to check md5 hash and re-update if it has changed
-                //NSLog("Map file (\(path)) already exists")
+                // NSLog("Map file (\(path)) already exists")
             } else {
-                _ = mRef.write(toFile: mLocal) { url, error in
+                _ = mRef.write(toFile: mLocal) { _, error in
                     if let error = error {
                         NSLog("Error \(error) retrieving \(path)")
                     } else {
@@ -98,33 +98,33 @@ class AnonymousSession {
             }
         }
     }
-    
+
     func warmFavoritesCache(forConference conference: ConferenceModel,
                             updateHandler: @escaping (Result<[Bookmark], Error>) -> Void) -> UpdateToken? {
         guard let user = user else {
-            return nil;
+            return nil
         }
-        
+
         let query = document(forConference: conference).collection("users").document(user.uid).collection("bookmarks")
         let bookmarks = Collection<Bookmark>(query: query)
-        bookmarks.listen { (changes) in
+        bookmarks.listen { (_) in
             updateHandler(Result<[Bookmark], Error>.success(bookmarks.items))
         }
-        
-        return UpdateToken(bookmarks);
+
+        return UpdateToken(bookmarks)
     }
-    
+
     func requestFavorites(updateHandler: @escaping (Result<[Bookmark], Error>) -> Void) -> UpdateToken? {
         if let bookmarks = self.bookmarks {
             updateHandler(Result<[Bookmark], Error>.success(bookmarks))
         }
-        
+
         let updateToken = UpdateToken(updateHandler)
         currentFavoritesUpdates.append(WeakContainer(content: updateToken))
         return updateToken
     }
-    
+
     private func document(forConference conference: ConferenceModel) -> DocumentReference {
-        return Firestore.firestore().collection("conferences").document(conference.code);
+        return Firestore.firestore().collection("conferences").document(conference.code)
     }
 }

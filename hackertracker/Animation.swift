@@ -12,7 +12,7 @@ class Animation {
 
     let context: CIContext = {
         let eaglContext = EAGLContext(api: .openGLES2)
-        return CIContext(eaglContext: eaglContext!, options: convertToOptionalCIContextOptionDictionary([convertFromCIContextOption(CIContextOption.workingColorSpace) : NSNull()]))
+        return CIContext(eaglContext: eaglContext!, options: convertToOptionalCIContextOptionDictionary([convertFromCIContextOption(CIContextOption.workingColorSpace): NSNull()]))
     }()
 
     let pixelScaleFactor = 50.0
@@ -39,10 +39,10 @@ class Animation {
         }
     }
 
-    private var onImageUpdate: (UIImage) -> ()
+    private var onImageUpdate: (UIImage) -> Void
     private var coreImage: CIImage?
 
-    init(duration: Double, image: UIImage, onImageUpdate: @escaping (UIImage) -> ()) {
+    init(duration: Double, image: UIImage, onImageUpdate: @escaping (UIImage) -> Void) {
         self.duration = duration
         // Initialize onImageUpdate before image because setting image will trigger onImageUpdate.
         self.onImageUpdate = onImageUpdate
@@ -156,7 +156,7 @@ class Animation {
 
     private func applyPixelFilter(on image: CIImage, progress: Double) -> CIImage? {
         guard let pixelFilter = pixelFilter else {
-            print ("PixelFilter is nil")
+            print("PixelFilter is nil")
             return nil
         }
 
@@ -168,7 +168,7 @@ class Animation {
 
     private func applyExposureFilter(on image: CIImage, progress: Double) -> CIImage? {
         guard let exposureFilter = exposureFilter else {
-            print ("exposureFilter is nil")
+            print("exposureFilter is nil")
             return nil
         }
 
@@ -180,7 +180,7 @@ class Animation {
 
     func applyStripeFilter(progress: Double) -> CIImage? {
         guard let stripeFilter = stripeFilter else {
-            print ("stripeFilter is nil")
+            print("stripeFilter is nil")
             return nil
         }
 
@@ -194,7 +194,6 @@ class Animation {
         stripeFilter.setValue(CIVector(x: CGFloat(stripeXPostion), y: 0), forKey: kCIInputCenterKey)
         stripeFilter.setValue(stripeCutWidth + drand48() * sign * 2, forKey: kCIInputWidthKey)
 
-
         let output = stripeFilter.outputImage?.clampedToExtent()
         return output?.transformed(by: CGAffineTransform(rotationAngle: .pi / 2))
             .transformed(by: CGAffineTransform(translationX: CGFloat(stripeXPostion * 500), y: 0))
@@ -202,7 +201,7 @@ class Animation {
 
     func applyLinearBumpFilter(on image: CIImage, progress: Double) -> CIImage? {
         guard let linearBumpFilter = linearBumpFilter else {
-            print ("linearBumpFilter is nil")
+            print("linearBumpFilter is nil")
             return nil
         }
 
@@ -267,14 +266,13 @@ class Animation {
 
 }
 
-
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalCIContextOptionDictionary(_ input: [String: Any]?) -> [CIContextOption: Any]? {
+private func convertToOptionalCIContextOptionDictionary(_ input: [String: Any]?) -> [CIContextOption: Any]? {
 	guard let input = input else { return nil }
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (CIContextOption(rawValue: key), value)})
 }
 
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromCIContextOption(_ input: CIContextOption) -> String {
+private func convertFromCIContextOption(_ input: CIContextOption) -> String {
 	return input.rawValue
 }

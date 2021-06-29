@@ -18,30 +18,30 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
     @IBOutlet weak var vertStackView: UIStackView!
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var eventTableHeightConstraint: NSLayoutConstraint!
-    
-    var eventTokens : [UpdateToken] = []
+
+    var eventTokens: [UpdateToken] = []
     var events: [UserEventModel] = []
     var speaker: HTSpeaker?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let s = speaker {
             let n = s.name
             let d = s.description
             nameLabel.text = n
             bioLabel.text = d
             bioLabel.sizeToFit()
-            eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil),  forCellReuseIdentifier: "EventCell")
+            eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
             eventTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
-            
+
             eventTableView.delegate = self
             eventTableView.dataSource = self
             eventTableView.backgroundColor = UIColor.clear
             eventTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            
+
             addEventList()
-            
+
             twitterButton.isHidden = true
             if s.twitter != "" {
                 twitterButton.setTitle(s.twitter, for: .normal)
@@ -50,15 +50,15 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
 
             self.eventTableView.reloadData()
             self.vertStackView.layoutSubviews()
-            
+
         }
     }
-    
+
     func addEventList() {
         var i = 0
         for e in speaker!.events {
             if eventTokens.indices.contains(i) {
-                //NSLog("Already an eventtoken for event \(e.title)")
+                // NSLog("Already an eventtoken for event \(e.title)")
             } else {
                 let eToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, eventId: e.id) { (result) in
                     switch result {
@@ -72,11 +72,11 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
 
                         self.eventTableView.reloadData()
                         self.vertStackView.layoutSubviews()
-                        
-                    case .failure(let _):
+
+                    case .failure(_):
                         NSLog("")
                     }
-                    
+
                 }
                 eventTokens.append(eToken)
             }
@@ -95,7 +95,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func twitterTapped(_ sender: Any) {
         if let twit = speaker?.twitter {
             let l = "https://mobile.twitter.com/\(twit.replacingOccurrences(of: "@", with: ""))"
@@ -107,24 +107,24 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             }
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
     }
-    
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "eventSegue") {
-            
-            let dv : HTEventDetailViewController
-            
+        if segue.identifier == "eventSegue" {
+
+            let dv: HTEventDetailViewController
+
             if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
                 dv = _dv
             } else {
                 dv = segue.destination as! HTEventDetailViewController
             }
-            
+
             if let s = speaker {
                 let events = s.events
                 if events.count > 0 {
@@ -132,20 +132,20 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
                 }
             }
             dv.transitioningDelegate = self
-            
+
         }
     }
-    
+
     // Table Functions
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (events.count > 0 ) {
+        if events.count > 0 {
             return events.count
         } else {
             return 1
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if events.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
@@ -160,11 +160,11 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if let s = speaker, s.events.count > 0 {
-            let event : UserEventModel = events[indexPath.row]
+            let event: UserEventModel = events[indexPath.row]
 
             if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
                 eventController.event = event.event
@@ -174,22 +174,22 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             }
         }
     }
-    
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     // Event Cell Delegate
     func updatedEvents() {
-        //self.addEventList()
+        // self.addEventList()
         self.eventTableView.reloadData()
     }
-    
+
 }

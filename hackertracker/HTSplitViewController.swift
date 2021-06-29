@@ -30,7 +30,7 @@ class HTSplitViewController: UISplitViewController, UISplitViewControllerDelegat
             return true
         }
 
-        return eventDetailController.event == nil        
+        return eventDetailController.event == nil
     }
 
 }

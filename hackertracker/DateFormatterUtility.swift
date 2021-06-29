@@ -19,30 +19,30 @@ import Foundation
  http://www.chibicode.org/?p=41
  */
 class DateFormatterUtility {
-    
+
     var tz = TimeZone(identifier: "America/Los_Angeles")
-    
+
     /*static let shared : [String:DateFormatterUtility] =
      ["America/Los_Angeles": DateFormatterUtility(identifier: "America/Los_Angeles"),
      "America/Chicago": DateFormatterUtility(identifier: "America/Chicago"),
      "America/Denver": DateFormatterUtility(identifier: "America/Denver"),
      "America/New_York": DateFormatterUtility(identifier: "America/New_York")
      ] */
-    
+
     static let shared = DateFormatterUtility(identifier: "America/Los_Angeles")
-    
+
     init(identifier: String) {
         self.update(identifier: identifier)
     }
-    
+
     func update(identifier: String) {
-        
+
         if preferLocalTime() {
             tz = .current
         } else {
             tz = TimeZone(identifier: identifier)
         }
-        
+
         yearMonthDayTimeFormatter.timeZone = tz
         timezoneFormatter.timeZone = tz
         yearMonthDayFormatter.timeZone = tz
@@ -56,11 +56,11 @@ class DateFormatterUtility {
         hourMinuteTimeFormatter.timeZone = tz
         monthDayYearFormatter.timeZone = tz
     }
-    
+
     func preferLocalTime() -> Bool {
         UserDefaults.standard.bool(forKey: "PreferLocalTime")
     }
-    
+
     // time format
     let yearMonthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
@@ -69,7 +69,7 @@ class DateFormatterUtility {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
+
     // Current Timezone
     let timezoneFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
@@ -77,15 +77,15 @@ class DateFormatterUtility {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
-    //Year-Month-Day
+
+    // Year-Month-Day
     let yearMonthDayFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
+
     // Month/Day/Year
     let monthDayYearFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
@@ -93,16 +93,16 @@ class DateFormatterUtility {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
-    //UTC time format
+
+    // UTC time format
     let monthDayTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd HH:mm"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
-    //UTC iso8601 time format
+
+    // UTC iso8601 time format
     let iso8601Formatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -110,68 +110,67 @@ class DateFormatterUtility {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
-    //Year-Month-Day time format
+
+    // Year-Month-Day time format
     let yearMonthDayNoTimeZoneTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
-    
-    //DOW format
+
+    // DOW format
     let dayOfWeekFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEEE"
         return formatter
     }()
-    
-    //D format
+
+    // D format
     let shortDayOfMonthFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "E"
         return formatter
     }()
-    
-    //DOW format
+
+    // DOW format
     let dayMonthDayOfWeekFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEEE, MMM d"
         return formatter
     }()
-    
-    //DOW format
+
+    // DOW format
     let shortDayMonthDayTimeOfWeekFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EE, MMM d HH:mm"
         return formatter
     }()
-    
-    //DOW Hour:Minute time format
+
+    // DOW Hour:Minute time format
     let dayOfWeekTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EE HH:mm"
         return formatter
     }()
-    
-    //Hour:Minute time format
+
+    // Hour:Minute time format
     let hourMinuteTimeFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
-    
+
     func getConferenceDates(start: Date, end: Date) -> [String] {
         let calendar = NSCalendar.current
         var ret: [String] = []
-        
+
         let components = calendar.dateComponents([.day], from: start, to: end)
         ret.append(self.yearMonthDayFormatter.string(from: start))
         var cur = start
@@ -183,5 +182,5 @@ class DateFormatterUtility {
         }
         return ret
     }
-    
+
 }

@@ -9,17 +9,17 @@
 import UIKit
 import CoreData
 
-protocol HTConferenceTableViewControllerDelegate : class {
+protocol HTConferenceTableViewControllerDelegate: AnyObject {
     func didSelect(conference: ConferenceModel)
 }
 
 class HTConferenceTableViewController: UITableViewController {
-    
+
     var conferences: [ConferenceModel] = []
-    var conferencesToken : UpdateToken?
+    var conferencesToken: UpdateToken?
     var selectCon: ConferenceModel?
-    weak var delegate : HTConferenceTableViewControllerDelegate?
-    
+    weak var delegate: HTConferenceTableViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if AnonymousSession.shared != nil {
@@ -41,16 +41,16 @@ class HTConferenceTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conferences.count
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 68
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             let selectedConference = conferences[indexPath.row]
             if cell.accessoryType == .checkmark, selectedConference.code == selectCon?.code {
-                //NSLog("already checked")
+                // NSLog("already checked")
             } else {
                 UserDefaults.standard.set(selectedConference.code, forKey: "conference")
                 if AnonymousSession.shared != nil {
@@ -67,13 +67,13 @@ class HTConferenceTableViewController: UITableViewController {
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "conferenceCell", for: indexPath) as! ConferenceCell
-        
+
         let conferenceModel = self.conferences[indexPath.row]
         cell.setConference(conference: conferenceModel)
-        
+
         if let selectCon = selectCon, conferenceModel.code == selectCon.code {
             cell.accessoryType = .checkmark
             cell.color.isHidden = false
@@ -84,19 +84,19 @@ class HTConferenceTableViewController: UITableViewController {
 
         return cell
     }
-    
+
     func loadConferences() {
         conferencesToken = FSConferenceDataController.shared.requestConferences { (result) in
             switch result {
             case .success(let conferenceList):
                 self.conferences = conferenceList
-                //self.conferences.append(contentsOf: conferenceList)
+                // self.conferences.append(contentsOf: conferenceList)
                 self.tableView.reloadData()
-            case .failure(let _):
+            case .failure(_):
                 NSLog("")
             }
         }
-        
+
     }
 
 }

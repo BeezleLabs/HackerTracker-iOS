@@ -11,12 +11,12 @@ import UIKit
 class HTEventTypeViewController: UIViewController {
 
     @IBOutlet weak var descriptionTextView: UITextView!
-    
+
     var event_type: HTEventType?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let et = event_type {
             navigationItem.title = et.name
             descriptionTextView.text = et.description
@@ -24,7 +24,6 @@ class HTEventTypeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation

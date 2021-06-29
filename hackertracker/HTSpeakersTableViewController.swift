@@ -11,12 +11,12 @@ import CoreData
 import Crashlytics
 
 class HTSpeakersTableViewController: UITableViewController {
-    
+
     typealias SpeakerSection = (letter: String, speakers: [HTSpeaker])
-    
-    var speakerSections : [SpeakerSection] = []
-    
-    var speakerToken : UpdateToken?
+
+    var speakerSections: [SpeakerSection] = []
+
+    var speakerToken: UpdateToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +25,11 @@ class HTSpeakersTableViewController: UITableViewController {
             case .success(let speakerList):
                 self.speakerSections.removeAll()
                 for l in "abcdefghijklmnopqrstuvwxyz" {
-                    var speakers : [HTSpeaker] = []
-                    
+                    var speakers: [HTSpeaker] = []
+
                     for s in speakerList {
                         let fl = s.name.prefix(1).lowercased()
-                        //NSLog("\(l) : \(fl)")
+                        // NSLog("\(l) : \(fl)")
                         if fl == l.lowercased() {
                             speakers.append(s)
                         }
@@ -38,9 +38,9 @@ class HTSpeakersTableViewController: UITableViewController {
                         self.speakerSections.append((letter: l.uppercased(), speakers: speakers))
                     }
                 }
-                
+
                 self.tableView.reloadData()
-            case .failure(let _):
+            case .failure(_):
                 NSLog("")
             }
         }
@@ -60,15 +60,15 @@ class HTSpeakersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return speakerSections[section].speakers.count
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let dateHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "EventHeader") as? EventDateHeaderView ?? EventDateHeaderView(reuseIdentifier: "EventHeader")
-        
+
         dateHeader.bind(speakerSections[section].letter)
-        
+
         return dateHeader
     }
-    
+
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var ret: [String] = []
         for ss in speakerSections {
@@ -86,20 +86,20 @@ class HTSpeakersTableViewController: UITableViewController {
 
         return cell
     }
-    
+
     func reloadSpeakers () {
         let selectedIndexPath = tableView.indexPathForSelectedRow
         var speaker: HTSpeaker?
-        
+
         if let selectedIndexPath = selectedIndexPath {
             speaker = speakerSections[selectedIndexPath.section].speakers[selectedIndexPath.row]
         }
-        
+
         if let selectedIndexPath = selectedIndexPath,
             let speaker = speaker,
             selectedIndexPath.section < speakerSections.count,
             selectedIndexPath.row < speakerSections[selectedIndexPath.section].speakers.count {
-            
+
             let newSpeaker = speakerSections[selectedIndexPath.section].speakers[selectedIndexPath.row]
             if newSpeaker.id == speaker.id {
                 tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
@@ -108,16 +108,16 @@ class HTSpeakersTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "speakerSegue") {
+        if segue.identifier == "speakerSegue" {
             let svc: HTSpeakerViewController
-            
+
             if let destNav = segue.destination as? UINavigationController, let _svc = destNav.viewControllers.first as? HTSpeakerViewController {
                 svc = _svc
             } else {
                 svc = segue.destination as! HTSpeakerViewController
             }
-            
-            var ip : IndexPath
+
+            var ip: IndexPath
             if let sc = sender as? UITableViewCell {
                 ip = tableView.indexPath(for: sc)! as IndexPath
             } else {
@@ -125,9 +125,8 @@ class HTSpeakersTableViewController: UITableViewController {
             }
 
             svc.speaker = self.speakerSections[ip.section].speakers[ip.row]
-            
+
         }
     }
-    
 
 }

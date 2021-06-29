@@ -11,27 +11,26 @@ import CoreData
 import SpriteKit
 
 class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate {
-    
+
     typealias EventSection = (date: String, events: [UserEventModel])
 
-    var eventSections : [EventSection] = []
-    var allEventSections : [EventSection] = []
+    var eventSections: [EventSection] = []
+    var allEventSections: [EventSection] = []
     var data = NSMutableData()
-    var emptyStateView : UIView?
+    var emptyStateView: UIView?
     var lastContentOffset: CGPoint?
-    var updated : [String] = []
-    var later : [String] = []
+    var updated: [String] = []
+    var later: [String] = []
     var alltypes: [HTEventType] = []
     var filteredtypes: [HTEventType] = []
     var firstLoad = true
-    var touchNav : UITapGestureRecognizer!
-    
-    var eventTokens : [UpdateToken?] = []
+    var touchNav: UITapGestureRecognizer!
 
+    var eventTokens: [UpdateToken?] = []
 
     var pullDownAnimation: PongScene?
     var nowPath: IndexPath?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
@@ -40,13 +39,13 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         titleViewButton.setTitleColor(UIColor.white, for: .normal)
         titleViewButton.setTitle(AnonymousSession.shared.currentConference.name, for: .normal)
         titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
-        
+
         // Create action listener
         titleViewButton.addTarget(self, action: #selector(scrollToCurrentDate(_:)), for: .touchUpInside)
-        
+
         // Set the title view with newly created button
         navigationItem.titleView = titleViewButton
-        
+
         self.setupTokens()
         self.reloadEvents()
         self.tableView.reloadData()
@@ -56,7 +55,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if isViewLoaded && !animated  {
+        if isViewLoaded && !animated {
             self.tableView.reloadData()
             if let lastContentOffset = lastContentOffset {
                 tableView.contentOffset = lastContentOffset
@@ -70,12 +69,12 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
-        
+
         self.tableView.reloadData()
 
         if pullDownAnimation == nil {
             refreshControl = UIRefreshControl()
-            let attr: Dictionary = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
+            let attr: Dictionary = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
             refreshControl?.attributedTitle = NSAttributedString(string: "Pong", attributes: attr)
             refreshControl?.tintColor = .clear
             refreshControl?.addTarget(self, action: #selector(self.sync(sender:)), for: UIControl.Event.valueChanged)
@@ -96,10 +95,10 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         }
 
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //self.navigationController?.navigationBar.removeGestureRecognizer(touchNav)
+        // self.navigationController?.navigationBar.removeGestureRecognizer(touchNav)
     }
 
     func reloadEvents() {
@@ -109,15 +108,14 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         if let selectedIndexPath = selectedIndexPath {
             event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
         }
-                
+
         if eventSections.count > 0 {
             eventSections.removeAll()
         }
         if allEventSections.count > 0 {
             allEventSections.removeAll()
         }
-        
-        
+
         let emptyStateView = self.emptyStateView ?? emptyState()
 
         self.emptyStateView = emptyStateView
@@ -134,14 +132,14 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             }
         }
     }
-    
+
     public func emptyState() -> UIView {
         if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
             return emptyState
         }
         return UIView()
     }
-    
+
     func setupTokens() {
         let dfu = DateFormatterUtility.shared
         let conference = AnonymousSession.shared.currentConference!
@@ -151,7 +149,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 if eventTokens.indices.contains(k) {
                     // token already exists, don't need to do anything here
                 } else {
-                    //NSLog("setting up token for \(day)")
+                    // NSLog("setting up token for \(day)")
                     let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
                         switch result {
                         case .success(let eventList):
@@ -161,7 +159,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                 for es in self.eventSections {
                                     if es.date == day {
                                         self.eventSections.remove(at: i)
-                                        var newEvents : [UserEventModel] = []
+                                        var newEvents: [UserEventModel] = []
                                         for e in es.events {
                                             if self.filteredtypes.contains(e.event.type) {
                                                 newEvents.append(e)
@@ -172,11 +170,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                     }
                                     i = i + 1
                                 }
-                                
+
                                 if newDay {
                                     self.eventSections.append((date: day, events: eventList))
                                 }
-                                
+
                                 newDay = true
                                 i = 0
                                 for aes in self.allEventSections {
@@ -190,16 +188,16 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                 if newDay {
                                     self.allEventSections.append((date: day, events: eventList))
                                 }
-                                
+
                             }
-                            
+
                             self.tableView.reloadData()
                             /*if self.firstLoad == true {
                                 self.firstLoad = false
                                 NSLog("nope, neither were set, scrolling to current time")
                                 self.scrollToCurrentDate(self)
                             }*/
-                        case .failure(let _):
+                        case .failure(_):
                             NSLog("")
                         }
                     }
@@ -209,31 +207,30 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             }
         }
     }
-    
+
     @objc func scrollToCurrentDate(_ sender: Any) {
         let curDate = Date()
         // Debug below to jump to next events for DEFCON27 schedule
-        //let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-08-09T11:43:01.000-0700")!
+        // let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-08-09T11:43:01.000-0700")!
         if self.eventSections.count > 0 {
             fullloop: for i in 0..<self.eventSections.count {
                 if self.eventSections[i].events.count > 0 {
                     for j in 0..<self.eventSections[i].events.count {
                         let e = self.eventSections[i].events[j]
                         if e.event.begin > curDate {
-                            //NSLog("Jumping to \(e.event.title) at \(i):\(j)")
+                            // NSLog("Jumping to \(e.event.title) at \(i):\(j)")
                             let ip = IndexPath(row: j, section: i)
                             self.tableView.scrollToRow(at: ip, at: .top, animated: false)
                             break fullloop
                         }
                     }
-                }
-                else {
+                } else {
                     break fullloop
                 }
             }
         }
     }
-    
+
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         if eventSections.count == 0 {
@@ -246,10 +243,10 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         }
         return eventSections.count
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if let tableHeader = tableView.tableHeaderView, let emptyState = emptyStateView,  tableView.tableHeaderView == emptyStateView {
+        if let tableHeader = tableView.tableHeaderView, let emptyState = emptyStateView, tableView.tableHeaderView == emptyStateView {
             if floor(emptyState.frame.size.height) != floor(tableHeader.frame.size.height) {
                 emptyStateView?.frame.size.height = floor(tableView.frame.size.height)
                 tableView.tableHeaderView = emptyStateView
@@ -264,11 +261,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         guard eventSections.count > section else {
             return 0
         }
-        
+
         return self.eventSections[section].events.count
     }
 
@@ -282,34 +279,34 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 
     func fetchRequestForDay(_ dateString: String) -> NSFetchRequest<NSFetchRequestResult> {
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Event")
         return fr
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if (eventSections.count == 0) {
+        if eventSections.count == 0 {
             return emptyStateView
         }
-        
+
         let dayText = eventSections[section].date
         let dfu = DateFormatterUtility.shared
         let date = dfu.yearMonthDayFormatter.date(from: dayText)
-        
+
         let dateHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "EventHeader") as? EventDateHeaderView ?? EventDateHeaderView(reuseIdentifier: "EventHeader")
-        
+
         dateHeader.bindToDate(date: date)
-        
+
         return dateHeader
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (eventSections.count == 0) {
+        if eventSections.count == 0 {
             return tableView.frame.size.height
         } else {
             return 40
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
             eventController.event = self.eventSections[indexPath.section].events[indexPath.row].event
@@ -318,13 +315,13 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             self.navigationController?.pushViewController(eventController, animated: true)
         }
     }
-    
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         lastContentOffset = tableView.contentOffset
-        if (segue.identifier == "eventDetailSegue") {
+        if segue.identifier == "eventDetailSegue" {
 
-            let dv : HTEventDetailViewController
+            let dv: HTEventDetailViewController
 
             if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
                 dv = _dv
@@ -344,11 +341,11 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             dv.delegate = self
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -357,10 +354,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         pullDownAnimation?.play()
 
         Timer.scheduledTimer(timeInterval: TimeInterval(3.0), target: self, selector: #selector(timerComplete), userInfo: nil, repeats: false)
-        
-        
+
     }
-    
+
     @objc func timerComplete() {
         self.refreshControl?.endRefreshing()
         pullDownAnimation?.reset()
@@ -369,16 +365,16 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 }
 
 class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate {
-    
+
     var filterView: HTFilterViewController?
-    
+
     var typesToken: UpdateToken?
-    
+
     var showSectionIndexTitles = false
-    
-    //Floating button stuff
+
+    // Floating button stuff
     private var filterButton = UIButton(type: .custom)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getEventTypes()
@@ -388,13 +384,13 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.filterButton.isHidden = false
         self.filterButton.isUserInteractionEnabled = true
 
         tableView.backgroundColor = UIColor.backgroundGray
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.filterButton.isHidden = true
@@ -402,14 +398,14 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         }
         super.viewWillDisappear(animated)
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
+
         filterButton.layer.cornerRadius = filterButton.layer.frame.size.width/2
         filterButton.backgroundColor = UIColor.black
         filterButton.clipsToBounds = true
-        filterButton.setImage(UIImage(named:"filter"), for: .normal)
+        filterButton.setImage(UIImage(named: "filter"), for: .normal)
         filterButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             filterButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
@@ -417,15 +413,15 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
             filterButton.widthAnchor.constraint(equalToConstant: 50),
             filterButton.heightAnchor.constraint(equalToConstant: 50)])
     }
-    
+
     @objc func filterClick(sender: AnyObject) {
         let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
         fvc.delegate = self
         fvc.all = alltypes
         fvc.filtered = filteredtypes
-        present(fvc, animated:false, completion:nil)
+        present(fvc, animated: false, completion: nil)
     }
-    
+
     func getEventTypes() {
         typesToken = FSConferenceDataController.shared.requestEventTypes(forConference: AnonymousSession.shared.currentConference!) { (result) in
             switch result {
@@ -437,23 +433,23 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                     }
                 }
                 self.filteredtypes = self.alltypes
-            case .failure(let _):
+            case .failure(_):
                 NSLog("")
             }
         }
     }
-    
+
     func updatedEvents() {
         self.reloadFilteredEvents()
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         let e = self.eventSections[indexPath.section].events[indexPath.row]
-        
+
         cell.bind(userEvent: e)
         cell.eventCellDelegate = self
-        
+
         return cell
     }
 
@@ -464,15 +460,15 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         }
         return UIView()
     }
-    
+
     public override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
 
-        var ret : [String] = []
+        var ret: [String] = []
         let dfu = DateFormatterUtility.shared
         for es in eventSections {
                 if es.events.count > 0, let date = dfu.yearMonthDayFormatter.date(from: es.date) {
                     let out = dfu.shortDayOfMonthFormatter.string(from: date)
-                    //NSLog("checking date \(es.date) / \(out)")
+                    // NSLog("checking date \(es.date) / \(out)")
                     if out.contains("Mon") {
                             ret.append("M")
                     } else if out.contains("Tue") {
@@ -480,7 +476,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                     } else if out.contains("Wed") {
                             ret.append("W")
                     } else if out.contains("Thu") {
-                            //NSLog("got Thu")
+                            // NSLog("got Thu")
                             ret.append("H")
                     } else if out.contains("Fri") {
                             ret.append("F")
@@ -493,12 +489,12 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         }
         return ret
     }
-    
+
     func reloadFilteredEvents() {
-        //NSLog("filtered types: \(filteredtypes)")
-        var newEventSections : [EventSection] = []
+        // NSLog("filtered types: \(filteredtypes)")
+        var newEventSections: [EventSection] = []
         for es in allEventSections {
-            var newEvents : [UserEventModel] = []
+            var newEvents: [UserEventModel] = []
             for e in es.events {
                 if filteredtypes.contains(e.event.type) {
                     newEvents.append(e)
@@ -512,45 +508,41 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         self.tableView.reloadData()
     }
 
-    
     func filterList(filteredEventTypes: [HTEventType]) {
         self.filteredtypes = filteredEventTypes
         self.reloadFilteredEvents()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         if segue.identifier == "filterSegue" {
             let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
             fvc.delegate = self
             fvc.all = alltypes
             fvc.filtered = filteredtypes
-            present(fvc, animated:false, completion:nil)
-            
-        } else if (segue.identifier == "eventDetailSegue") {
-            
-            let dv : HTEventDetailViewController
-            
+            present(fvc, animated: false, completion: nil)
+
+        } else if segue.identifier == "eventDetailSegue" {
+
+            let dv: HTEventDetailViewController
+
             if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
                 dv = _dv
             } else {
                 dv = segue.destination as! HTEventDetailViewController
             }
-            
+
             var indexPath: IndexPath
             if let ec = sender as? EventCell {
                 indexPath = tableView.indexPath(for: ec)! as IndexPath
             } else {
                 indexPath = sender as! IndexPath
             }
-            
+
             dv.event = self.eventSections[indexPath.section].events[indexPath.row].event
             dv.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
             dv.delegate = self
         }
     }
-    
+
 }
-
-
-

@@ -11,11 +11,10 @@ import UIKit
 class HTCocViewController: UIViewController {
 
     @IBOutlet weak var cocTextView: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         var coc = AnonymousSession.shared.currentConference.coc.replacingOccurrences(of: "\\n", with: "\n")
 
         if coc == "" {
@@ -27,12 +26,10 @@ class HTCocViewController: UIViewController {
         titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (coc as NSString).length))
         titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (coc as NSString).length))
         titleAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (coc as NSString).length))
-            
+
         self.cocTextView.attributedText = titleAttributedString
 
-
     }
-    
 
     /*
     // MARK: - Navigation

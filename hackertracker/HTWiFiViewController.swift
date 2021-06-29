@@ -12,28 +12,28 @@ import SafariServices
 class HTWiFiViewController: UIViewController {
 
     @IBOutlet weak var vertStackView: UIStackView!
-    
+
     private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hexString: "#e33a6a")
         view.layer.cornerRadius = 10.0
         return view
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.backgroundGray
         pinBackground(backgroundView, to: vertStackView)
-        
-       let tapGesture = UITapGestureRecognizer(target:self, action: #selector(backgroundTapped))
-        
+
+       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+
         self.view.addGestureRecognizer(tapGesture)
-        
+
     }
-    
+
     @objc func backgroundTapped() {
-        
+
         let l = "https://wifireg.defcon.org/"
         if let u = URL(string: l) {
             let svc = SFSafariViewController(url: u)
@@ -56,7 +56,7 @@ class HTWiFiViewController: UIViewController {
 }
 
 public extension UIView {
-    public func pin(to view: UIView) {
+    func pin(to view: UIView) {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trailingAnchor.constraint(equalTo: view.trailingAnchor),

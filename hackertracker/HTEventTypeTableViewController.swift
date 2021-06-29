@@ -6,20 +6,19 @@
 //  Copyright © 2020 Beezle Labs. All rights reserved.
 //
 
-
 import UIKit
 
 class HTEventTypeTableViewController: UITableViewController {
 
-    var etToken : UpdateToken?
+    var etToken: UpdateToken?
     var et: [HTEventType] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.loadETs()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -38,7 +37,6 @@ class HTEventTypeTableViewController: UITableViewController {
         return et.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "etCell", for: indexPath)
 
@@ -47,7 +45,7 @@ class HTEventTypeTableViewController: UITableViewController {
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         /*let paragraphStyle = NSMutableParagraphStyle()
@@ -75,14 +73,13 @@ class HTEventTypeTableViewController: UITableViewController {
         self.present(popup, animated: true, completion: nil)*/
 
     }
-    
-    func alertControllerBackgroundTapped()
-    {
+
+    func alertControllerBackgroundTapped() {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     func loadETs() {
-        
+
         etToken = FSConferenceDataController.shared.requestEventTypes(forConference: AnonymousSession.shared.currentConference) { (result) in
             switch result {
             case .success(let etList):
@@ -93,26 +90,25 @@ class HTEventTypeTableViewController: UITableViewController {
             }
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if (segue.identifier == "eventTypeSegue") {
+        if segue.identifier == "eventTypeSegue" {
             let etvc: HTEventTypeViewController
-            
+
             if let destNav = segue.destination as? UINavigationController, let _etvc = destNav.viewControllers.first as? HTEventTypeViewController {
                 etvc = _etvc
             } else {
                 etvc = segue.destination as! HTEventTypeViewController
             }
-            
+
             if let indexPath = tableView.indexPathForSelectedRow {
                 etvc.event_type = self.et[indexPath.row]
                 self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
             }
-            
+
         }
 
     }
-    
-}
 
+}

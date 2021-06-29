@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class UpdateCell : UITableViewCell {
+public class UpdateCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
 
      @IBOutlet var descriptionLabel: UILabel!
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
-        
+
         backgroundColor = .backgroundGray
         selectionStyle = .none
     }
@@ -35,16 +35,15 @@ public class UpdateCell : UITableViewCell {
         descriptionLabel.text = "[\(date)]: \(message.text)"
 
     }
-    
+
     func bind(vendor: HTVendorModel) {
         titleLabel.text = vendor.name
         descriptionLabel.text = vendor.desc
     }
-    
+
     func bind(title: String, desc: String) {
         titleLabel.text = title
         descriptionLabel.text = desc
     }
-
 
 }

@@ -13,19 +13,19 @@ struct NotificationUtility {
     static var status: UNAuthorizationStatus? {
         var authorizationStatus: UNAuthorizationStatus?
         let semasphore = DispatchSemaphore(value: 0)
-        
+
         DispatchQueue.global().async {
             UNUserNotificationCenter.current().getNotificationSettings { setttings in
                 authorizationStatus = setttings.authorizationStatus
                 semasphore.signal()
             }
         }
-        
+
         semasphore.wait()
-        
+
         return authorizationStatus
     }
-    
+
     static func requestAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, error in
             if let error = error {
@@ -33,7 +33,7 @@ struct NotificationUtility {
             }
         }
     }
-    
+
     static func addNotification(request: UNNotificationRequest) {
         UNUserNotificationCenter.current().getNotificationSettings { setttings in
             switch setttings.authorizationStatus {
@@ -47,12 +47,14 @@ struct NotificationUtility {
                 NotificationUtility.requestAuthorization()
             case .denied:
                 break
+            case .ephemeral:
+                break
             @unknown default:
                 break
             }
         }
     }
-    
+
     static func checkAndRequestAuthorization() {
         guard let status = NotificationUtility.status else { return }
         switch status {

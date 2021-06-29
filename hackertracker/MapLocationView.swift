@@ -8,8 +8,7 @@
 
 import UIKit
 
-public enum Location
-{
+public enum Location {
     case unknown
     case track1
     case track2
@@ -44,9 +43,8 @@ public enum Location
     case cannabis
     case vendor
     case bio
-    
-    public static func valueFromString(_ value : String) -> Location
-    {
+
+    public static func valueFromString(_ value: String) -> Location {
         let lc = value.lowercased()
         if lc.contains("track 1") {
             return .track1
@@ -119,14 +117,11 @@ public enum Location
     }
 }
 
-
-enum TimeOfDay
-{
+enum TimeOfDay {
     case day
     case night
-    
-    public func url() -> URL
-    {
+
+    public func url() -> URL {
         return MapLocationView.caesarsFile as URL
     }
 
@@ -145,7 +140,7 @@ enum MapFile {
     case flamingo
     case flamnight
     case linq
-    
+
     /*static func mapFile(_ l: Location) -> URL {
         if l == .track101 || l == .blueteam || l == .cannabis || l == .chv || l == .caadv || l == .skytalks || l == .ics
         {
@@ -158,24 +153,21 @@ enum MapFile {
     }*/
 }
 
-
 class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
 
     let webView = UIWebView()
 
-    var currentIntrinsizeContentSize = CGSize(width:0, height:0)
-    var mapOffset = CGPoint(x:0, y:0)
-    var mapZoomLevel : CGFloat = 1.0
-    
+    var currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
+    var mapOffset = CGPoint(x: 0, y: 0)
+    var mapZoomLevel: CGFloat = 1.0
+
     fileprivate static let caesarsFile = Bundle.main.url(forResource: "dc-26-caesars-public-1", withExtension: "pdf", subdirectory: "maps")!
     fileprivate static let flamDayFile = Bundle.main.url(forResource: "dc-26-flamingo-public-1", withExtension: "pdf", subdirectory: "maps")!
     fileprivate static let flamNightFile = Bundle.main.url(forResource: "dc-26-flamingo-noct-public", withExtension: "pdf", subdirectory: "maps")!
     fileprivate static let linqFile = Bundle.main.url(forResource: "dc-26-linq-workshops", withExtension: "pdf", subdirectory: "maps")!
-    
-    var currentLocation : Location = .unknown
-    {
-        didSet
-        {
+
+    var currentLocation: Location = .unknown {
+        didSet {
             switch currentLocation {
             case .track1:
                 mapZoomLevel = 4.0
@@ -310,66 +302,59 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
                 break
             }
 
-            if (currentLocation == .unknown) {
+            if currentLocation == .unknown {
                 currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
             } else {
                 currentIntrinsizeContentSize = CGSize(width: 300, height: 300)
             }
-            
+
             invalidateIntrinsicContentSize()
         }
     }
-    
-    public init (location : Location) {
+
+    public init (location: Location) {
         super.init(frame: CGRect.zero)
-       
+
         currentLocation = location
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         setup()
     }
-    
-    
-    
-    func setup()
-    {
+
+    func setup() {
         addSubview(webView)
-        
+
         webView.isUserInteractionEnabled = false
         webView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         webView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         webView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
-        //webView.loadRequest(URLRequest(url: MapFile.mapFile(currentLocation)))
+
+        // webView.loadRequest(URLRequest(url: MapFile.mapFile(currentLocation)))
         webView.delegate = self
         webView.scalesPageToFit = true
         webView.scrollView.delegate = self
         webView.scrollView.scrollsToTop = false
     }
-    
-    
-    
+
     override var intrinsicContentSize: CGSize {
-        get
-        {
+        get {
             return currentIntrinsizeContentSize
         }
     }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView)
-    {
+
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         webView.scrollView.zoomScale = mapZoomLevel
         webView.scrollView.contentOffset = mapOffset
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+
     }
 
 }

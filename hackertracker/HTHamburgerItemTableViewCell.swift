@@ -11,8 +11,8 @@ import UIKit
 class HTHamburgerItemTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconView: UIImageView!
-    var originalBackgroundColor : UIColor?
-    
+    var originalBackgroundColor: UIColor?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         originalBackgroundColor = self.backgroundColor

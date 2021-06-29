@@ -8,26 +8,26 @@
 
 import UIKit
 
-protocol AboutCellDelegate: class {
+protocol AboutCellDelegate: AnyObject {
     func followUrl(url: URL)
 }
 
 class AboutCell: UITableViewCell {
-    
+
     @IBOutlet weak var versionLabel: UIButton!
     var rick = 0
     weak var aboutDelegate: AboutCellDelegate?
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
         initialize()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
-    
+
     func initialize() {
         backgroundColor = UIColor.backgroundGray
         let selectedView = UIView()
@@ -45,9 +45,9 @@ class AboutCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     @IBAction func tappedTwitter(_ sender: Any) {
-        
+
         if let s = sender as? UIButton, let t = s.titleLabel?.text, let d = aboutDelegate, let url = URL(string: "https://mobile.twitter.com/\(t.replacingOccurrences(of: "@", with: ""))") {
             d.followUrl(url: url)
         }
