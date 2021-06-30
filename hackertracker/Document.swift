@@ -59,7 +59,7 @@ final class Collection<T: Document> {
         guard listener == nil else { return }
         listener = query.addSnapshotListener { [unowned self] querySnapshot, error in
             guard let snapshot = querySnapshot else {
-                print("Error fetching snapshot results: \(error!)")
+                print("Error fetching snapshot results: \(String(describing: error))")
                 return
             }
             let models = snapshot.documents.map { (document) -> T in

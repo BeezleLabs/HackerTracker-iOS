@@ -30,11 +30,11 @@ extension ConferenceModel: Document {
         let endDate = dictionary["end_date"] as? String ?? ""
         let startDate = dictionary["start_date"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var start_timestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        var start_timestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
         if let start_tz = dictionary["start_timestamp"] as? Timestamp {
             start_timestamp = start_tz.dateValue()
         }
-        var end_timestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        var end_timestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
         if let end_tz = dictionary["end_timestamp"] as? Timestamp {
             end_timestamp = end_tz.dateValue()
         }
@@ -82,7 +82,7 @@ extension HTArticleModel: Document {
         let name = dictionary["name"] as? String ?? ""
         let text = dictionary["text"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
         if let updated_ts = dictionary["updated_at"] as? Timestamp {
             updated_at = updated_ts.dateValue()
         }
@@ -102,7 +102,7 @@ extension HTFAQModel: Document {
         let question = dictionary["question"] as? String ?? ""
         let answer = dictionary["answer"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
         if let update_tz = dictionary["updated_at"] as? Timestamp {
             updated_at = update_tz.dateValue()
         }
@@ -124,7 +124,7 @@ extension HTVendorModel: Document {
         let desc = dictionary["description"] as? String ?? ""
         let link = dictionary["link"] as? String ?? ""
         let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date)!
+        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
         if let update_tz = dictionary["updated_at"] as? Timestamp {
             updated_at = update_tz.dateValue()
         }

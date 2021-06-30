@@ -12,14 +12,17 @@ import Firebase
 import FirebaseStorage
 
 enum HTError: Error {
-    case SpeakerNil
+    case speakerNil
+    case confItemNil
 }
 
 extension HTError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .SpeakerNil:
+        case .speakerNil:
             return "Speaker items were nil"
+        case .confItemNil:
+            return "Conference items were nil"
         }
     }
 }
@@ -59,7 +62,11 @@ class FSConferenceDataController {
         let query = db.collection("conferences").whereField("code", isEqualTo: conCode)
         let conferences = Collection<ConferenceModel>(query: query)
         conferences.listen { _ in
-            updateHandler(Result<ConferenceModel, Error>.success(conferences.items.first!))
+            if let firstConferenceItem = conferences.items.first {
+            updateHandler(Result<ConferenceModel, Error>.success(firstConferenceItem))
+            } else {
+                updateHandler(Result<ConferenceModel, Error>.failure(HTError.confItemNil))
+            }
         }
         return UpdateToken(conferences)
     }
@@ -110,7 +117,7 @@ class FSConferenceDataController {
             if let speaker = speakers.items.first {
                 updateHandler(Result<HTSpeaker, Error>.success(speaker))
             } else {
-                updateHandler(Result<HTSpeaker, Error>.failure(HTError.SpeakerNil))
+                updateHandler(Result<HTSpeaker, Error>.failure(HTError.speakerNil))
             }
         }
         return UpdateToken(speakers)
@@ -158,7 +165,7 @@ class FSConferenceDataController {
 
         let calendar = Calendar.current
         let start = inDate
-        let end = calendar.date(byAdding: .day, value: 1, to: start)!
+        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? Date()
 
         query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: start).whereField("begin_timestamp", isLessThan: end).order(by: "begin_timestamp", descending: descending).limit(to: limit ?? Int.max)
 

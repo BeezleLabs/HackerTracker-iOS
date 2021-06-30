@@ -56,7 +56,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
 
     func addEventList() {
         var i = 0
-        for e in speaker!.events {
+        for e in speaker?.events ?? [] {
             if eventTokens.indices.contains(i) {
                 // NSLog("Already an eventtoken for event \(e.title)")
             } else {

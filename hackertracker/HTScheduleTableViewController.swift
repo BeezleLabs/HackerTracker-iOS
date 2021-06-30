@@ -150,7 +150,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                     // token already exists, don't need to do anything here
                 } else {
                     // NSLog("setting up token for \(day)")
-                    let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day)!) { (result) in
+                    let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day) ?? Date()) { (result) in
                         switch result {
                         case .success(let eventList):
                             if eventList.count > 0 {

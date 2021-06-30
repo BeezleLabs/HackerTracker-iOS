@@ -55,11 +55,11 @@ extension HTEventModel: Document {
         let dfu = DateFormatterUtility.shared
         let tmp_date = "2019-01-01T00:00:00.000-0000"
         let id = dictionary["id"] as? Int ?? 0
-        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmp_date)!
+        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmp_date) ?? Date()
         if let begin_timestamp = dictionary["begin_timestamp"] as? Timestamp {
             begin = begin_timestamp.dateValue()
         }
-        var end =  dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmp_date)!
+        var end =  dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmp_date) ?? Date()
         if let end_timestamp = dictionary["end_timestamp"] as? Timestamp {
             end = end_timestamp.dateValue()
         }

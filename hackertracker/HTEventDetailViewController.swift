@@ -189,11 +189,11 @@ class HTEventDetailViewController: UIViewController {
 
     func getSpeakers() {
         var i = 0
-        for s in event!.speakers {
+        for speaker in event?.speakers ?? [] {
             if speakerTokens.indices.contains(i) {
                 // already have this speaker token
             } else {
-                let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: s.id) { result in
+                let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: speaker.id) { result in
                     switch result {
                     case let .success(speaker):
                         if self.speakers.contains(speaker) {
@@ -217,8 +217,8 @@ class HTEventDetailViewController: UIViewController {
 
         eventNameLabel.text = ""
         speakerList = NSMutableAttributedString(string: "")
-        for s in event!.speakers {
-            if s.id != event!.speakers.first!.id {
+        for s in event?.speakers ?? [] {
+            if s.id != event?.speakers.first?.id {
                 speakerList.append(NSAttributedString(string: ", "))
             }
             let whoAttributedString = NSMutableAttributedString(string: s.name)
@@ -232,7 +232,7 @@ class HTEventDetailViewController: UIViewController {
 
         eventNameLabel.contentMode = UIView.ContentMode.top
 
-        if event!.speakers.count == 0 {
+        if event?.speakers.count == 0 {
             speakerList = NSMutableAttributedString(string: "Anonymous")
             eventNameLabel.isHidden = true
         } else {
@@ -245,7 +245,7 @@ class HTEventDetailViewController: UIViewController {
             eventNameLabel.layer.cornerRadius = 5
         }
 
-        if (event?.speakers.count)! > 0 {
+        if (event?.speakers.count ?? 0) > 0 {
             eventNameLabel.isHidden = false
         } else {
             eventNameLabel.isHidden = true
@@ -370,7 +370,7 @@ class HTEventDetailViewController: UIViewController {
             err = error
         }
         if err != nil {
-            NSLog("%@", err!)
+            NSLog("%@", err ?? "")
         }
     }
 

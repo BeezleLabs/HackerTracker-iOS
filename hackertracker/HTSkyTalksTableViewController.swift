@@ -74,8 +74,8 @@ class HTSkyTalksTableViewController: UITableViewController, UITableViewDelegate,
         df.dateFormat = "HH:mm"
         let endDate = df.stringFromDate(event.end)
 
-        cell.textLabel!.text = event.title
-        cell.detailTextLabel!.text = "\(beginDate)-\(endDate) (\(event.location))"
+        cell.textLabel?.text = event.title
+        cell.detailTextLabel?.text = "\(beginDate)-\(endDate) (\(event.location))"
 
         return cell
     }
