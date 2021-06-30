@@ -43,7 +43,7 @@
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
 		5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642681AC3C62300ED3256 /* Images.xcassets */; };
-		5DD642781AC3C62300ED3256 /* hackertrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642771AC3C62300ED3256 /* hackertrackerTests.swift */; };
+		5DD642781AC3C62300ED3256 /* HackertrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642771AC3C62300ED3256 /* HackertrackerTests.swift */; };
 		5DDD629720F2A73800E527C5 /* HTConferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */; };
 		5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */; };
 		5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */; };
@@ -140,7 +140,7 @@
 		5DD642681AC3C62300ED3256 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5DD642711AC3C62300ED3256 /* hackertrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hackertrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD642761AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DD642771AC3C62300ED3256 /* hackertrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hackertrackerTests.swift; sourceTree = "<group>"; };
+		5DD642771AC3C62300ED3256 /* HackertrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackertrackerTests.swift; sourceTree = "<group>"; };
 		5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTConferenceTableViewController.swift; sourceTree = "<group>"; };
 		5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceCell.swift; sourceTree = "<group>"; };
 		5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFAQTableViewController.swift; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 		5DD642741AC3C62300ED3256 /* hackertrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				5DD642771AC3C62300ED3256 /* hackertrackerTests.swift */,
+				5DD642771AC3C62300ED3256 /* HackertrackerTests.swift */,
 				5DD642751AC3C62300ED3256 /* Supporting Files */,
 			);
 			path = hackertrackerTests;
@@ -583,7 +583,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DD642781AC3C62300ED3256 /* hackertrackerTests.swift in Sources */,
+				5DD642781AC3C62300ED3256 /* HackertrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
