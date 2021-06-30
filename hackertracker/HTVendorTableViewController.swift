@@ -46,8 +46,8 @@ class HTVendorTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let u = URL(string: vendors[indexPath.row].link) {
-            let svc = SFSafariViewController(url: u)
+        if let url = URL(string: vendors[indexPath.row].link) {
+            let svc = SFSafariViewController(url: url)
             svc.preferredBarTintColor = UIColor.backgroundGray
             svc.preferredControlTintColor = UIColor.white
             present(svc, animated: true, completion: nil)

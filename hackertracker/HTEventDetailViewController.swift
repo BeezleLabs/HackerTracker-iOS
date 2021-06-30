@@ -121,13 +121,13 @@ class HTEventDetailViewController: UIViewController {
             eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
         }
 
-        let i = event.includes
-        if !i.lowercased().contains("tool") { toolImage.isHidden = true }
-        if !i.lowercased().contains("demo") { demoImage.isHidden = true }
-        if !i.lowercased().contains("exploit") { exploitImage.isHidden = true }
-        if i != "" {
+        let includes = event.includes
+        if !includes.lowercased().contains("tool") { toolImage.isHidden = true }
+        if !includes.lowercased().contains("demo") { demoImage.isHidden = true }
+        if !includes.lowercased().contains("exploit") { exploitImage.isHidden = true }
+        if includes != "" {
             if let t = eventDetailTextView.text {
-                eventDetailTextView.text = "\(t)\n\nIncludes: \(i.uppercased())"
+                eventDetailTextView.text = "\(t)\n\nIncludes: \(includes.uppercased())"
             }
         }
 
@@ -411,7 +411,7 @@ class HTEventDetailViewController: UIViewController {
                 UIActivity.ActivityType.addToReadingList,
                 UIActivity.ActivityType.postToFlickr,
                 UIActivity.ActivityType.postToVimeo,
-                UIActivity.ActivityType.postToTencentWeibo,
+                UIActivity.ActivityType.postToTencentWeibo
             ]
 
             present(activityViewController, animated: true, completion: nil)

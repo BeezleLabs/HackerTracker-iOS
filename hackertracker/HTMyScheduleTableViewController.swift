@@ -33,12 +33,12 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
 
                     for day in dfu.getConferenceDates(start: start, end: end) {
                         var events: [UserEventModel] = []
-                        let dayDate = dfu.yearMonthDayFormatter.date(from: day)!
+                        let dayDate = dfu.yearMonthDayFormatter.date(from: day) ?? Date()
                         let range = dayDate...(dayDate.addingTimeInterval(86400))
-                        for e in eventsList {
-                            if e.bookmark.value, range.contains(e.event.begin) {
+                        for event in eventsList {
+                            if event.bookmark.value, range.contains(event.event.begin) {
                                 // NSLog("Adding \(e.event.title) to this schedule")
-                                events.append(e)
+                                events.append(event)
                             } else {
                                 // NSLog("\(e.event.title) not bookmarked")
                             }

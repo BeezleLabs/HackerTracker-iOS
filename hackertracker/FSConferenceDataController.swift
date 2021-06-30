@@ -265,7 +265,7 @@ class FSConferenceDataController {
         }
         document(forConference: conference).collection("users").document(user.uid).collection("bookmarks").document(String(eventModel.id)).setData([
             "id": String(eventModel.id),
-            "value": isFavorite,
+            "value": isFavorite
         ]) { err in
             if let err = err {
                 updateHandler(err)

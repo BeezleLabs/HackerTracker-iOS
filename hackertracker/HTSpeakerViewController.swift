@@ -27,10 +27,10 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
         super.viewDidLoad()
 
         if let s = speaker {
-            let n = s.name
-            let d = s.description
-            nameLabel.text = n
-            bioLabel.text = d
+            let name = s.name
+            let desc = s.description
+            nameLabel.text = name
+            bioLabel.text = desc
             bioLabel.sizeToFit()
             eventTableView.register(UINib.init(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
             eventTableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
@@ -163,7 +163,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        if let s = speaker, s.events.count > 0 {
+        if let speaker = speaker, speaker.events.count > 0 {
             let event: UserEventModel = events[indexPath.row]
 
             if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {

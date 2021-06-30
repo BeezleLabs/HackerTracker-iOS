@@ -41,7 +41,7 @@ struct UserEventModel: Codable, Equatable {
     var event: HTEventModel
     var bookmark: Bookmark
 
-    static func ==(lhs: UserEventModel, rhs: UserEventModel) -> Bool {
+    static func == (lhs: UserEventModel, rhs: UserEventModel) -> Bool {
         if lhs.event.id == rhs.event.id && lhs.event.title == rhs.event.title && lhs.event.description == rhs.event.description {
             return true
         } else {
@@ -128,7 +128,7 @@ struct HTSpeaker: Codable, Equatable {
     var twitter: String
     var events: [HTEventModel]
 
-    static func ==(lhs: HTSpeaker, rhs: HTSpeaker) -> Bool {
+    static func == (lhs: HTSpeaker, rhs: HTSpeaker) -> Bool {
         if lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description {
             return true
         } else {
@@ -171,7 +171,7 @@ struct HTEventType: Codable, Equatable {
     var description: String
     var tags: String
 
-    static func ==(lhs: HTEventType, rhs: HTEventType) -> Bool {
+    static func == (lhs: HTEventType, rhs: HTEventType) -> Bool {
         if lhs.id == rhs.id && lhs.name == rhs.name {
             return true
         } else {

@@ -112,11 +112,11 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     func reloadArticles() {
         self.messages = []
-        for a in allArticles {
+        for article in allArticles {
             if self.messages.count > 1 {
                 break
             } else {
-                self.messages.append(a)
+                self.messages.append(article)
             }
         }
         self.updatesTableView.reloadData()
@@ -128,22 +128,22 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         // let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
 
         self.starred = []
-        starredLoop: for e in allEvents {
+        starredLoop: for event in allEvents {
             if self.starred.count > 4 {
                 break starredLoop
             } else {
-                if  e.event.begin > curTime, e.bookmark.value {
-                    self.starred.append(e)
+                if  event.event.begin > curTime, event.bookmark.value {
+                    self.starred.append(event)
                 }
             }
         }
 
         self.liveNow = []
-        for e in allEvents {
-            if e.event.begin < e.event.end {
-                let range = e.event.begin...e.event.end
+        for event in allEvents {
+            if event.event.begin < event.event.end {
+                let range = event.event.begin...event.event.end
                 if range.contains(curTime) {
-                    self.liveNow.append(e)
+                    self.liveNow.append(event)
                 }
             }
         }

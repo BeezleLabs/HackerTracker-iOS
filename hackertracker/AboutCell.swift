@@ -48,17 +48,17 @@ class AboutCell: UITableViewCell {
 
     @IBAction func tappedTwitter(_ sender: Any) {
 
-        if let s = sender as? UIButton, let t = s.titleLabel?.text, let d = aboutDelegate, let url = URL(string: "https://mobile.twitter.com/\(t.replacingOccurrences(of: "@", with: ""))") {
+        if let s = sender as? UIButton, let title = s.titleLabel?.text, let d = aboutDelegate, let url = URL(string: "https://mobile.twitter.com/\(title.replacingOccurrences(of: "@", with: ""))") {
             d.followUrl(url: url)
         }
     }
 
     @IBAction func tappedVersion(_ sender: Any) {
-        if rick > 6, let d = aboutDelegate, let url = URL(string: "https://www.youtube.com/watch?v=oHg5SJYRHA0?autoplay=1") {
-            d.followUrl(url: url)
+        if rick > 6, let delegate = aboutDelegate, let url = URL(string: "https://www.youtube.com/watch?v=oHg5SJYRHA0?autoplay=1") {
+            delegate.followUrl(url: url)
             rick = 0
         } else {
-            rick = rick + 1
+            rick += 1
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class hackertrackerTests: XCTestCase {
+class HackertrackerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

@@ -61,7 +61,7 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
             } else {
                 NSLog("Don't have a local copy of the file at \(mLocal.path)")
             }
-            i = i + 1
+            i += 1
         }
         mapSwitch.apportionsSegmentWidthsByContent = true
         mapSwitch.sizeToFit()
