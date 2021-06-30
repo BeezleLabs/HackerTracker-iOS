@@ -10,9 +10,8 @@ import UIKit
 
 class EventDateHeaderView: UITableViewHeaderFooterView {
 
-    
     private let dateLabel = UILabel()
-    
+
     public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubview(dateLabel)
@@ -28,13 +27,12 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         dateLabel.layer.borderWidth = 0.5
         dateLabel.font = UIFont.preferredFont(forTextStyle: .body)
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    public func bindToDate(date : Date?)
-    {
+
+    public func bindToDate(date: Date?) {
         if let date = date {
             if Calendar.current.isDateInYesterday(date) {
                 dateLabel.text = "    Yesterday".uppercased()
@@ -51,10 +49,9 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
             dateLabel.text = "Unknown"
         }
     }
-    
+
     public func bind(_ headerLabel: String) {
         dateLabel.text = "    \(headerLabel)"
     }
-    
 
 }

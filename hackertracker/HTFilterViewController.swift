@@ -14,87 +14,82 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var bottomToTop: NSLayoutConstraint!
     @IBOutlet weak var fadeView: UIView!
     @IBOutlet weak var toggleButton: UIButton!
-    
+
     var all: [HTEventType] = []
     var filtered: [HTEventType] = []
     var delegate: FilterViewControllerDelegate?
     var toggle: Bool = true
-    
-    var centeredConstraint : NSLayoutConstraint?
-    
+
+    var centeredConstraint: NSLayoutConstraint?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
 
-        let tapGesture = UITapGestureRecognizer(target:self, action: #selector(close))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(close))
         fadeView.addGestureRecognizer(tapGesture)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        bottomToTop.isActive = false;
+        bottomToTop.isActive = false
         centeredConstraint = popupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         centeredConstraint?.isActive = true
-        
+
         UIView.animate(withDuration: 0.2) {
             self.view.layoutSubviews()
             self.fadeView.alpha = 0.5
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.all.count
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 2.0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
-        
+
         let et = self.all[indexPath.section]
         cell.textLabel?.text = et.name
-        
 
         if filtered.contains(et) {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
-        
+
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             let et = self.all[indexPath.section]
-            if cell.accessoryType == .checkmark
-            {
+            if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
                 if let index = filtered.firstIndex(of: et) {
                     filtered.remove(at: index)
                 }
-            }
-            else
-            {
+            } else {
                 cell.accessoryType = .checkmark
                 filtered.append(et)
             }
             delegate?.filterList(filteredEventTypes: filtered)
         }
     }
-    
+
     @IBAction func toggleCheck(_ sender: Any) {
         if toggle {
             filtered = []
@@ -105,22 +100,22 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.reloadData()
         delegate?.filterList(filteredEventTypes: filtered)
     }
-    
+
     @IBAction func doneButtonPressed(_ sender: Any) {
         close()
     }
-    
+
     @objc func close() {
         delegate?.filterList(filteredEventTypes: filtered)
-       
+
         if let centeredConstraint = centeredConstraint {
             centeredConstraint.isActive = false
             popupView.topAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-            
+
             UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
-                
-            }, completion: { (done) in
+
+            }, completion: { (_) in
                 self.dismiss(animated: false, completion: nil)
             })
         } else {

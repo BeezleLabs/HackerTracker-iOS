@@ -32,9 +32,9 @@ class HTInfoTableViewController: UITableViewController {
         // TODO: Automate this list
         return 7
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == 5) {
+        if indexPath.row == 5 {
             // Contact Us!
             let email = "hackertracker@defcon.org"
             if let url = URL(string: "mailto:\(email)") {
@@ -52,5 +52,5 @@ class HTInfoTableViewController: UITableViewController {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
 
     }
-    
+
 }

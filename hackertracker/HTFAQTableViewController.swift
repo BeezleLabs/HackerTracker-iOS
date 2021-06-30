@@ -10,15 +10,15 @@ import UIKit
 
 class HTFAQTableViewController: UITableViewController {
 
-    var faqsToken : UpdateToken?
+    var faqsToken: UpdateToken?
     var faqs: [HTFAQModel] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.loadFAQs()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -37,7 +37,6 @@ class HTFAQTableViewController: UITableViewController {
         return faqs.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "faqCell", for: indexPath)
 
@@ -45,42 +44,40 @@ class HTFAQTableViewController: UITableViewController {
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
-        
+
         var body = "Frequently Asked Question Not Found"
         body = "Q: \(self.faqs[indexPath.row].question)\n\nA: \(self.faqs[indexPath.row].answer)"
-        
-        
+
         let messageText = NSMutableAttributedString(
             string: body,
             attributes: [
                 NSAttributedString.Key.paragraphStyle: paragraphStyle,
                 NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
-                NSAttributedString.Key.foregroundColor : UIColor.black
+                NSAttributedString.Key.foregroundColor: UIColor.black
             ]
         )
-        
-        let popup : UIAlertController = UIAlertController(title: "FAQ", message:"", preferredStyle: UIAlertController.Style.alert)
+
+        let popup: UIAlertController = UIAlertController(title: "FAQ", message: "", preferredStyle: UIAlertController.Style.alert)
         popup.setValue(messageText, forKey: "attributedMessage")
-        
-        let doneItem : UIAlertAction = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil)
+
+        let doneItem: UIAlertAction = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil)
         popup.addAction(doneItem)
-        
+
         self.present(popup, animated: true, completion: nil)
 
     }
-    
-    func alertControllerBackgroundTapped()
-    {
+
+    func alertControllerBackgroundTapped() {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     func loadFAQs() {
-        
+
         faqsToken = FSConferenceDataController.shared.requestFAQs(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
             switch result {
             case .success(let faqsList):
@@ -91,5 +88,5 @@ class HTFAQTableViewController: UITableViewController {
             }
         }
     }
-    
+
 }

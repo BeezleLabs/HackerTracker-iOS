@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = attributes
-        
+
         Fabric.with([Crashlytics.self])
         NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: self.backgroundManagedObjectContext, queue: OperationQueue.main) { (notifaction) in
             self.managedObjectContext?.mergeChanges(fromContextDidSave: notifaction)
@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "org.beezle.hackertracker" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return urls[urls.count-1] 
+        return urls[urls.count-1]
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("ht2019.sqlite")
-        var error: NSError? = nil
+        var error: NSError?
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             let mOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
@@ -72,12 +72,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(String(describing: error)), \(error!.userInfo)")
+            NSLog("Unresolved error \(String(describing: error)), \(error?.userInfo)")
             abort()
         } catch {
             fatalError()
         }
-        
+
         return coordinator
     }()
 
@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
-    
+
     lazy var backgroundManagedObjectContext: NSManagedObjectContext? = {
         let coordinator = self.persistentStoreCoordinator
         if coordinator == nil {
@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func saveContext () {
         if let moc = self.managedObjectContext {
-            var error: NSError? = nil
+            var error: NSError?
             if moc.hasChanges {
                 do {
                     try moc.save()
@@ -114,12 +114,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     error = error1
                     // Replace this implementation with code to handle the error appropriately.
                     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    NSLog("Unresolved error \(String(describing: error)), \(error!.userInfo)")
+                    NSLog("Unresolved error \(String(describing: error)), \(String(describing: error?.userInfo))")
                     abort()
                 }
             }
         }
     }
-    
-}
 
+}

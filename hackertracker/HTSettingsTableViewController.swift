@@ -12,28 +12,28 @@ class HTSettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.backgroundGray
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(returnFromSettings(notification:)),
                                                name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     // MARK: - Table view data source
-    
+
     enum SettingsCells: Int, CaseIterable {
         case localTime = 0
         case notification
     }
-    
+
     override func numberOfSections(in _: UITableView) -> Int {
         return SettingsCells.allCases.count
     }
-    
+
     override func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = SettingsCells.allCases[section]
         switch section {
@@ -41,7 +41,7 @@ class HTSettingsTableViewController: UITableViewController {
         case .notification: return 1
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = SettingsCells.allCases[indexPath.section]
         switch section {
@@ -71,7 +71,7 @@ class HTSettingsTableViewController: UITableViewController {
             notificationSetting.isOn = UserDefaults.standard.bool(forKey: "Notifications")
             cell.accessoryView = notificationSetting
             cell.backgroundColor = UIColor.clear
-            
+
             if let status = NotificationUtility.status {
                 switch status {
                 case .authorized, .provisional:
@@ -89,32 +89,34 @@ class HTSettingsTableViewController: UITableViewController {
                     notificationSetting.isOn = false
                     cell.detailTextLabel?.isUserInteractionEnabled = false
                     cell.detailTextLabel?.text = "Turn on notifications"
+                case .ephemeral:
+                    break
                 @unknown default:
                     break
                 }
             }
-            
+
             return cell
         }
     }
-    
+
     @objc func setLocalTimePreference(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "PreferLocalTime")
         AnonymousSession.shared.currentConference = AnonymousSession.shared.currentConference
     }
-    
+
     @objc func notificationSetting(_ sender: UISwitch) {
         if sender.isOn && sender.isEnabled {
             NotificationUtility.checkAndRequestAuthorization()
         }
     }
-    
+
     @objc func sendToSettings(_: UITapGestureRecognizer) {
         if let url = URL(string: UIApplication.openSettingsURLString) { if UIApplication.shared.canOpenURL(url) { UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }
-    
+
     @objc func returnFromSettings(notification _: Notification) {
         tableView.reloadData()
     }

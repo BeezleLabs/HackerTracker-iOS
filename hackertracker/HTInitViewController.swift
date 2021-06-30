@@ -17,20 +17,20 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
 
     private var timerUp = false
     private var importComplete = false
-    private var token : AnyObject?
+    private var token: AnyObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         FirebaseApp.configure()
         playAnimation()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadCon()
     }
-    
+
     func loadCon() {
         if let conCode = UserDefaults.standard.string(forKey: "conference") {
             AnonymousSession.initialize(conCode: conCode) { (session) in
@@ -44,19 +44,19 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
             displayConferencePicker()
         }
     }
-    
+
     func displayConferencePicker() {
         if let currentViewController = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as? HTConferenceTableViewController {
             currentViewController.delegate = self
             self.present(currentViewController, animated: true, completion: nil)
         }
     }
-    
+
     func didSelect(conference: ConferenceModel) {
-        self.dismiss(animated: true, completion: nil);
+        self.dismiss(animated: true, completion: nil)
         loadCon()
     }
-    
+
     @objc func timerComplete() {
         timerUp = true
         go()

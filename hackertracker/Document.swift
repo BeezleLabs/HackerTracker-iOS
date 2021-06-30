@@ -20,46 +20,46 @@ protocol Document {
     init?(dictionary: [String: Any])
 }
 
-final class Collection<T : Document> {
+final class Collection<T: Document> {
     private(set) var items: [T]
-    private(set) var documents : [DocumentSnapshot] = []
-    
+    private(set) var documents: [DocumentSnapshot] = []
+
     let query: Query
-        
+
     private var listener: ListenerRegistration? {
         didSet {
             oldValue?.remove()
         }
     }
-    
+
     var count: Int {
         return self.items.count
     }
-    
+
     subscript(index: Int) -> T {
         return self.items[index]
     }
-    
+
     init(query: Query) {
         self.items = []
         self.query = query
     }
-    
+
     func index(of document: DocumentSnapshot) -> Int? {
         for i in 0 ..< documents.count {
             if documents[i].documentID == document.documentID {
                 return i
             }
         }
-        
+
         return nil
     }
-    
-    func listen(updateHandler: @escaping ([DocumentChange]) -> ()) {
+
+    func listen(updateHandler: @escaping ([DocumentChange]) -> Void) {
         guard listener == nil else { return }
         listener = query.addSnapshotListener { [unowned self] querySnapshot, error in
             guard let snapshot = querySnapshot else {
-                print("Error fetching snapshot results: \(error!)")
+                print("Error fetching snapshot results: \(String(describing: error))")
                 return
             }
             let models = snapshot.documents.map { (document) -> T in
@@ -75,11 +75,11 @@ final class Collection<T : Document> {
             updateHandler(snapshot.documentChanges)
         }
     }
-    
+
     func stopListening() {
         listener = nil
     }
-    
+
     deinit {
         stopListening()
     }

@@ -13,17 +13,16 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
 
     var eventsToken: UpdateToken?
     var events: [UserEventModel] = []
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
 
         self.tableView.reloadData()
     }
 
     override func reloadEvents() {
-        //super.reloadEvents()
-      
+        // super.reloadEvents()
+
         self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
             switch result {
             case .success(let eventsList):
@@ -31,17 +30,17 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
                 self.eventSections.removeAll()
                 let dfu = DateFormatterUtility.shared
                 if let conference = AnonymousSession.shared.currentConference, let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
-                    
+
                     for day in dfu.getConferenceDates(start: start, end: end) {
                         var events: [UserEventModel] = []
-                        let dayDate = dfu.yearMonthDayFormatter.date(from: day)!
+                        let dayDate = dfu.yearMonthDayFormatter.date(from: day) ?? Date()
                         let range = dayDate...(dayDate.addingTimeInterval(86400))
-                        for e in eventsList {
-                            if e.bookmark.value, range.contains(e.event.begin)  {
-                                //NSLog("Adding \(e.event.title) to this schedule")
-                                events.append(e)
+                        for event in eventsList {
+                            if event.bookmark.value, range.contains(event.event.begin) {
+                                // NSLog("Adding \(e.event.title) to this schedule")
+                                events.append(event)
                             } else {
-                                //NSLog("\(e.event.title) not bookmarked")
+                                // NSLog("\(e.event.title) not bookmarked")
                             }
                         }
                         if events.count > 0 {
@@ -50,11 +49,11 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
                     }
                     self.tableView.reloadData()
                 }
-                
-            case .failure(let _):
+
+            case .failure(_):
                 NSLog("")
             }
         }
-       
+
     }
 }

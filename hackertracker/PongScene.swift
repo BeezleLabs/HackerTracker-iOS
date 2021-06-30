@@ -47,7 +47,7 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
 
     func play() {
         reset()
-        startingAnimations() {
+        startingAnimations {
             self.startGame()
         }
     }
