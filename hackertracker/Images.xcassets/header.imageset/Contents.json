@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dc28-safemode-header-1x.jpg",
+      "filename" : "header@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dc28-safemode-header-2x.jpg",
+      "filename" : "header@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dc28-safemode-header-3x.jpg",
+      "filename" : "header@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

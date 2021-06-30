@@ -299,7 +299,7 @@ class HTEventDetailViewController: UIViewController {
                 twitButton.setTitle(twitter, for: .normal)
                 twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
                 twitButton.addTarget(self, action: #selector(twitterFollow), for: .touchUpInside)
-                twitButton.titleLabel?.font = UIFont(name: "Larsseit", size: 14)
+                twitButton.titleLabel?.font = UIFont(name: "Futura", size: 14)
                 twitButton.sizeToFit()
                 twitterStackView.addArrangedSubview(twitButton)
             }

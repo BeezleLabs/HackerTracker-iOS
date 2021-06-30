@@ -35,8 +35,6 @@
 		5D6707F7211787E10007F01F /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D6707F5211787E10007F01F /* AboutCell.xib */; };
 		5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */; };
 		5D6707FD2119059E0007F01F /* HTSpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */; };
-		5D67EBFF20E1CFE6004E5D19 /* Larsseit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFD20E1CFE6004E5D19 /* Larsseit.ttf */; };
-		5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */; };
@@ -128,8 +126,6 @@
 		5D6707F5211787E10007F01F /* AboutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSpeakersTableViewController.swift; sourceTree = "<group>"; };
 		5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSpeakerViewController.swift; sourceTree = "<group>"; };
-		5D67EBFD20E1CFE6004E5D19 /* Larsseit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Larsseit.ttf; sourceTree = "<group>"; };
-		5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Larsseit-Bold.ttf"; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -315,8 +311,6 @@
 			children = (
 				5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */,
 				5DD6425D1AC3C62300ED3256 /* Info.plist */,
-				5D67EBFE20E1CFE6004E5D19 /* Larsseit-Bold.ttf */,
-				5D67EBFD20E1CFE6004E5D19 /* Larsseit.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -486,7 +480,6 @@
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */,
 				5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */,
-				5D67EC0020E1CFE6004E5D19 /* Larsseit-Bold.ttf in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
@@ -494,7 +487,6 @@
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				5D6707F7211787E10007F01F /* AboutCell.xib in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
-				5D67EBFF20E1CFE6004E5D19 /* Larsseit.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
