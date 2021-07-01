@@ -15,6 +15,27 @@
 		3C38061F2688883900ED22CF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C38061E2688883900ED22CF /* FirebaseAuth */; };
 		3C3806212688883900ED22CF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3C3806202688883900ED22CF /* FirebaseFirestore */; };
 		3C3806232688883900ED22CF /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3C3806222688883900ED22CF /* FirebaseStorageSwift-Beta */; };
+		3C855D9F268DAE1100555983 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C855D9E268DAE1100555983 /* Assets.xcassets */; };
+		3C855DA6268DAE1100555983 /* HackerTrackerWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3C855DA5268DAE1100555983 /* HackerTrackerWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3C855DAB268DAE1100555983 /* hackertrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DAA268DAE1100555983 /* hackertrackerApp.swift */; };
+		3C855DAF268DAE1100555983 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DAE268DAE1100555983 /* NotificationController.swift */; };
+		3C855DB1268DAE1100555983 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DB0268DAE1100555983 /* NotificationView.swift */; };
+		3C855DB3268DAE1100555983 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DB2268DAE1100555983 /* ComplicationController.swift */; };
+		3C855DB5268DAE1200555983 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C855DB4268DAE1200555983 /* Assets.xcassets */; };
+		3C855DB8268DAE1200555983 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C855DB7268DAE1200555983 /* Preview Assets.xcassets */; };
+		3C855DBD268DAE1200555983 /* HackerTrackerWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3C855D9C268DAE0F00555983 /* HackerTrackerWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3C855DD3268DB0A200555983 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DCF268DB0A100555983 /* EventView.swift */; };
+		3C855DD4268DB0A200555983 /* ConferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DD0268DB0A200555983 /* ConferencesView.swift */; };
+		3C855DD5268DB0A200555983 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DD1268DB0A200555983 /* SettingsView.swift */; };
+		3C855DD6268DB0A200555983 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DD2268DB0A200555983 /* EventDetailView.swift */; };
+		3C855DDB268DB0C900555983 /* FirebaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DD8268DB0C900555983 /* FirebaseHelpers.swift */; };
+		3C855DDC268DB0C900555983 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DD9268DB0C900555983 /* Collection.swift */; };
+		3C855DDD268DB0C900555983 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DDA268DB0C900555983 /* Events.swift */; };
+		3C855DE3268DB10D00555983 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DE0268DB10D00555983 /* UIColorExtension.swift */; };
+		3C855DE4268DB10D00555983 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DE1268DB10D00555983 /* Utility.swift */; };
+		3C855DE5268DB10D00555983 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DE2268DB10D00555983 /* Theme.swift */; };
+		3C855DE9268DB14300555983 /* ConferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DE7268DB14200555983 /* ConferencesController.swift */; };
+		3C855DEA268DB14300555983 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855DE8268DB14300555983 /* EventController.swift */; };
 		3CAC7F1224D55E9E00B08579 /* CalendarUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */; };
 		3CD8840E24CAD87F006B0B90 /* HTSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */; };
 		49730E4B1E2929BC0029438C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4A1E2929BC0029438C /* EventCell.swift */; };
@@ -80,6 +101,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3C855DA7268DAE1100555983 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DD642511AC3C62300ED3256 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C855DA4268DAE1100555983;
+			remoteInfo = "HackerTrackerWatch Extension";
+		};
+		3C855DBB268DAE1200555983 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DD642511AC3C62300ED3256 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C855D9B268DAE0F00555983;
+			remoteInfo = HackerTrackerWatch;
+		};
 		5DD642721AC3C62300ED3256 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5DD642511AC3C62300ED3256 /* Project object */;
@@ -90,6 +125,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3C855DBE268DAE1200555983 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				3C855DBD268DAE1200555983 /* HackerTrackerWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C855DC1268DAE1200555983 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3C855DA6268DAE1100555983 /* HackerTrackerWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D53FCD71B02A09A006653B1 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,6 +163,30 @@
 		2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventTypeViewController.swift; sourceTree = "<group>"; };
 		2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventTypeTableViewController.swift; sourceTree = "<group>"; };
 		3C18D62124CEC7C20048E88D /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
+		3C855D9C268DAE0F00555983 /* HackerTrackerWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerTrackerWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C855D9E268DAE1100555983 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C855DA0268DAE1100555983 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C855DA5268DAE1100555983 /* HackerTrackerWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HackerTrackerWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C855DAA268DAE1100555983 /* hackertrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hackertrackerApp.swift; sourceTree = "<group>"; };
+		3C855DAE268DAE1100555983 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		3C855DB0268DAE1100555983 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		3C855DB2268DAE1100555983 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		3C855DB4268DAE1200555983 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C855DB7268DAE1200555983 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3C855DB9268DAE1200555983 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C855DBA268DAE1200555983 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		3C855DCF268DB0A100555983 /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		3C855DD0268DB0A200555983 /* ConferencesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConferencesView.swift; sourceTree = "<group>"; };
+		3C855DD1268DB0A200555983 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3C855DD2268DB0A200555983 /* EventDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		3C855DD8268DB0C900555983 /* FirebaseHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelpers.swift; sourceTree = "<group>"; };
+		3C855DD9268DB0C900555983 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		3C855DDA268DB0C900555983 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		3C855DE0268DB10D00555983 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		3C855DE1268DB10D00555983 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		3C855DE2268DB10D00555983 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		3C855DE7268DB14200555983 /* ConferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConferencesController.swift; sourceTree = "<group>"; };
+		3C855DE8268DB14300555983 /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUtility.swift; sourceTree = "<group>"; };
 		3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSettingsTableViewController.swift; sourceTree = "<group>"; };
 		49730E4A1E2929BC0029438C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -177,6 +258,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3C855DA2268DAE1100555983 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DD642561AC3C62300ED3256 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +292,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C855D9D268DAE0F00555983 /* HackerTrackerWatch */ = {
+			isa = PBXGroup;
+			children = (
+				3C855D9E268DAE1100555983 /* Assets.xcassets */,
+				3C855DA0268DAE1100555983 /* Info.plist */,
+			);
+			path = HackerTrackerWatch;
+			sourceTree = "<group>";
+		};
+		3C855DA9268DAE1100555983 /* HackerTrackerWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3C855DE6268DB11A00555983 /* Controllers */,
+				3C855DDF268DB0F400555983 /* Core */,
+				3C855DD7268DB0AF00555983 /* Models */,
+				3C855DCE268DB07C00555983 /* Views */,
+				3C855DAA268DAE1100555983 /* hackertrackerApp.swift */,
+				3C855DAE268DAE1100555983 /* NotificationController.swift */,
+				3C855DB0268DAE1100555983 /* NotificationView.swift */,
+				3C855DB2268DAE1100555983 /* ComplicationController.swift */,
+				3C855DB4268DAE1200555983 /* Assets.xcassets */,
+				3C855DB9268DAE1200555983 /* Info.plist */,
+				3C855DBA268DAE1200555983 /* PushNotificationPayload.apns */,
+				3C855DB6268DAE1200555983 /* Preview Content */,
+			);
+			path = "HackerTrackerWatch Extension";
+			sourceTree = "<group>";
+		};
+		3C855DB6268DAE1200555983 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3C855DB7268DAE1200555983 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3C855DCE268DB07C00555983 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3C855DD0268DB0A200555983 /* ConferencesView.swift */,
+				3C855DD2268DB0A200555983 /* EventDetailView.swift */,
+				3C855DCF268DB0A100555983 /* EventView.swift */,
+				3C855DD1268DB0A200555983 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3C855DD7268DB0AF00555983 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3C855DD9268DB0C900555983 /* Collection.swift */,
+				3C855DDA268DB0C900555983 /* Events.swift */,
+				3C855DD8268DB0C900555983 /* FirebaseHelpers.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3C855DDF268DB0F400555983 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3C855DE2268DB10D00555983 /* Theme.swift */,
+				3C855DE0268DB10D00555983 /* UIColorExtension.swift */,
+				3C855DE1268DB10D00555983 /* Utility.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3C855DE6268DB11A00555983 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C855DE7268DB14200555983 /* ConferencesController.swift */,
+				3C855DE8268DB14300555983 /* EventController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		49730E4C1E2D1A9F0029438C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +437,8 @@
 			children = (
 				5DD6425B1AC3C62300ED3256 /* hackertracker */,
 				5DD642741AC3C62300ED3256 /* hackertrackerTests */,
+				3C855D9D268DAE0F00555983 /* HackerTrackerWatch */,
+				3C855DA9268DAE1100555983 /* HackerTrackerWatch Extension */,
 				5DD6425A1AC3C62300ED3256 /* Products */,
 				5DF3D6ACCF616DD9F4C24179 /* Frameworks */,
 			);
@@ -283,6 +449,8 @@
 			children = (
 				5DD642591AC3C62300ED3256 /* hackertracker.app */,
 				5DD642711AC3C62300ED3256 /* hackertrackerTests.xctest */,
+				3C855D9C268DAE0F00555983 /* HackerTrackerWatch.app */,
+				3C855DA5268DAE1100555983 /* HackerTrackerWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -380,6 +548,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3C855D9B268DAE0F00555983 /* HackerTrackerWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C855DC5268DAE1200555983 /* Build configuration list for PBXNativeTarget "HackerTrackerWatch" */;
+			buildPhases = (
+				3C855D9A268DAE0F00555983 /* Resources */,
+				3C855DC1268DAE1200555983 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C855DA8268DAE1100555983 /* PBXTargetDependency */,
+			);
+			name = HackerTrackerWatch;
+			productName = HackerTrackerWatch;
+			productReference = 3C855D9C268DAE0F00555983 /* HackerTrackerWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		3C855DA4268DAE1100555983 /* HackerTrackerWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C855DC4268DAE1200555983 /* Build configuration list for PBXNativeTarget "HackerTrackerWatch Extension" */;
+			buildPhases = (
+				3C855DA1268DAE1100555983 /* Sources */,
+				3C855DA2268DAE1100555983 /* Frameworks */,
+				3C855DA3268DAE1100555983 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HackerTrackerWatch Extension";
+			productName = "HackerTrackerWatch Extension";
+			productReference = 3C855DA5268DAE1100555983 /* HackerTrackerWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		5DD642581AC3C62300ED3256 /* hackertracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DD6427B1AC3C62300ED3256 /* Build configuration list for PBXNativeTarget "hackertracker" */;
@@ -389,10 +591,12 @@
 				5DD642571AC3C62300ED3256 /* Resources */,
 				5D53FCD71B02A09A006653B1 /* Embed App Extensions */,
 				5D02762121078A9300E5ED6A /* ShellScript */,
+				3C855DBE268DAE1200555983 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3C855DBC268DAE1200555983 /* PBXTargetDependency */,
 			);
 			name = hackertracker;
 			packageProductDependencies = (
@@ -431,10 +635,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0730;
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Beezle Labs";
 				TargetAttributes = {
+					3C855D9B268DAE0F00555983 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					3C855DA4268DAE1100555983 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					5DD642581AC3C62300ED3256 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = MJ97FDMT75;
@@ -467,11 +677,30 @@
 			targets = (
 				5DD642581AC3C62300ED3256 /* hackertracker */,
 				5DD642701AC3C62300ED3256 /* hackertrackerTests */,
+				3C855D9B268DAE0F00555983 /* HackerTrackerWatch */,
+				3C855DA4268DAE1100555983 /* HackerTrackerWatch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3C855D9A268DAE0F00555983 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C855D9F268DAE1100555983 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C855DA3268DAE1100555983 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C855DB8268DAE1200555983 /* Preview Assets.xcassets in Resources */,
+				3C855DB5268DAE1200555983 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DD642571AC3C62300ED3256 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,6 +745,29 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3C855DA1268DAE1100555983 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C855DD6268DB0A200555983 /* EventDetailView.swift in Sources */,
+				3C855DDD268DB0C900555983 /* Events.swift in Sources */,
+				3C855DDC268DB0C900555983 /* Collection.swift in Sources */,
+				3C855DDB268DB0C900555983 /* FirebaseHelpers.swift in Sources */,
+				3C855DD5268DB0A200555983 /* SettingsView.swift in Sources */,
+				3C855DD4268DB0A200555983 /* ConferencesView.swift in Sources */,
+				3C855DEA268DB14300555983 /* EventController.swift in Sources */,
+				3C855DAF268DAE1100555983 /* NotificationController.swift in Sources */,
+				3C855DE4268DB10D00555983 /* Utility.swift in Sources */,
+				3C855DB3268DAE1100555983 /* ComplicationController.swift in Sources */,
+				3C855DAB268DAE1100555983 /* hackertrackerApp.swift in Sources */,
+				3C855DE9268DB14300555983 /* ConferencesController.swift in Sources */,
+				3C855DB1268DAE1100555983 /* NotificationView.swift in Sources */,
+				3C855DD3268DB0A200555983 /* EventView.swift in Sources */,
+				3C855DE3268DB10D00555983 /* UIColorExtension.swift in Sources */,
+				3C855DE5268DB10D00555983 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DD642551AC3C62300ED3256 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -582,6 +834,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3C855DA8268DAE1100555983 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C855DA4268DAE1100555983 /* HackerTrackerWatch Extension */;
+			targetProxy = 3C855DA7268DAE1100555983 /* PBXContainerItemProxy */;
+		};
+		3C855DBC268DAE1200555983 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C855D9B268DAE0F00555983 /* HackerTrackerWatch */;
+			targetProxy = 3C855DBB268DAE1200555983 /* PBXContainerItemProxy */;
+		};
 		5DD642731AC3C62300ED3256 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5DD642581AC3C62300ED3256 /* hackertracker */;
@@ -601,6 +863,142 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3C855DBF268DAE1200555983 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = MJ97FDMT75;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = HackerTrackerWatch_Extension;
+				INFOPLIST_FILE = HackerTrackerWatch/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		3C855DC0268DAE1200555983 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = MJ97FDMT75;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = HackerTrackerWatch_Extension;
+				INFOPLIST_FILE = HackerTrackerWatch/Info.plist;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		3C855DC2268DAE1200555983 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"HackerTrackerWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = JKH8RWC9D6;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HackerTrackerWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		3C855DC3268DAE1200555983 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"HackerTrackerWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = JKH8RWC9D6;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HackerTrackerWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.beezle.hackertracker.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
 		5DD642791AC3C62300ED3256 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -821,6 +1219,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3C855DC4268DAE1200555983 /* Build configuration list for PBXNativeTarget "HackerTrackerWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C855DC2268DAE1200555983 /* Debug */,
+				3C855DC3268DAE1200555983 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C855DC5268DAE1200555983 /* Build configuration list for PBXNativeTarget "HackerTrackerWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C855DBF268DAE1200555983 /* Debug */,
+				3C855DC0268DAE1200555983 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5DD642541AC3C62300ED3256 /* Build configuration list for PBXProject "hackertracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
