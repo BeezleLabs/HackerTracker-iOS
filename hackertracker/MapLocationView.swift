@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 public enum Location {
     case unknown
@@ -153,9 +154,7 @@ enum MapFile {
     }*/
 }
 
-class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
-
-    let webView = UIWebView()
+class MapLocationView: UIView, WKNavigationDelegate {
 
     var currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
     var mapOffset = CGPoint(x: 0, y: 0)
@@ -279,7 +278,7 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         }
     }
 
-    public init (location: Location) {
+    public init(location: Location) {
         super.init(frame: CGRect.zero)
 
         currentLocation = location
@@ -292,20 +291,35 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
     }
 
     func setup() {
+        let userScript = WKUserScript(source: """
+        var meta = document.createElement('meta');
+        meta.setAttribute('name', 'viewport');
+        meta.setAttribute('content', 'width=device-width');
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        """, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+
+        let contentController = WKUserContentController()
+        contentController.addUserScript(userScript)
+
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.userContentController = contentController
+
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+
         addSubview(webView)
 
         webView.isUserInteractionEnabled = false
         webView.translatesAutoresizingMaskIntoConstraints = false
 
-        webView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        webView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        webView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            webView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            webView.topAnchor.constraint(equalTo: topAnchor),
+            webView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
 
         // webView.loadRequest(URLRequest(url: MapFile.mapFile(currentLocation)))
-        webView.delegate = self
-        webView.scalesPageToFit = true
-        webView.scrollView.delegate = self
+        webView.navigationDelegate = self
         webView.scrollView.scrollsToTop = false
     }
 
@@ -315,13 +329,8 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         }
     }
 
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
         webView.scrollView.zoomScale = mapZoomLevel
         webView.scrollView.contentOffset = mapOffset
     }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-    }
-
 }
