@@ -6,24 +6,19 @@
 //  Copyright © 2018 Beezle Labs. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class HTNewsTableViewController: UITableViewController {
-
     var articles: [HTArticleModel] = []
     var articlesToken: UpdateToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
+        self.tableView.register(UINib(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
 
         self.loadArticles()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     // MARK: - Table view data source
@@ -46,25 +41,20 @@ class HTNewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell", for: indexPath) as! UpdateCell
-
-        var a: HTArticleModel
-
-        a = self.articles[indexPath.row]
-        cell.bind(message: a)
-
+        cell.bind(message: articles[indexPath.row])
         return cell
     }
 
     func loadArticles() {
-        articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, descending: true) { (result) in
+        articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, descending: true) { result in
             switch result {
             case .success(let articlesList):
                 self.articles = articlesList
                 self.tableView.reloadData()
-            case .failure(_):
-                NSLog("")
+            case .failure:
+                // TODO: Properly log failure
+                break
             }
         }
     }
-
 }

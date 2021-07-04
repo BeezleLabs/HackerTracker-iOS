@@ -6,25 +6,20 @@
 //  Copyright © 2018 Beezle Labs. All rights reserved.
 //
 
-import UIKit
 import CoreData
 import SafariServices
+import UIKit
 
 class HTVendorTableViewController: UITableViewController {
-
     var vendorsToken: UpdateToken?
     var vendors: [HTVendorModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.register(UINib.init(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
+        self.tableView.register(UINib(nibName: "UpdateCell", bundle: nil), forCellReuseIdentifier: "UpdateCell")
 
         self.loadVendors()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     // MARK: - Table view data source
@@ -50,31 +45,26 @@ class HTVendorTableViewController: UITableViewController {
             let svc = SFSafariViewController(url: url)
             svc.preferredBarTintColor = UIColor.backgroundGray
             svc.preferredControlTintColor = UIColor.white
-            present(svc, animated: true, completion: nil)
+            present(svc, animated: true)
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell", for: indexPath) as! UpdateCell
-
-        var v: HTVendorModel
-
-        v = self.vendors[indexPath.row]
-        cell.bind(vendor: v)
-
+        cell.bind(vendor: vendors[indexPath.row])
         return cell
     }
 
     func loadVendors() {
-        vendorsToken = FSConferenceDataController.shared.requestVendors(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
+        vendorsToken = FSConferenceDataController.shared.requestVendors(forConference: AnonymousSession.shared.currentConference, descending: false) { result in
             switch result {
             case .success(let vendorsList):
                 self.vendors = vendorsList
                 self.tableView.reloadData()
-            case .failure(_):
-                NSLog("")
+            case .failure:
+                // TODO: Properly log failure
+                break
             }
         }
     }
-
 }

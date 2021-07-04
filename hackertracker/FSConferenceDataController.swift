@@ -6,10 +6,9 @@
 //  Copyright © 2019 Beezle Labs. All rights reserved.
 //
 
-import Foundation
-
 import Firebase
 import FirebaseStorage
+import Foundation
 
 enum HTError: Error {
     case speakerNil
@@ -17,7 +16,7 @@ enum HTError: Error {
 }
 
 extension HTError: LocalizedError {
-    public var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .speakerNil:
             return "Speaker items were nil"
@@ -29,6 +28,7 @@ extension HTError: LocalizedError {
 
 class UpdateToken {
     let collectionValue: Any
+
     init(_ collection: Any) {
         collectionValue = collection
     }
@@ -107,7 +107,7 @@ class FSConferenceDataController {
             }
         }
 
-        return UpdateToken([events, bookmarksToken])
+        return UpdateToken([events, bookmarksToken as Any])
     }
 
     func requestSpeaker(forConference conference: ConferenceModel, speakerId: Int, updateHandler: @escaping (Result<HTSpeaker, Error>) -> Void) -> UpdateToken {
@@ -135,8 +135,7 @@ class FSConferenceDataController {
     func requestEvents(forConference conference: ConferenceModel,
                        limit: Int? = nil,
                        descending: Bool = false,
-                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken
-    {
+                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken {
         var query: Query?
         query = document(forConference: conference).collection("events").order(by: "begin_timestamp", descending: descending).limit(to: limit ?? Int.max)
 
@@ -147,8 +146,7 @@ class FSConferenceDataController {
                        startDate: Date,
                        limit: Int? = nil,
                        descending: Bool = false,
-                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken
-    {
+                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken {
         var query: Query?
         query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: startDate).order(by: "begin_timestamp", descending: descending).limit(to: limit ?? Int.max)
 
@@ -159,8 +157,7 @@ class FSConferenceDataController {
                        inDate: Date,
                        limit: Int? = nil,
                        descending: Bool = false,
-                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken
-    {
+                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken {
         var query: Query?
 
         let calendar = Calendar.current
@@ -176,16 +173,14 @@ class FSConferenceDataController {
                        endDate: Date,
                        limit: Int? = nil,
                        descending: Bool = false,
-                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken
-    {
+                       updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken {
         let query = document(forConference: conference).collection("events").whereField("end_timestamp", isGreaterThan: endDate).order(by: "end_timestamp", descending: descending).limit(to: limit ?? Int.max)
         return requestEvents(forConference: conference, query: query, updateHandler: updateHandler)
     }
 
     private func requestEvents(forConference _: ConferenceModel,
                                query: Query?,
-                               updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken
-    {
+                               updateHandler: @escaping (Result<[UserEventModel], Error>) -> Void) -> UpdateToken {
         var events: [HTEventModel]?
         var bookmarks: [Bookmark]?
 
@@ -214,7 +209,7 @@ class FSConferenceDataController {
             }
         }
 
-        return UpdateToken([eventsToken, bookmarksToken])
+        return UpdateToken([eventsToken, bookmarksToken as Any])
     }
 
     func createUserEvents(events: [HTEventModel], bookmarks: [Bookmark]) -> [UserEventModel] {
@@ -240,8 +235,7 @@ class FSConferenceDataController {
 
     func requestFavorites(forConference conference: ConferenceModel,
                           session: AnonymousSession,
-                          updateHandler: @escaping (Result<[Bookmark], Error>) -> Void) -> UpdateToken?
-    {
+                          updateHandler: @escaping (Result<[Bookmark], Error>) -> Void) -> UpdateToken? {
         guard let user = session.user else {
             return nil
         }
@@ -258,14 +252,13 @@ class FSConferenceDataController {
                      eventModel: HTEventModel,
                      isFavorite: Bool,
                      session: AnonymousSession,
-                     updateHandler: @escaping (Error?) -> Void)
-    {
+                     updateHandler: @escaping (Error?) -> Void) {
         guard let user = session.user else {
             return
         }
         document(forConference: conference).collection("users").document(user.uid).collection("bookmarks").document(String(eventModel.id)).setData([
             "id": String(eventModel.id),
-            "value": isFavorite
+            "value": isFavorite,
         ]) { err in
             if let err = err {
                 updateHandler(err)
@@ -287,10 +280,10 @@ class FSConferenceDataController {
     func requestArticles(forConference conference: ConferenceModel,
                          limit: Int? = nil,
                          descending: Bool = false,
-                         updateHandler: @escaping (Result<[HTArticleModel], Error>) -> Void) -> UpdateToken
-    {
+                         updateHandler: @escaping (Result<[HTArticleModel], Error>) -> Void) -> UpdateToken {
         var query: Query?
         query = document(forConference: conference).collection("articles").order(by: "updated_at", descending: descending).limit(to: limit ?? Int.max)
+
         let articles = Collection<HTArticleModel>(query: query!)
         articles.listen { _ in
             updateHandler(Result<[HTArticleModel], Error>.success(articles.items))
@@ -301,10 +294,10 @@ class FSConferenceDataController {
     func requestFAQs(forConference conference: ConferenceModel,
                      limit: Int? = nil,
                      descending: Bool = false,
-                     updateHandler: @escaping (Result<[HTFAQModel], Error>) -> Void) -> UpdateToken
-    {
+                     updateHandler: @escaping (Result<[HTFAQModel], Error>) -> Void) -> UpdateToken {
         var query: Query?
         query = document(forConference: conference).collection("faqs").order(by: "id", descending: descending).limit(to: limit ?? Int.max)
+
         let faqs = Collection<HTFAQModel>(query: query!)
         faqs.listen { _ in
             updateHandler(Result<[HTFAQModel], Error>.success(faqs.items))
@@ -315,10 +308,10 @@ class FSConferenceDataController {
     func requestVendors(forConference conference: ConferenceModel,
                         limit: Int? = nil,
                         descending: Bool = false,
-                        updateHandler: @escaping (Result<[HTVendorModel], Error>) -> Void) -> UpdateToken
-    {
+                        updateHandler: @escaping (Result<[HTVendorModel], Error>) -> Void) -> UpdateToken {
         var query: Query?
         query = document(forConference: conference).collection("vendors").order(by: "name", descending: descending).limit(to: limit ?? Int.max)
+
         let vendors = Collection<HTVendorModel>(query: query!)
         vendors.listen { _ in
             updateHandler(Result<[HTVendorModel], Error>.success(vendors.items))

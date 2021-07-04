@@ -11,31 +11,31 @@ import SafariServices
 import UIKit
 import UserNotifications
 
-protocol EventDetailDelegate {
+protocol EventDetailDelegate: AnyObject {
     func reloadEvents()
 }
 
-class HTEventDetailViewController: UIViewController {
-    @IBOutlet var eventTitleLabel: UILabel!
-    @IBOutlet var eventNameLabel: UILabel!
-    @IBOutlet var eventDateLabel: UILabel!
-    @IBOutlet var eventLocationLabel: UILabel!
-    @IBOutlet var eventDetailTextView: UITextView!
-    @IBOutlet var eventStarredButton: UIBarButtonItem!
-    @IBOutlet var demoImage: UIImageView!
-    @IBOutlet var exploitImage: UIImageView!
-    @IBOutlet var toolImage: UIImageView!
-    @IBOutlet var locationMapView: MapLocationView!
-    @IBOutlet var eventTypeContainer: UIStackView!
-    @IBOutlet var bottomPaddingConstraint: NSLayoutConstraint!
-    @IBOutlet var eventTypeLabel: UILabel!
-    @IBOutlet var linkButton: UIButton!
-    @IBOutlet var twitterStackView: UIStackView!
+class HTEventDetailViewController: UIViewController { // swiftlint:disable:this type_body_length
+    @IBOutlet private var eventTitleLabel: UILabel!
+    @IBOutlet private var eventNameLabel: UILabel!
+    @IBOutlet private var eventDateLabel: UILabel!
+    @IBOutlet private var eventLocationLabel: UILabel!
+    @IBOutlet private var eventDetailTextView: UITextView!
+    @IBOutlet private var eventStarredButton: UIBarButtonItem!
+    @IBOutlet private var demoImage: UIImageView!
+    @IBOutlet private var exploitImage: UIImageView!
+    @IBOutlet private var toolImage: UIImageView!
+    @IBOutlet private var locationMapView: MapLocationView!
+    @IBOutlet private var eventTypeContainer: UIStackView!
+    @IBOutlet private var bottomPaddingConstraint: NSLayoutConstraint!
+    @IBOutlet private var eventTypeLabel: UILabel!
+    @IBOutlet private var linkButton: UIButton!
+    @IBOutlet private var twitterStackView: UIStackView!
 
     var speakerBios = NSMutableAttributedString(string: "")
     var speakerList = NSMutableAttributedString(string: "")
 
-    var delegate: EventDetailDelegate?
+    weak var delegate: EventDetailDelegate?
     var event: HTEventModel?
     var bookmark: Bookmark?
     var speakers: [HTSpeaker] = []
@@ -51,7 +51,7 @@ class HTEventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let _ = eventToken {
+        if eventToken != nil {
             loadEvent()
         } else {
             if let event = event {
@@ -62,7 +62,8 @@ class HTEventDetailViewController: UIViewController {
                         self.bookmark = retEvent.bookmark
                         self.loadEvent()
                     case .failure:
-                        NSLog("")
+                        // TODO: Properly log failure
+                        break
                     }
                 }
             }
@@ -73,7 +74,7 @@ class HTEventDetailViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
     }
 
-    func loadEvent() {
+    func loadEvent() { // swiftlint:disable:this function_body_length
         guard let event = event else {
             print("HTEventDetailViewController: Event is nil")
             return
@@ -107,12 +108,11 @@ class HTEventDetailViewController: UIViewController {
          }
          locationMapView.setup() */
 
-        let eventAttributedString = NSMutableAttributedString(string: event.description)
-        let eventParagraphStyle = NSMutableParagraphStyle()
-        eventParagraphStyle.alignment = .left
-        eventAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: eventParagraphStyle, range: NSRange(location: 0, length: (event.description as NSString).length))
-        eventAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (event.description as NSString).length))
-        eventAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (event.description as NSString).length))
+        let eventAttributedString = NSMutableAttributedString(string: event.description, attributes: [
+            .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+            .font: UIFont.preferredFont(forTextStyle: .body),
+            .foregroundColor: UIColor.white,
+        ])
         eventDetailTextView.attributedText = eventAttributedString
 
         if let bookmark = bookmark, bookmark.value == true {
@@ -125,13 +125,13 @@ class HTEventDetailViewController: UIViewController {
         if !includes.lowercased().contains("tool") { toolImage.isHidden = true }
         if !includes.lowercased().contains("demo") { demoImage.isHidden = true }
         if !includes.lowercased().contains("exploit") { exploitImage.isHidden = true }
-        if includes != "" {
-            if let t = eventDetailTextView.text {
-                eventDetailTextView.text = "\(t)\n\nIncludes: \(includes.uppercased())"
+        if !includes.isEmpty {
+            if let text = eventDetailTextView.text {
+                eventDetailTextView.text = "\(text)\n\nIncludes: \(includes.uppercased())"
             }
         }
 
-        if event.links == "" {
+        if event.links.isEmpty {
             linkButton.isHidden = true
             linkButton.isEnabled = false
         } else {
@@ -161,8 +161,7 @@ class HTEventDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         applyDoneButtonIfNeeded()
         if let splitViewController = self.splitViewController,
-           splitViewController.isCollapsed
-        {
+           splitViewController.isCollapsed {
             bottomPaddingConstraint.constant = 20
         } else {
             bottomPaddingConstraint.constant = 80
@@ -170,7 +169,7 @@ class HTEventDetailViewController: UIViewController {
     }
 
     func applyDoneButtonIfNeeded() {
-        guard let _ = navigationController?.parent as? HTHamburgerMenuViewController else {
+        guard navigationController?.parent as? HTHamburgerMenuViewController != nil else {
             let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
             doneButton.tintColor = .white
             navigationItem.rightBarButtonItem = doneButton
@@ -179,7 +178,7 @@ class HTEventDetailViewController: UIViewController {
     }
 
     @objc func doneButtonPressed() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -188,9 +187,9 @@ class HTEventDetailViewController: UIViewController {
     }
 
     func getSpeakers() {
-        var i = 0
+        var idx = 0
         for speaker in event?.speakers ?? [] {
-            if speakerTokens.indices.contains(i) {
+            if speakerTokens.indices.contains(idx) {
                 // already have this speaker token
             } else {
                 let sToken = FSConferenceDataController.shared.requestSpeaker(forConference: AnonymousSession.shared.currentConference, speakerId: speaker.id) { result in
@@ -208,7 +207,7 @@ class HTEventDetailViewController: UIViewController {
                 }
                 speakerTokens.append(sToken)
             }
-            i = i + 1
+            idx += 1
         }
     }
 
@@ -217,22 +216,25 @@ class HTEventDetailViewController: UIViewController {
 
         eventNameLabel.text = ""
         speakerList = NSMutableAttributedString(string: "")
-        for s in event?.speakers ?? [] {
-            if s.id != event?.speakers.first?.id {
+
+        // If we can bump up to iOS 13 we can use ListFormatter
+        for speaker in event?.speakers ?? [] {
+            if speaker.id != event?.speakers.first?.id {
                 speakerList.append(NSAttributedString(string: ", "))
             }
-            let whoAttributedString = NSMutableAttributedString(string: s.name)
-            let whoParagraphStyle = NSMutableParagraphStyle()
-            whoParagraphStyle.alignment = .left
-            whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (s.name as NSString).length))
-            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3), range: NSRange(location: 0, length: (s.name as NSString).length))
-            whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (s.name as NSString).length))
+
+            let whoAttributedString = NSMutableAttributedString(string: speaker.name, attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .title3),
+                .foregroundColor: eventNameLabel.textColor!,
+            ])
+
             speakerList.append(whoAttributedString)
         }
 
         eventNameLabel.contentMode = UIView.ContentMode.top
 
-        if event?.speakers.count == 0 {
+        if let event = event, event.speakers.isEmpty {
             speakerList = NSMutableAttributedString(string: "Anonymous")
             eventNameLabel.isHidden = true
         } else {
@@ -243,58 +245,49 @@ class HTEventDetailViewController: UIViewController {
             eventNameLabel.layer.borderColor = UIColor.darkGray.cgColor
             eventNameLabel.layer.borderWidth = 0.5
             eventNameLabel.layer.cornerRadius = 5
-        }
-
-        if (event?.speakers.count ?? 0) > 0 {
             eventNameLabel.isHidden = false
-        } else {
-            eventNameLabel.isHidden = true
         }
     }
 
     func setupSpeakers() {
-        var i = 1
-        for s in speakers {
-            let n = s.name
-            let t = s.title
-            let d = s.description
+        let eventTextColor = eventNameLabel.textColor!
 
-            let whoAttributedString = NSMutableAttributedString(string: n)
-            let whoParagraphStyle = NSMutableParagraphStyle()
-            whoParagraphStyle.alignment = .left
-            whoAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: whoParagraphStyle, range: NSRange(location: 0, length: (n as NSString).length))
-            whoAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3), range: NSRange(location: 0, length: (n as NSString).length))
-            whoAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: eventNameLabel.textColor!, range: NSRange(location: 0, length: (n as NSString).length))
+        var idx = 1
 
-            let titleAttributedString = NSMutableAttributedString(string: t)
-            let titleParagraphStyle = NSMutableParagraphStyle()
-            titleParagraphStyle.alignment = .left
-            titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
-            titleAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .subheadline), range: NSRange(location: 0, length: (t as NSString).length))
-            titleAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParagraphStyle, range: NSRange(location: 0, length: (t as NSString).length))
+        for speaker in speakers {
+            let whoAttributedString = NSMutableAttributedString(string: speaker.name, attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .title3),
+                .foregroundColor: eventTextColor,
+            ])
 
-            let bioAttributedString = NSMutableAttributedString(string: d)
-            let bioParagraphStyle = NSMutableParagraphStyle()
-            bioParagraphStyle.alignment = .left
-            bioAttributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: bioParagraphStyle, range: NSRange(location: 0, length: (d as NSString).length))
-            bioAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (d as NSString).length))
-            bioAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: (d as NSString).length))
+            let titleAttributedString = NSMutableAttributedString(string: speaker.title, attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .subheadline),
+                .foregroundColor: eventTextColor,
+            ])
+
+            let bioAttributedString = NSMutableAttributedString(string: speaker.description, attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .body),
+                .foregroundColor: eventTextColor,
+            ])
 
             speakerBios.append(whoAttributedString)
             speakerBios.append(NSAttributedString(string: "\n"))
-            if t != "" {
+            if speaker.title.isEmpty {
+                speakerBios.append(NSAttributedString(string: "\n"))
+            } else {
                 speakerBios.append(titleAttributedString)
                 speakerBios.append(NSAttributedString(string: "\n\n"))
-            } else {
-                speakerBios.append(NSAttributedString(string: "\n"))
             }
             speakerBios.append(bioAttributedString)
-            if speakers.count > 1, i < speakers.count {
+            if speakers.count > 1, idx < speakers.count {
                 speakerBios.append(NSAttributedString(string: "\n\n"))
             }
 
-            let twitter = s.twitter
-            if twitter != "" {
+            let twitter = speaker.twitter
+            if !twitter.isEmpty {
                 let twitButton = UIButton()
                 twitButton.setTitle(twitter, for: .normal)
                 twitButton.setTitleColor(UIColor(hexString: "#98b7e1"), for: .normal)
@@ -304,7 +297,7 @@ class HTEventDetailViewController: UIViewController {
                 twitterStackView.addArrangedSubview(twitButton)
             }
 
-            i = i + 1
+            idx += 1
         }
 
         // let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapDetailTapped))
@@ -319,8 +312,7 @@ class HTEventDetailViewController: UIViewController {
                 setupSpeakers()
             }
             eventNameLabel.attributedText = speakerBios
-            twitterStackView.isHidden = false // TODO:
-
+            twitterStackView.isHidden = false
         } else {
             eventNameLabel.attributedText = speakerList
             twitterStackView.isHidden = true
@@ -331,19 +323,18 @@ class HTEventDetailViewController: UIViewController {
         }
     }
 
-    @objc func twitterFollow(sender: UIButton!) {
+    @objc func twitterFollow(_ sender: UIButton) {
         if let twit = sender.titleLabel?.text {
-            let l = "https://mobile.twitter.com/\(twit.replacingOccurrences(of: "@", with: ""))"
-            if let u = URL(string: l) {
-                let svc = SFSafariViewController(url: u)
-                svc.preferredBarTintColor = UIColor.backgroundGray
-                svc.preferredControlTintColor = UIColor.white
-                present(svc, animated: true, completion: nil)
+            if let url = URL(string: "https://mobile.twitter.com/\(twit.replacingOccurrences(of: "@", with: ""))") {
+                let controller = SFSafariViewController(url: url)
+                controller.preferredBarTintColor = .backgroundGray
+                controller.preferredControlTintColor = .white
+                present(controller, animated: true)
             }
         }
     }
 
-    @IBAction func toggleMySchedule(_: AnyObject) {
+    @IBAction private func toggleMySchedule(_ sender: AnyObject) {
         guard let event = event else {
             print("HTEventDetailViewController: Event is nil")
             return
@@ -354,42 +345,35 @@ class HTEventDetailViewController: UIViewController {
 
     func reloadEvents() {
         if let splitViewController = self.splitViewController,
-           !splitViewController.isCollapsed
-        {
+           !splitViewController.isCollapsed {
             delegate?.reloadEvents()
         }
     }
 
     func saveContext() {
-        let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = delegate.managedObjectContext!
-        var err: NSError?
         do {
-            try context.save()
+            try getContext().save()
         } catch let error as NSError {
-            err = error
-        }
-        if err != nil {
-            NSLog("%@", err ?? "")
+            NSLog("%@", error)
         }
     }
 
-    @IBAction func followLink(_: Any) {
-        if let e = event {
-            if let u = URL(string: e.links) {
-                let svc = SFSafariViewController(url: u)
-                svc.preferredBarTintColor = UIColor.backgroundGray
-                svc.preferredControlTintColor = UIColor.white
-                present(svc, animated: true, completion: nil)
+    @IBAction private func followLink(_: Any) {
+        if let event = event {
+            if let url = URL(string: event.links) {
+                let controller = SFSafariViewController(url: url)
+                controller.preferredBarTintColor = .backgroundGray
+                controller.preferredControlTintColor = .white
+                present(controller, animated: true)
             }
         }
     }
 
-    @IBAction func shareEvent(_: Any) {
+    @IBAction private func shareEvent(_: Any) {
         let dfu = DateFormatterUtility.shared
-        if let e = event {
-            let time = dfu.dayOfWeekTimeFormatter.string(from: e.begin)
-            let item = "\(e.conferenceName): Attending '\(e.title)' on \(time) in \(e.location.name) #hackertracker"
+        if let event = event {
+            let time = dfu.dayOfWeekTimeFormatter.string(from: event.begin)
+            let item = "\(event.conferenceName): Attending '\(event.title)' on \(time) in \(event.location.name) #hackertracker"
 
             let activityViewController = UIActivityViewController(
                 activityItems: [item], applicationActivities: nil
@@ -404,17 +388,17 @@ class HTEventDetailViewController: UIViewController {
 
             // Anything you want to exclude
             activityViewController.excludedActivityTypes = [
-                UIActivity.ActivityType.postToWeibo,
-                UIActivity.ActivityType.print,
-                UIActivity.ActivityType.assignToContact,
-                UIActivity.ActivityType.saveToCameraRoll,
-                UIActivity.ActivityType.addToReadingList,
-                UIActivity.ActivityType.postToFlickr,
-                UIActivity.ActivityType.postToVimeo,
-                UIActivity.ActivityType.postToTencentWeibo
+                .postToWeibo,
+                .print,
+                .assignToContact,
+                .saveToCameraRoll,
+                .addToReadingList,
+                .postToFlickr,
+                .postToVimeo,
+                .postToTencentWeibo,
             ]
 
-            present(activityViewController, animated: true, completion: nil)
+            present(activityViewController, animated: true)
         }
     }
 
@@ -423,7 +407,7 @@ class HTEventDetailViewController: UIViewController {
         let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
         mapView.hotel = event?.location.hotel
         let navigationController = HTEventsNavViewController(rootViewController: mapView)
-        present(navigationController, animated: true, completion: nil)
+        present(navigationController, animated: true)
     }
 
     @objc func mapDetailTapped(tapGesture: UILongPressGestureRecognizer) {
@@ -442,7 +426,7 @@ class HTEventDetailViewController: UIViewController {
                 let mapView = storyboard.instantiateViewController(withIdentifier: "HTMapsViewController") as! HTMapsViewController
                 // mapView.mapLocation = locationMapView.currentLocation
                 let navigationController = HTEventsNavViewController(rootViewController: mapView)
-                present(navigationController, animated: true, completion: nil)
+                present(navigationController, animated: true)
             }
             locationMapView.alpha = 1.0
         case .cancelled, .failed:
@@ -458,3 +442,5 @@ class HTEventDetailViewController: UIViewController {
         calendarUtility.addEvent(htEvent: htEvent, view: self)
     }
 }
+
+// swiftlint:disable:this file_length

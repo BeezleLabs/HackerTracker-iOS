@@ -70,12 +70,9 @@ opt_in_rules:
   - yoda_condition
 disabled_rules:
   - line_length
-  - identifier_name
-  - function_parameter_count
-  - large_tuple
-  - unused_capture_list
-  - force_cast
   - todo
+  - force_cast
+  - force_unwrapping
 
 attributes:
   always_on_same_line: ["@IBAction", "@IBOutlet", "@NSManaged", "@objc", "@objcMembers", "@nonobjc"]
@@ -83,3 +80,7 @@ trailing_closure:
   only_single_muted_parameter: true
 trailing_comma:
   mandatory_comma: true
+identifier_name:
+  excluded:
+    - id
+    - db

@@ -16,11 +16,6 @@ func getContext() -> NSManagedObjectContext {
     return delegate.managedObjectContext!
 }
 
-func getBackgroundContext() -> NSManagedObjectContext {
-    let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    return delegate.backgroundManagedObjectContext!
-}
-
 func scheduleNotification(at date: Date, _ event: HTEventModel) {
     let calendar = Calendar(identifier: .gregorian)
     let components = calendar.dateComponents(in: .current, from: date)
@@ -51,7 +46,7 @@ func addBookmark(bookmark: Bookmark?, event: HTEventModel, eventCell: EventCell?
             scheduleNotification(at: event.begin, event)
         }
 
-        FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { (_) in
+        FSConferenceDataController.shared.setFavorite(forConference: AnonymousSession.shared.currentConference, eventModel: event, isFavorite: !bookmark.value, session: AnonymousSession.shared) { _ in
             if let eventCell = eventCell {
                 eventCell.eventCellDelegate?.updatedEvents()
             }

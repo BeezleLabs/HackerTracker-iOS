@@ -9,7 +9,6 @@
 import UIKit
 
 class HTSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +18,6 @@ class HTSplitViewController: UISplitViewController, UISplitViewControllerDelegat
     }
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-
         guard let navController = secondaryViewController as? UINavigationController else {
             return false
         }
@@ -32,5 +30,4 @@ class HTSplitViewController: UISplitViewController, UISplitViewControllerDelegat
 
         return eventDetailController.event == nil
     }
-
 }

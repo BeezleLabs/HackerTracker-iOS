@@ -13,17 +13,21 @@ protocol AboutCellDelegate: AnyObject {
 }
 
 class AboutCell: UITableViewCell {
-
-    @IBOutlet weak var versionLabel: UIButton!
+    @IBOutlet private var versionLabel: UIButton!
     var rick = 0
     weak var aboutDelegate: AboutCellDelegate?
+
+    var versionTitle: String? {
+        get { versionLabel.title(for: .normal) }
+        set { versionLabel.setTitle(newValue, for: .normal) }
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
         initialize()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
@@ -35,25 +39,13 @@ class AboutCell: UITableViewCell {
         selectedBackgroundView = selectedView
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    @IBAction func tappedTwitter(_ sender: Any) {
-
-        if let s = sender as? UIButton, let title = s.titleLabel?.text, let d = aboutDelegate, let url = URL(string: "https://mobile.twitter.com/\(title.replacingOccurrences(of: "@", with: ""))") {
-            d.followUrl(url: url)
+    @IBAction private func tappedTwitter(_ sender: Any) {
+        if let sender = sender as? UIButton, let title = sender.titleLabel?.text, let aboutDelegate = aboutDelegate, let url = URL(string: "https://mobile.twitter.com/\(title.replacingOccurrences(of: "@", with: ""))") {
+            aboutDelegate.followUrl(url: url)
         }
     }
 
-    @IBAction func tappedVersion(_ sender: Any) {
+    @IBAction private func tappedVersion(_ sender: Any) {
         if rick > 6, let delegate = aboutDelegate, let url = URL(string: "https://www.youtube.com/watch?v=oHg5SJYRHA0?autoplay=1") {
             delegate.followUrl(url: url)
             rick = 0

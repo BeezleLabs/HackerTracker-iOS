@@ -9,7 +9,7 @@
 import Foundation
 import UserNotifications
 
-struct NotificationUtility {
+enum NotificationUtility {
     static var status: UNAuthorizationStatus? {
         var authorizationStatus: UNAuthorizationStatus?
         let semasphore = DispatchSemaphore(value: 0)

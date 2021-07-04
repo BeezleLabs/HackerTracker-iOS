@@ -1,13 +1,13 @@
 //
-//  File.swift
+//  HTEventModel.swift
 //  hackertracker
 //
 //  Created by Christopher Mays on 6/18/19.
 //  Copyright © 2019 Beezle Labs. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct Bookmark: Codable {
     var id: String
@@ -53,15 +53,15 @@ struct UserEventModel: Codable, Equatable {
 extension HTEventModel: Document {
     init?(dictionary: [String: Any]) {
         let dfu = DateFormatterUtility.shared
-        let tmp_date = "2019-01-01T00:00:00.000-0000"
+        let tmpDate = "2019-01-01T00:00:00.000-0000"
         let id = dictionary["id"] as? Int ?? 0
-        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmp_date) ?? Date()
-        if let begin_timestamp = dictionary["begin_timestamp"] as? Timestamp {
-            begin = begin_timestamp.dateValue()
+        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmpDate) ?? Date()
+        if let beginTimestamp = dictionary["begin_timestamp"] as? Timestamp {
+            begin = beginTimestamp.dateValue()
         }
-        var end =  dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmp_date) ?? Date()
-        if let end_timestamp = dictionary["end_timestamp"] as? Timestamp {
-            end = end_timestamp.dateValue()
+        var end = dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmpDate) ?? Date()
+        if let endTimestamp = dictionary["end_timestamp"] as? Timestamp {
+            end = endTimestamp.dateValue()
         }
         let conferenceName = dictionary["conference"] as? String ?? ""
         let description = dictionary["description"] as? String ?? ""
@@ -77,8 +77,7 @@ extension HTEventModel: Document {
 
         var speakers: [HTSpeaker] = []
         if let speakersValues = dictionary["speakers"] as? [Any] {
-
-            speakers = speakersValues.compactMap { (element) -> HTSpeaker? in
+            speakers = speakersValues.compactMap { element -> HTSpeaker? in
                 if let element = element as? [String: Any], let speaker = HTSpeaker(dictionary: element) {
                     return speaker
                 }
@@ -149,8 +148,7 @@ extension HTSpeaker: Document {
 
         var events: [HTEventModel] = []
         if let eventsValues = dictionary["events"] as? [Any] {
-
-            events = eventsValues.compactMap { (element) -> HTEventModel? in
+            events = eventsValues.compactMap { element -> HTEventModel? in
                 if let element = element as? [String: Any], let event = HTEventModel(dictionary: element) {
                     return event
                 }
