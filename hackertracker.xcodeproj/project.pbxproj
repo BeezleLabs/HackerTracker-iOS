@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		238B06C226917C6400C9F9A2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 238B06C126917C6400C9F9A2 /* FirebaseCrashlytics */; };
 		2AD66B1624D84A470061E985 /* HTEventTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */; };
 		2AD66B1724D84A470061E985 /* HTEventTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */; };
 		3C18D62224CEC7C20048E88D /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18D62124CEC7C20048E88D /* NotificationUtility.swift */; };
@@ -22,8 +23,6 @@
 		49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */; };
 		5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */; };
 		5D027620210160F400E5ED6A /* HTNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */; };
-		5D02762821078B8600E5ED6A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02762621078B8500E5ED6A /* Crashlytics.framework */; };
-		5D02762921078B8600E5ED6A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02762721078B8600E5ED6A /* Fabric.framework */; };
 		5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
@@ -67,14 +66,11 @@
 		83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83679CE9210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib */; };
 		83679CEE210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83679CEC210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift */; };
 		83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */; };
-		83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B0F8411F19A673006493A6 /* SafariServices.framework */; };
-		83B0F8541F19BA1B006493A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B0F8531F19BA1B006493A6 /* QuartzCore.framework */; };
 		83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E74C391ED7AB580078E5FB /* UpdateCell.swift */; };
 		83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */; };
 		B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */; };
 		B5449CB11F1AE23C003DE448 /* HTSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */; };
 		B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B552AC891F2084D4006D4F98 /* PongScene.swift */; };
-		B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B568B64A1F1F3A740092CE4A /* SpriteKit.framework */; };
 		B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B568B6641F1F3FAB0092CE4A /* scene.sks */; };
 		B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9F7521F17307800EDC6FE /* Animation.swift */; };
 /* End PBXBuildFile section */
@@ -113,8 +109,6 @@
 		49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
 		5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFilterViewController.swift; sourceTree = "<group>"; };
 		5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTNewsTableViewController.swift; sourceTree = "<group>"; };
-		5D02762621078B8500E5ED6A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		5D02762721078B8600E5ED6A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTVendorTableViewController.swift; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +148,6 @@
 		8318FE8C22B9BC1600EC44CC /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		8318FE8E22B9C29500EC44CC /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSConferenceDataController.swift; sourceTree = "<group>"; };
-		8345F2CB1F0F0C81006761BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
 		834713D51F1818240092C2FE /* EventDateHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDateHeaderView.swift; path = Views/EventDateHeaderView.swift; sourceTree = "<group>"; };
 		83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerMenuViewController.swift; sourceTree = "<group>"; };
@@ -164,14 +157,11 @@
 		83679CEC210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTHamburgerItemTableViewCell.swift; sourceTree = "<group>"; };
 		83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HTHamburgerItemTableViewCell.xib; sourceTree = "<group>"; };
 		83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackertracker-Bridging-Header.h"; sourceTree = "<group>"; };
-		83B0F8411F19A673006493A6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		83B0F8531F19BA1B006493A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		83E74C391ED7AB580078E5FB /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateCell.xib; sourceTree = "<group>"; };
 		B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEmptyDetailViewController.swift; sourceTree = "<group>"; };
 		B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSplitViewController.swift; sourceTree = "<group>"; };
 		B552AC891F2084D4006D4F98 /* PongScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PongScene.swift; sourceTree = "<group>"; };
-		B568B64A1F1F3A740092CE4A /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		B568B6641F1F3FAB0092CE4A /* scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = scene.sks; sourceTree = "<group>"; };
 		B5A9F7521F17307800EDC6FE /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,15 +171,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B552AC8B1F2084ED006D4F98 /* SpriteKit.framework in Frameworks */,
-				5D02762821078B8600E5ED6A /* Crashlytics.framework in Frameworks */,
-				83B0F8541F19BA1B006493A6 /* QuartzCore.framework in Frameworks */,
 				3C38061B2688883900ED22CF /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				3C38061D2688883900ED22CF /* FirebaseStorage in Frameworks */,
 				3C3806232688883900ED22CF /* FirebaseStorageSwift-Beta in Frameworks */,
+				238B06C226917C6400C9F9A2 /* FirebaseCrashlytics in Frameworks */,
 				3C3806212688883900ED22CF /* FirebaseFirestore in Frameworks */,
-				83B0F8421F19A673006493A6 /* SafariServices.framework in Frameworks */,
-				5D02762921078B8600E5ED6A /* Fabric.framework in Frameworks */,
 				3C38061F2688883900ED22CF /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,6 +190,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		238B06C026917C6400C9F9A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		49730E4C1E2D1A9F0029438C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +267,7 @@
 				5DD6425B1AC3C62300ED3256 /* hackertracker */,
 				5DD642741AC3C62300ED3256 /* hackertrackerTests */,
 				5DD6425A1AC3C62300ED3256 /* Products */,
-				5DF3D6ACCF616DD9F4C24179 /* Frameworks */,
+				238B06C026917C6400C9F9A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -332,19 +325,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5DF3D6ACCF616DD9F4C24179 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5D02762621078B8500E5ED6A /* Crashlytics.framework */,
-				5D02762721078B8600E5ED6A /* Fabric.framework */,
-				B568B64A1F1F3A740092CE4A /* SpriteKit.framework */,
-				83B0F8531F19BA1B006493A6 /* QuartzCore.framework */,
-				83B0F8411F19A673006493A6 /* SafariServices.framework */,
-				8345F2CB1F0F0C81006761BE /* WebKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8318FE8922B9BAAA00EC44CC /* FireBaseModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,7 +368,7 @@
 				5DD642561AC3C62300ED3256 /* Frameworks */,
 				5DD642571AC3C62300ED3256 /* Resources */,
 				5D53FCD71B02A09A006653B1 /* Embed App Extensions */,
-				5D02762121078A9300E5ED6A /* ShellScript */,
+				5D02762121078A9300E5ED6A /* Upload dSYM files */,
 			);
 			buildRules = (
 			);
@@ -401,6 +381,7 @@
 				3C38061E2688883900ED22CF /* FirebaseAuth */,
 				3C3806202688883900ED22CF /* FirebaseFirestore */,
 				3C3806222688883900ED22CF /* FirebaseStorageSwift-Beta */,
+				238B06C126917C6400C9F9A2 /* FirebaseCrashlytics */,
 			);
 			productName = hackertracker;
 			productReference = 5DD642591AC3C62300ED3256 /* hackertracker.app */;
@@ -500,18 +481,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5D02762121078A9300E5ED6A /* ShellScript */ = {
+		5D02762121078A9300E5ED6A /* Upload dSYM files */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Upload dSYM files";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 8905e29d4c9f8eb7baf966d4a30d17bbaadd563e ab87bc8855f8a89d411b1d18b3904bfd40d2a99b930ddc003b22fe7f3eca7c32\n";
+			shellScript = "${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -862,6 +844,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		238B06C126917C6400C9F9A2 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C3806192688883900ED22CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
 		3C38061A2688883900ED22CF /* FirebaseFirestoreSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3C3806192688883900ED22CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Firebase
 
 class HTInitViewController: UIViewController, HTConferenceTableViewControllerDelegate {
 
@@ -22,7 +21,6 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FirebaseApp.configure()
         playAnimation()
     }
 
