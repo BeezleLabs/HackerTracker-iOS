@@ -384,6 +384,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DD6427B1AC3C62300ED3256 /* Build configuration list for PBXNativeTarget "hackertracker" */;
 			buildPhases = (
+				231FF7A0269097490096CA5E /* Run SwiftLint */,
 				5DD642551AC3C62300ED3256 /* Sources */,
 				5DD642561AC3C62300ED3256 /* Frameworks */,
 				5DD642571AC3C62300ED3256 /* Resources */,
@@ -500,6 +501,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		231FF7A0269097490096CA5E /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Build-Phases/run-swift-lint.sh\n";
+		};
 		5D02762121078A9300E5ED6A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
