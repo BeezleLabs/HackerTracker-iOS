@@ -6,11 +6,10 @@
 //  Copyright © 2019 Beezle Labs. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 class HTInfoTableViewController: UITableViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,9 +47,6 @@ class HTInfoTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-
     }
-
 }

@@ -9,9 +9,19 @@
 import UIKit
 
 class HTHamburgerItemTableViewCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var iconView: UIImageView!
     var originalBackgroundColor: UIColor?
+
+    var titleText: String? {
+        get { titleLabel.text }
+        set { titleLabel.text = newValue }
+    }
+
+    var iconImage: UIImage? {
+        get { iconView.image }
+        set { iconView.image = newValue }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

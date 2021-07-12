@@ -9,10 +9,9 @@
 import UIKit
 
 class Animation {
-
     let context: CIContext = {
-        let eaglContext = EAGLContext(api: .openGLES2)
-        return CIContext(eaglContext: eaglContext!, options: convertToOptionalCIContextOptionDictionary([convertFromCIContextOption(CIContextOption.workingColorSpace): NSNull()]))
+        let eaglContext = EAGLContext(api: .openGLES2)!
+        return CIContext(eaglContext: eaglContext, options: convertToOptionalCIContextOptionDictionary([convertFromCIContextOption(CIContextOption.workingColorSpace): NSNull()]))
     }()
 
     let pixelScaleFactor = 50.0
@@ -26,7 +25,7 @@ class Animation {
     let stripeScaleBump = 50.0
     var stripeXPostion = 0.0
 
-    var originalSplashImage: UIImage!
+    var originalSplashImage: UIImage! // swiftlint:disable:this implicitly_unwrapped_optional
     var transitionStartTime = CACurrentMediaTime()
     var originalInputCIImage = CIImage()
 
@@ -144,7 +143,6 @@ class Animation {
             let combinedMask = applyBlendFilter(with: stripedImage, backgroundImage: nil, mask: maskedSplashImage),
             let combinedImage = applyBlendFilter(with: linearBumpedStripes, backgroundImage: exposureImage, mask: stripProgress > 0 ? combinedMask : nil),
             let cgImage = context.createCGImage(combinedImage, from: extent) {
-
             image = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
         }
 
@@ -188,11 +186,11 @@ class Animation {
             return whiteImage
         }
 
-        let sign = sin(progress * .pi * 2 * drand48()) < 0.5 ? 1.0 : -1.0
-        stripeXPostion += drand48() * stripeMoveSpeed * sign
+        let sign = sin(progress * .pi * 2 * Double.random(in: 0...1)) < 0.5 ? 1.0 : -1.0
+        stripeXPostion += Double.random(in: 0...1) * stripeMoveSpeed * sign
 
         stripeFilter.setValue(CIVector(x: CGFloat(stripeXPostion), y: 0), forKey: kCIInputCenterKey)
-        stripeFilter.setValue(stripeCutWidth + drand48() * sign * 2, forKey: kCIInputWidthKey)
+        stripeFilter.setValue(stripeCutWidth + Double.random(in: 0...1) * sign * 2, forKey: kCIInputWidthKey)
 
         let output = stripeFilter.outputImage?.clampedToExtent()
         return output?.transformed(by: CGAffineTransform(rotationAngle: .pi / 2))
@@ -263,13 +261,12 @@ class Animation {
         filter?.setValue(color, forKey: kCIInputColorKey)
         return filter
     }
-
 }
 
 // Helper function inserted by Swift 4.2 migrator.
 private func convertToOptionalCIContextOptionDictionary(_ input: [String: Any]?) -> [CIContextOption: Any]? {
 	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (CIContextOption(rawValue: key), value)})
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (CIContextOption(rawValue: key), value) })
 }
 
 // Helper function inserted by Swift 4.2 migrator.

@@ -93,7 +93,7 @@ struct CalendarUtility {
             try? self.eventStore.save(event, span: .thisEvent)
         })
 
-        view.present(saveAlert, animated: true, completion: nil)
+        view.present(saveAlert, animated: true)
     }
 
     private func deniedAccessAlert(view: HTEventDetailViewController) {
@@ -108,7 +108,7 @@ struct CalendarUtility {
             }
         })
 
-        view.present(deniedAlert, animated: true, completion: nil)
+        view.present(deniedAlert, animated: true)
     }
 
     private func duplicateAlert(htEvent: HTEventModel, view: HTEventDetailViewController) {
@@ -119,7 +119,7 @@ struct CalendarUtility {
 
         duplicateAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 
-        view.present(duplicateAlert, animated: true, completion: nil)
+        view.present(duplicateAlert, animated: true)
     }
 
     private func isDuplicate(newEvent: EKEvent) -> Bool {

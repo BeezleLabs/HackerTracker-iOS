@@ -42,6 +42,7 @@ class HTSettingsTableViewController: UITableViewController {
         }
     }
 
+    // swiftlint:disable:next function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = SettingsCells.allCases[indexPath.section]
         switch section {
@@ -56,7 +57,7 @@ class HTSettingsTableViewController: UITableViewController {
             cell.backgroundColor = UIColor.clear
             return cell
         case .notification:
-            let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
+            let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
             cell.textLabel?.text = "Notifications"
             cell.detailTextLabel?.text = "Turn on notifications"
             cell.detailTextLabel?.lineBreakMode = .byWordWrapping

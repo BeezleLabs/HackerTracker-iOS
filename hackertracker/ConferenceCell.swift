@@ -9,24 +9,25 @@
 import UIKit
 
 class ConferenceCell: UITableViewCell {
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var dates: UILabel!
-    @IBOutlet weak var color: UIView!
+    @IBOutlet private var name: UILabel!
+    @IBOutlet private var dates: UILabel!
+    @IBOutlet private var color: UIView!
 
-    var con: ConferenceModel?
+    var conference: ConferenceModel?
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        accessoryType = isSelected ? .checkmark : .none
+        color.isHidden = !isSelected
     }
 
     func setConference(conference: ConferenceModel) {
-        self.con = conference
-        self.name.text = self.con?.name
+        self.conference = conference
+        self.name.text = self.conference?.name
         let dfu = DateFormatterUtility.shared
-        let start = dfu.monthDayYearFormatter.string(from: (conference.start_timestamp))
-        let end = dfu.monthDayYearFormatter.string(from: (conference.end_timestamp))
+        let start = dfu.monthDayYearFormatter.string(from: (conference.startTimestamp))
+        let end = dfu.monthDayYearFormatter.string(from: (conference.endTimestamp))
         self.dates.text = "\(start) - \(end)"
     }
-
 }

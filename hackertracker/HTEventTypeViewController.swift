@@ -9,30 +9,16 @@
 import UIKit
 
 class HTEventTypeViewController: UIViewController {
+    @IBOutlet private var descriptionTextView: UITextView!
 
-    @IBOutlet weak var descriptionTextView: UITextView!
-
-    var event_type: HTEventType?
+    var eventType: HTEventType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let et = event_type {
-            navigationItem.title = et.name
-            descriptionTextView.text = et.description
+        if let eventType = eventType {
+            navigationItem.title = eventType.name
+            descriptionTextView.text = eventType.description
         }
-
-        // Do any additional setup after loading the view.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

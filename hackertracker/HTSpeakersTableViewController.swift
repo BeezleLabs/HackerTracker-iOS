@@ -23,18 +23,18 @@ class HTSpeakersTableViewController: UITableViewController {
             switch result {
             case let .success(speakerList):
                 self.speakerSections.removeAll()
-                for l in "abcdefghijklmnopqrstuvwxyz" {
+                for letter in "abcdefghijklmnopqrstuvwxyz" {
                     var speakers: [HTSpeaker] = []
 
-                    for s in speakerList {
-                        let fl = s.name.prefix(1).lowercased()
+                    for speaker in speakerList {
+                        let firstLetter = speaker.name.prefix(1).lowercased()
                         // NSLog("\(l) : \(fl)")
-                        if fl == l.lowercased() {
-                            speakers.append(s)
+                        if firstLetter == letter.lowercased() {
+                            speakers.append(speaker)
                         }
                     }
-                    if speakers.count > 0 {
-                        self.speakerSections.append((letter: l.uppercased(), speakers: speakers))
+                    if !speakers.isEmpty {
+                        self.speakerSections.append((letter: letter.uppercased(), speakers: speakers))
                     }
                 }
 
@@ -46,10 +46,6 @@ class HTSpeakersTableViewController: UITableViewController {
         reloadSpeakers()
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
         clearsSelectionOnViewWillAppear = false
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     override func numberOfSections(in _: UITableView) -> Int {
@@ -69,13 +65,11 @@ class HTSpeakersTableViewController: UITableViewController {
     }
 
     override func sectionIndexTitles(for _: UITableView) -> [String]? {
-        var ret: [String] = []
-        for ss in speakerSections {
-            if ss.speakers.count > 0 {
-                ret.append(ss.letter)
-            }
+        var titles: [String] = []
+        for section in speakerSections where !section.speakers.isEmpty {
+            titles.append(section.letter)
         }
-        return ret
+        return titles
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,8 +91,7 @@ class HTSpeakersTableViewController: UITableViewController {
         if let selectedIndexPath = selectedIndexPath,
            let speaker = speaker,
            selectedIndexPath.section < speakerSections.count,
-           selectedIndexPath.row < speakerSections[selectedIndexPath.section].speakers.count
-        {
+           selectedIndexPath.row < speakerSections[selectedIndexPath.section].speakers.count {
             let newSpeaker = speakerSections[selectedIndexPath.section].speakers[selectedIndexPath.row]
             if newSpeaker.id == speaker.id {
                 tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
@@ -108,22 +101,24 @@ class HTSpeakersTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "speakerSegue" {
-            let svc: HTSpeakerViewController
+            let destController: HTSpeakerViewController
 
-            if let destNav = segue.destination as? UINavigationController, let _svc = destNav.viewControllers.first as? HTSpeakerViewController {
-                svc = _svc
+            if let destNav = segue.destination as? UINavigationController, let controller = destNav.viewControllers.first as? HTSpeakerViewController {
+                destController = controller
             } else {
-                svc = segue.destination as! HTSpeakerViewController
+                destController = segue.destination as! HTSpeakerViewController
             }
 
-            var ip: IndexPath
-            if let sc = sender as? UITableViewCell {
-                ip = tableView.indexPath(for: sc)! as IndexPath
+            var indexPath: IndexPath
+            if let cell = sender as? UITableViewCell, let cellIndexPath = tableView.indexPath(for: cell) {
+                indexPath = cellIndexPath
+            } else if let senderIndexPath = sender as? IndexPath {
+                indexPath = senderIndexPath
             } else {
-                ip = sender as! IndexPath
+                return
             }
 
-            svc.speaker = speakerSections[ip.section].speakers[ip.row]
+            destController.speaker = speakerSections[indexPath.section].speakers[indexPath.row]
         }
     }
 }

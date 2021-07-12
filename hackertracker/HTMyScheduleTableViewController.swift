@@ -6,11 +6,10 @@
 //  Copyright (c) 2015 Beezle Labs. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class HTMyScheduleTableViewController: BaseScheduleTableViewController {
-
     var eventsToken: UpdateToken?
     var events: [UserEventModel] = []
 
@@ -23,14 +22,14 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
     override func reloadEvents() {
         // super.reloadEvents()
 
-        self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
+        self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { result in
             switch result {
             case .success(let eventsList):
                 self.events.removeAll()
                 self.eventSections.removeAll()
                 let dfu = DateFormatterUtility.shared
-                if let conference = AnonymousSession.shared.currentConference, let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
-
+                let conference = AnonymousSession.shared.currentConference
+                if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
                     for day in dfu.getConferenceDates(start: start, end: end) {
                         var events: [UserEventModel] = []
                         let dayDate = dfu.yearMonthDayFormatter.date(from: day) ?? Date()
@@ -43,17 +42,17 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
                                 // NSLog("\(e.event.title) not bookmarked")
                             }
                         }
-                        if events.count > 0 {
+                        if !events.isEmpty {
                             self.eventSections.append((date: day, events: events))
                         }
                     }
                     self.tableView.reloadData()
                 }
 
-            case .failure(_):
-                NSLog("")
+            case .failure:
+                // TODO: Properly log failure
+                break
             }
         }
-
     }
 }
