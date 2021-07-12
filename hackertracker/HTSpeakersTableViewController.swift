@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import Crashlytics
 import UIKit
 
 class HTSpeakersTableViewController: UITableViewController {
