@@ -87,7 +87,6 @@ enum MapFile {
 }
 
 class MapLocationView: UIView, WKNavigationDelegate {
-
     var currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
     var mapOffset = CGPoint(x: 0, y: 0)
     var mapZoomLevel: CGFloat = 1.0
@@ -263,5 +262,4 @@ class MapLocationView: UIView, WKNavigationDelegate {
         webView.scrollView.zoomScale = mapZoomLevel
         webView.scrollView.contentOffset = mapOffset
     }
-
 }
