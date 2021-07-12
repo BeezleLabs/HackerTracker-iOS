@@ -6,22 +6,20 @@
 //  Copyright © 2017 Beezle Labs. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol EventCellDelegate: AnyObject {
     func updatedEvents()
 }
 
-public class EventCell: UITableViewCell {
-
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var subtitle: UILabel!
-    @IBOutlet weak var color: UIView!
-    @IBOutlet weak var et_label: UILabel!
-    @IBOutlet weak var favorited: UIImageView!
-    @IBOutlet weak var starttime: UILabel!
-    @IBOutlet weak var et_dot: UIView!
+class EventCell: UITableViewCell {
+    @IBOutlet private var title: UILabel!
+    @IBOutlet private var subtitle: UILabel!
+    @IBOutlet private var color: UIView!
+    @IBOutlet private var etLabel: UILabel!
+    @IBOutlet private var favorited: UIImageView!
+    @IBOutlet private var starttime: UILabel!
+    @IBOutlet private var etDot: UIView!
 
     weak var eventCellDelegate: EventCellDelegate?
     var userEvent: UserEventModel?
@@ -33,7 +31,7 @@ public class EventCell: UITableViewCell {
         initialize()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
@@ -45,18 +43,18 @@ public class EventCell: UITableViewCell {
         selectedBackgroundView = selectedView
     }
 
-    override public func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         let oldColor = color.backgroundColor
         super.setSelected(selected, animated: animated)
         color.backgroundColor = oldColor
-        et_dot.backgroundColor = oldColor
+        etDot.backgroundColor = oldColor
     }
 
-    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         let oldColor = color.backgroundColor
         super.setHighlighted(highlighted, animated: animated)
         color.backgroundColor = oldColor
-        et_dot.backgroundColor = oldColor
+        etDot.backgroundColor = oldColor
     }
 
     func bind(userEvent: UserEventModel) {
@@ -65,32 +63,20 @@ public class EventCell: UITableViewCell {
         let dfu = DateFormatterUtility.shared
         starttime.text = "\(dfu.shortDayOfMonthFormatter.string(from: event.begin))\n\(dfu.hourMinuteTimeFormatter.string(from: event.begin))\n\(dfu.timezoneFormatter.string(from: event.begin))"
 
-        var i = 0
-        var stext = ""
-        for s in event.speakers {
-            if i > 0 {
-                stext = "\(stext), \(s.name)"
-            } else {
-                stext = "\(s.name)"
-            }
-            i = i + 1
-        }
+        let speakers = event.speakers.map(\.name).joined(separator: ", ")
 
         titleAttr = NSMutableAttributedString(string: "")
-        let titleAttrString = NSMutableAttributedString(string: event.title)
-        let titleParStyle = NSMutableParagraphStyle()
-        titleParStyle.alignment = .left
-        titleAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: titleParStyle, range: NSRange(location: 0, length: (event.title as NSString).length))
-        titleAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .title3), range: NSRange(location: 0, length: (event.title as NSString).length))
-
+        let titleAttrString = NSMutableAttributedString(string: event.title, attributes: [
+            .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+            .font: UIFont.preferredFont(forTextStyle: .title3),
+        ])
         titleAttr.append(titleAttrString)
 
-        if event.speakers.count > 0 {
-            let spAttrString = NSMutableAttributedString(string: stext)
-            let spParStyle = NSMutableParagraphStyle()
-            spParStyle.alignment = .left
-            spAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: spParStyle, range: NSRange(location: 0, length: (stext as NSString).length))
-            spAttrString.addAttribute(NSAttributedString.Key.font, value: UIFont.preferredFont(forTextStyle: .body), range: NSRange(location: 0, length: (stext as NSString).length))
+        if !event.speakers.isEmpty {
+            let spAttrString = NSMutableAttributedString(string: speakers, attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .body),
+            ])
             titleAttr.append(NSAttributedString(string: "\n"))
             titleAttr.append(spAttrString)
         }
@@ -98,15 +84,15 @@ public class EventCell: UITableViewCell {
         title.attributedText = titleAttr
 
         color.backgroundColor = UIColor(hexString: event.type.color)
-        et_dot.backgroundColor = UIColor(hexString: event.type.color)
-        et_dot.layer.cornerRadius = et_dot.frame.width/2
-        et_dot.layer.masksToBounds = true
-        // et_label.layer.borderColor = UIColor(hexString: event.type.color).cgColor
-        // et_label.layer.borderWidth = 1.0
-        // et_label.backgroundColor = UIColor(hexString: event.type.color)
-        et_label.text = " \(event.type.name) "
-        // et_label.layer.masksToBounds = true
-        // et_label.layer.cornerRadius = 5
+        etDot.backgroundColor = UIColor(hexString: event.type.color)
+        etDot.layer.cornerRadius = etDot.frame.width / 2
+        etDot.layer.masksToBounds = true
+        // etLabel.layer.borderColor = UIColor(hexString: event.type.color).cgColor
+        // etLabel.layer.borderWidth = 1.0
+        // etLabel.backgroundColor = UIColor(hexString: event.type.color)
+        etLabel.text = " \(event.type.name) "
+        // etLabel.layer.masksToBounds = true
+        // etLabel.layer.cornerRadius = 5
 
         subtitle.text = "\(event.location.name)"
 
@@ -118,16 +104,15 @@ public class EventCell: UITableViewCell {
             favorited.tintColor = UIColor.gray
         }
 
-        let tr = UITapGestureRecognizer(target: self, action: #selector(tappedStar(sender:)))
-        tr.delegate = self
-        favorited.addGestureRecognizer(tr)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedStar(sender:)))
+        tapGesture.delegate = self
+        favorited.addGestureRecognizer(tapGesture)
         favorited.isUserInteractionEnabled = true
-
     }
 
     @objc func tappedStar(sender: AnyObject) {
-        if let e = userEvent {
-            addBookmark(bookmark: e.bookmark, event: e.event, eventCell: self)
+        if let userEvent = userEvent {
+            addBookmark(bookmark: userEvent.bookmark, event: userEvent.event, eventCell: self)
         } else {
             NSLog("No event defined on star tap")
         }

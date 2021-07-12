@@ -9,7 +9,6 @@
 import SpriteKit
 
 class PongScene: SKScene, SKPhysicsContactDelegate {
-
     let xPos: CGFloat = 135.0
 
     var left: SKSpriteNode?
@@ -72,9 +71,9 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
             .wait(forDuration: 0.2),
             .group([
                 .move(to: CGPoint(x: -xPos, y: 0), duration: 0.4),
-                .rotate(toAngle: 0.0, duration: 0.5)
-                ])
-            ])
+                .rotate(toAngle: 0.0, duration: 0.5),
+            ]),
+        ])
 
         left?.run(leftAction)
 
@@ -82,15 +81,14 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
             .wait(forDuration: 0.2),
             .group([
                 .move(to: CGPoint(x: xPos, y: 0), duration: 0.4),
-                .rotate(toAngle: 0.0, duration: 0.5)
-                ])
-            ])
+                .rotate(toAngle: 0.0, duration: 0.5),
+            ]),
+        ])
 
         right?.run(rightAction) {
             self.skull?.physicsBody?.isDynamic = true
             completion()
         }
-
     }
 
     private func startGame() {
@@ -105,14 +103,13 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
             .sequence([
                 .wait(forDuration: 0.05),
                 .run {
-                    let x = self.skull?.position.x ?? 0
-
-                    if x < 0 {
+                    let xPos = self.skull?.position.x ?? 0
+                    if xPos < 0 {
                         self.left?.run( .move(to: CGPoint(x: -self.xPos, y: skull.position.y), duration: duration / 8))
                     } else {
                         self.left?.run( .move(to: CGPoint(x: -self.xPos, y: -skull.position.y), duration: duration))
                     }
-                }
+                },
             ])
         )
         left?.run(leftPlay, withKey: "leftPlay")
@@ -121,21 +118,18 @@ class PongScene: SKScene, SKPhysicsContactDelegate {
             .sequence([
                 .wait(forDuration: 0.05),
                 .run {
-                    let x = self.skull?.position.x ?? 0
-
-                    if x < 0 {
+                    let xPos = self.skull?.position.x ?? 0
+                    if xPos < 0 {
                         self.right?.run( .move(to: CGPoint(x: self.xPos, y: -skull.position.y), duration: duration))
                     } else {
                         self.right?.run( .move(to: CGPoint(x: self.xPos, y: skull.position.y), duration: duration / 8))
                     }
-
-                }
+                },
             ])
         )
         right?.run(rightPlay, withKey: "rightPlay")
 
-        let sign = drand48() - 0.5 > 0 ? 1.0 : -1.0
+        let sign = Double.random(in: 0...1) - 0.5 > 0 ? 1.0 : -1.0
         skull.physicsBody?.applyImpulse(CGVector(dx: sign * 0.9, dy: sign * 0.9))
-
     }
 }

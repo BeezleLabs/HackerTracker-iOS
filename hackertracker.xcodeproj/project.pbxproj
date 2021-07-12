@@ -40,7 +40,6 @@
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
 		5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642681AC3C62300ED3256 /* Images.xcassets */; };
-		5DD642781AC3C62300ED3256 /* HackertrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD642771AC3C62300ED3256 /* HackertrackerTests.swift */; };
 		5DDD629720F2A73800E527C5 /* HTConferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */; };
 		5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */; };
 		5DDD629F20F7A96200E527C5 /* HTFAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */; };
@@ -56,7 +55,7 @@
 		83177DC322D41E8A00EE9624 /* AnonymousSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83177DC222D41E8A00EE9624 /* AnonymousSession.swift */; };
 		8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */; };
 		8318FE8D22B9BC1600EC44CC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8C22B9BC1600EC44CC /* Document.swift */; };
-		8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8E22B9C29500EC44CC /* EventModel.swift */; };
+		8318FE8F22B9C29500EC44CC /* HTEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE8E22B9C29500EC44CC /* HTEventModel.swift */; };
 		8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */; };
 		8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8345F2D21F1297D4006761BE /* MapLocationView.swift */; };
 		834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834713D51F1818240092C2FE /* EventDateHeaderView.swift */; };
@@ -99,6 +98,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		238B06BE269172FC00C9F9A2 /* NSParagraphStyle+leftAlignedParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSParagraphStyle+leftAlignedParagraph.swift"; sourceTree = "<group>"; };
 		2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventTypeViewController.swift; sourceTree = "<group>"; };
 		2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventTypeTableViewController.swift; sourceTree = "<group>"; };
 		3C18D62124CEC7C20048E88D /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
@@ -130,7 +130,6 @@
 		5DD642681AC3C62300ED3256 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5DD642711AC3C62300ED3256 /* hackertrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hackertrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD642761AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DD642771AC3C62300ED3256 /* HackertrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackertrackerTests.swift; sourceTree = "<group>"; };
 		5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTConferenceTableViewController.swift; sourceTree = "<group>"; };
 		5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceCell.swift; sourceTree = "<group>"; };
 		5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFAQTableViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +145,7 @@
 		83177DC222D41E8A00EE9624 /* AnonymousSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSession.swift; sourceTree = "<group>"; };
 		8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceModel.swift; sourceTree = "<group>"; };
 		8318FE8C22B9BC1600EC44CC /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		8318FE8E22B9C29500EC44CC /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		8318FE8E22B9C29500EC44CC /* HTEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTEventModel.swift; sourceTree = "<group>"; };
 		8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSConferenceDataController.swift; sourceTree = "<group>"; };
 		8345F2D21F1297D4006761BE /* MapLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationView.swift; sourceTree = "<group>"; };
 		834713D51F1818240092C2FE /* EventDateHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDateHeaderView.swift; path = Views/EventDateHeaderView.swift; sourceTree = "<group>"; };
@@ -195,17 +194,18 @@
 			children = (
 			);
 			name = Frameworks;
+
 			sourceTree = "<group>";
 		};
 		49730E4C1E2D1A9F0029438C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				B5A9F7521F17307800EDC6FE /* Animation.swift */,
+				3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */,
 				49730E4F1E2D1E330029438C /* DateFormatterUtility.swift */,
+				3C18D62124CEC7C20048E88D /* NotificationUtility.swift */,
 				78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */,
 				49730E4D1E2D1AB50029438C /* Theme.swift */,
-				3C18D62124CEC7C20048E88D /* NotificationUtility.swift */,
-				3CAC7F1124D55E9E00B08579 /* CalendarUtility.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -213,14 +213,13 @@
 		498AD73E1E2D2BC900DD5B56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */,
-				2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */,
-				83AAA58D1EDF939A00139C1D /* hackertracker-Bridging-Header.h */,
 				5D4C528B22E27E2E0042E401 /* HTCocViewController.swift */,
 				5DDD629620F2A73800E527C5 /* HTConferenceTableViewController.swift */,
 				B5449CAE1F1ADE97003DE448 /* HTEmptyDetailViewController.swift */,
 				5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */,
 				786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */,
+				2AD66B1524D84A470061E985 /* HTEventTypeTableViewController.swift */,
+				2AD66B1424D84A470061E985 /* HTEventTypeViewController.swift */,
 				5DDD629E20F7A96200E527C5 /* HTFAQTableViewController.swift */,
 				5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */,
 				5D4C528922E26B740042E401 /* HTInfoTableViewController.swift */,
@@ -230,13 +229,13 @@
 				5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */,
 				5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */,
 				7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */,
+				3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */,
 				5D6707FA2118A3980007F01F /* HTSpeakersTableViewController.swift */,
 				5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */,
 				B5449CB01F1AE23C003DE448 /* HTSplitViewController.swift */,
 				5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */,
 				5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */,
 				5D6707EA21161C6F0007F01F /* HTWiFiViewController.swift */,
-				3CD8840D24CAD87F006B0B90 /* HTSettingsTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -244,18 +243,18 @@
 		498AD73F1E2D2C0400DD5B56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B568B6641F1F3FAB0092CE4A /* scene.sks */,
 				5D6707F4211787E10007F01F /* AboutCell.swift */,
-				5D6707F5211787E10007F01F /* AboutCell.xib */,
 				5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */,
 				49730E4A1E2929BC0029438C /* EventCell.swift */,
-				8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */,
 				834713D51F1818240092C2FE /* EventDateHeaderView.swift */,
 				8345F2D21F1297D4006761BE /* MapLocationView.swift */,
 				B552AC891F2084D4006D4F98 /* PongScene.swift */,
-				B568B6641F1F3FAB0092CE4A /* scene.sks */,
 				8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */,
-				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
+				5D6707F5211787E10007F01F /* AboutCell.xib */,
+				8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */,
+				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
 			);
 			name = Views;
@@ -283,18 +282,19 @@
 		5DD6425B1AC3C62300ED3256 /* hackertracker */ = {
 			isa = PBXGroup;
 			children = (
+				5DA268531D06006400249C63 /* LaunchScreen.storyboard */,
+				5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */,
+				5DD642681AC3C62300ED3256 /* Images.xcassets */,
 				8318FE9022BAFDB400EC44CC /* DataControllers */,
+				238B06BD269172D900C9F9A2 /* Extensions */,
 				8318FE8922B9BAAA00EC44CC /* FireBaseModels */,
 				83679CE5210CED76000CADE4 /* HamburgerMenu */,
-				5DD642651AC3C62300ED3256 /* Main.storyboard */,
-				5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */,
-				498AD73E1E2D2BC900DD5B56 /* ViewControllers */,
-				49730E4C1E2D1A9F0029438C /* Utilities */,
-				498AD73F1E2D2C0400DD5B56 /* Views */,
-				5DD642681AC3C62300ED3256 /* Images.xcassets */,
 				5D47A2B020EEB7DD0015401B /* ht2019.xcdatamodeld */,
+				5DD642651AC3C62300ED3256 /* Main.storyboard */,
 				5DD6425C1AC3C62300ED3256 /* Supporting Files */,
-				5DA268531D06006400249C63 /* LaunchScreen.storyboard */,
+				49730E4C1E2D1A9F0029438C /* Utilities */,
+				498AD73E1E2D2BC900DD5B56 /* ViewControllers */,
+				498AD73F1E2D2C0400DD5B56 /* Views */,
 			);
 			path = hackertracker;
 			sourceTree = "<group>";
@@ -311,7 +311,6 @@
 		5DD642741AC3C62300ED3256 /* hackertrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				5DD642771AC3C62300ED3256 /* HackertrackerTests.swift */,
 				5DD642751AC3C62300ED3256 /* Supporting Files */,
 			);
 			path = hackertrackerTests;
@@ -330,7 +329,7 @@
 			children = (
 				8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */,
 				8318FE8C22B9BC1600EC44CC /* Document.swift */,
-				8318FE8E22B9C29500EC44CC /* EventModel.swift */,
+				8318FE8E22B9C29500EC44CC /* HTEventModel.swift */,
 			);
 			name = FireBaseModels;
 			sourceTree = "<group>";
@@ -338,8 +337,8 @@
 		8318FE9022BAFDB400EC44CC /* DataControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */,
 				83177DC222D41E8A00EE9624 /* AnonymousSession.swift */,
+				8318FE9122BAFDD800EC44CC /* FSConferenceDataController.swift */,
 			);
 			name = DataControllers;
 			sourceTree = "<group>";
@@ -347,11 +346,11 @@
 		83679CE5210CED76000CADE4 /* HamburgerMenu */ = {
 			isa = PBXGroup;
 			children = (
-				83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */,
-				83679CE6210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift */,
 				83679CE8210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift */,
-				83679CE9210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib */,
 				83679CEC210CFD24000CADE4 /* HTHamburgerItemTableViewCell.swift */,
+				83679CE6210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift */,
+				83679CE3210CED71000CADE4 /* HTHamburgerMenuViewController.swift */,
+				83679CE9210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib */,
 				83679CED210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib */,
 			);
 			name = HamburgerMenu;
@@ -364,6 +363,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DD6427B1AC3C62300ED3256 /* Build configuration list for PBXNativeTarget "hackertracker" */;
 			buildPhases = (
+				231FF7A0269097490096CA5E /* Run SwiftLint */,
 				5DD642551AC3C62300ED3256 /* Sources */,
 				5DD642561AC3C62300ED3256 /* Frameworks */,
 				5DD642571AC3C62300ED3256 /* Resources */,
@@ -504,6 +504,7 @@
 			files = (
 				8318FE9222BAFDD800EC44CC /* FSConferenceDataController.swift in Sources */,
 				5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */,
+				238B06BF269172FC00C9F9A2 /* NSParagraphStyle+leftAlignedParagraph.swift in Sources */,
 				8318FE8B22B9BAD100EC44CC /* ConferenceModel.swift in Sources */,
 				5D47A2B220EEB7DD0015401B /* ht2019.xcdatamodeld in Sources */,
 				5D6707F6211787E10007F01F /* AboutCell.swift in Sources */,
@@ -534,7 +535,7 @@
 				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */,
-				8318FE8F22B9C29500EC44CC /* EventModel.swift in Sources */,
+				8318FE8F22B9C29500EC44CC /* HTEventModel.swift in Sources */,
 				3C18D62224CEC7C20048E88D /* NotificationUtility.swift in Sources */,
 				83177DC322D41E8A00EE9624 /* AnonymousSession.swift in Sources */,
 				5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */,
@@ -557,7 +558,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DD642781AC3C62300ED3256 /* HackertrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,7 +713,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -744,7 +743,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "hackertracker/hackertracker-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

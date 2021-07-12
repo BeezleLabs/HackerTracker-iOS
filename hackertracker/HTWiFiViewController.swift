@@ -6,12 +6,11 @@
 //  Copyright © 2018 Beezle Labs. All rights reserved.
 //
 
-import UIKit
 import SafariServices
+import UIKit
 
 class HTWiFiViewController: UIViewController {
-
-    @IBOutlet weak var vertStackView: UIStackView!
+    @IBOutlet private var vertStackView: UIStackView!
 
     private lazy var backgroundView: UIView = {
         let view = UIView()
@@ -29,22 +28,15 @@ class HTWiFiViewController: UIViewController {
        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
 
         self.view.addGestureRecognizer(tapGesture)
-
     }
 
     @objc func backgroundTapped() {
-
-        let l = "https://wifireg.defcon.org/"
-        if let u = URL(string: l) {
-            let svc = SFSafariViewController(url: u)
-            svc.preferredBarTintColor = UIColor.backgroundGray
-            svc.preferredControlTintColor = UIColor.white
-            present(svc, animated: true, completion: nil)
-        }    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if let url = URL(string: "https://wifireg.defcon.org/") {
+            let controller = SFSafariViewController(url: url)
+            controller.preferredBarTintColor = UIColor.backgroundGray
+            controller.preferredControlTintColor = UIColor.white
+            present(controller, animated: true)
+        }
     }
 
     private func pinBackground(_ view: UIView, to stackView: UIStackView) {
@@ -52,16 +44,15 @@ class HTWiFiViewController: UIViewController {
         stackView.insertSubview(view, at: 0)
         view.pin(to: stackView)
     }
-
 }
 
-public extension UIView {
+extension UIView {
     func pin(to view: UIView) {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trailingAnchor.constraint(equalTo: view.trailingAnchor),
             topAnchor.constraint(equalTo: view.topAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
+            bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
 }

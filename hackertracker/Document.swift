@@ -46,13 +46,7 @@ final class Collection<T: Document> {
     }
 
     func index(of document: DocumentSnapshot) -> Int? {
-        for i in 0 ..< documents.count {
-            if documents[i].documentID == document.documentID {
-                return i
-            }
-        }
-
-        return nil
+        return documents.firstIndex(where: { $0.documentID == document.documentID })
     }
 
     func listen(updateHandler: @escaping ([DocumentChange]) -> Void) {
@@ -62,7 +56,7 @@ final class Collection<T: Document> {
                 print("Error fetching snapshot results: \(String(describing: error))")
                 return
             }
-            let models = snapshot.documents.map { (document) -> T in
+            let models = snapshot.documents.map { document -> T in
                 if let model = T(dictionary: document.data()) {
                     return model
                 } else {
@@ -83,5 +77,4 @@ final class Collection<T: Document> {
     deinit {
         stopListening()
     }
-
 }

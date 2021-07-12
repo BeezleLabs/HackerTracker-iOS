@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 Beezle Labs. All rights reserved.
 //
 
-import UIKit
 import CoreData
 
 class HTInitViewController: UIViewController, HTConferenceTableViewControllerDelegate {
-
-    @IBOutlet weak var splashView: UIImageView!
+    @IBOutlet private var splashView: UIImageView!
     let hackerAnimationDuration = 2.0
 
     private var timerUp = false
@@ -31,8 +29,8 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
 
     func loadCon() {
         if let conCode = UserDefaults.standard.string(forKey: "conference") {
-            AnonymousSession.initialize(conCode: conCode) { (session) in
-                if let _ = session {
+            AnonymousSession.initialize(conCode: conCode) { session in
+                if session != nil {
                     self.timerComplete()
                 } else {
                     self.displayConferencePicker()
@@ -46,12 +44,12 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
     func displayConferencePicker() {
         if let currentViewController = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as? HTConferenceTableViewController {
             currentViewController.delegate = self
-            self.present(currentViewController, animated: true, completion: nil)
+            self.present(currentViewController, animated: true)
         }
     }
 
     func didSelect(conference: ConferenceModel) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         loadCon()
     }
 
@@ -61,7 +59,8 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
     }
 
     func playAnimation() {
-        let animation = Animation(duration: hackerAnimationDuration, image: splashView.image!) { (image) in
+        guard let image = splashView.image else { return }
+        let animation = Animation(duration: hackerAnimationDuration, image: image) { image in
             self.splashView.image = image
         }
 
@@ -70,11 +69,10 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
 
     func go() {
         if timerUp {
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "HTHamburgerMenuViewController") as? HTHamburgerMenuViewController {
-                let kw = UIApplication.shared.windows.first { $0.isKeyWindow }
-                kw?.rootViewController = vc
+            if let controller = storyboard?.instantiateViewController(withIdentifier: "HTHamburgerMenuViewController") as? HTHamburgerMenuViewController {
+                let keyWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
+                keyWindow?.rootViewController = controller
             }
         }
     }
-
 }

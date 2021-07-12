@@ -13,7 +13,6 @@ protocol HTHamburgerMenuTableViewControllerDelegate: AnyObject {
 }
 
 class HTHamburgerMenuTableViewController: UITableViewController {
-
     weak var delegate: HTHamburgerMenuTableViewControllerDelegate?
     let items: [HamburgerItem]
     var selectedItem: HamburgerItem?
@@ -30,7 +29,7 @@ class HTHamburgerMenuTableViewController: UITableViewController {
 
     func setSelectedItem(hamburgerItem: HamburgerItem) {
         selectedItem = hamburgerItem
-        guard let index = items.firstIndex(where: { (item) -> Bool in
+        guard let index = items.firstIndex(where: { item -> Bool in
             return item == hamburgerItem
         }) else {
             return
@@ -39,6 +38,7 @@ class HTHamburgerMenuTableViewController: UITableViewController {
         tableView.selectRow(at: IndexPath(row: index + 1, section: 0), animated: false, scrollPosition: .none)
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -55,11 +55,6 @@ class HTHamburgerMenuTableViewController: UITableViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Header") as! HTHamburgerHeaderTableViewCell
@@ -68,14 +63,8 @@ class HTHamburgerMenuTableViewController: UITableViewController {
             let currentItem = items[indexPath.row - 1]
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as! HTHamburgerItemTableViewCell
-            cell.titleLabel.text = currentItem.title
-
-            if let image = UIImage(named: currentItem.imageID) {
-                cell.iconView.image = image
-            } else {
-                cell.iconView.image = nil
-            }
-
+            cell.titleText = currentItem.title
+            cell.iconImage = UIImage(named: currentItem.imageID)
             return cell
         }
     }

@@ -9,19 +9,17 @@
 import UIKit
 
 class ScheduleEmptyStateView: UIView {
-
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var descriptionIcon: UIImageView!
+    @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var descriptionIcon: UIImageView!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         backgroundColor = UIColor.backgroundGray
     }
 
-    public func bind(description: String, image: UIImage) {
+    func bind(description: String, image: UIImage) {
         backgroundColor = UIColor.backgroundGray
         descriptionLabel.text = description
         descriptionIcon.image = image
     }
-
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 class HTFAQTableViewController: UITableViewController {
-
     var faqsToken: UpdateToken?
     var faqs: [HTFAQModel] = []
 
@@ -17,14 +16,6 @@ class HTFAQTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.loadFAQs()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     // MARK: - Table view data source
@@ -46,47 +37,44 @@ class HTFAQTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let body = """
+        Q: \(faqs[indexPath.row].question)
 
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.left
-
-        var body = "Frequently Asked Question Not Found"
-        body = "Q: \(self.faqs[indexPath.row].question)\n\nA: \(self.faqs[indexPath.row].answer)"
+        A: \(faqs[indexPath.row].answer)
+        """
 
         let messageText = NSMutableAttributedString(
             string: body,
             attributes: [
-                NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
-                NSAttributedString.Key.foregroundColor: UIColor.black
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .body),
+                .foregroundColor: UIColor.black,
             ]
         )
 
-        let popup: UIAlertController = UIAlertController(title: "FAQ", message: "", preferredStyle: UIAlertController.Style.alert)
+        let popup = UIAlertController(title: "FAQ", message: "", preferredStyle: UIAlertController.Style.alert)
         popup.setValue(messageText, forKey: "attributedMessage")
 
-        let doneItem: UIAlertAction = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil)
+        let doneItem = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil)
         popup.addAction(doneItem)
 
-        self.present(popup, animated: true, completion: nil)
-
+        self.present(popup, animated: true)
     }
 
     func alertControllerBackgroundTapped() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 
     func loadFAQs() {
-
-        faqsToken = FSConferenceDataController.shared.requestFAQs(forConference: AnonymousSession.shared.currentConference, descending: false) { (result) in
+        faqsToken = FSConferenceDataController.shared.requestFAQs(forConference: AnonymousSession.shared.currentConference, descending: false) { result in
             switch result {
             case .success(let faqsList):
                 self.faqs = faqsList
                 self.tableView.reloadData()
-            case .failure(_):
-                NSLog("")
+            case .failure:
+                // TODO: Properly log failure
+                break
             }
         }
     }
-
 }

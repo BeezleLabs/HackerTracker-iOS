@@ -9,10 +9,9 @@
 import UIKit
 
 class EventDateHeaderView: UITableViewHeaderFooterView {
-
     private let dateLabel = UILabel()
 
-    public override init(reuseIdentifier: String?) {
+    override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -28,11 +27,11 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
         dateLabel.font = UIFont.preferredFont(forTextStyle: .body)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    public func bindToDate(date: Date?) {
+    func bindToDate(date: Date?) {
         if let date = date {
             if Calendar.current.isDateInYesterday(date) {
                 dateLabel.text = "    Yesterday".uppercased()
@@ -41,17 +40,15 @@ class EventDateHeaderView: UITableViewHeaderFooterView {
             } else if Calendar.current.isDateInTomorrow(date) {
                 dateLabel.text = "    Tomorrow".uppercased()
             } else {
-                let dfu = DateFormatterUtility.shared
-                let dt = dfu.dayMonthDayOfWeekFormatter.string(from: date).uppercased()
-                dateLabel.text = "    \(dt)"
+                let dateText = DateFormatterUtility.shared.dayMonthDayOfWeekFormatter.string(from: date).uppercased()
+                dateLabel.text = "    \(dateText)"
             }
         } else {
             dateLabel.text = "Unknown"
         }
     }
 
-    public func bind(_ headerLabel: String) {
+    func bind(_ headerLabel: String) {
         dateLabel.text = "    \(headerLabel)"
     }
-
 }

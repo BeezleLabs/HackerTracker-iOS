@@ -7,113 +7,47 @@
 //
 
 import UIKit
+import WebKit
 
-public enum Location {
-    case unknown
-    case track1
-    case track2
-    case track3
-    case track101
-    case icona
-    case iconb
-    case iconc
-    case icond
-    case icone
-    case iconf
-    case demolabs
+enum Location: String, CaseIterable {
+    case track1 = "track 1"
+    case track2 = "track 2"
+    case track3 = "track 3"
+    case track101 = "101 track"
+    case icona = "icon a"
+    case iconb = "icon b"
+    case iconc = "icon c"
+    case icond = "icon d"
+    case icone = "icon e"
+    case iconf = "icon f"
+    case demolabs = "demo labs"
     case chillout
-    case contest
+    case contest = "contest area"
     case skytalks
-    case aivillage
-    case hhv
-    case blueteam
-    case wireless
-    case ethics
-    case cpv
-    case ics
-    case sev
-    case iot
-    case recon
+    case aivillage = "ai village"
+    case hhv = "hardware hacking"
+    case blueteam = "blue team"
+    case wireless = "wireless village"
+    case ethics = "ethics village"
+    case cpv = "crypto & privacy"
+    case ics = "ics village"
+    case sev = "social engineer"
+    case iot = "iot village"
+    case recon = "recon village"
     case chv
-    case vxv
-    case caadv
-    case ddv
+    case vxv = "vx (chip-off) village"
+    case caadv = "caad village"
+    case ddv = "data duplication"
     case r00tz
-    case phv
+    case phv = "packet hacking"
     case cannabis
-    case vendor
+    case vendor = "vendor area"
     case bio
+    case unknown
 
-    public static func valueFromString(_ value: String) -> Location {
-        let lc = value.lowercased()
-        if lc.contains("track 1") {
-            return .track1
-        } else if lc.contains("track 2") {
-            return .track2
-        } else if lc.contains("track 3") {
-            return .track3
-        } else if lc.contains("101 track") {
-            return .track101
-        } else if lc.contains("icon a") {
-            return .icona
-        } else if lc.contains("icon b") {
-            return .iconb
-        } else if lc.contains("icon c") {
-            return .iconc
-        } else if lc.contains("icon d") {
-            return .icond
-        } else if lc.contains("icon e") {
-            return .icone
-        } else if lc.contains("icon f") {
-            return .iconf
-        } else if lc.contains("demo labs") {
-            return .demolabs
-        } else if lc.contains("skytalks") {
-            return .skytalks
-        } else if lc.contains("contest area") {
-            return .contest
-        } else if lc.contains("ai village") {
-            return .aivillage
-        } else if lc.contains("hardware hacking") {
-            return .hhv
-        } else if lc.contains("blue team") {
-            return .blueteam
-        } else if lc.contains("wireless village") {
-            return .wireless
-        } else if lc.contains("ethics village") {
-            return .ethics
-        } else if lc.contains("crypto & privacy") {
-            return .cpv
-        } else if lc.contains("ics village") {
-            return .ics
-        } else if lc.contains("cannabis") {
-            return .cannabis
-        } else if lc.contains("social engineer") {
-            return .sev
-        } else if lc.contains("iot village") {
-            return .iot
-        } else if lc.contains("recon village") {
-            return .recon
-        } else if lc.contains("vx (chip-off) village") {
-            return .vxv
-        } else if lc.contains("caad village") {
-            return .caadv
-        } else if lc.contains("data duplication") {
-            return .ddv
-        } else if lc.contains("r00tz") {
-            return .r00tz
-        } else if lc.contains("vendor area") {
-            return .vendor
-        } else if lc.contains("packet hacking") {
-            return .phv
-        } else if lc.contains("bio") {
-            return .bio
-        } else if lc.contains("chillout") {
-            return .chillout
-        } else {
-            return .unknown
-        }
-
+    static func valueFromString(_ value: String) -> Location {
+        let value = value.lowercased()
+        return .allCases.first(where: { value.contains($0.rawValue) }) ?? .unknown
     }
 }
 
@@ -121,7 +55,7 @@ enum TimeOfDay {
     case day
     case night
 
-    public func url() -> URL {
+    func url() -> URL {
         return MapLocationView.caesarsFile as URL
     }
 
@@ -131,7 +65,6 @@ enum TimeOfDay {
         let hour = calendar.component(.hour, from: date)
         // 8pm
         return hour >= 20 ? .night : .day
-
     }
 }
 
@@ -153,10 +86,7 @@ enum MapFile {
     }*/
 }
 
-class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
-
-    let webView = UIWebView()
-
+class MapLocationView: UIView, WKNavigationDelegate {
     var currentIntrinsizeContentSize = CGSize(width: 0, height: 0)
     var mapOffset = CGPoint(x: 0, y: 0)
     var mapZoomLevel: CGFloat = 1.0
@@ -279,49 +209,57 @@ class MapLocationView: UIView, UIWebViewDelegate, UIScrollViewDelegate {
         }
     }
 
-    public init (location: Location) {
+    public init(location: Location) {
         super.init(frame: CGRect.zero)
 
         currentLocation = location
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         setup()
     }
 
     func setup() {
+        let userScript = WKUserScript(source: """
+        var meta = document.createElement('meta');
+        meta.setAttribute('name', 'viewport');
+        meta.setAttribute('content', 'width=device-width');
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        """, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+
+        let contentController = WKUserContentController()
+        contentController.addUserScript(userScript)
+
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.userContentController = contentController
+
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+
         addSubview(webView)
 
         webView.isUserInteractionEnabled = false
         webView.translatesAutoresizingMaskIntoConstraints = false
 
-        webView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        webView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        webView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            webView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            webView.topAnchor.constraint(equalTo: topAnchor),
+            webView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
 
         // webView.loadRequest(URLRequest(url: MapFile.mapFile(currentLocation)))
-        webView.delegate = self
-        webView.scalesPageToFit = true
-        webView.scrollView.delegate = self
+        webView.navigationDelegate = self
         webView.scrollView.scrollsToTop = false
     }
 
     override var intrinsicContentSize: CGSize {
-        get {
-            return currentIntrinsizeContentSize
-        }
+        return currentIntrinsizeContentSize
     }
 
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
         webView.scrollView.zoomScale = mapZoomLevel
         webView.scrollView.contentOffset = mapOffset
     }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-    }
-
 }

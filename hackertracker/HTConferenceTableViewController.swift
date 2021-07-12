@@ -6,15 +6,14 @@
 //  Copyright © 2018 Beezle Labs. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 protocol HTConferenceTableViewControllerDelegate: AnyObject {
     func didSelect(conference: ConferenceModel)
 }
 
 class HTConferenceTableViewController: UITableViewController {
-
     var conferences: [ConferenceModel] = []
     var conferencesToken: UpdateToken?
     var selectCon: ConferenceModel?
@@ -26,10 +25,6 @@ class HTConferenceTableViewController: UITableViewController {
             selectCon = AnonymousSession.shared.currentConference
         }
         self.loadConferences()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     // MARK: - Table view data source
@@ -55,7 +50,7 @@ class HTConferenceTableViewController: UITableViewController {
                 UserDefaults.standard.set(selectedConference.code, forKey: "conference")
                 if AnonymousSession.shared != nil {
                     AnonymousSession.shared.currentConference = selectedConference
-                    DateFormatterUtility.shared.update(identifier: selectedConference.tz)
+                    DateFormatterUtility.shared.update(identifier: selectedConference.timeZone)
                 }
                 delegate?.didSelect(conference: selectedConference)
                 guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
@@ -75,28 +70,25 @@ class HTConferenceTableViewController: UITableViewController {
         cell.setConference(conference: conferenceModel)
 
         if let selectCon = selectCon, conferenceModel.code == selectCon.code {
-            cell.accessoryType = .checkmark
-            cell.color.isHidden = false
+            cell.setSelected(true, animated: true)
         } else {
-            cell.accessoryType = .none
-            cell.color.isHidden = true
+            cell.setSelected(false, animated: true)
         }
 
         return cell
     }
 
     func loadConferences() {
-        conferencesToken = FSConferenceDataController.shared.requestConferences { (result) in
+        conferencesToken = FSConferenceDataController.shared.requestConferences { result in
             switch result {
             case .success(let conferenceList):
                 self.conferences = conferenceList
                 // self.conferences.append(contentsOf: conferenceList)
                 self.tableView.reloadData()
-            case .failure(_):
-                NSLog("")
+            case .failure:
+                // TODO: Properly log failure
+                break
             }
         }
-
     }
-
 }

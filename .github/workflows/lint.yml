@@ -1,0 +1,13 @@
+name: lint
+
+on: [pull_request]
+
+jobs:
+  SwiftLint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run SwiftLint (on changed files)
+        uses: norio-nomura/action-swiftlint@3.1.0
+        with:
+          args: --strict --force-exclude

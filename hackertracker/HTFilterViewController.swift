@@ -9,16 +9,16 @@
 import UIKit
 
 class HTFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var popupView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var bottomToTop: NSLayoutConstraint!
-    @IBOutlet weak var fadeView: UIView!
-    @IBOutlet weak var toggleButton: UIButton!
+    @IBOutlet private var popupView: UIView!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var bottomToTop: NSLayoutConstraint!
+    @IBOutlet private var fadeView: UIView!
+    @IBOutlet private var toggleButton: UIButton!
 
     var all: [HTEventType] = []
     var filtered: [HTEventType] = []
-    var delegate: FilterViewControllerDelegate?
-    var toggle: Bool = true
+    weak var delegate: FilterViewControllerDelegate?
+    var toggle = true
 
     var centeredConstraint: NSLayoutConstraint?
 
@@ -43,10 +43,6 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -62,10 +58,10 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
 
-        let et = self.all[indexPath.section]
-        cell.textLabel?.text = et.name
+        let eventType = self.all[indexPath.section]
+        cell.textLabel?.text = eventType.name
 
-        if filtered.contains(et) {
+        if filtered.contains(eventType) {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -76,32 +72,32 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let et = self.all[indexPath.section]
+            let eventType = self.all[indexPath.section]
             if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
-                if let index = filtered.firstIndex(of: et) {
+                if let index = filtered.firstIndex(of: eventType) {
                     filtered.remove(at: index)
                 }
             } else {
                 cell.accessoryType = .checkmark
-                filtered.append(et)
+                filtered.append(eventType)
             }
             delegate?.filterList(filteredEventTypes: filtered)
         }
     }
 
-    @IBAction func toggleCheck(_ sender: Any) {
+    @IBAction private func toggleCheck(_ sender: Any) {
         if toggle {
             filtered = []
         } else {
             filtered = all
         }
-        toggle = !toggle
+        toggle.toggle()
         self.tableView.reloadData()
         delegate?.filterList(filteredEventTypes: filtered)
     }
 
-    @IBAction func doneButtonPressed(_ sender: Any) {
+    @IBAction private func doneButtonPressed(_ sender: Any) {
         close()
     }
 
@@ -114,17 +110,15 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
 
             UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
-
-            }, completion: { (_) in
-                self.dismiss(animated: false, completion: nil)
+            }, completion: { _ in
+                self.dismiss(animated: false)
             })
         } else {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
     }
-
 }
 
-protocol FilterViewControllerDelegate {
+protocol FilterViewControllerDelegate: AnyObject {
     func filterList(filteredEventTypes: [HTEventType])
 }

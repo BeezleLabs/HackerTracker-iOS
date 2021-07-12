@@ -6,8 +6,8 @@
 //  Copyright © 2019 Beezle Labs. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct ConferenceModel: Codable {
     var id: Int
@@ -15,10 +15,10 @@ struct ConferenceModel: Codable {
     var code: String
     var endDate: String
     var startDate: String
-    var tz: String
+    var timeZone: String
     var coc: String
-    var start_timestamp: Date
-    var end_timestamp: Date
+    var startTimestamp: Date
+    var endTimestamp: Date
     var maps: [HTMapModel]
 }
 
@@ -29,21 +29,21 @@ extension ConferenceModel: Document {
         let code = dictionary["code"] as? String ?? ""
         let endDate = dictionary["end_date"] as? String ?? ""
         let startDate = dictionary["start_date"] as? String ?? ""
-        let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var start_timestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
-        if let start_tz = dictionary["start_timestamp"] as? Timestamp {
-            start_timestamp = start_tz.dateValue()
+        let tmpDate = "2019-01-01T00:00:00.000-0000"
+        var startTimestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmpDate) ?? Date()
+        if let startTS = dictionary["start_timestamp"] as? Timestamp {
+            startTimestamp = startTS.dateValue()
         }
-        var end_timestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
-        if let end_tz = dictionary["end_timestamp"] as? Timestamp {
-            end_timestamp = end_tz.dateValue()
+        var endTimestamp = DateFormatterUtility.shared.iso8601Formatter.date(from: tmpDate) ?? Date()
+        if let endTS = dictionary["end_timestamp"] as? Timestamp {
+            endTimestamp = endTS.dateValue()
         }
-        let tz = dictionary["timezone"] as? String ?? ""
+        let timeZone = dictionary["timezone"] as? String ?? ""
         let coc = dictionary["codeofconduct"] as? String ?? ""
         var maps: [HTMapModel] = []
 
         if let mapValues = dictionary["maps"] as? [Any] {
-            maps = mapValues.compactMap { (element) -> HTMapModel? in
+            maps = mapValues.compactMap { element -> HTMapModel? in
                 if let element = element as? [String: Any], let map = HTMapModel(dictionary: element) {
                     return map
                 }
@@ -52,7 +52,7 @@ extension ConferenceModel: Document {
             }
         }
 
-        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, tz: tz, coc: coc, start_timestamp: start_timestamp, end_timestamp: end_timestamp, maps: maps)
+        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, timeZone: timeZone, coc: coc, startTimestamp: startTimestamp, endTimestamp: endTimestamp, maps: maps)
     }
 }
 
@@ -73,40 +73,47 @@ extension HTMapModel: Document {
 struct HTArticleModel: Codable {
     var name: String
     var text: String
-    var updated_at: Date
+    var updatedAt: Date
 
+    enum CodingKeys: String, CodingKey {
+        case name, text, updatedAt = "updated_at"
+    }
 }
 
 extension HTArticleModel: Document {
     init?(dictionary: [String: Any]) {
         let name = dictionary["name"] as? String ?? ""
         let text = dictionary["text"] as? String ?? ""
-        let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
-        if let updated_ts = dictionary["updated_at"] as? Timestamp {
-            updated_at = updated_ts.dateValue()
+        let tmpDate = "2019-01-01T00:00:00.000-0000"
+        var updatedAt = DateFormatterUtility.shared.iso8601Formatter.date(from: tmpDate) ?? Date()
+        if let updatedTS = dictionary["updated_at"] as? Timestamp {
+            updatedAt = updatedTS.dateValue()
         }
 
-        self.init(name: name, text: text, updated_at: updated_at)
+        self.init(name: name, text: text, updatedAt: updatedAt)
     }
 }
 
 struct HTFAQModel: Codable {
     var question: String
     var answer: String
-    var updated_at: Date
+    var updatedAt: Date
+
+    enum CodingKeys: String, CodingKey {
+        case question, answer, updatedAt = "updated_at"
+    }
 }
 
 extension HTFAQModel: Document {
     init?(dictionary: [String: Any]) {
         let question = dictionary["question"] as? String ?? ""
         let answer = dictionary["answer"] as? String ?? ""
-        let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
-        if let update_tz = dictionary["updated_at"] as? Timestamp {
-            updated_at = update_tz.dateValue()
+        let tmpDate = "2019-01-01T00:00:00.000-0000"
+        var updatedAt = DateFormatterUtility.shared.iso8601Formatter.date(from: tmpDate) ?? Date()
+        if let updateTS = dictionary["updated_at"] as? Timestamp {
+            updatedAt = updateTS.dateValue()
         }
-        self.init(question: question, answer: answer, updated_at: updated_at)
+        self.init(question: question, answer: answer, updatedAt: updatedAt)
     }
 }
 
@@ -114,8 +121,11 @@ struct HTVendorModel: Codable {
     var name: String
     var desc: String
     var link: String
-    var updated_at: Date
+    var updatedAt: Date
 
+    enum CodingKeys: String, CodingKey {
+        case name, desc, link, updatedAt = "updated_at"
+    }
 }
 
 extension HTVendorModel: Document {
@@ -123,12 +133,12 @@ extension HTVendorModel: Document {
         let name = dictionary["name"] as? String ?? ""
         let desc = dictionary["description"] as? String ?? ""
         let link = dictionary["link"] as? String ?? ""
-        let tmp_date = "2019-01-01T00:00:00.000-0000"
-        var updated_at = DateFormatterUtility.shared.iso8601Formatter.date(from: tmp_date) ?? Date()
-        if let update_tz = dictionary["updated_at"] as? Timestamp {
-            updated_at = update_tz.dateValue()
+        let tmpDate = "2019-01-01T00:00:00.000-0000"
+        var updatedAt = DateFormatterUtility.shared.iso8601Formatter.date(from: tmpDate) ?? Date()
+        if let updateTS = dictionary["updated_at"] as? Timestamp {
+            updatedAt = updateTS.dateValue()
         }
 
-        self.init(name: name, desc: desc, link: link, updated_at: updated_at)
+        self.init(name: name, desc: desc, link: link, updatedAt: updatedAt)
     }
 }

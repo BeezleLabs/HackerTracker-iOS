@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class UpdateCell: UITableViewCell {
-    @IBOutlet var titleLabel: UILabel!
+class UpdateCell: UITableViewCell {
+    @IBOutlet private var titleLabel: UILabel!
 
-     @IBOutlet var descriptionLabel: UILabel!
+     @IBOutlet private var descriptionLabel: UILabel!
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
@@ -20,7 +20,7 @@ public class UpdateCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         backgroundColor = .backgroundGray
@@ -29,11 +29,10 @@ public class UpdateCell: UITableViewCell {
 
     func bind(message: HTArticleModel) {
         let dfu = DateFormatterUtility.shared
-        let date = dfu.monthDayTimeFormatter.string(from: message.updated_at)
+        let date = dfu.monthDayTimeFormatter.string(from: message.updatedAt)
 
         titleLabel.text = message.name
         descriptionLabel.text = "[\(date)]: \(message.text)"
-
     }
 
     func bind(vendor: HTVendorModel) {
@@ -45,5 +44,4 @@ public class UpdateCell: UITableViewCell {
         titleLabel.text = title
         descriptionLabel.text = desc
     }
-
 }
