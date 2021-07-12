@@ -9,18 +9,11 @@
 import UIKit
 
 class HTHamburgerHeaderTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var conferenceTitle: UILabel!
+    @IBOutlet private var conferenceTitle: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
         selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
 }

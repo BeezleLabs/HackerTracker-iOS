@@ -19,8 +19,7 @@ import Foundation
  http://www.chibicode.org/?p=41
  */
 class DateFormatterUtility {
-
-    var tz = TimeZone(identifier: "America/Los_Angeles")
+    var timeZone = TimeZone(identifier: "America/Los_Angeles")
 
     /*static let shared : [String:DateFormatterUtility] =
      ["America/Los_Angeles": DateFormatterUtility(identifier: "America/Los_Angeles"),
@@ -36,25 +35,24 @@ class DateFormatterUtility {
     }
 
     func update(identifier: String) {
-
         if preferLocalTime() {
-            tz = .current
+            timeZone = .current
         } else {
-            tz = TimeZone(identifier: identifier)
+            timeZone = TimeZone(identifier: identifier)
         }
 
-        yearMonthDayTimeFormatter.timeZone = tz
-        timezoneFormatter.timeZone = tz
-        yearMonthDayFormatter.timeZone = tz
-        monthDayTimeFormatter.timeZone = tz
-        yearMonthDayNoTimeZoneTimeFormatter.timeZone = tz
-        dayOfWeekFormatter.timeZone = tz
-        shortDayOfMonthFormatter.timeZone = tz
-        dayMonthDayOfWeekFormatter.timeZone = tz
-        shortDayMonthDayTimeOfWeekFormatter.timeZone = tz
-        dayOfWeekTimeFormatter.timeZone = tz
-        hourMinuteTimeFormatter.timeZone = tz
-        monthDayYearFormatter.timeZone = tz
+        yearMonthDayTimeFormatter.timeZone = timeZone
+        timezoneFormatter.timeZone = timeZone
+        yearMonthDayFormatter.timeZone = timeZone
+        monthDayTimeFormatter.timeZone = timeZone
+        yearMonthDayNoTimeZoneTimeFormatter.timeZone = timeZone
+        dayOfWeekFormatter.timeZone = timeZone
+        shortDayOfMonthFormatter.timeZone = timeZone
+        dayMonthDayOfWeekFormatter.timeZone = timeZone
+        shortDayMonthDayTimeOfWeekFormatter.timeZone = timeZone
+        dayOfWeekTimeFormatter.timeZone = timeZone
+        hourMinuteTimeFormatter.timeZone = timeZone
+        monthDayYearFormatter.timeZone = timeZone
     }
 
     func preferLocalTime() -> Bool {
@@ -182,5 +180,4 @@ class DateFormatterUtility {
         }
         return ret
     }
-
 }

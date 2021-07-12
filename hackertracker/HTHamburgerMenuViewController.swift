@@ -19,7 +19,6 @@ struct HamburgerItem {
 }
 
 class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewControllerDelegate {
-
     var currentViewController: UIViewController?
     var hamburgerMenuLeftContraint: NSLayoutConstraint?
     var hamburgerMenuOpen = false
@@ -38,7 +37,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
                 "Maps": "HTMapsViewController",
                 "Speakers": "HTSpeakersTableViewController",
                 "Categories": "HTEventTypeTableViewController",
-                "More": "HTInfoTableViewController"
+                "More": "HTInfoTableViewController",
     ]
 
     // This is a list of tabs we will display in the hamburger menu
@@ -49,7 +48,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         HamburgerItem(title: "Maps", imageID: "map-active"),
         HamburgerItem(title: "Speakers", imageID: "icon_user"),
         HamburgerItem(title: "Categories", imageID: "menu"),
-        HamburgerItem(title: "More", imageID: "filter")
+        HamburgerItem(title: "More", imageID: "filter"),
     ]
 
     let hamburgerMenuWidth: CGFloat = 300.0
@@ -61,14 +60,16 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         let edgeSwipe = UIScreenEdgePanGestureRecognizer()
         edgeSwipe.addTarget(self, action: #selector(edgeSwipe(sender:)))
         edgeSwipe.edges = UIRectEdge.left
         self.view.addGestureRecognizer(edgeSwipe)
 
         hamburgerTableViewController.delegate = self
-        if let c = UserDefaults.standard.string(forKey: "conference") {
-            NSLog("Conference set to \(c), sending to Home tab")
+        if let conf = UserDefaults.standard.string(forKey: "conference") {
+            NSLog("Conference set to \(conf), sending to Home tab")
             setCurrentViewController(tabID: intialTab)
         } else {
             NSLog("No conference set, sending to Conference tab")
@@ -132,7 +133,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     }
 
     func didSelectID(tabID: String) {
-        let item = self.displayedTabs.first { (item) -> Bool in
+        let item = self.displayedTabs.first { item -> Bool in
             return item.title == tabID
         }
 
@@ -161,7 +162,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
             self.alphaView.alpha = appearing ? 0.5 : 0.0
         }
 
-        hamburgerMenuOpen = !hamburgerMenuOpen
+        hamburgerMenuOpen.toggle()
     }
 
     @objc func edgeSwipe(sender: UIPanGestureRecognizer) {
@@ -174,7 +175,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
             break
         case .changed:
             leftConstraint.constant = max(min(leftConstraint.constant + sender.translation(in: self.view).x, hamburgerMenuWidth), 0.0)
-            self.alphaView.alpha = leftConstraint.constant/(hamburgerMenuWidth * 2)
+            self.alphaView.alpha = leftConstraint.constant / (hamburgerMenuWidth * 2)
         default:
             if hamburgerMenuOpen && leftConstraint.constant < 250 {
                 hamburgerMenuOpen = false

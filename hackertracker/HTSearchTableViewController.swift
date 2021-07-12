@@ -9,28 +9,28 @@
 import UIKit
 
 class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, EventDetailDelegate {
-
-    @IBOutlet weak var eventSearchBar: UISearchBar!
+    @IBOutlet private var eventSearchBar: UISearchBar!
 
     var filteredEvents: [UserEventModel] = []
     var allEvents: [UserEventModel] = []
     var eventsToken: UpdateToken?
-    var st = ""
+    var searchText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference!, descending: false) { (result) in
+        eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { result in
             switch result {
             case .success(let eventList):
                 self.allEvents = eventList
                 self.filterEvents()
-            case .failure(_):
-                NSLog("")
+            case .failure:
+                // TODO: Properly log failure
+                break
             }
         }
 
-        tableView.register(UINib.init(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
+        tableView.register(UINib(nibName: "EventCell", bundle: Bundle(for: EventCell.self)), forCellReuseIdentifier: "EventCell")
         eventSearchBar.placeholder = "Search Events"
         eventSearchBar.delegate = self
         self.title = "Search"
@@ -42,11 +42,10 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
 
     func reloadEvents() {
-
         self.tableView.reloadData()
 
         if let splitViewController = splitViewController,
-            !splitViewController.isCollapsed {
+           !splitViewController.isCollapsed {
             tableView.scrollToNearestSelectedRow(at: .middle, animated: true)
         }
     }
@@ -99,43 +98,39 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        st = searchBar.text?.lowercased() ?? ""
+        searchText = searchBar.text?.lowercased() ?? ""
 
         filterEvents()
     }
 
     func filterEvents() {
         var currentEvents: [UserEventModel] = []
-        for e in allEvents {
-            if e.event.title.lowercased().contains(st) {
-                currentEvents.append(e)
-            } else if e.event.description.lowercased().contains(st) {
-                currentEvents.append(e)
-            } else if e.event.location.name.lowercased().contains(st) {
-                currentEvents.append(e)
+        for userEvent in allEvents {
+            if userEvent.event.title.lowercased().contains(searchText) {
+                currentEvents.append(userEvent)
+            } else if userEvent.event.description.lowercased().contains(searchText) {
+                currentEvents.append(userEvent)
+            } else if userEvent.event.location.name.lowercased().contains(searchText) {
+                currentEvents.append(userEvent)
             } else {
-                for s in e.event.speakers {
-                    if s.name.lowercased().contains(st) {
-                        currentEvents.append(e)
-                    }
+                for speaker in userEvent.event.speakers where speaker.name.lowercased().contains(searchText) {
+                    currentEvents.append(userEvent)
                 }
             }
         }
         self.filteredEvents = currentEvents
         self.tableView.reloadData()
-
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        st = searchBar.text?.lowercased() ?? ""
+        searchText = searchBar.text?.lowercased() ?? ""
 
         filterEvents()
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        if searchText.count > 0 {
-            st = searchBar.text?.lowercased() ?? ""
+        if !searchText.isEmpty {
+            self.searchText = searchBar.text?.lowercased() ?? ""
         } else {
             self.filteredEvents = []
         }
@@ -147,31 +142,32 @@ class HTSearchTableViewController: UITableViewController, UISearchBarDelegate, E
             return false
         }
 
-        return text.count > 0
+        return !text.isEmpty
     }
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "eventDetailSegue" {
+            let destController: HTEventDetailViewController
 
-            let dv: HTEventDetailViewController
-
-            if let destinationNav = segue.destination as? UINavigationController, let _dv = destinationNav.viewControllers.first as? HTEventDetailViewController {
-                dv = _dv
+            if let destinationNav = segue.destination as? UINavigationController, let controller = destinationNav.viewControllers.first as? HTEventDetailViewController {
+                destController = controller
             } else {
-                dv = segue.destination as! HTEventDetailViewController
+                destController = segue.destination as! HTEventDetailViewController
             }
 
             var indexPath: IndexPath
-            if let ec = sender as? EventCell {
-                indexPath = tableView.indexPath(for: ec)! as IndexPath
+            if let cell = sender as? EventCell, let cellIndexPath = tableView.indexPath(for: cell) {
+                indexPath = cellIndexPath
+            } else if let senderIndexPath = sender as? IndexPath {
+                indexPath = senderIndexPath
             } else {
-                indexPath = sender as! IndexPath
+                return
             }
 
-            dv.event = self.filteredEvents[indexPath.row].event
-            dv.bookmark = self.filteredEvents[indexPath.row].bookmark
-            dv.delegate = self
+            destController.event = self.filteredEvents[indexPath.row].event
+            destController.bookmark = self.filteredEvents[indexPath.row].bookmark
+            destController.delegate = self
         }
     }
 }
