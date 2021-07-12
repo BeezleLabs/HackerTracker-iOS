@@ -21,7 +21,6 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FirebaseApp.configure()
         playAnimation()
     }
 
