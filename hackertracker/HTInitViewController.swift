@@ -7,8 +7,6 @@
 //
 
 import CoreData
-import Firebase
-import UIKit
 
 class HTInitViewController: UIViewController, HTConferenceTableViewControllerDelegate {
     @IBOutlet private var splashView: UIImageView!
@@ -21,7 +19,6 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FirebaseApp.configure()
         playAnimation()
     }
 

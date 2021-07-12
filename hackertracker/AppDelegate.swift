@@ -7,8 +7,7 @@
 //
 
 import CoreData
-import Crashlytics
-import Fabric
+import UserNotifications
 import Firebase
 import UIKit
 import UserNotifications
@@ -18,10 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        FirebaseApp.configure()
 
-        Fabric.with([Crashlytics.self])
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: self.backgroundManagedObjectContext, queue: OperationQueue.main) { notifaction in
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: self.backgroundManagedObjectContext, queue: OperationQueue.main) { (notifaction) in
             self.managedObjectContext?.mergeChanges(fromContextDidSave: notifaction)
         }
 
