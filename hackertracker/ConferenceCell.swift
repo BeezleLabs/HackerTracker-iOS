@@ -21,13 +21,25 @@ class ConferenceCell: UITableViewCell {
         accessoryType = isSelected ? .checkmark : .none
         color.isHidden = !isSelected
     }
+    
+    func selectCell(_ select: Bool) {
+        if select == true {
+            accessoryType = .checkmark
+            color.isHidden = false
+        } else {
+            accessoryType = .none
+            color.isHidden = true
+        }
+    }
 
     func setConference(conference: ConferenceModel) {
         self.conference = conference
         self.name.text = self.conference?.name
         let dfu = DateFormatterUtility.shared
-        let start = dfu.monthDayYearFormatter.string(from: (conference.startTimestamp))
-        let end = dfu.monthDayYearFormatter.string(from: (conference.endTimestamp))
-        self.dates.text = "\(start) - \(end)"
+        if let startDate = dfu.yearMonthDayFormatter.date(from: (conference.startDate)), let endDate = dfu.yearMonthDayFormatter.date(from: (conference.endDate)) {
+            let start = dfu.monthDayYearFormatter.string(from: startDate)
+            let end = dfu.monthDayYearFormatter.string(from: endDate)
+            self.dates.text = "\(start) - \(end)"
+        }
     }
 }

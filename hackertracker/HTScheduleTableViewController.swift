@@ -10,7 +10,7 @@ import CoreData
 import SpriteKit
 import UIKit
 
-class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate { // swiftlint:disable:this type_body_length
+class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate {
     typealias EventSection = (date: String, events: [UserEventModel])
 
     var eventSections: [EventSection] = []
@@ -37,10 +37,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         let titleViewButton = UIButton(type: .system)
         titleViewButton.setTitleColor(UIColor.white, for: .normal)
         titleViewButton.setTitle(AnonymousSession.shared.currentConference.name, for: .normal)
-        titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
-
-        // Create action listener
-        titleViewButton.addTarget(self, action: #selector(scrollToCurrentDate(_:)), for: .touchUpInside)
+        titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
 
         // Set the title view with newly created button
         navigationItem.titleView = titleViewButton
@@ -71,7 +68,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
         self.tableView.reloadData()
 
-        if pullDownAnimation == nil {
+        /*if pullDownAnimation == nil {
             let refreshControl = UIRefreshControl()
             refreshControl.attributedTitle = NSAttributedString(string: "Pong", attributes: [ .foregroundColor: UIColor.white ])
             refreshControl.tintColor = .clear
@@ -91,7 +88,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
             self.refreshControl = refreshControl
             tableView.addSubview(refreshControl)
-        }
+        }*/
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -342,20 +339,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
-    @objc func sync(sender: AnyObject) {
-        pullDownAnimation?.play()
-
-        Timer.scheduledTimer(timeInterval: TimeInterval(3.0), target: self, selector: #selector(timerComplete), userInfo: nil, repeats: false)
-    }
-
-    @objc func timerComplete() {
-        self.refreshControl?.endRefreshing()
-        pullDownAnimation?.reset()
-    }
 }
 
-class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate {
+class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate {
     var filterView: HTFilterViewController?
 
     var typesToken: UpdateToken?
@@ -367,6 +353,10 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let tvb = navigationItem.titleView as! UIButton
+        tvb.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
+
         getEventTypes()
         self.filterButton.addTarget(self, action: #selector(filterClick(sender:)), for: UIControl.Event.touchUpInside)
         self.navigationController?.view.addSubview(filterButton)
@@ -379,6 +369,20 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         self.filterButton.isUserInteractionEnabled = true
 
         tableView.backgroundColor = UIColor.backgroundGray
+        NSLog("HTScheduleTableViewController viewWillAppear")
+    }
+
+    @objc func displayConferencePicker(sender: AnyObject) {
+        let cvc = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as! HTConferenceTableViewController
+        cvc.delegate = self
+        present(cvc, animated: false)
+    }
+
+    func didSelect(conference: ConferenceModel) {
+        if let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController {
+            menuvc.didSelectID(tabID: "Schedule")
+            menuvc.backgroundTapped()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

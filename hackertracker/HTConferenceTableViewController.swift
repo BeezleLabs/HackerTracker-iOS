@@ -46,6 +46,11 @@ class HTConferenceTableViewController: UITableViewController {
             let selectedConference = conferences[indexPath.row]
             if cell.accessoryType == .checkmark, selectedConference.code == selectCon?.code {
                 // NSLog("already checked")
+                guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
+                    self.dismiss(animated: false)
+                    return
+                }
+                menuvc.backgroundTapped()
             } else {
                 UserDefaults.standard.set(selectedConference.code, forKey: "conference")
                 if AnonymousSession.shared != nil {
@@ -54,10 +59,10 @@ class HTConferenceTableViewController: UITableViewController {
                 }
                 delegate?.didSelect(conference: selectedConference)
                 guard let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController else {
-                    NSLog("Couldn't find parent view controller")
+                    self.dismiss(animated: false)
                     return
                 }
-                menuvc.didSelectID(tabID: "Home")
+                menuvc.didSelectID(tabID: "Schedule")
                 menuvc.backgroundTapped()
             }
         }
@@ -69,24 +74,35 @@ class HTConferenceTableViewController: UITableViewController {
         let conferenceModel = self.conferences[indexPath.row]
         cell.setConference(conference: conferenceModel)
 
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let myCell = cell as! ConferenceCell
+        let conferenceModel = self.conferences[indexPath.row]
+        myCell.setConference(conference: conferenceModel)
+
         if let selectCon = selectCon, conferenceModel.code == selectCon.code {
+            NSLog("Selected Con \(selectCon.code)")
             cell.setSelected(true, animated: true)
         } else {
             cell.setSelected(false, animated: true)
         }
-
-        return cell
     }
 
     func loadConferences() {
         conferencesToken = FSConferenceDataController.shared.requestConferences { result in
             switch result {
             case .success(let conferenceList):
-                self.conferences = conferenceList
-                // self.conferences.append(contentsOf: conferenceList)
+                self.conferences = []
+                for conference in conferenceList where !conference.hidden {
+                    self.conferences.append(conference)
+                }
+                // TODO: Add a configuration setting to see past conferences or hidden conferences
+                // self.conferences = conferenceList
                 self.tableView.reloadData()
             case .failure:
-                // TODO: Properly log failure
+                // NSLog("Error loading conferences")
                 break
             }
         }

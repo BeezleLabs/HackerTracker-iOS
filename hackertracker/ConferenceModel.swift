@@ -20,6 +20,7 @@ struct ConferenceModel: Codable {
     var startTimestamp: Date
     var endTimestamp: Date
     var maps: [HTMapModel]
+    var hidden: Bool
 }
 
 extension ConferenceModel: Document {
@@ -51,8 +52,9 @@ extension ConferenceModel: Document {
                 return nil
             }
         }
+        let hidden = dictionary["hidden"] as? Bool ?? false
 
-        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, timeZone: timeZone, coc: coc, startTimestamp: startTimestamp, endTimestamp: endTimestamp, maps: maps)
+        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, timeZone: timeZone, coc: coc, startTimestamp: startTimestamp, endTimestamp: endTimestamp, maps: maps, hidden: hidden)
     }
 }
 

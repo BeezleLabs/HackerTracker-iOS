@@ -36,6 +36,9 @@
 		5D6707FD2119059E0007F01F /* HTSpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */; };
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
+		5DB4E0A5284925AA0012F6F4 /* CountDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB4E0A3284925AA0012F6F4 /* CountDownCell.swift */; };
+		5DB4E0A6284925AA0012F6F4 /* CountDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DB4E0A4284925AA0012F6F4 /* CountDownCell.xib */; };
+		5DB4E0A8284941CB0012F6F4 /* Hacked-KerX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DB4E0A7284941CB0012F6F4 /* Hacked-KerX.ttf */; };
 		5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */; };
 		5DD6425F1AC3C62300ED3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */; };
 		5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD642651AC3C62300ED3256 /* Main.storyboard */; };
@@ -125,6 +128,9 @@
 		5D6707FC2119059E0007F01F /* HTSpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTSpeakerViewController.swift; sourceTree = "<group>"; };
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5DB4E0A3284925AA0012F6F4 /* CountDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountDownCell.swift; path = Views/CountDownCell.swift; sourceTree = "<group>"; };
+		5DB4E0A4284925AA0012F6F4 /* CountDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CountDownCell.xib; path = Views/CountDownCell.xib; sourceTree = "<group>"; };
+		5DB4E0A7284941CB0012F6F4 /* Hacked-KerX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hacked-KerX.ttf"; sourceTree = "<group>"; };
 		5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DD642591AC3C62300ED3256 /* hackertracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackertracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD6425D1AC3C62300ED3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -260,12 +266,22 @@
 				B552AC891F2084D4006D4F98 /* PongScene.swift */,
 				8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
+				5DB4E0A3284925AA0012F6F4 /* CountDownCell.swift */,
+				5DB4E0A4284925AA0012F6F4 /* CountDownCell.xib */,
 				5D6707F5211787E10007F01F /* AboutCell.xib */,
 				8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */,
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		5DB4E0A9284941DC0012F6F4 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5DB4E0A7284941CB0012F6F4 /* Hacked-KerX.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		5DD642501AC3C62300ED3256 = {
@@ -290,6 +306,7 @@
 		5DD6425B1AC3C62300ED3256 /* hackertracker */ = {
 			isa = PBXGroup;
 			children = (
+				5DB4E0A9284941DC0012F6F4 /* fonts */,
 				5DA268531D06006400249C63 /* LaunchScreen.storyboard */,
 				5DD6425E1AC3C62300ED3256 /* AppDelegate.swift */,
 				5DD642681AC3C62300ED3256 /* Images.xcassets */,
@@ -478,12 +495,14 @@
 				8315ED1D1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib in Resources */,
 				5DD642671AC3C62300ED3256 /* Main.storyboard in Resources */,
 				83679CEF210CFD24000CADE4 /* HTHamburgerItemTableViewCell.xib in Resources */,
+				5DB4E0A6284925AA0012F6F4 /* CountDownCell.xib in Resources */,
 				5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */,
 				B552ACAA1F243F6C006D4F98 /* scene.sks in Resources */,
 				83E74C3C1ED7AB580078E5FB /* UpdateCell.xib in Resources */,
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
+				5DB4E0A8284941CB0012F6F4 /* Hacked-KerX.ttf in Resources */,
 				5D6707F7211787E10007F01F /* AboutCell.xib in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 			);
@@ -568,6 +587,7 @@
 				5D6707EB21161C6F0007F01F /* HTWiFiViewController.swift in Sources */,
 				834713D61F1818240092C2FE /* EventDateHeaderView.swift in Sources */,
 				B552AC8A1F2084D4006D4F98 /* PongScene.swift in Sources */,
+				5DB4E0A5284925AA0012F6F4 /* CountDownCell.swift in Sources */,
 				8315ED1B1F18222E001F2DA8 /* ScheduleEmptyStateView.swift in Sources */,
 				5D6707FB2118A3980007F01F /* HTSpeakersTableViewController.swift in Sources */,
 				8318FE8F22B9C29500EC44CC /* HTEventModel.swift in Sources */,
@@ -665,7 +685,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -714,7 +734,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -739,7 +759,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = hackertracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -769,7 +789,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = hackertracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

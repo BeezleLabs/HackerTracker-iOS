@@ -10,15 +10,29 @@ import UIKit
 
 class CountDownCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var conLabel: UILabel!
+    @IBOutlet weak var counter: UITextField!
+    
+    let dayColor = UIColor(hexString: "C16784")
+    let hourColor = UIColor(hexString: "316295")
+    let minColor = UIColor(hexString: "71CC98")
+    let secColor = UIColor(hexString: "993C2A")
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
+
+        backgroundColor = .backgroundGray
+        selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
 
-        // Configure the view for the selected state
+        backgroundColor = .backgroundGray
+        selectionStyle = .none
     }
     
+    func apply(startDate: Date) {
+        
+    }
 }

@@ -52,9 +52,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
         let titleViewButton = UIButton(type: .system)
         titleViewButton.setTitleColor(UIColor.white, for: .normal)
-        titleViewButton.setTitle(AnonymousSession.shared.currentConference.name, for: .normal)
-        titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+        titleViewButton.setTitle("\(AnonymousSession.shared.currentConference.name)", for: .normal)
+        titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         titleViewButton.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
+        titleViewButton.semanticContentAttribute = .forceRightToLeft
         navigationItem.titleView = titleViewButton
 
         self.title = AnonymousSession.shared.currentConference.name
@@ -85,7 +86,16 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     }
 
     @objc func displayConferencePicker(sender: AnyObject) {
-        performSegue(withIdentifier: "conferenceSegue", sender: self)
+        let cvc = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as! HTConferenceTableViewController
+        cvc.delegate = self
+        present(cvc, animated: false)
+    }
+
+    func didSelect(conference: ConferenceModel) {
+        if let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController {
+            menuvc.didSelectID(tabID: "Updates")
+            menuvc.backgroundTapped()
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -155,10 +165,6 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         updatesTableView.reloadData()
     }
 
-    func didSelect(conference: ConferenceModel) {
-        self.updatedEvents()
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         lastContentOffset = self.updatesTableView.contentOffset
         if segue.identifier == "eventDetailSegue" {
@@ -179,16 +185,6 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
                     destController.bookmark = self.liveNow[indexPath.row].bookmark
                 }
             }
-            destController.delegate = self
-        } else if segue.identifier == "conferenceSegue" {
-            let destController: HTConferenceTableViewController
-
-            if let destinationNav = segue.destination as? UINavigationController, let controller = destinationNav.viewControllers.first as? HTConferenceTableViewController {
-                destController = controller
-            } else {
-                destController = segue.destination as! HTConferenceTableViewController
-            }
-
             destController.delegate = self
         }
     }
@@ -299,7 +295,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !( indexPath.section == 1 && starred.isEmpty ) || ( indexPath.section == 2 && !liveNow.isEmpty ) {
+        if ( indexPath.section == 1 && !starred.isEmpty ) || ( indexPath.section == 2 && !liveNow.isEmpty ) {
             if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
                 if indexPath.section == 1 {
                     eventController.event = self.starred[indexPath.row].event

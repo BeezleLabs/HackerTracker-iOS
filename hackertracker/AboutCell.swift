@@ -46,7 +46,7 @@ class AboutCell: UITableViewCell {
     }
 
     @IBAction private func tappedVersion(_ sender: Any) {
-        if rick > 6, let delegate = aboutDelegate, let url = URL(string: "https://www.youtube.com/watch?v=oHg5SJYRHA0?autoplay=1") {
+        if rick > 6, let delegate = aboutDelegate, let url = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ?autoplay=1") {
             delegate.followUrl(url: url)
             rick = 0
         } else {

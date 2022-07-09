@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class HTMyScheduleTableViewController: BaseScheduleTableViewController {
+class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConferenceTableViewControllerDelegate {
     var eventsToken: UpdateToken?
     var events: [UserEventModel] = []
 
@@ -17,6 +17,26 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController {
         super.viewWillAppear(animated)
 
         self.tableView.reloadData()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let tvb = navigationItem.titleView as! UIButton
+        tvb.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
+    }
+
+    @objc func displayConferencePicker(sender: AnyObject) {
+        let cvc = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as! HTConferenceTableViewController
+        cvc.delegate = self
+        present(cvc, animated: false)
+    }
+
+    func didSelect(conference: ConferenceModel) {
+        if let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController {
+            menuvc.didSelectID(tabID: "Bookmarks")
+            menuvc.backgroundTapped()
+        }
     }
 
     override func reloadEvents() {

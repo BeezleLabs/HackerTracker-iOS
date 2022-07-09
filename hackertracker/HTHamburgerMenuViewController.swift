@@ -28,22 +28,22 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let alphaView = UIView()
 
     let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(hamburgerMenuItemPressed))
-    let intialTab = "Home"
+    let intialTab = "Schedule"
     // This is a mapping of tabs to vcs
     let tabs = [
-                "Home": "HTUpdatesViewController",
-                "Schedule": "HTScheduleTableViewController",
-                "Bookmarks": "HTMyScheduleTableViewController",
-                "Maps": "HTMapsViewController",
-                "Speakers": "HTSpeakersTableViewController",
-                "Categories": "HTEventTypeTableViewController",
-                "More": "HTInfoTableViewController",
+        "Schedule": "HTScheduleTableViewController",
+        "Updates": "HTUpdatesViewController",
+        "Bookmarks": "HTMyScheduleTableViewController",
+        "Maps": "HTMapsViewController",
+        "Speakers": "HTSpeakersTableViewController",
+        "Categories": "HTEventTypeTableViewController",
+        "More": "HTInfoTableViewController",
     ]
 
     // This is a list of tabs we will display in the hamburger menu
     let displayedTabs = [
-        HamburgerItem(title: "Home", imageID: "skull-active"),
         HamburgerItem(title: "Schedule", imageID: "calendar-active"),
+        HamburgerItem(title: "Updates", imageID: "skull-active"),
         HamburgerItem(title: "Bookmarks", imageID: "star_active"),
         HamburgerItem(title: "Maps", imageID: "map-active"),
         HamburgerItem(title: "Speakers", imageID: "icon_user"),
