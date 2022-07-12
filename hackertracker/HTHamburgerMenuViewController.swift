@@ -28,7 +28,8 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let alphaView = UIView()
 
     let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(hamburgerMenuItemPressed))
-    let intialTab = "Schedule"
+    let intialTab = (Date() < AnonymousSession.shared.currentConference.startTimestamp) ? "Updates" : "Schedule"
+
     // This is a mapping of tabs to vcs
     let tabs = [
         "Schedule": "HTScheduleTableViewController",

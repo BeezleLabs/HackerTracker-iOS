@@ -9,15 +9,14 @@
 import UIKit
 
 class CountDownCell: UITableViewCell {
+    @IBOutlet private var conLabel: UILabel!
+    @IBOutlet private var counter: UITextField!
 
-    @IBOutlet weak var conLabel: UILabel!
-    @IBOutlet weak var counter: UITextField!
-    
     let dayColor = UIColor(hexString: "C16784")
     let hourColor = UIColor(hexString: "316295")
     let minColor = UIColor(hexString: "71CC98")
     let secColor = UIColor(hexString: "993C2A")
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
 
@@ -31,8 +30,13 @@ class CountDownCell: UITableViewCell {
         backgroundColor = .backgroundGray
         selectionStyle = .none
     }
-    
-    func apply(startDate: Date) {
-        
+
+    func bind(conName: String, startDate: Date) {
+        let dfu = DateFormatterUtility.shared
+
+        if let cl = conLabel, let ct = counter {
+            cl.text = conName
+            ct.text = dfu.monthDayTimeFormatter.string(from: startDate)
+        }
     }
 }

@@ -143,7 +143,7 @@ class HTSpeakerViewController: UIViewController, UIViewControllerTransitioningDe
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-            cell.bind(title: "No Events", desc: "No events for this speaker, check with the #hackertracker team")
+            cell.bind(title: "404 - Not Found", desc: "No events found for this speaker, check with the #hackertracker team")
             return cell
         }
     }
