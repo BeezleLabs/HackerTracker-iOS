@@ -67,28 +67,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         super.viewDidAppear(animated)
 
         self.tableView.reloadData()
-
-        /*if pullDownAnimation == nil {
-            let refreshControl = UIRefreshControl()
-            refreshControl.attributedTitle = NSAttributedString(string: "Pong", attributes: [ .foregroundColor: UIColor.white ])
-            refreshControl.tintColor = .clear
-            refreshControl.addTarget(self, action: #selector(self.sync(sender:)), for: UIControl.Event.valueChanged)
-
-            let view = SKView(frame: refreshControl.frame)
-            if let scene = SKScene(fileNamed: "scene") as? PongScene {
-                pullDownAnimation = scene
-                scene.backgroundColor = .clear
-                scene.scaleMode = .aspectFill
-                view.presentScene(scene)
-                view.ignoresSiblingOrder = true
-                view.backgroundColor = .clear
-
-                refreshControl.addSubview(view)
-            }
-
-            self.refreshControl = refreshControl
-            tableView.addSubview(refreshControl)
-        }*/
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -204,8 +182,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     @objc func scrollToCurrentDate(_ sender: Any) {
         let curDate = Date()
-        // Debug below to jump to next events for DEFCON27 schedule
-        // let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-08-09T11:43:01.000-0700")!
+        // Debug below to jump to next events for LOCOMOCOSEC schedule
+        // let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2022-06-28T11:43:01.000-0700")!
         if !self.eventSections.isEmpty {
             fullloop: for sectionIndex in 0..<self.eventSections.count {
                 if !self.eventSections[sectionIndex].events.isEmpty {
@@ -214,10 +192,12 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                         if userEvent.event.begin > curDate {
                             // NSLog("Jumping to \(userEvent.event.title) at \(sectionIndex):\(eventIndex)")
                             let indexPath = IndexPath(row: eventIndex, section: sectionIndex)
-                            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                             break fullloop
                         }
                     }
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                    break fullloop
                 } else {
                     break fullloop
                 }
@@ -350,6 +330,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
     // Floating button stuff
     private var filterButton = UIButton(type: .custom)
+    private var nowButton = UIButton(type: .custom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -360,6 +341,9 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         getEventTypes()
         self.filterButton.addTarget(self, action: #selector(filterClick(sender:)), for: UIControl.Event.touchUpInside)
         self.navigationController?.view.addSubview(filterButton)
+
+        self.nowButton.addTarget(self, action: #selector(scrollToCurrentDate(_:)), for: UIControl.Event.touchUpInside)
+        self.navigationController?.view.addSubview(nowButton)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -368,8 +352,10 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         self.filterButton.isHidden = false
         self.filterButton.isUserInteractionEnabled = true
 
+        self.nowButton.isHidden = false
+        self.nowButton.isUserInteractionEnabled = true
+
         tableView.backgroundColor = UIColor.backgroundGray
-        NSLog("HTScheduleTableViewController viewWillAppear")
     }
 
     @objc func displayConferencePicker(sender: AnyObject) {
@@ -389,6 +375,8 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         DispatchQueue.main.async {
             self.filterButton.isHidden = true
             self.filterButton.isUserInteractionEnabled = false
+            self.nowButton.isHidden = true
+            self.nowButton.isUserInteractionEnabled = false
         }
         super.viewWillDisappear(animated)
     }
@@ -406,6 +394,17 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                                         filterButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
                                         filterButton.widthAnchor.constraint(equalToConstant: 50),
                                         filterButton.heightAnchor.constraint(equalToConstant: 50), ])
+        
+        nowButton.layer.cornerRadius = nowButton.layer.frame.size.width / 2
+        nowButton.backgroundColor = UIColor.black
+        nowButton.clipsToBounds = true
+        nowButton.setImage(UIImage(systemName: "chevron.up.chevron.down"), for: .normal)
+        nowButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nowButton.trailingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            nowButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
+            nowButton.widthAnchor.constraint(equalToConstant: 50),
+            nowButton.heightAnchor.constraint(equalToConstant: 50), ])
     }
 
     @objc func filterClick(sender: AnyObject) {

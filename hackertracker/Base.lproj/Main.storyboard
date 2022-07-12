@@ -617,95 +617,6 @@
             </objects>
             <point key="canvasLocation" x="-383.19999999999999" y="-1226.5367316341831"/>
         </scene>
-        <!--Categories-->
-        <scene sceneID="ARR-nk-uhm">
-            <objects>
-                <tableViewController storyboardIdentifier="HTEventTypeTableViewController" id="2Pe-fo-Z3y" customClass="HTEventTypeTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Oi-X3-Xgb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="etCell" id="Um3-Ic-kcu">
-                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Um3-Ic-kcu" id="wJZ-dK-CEb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.16860893369999999" green="0.16863927249999999" blue="0.1686023176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="QLY-bo-TJo" kind="show" identifier="eventTypeSegue" id="ZYJ-Vf-OCm"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="2Pe-fo-Z3y" id="E43-0y-lNO"/>
-                            <outlet property="delegate" destination="2Pe-fo-Z3y" id="1JF-Yz-OI9"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="Fjw-4g-zFD"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ccr-o0-v8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1423" y="-654"/>
-        </scene>
-        <!--Event Type View Controller-->
-        <scene sceneID="Rmw-sG-2SS">
-            <objects>
-                <viewController id="QLY-bo-TJo" customClass="HTEventTypeViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fhq-hF-RN2"/>
-                        <viewControllerLayoutGuide type="bottom" id="674-HA-Ld4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qU7-mS-zQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRH-D6-9uo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Owc-9S-G6b">
-                                        <rect key="frame" x="8" y="8" width="359" height="615"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                    </textView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Owc-9S-G6b" firstAttribute="bottom" secondItem="7x2-p2-wgi" secondAttribute="bottom" id="58L-IQ-aTT"/>
-                                    <constraint firstAttribute="bottom" secondItem="Owc-9S-G6b" secondAttribute="bottom" constant="-8" id="AxL-ue-6Jp"/>
-                                    <constraint firstItem="Owc-9S-G6b" firstAttribute="leading" secondItem="7x2-p2-wgi" secondAttribute="leading" constant="8" id="kgy-8X-SeP"/>
-                                    <constraint firstItem="7x2-p2-wgi" firstAttribute="trailing" secondItem="Owc-9S-G6b" secondAttribute="trailing" constant="8" id="wSv-fB-xhL"/>
-                                    <constraint firstItem="Owc-9S-G6b" firstAttribute="trailing" secondItem="YRH-D6-9uo" secondAttribute="trailingMargin" id="wcj-Po-oVC"/>
-                                    <constraint firstItem="Owc-9S-G6b" firstAttribute="top" secondItem="7x2-p2-wgi" secondAttribute="top" constant="8" id="xO7-G9-qPT"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="jlx-Qm-X7L"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="7x2-p2-wgi"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.16860893369999999" green="0.16863927249999999" blue="0.1686023176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" systemColor="systemRedColor"/>
-                        <constraints>
-                            <constraint firstItem="YRH-D6-9uo" firstAttribute="leading" secondItem="qU7-mS-zQQ" secondAttribute="leading" id="HYU-ku-P9m"/>
-                            <constraint firstAttribute="trailing" secondItem="YRH-D6-9uo" secondAttribute="trailing" id="SFn-pQ-G5B"/>
-                            <constraint firstItem="674-HA-Ld4" firstAttribute="top" secondItem="YRH-D6-9uo" secondAttribute="bottom" id="sdh-hQ-qb5"/>
-                            <constraint firstItem="YRH-D6-9uo" firstAttribute="top" secondItem="fhq-hF-RN2" secondAttribute="bottom" id="zBd-SW-7Vh"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="fd4-7r-Mbe"/>
-                    <connections>
-                        <outlet property="descriptionTextView" destination="Owc-9S-G6b" id="DF1-c6-bzQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hmf-mZ-mHV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2336" y="-654"/>
-        </scene>
         <!--Split View Controller-->
         <scene sceneID="Cmg-Lt-nWH">
             <objects>
@@ -1677,23 +1588,6 @@
             </objects>
             <point key="canvasLocation" x="436" y="1203"/>
         </scene>
-        <!--Events Nav View Controller-->
-        <scene sceneID="b58-zT-Pr0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aHb-1C-tla" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="m50-xd-GVg">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="2Pe-fo-Z3y" kind="relationship" relationship="rootViewController" id="hBj-bW-Fpi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3g9-8M-GAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="484" y="-654"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
@@ -1725,9 +1619,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
