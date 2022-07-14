@@ -59,11 +59,11 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         titleViewButton.semanticContentAttribute = .forceRightToLeft
         navigationItem.titleView = titleViewButton
 
-        self.title = AnonymousSession.shared.currentConference.name
+        title = AnonymousSession.shared.currentConference.name
 
         eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { result in
             switch result {
-            case .success(let eventList):
+            case let .success(eventList):
                 self.allEvents = eventList
                 self.reloadEvents()
             case .failure:
@@ -74,7 +74,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
         articlesToken = FSConferenceDataController.shared.requestArticles(forConference: AnonymousSession.shared.currentConference, descending: true) { result in
             switch result {
-            case .success(let articles):
+            case let .success(articles):
                 self.allArticles = articles
                 self.reloadArticles()
             case .failure:
@@ -86,14 +86,14 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         updatesTableView.layoutIfNeeded()
     }
 
-    @objc func displayConferencePicker(sender: AnyObject) {
+    @objc func displayConferencePicker(sender _: AnyObject) {
         let cvc = storyboard?.instantiateViewController(withIdentifier: "HTConferenceTableViewController") as! HTConferenceTableViewController
         cvc.delegate = self
         present(cvc, animated: false)
     }
 
-    func didSelect(conference: ConferenceModel) {
-        if let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController {
+    func didSelect(conference _: ConferenceModel) {
+        if let menuvc = navigationController?.parent as? HTHamburgerMenuViewController {
             menuvc.didSelectID(tabID: "Updates")
             menuvc.backgroundTapped()
         }
@@ -105,13 +105,13 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        updatesTableView.tableFooterView = self.footer
+        updatesTableView.tableFooterView = footer
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if isViewLoaded && !animated {
+        if isViewLoaded, !animated {
             reloadEvents()
 
             if let lastContentOffset = lastContentOffset {
@@ -123,15 +123,15 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     }
 
     func reloadArticles() {
-        self.messages = []
+        messages = []
         for article in allArticles {
-            if self.messages.count > 1 {
+            if messages.count > 1 {
                 break
             } else {
-                self.messages.append(article)
+                messages.append(article)
             }
         }
-        self.updatesTableView.reloadData()
+        updatesTableView.reloadData()
     }
 
     func reloadEvents() {
@@ -139,35 +139,35 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         // To check test data on home screen (set to mid-layerone)
         // let curTime = DateFormatterUtility.shared.iso8601Formatter.date(from: "2019-05-25T11:43:01.000-0600")!
 
-        self.starred = []
+        starred = []
         starredLoop: for event in allEvents {
-            if self.starred.count > 4 {
+            if starred.count > 4 {
                 break starredLoop
             } else {
-                if  event.event.begin > curTime, event.bookmark.value {
-                    self.starred.append(event)
+                if event.event.begin > curTime, event.bookmark.value {
+                    starred.append(event)
                 }
             }
         }
 
-        self.liveNow = []
+        liveNow = []
         for event in allEvents where event.event.begin < event.event.end {
-            let range = event.event.begin...event.event.end
+            let range = event.event.begin ... event.event.end
             if range.contains(curTime) {
                 self.liveNow.append(event)
             }
         }
 
-        self.updatesTableView.reloadData()
+        updatesTableView.reloadData()
     }
 
     func updatedEvents() {
-        self.reloadEvents()
+        reloadEvents()
         updatesTableView.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        lastContentOffset = self.updatesTableView.contentOffset
+        lastContentOffset = updatesTableView.contentOffset
         if segue.identifier == "eventDetailSegue" {
             let destController: HTEventDetailViewController
 
@@ -179,11 +179,11 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
             if let indexPath = sender as? IndexPath {
                 if indexPath.section == 1 {
-                    destController.event = self.starred[indexPath.row].event
-                    destController.bookmark = self.starred[indexPath.row].bookmark
+                    destController.event = starred[indexPath.row].event
+                    destController.bookmark = starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    destController.event = self.liveNow[indexPath.row].event
-                    destController.bookmark = self.liveNow[indexPath.row].bookmark
+                    destController.event = liveNow[indexPath.row].event
+                    destController.bookmark = liveNow[indexPath.row].bookmark
                 }
             }
             destController.delegate = self
@@ -244,11 +244,11 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         return UITableView.automaticDimension
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerLabel = UIButton()
         headerLabel.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
         headerLabel.setTitleColor(.lightGray, for: .normal)
