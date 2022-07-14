@@ -20,7 +20,8 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     @IBOutlet private var conName: UILabel!
 
     var messages: [HTArticleModel] = []
-    var eventSections: [String] = ["Count Down", "News", "Upcoming Bookmarks", "Live Now", "About"]
+    var curDate = Date()
+    var eventSections: [String] = (Date() < AnonymousSession.shared.currentConference.startTimestamp) ? ["Count Down", "News", "Upcoming Bookmarks", "Live Now", "About"] : ["News", "Upcoming Bookmarks", "Live Now", "About"]
     var starred: [UserEventModel] = []
     var liveNow: [UserEventModel] = []
     var data = NSMutableData()
@@ -32,6 +33,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     var articlesToken: UpdateToken?
     var lastContentOffset: CGPoint?
     var rick: Int = 0
+    
 
     var footer: UIView! // swiftlint:disable:this implicitly_unwrapped_optional
 
@@ -111,6 +113,8 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        curDate = Date()
 
         if isViewLoaded, !animated {
             reloadEvents()
@@ -198,51 +202,86 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            return CountDownCell(statDate: AnonymousSession.shared.currentConference.startTimestamp)
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-            if !messages.isEmpty {
-                cell.bind(message: messages[indexPath.row])
+        if curDate > AnonymousSession.shared.currentConference.startTimestamp {
+            if indexPath.section == 0 {
+                return getUpdateCell(tableView: tableView, indexPath: indexPath)
+            } else if indexPath.section == 1 {
+                return getMyEventsCell(tableView: tableView, indexPath: indexPath)
+            } else if indexPath.section == 2 {
+                return getLiveEventsCell(tableView: tableView, indexPath: indexPath)
+            } else if indexPath.section == 3 {
+                return getAboutCell(tableView: tableView, indexPath: indexPath)
             } else {
-                cell.bind(title: "No News is Good News", desc: "The #hackertracker team has no updates for you right now.")
-            }
-            return cell
-        } else if indexPath.section == 2 {
-            if !starred.isEmpty {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event = starred[indexPath.row]
-                cell.bind(userEvent: event)
-                cell.eventCellDelegate = self
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-                cell.bind(title: "No Events", desc: "Explore #hackertracker to find something to attend. Tap the star and the event will display here on the home screen and in your bookmarked events.")
                 return cell
             }
-        } else if indexPath.section == 3 {
-            if !liveNow.isEmpty {
+        } else {
+            if indexPath.section == 0 {
+                return getCountdownCell()
+            } else if indexPath.section == 1 {
+                return getUpdateCell(tableView: tableView, indexPath: indexPath)
+            } else if indexPath.section == 2 {
+                return getMyEventsCell(tableView: tableView, indexPath: indexPath)
+            } else if indexPath.section == 3 {
+                return getLiveEventsCell(tableView: tableView, indexPath: indexPath)
+            } else if indexPath.section == 4 {
+                return getAboutCell(tableView: tableView, indexPath: indexPath)
+            } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-                let event = liveNow[indexPath.row]
-                cell.bind(userEvent: event)
-                cell.eventCellDelegate = self
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
-                cell.bind(title: "No Live Events", desc: "No ongoing events, try again later.")
                 return cell
             }
-        } else if indexPath.section == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
-            if let shortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                cell.versionTitle = "Hackertracker iOS v\(shortVersion) (\(bundleVersion))"
-            }
-            cell.aboutDelegate = self
+        }
+    }
+    
+    private func getCountdownCell() -> CountDownCell {
+        return CountDownCell(statDate: AnonymousSession.shared.currentConference.startTimestamp)
+    }
+    
+    private func getUpdateCell(tableView: UITableView, indexPath: IndexPath) -> UpdateCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+        if !messages.isEmpty {
+            cell.bind(message: messages[indexPath.row])
+        } else {
+            cell.bind(title: "No News is Good News", desc: "The #hackertracker team has no updates for you right now.")
+        }
+        return cell
+    }
+    
+    private func getMyEventsCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        if !starred.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+            let event = starred[indexPath.row]
+            cell.bind(userEvent: event)
+            cell.eventCellDelegate = self
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+            cell.bind(title: "No Events", desc: "Explore #hackertracker to find something to attend. Tap the star and the event will display here on the home screen and in your bookmarked events.")
             return cell
         }
+    }
+    
+    private func getLiveEventsCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        if !liveNow.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+            let event = liveNow[indexPath.row]
+            cell.bind(userEvent: event)
+            cell.eventCellDelegate = self
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
+            cell.bind(title: "No Live Events", desc: "No ongoing events, try again later.")
+            return cell
+        }
+    }
+    
+    private func getAboutCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
+        if let shortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            cell.versionTitle = "Hackertracker iOS v\(shortVersion) (\(bundleVersion))"
+        }
+        cell.aboutDelegate = self
+        return cell
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
@@ -273,50 +312,81 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else if section == 1 {
-            if !messages.isEmpty {
-                return messages.count
-            } else {
+        if curDate > AnonymousSession.shared.currentConference.startTimestamp {
+            if section == 0 {
+                if !messages.isEmpty {
+                    return messages.count
+                } else {
+                    return 1
+                }
+            } else if section == 1 {
+                if !starred.isEmpty {
+                    return starred.count
+                } else {
+                    return 1
+                }
+            } else if section == 2 {
+                if !liveNow.isEmpty {
+                    return liveNow.count
+                } else {
+                    return 1
+                }
+            } else if section == 3 {
                 return 1
-            }
-        } else if section == 2 {
-            if !starred.isEmpty {
-                return starred.count
             } else {
-                return 1
+                return 0
             }
-        } else if section == 3 {
-            if !liveNow.isEmpty {
-                return liveNow.count
-            } else {
-                return 1
-            }
-        } else if section == 4 {
-            return 1
         } else {
-            return 0
+            if section == 0 {
+                return 1
+            } else if section == 1 {
+                if !messages.isEmpty {
+                    return messages.count
+                } else {
+                    return 1
+                }
+            } else if section == 2 {
+                if !starred.isEmpty {
+                    return starred.count
+                } else {
+                    return 1
+                }
+            } else if section == 3 {
+                if !liveNow.isEmpty {
+                    return liveNow.count
+                } else {
+                    return 1
+                }
+            } else if section == 4 {
+                return 1
+            } else {
+                return 0
+            }
         }
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 1 && !starred.isEmpty) || (indexPath.section == 2 && !liveNow.isEmpty) {
+        var offset = 0
+        if curDate < AnonymousSession.shared.currentConference.startTimestamp {
+            offset = 1
+        }
+
+        if (indexPath.section == (offset + 1) && !starred.isEmpty) || (indexPath.section == (offset + 2) && !liveNow.isEmpty) {
             if let storyboard = storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-                if indexPath.section == 1 {
+                if indexPath.section == (offset + 1) {
                     eventController.event = starred[indexPath.row].event
                     eventController.bookmark = starred[indexPath.row].bookmark
-                } else if indexPath.section == 2 {
+                } else if indexPath.section == (offset + 2) {
                     eventController.event = liveNow[indexPath.row].event
                     eventController.bookmark = liveNow[indexPath.row].bookmark
                 }
                 navigationController?.pushViewController(eventController, animated: true)
             }
-        } else if indexPath.section == 0 {
+        } else if indexPath.section == (offset + 0) {
             if let storyboard = storyboard, let controller = storyboard.instantiateViewController(withIdentifier: "HTNewsTableViewController") as? HTNewsTableViewController {
                 navigationController?.pushViewController(controller, animated: true)
             }
-        } else if indexPath.section == 1 || indexPath.section == 2 {
+        } else if indexPath.section == (offset + 1) || indexPath.section == (offset + 2) {
             if let storyboard = storyboard, let controller = storyboard.instantiateViewController(withIdentifier: "HTScheduleTableViewController") as? HTScheduleTableViewController {
                 navigationController?.pushViewController(controller, animated: true)
             }
