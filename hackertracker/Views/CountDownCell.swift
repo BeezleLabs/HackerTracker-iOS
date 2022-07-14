@@ -34,9 +34,9 @@ class CountDownCell: UITableViewCell {
     func bind(conName: String, startDate: Date) {
         let dfu = DateFormatterUtility.shared
 
-        if let cl = conLabel, let ct = counter {
-            cl.text = conName
-            ct.text = dfu.monthDayTimeFormatter.string(from: startDate)
+        if let conlabel = conLabel, let count = counter {
+            conlabel.text = conName
+            count.text = dfu.monthDayTimeFormatter.string(from: startDate)
         }
     }
 }
