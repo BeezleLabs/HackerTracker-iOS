@@ -92,9 +92,10 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         present(cvc, animated: false)
     }
 
-    func didSelect(conference _: ConferenceModel) {
-        if let menuvc = navigationController?.parent as? HTHamburgerMenuViewController {
-            menuvc.didSelectID(tabID: "Updates")
+
+    func didSelect(conference: ConferenceModel) {
+        if let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController {
+            menuvc.didSelectID(tabID: "Information")
             menuvc.backgroundTapped()
         }
     }

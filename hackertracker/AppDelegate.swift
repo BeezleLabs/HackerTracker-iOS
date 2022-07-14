@@ -8,6 +8,7 @@
 
 import CoreData
 import Firebase
+import FirebaseCore
 import UIKit
 import UserNotifications
 

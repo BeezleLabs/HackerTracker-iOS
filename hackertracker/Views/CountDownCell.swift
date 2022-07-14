@@ -26,5 +26,17 @@ class CountDownCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        backgroundColor = .backgroundGray
+        selectionStyle = .none
+    }
+
+    func bind(conName: String, startDate: Date) {
+        let dfu = DateFormatterUtility.shared
+
+        if let conlabel = conLabel, let count = counter {
+            conlabel.text = conName
+            count.text = dfu.monthDayTimeFormatter.string(from: startDate)
+        }
     }
 }

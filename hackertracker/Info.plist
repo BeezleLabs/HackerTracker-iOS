@@ -17,13 +17,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.1.1</string>
+	<string>4.2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2169</string>
+	<string>2170</string>
+	<key>GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow access to calendar to save events</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Hacked-KerX.ttf</string>
@@ -55,7 +59,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Allow access to calendar to save events</string>
 </dict>
 </plist>

@@ -28,12 +28,12 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let alphaView = UIView()
 
     let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(hamburgerMenuItemPressed))
-    let intialTab = (Date() < AnonymousSession.shared.currentConference.startTimestamp) ? "Updates" : "Schedule"
+    let intialTab = (Date() < AnonymousSession.shared.currentConference.startTimestamp) ? "Information" : "Schedule"
 
     // This is a mapping of tabs to vcs
     let tabs = [
         "Schedule": "HTScheduleTableViewController",
-        "Updates": "HTUpdatesViewController",
+        "Information": "HTUpdatesViewController",
         "Bookmarks": "HTMyScheduleTableViewController",
         "Maps": "HTMapsViewController",
         "Speakers": "HTSpeakersTableViewController",
@@ -43,7 +43,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     // This is a list of tabs we will display in the hamburger menu
     let displayedTabs = [
         HamburgerItem(title: "Schedule", imageID: "calendar-active"),
-        HamburgerItem(title: "Updates", imageID: "skull-active"),
+        HamburgerItem(title: "Information", imageID: "skull-active"),
         HamburgerItem(title: "Bookmarks", imageID: "star_active"),
         HamburgerItem(title: "Maps", imageID: "map-active"),
         HamburgerItem(title: "Speakers", imageID: "icon_user"),

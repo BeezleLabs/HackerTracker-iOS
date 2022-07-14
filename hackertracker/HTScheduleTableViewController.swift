@@ -61,6 +61,15 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationController?.navigationBar.barStyle = .black
         self.navigationController?.navigationBar.isTranslucent = false
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = UIColor.black
+            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -394,7 +403,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                                         filterButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
                                         filterButton.widthAnchor.constraint(equalToConstant: 50),
                                         filterButton.heightAnchor.constraint(equalToConstant: 50), ])
-        
+
         nowButton.layer.cornerRadius = nowButton.layer.frame.size.width / 2
         nowButton.backgroundColor = UIColor.black
         nowButton.clipsToBounds = true

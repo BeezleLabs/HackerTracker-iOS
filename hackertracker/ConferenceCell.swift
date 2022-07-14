@@ -21,7 +21,7 @@ class ConferenceCell: UITableViewCell {
         accessoryType = isSelected ? .checkmark : .none
         color.isHidden = !isSelected
     }
-    
+
     func selectCell(_ select: Bool) {
         if select == true {
             accessoryType = .checkmark
