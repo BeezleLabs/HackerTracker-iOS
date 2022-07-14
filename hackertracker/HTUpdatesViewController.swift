@@ -8,6 +8,7 @@
 
 import CoreData
 import SafariServices
+import SwiftUI
 import UIKit
 
 class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate {
@@ -19,7 +20,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     @IBOutlet private var conName: UILabel!
 
     var messages: [HTArticleModel] = []
-    var eventSections: [String] = ["News", "Upcoming Bookmarks", "Live Now", "About"]
+    var eventSections: [String] = ["Count Down", "News", "Upcoming Bookmarks", "Live Now", "About"]
     var starred: [UserEventModel] = []
     var liveNow: [UserEventModel] = []
     var data = NSMutableData()
@@ -191,12 +192,14 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 }
 
 extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return eventSections.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            return CountDownCell(statDate: AnonymousSession.shared.currentConference.startTimestamp)
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
             if !messages.isEmpty {
                 cell.bind(message: messages[indexPath.row])
@@ -204,7 +207,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.bind(title: "No News is Good News", desc: "The #hackertracker team has no updates for you right now.")
             }
             return cell
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 2 {
             if !starred.isEmpty {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
                 let event = starred[indexPath.row]
@@ -216,7 +219,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.bind(title: "No Events", desc: "Explore #hackertracker to find something to attend. Tap the star and the event will display here on the home screen and in your bookmarked events.")
                 return cell
             }
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 3 {
             if !liveNow.isEmpty {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
                 let event = liveNow[indexPath.row]
@@ -228,7 +231,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.bind(title: "No Live Events", desc: "No ongoing events, try again later.")
                 return cell
             }
-        } else if indexPath.section == 3 {
+        } else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
             if let shortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                 cell.versionTitle = "Hackertracker iOS v\(shortVersion) (\(bundleVersion))"
@@ -268,56 +271,58 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
         return headerLabel
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
+            return 1
+        } else if section == 1 {
             if !messages.isEmpty {
                 return messages.count
             } else {
                 return 1
             }
-        } else if section == 1 {
+        } else if section == 2 {
             if !starred.isEmpty {
                 return starred.count
             } else {
                 return 1
             }
-        } else if section == 2 {
+        } else if section == 3 {
             if !liveNow.isEmpty {
                 return liveNow.count
             } else {
                 return 1
             }
-        } else if section == 3 {
+        } else if section == 4 {
             return 1
         } else {
             return 0
         }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if ( indexPath.section == 1 && !starred.isEmpty ) || ( indexPath.section == 2 && !liveNow.isEmpty ) {
-            if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 1 && !starred.isEmpty) || (indexPath.section == 2 && !liveNow.isEmpty) {
+            if let storyboard = storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
                 if indexPath.section == 1 {
-                    eventController.event = self.starred[indexPath.row].event
-                    eventController.bookmark = self.starred[indexPath.row].bookmark
+                    eventController.event = starred[indexPath.row].event
+                    eventController.bookmark = starred[indexPath.row].bookmark
                 } else if indexPath.section == 2 {
-                    eventController.event = self.liveNow[indexPath.row].event
-                    eventController.bookmark = self.liveNow[indexPath.row].bookmark
+                    eventController.event = liveNow[indexPath.row].event
+                    eventController.bookmark = liveNow[indexPath.row].bookmark
                 }
-                self.navigationController?.pushViewController(eventController, animated: true)
+                navigationController?.pushViewController(eventController, animated: true)
             }
-        } else if  indexPath.section == 0 {
-            if let storyboard = self.storyboard, let controller = storyboard.instantiateViewController(withIdentifier: "HTNewsTableViewController") as? HTNewsTableViewController {
-                self.navigationController?.pushViewController(controller, animated: true)
+        } else if indexPath.section == 0 {
+            if let storyboard = storyboard, let controller = storyboard.instantiateViewController(withIdentifier: "HTNewsTableViewController") as? HTNewsTableViewController {
+                navigationController?.pushViewController(controller, animated: true)
             }
-        } else if  indexPath.section == 1 || indexPath.section == 2 {
-            if let storyboard = self.storyboard, let controller = storyboard.instantiateViewController(withIdentifier: "HTScheduleTableViewController") as? HTScheduleTableViewController {
-                self.navigationController?.pushViewController(controller, animated: true)
+        } else if indexPath.section == 1 || indexPath.section == 2 {
+            if let storyboard = storyboard, let controller = storyboard.instantiateViewController(withIdentifier: "HTScheduleTableViewController") as? HTScheduleTableViewController {
+                navigationController?.pushViewController(controller, animated: true)
             }
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
 }

@@ -16,35 +16,31 @@ struct Countdown: View {
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             HStack {
                 Text("\(countdownTimer?.days ?? 0)").font(.largeTitle).foregroundColor(ThemeColors.pink)
-                Text("days").font(.caption)
-            }
+                Text("days").font(.caption).foregroundColor(Color.white)
 
-            HStack {
                 Text("\(countdownTimer?.hours ?? 0)").font(.largeTitle).foregroundColor(ThemeColors.blue)
-                Text("hours").font(.caption)
-            }
+                Text("hours").font(.caption).foregroundColor(Color.white)
 
-            HStack {
                 Text("\(countdownTimer?.minutes ?? 0)").font(.largeTitle).foregroundColor(ThemeColors.green)
-                Text("min").font(.caption)
-            }
+                Text("min").font(.caption).foregroundColor(Color.white)
 
-            HStack {
                 Text("\(countdownTimer?.seconds ?? 0)").font(.largeTitle).foregroundColor(ThemeColors.red)
-                Text("sec").font(.caption)
+                Text("sec").font(.caption).foregroundColor(Color.white)
             }
-        }
-        .onAppear {
-            countdownTimer = CountdownComps(days: 0, hours: 0, minutes: 0, seconds: 0)
-        }
-        .onReceive(timer) { _ in
-            withAnimation {
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .accentColor(Color.white)
+            .background(Color(UIColor(red: 45.0 / 255.0, green: 45.0 / 255.0, blue: 45.0 / 255.0, alpha: 1.0)))
+            .onAppear {
                 countdownTimer = getCountdown(start: start)
             }
-        }
+            .onReceive(timer) { _ in
+                withAnimation {
+                    countdownTimer = getCountdown(start: start)
+                }
+            }
     }
 }
 
@@ -57,6 +53,16 @@ struct CountdownComps {
 
 func getCountdown(start: Date) -> CountdownComps {
     let timeUntilConfStart = start.timeIntervalSinceNow
+
+//    if timeUntilConfStart < 0 {
+//        return CountdownComps(
+//            days: 0,
+//            hours: 0,
+//            minutes: 0,
+//            seconds: 0
+//        )
+//    }
+
     let day = timeUntilConfStart / (24 * 60 * 60)
     let hour = day.truncatingRemainder(dividingBy: 1) * 24
     let min = hour.truncatingRemainder(dividingBy: 1) * 60
