@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct Countdown: View {
+struct CountdownView: View {
     let start: Date
     @State private var countdownTimer: CountdownComps?
 
@@ -78,7 +78,7 @@ func getCountdown(start: Date) -> CountdownComps {
 
 struct Countdown_Previews: PreviewProvider {
     static var previews: some View {
-        Countdown(start: getPreviewStart())
+        CountdownView(start: getPreviewStart())
     }
 }
 

@@ -33,8 +33,6 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
     var articlesToken: UpdateToken?
     var lastContentOffset: CGPoint?
     var rick: Int = 0
-    
-
     var footer: UIView! // swiftlint:disable:this implicitly_unwrapped_optional
 
     override func viewDidLoad() {
@@ -94,7 +92,6 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         present(cvc, animated: false)
     }
 
-
     func didSelect(conference: ConferenceModel) {
         if let menuvc = self.navigationController?.parent as? HTHamburgerMenuViewController {
             menuvc.didSelectID(tabID: "Information")
@@ -113,7 +110,7 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         curDate = Date()
 
         if isViewLoaded, !animated {
@@ -203,40 +200,42 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if curDate > AnonymousSession.shared.currentConference.startTimestamp {
-            if indexPath.section == 0 {
+            switch indexPath.section {
+            case 0:
                 return getUpdateCell(tableView: tableView, indexPath: indexPath)
-            } else if indexPath.section == 1 {
+            case 1:
                 return getMyEventsCell(tableView: tableView, indexPath: indexPath)
-            } else if indexPath.section == 2 {
+            case 2:
                 return getLiveEventsCell(tableView: tableView, indexPath: indexPath)
-            } else if indexPath.section == 3 {
+            case 3:
                 return getAboutCell(tableView: tableView, indexPath: indexPath)
-            } else {
+            default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
                 return cell
             }
         } else {
-            if indexPath.section == 0 {
+            switch indexPath.section {
+            case 0:
                 return getCountdownCell()
-            } else if indexPath.section == 1 {
+            case 1:
                 return getUpdateCell(tableView: tableView, indexPath: indexPath)
-            } else if indexPath.section == 2 {
+            case 2:
                 return getMyEventsCell(tableView: tableView, indexPath: indexPath)
-            } else if indexPath.section == 3 {
+            case 3:
                 return getLiveEventsCell(tableView: tableView, indexPath: indexPath)
-            } else if indexPath.section == 4 {
+            case 4:
                 return getAboutCell(tableView: tableView, indexPath: indexPath)
-            } else {
+            default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
                 return cell
             }
         }
     }
-    
+
     private func getCountdownCell() -> CountDownCell {
         return CountDownCell(statDate: AnonymousSession.shared.currentConference.startTimestamp)
     }
-    
+
     private func getUpdateCell(tableView: UITableView, indexPath: IndexPath) -> UpdateCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateCell") as! UpdateCell
         if !messages.isEmpty {
@@ -246,7 +245,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
-    
+
     private func getMyEventsCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         if !starred.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
@@ -260,7 +259,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
-    
+
     private func getLiveEventsCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         if !liveNow.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
@@ -274,7 +273,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
-    
+
     private func getAboutCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
         if let shortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
@@ -313,53 +312,31 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         if curDate > AnonymousSession.shared.currentConference.startTimestamp {
-            if section == 0 {
-                if !messages.isEmpty {
-                    return messages.count
-                } else {
-                    return 1
-                }
-            } else if section == 1 {
-                if !starred.isEmpty {
-                    return starred.count
-                } else {
-                    return 1
-                }
-            } else if section == 2 {
-                if !liveNow.isEmpty {
-                    return liveNow.count
-                } else {
-                    return 1
-                }
-            } else if section == 3 {
+            switch section {
+            case 0:
+                return (!messages.isEmpty) ? messages.count : 1
+            case 1:
+                return (!starred.isEmpty) ? starred.count : 1
+            case 2:
+                return (!liveNow.isEmpty) ? liveNow.count : 1
+            case 3:
                 return 1
-            } else {
+            default:
                 return 0
             }
         } else {
-            if section == 0 {
+            switch section {
+            case 0:
                 return 1
-            } else if section == 1 {
-                if !messages.isEmpty {
-                    return messages.count
-                } else {
-                    return 1
-                }
-            } else if section == 2 {
-                if !starred.isEmpty {
-                    return starred.count
-                } else {
-                    return 1
-                }
-            } else if section == 3 {
-                if !liveNow.isEmpty {
-                    return liveNow.count
-                } else {
-                    return 1
-                }
-            } else if section == 4 {
+            case 1:
+                return (!messages.isEmpty) ? messages.count : 1
+            case 2:
+                return (!starred.isEmpty) ? starred.count : 1
+            case 3:
+                return (!liveNow.isEmpty) ? liveNow.count : 1
+            case 4:
                 return 1
-            } else {
+            default:
                 return 0
             }
         }

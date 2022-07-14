@@ -13,15 +13,15 @@ class CountDownCell: UITableViewCell {
     init(statDate: Date) {
         super.init(style: .default, reuseIdentifier: "CountDownViewCell")
 
-        let cv = UIHostingController(rootView: Countdown(start: statDate))
-        contentView.addSubview(cv.view)
-        cv.view.translatesAutoresizingMaskIntoConstraints = false
-        cv.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        cv.view.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        cv.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        cv.view.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        let cdv = UIHostingController(rootView: CountdownView(start: statDate))
+        contentView.addSubview(cdv.view)
+        cdv.view.translatesAutoresizingMaskIntoConstraints = false
+        cdv.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        cdv.view.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        cdv.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        cdv.view.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
 
-        cv.view.backgroundColor = .clear
+        cdv.view.backgroundColor = .clear
     }
 
     required init?(coder aDecoder: NSCoder) {
