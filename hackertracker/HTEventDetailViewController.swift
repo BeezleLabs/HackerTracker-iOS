@@ -341,6 +341,7 @@ class HTEventDetailViewController: UIViewController { // swiftlint:disable:this 
         }
 
         addBookmark(bookmark: bookmark, event: event)
+        self.delegate?.reloadEvents()
     }
 
     func reloadEvents() {
