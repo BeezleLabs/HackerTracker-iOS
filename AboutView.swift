@@ -11,7 +11,7 @@ import SwiftUI
 struct AboutView: View {
     @State var rick: Int = 0
     var body: some View {
-        VStack {
+        VStack(spacing: 3) {
             HStack {
                 Button(action: {
                     if let url = URL(string: "https://twitter.com/sethlaw") {
@@ -32,29 +32,31 @@ struct AboutView: View {
 
                 })
             }
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-            HStack {
-                if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-                    Text("#hackertracker iOS v\(v)")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .onTapGesture {
-                            tapped()
-                        }
-                } else {
-                    Text("#hackertracker iOS")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .onTapGesture {
-                            tapped()
-                        }
-                }
+            .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+            //.padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 0))
+            if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                Text("#hackertracker iOS v\(v)")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        tapped()
+                    }
+
+
+            } else {
+                Text("#hackertracker iOS")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        tapped()
+                    }
             }
         }
-        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
             .accentColor(Color.white)
             .background(ThemeColors.gray)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+
     }
     
     func tapped() {
