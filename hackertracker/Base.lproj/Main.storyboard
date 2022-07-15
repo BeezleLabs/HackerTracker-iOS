@@ -318,7 +318,7 @@
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B5M-FU-Nbz" id="nSF-JA-pxi">
-                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="397.5" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

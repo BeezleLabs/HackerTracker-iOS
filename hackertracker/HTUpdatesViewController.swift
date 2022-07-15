@@ -275,12 +275,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     private func getAboutCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath) as! AboutCell
-        if let shortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-            cell.versionTitle = "Hackertracker iOS v\(shortVersion) (\(bundleVersion))"
-        }
-        cell.aboutDelegate = self
-        return cell
+        return AboutCell()
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
@@ -372,14 +367,5 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-}
-
-extension HTUpdatesViewController: AboutCellDelegate {
-    func followUrl(url: URL) {
-        let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredBarTintColor = UIColor.backgroundGray
-        safariVC.preferredControlTintColor = UIColor.white
-        present(safariVC, animated: true)
     }
 }
