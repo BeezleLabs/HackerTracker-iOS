@@ -1609,7 +1609,7 @@
         <image name="check" width="25" height="25"/>
         <image name="close" width="25" height="25"/>
         <image name="external_link" width="30" height="30"/>
-        <image name="header" width="200" height="66.5"/>
+        <image name="header" width="300" height="100.5"/>
         <image name="icon_demo" width="30" height="30"/>
         <image name="icon_exploit" width="30" height="30"/>
         <image name="icon_tool" width="30" height="30"/>

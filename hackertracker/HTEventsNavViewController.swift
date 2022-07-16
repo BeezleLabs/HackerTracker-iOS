@@ -45,6 +45,18 @@ class HTEventsNavViewController: UINavigationController {
             .font: UIFont.preferredFont(forTextStyle: .title3),
             .foregroundColor: UIColor.white,
         ]
+
+        navigationBar.backgroundColor = .black
+        navigationBar.isTranslucent = false
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = UIColor.black
+            navigationBar.standardAppearance = navBarAppearance
+            navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

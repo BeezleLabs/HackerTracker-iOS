@@ -23,6 +23,14 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mapSwitch.backgroundColor = .black
+        // mapSwitch.tintColor = .gray
+        mapSwitch.selectedSegmentTintColor = .white
+        mapSwitch.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
+        mapSwitch.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
+
+        // self.navigationController?.navigationBar.backgroundColor = .black
+
         mapSwitch.removeAllSegments()
         var idx = 0
         let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
