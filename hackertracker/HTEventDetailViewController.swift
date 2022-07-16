@@ -116,9 +116,9 @@ class HTEventDetailViewController: UIViewController { // swiftlint:disable:this 
         eventDetailTextView.attributedText = eventAttributedString
 
         if let bookmark = bookmark, bookmark.value == true {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_active")
+            eventStarredButton.image = UIImage(systemName: "star.fill")
         } else {
-            eventStarredButton.image = #imageLiteral(resourceName: "star_inactive")
+            eventStarredButton.image = UIImage(systemName: "star")
         }
 
         let includes = event.includes

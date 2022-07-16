@@ -27,7 +27,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
     let hamburgerNavigationController: HTEventsNavViewController
     let alphaView = UIView()
 
-    let leftButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(hamburgerMenuItemPressed))
+    let leftButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(hamburgerMenuItemPressed))
     let intialTab = (Date() < AnonymousSession.shared.currentConference.startTimestamp) ? "Information" : "Schedule"
 
     // This is a mapping of tabs to vcs
@@ -42,12 +42,12 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
 
     // This is a list of tabs we will display in the hamburger menu
     let displayedTabs = [
-        HamburgerItem(title: "Schedule", imageID: "calendar-active"),
+        HamburgerItem(title: "Schedule", imageID: "calendar"),
         HamburgerItem(title: "Information", imageID: "skull-active"),
-        HamburgerItem(title: "Bookmarks", imageID: "star_active"),
-        HamburgerItem(title: "Maps", imageID: "map-active"),
-        HamburgerItem(title: "Speakers", imageID: "icon_user"),
-        HamburgerItem(title: "More", imageID: "filter"),
+        HamburgerItem(title: "Bookmarks", imageID: "star.fill"),
+        HamburgerItem(title: "Maps", imageID: "map"),
+        HamburgerItem(title: "Speakers", imageID: "person.crop.rectangle"),
+        HamburgerItem(title: "More", imageID: "line.3.horizontal.decrease"),
     ]
 
     let hamburgerMenuWidth: CGFloat = 300.0

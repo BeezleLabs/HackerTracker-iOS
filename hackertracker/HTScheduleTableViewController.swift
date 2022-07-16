@@ -384,7 +384,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         filterButton.layer.cornerRadius = filterButton.layer.frame.size.width / 2
         filterButton.backgroundColor = UIColor.black
         filterButton.clipsToBounds = true
-        filterButton.setImage(UIImage(named: "filter"), for: .normal)
+        filterButton.setImage(UIImage(systemName: "line.3.horizontal.decrease"), for: .normal)
         filterButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
                                         filterButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),

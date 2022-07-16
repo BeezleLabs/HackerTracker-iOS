@@ -97,10 +97,10 @@ class EventCell: UITableViewCell {
         subtitle.text = "\(event.location.name)"
 
         if userEvent.bookmark.value {
-            favorited.image = #imageLiteral(resourceName: "saved-active").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            favorited.image = UIImage(systemName: "star.fill")
             favorited.tintColor = UIColor.white
         } else {
-            favorited.image = #imageLiteral(resourceName: "saved-inactive").withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            favorited.image = UIImage(systemName: "star")
             favorited.tintColor = UIColor.gray
         }
 

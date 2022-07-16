@@ -64,7 +64,12 @@ class HTHamburgerMenuTableViewController: UITableViewController {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as! HTHamburgerItemTableViewCell
             cell.titleText = currentItem.title
-            cell.iconImage = UIImage(named: currentItem.imageID)
+            // cell.iconImage = UIImage(named: currentItem.imageID)
+            if let img = UIImage(systemName: currentItem.imageID) {
+                cell.iconImage = img
+            } else {
+                cell.iconImage = UIImage(named: currentItem.imageID)
+            }
             return cell
         }
     }
