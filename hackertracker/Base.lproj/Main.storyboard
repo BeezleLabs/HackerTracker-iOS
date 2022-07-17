@@ -319,7 +319,7 @@
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B5M-FU-Nbz" id="nSF-JA-pxi">
-                                    <rect key="frame" x="0.0" y="0.0" width="395.5" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="397.5" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -621,7 +621,7 @@
         <!--Split View Controller-->
         <scene sceneID="Cmg-Lt-nWH">
             <objects>
-                <splitViewController id="qWo-7t-Kgc" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="eventsSplitViewController" id="qWo-7t-Kgc" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" selectedImage="calendar-active" id="w0v-1C-qON">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -1127,7 +1127,7 @@
         <!--Split View Controller-->
         <scene sceneID="wTW-Tn-Qo3">
             <objects>
-                <splitViewController id="Wr4-BW-i8o" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="scheduleSplitViewController" id="Wr4-BW-i8o" customClass="HTSplitViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="star" catalog="system" selectedImage="saved-active" id="xzX-0b-oaM">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
@@ -1491,7 +1491,7 @@
         <!--Events Nav View Controller-->
         <scene sceneID="nMQ-TS-iRf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RS4-xP-2nk" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="eventsEventsNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="RS4-xP-2nk" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="skull-inactive" selectedImage="skull-active" id="G0n-np-0tL">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="100"/>
@@ -1516,7 +1516,7 @@
         <!--Events Nav View Controller-->
         <scene sceneID="nfE-zU-Jeb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jva-py-LD1" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="speakersEventsNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="Jva-py-LD1" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="jlY-Yo-haf">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1567,7 +1567,7 @@
         <!--Events Nav View Controller-->
         <scene sceneID="Bp4-xX-P0w">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fvc-nm-lMU" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="moreEventsNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="Fvc-nm-lMU" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="ts8-FO-dlT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -198,7 +198,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
         return eventSections.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // swiftlint:disable:this cyclomatic_complexity
         if curDate > AnonymousSession.shared.currentConference.startTimestamp {
             switch indexPath.section {
             case 0:
@@ -305,7 +305,7 @@ extension HTUpdatesViewController: UITableViewDataSource, UITableViewDelegate {
         return headerLabel
     }
 
-    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int { // swiftlint:disable:this cyclomatic_complexity
         if curDate > AnonymousSession.shared.currentConference.startTimestamp {
             switch section {
             case 0:

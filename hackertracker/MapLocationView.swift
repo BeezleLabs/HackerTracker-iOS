@@ -209,7 +209,7 @@ class MapLocationView: UIView, WKNavigationDelegate {
         }
     }
 
-    public init(location: Location) {
+    public init(location: Location) { // swiftlint:disable:this lower_acl_than_parent
         super.init(frame: CGRect.zero)
 
         currentLocation = location
