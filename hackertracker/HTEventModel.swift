@@ -104,6 +104,8 @@ struct HTLocationModel: Codable {
     var conferenceName: String
     var name: String
     var hotel: String
+    var defaultStatus: String
+    var schedule: [HTSchedule]
 }
 
 extension HTLocationModel: Document {
@@ -112,8 +114,34 @@ extension HTLocationModel: Document {
         let conferenceName = dictionary["conference"] as? String ?? ""
         let name = dictionary["name"] as? String ?? ""
         let hotel = dictionary["hotel"] as? String ?? ""
+        let defaultStatus = dictionary["default_status"] as? String ?? ""
+        let schedule: [HTSchedule] = []
 
-        self.init(id: id, conferenceName: conferenceName, name: name, hotel: hotel)
+        self.init(id: id, conferenceName: conferenceName, name: name, hotel: hotel, defaultStatus: defaultStatus, schedule: schedule)
+    }
+}
+
+struct HTSchedule: Codable {
+    var begin: Date
+    var end: Date
+    var status: String
+}
+
+extension HTSchedule: Document {
+    init?(dictionary: [String: Any]) {
+        let dfu = DateFormatterUtility.shared
+        let tmpDate = "2019-01-01T00:00:00.000-0000"
+        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmpDate) ?? Date()
+        if let beginTimestamp = dictionary["begin"] as? Timestamp {
+            begin = beginTimestamp.dateValue()
+        }
+        var end = dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmpDate) ?? Date()
+        if let endTimestamp = dictionary["end"] as? Timestamp {
+            end = endTimestamp.dateValue()
+        }
+        let status = dictionary["status"] as? String ?? ""
+
+        self.init(begin: begin, end: end, status: status)
     }
 }
 

@@ -114,7 +114,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         let conference = AnonymousSession.shared.currentConference
         if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
             var k = 0 // swiftlint:disable:this identifier_name
+
             for day in dfu.getConferenceDates(start: start, end: end) {
+                NSLog("HTSchedule: Adding day \(day)")
                 if eventTokens.indices.contains(k) {
                     // token already exists, don't need to do anything here
                 } else {

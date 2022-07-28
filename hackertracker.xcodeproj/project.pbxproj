@@ -53,6 +53,7 @@
 		5DEBDA68287F633A00CC489C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DEBDA67287F633A00CC489C /* FirebaseFirestoreSwift */; };
 		5DEBDA6A287F633A00CC489C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5DEBDA69287F633A00CC489C /* FirebaseStorage */; };
 		5DEBDA6E2881D2C300CC489C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEBDA6D2881D2C300CC489C /* AboutView.swift */; };
+		5DF186582890BE3E00FC810E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF186572890BE3E00FC810E /* LocationView.swift */; };
 		7820245F1F05FA490092ED07 /* HTSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */; };
 		786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */; };
 		78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */; };
@@ -151,6 +152,7 @@
 		5DE7B40B1ACA485D00F8A655 /* HTUpdatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTUpdatesViewController.swift; sourceTree = "<group>"; };
 		5DE9038A1B01B32E00A2D565 /* HTMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMapsViewController.swift; sourceTree = "<group>"; };
 		5DEBDA6D2881D2C300CC489C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = SOURCE_ROOT; };
+		5DF186572890BE3E00FC810E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		7820245E1F05FA490092ED07 /* HTSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTSearchTableViewController.swift; sourceTree = "<group>"; };
 		786FBC311EBD1127004F7A5F /* HTEventsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventsNavViewController.swift; sourceTree = "<group>"; };
 		78F5F5361EEE35DD00560B81 /* ScheduleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHelper.swift; sourceTree = "<group>"; };
@@ -267,21 +269,22 @@
 		498AD73F1E2D2C0400DD5B56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5DEBDA6D2881D2C300CC489C /* AboutView.swift */,
-				B568B6641F1F3FAB0092CE4A /* scene.sks */,
 				5D6707F4211787E10007F01F /* AboutCell.swift */,
+				5DEBDA6D2881D2C300CC489C /* AboutView.swift */,
 				5DDD629C20F3F6C300E527C5 /* ConferenceCell.swift */,
+				5DB4E0A3284925AA0012F6F4 /* CountDownCell.swift */,
+				3C46F493287EBF9B00A09389 /* CountdownView.swift */,
 				49730E4A1E2929BC0029438C /* EventCell.swift */,
+				8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */,
 				834713D51F1818240092C2FE /* EventDateHeaderView.swift */,
+				5DF186572890BE3E00FC810E /* LocationView.swift */,
 				8345F2D21F1297D4006761BE /* MapLocationView.swift */,
 				B552AC891F2084D4006D4F98 /* PongScene.swift */,
+				B568B6641F1F3FAB0092CE4A /* scene.sks */,
 				8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */,
-				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
-				5DB4E0A3284925AA0012F6F4 /* CountDownCell.swift */,
-				8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */,
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
+				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
-				3C46F493287EBF9B00A09389 /* CountdownView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				83679CE7210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift in Sources */,
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,
 				83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */,
+				5DF186582890BE3E00FC810E /* LocationView.swift in Sources */,
 				5DDD629D20F3F6C300E527C5 /* ConferenceCell.swift in Sources */,
 				5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */,
 				5DE7B40C1ACA485D00F8A655 /* HTUpdatesViewController.swift in Sources */,
