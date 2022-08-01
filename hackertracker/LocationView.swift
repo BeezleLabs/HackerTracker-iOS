@@ -31,32 +31,47 @@ struct LocationView_Previews: PreviewProvider {
 }
 
 class LocationUIView: UIViewController {
-    let lvc = UIHostingController(rootView: LocationView())
+    var locationsToken: UpdateToken?
+    var locations: [HTLocationModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("LocationUIView viewDidLoad")
+        loadLocations()
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        let lvc = UIHostingController(rootView: LocationView(locations: locations))
+
         super.viewDidAppear(animated)
         NSLog("LocationUIView viewDidAppear")
-
-        self.addChild(lvc)
-        // lvc.view.translatesAutoresizingMaskIntoConstraints = false
-        lvc.view.frame = view.frame
-        // lvc.view.autoresizingMask = .
-        NSLog("LocationUIView: Frame size is \(view.frame.height)x\(view.frame.width)")
-        /* lvc.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        lvc.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lvc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        lvc.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true */
+        addChild(lvc)
 
         view.addSubview(lvc.view)
+        lvc.view.translatesAutoresizingMaskIntoConstraints = false
+        lvc.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        lvc.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        lvc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        lvc.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+
         lvc.view.backgroundColor = UIColor(red: 45.0 / 255.0, green: 45.0 / 255.0, blue: 45.0 / 255.0, alpha: 1.0)
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    func loadLocations() {
+        locationsToken = FSConferenceDataController.shared.requestLocations(forConference: AnonymousSession.shared.currentConference) { result in
+            switch result {
+            case let .success(locationList):
+                self.locations = locationList
+                self.viewDidAppear(true)
+            case let .failure(error):
+                NSLog("Load Locations Failure: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
 }
