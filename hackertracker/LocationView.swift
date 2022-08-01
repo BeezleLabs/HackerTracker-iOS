@@ -6,23 +6,29 @@
 //  Copyright © 2022 Beezle Labs. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 import UIKit
 
 struct LocationView: View {
+    var locations: [HTLocationModel]
+
     var body: some View {
-        // ScrollView {
-            VStack {
-                Text("Location Status!")
+        ScrollView {
+            Text("Locations!")
+            Text("data: \(locations.count)")
+            ForEach(locations, id: \.id) { loc in
+                Text("data: \(locations.count) - \(loc.conferenceName)!")
+                Text(loc.name)
                     .font(.title)
-                    .foregroundColor(.white)
-                Text("something else goes here")
+                Text("something else goes hsere")
                     .font(.caption)
-                    .foregroundColor(.white)
             }
-        // }
+        }
     }
 }
+
+func 
 
 struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
