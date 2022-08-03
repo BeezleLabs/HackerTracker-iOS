@@ -67,7 +67,7 @@ struct HTMapModel: Codable {
 
 extension HTMapModel: Document {
     init?(dictionary: [String: Any]) {
-        let name = dictionary["name"] as? String ?? ""
+        let name = dictionary["description"] as? String ?? ""
         let file = dictionary["file"] as? String ?? ""
 
         self.init(file: file, name: name)
