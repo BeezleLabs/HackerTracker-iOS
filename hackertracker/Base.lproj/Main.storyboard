@@ -69,8 +69,8 @@
                         <viewControllerLayoutGuide type="top" id="Uj6-Lb-kp0"/>
                         <viewControllerLayoutGuide type="bottom" id="pNp-86-Ife"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GOz-6l-VXo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="GOz-6l-VXo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="rly-3y-2nK">
@@ -351,8 +351,8 @@
                         <viewControllerLayoutGuide type="top" id="wsu-o9-5iK"/>
                         <viewControllerLayoutGuide type="bottom" id="7p2-Nj-us7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ta4-tB-Y16">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="ta4-tB-Y16">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.30980392159999998" green="0.29411764709999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -362,7 +362,7 @@
                     <navigationItem key="navigationItem" id="eTb-OG-eb5">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="DwL-hS-fxa">
-                            <rect key="frame" x="141.5" y="6" width="131" height="32"/>
+                            <rect key="frame" x="141.5" y="9" width="131" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="First"/>
@@ -385,8 +385,8 @@
         <scene sceneID="JN7-yn-HOM">
             <objects>
                 <tableViewController storyboardIdentifier="HTSpeakersTableViewController" id="5KW-i8-QmY" customClass="HTSpeakersTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AD5-Mr-md1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AD5-Mr-md1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -516,8 +516,8 @@
         <scene sceneID="zBb-Qx-XfV">
             <objects>
                 <tableViewController storyboardIdentifier="HTVendorTableViewController" id="tM9-rA-Nr1" customClass="HTVendorTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZXA-11-mhF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZXA-11-mhF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -548,8 +548,8 @@
         <scene sceneID="Q9M-rA-BIO">
             <objects>
                 <tableViewController storyboardIdentifier="HTNewsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0LS-ea-XUG" customClass="HTNewsTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iz9-wX-nLG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iz9-wX-nLG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -580,8 +580,8 @@
         <scene sceneID="tso-xb-Uoy">
             <objects>
                 <tableViewController storyboardIdentifier="HTFAQTableViewController" id="A21-Pm-Mb9" customClass="HTFAQTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XKB-cD-WZH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XKB-cD-WZH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -847,8 +847,8 @@
         <scene sceneID="rW0-R1-IMV">
             <objects>
                 <tableViewController storyboardIdentifier="HTConferenceTableViewController" id="PSi-m9-7in" customClass="HTConferenceTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zTv-d6-5Un">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zTv-d6-5Un">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1078,8 +1078,8 @@
                         <viewControllerLayoutGuide type="top" id="MEK-RD-vA4"/>
                         <viewControllerLayoutGuide type="bottom" id="HhO-8m-dJN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vpd-CN-81L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="vpd-CN-81L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.050000000000000003" contentMode="center" image="skull_lg" translatesAutoresizingMaskIntoConstraints="NO" id="hpF-de-Nd8">
@@ -1190,7 +1190,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="pRO-V9-tnf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1225,8 +1225,8 @@
         <scene sceneID="5eH-tb-yKa">
             <objects>
                 <tableViewController storyboardIdentifier="HTInfoTableViewController" id="3R7-hX-7NI" customClass="HTInfoTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RvK-Nc-WK9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RvK-Nc-WK9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -1517,7 +1517,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="thD-Eo-3BI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
@@ -1557,8 +1557,8 @@
         <scene sceneID="bhH-4F-KUG">
             <objects>
                 <tableViewController id="zH7-tc-eYD" customClass="HTSettingsTableViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e7j-cg-7FB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e7j-cg-7FB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -1589,7 +1589,7 @@
                 <navigationController storyboardIdentifier="moreEventsNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="Fvc-nm-lMU" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="ts8-FO-dlT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1650,23 +1650,56 @@
             </objects>
             <point key="canvasLocation" x="436" y="1203"/>
         </scene>
-        <!--Events Nav View Controller-->
-        <scene sceneID="uQs-Xs-7p2">
+        <!--HelpUI View-->
+        <scene sceneID="1x1-nV-Vkc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aNH-KL-CEV" customClass="HTEventsNavViewController" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X4n-87-pyh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController storyboardIdentifier="HelpUIView" id="xtw-Ij-jKz" customClass="HelpUIView" customModule="hackertracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oos-Jg-MIM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z4E-QW-Do2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Bk-Yk-ZAj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" editable="NO" text="404 not found. Call 911 if there is an emergency." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fky-NB-rzI">
+                                <rect key="frame" x="20" y="58" width="374" height="818"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="linkColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help &amp; Support" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHk-pU-Kj2">
+                                <rect key="frame" x="20" y="0.0" width="374" height="53"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="kHk-pU-Kj2" secondAttribute="trailing" id="0ho-UE-69y"/>
+                            <constraint firstItem="Fky-NB-rzI" firstAttribute="top" secondItem="kHk-pU-Kj2" secondAttribute="bottom" constant="5" id="7lb-rf-Uat"/>
+                            <constraint firstItem="Z4E-QW-Do2" firstAttribute="top" secondItem="Fky-NB-rzI" secondAttribute="bottom" constant="20" id="CEM-g3-0D1"/>
+                            <constraint firstItem="Fky-NB-rzI" firstAttribute="top" secondItem="Oos-Jg-MIM" secondAttribute="bottom" constant="58" id="EX3-iq-CzS"/>
+                            <constraint firstItem="kHk-pU-Kj2" firstAttribute="top" secondItem="Oos-Jg-MIM" secondAttribute="bottom" id="SS6-rq-2w3"/>
+                            <constraint firstItem="Fky-NB-rzI" firstAttribute="trailing" secondItem="0Bk-Yk-ZAj" secondAttribute="trailingMargin" id="Zte-0U-UTW"/>
+                            <constraint firstItem="kHk-pU-Kj2" firstAttribute="leading" secondItem="0Bk-Yk-ZAj" secondAttribute="leadingMargin" id="lSi-dm-VEq"/>
+                            <constraint firstItem="Fky-NB-rzI" firstAttribute="centerX" secondItem="0Bk-Yk-ZAj" secondAttribute="centerX" id="ni2-O7-i7V"/>
+                            <constraint firstItem="Fky-NB-rzI" firstAttribute="leading" secondItem="0Bk-Yk-ZAj" secondAttribute="leadingMargin" id="se2-eT-ZPD"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="zY4-Bt-v8Q" kind="relationship" relationship="rootViewController" id="H8W-2R-PvT"/>
+                        <outlet property="helpLabel" destination="kHk-pU-Kj2" id="QYg-Dp-RQw"/>
+                        <outlet property="helpTextView" destination="Fky-NB-rzI" id="0vR-CJ-LFD"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i7I-Sy-csC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olf-Aa-00J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2885.507246376812" y="2553.3482142857142"/>
+            <point key="canvasLocation" x="5118.840579710145" y="2553.3482142857142"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1706,6 +1739,9 @@
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

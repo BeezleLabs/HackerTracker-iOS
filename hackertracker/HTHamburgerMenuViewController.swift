@@ -38,6 +38,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         "Maps": "HTMapsViewController",
         "Locations": "LocationUIView",
         "Speakers": "HTSpeakersTableViewController",
+        "Help": "HelpUIView",
         "More": "HTInfoTableViewController",
     ]
 
@@ -49,6 +50,7 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
         HamburgerItem(title: "Maps", imageID: "map"),
         HamburgerItem(title: "Locations", imageID: "location"),
         HamburgerItem(title: "Speakers", imageID: "person.crop.rectangle"),
+        HamburgerItem(title: "Help", imageID: "questionmark.circle"),
         HamburgerItem(title: "More", imageID: "line.3.horizontal.decrease"),
     ]
 

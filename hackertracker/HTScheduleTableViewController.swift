@@ -120,7 +120,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                 if eventTokens.indices.contains(k) {
                     // token already exists, don't need to do anything here
                 } else {
-                    // NSLog("setting up token for \(day)")
                     let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day) ?? Date()) { result in
                         switch result {
                         case .success(let eventList):
@@ -141,11 +140,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                                     }
                                     idx += 1
                                 }
-
                                 if newDay {
                                     self.eventSections.append((date: day, events: eventList))
                                 }
-
                                 newDay = true
                                 idx = 0
                                 for aes in self.allEventSections {
@@ -164,11 +161,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                             self.tableView.reloadData()
                         /*if self.firstLoad == true {
                          self.firstLoad = false
-                         NSLog("nope, neither were set, scrolling to current time")
                          self.scrollToCurrentDate(self)
                          }*/
                         case .failure:
-                            // TODO: Properly log failure
                             break
                         }
                     }

@@ -17,6 +17,7 @@ struct ConferenceModel: Codable {
     var startDate: String
     var timeZone: String
     var coc: String
+    var supportDoc: String
     var startTimestamp: Date
     var endTimestamp: Date
     var maps: [HTMapModel]
@@ -41,6 +42,7 @@ extension ConferenceModel: Document {
         }
         let timeZone = dictionary["timezone"] as? String ?? ""
         let coc = dictionary["codeofconduct"] as? String ?? ""
+        let supportDoc = dictionary["supportdoc"] as? String ?? ""
         var maps: [HTMapModel] = []
 
         if let mapValues = dictionary["maps"] as? [Any] {
@@ -54,7 +56,7 @@ extension ConferenceModel: Document {
         }
         let hidden = dictionary["hidden"] as? Bool ?? false
 
-        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, timeZone: timeZone, coc: coc, startTimestamp: startTimestamp, endTimestamp: endTimestamp, maps: maps, hidden: hidden)
+        self.init(id: id, name: name, code: code, endDate: endDate, startDate: startDate, timeZone: timeZone, coc: coc, supportDoc: supportDoc, startTimestamp: startTimestamp, endTimestamp: endTimestamp, maps: maps, hidden: hidden)
     }
 }
 
