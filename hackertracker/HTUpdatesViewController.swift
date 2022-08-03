@@ -55,6 +55,8 @@ class HTUpdatesViewController: UIViewController, EventDetailDelegate, EventCellD
         titleViewButton.setTitleColor(UIColor.white, for: .normal)
         titleViewButton.setTitle("\(AnonymousSession.shared.currentConference.name)", for: .normal)
         titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        titleViewButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        titleViewButton.imageView?.layer.transform = CATransform3DMakeScale(0.7, 0.7, 0.7)
         titleViewButton.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
         titleViewButton.semanticContentAttribute = .forceRightToLeft
         navigationItem.titleView = titleViewButton

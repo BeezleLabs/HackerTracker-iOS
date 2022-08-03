@@ -1724,7 +1724,7 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="map-active" width="40" height="40"/>
         <image name="map-inactive" width="40" height="40"/>
-        <image name="saved-active" width="40" height="40"/>
+        <image name="saved-active" width="128" height="128"/>
         <image name="saved-inactive" width="40" height="40"/>
         <image name="skull-active" width="40" height="40"/>
         <image name="skull-inactive" width="40" height="40"/>

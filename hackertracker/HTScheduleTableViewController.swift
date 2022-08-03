@@ -37,7 +37,10 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         let titleViewButton = UIButton(type: .system)
         titleViewButton.setTitleColor(UIColor.white, for: .normal)
         titleViewButton.setTitle(AnonymousSession.shared.currentConference.name, for: .normal)
+        titleViewButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        titleViewButton.imageView?.layer.transform = CATransform3DMakeScale(0.7, 0.7, 0.7)
         titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        titleViewButton.semanticContentAttribute = .forceRightToLeft
 
         // Set the title view with newly created button
         navigationItem.titleView = titleViewButton
