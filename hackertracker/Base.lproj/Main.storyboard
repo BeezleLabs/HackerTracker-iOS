@@ -226,6 +226,7 @@
                         <outlet property="bottomToTop" destination="FWd-SN-hKR" id="eGl-Ei-QxO"/>
                         <outlet property="fadeView" destination="618-1m-hz5" id="vNZ-oU-9pd"/>
                         <outlet property="popupView" destination="bZZ-F8-XA3" id="8gl-Hf-GEa"/>
+                        <outlet property="popupViewHeight" destination="hjK-F7-qEB" id="Lr6-xC-bm1"/>
                         <outlet property="tableView" destination="rBd-Wj-dgq" id="B8f-zO-fMH"/>
                         <outlet property="toggleButton" destination="SbC-ov-4ZT" id="GIS-78-hGG"/>
                     </connections>

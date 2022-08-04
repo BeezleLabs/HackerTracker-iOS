@@ -14,7 +14,8 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet private var bottomToTop: NSLayoutConstraint!
     @IBOutlet private var fadeView: UIView!
     @IBOutlet private var toggleButton: UIButton!
-
+    @IBOutlet private var popupViewHeight: NSLayoutConstraint!
+    
     var all: [HTTag] = []
     var filtered: [HTTag] = []
     weak var delegate: FilterViewControllerDelegate?
@@ -34,6 +35,7 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         bottomToTop.isActive = false
+        popupViewHeight.constant = self.view.frame.height - 200
         centeredConstraint = popupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         centeredConstraint?.isActive = true
 
