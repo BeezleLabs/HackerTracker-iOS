@@ -99,7 +99,7 @@ extension HTEventModel: Document {
     }
 }
 
-struct HTLocationModel: Codable {
+struct HTLocationModel: Codable, Identifiable {
     var id: Int
     var conferenceId: Int
     var conferenceName: String
