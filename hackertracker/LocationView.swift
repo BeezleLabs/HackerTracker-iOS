@@ -50,7 +50,7 @@ struct LocationCell: View {
                         Circle().foregroundColor(circleStatus(location: location))
                             .frame(width: heirCircle(heirDepth: location.hierDepth), height: heirCircle(heirDepth: location.hierDepth), alignment: .leading)
                     }
-                    Text(location.shortName).font(heirFont(heirDepth: location.hierDepth)).multilineTextAlignment(.leading)
+                    Text(location.shortName).font(heirFont(heirDepth: location.hierDepth)).fixedSize(horizontal: false, vertical: true).multilineTextAlignment(.leading)
                     Spacer()
                     if !(childLocations[location.id]?.isEmpty ?? false) {
                         showChildren ? Image(systemName: "chevron.down") : Image(systemName: "chevron.left")
