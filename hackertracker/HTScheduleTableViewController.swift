@@ -10,7 +10,7 @@ import CoreData
 import SpriteKit
 import UIKit
 
-class BaseScheduleTableViewController: UITableViewController, EventDetailDelegate {
+class BaseScheduleTableViewController: UITableViewController {
     typealias EventSection = (date: String, events: [UserEventModel])
 
     var eventSections: [EventSection] = []
@@ -20,8 +20,9 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     var lastContentOffset: CGPoint?
     var updated: [String] = []
     var later: [String] = []
-    var alltypes: [HTEventType] = []
-    var filteredtypes: [HTEventType] = []
+    var allTags: [HTTag] = []
+    var filteredTags: [HTTag] = []
+    var filteredTagIds: [Int] = []
     var firstLoad = true
     var touchNav: UITapGestureRecognizer! // swiftlint:disable:this implicitly_unwrapped_optional
 
@@ -42,12 +43,8 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         titleViewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         titleViewButton.semanticContentAttribute = .forceRightToLeft
 
-        // Set the title view with newly created button
         navigationItem.titleView = titleViewButton
 
-        self.setupTokens()
-        self.reloadEvents()
-        self.tableView.reloadData()
         tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.middle, animated: false)
     }
 
@@ -55,7 +52,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
         super.viewWillAppear(animated)
 
         if isViewLoaded && !animated {
-            self.tableView.reloadData()
             if let lastContentOffset = lastContentOffset {
                 tableView.contentOffset = lastContentOffset
                 tableView.layoutIfNeeded()
@@ -65,44 +61,10 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        self.tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // self.navigationController?.navigationBar.removeGestureRecognizer(touchNav)
-    }
-
-    func reloadEvents() {
-        let selectedIndexPath = tableView.indexPathForSelectedRow
-        var event: UserEventModel?
-
-        if let selectedIndexPath = selectedIndexPath {
-            event = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
-        }
-
-        if !eventSections.isEmpty {
-            eventSections.removeAll()
-        }
-        if !allEventSections.isEmpty {
-            allEventSections.removeAll()
-        }
-
-        let emptyStateView = self.emptyStateView ?? emptyState()
-
-        self.emptyStateView = emptyStateView
-        emptyStateView.isHidden = !eventSections.isEmpty
-
-        if let selectedIndexPath = selectedIndexPath,
-           let event = event,
-           selectedIndexPath.section < eventSections.count,
-           selectedIndexPath.row < eventSections[selectedIndexPath.section].events.count {
-            let newEvent = eventSections[selectedIndexPath.section].events[selectedIndexPath.row]
-            if newEvent.event.id == event.event.id {
-                tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
-            }
-        }
     }
 
     func emptyState() -> UIView {
@@ -110,71 +72,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             return emptyState
         }
         return UIView()
-    }
-
-    func setupTokens() { // swiftlint:disable:this cyclomatic_complexity
-        let dfu = DateFormatterUtility.shared
-        let conference = AnonymousSession.shared.currentConference
-        if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
-            var k = 0 // swiftlint:disable:this identifier_name
-
-            for day in dfu.getConferenceDates(start: start, end: end) {
-                NSLog("HTSchedule: Adding day \(day)")
-                if eventTokens.indices.contains(k) {
-                    // token already exists, don't need to do anything here
-                } else {
-                    let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day) ?? Date()) { result in
-                        switch result {
-                        case .success(let eventList):
-                            if !eventList.isEmpty {
-                                var newDay = true
-                                var idx = 0
-                                for eventSection in self.eventSections {
-                                    if eventSection.date == day {
-                                        self.eventSections.remove(at: idx)
-                                        var newEvents: [UserEventModel] = []
-                                        for userEvent in eventSection.events {
-                                            if self.filteredtypes.contains(userEvent.event.type) {
-                                                newEvents.append(userEvent)
-                                            }
-                                        }
-                                        self.eventSections.insert((date: day, events: newEvents), at: idx)
-                                        newDay = false
-                                    }
-                                    idx += 1
-                                }
-                                if newDay {
-                                    self.eventSections.append((date: day, events: eventList))
-                                }
-                                newDay = true
-                                idx = 0
-                                for aes in self.allEventSections {
-                                    if aes.date == day {
-                                        self.allEventSections.remove(at: idx)
-                                        self.allEventSections.insert((date: day, events: eventList), at: idx)
-                                        newDay = false
-                                    }
-                                    idx += 1
-                                }
-                                if newDay {
-                                    self.allEventSections.append((date: day, events: eventList))
-                                }
-                            }
-
-                            self.tableView.reloadData()
-                        /*if self.firstLoad == true {
-                         self.firstLoad = false
-                         self.scrollToCurrentDate(self)
-                         }*/
-                        case .failure:
-                            break
-                        }
-                    }
-                    eventTokens.append(dayToken)
-                }
-                k += 1
-            }
-        }
     }
 
     @objc func scrollToCurrentDate(_ sender: Any) {
@@ -187,7 +84,6 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
                     for eventIndex in 0..<self.eventSections[sectionIndex].events.count {
                         let userEvent = self.eventSections[sectionIndex].events[eventIndex]
                         if userEvent.event.begin > curDate {
-                            // NSLog("Jumping to \(userEvent.event.title) at \(sectionIndex):\(eventIndex)")
                             let indexPath = IndexPath(row: eventIndex, section: sectionIndex)
                             self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                             break fullloop
@@ -225,14 +121,18 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
             }
         }
 
-        if let refreshControl = refreshControl,
+        /* if let refreshControl = refreshControl,
            tableView.subviews.contains(refreshControl) {
             tableView.sendSubviewToBack(refreshControl)
-        }
+        } */
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard eventSections.count > section else {
+            return 0
+        }
+
+        if eventSections[section].events.isEmpty {
             return 0
         }
 
@@ -250,7 +150,7 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if eventSections.isEmpty {
+        if eventSections.isEmpty || eventSections[section].events.isEmpty {
             return emptyStateView
         }
 
@@ -266,46 +166,10 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if eventSections.isEmpty {
+        if eventSections.isEmpty || eventSections[section].events.isEmpty {
             return tableView.frame.size.height
         } else {
             return 40
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
-            eventController.event = self.eventSections[indexPath.section].events[indexPath.row].event
-            eventController.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
-            eventController.delegate = self
-            self.navigationController?.pushViewController(eventController, animated: true)
-        }
-    }
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        lastContentOffset = tableView.contentOffset
-        if segue.identifier == "eventDetailSegue" {
-            let destController: HTEventDetailViewController
-
-            if let destinationNav = segue.destination as? UINavigationController, let controller = destinationNav.viewControllers.first as? HTEventDetailViewController {
-                destController = controller
-            } else {
-                destController = segue.destination as! HTEventDetailViewController
-            }
-
-            var indexPath: IndexPath
-            if let cell = sender as? EventCell, let cellIndexPath = tableView.indexPath(for: cell) {
-                indexPath = cellIndexPath
-            } else if let senderIndexPath = sender as? IndexPath {
-                indexPath = senderIndexPath
-            } else {
-                return
-            }
-
-            destController.event = self.eventSections[indexPath.section].events[indexPath.row].event
-            destController.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
-            destController.delegate = self
         }
     }
 
@@ -318,12 +182,14 @@ class BaseScheduleTableViewController: UITableViewController, EventDetailDelegat
     }
 }
 
-class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate {
+// swiftlint:disable:this type_body_length
+class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate, EventDetailDelegate {
     var filterView: HTFilterViewController?
 
-    var typesToken: UpdateToken?
+    var tagsToken: UpdateToken?
 
     var showSectionIndexTitles = false
+    var selectedIndexPath: IndexPath?
 
     // Floating button stuff
     private var filterButton = UIButton(type: .custom)
@@ -332,15 +198,21 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tvb = navigationItem.titleView as! UIButton
-        tvb.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
+        if tagsToken == nil {
+            let tvb = navigationItem.titleView as! UIButton
+            tvb.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
 
-        getEventTypes()
-        self.filterButton.addTarget(self, action: #selector(filterClick(sender:)), for: UIControl.Event.touchUpInside)
-        self.navigationController?.view.addSubview(filterButton)
+            getTagTypes()
+            if eventTokens.isEmpty {
+                self.setupTokens()
+            }
+            self.filterButton.addTarget(self, action: #selector(filterClick(sender:)), for: UIControl.Event.touchUpInside)
+            self.navigationController?.view.addSubview(filterButton)
 
-        self.nowButton.addTarget(self, action: #selector(scrollToCurrentDate(_:)), for: UIControl.Event.touchUpInside)
-        self.navigationController?.view.addSubview(nowButton)
+            self.nowButton.addTarget(self, action: #selector(scrollToCurrentDate(_:)), for: UIControl.Event.touchUpInside)
+            self.navigationController?.view.addSubview(nowButton)
+        }
+        reloadFilteredEvents()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -407,20 +279,31 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     @objc func filterClick(sender: AnyObject) {
         let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
         fvc.delegate = self
-        fvc.all = alltypes
-        fvc.filtered = filteredtypes
+        fvc.all = allTags
+        fvc.filtered = filteredTags
         present(fvc, animated: false)
     }
 
-    func getEventTypes() {
-        typesToken = FSConferenceDataController.shared.requestEventTypes(forConference: AnonymousSession.shared.currentConference) { result in
+    func getTagTypes() {
+        tagsToken = FSConferenceDataController.shared.requestTags(forConference: AnonymousSession.shared.currentConference) { result in
             switch result {
-            case .success(let typeList):
-                self.alltypes.removeAll()
-                for type in typeList where !type.name.lowercased().contains("bookmark") {
-                    self.alltypes.append(type)
+            case .success(let tagTypeList):
+                self.allTags.removeAll()
+                for tagType in tagTypeList where tagType.label.lowercased().contains("event category") {
+                    self.allTags.reserveCapacity(tagType.tags.count)
+                    for tag in tagType.tags {
+                        var insertIndex = 0
+                        for curTag in self.allTags {
+                            if curTag.sortOrder > tag.sortOrder {
+                                break
+                            }
+                            insertIndex += 1
+                        }
+                        self.allTags.insert(tag, at: insertIndex)
+                        // self.allTags.append(tag)
+                    }
                 }
-                self.filteredtypes = self.alltypes
+                self.filteredTags = self.allTags
             case .failure:
                 // TODO: Properly log failure
                 break
@@ -439,6 +322,16 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+            self.selectedIndexPath = indexPath
+            eventController.event = self.eventSections[indexPath.section].events[indexPath.row].event
+            eventController.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
+            eventController.delegate = self
+            self.navigationController?.pushViewController(eventController, animated: true)
+        }
+    }
+
     override func emptyState() -> UIView {
         if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
             emptyState.bind(description: "No events for this date yet. Pull down to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
@@ -453,7 +346,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         for eventSection in eventSections {
             if !eventSection.events.isEmpty, let date = dfu.yearMonthDayFormatter.date(from: eventSection.date) {
                 let out = dfu.shortDayOfMonthFormatter.string(from: date)
-                // NSLog("checking date \(es.date) / \(out)")
                 if out.contains("Mon") {
                     titles.append("M")
                 } else if out.contains("Tue") {
@@ -461,7 +353,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                 } else if out.contains("Wed") {
                     titles.append("W")
                 } else if out.contains("Thu") {
-                    // NSLog("got Thu")
                     titles.append("H")
                 } else if out.contains("Fri") {
                     titles.append("F")
@@ -476,12 +367,17 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
     }
 
     func reloadFilteredEvents() {
-        // NSLog("filtered types: \(filteredtypes)")
+        filteredTagIds = filteredTags.compactMap { tag in
+            tag.id
+        }
         var newEventSections: [EventSection] = []
         for eventSection in allEventSections {
             var newEvents: [UserEventModel] = []
-            for userEvent in eventSection.events where filteredtypes.contains(userEvent.event.type) {
-                newEvents.append(userEvent)
+            for userEvent in eventSection.events {
+                for tagId in userEvent.event.tagIds where filteredTagIds.contains(tagId) {
+                    newEvents.append(userEvent)
+                    break
+                }
             }
             if !newEvents.isEmpty {
                 newEventSections.append((date: eventSection.date, events: newEvents))
@@ -491,39 +387,117 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         self.tableView.reloadData()
     }
 
-    func filterList(filteredEventTypes: [HTEventType]) {
-        self.filteredtypes = filteredEventTypes
+    func reloadEvents() {
+        if let indexPath = self.selectedIndexPath {
+            self.eventSections[indexPath.section].events[indexPath.row].bookmark.value.toggle()
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+        }
+    }
+
+    func filterList(filteredTags: [HTTag]) {
+        self.filteredTags = filteredTags
         self.reloadFilteredEvents()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "filterSegue" {
-            let fvc = storyboard?.instantiateViewController(withIdentifier: "filterViewController") as! HTFilterViewController
-            fvc.delegate = self
-            fvc.all = alltypes
-            fvc.filtered = filteredtypes
-            present(fvc, animated: false)
-        } else if segue.identifier == "eventDetailSegue" {
-            let destController: HTEventDetailViewController
+    func setupTokens() { // swiftlint:disable:this cyclomatic_complexity function_body_length
+        let dfu = DateFormatterUtility.shared
+        let conference = AnonymousSession.shared.currentConference
+        if let start = dfu.yearMonthDayFormatter.date(from: conference.startDate), let end = dfu.yearMonthDayFormatter.date(from: conference.endDate) {
+            var k = 0 // swiftlint:disable:this identifier_name
 
-            if let destinationNav = segue.destination as? UINavigationController, let controller = destinationNav.viewControllers.first as? HTEventDetailViewController {
-                destController = controller
-            } else {
-                destController = segue.destination as! HTEventDetailViewController
+            for day in dfu.getConferenceDates(start: start, end: end) {
+                if eventTokens.indices.contains(k) {
+                    // token already exists, don't need to do anything here
+                } else {
+                    let dayToken = FSConferenceDataController.shared.requestEvents(forConference: conference, inDate: dfu.yearMonthDayFormatter.date(from: day) ?? Date()) { result in
+                        switch result {
+                        case .success(let eventList):
+                            if !eventList.isEmpty {
+                                // Event List already exists
+                                var newDay = true
+                                var idx = 0
+                                for eventSection in self.eventSections {
+                                    // Go through event sections that exist
+                                    if eventSection.date == day {
+                                        // Section exists and is the right day
+                                        // Start by removing the current eventSection
+                                        self.eventSections.remove(at: idx)
+
+                                        var newEvents: [UserEventModel] = []
+                                        if self.filteredTagIds.isEmpty {
+                                            newEvents = eventList
+                                        } else {
+                                            for userEvent in eventList {
+                                                for tagId in userEvent.event.tagIds {
+                                                    if self.filteredTagIds.contains(tagId) {
+                                                        newEvents.append(userEvent)
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        if !newEvents.isEmpty {
+                                            // Only add the section if there are events in it
+                                            self.eventSections.insert((date: day, events: newEvents), at: idx)
+                                        }
+
+                                        newDay = false
+                                    }
+                                    idx += 1
+                                }
+                                if newDay {
+                                    var newEvents: [UserEventModel] = []
+                                    if self.filteredTagIds.isEmpty {
+                                        newEvents = eventList
+                                    } else {
+                                        for userEvent in eventList {
+                                            for tagId in userEvent.event.tagIds {
+                                                if self.filteredTagIds.contains(tagId) {
+                                                    newEvents.append(userEvent)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if !newEvents.isEmpty {
+                                        // Only add the section if there are events in it, make sure the sections are ordered
+                                        var insertIndex = 0
+                                        idxloop: for section in self.eventSections {
+                                            if let fullDay = dfu.yearMonthDayFormatter.date(from: day),
+                                               let secDay = dfu.yearMonthDayFormatter.date(from: section.date),
+                                            fullDay < secDay {
+                                                break idxloop
+                                            }
+                                            insertIndex += 1
+                                        }
+                                        self.eventSections.insert((date: day, events: newEvents), at: insertIndex)
+                                    }
+                                }
+
+                                // Handle the list of all events
+                                newDay = true
+                                idx = 0
+                                for aes in self.allEventSections {
+                                    if aes.date == day {
+                                        self.allEventSections.remove(at: idx)
+                                        self.allEventSections.insert((date: day, events: eventList), at: idx)
+                                        newDay = false
+                                    }
+                                    idx += 1
+                                }
+                                if newDay {
+                                    self.allEventSections.append((date: day, events: eventList))
+                                }
+                            }
+
+                            self.tableView.reloadData()
+                        case .failure:
+                            break
+                        }
+                    }
+                    eventTokens.append(dayToken)
+                }
+                k += 1
             }
-
-            var indexPath: IndexPath
-            if let cell = sender as? EventCell, let cellIndexPath = tableView.indexPath(for: cell) {
-                indexPath = cellIndexPath
-            } else if let senderIndexPath = sender as? IndexPath {
-                indexPath = senderIndexPath
-            } else {
-                return
-            }
-
-            destController.event = self.eventSections[indexPath.section].events[indexPath.row].event
-            destController.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
-            destController.delegate = self
         }
     }
 }

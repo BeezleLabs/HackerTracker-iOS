@@ -9,9 +9,10 @@
 import CoreData
 import UIKit
 
-class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConferenceTableViewControllerDelegate {
+class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConferenceTableViewControllerDelegate, EventDetailDelegate {
     var eventsToken: UpdateToken?
     var events: [UserEventModel] = []
+    var selectedIndexPath: IndexPath?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,8 +23,22 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConfer
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if eventsToken == nil {
+            self.setupTokens()
+        }
+
         let tvb = navigationItem.titleView as! UIButton
         tvb.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let storyboard = self.storyboard, let eventController = storyboard.instantiateViewController(withIdentifier: "HTEventDetailViewController") as? HTEventDetailViewController {
+            self.selectedIndexPath = indexPath
+            eventController.event = self.eventSections[indexPath.section].events[indexPath.row].event
+            eventController.bookmark = self.eventSections[indexPath.section].events[indexPath.row].bookmark
+            eventController.delegate = self
+            self.navigationController?.pushViewController(eventController, animated: true)
+        }
     }
 
     @objc func displayConferencePicker(sender: AnyObject) {
@@ -39,9 +54,14 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConfer
         }
     }
 
-    override func reloadEvents() {
-        // super.reloadEvents()
+    func reloadEvents() {
+        if let indexPath = self.selectedIndexPath {
+            self.eventSections[indexPath.section].events[indexPath.row].bookmark.value.toggle()
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+        }
+    }
 
+    func setupTokens() {
         self.eventsToken = FSConferenceDataController.shared.requestEvents(forConference: AnonymousSession.shared.currentConference, descending: false) { result in
             switch result {
             case .success(let eventsList):
@@ -56,7 +76,7 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConfer
                         let range = dayDate...(dayDate.addingTimeInterval(86400))
                         for event in eventsList {
                             if event.bookmark.value, range.contains(event.event.begin) {
-                                // NSLog("Adding \(e.event.title) to this schedule")
+                                NSLog("Adding \(event.event.title) to this schedule")
                                 events.append(event)
                             } else {
                                 // NSLog("\(e.event.title) not bookmarked")

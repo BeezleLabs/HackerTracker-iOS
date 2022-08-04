@@ -63,7 +63,7 @@ class FSConferenceDataController {
         let conferences = Collection<ConferenceModel>(query: query)
         conferences.listen { _ in
             if let firstConferenceItem = conferences.items.first {
-            updateHandler(Result<ConferenceModel, Error>.success(firstConferenceItem))
+                updateHandler(Result<ConferenceModel, Error>.success(firstConferenceItem))
             } else {
                 updateHandler(Result<ConferenceModel, Error>.failure(HTError.confItemNil))
             }
@@ -275,6 +275,15 @@ class FSConferenceDataController {
             updateHandler(Result<[HTEventType], Error>.success(types.items))
         }
         return UpdateToken(types)
+    }
+
+    func requestTags(forConference conference: ConferenceModel, updateHandler: @escaping (Result<[HTTagType], Error>) -> Void) -> UpdateToken {
+        let query = document(forConference: conference).collection("tagtypes").order(by: "sort_order", descending: false)
+        let tagTypes = Collection<HTTagType>(query: query)
+        tagTypes.listen { _ in
+            updateHandler(Result<[HTTagType], Error>.success(tagTypes.items))
+        }
+        return UpdateToken(tagTypes)
     }
 
     func requestArticles(forConference conference: ConferenceModel,

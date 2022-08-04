@@ -35,6 +35,8 @@ struct HTEventModel: Codable {
     var location: HTLocationModel
     var speakers: [HTSpeaker]
     var type: HTEventType
+    var tagIds: [Int]
+    var tags: String
 }
 
 struct UserEventModel: Codable, Equatable {
@@ -95,7 +97,27 @@ extension HTEventModel: Document {
             return nil
         }
 
-        self.init(id: id, conferenceName: conferenceName, description: description, begin: begin, end: end, includes: includes, links: link, title: title, location: locationVal, speakers: speakers, type: typeVal)
+        var tagIds: [Int] = []
+        if let tagIdVals = dictionary["tag_ids"] as? [Int] {
+            tagIds = tagIdVals
+        }
+
+        let tags: String = dictionary["tags"] as? String ?? ""
+
+        self.init(id: id,
+                  conferenceName: conferenceName,
+                  description: description,
+                  begin: begin,
+                  end: end,
+                  includes: includes,
+                  links: link,
+                  title: title,
+                  location: locationVal,
+                  speakers: speakers,
+                  type: typeVal,
+                  tagIds: tagIds,
+                  tags: tags
+        )
     }
 }
 

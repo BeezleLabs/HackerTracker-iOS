@@ -34,6 +34,7 @@
 		5DA07C271ADF56EA00611BE8 /* HTScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */; };
 		5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA268531D06006400249C63 /* LaunchScreen.storyboard */; };
 		5DB48CDC2899E141003B0BB7 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB48CDB2899E141003B0BB7 /* HelpView.swift */; };
+		5DB48CDE289B3C1C003B0BB7 /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB48CDD289B3C1B003B0BB7 /* TagModel.swift */; };
 		5DB4E0A5284925AA0012F6F4 /* CountDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB4E0A3284925AA0012F6F4 /* CountDownCell.swift */; };
 		5DB4E0A8284941CB0012F6F4 /* Hacked-KerX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DB4E0A7284941CB0012F6F4 /* Hacked-KerX.ttf */; };
 		5DCBAB9A22AAFAF1003457C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */; };
@@ -137,6 +138,7 @@
 		5DA07C261ADF56EA00611BE8 /* HTScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5DA268531D06006400249C63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DB48CDB2899E141003B0BB7 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		5DB48CDD289B3C1B003B0BB7 /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		5DB4E0A3284925AA0012F6F4 /* CountDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountDownCell.swift; path = Views/CountDownCell.swift; sourceTree = "<group>"; };
 		5DB4E0A7284941CB0012F6F4 /* Hacked-KerX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hacked-KerX.ttf"; sourceTree = "<group>"; };
 		5DCBAB9922AAFAF1003457C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				49730E4A1E2929BC0029438C /* EventCell.swift */,
 				8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */,
 				834713D51F1818240092C2FE /* EventDateHeaderView.swift */,
+				5DB48CDB2899E141003B0BB7 /* HelpView.swift */,
 				5DF186572890BE3E00FC810E /* LocationView.swift */,
 				8345F2D21F1297D4006761BE /* MapLocationView.swift */,
 				B552AC891F2084D4006D4F98 /* PongScene.swift */,
@@ -287,7 +290,6 @@
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
-				5DB48CDB2899E141003B0BB7 /* HelpView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -382,6 +384,7 @@
 				8318FE8A22B9BAD100EC44CC /* ConferenceModel.swift */,
 				8318FE8C22B9BC1600EC44CC /* Document.swift */,
 				8318FE8E22B9C29500EC44CC /* HTEventModel.swift */,
+				5DB48CDD289B3C1B003B0BB7 /* TagModel.swift */,
 			);
 			name = FireBaseModels;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				83E74C3B1ED7AB580078E5FB /* UpdateCell.swift in Sources */,
 				49730E4E1E2D1AB50029438C /* Theme.swift in Sources */,
 				5D4C528C22E27E2E0042E401 /* HTCocViewController.swift in Sources */,
+				5DB48CDE289B3C1C003B0BB7 /* TagModel.swift in Sources */,
 				5D4C528A22E26B740042E401 /* HTInfoTableViewController.swift in Sources */,
 				B5A9F7531F17307800EDC6FE /* Animation.swift in Sources */,
 				5DDD629720F2A73800E527C5 /* HTConferenceTableViewController.swift in Sources */,

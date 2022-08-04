@@ -15,8 +15,8 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet private var fadeView: UIView!
     @IBOutlet private var toggleButton: UIButton!
 
-    var all: [HTEventType] = []
-    var filtered: [HTEventType] = []
+    var all: [HTTag] = []
+    var filtered: [HTTag] = []
     weak var delegate: FilterViewControllerDelegate?
     var toggle = true
 
@@ -58,10 +58,10 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
 
-        let eventType = self.all[indexPath.section]
-        cell.textLabel?.text = eventType.name
+        let tag = self.all[indexPath.section]
+        cell.textLabel?.text = tag.label
 
-        if filtered.contains(eventType) {
+        if filtered.contains(tag) {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -82,7 +82,7 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.accessoryType = .checkmark
                 filtered.append(eventType)
             }
-            delegate?.filterList(filteredEventTypes: filtered)
+            delegate?.filterList(filteredTags: filtered)
         }
     }
 
@@ -94,7 +94,7 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
         }
         toggle.toggle()
         self.tableView.reloadData()
-        delegate?.filterList(filteredEventTypes: filtered)
+        delegate?.filterList(filteredTags: filtered)
     }
 
     @IBAction private func doneButtonPressed(_ sender: Any) {
@@ -102,7 +102,7 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     @objc func close() {
-        delegate?.filterList(filteredEventTypes: filtered)
+        delegate?.filterList(filteredTags: filtered)
 
         if let centeredConstraint = centeredConstraint {
             centeredConstraint.isActive = false
@@ -120,5 +120,5 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 protocol FilterViewControllerDelegate: AnyObject {
-    func filterList(filteredEventTypes: [HTEventType])
+    func filterList(filteredTags: [HTTag])
 }
