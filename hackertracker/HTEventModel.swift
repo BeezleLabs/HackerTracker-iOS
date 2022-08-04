@@ -121,25 +121,41 @@ extension HTEventModel: Document {
     }
 }
 
-struct HTLocationModel: Codable {
+struct HTLocationModel: Codable, Identifiable {
     var id: Int
+    var conferenceId: Int
     var conferenceName: String
     var name: String
     var hotel: String
     var defaultStatus: String
     var schedule: [HTSchedule]
+    var hierExtentLeft: Int
+    var hierExtentRight: Int
+    var hierDepth: Int
+    var parentId: Int
+    var peerSortOrder: Int
+    var shortName: String
 }
 
 extension HTLocationModel: Document {
     init?(dictionary: [String: Any]) {
         let id = dictionary["id"] as? Int ?? 0
+        let conferenceId = dictionary["conference_id"] as? Int ?? 0
         let conferenceName = dictionary["conference"] as? String ?? ""
         let name = dictionary["name"] as? String ?? ""
         let hotel = dictionary["hotel"] as? String ?? ""
         let defaultStatus = dictionary["default_status"] as? String ?? ""
         let schedule: [HTSchedule] = []
-
-        self.init(id: id, conferenceName: conferenceName, name: name, hotel: hotel, defaultStatus: defaultStatus, schedule: schedule)
+        let hierExtentLeft = dictionary["hier_extent_left"] as? Int ?? 0
+        let hierExtentRight = dictionary["hier_extent_right"] as? Int ?? 0
+        let hierDepth = dictionary["hier_depth"] as? Int ?? 0
+        let parentId = dictionary["parent_id"] as? Int ?? 0
+        let peerSortOrder = dictionary["peer_sort_order"] as? Int ?? 0
+        let shortName = dictionary["short_name"] as? String ?? ""
+        self.init(id: id, conferenceId: conferenceId, conferenceName: conferenceName, name: name, hotel: hotel,
+                  defaultStatus: defaultStatus, schedule: schedule, hierExtentLeft: hierExtentLeft,
+                  hierExtentRight: hierExtentRight, hierDepth: hierDepth, parentId: parentId,
+                  peerSortOrder: peerSortOrder, shortName: shortName)
     }
 }
 
