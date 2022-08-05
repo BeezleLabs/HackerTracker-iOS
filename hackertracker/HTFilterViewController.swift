@@ -15,7 +15,7 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet private var fadeView: UIView!
     @IBOutlet private var toggleButton: UIButton!
     @IBOutlet private var popupViewHeight: NSLayoutConstraint!
-    
+
     var all: [HTTag] = []
     var filtered: [HTTag] = []
     weak var delegate: FilterViewControllerDelegate?

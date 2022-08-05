@@ -53,7 +53,7 @@ struct UserEventModel: Codable, Equatable {
 }
 
 extension HTEventModel: Document {
-    init?(dictionary: [String: Any]) {
+    init?(dictionary: [String: Any]) { // swiftlint:disable:this function_body_length
         let dfu = DateFormatterUtility.shared
         let tmpDate = "2019-01-01T00:00:00.000-0000"
         let id = dictionary["id"] as? Int ?? 0
@@ -121,25 +121,49 @@ extension HTEventModel: Document {
     }
 }
 
-struct HTLocationModel: Codable {
+struct HTLocationModel: Codable, Identifiable {
     var id: Int
+    var conferenceId: Int
     var conferenceName: String
     var name: String
     var hotel: String
     var defaultStatus: String
     var schedule: [HTSchedule]
+    var hierExtentLeft: Int
+    var hierExtentRight: Int
+    var hierDepth: Int
+    var parentId: Int
+    var peerSortOrder: Int
+    var shortName: String
 }
 
 extension HTLocationModel: Document {
     init?(dictionary: [String: Any]) {
         let id = dictionary["id"] as? Int ?? 0
+        let conferenceId = dictionary["conference_id"] as? Int ?? 0
         let conferenceName = dictionary["conference"] as? String ?? ""
         let name = dictionary["name"] as? String ?? ""
         let hotel = dictionary["hotel"] as? String ?? ""
         let defaultStatus = dictionary["default_status"] as? String ?? ""
-        let schedule: [HTSchedule] = []
-
-        self.init(id: id, conferenceName: conferenceName, name: name, hotel: hotel, defaultStatus: defaultStatus, schedule: schedule)
+        var schedule: [HTSchedule] = []
+        if let scheduleValues = dictionary["schedule"] as? [Any] {
+            schedule = scheduleValues.compactMap { element -> HTSchedule? in
+                if let element = element as? [String: Any], let sched = HTSchedule(dictionary: element) {
+                    return sched
+                }
+                return nil
+            }
+        }
+        let hierExtentLeft = dictionary["hier_extent_left"] as? Int ?? 0
+        let hierExtentRight = dictionary["hier_extent_right"] as? Int ?? 0
+        let hierDepth = dictionary["hier_depth"] as? Int ?? 0
+        let parentId = dictionary["parent_id"] as? Int ?? 0
+        let peerSortOrder = dictionary["peer_sort_order"] as? Int ?? 0
+        let shortName = dictionary["short_name"] as? String ?? ""
+        self.init(id: id, conferenceId: conferenceId, conferenceName: conferenceName, name: name, hotel: hotel,
+                  defaultStatus: defaultStatus, schedule: schedule, hierExtentLeft: hierExtentLeft,
+                  hierExtentRight: hierExtentRight, hierDepth: hierDepth, parentId: parentId,
+                  peerSortOrder: peerSortOrder, shortName: shortName)
     }
 }
 
@@ -153,11 +177,11 @@ extension HTSchedule: Document {
     init?(dictionary: [String: Any]) {
         let dfu = DateFormatterUtility.shared
         let tmpDate = "2019-01-01T00:00:00.000-0000"
-        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmpDate) ?? Date()
+        var begin = dfu.locationTimeFormatter.date(from: dictionary["begin"] as? String ?? tmpDate) ?? Date()
         if let beginTimestamp = dictionary["begin"] as? Timestamp {
             begin = beginTimestamp.dateValue()
         }
-        var end = dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmpDate) ?? Date()
+        var end = dfu.locationTimeFormatter.date(from: dictionary["end"] as? String ?? tmpDate) ?? Date()
         if let endTimestamp = dictionary["end"] as? Timestamp {
             end = endTimestamp.dateValue()
         }
