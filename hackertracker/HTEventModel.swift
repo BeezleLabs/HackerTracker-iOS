@@ -53,7 +53,7 @@ struct UserEventModel: Codable, Equatable {
 }
 
 extension HTEventModel: Document {
-    init?(dictionary: [String: Any]) {
+    init?(dictionary: [String: Any]) { // swiftlint:disable:this function_body_length
         let dfu = DateFormatterUtility.shared
         let tmpDate = "2019-01-01T00:00:00.000-0000"
         let id = dictionary["id"] as? Int ?? 0
@@ -145,7 +145,15 @@ extension HTLocationModel: Document {
         let name = dictionary["name"] as? String ?? ""
         let hotel = dictionary["hotel"] as? String ?? ""
         let defaultStatus = dictionary["default_status"] as? String ?? ""
-        let schedule: [HTSchedule] = []
+        var schedule: [HTSchedule] = []
+        if let scheduleValues = dictionary["schedule"] as? [Any] {
+            schedule = scheduleValues.compactMap { element -> HTSchedule? in
+                if let element = element as? [String: Any], let sched = HTSchedule(dictionary: element) {
+                    return sched
+                }
+                return nil
+            }
+        }
         let hierExtentLeft = dictionary["hier_extent_left"] as? Int ?? 0
         let hierExtentRight = dictionary["hier_extent_right"] as? Int ?? 0
         let hierDepth = dictionary["hier_depth"] as? Int ?? 0
@@ -169,11 +177,11 @@ extension HTSchedule: Document {
     init?(dictionary: [String: Any]) {
         let dfu = DateFormatterUtility.shared
         let tmpDate = "2019-01-01T00:00:00.000-0000"
-        var begin = dfu.iso8601Formatter.date(from: dictionary["begin"] as? String ?? tmpDate) ?? Date()
+        var begin = dfu.locationTimeFormatter.date(from: dictionary["begin"] as? String ?? tmpDate) ?? Date()
         if let beginTimestamp = dictionary["begin"] as? Timestamp {
             begin = beginTimestamp.dateValue()
         }
-        var end = dfu.iso8601Formatter.date(from: dictionary["end"] as? String ?? tmpDate) ?? Date()
+        var end = dfu.locationTimeFormatter.date(from: dictionary["end"] as? String ?? tmpDate) ?? Date()
         if let endTimestamp = dictionary["end"] as? Timestamp {
             end = endTimestamp.dateValue()
         }

@@ -38,6 +38,7 @@ struct LocationView: View {
 struct LocationCell: View {
     var location: HTLocationModel
     var childLocations: [Int: [HTLocationModel]]
+    var dfu = DateFormatterUtility.shared
     @State private var showChildren = false
 
     var body: some View {
@@ -74,6 +75,9 @@ func childrenLocations(locations: [HTLocationModel]) -> [Int: [HTLocationModel]]
 
 func circleStatus(location: HTLocationModel) -> Color {
     let schedule = location.schedule
+    let curDate = Date()
+
+    NSLog("Location: \(location.shortName), Schedule: \(location.schedule), CurDate: \(curDate)")
 
     if schedule.isEmpty {
         switch location.defaultStatus {
@@ -84,7 +88,7 @@ func circleStatus(location: HTLocationModel) -> Color {
         default:
             return .gray
         }
-    } else if schedule.allSatisfy({ $0.status == "open" }) {
+    } else if schedule.contains(where: { $0.status == "open" && curDate >= $0.begin && curDate <= $0.end }) {
         return .green
     } else if schedule.allSatisfy({ $0.status == "closed" }) {
         return .red

@@ -182,8 +182,7 @@ class BaseScheduleTableViewController: UITableViewController {
     }
 }
 
-// swiftlint:disable:this type_body_length
-class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate, EventDetailDelegate {
+class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate, EventDetailDelegate { // swiftlint:disable:this type_body_length
     var filterView: HTFilterViewController?
 
     var tagsToken: UpdateToken?

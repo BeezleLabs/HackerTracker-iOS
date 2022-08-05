@@ -12,7 +12,7 @@ extension String {
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
         do {
-            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
         } catch {
             return nil
         }
@@ -23,8 +23,8 @@ extension String {
 }
 
 class HelpUIView: UIViewController {
-    @IBOutlet weak var helpLabel: UILabel!
-    @IBOutlet weak var helpTextView: UITextView!
+    @IBOutlet private var helpLabel: UILabel!
+    @IBOutlet private var helpTextView: UITextView!
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

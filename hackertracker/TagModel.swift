@@ -49,7 +49,7 @@ struct HTTag: Codable, Equatable {
     var id: Int
     var label: String
     var sortOrder: Int
-    
+
     static func == (lhs: HTTag, rhs: HTTag) -> Bool {
         if lhs.id == rhs.id && lhs.label == rhs.label {
             return true
@@ -70,5 +70,4 @@ extension HTTag: Document {
 
         self.init(colorBackground: colorBackground, colorForeground: colorForeground, description: description, id: id, label: label, sortOrder: sortOrder)
     }
-
 }
