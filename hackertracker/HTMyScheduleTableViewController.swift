@@ -76,7 +76,6 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConfer
                         let range = dayDate...(dayDate.addingTimeInterval(86400))
                         for event in eventsList {
                             if event.bookmark.value, range.contains(event.event.begin) {
-                                NSLog("Adding \(event.event.title) to this schedule")
                                 events.append(event)
                             } else {
                                 // NSLog("\(e.event.title) not bookmarked")

@@ -77,8 +77,6 @@ func circleStatus(location: HTLocationModel) -> Color {
     let schedule = location.schedule
     let curDate = Date()
 
-    NSLog("Location: \(location.shortName), Schedule: \(location.schedule), CurDate: \(curDate)")
-
     if schedule.isEmpty {
         switch location.defaultStatus {
         case "open":
@@ -90,6 +88,8 @@ func circleStatus(location: HTLocationModel) -> Color {
         }
     } else if schedule.contains(where: { $0.status == "open" && curDate >= $0.begin && curDate <= $0.end }) {
         return .green
+    } else if schedule.contains(where: { $0.status == "closed" && curDate >= $0.begin && curDate <= $0.end}) {
+        return .red
     } else if schedule.allSatisfy({ $0.status == "closed" }) {
         return .red
     } else {
@@ -139,15 +139,13 @@ class LocationUIView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("LocationUIView viewDidLoad")
         loadLocations()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        let lvc = UIHostingController(rootView: LocationView(locations: locations))
-
         super.viewDidAppear(animated)
-        NSLog("LocationUIView viewDidAppear")
+
+        let lvc = UIHostingController(rootView: LocationView(locations: locations))
         addChild(lvc)
 
         view.addSubview(lvc.view)

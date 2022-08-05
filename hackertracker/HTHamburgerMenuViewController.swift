@@ -72,10 +72,10 @@ class HTHamburgerMenuViewController: UIViewController, HTHamburgerMenuTableViewC
 
         hamburgerTableViewController.delegate = self
         if let conf = UserDefaults.standard.string(forKey: "conference") {
-            NSLog("Conference set to \(conf), sending to Home tab")
+            // NSLog("Conference set to \(conf), sending to Home tab")
             setCurrentViewController(tabID: intialTab)
         } else {
-            NSLog("No conference set, sending to Conference tab")
+            // NSLog("No conference set, sending to Conference tab")
             setCurrentViewController(tabID: "Conferences")
         }
         self.addChild(hamburgerNavigationController)
