@@ -76,8 +76,17 @@ struct CalendarUtility {
         event.title = htEvent.title
         event.location = htEvent.location.name
         event.notes = notes
-        if let eventUrl = URL(string: htEvent.links) {
-            event.url = eventUrl
+
+        if !htEvent.links.isEmpty {
+            if htEvent.links.contains(where: { $0.url.contains("https://forum.defcon.org") }) {
+                if let link = htEvent.links.first(where: { $0.url.contains("https://forum.defcon.org") }), let url = URL(string: link.url) {
+                    event.url = url
+                }
+            } else {
+                if let link = htEvent.links.first, let url = URL(string: link.url) {
+                    event.url = url
+                }
+            }
         }
 
         return event

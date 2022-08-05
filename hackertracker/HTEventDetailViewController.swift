@@ -113,7 +113,7 @@ class HTEventDetailViewController: UIViewController { // swiftlint:disable:this 
             .font: UIFont.preferredFont(forTextStyle: .body),
             .foregroundColor: UIColor.white,
         ])
-        eventDetailTextView.attributedText = eventAttributedString
+        // eventDetailTextView.attributedText = eventAttributedString
 
         if let bookmark = bookmark, bookmark.value == true {
             eventStarredButton.image = UIImage(systemName: "star.fill")
@@ -126,17 +126,45 @@ class HTEventDetailViewController: UIViewController { // swiftlint:disable:this 
         if !includes.lowercased().contains("demo") { demoImage.isHidden = true }
         if !includes.lowercased().contains("exploit") { exploitImage.isHidden = true }
         if !includes.isEmpty {
-            if let text = eventDetailTextView.text {
-                eventDetailTextView.text = "\(text)\n\nIncludes: \(includes.uppercased())"
-            }
+            let includesHeader = NSMutableAttributedString(string: "Includes", attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .title3),
+                .foregroundColor: UIColor.orange,
+            ])
+            eventAttributedString.append(includesHeader)
+            let includesText = NSMutableAttributedString(string: "\n - \(includes.uppercased())", attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .body),
+                .foregroundColor: UIColor.white,
+            ])
+            eventAttributedString.append(includesText)
         }
 
         if event.links.isEmpty {
             linkButton.isHidden = true
             linkButton.isEnabled = false
         } else {
-            linkButton.isEnabled = true
+            if event.links.contains(where: { $0.url.contains("https://forum.defcon.org") }) {
+                linkButton.isHidden = false
+                linkButton.isEnabled = true
+            }
+            let linksText = NSMutableAttributedString(string: "\nLinks", attributes: [
+                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                .font: UIFont.preferredFont(forTextStyle: .title3),
+                .foregroundColor: UIColor(hex: "#326295") ?? UIColor.deepPurple,
+            ])
+            event.links.forEach { link in
+                let linkText = NSMutableAttributedString(string: "\n - \(link.label): \(link.url)", attributes: [
+                    .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                    .font: UIFont.preferredFont(forTextStyle: .body),
+                    .foregroundColor: UIColor.white,
+                ])
+                linksText.append(linkText)
+            }
+
+            eventAttributedString.append(linksText)
         }
+        eventDetailTextView.attributedText = eventAttributedString
 
         eventTypeContainer.isHidden = toolImage.isHidden && demoImage.isHidden && exploitImage.isHidden && linkButton.isHidden
 
@@ -149,7 +177,13 @@ class HTEventDetailViewController: UIViewController { // swiftlint:disable:this 
         } else {
             eventEnd = dfu.dayOfWeekTimeFormatter.string(from: event.end)
         }
-        eventDateLabel.text = "\(eventLabel)-\(eventEnd) \(tzLabel)"
+        let eventDateAttributedText = NSMutableAttributedString(string: "\(eventLabel)-\(eventEnd) \(tzLabel) ")
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(systemName: "calendar.badge.plus")
+        attachment.image = attachment.image?.withTintColor(UIColor.white)
+        let attachmentStr = NSAttributedString(attachment: attachment)
+        eventDateAttributedText.append(attachmentStr)
+        eventDateLabel.attributedText = eventDateAttributedText
         eventDateLabel.font = eventDateLabel.font.withSize(18)
 
         let addCalendarTap = UITapGestureRecognizer(target: self, action: #selector(addToCalendar))
@@ -360,12 +394,13 @@ class HTEventDetailViewController: UIViewController { // swiftlint:disable:this 
     }
 
     @IBAction private func followLink(_: Any) {
-        if let event = event {
-            if let url = URL(string: event.links) {
-                let controller = SFSafariViewController(url: url)
-                controller.preferredBarTintColor = .backgroundGray
-                controller.preferredControlTintColor = .white
-                present(controller, animated: true)
+        if let event = event, let forumLink: HTLink = event.links.first(where: { $0.url.contains("https://forum.defcon.org") }) {
+            // let forumLink: HTLink = event.links.first(where: { "https://forum.defcon.org" in $0.url })
+            guard let url = URL(string: forumLink.url) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }

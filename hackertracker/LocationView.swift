@@ -77,22 +77,22 @@ func circleStatus(location: HTLocationModel) -> Color {
     let schedule = location.schedule
     let curDate = Date()
 
-    if schedule.isEmpty {
-        switch location.defaultStatus {
-        case "open":
+    if !schedule.isEmpty {
+        if schedule.contains(where: { $0.status == "open" && curDate >= $0.begin && curDate <= $0.end }) {
             return .green
-        case "closed":
+        } else if schedule.contains(where: { $0.status == "closed" && curDate >= $0.begin && curDate <= $0.end }) {
             return .red
-        default:
-            return .gray
+        } else if schedule.allSatisfy({ $0.status == "closed" }) {
+            return .red
         }
-    } else if schedule.contains(where: { $0.status == "open" && curDate >= $0.begin && curDate <= $0.end }) {
+    }
+
+    switch location.defaultStatus {
+    case "open":
         return .green
-    } else if schedule.contains(where: { $0.status == "closed" && curDate >= $0.begin && curDate <= $0.end}) {
+    case "closed":
         return .red
-    } else if schedule.allSatisfy({ $0.status == "closed" }) {
-        return .red
-    } else {
+    default:
         return .gray
     }
 }

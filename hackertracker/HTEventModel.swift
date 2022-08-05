@@ -30,7 +30,7 @@ struct HTEventModel: Codable {
     var begin: Date
     var end: Date
     var includes: String
-    var links: String
+    var links: [HTLink]
     var title: String
     var location: HTLocationModel
     var speakers: [HTSpeaker]
@@ -69,12 +69,22 @@ extension HTEventModel: Document {
         let description = dictionary["description"] as? String ?? ""
 
         let includes = dictionary["includes"] as? String ?? ""
-        let link = dictionary["link"] as? String ?? ""
         let title = dictionary["title"] as? String ?? ""
 
         var location: HTLocationModel?
         if let locationValues = dictionary["location"] as? [String: Any] {
             location = HTLocationModel(dictionary: locationValues)
+        }
+
+        var links: [HTLink] = []
+
+        if let linksValues = dictionary["links"] as? [Any] {
+            links = linksValues.compactMap { element -> HTLink? in
+                if let element = element as? [String: Any], let link = HTLink(dictionary: element) {
+                    return link
+                }
+                return nil
+            }
         }
 
         var speakers: [HTSpeaker] = []
@@ -83,7 +93,6 @@ extension HTEventModel: Document {
                 if let element = element as? [String: Any], let speaker = HTSpeaker(dictionary: element) {
                     return speaker
                 }
-
                 return nil
             }
         }
@@ -110,7 +119,7 @@ extension HTEventModel: Document {
                   begin: begin,
                   end: end,
                   includes: includes,
-                  links: link,
+                  links: links,
                   title: title,
                   location: locationVal,
                   speakers: speakers,
@@ -188,6 +197,22 @@ extension HTSchedule: Document {
         let status = dictionary["status"] as? String ?? ""
 
         self.init(begin: begin, end: end, status: status)
+    }
+}
+
+struct HTLink: Codable {
+    var label: String
+    var type: String
+    var url: String
+}
+
+extension HTLink: Document {
+    init?(dictionary: [String: Any]) {
+        let label = dictionary["label"] as? String ?? ""
+        let type = dictionary["type"] as? String ?? ""
+        let url = dictionary["url"] as? String ?? ""
+
+        self.init(label: label, type: type, url: url)
     }
 }
 
