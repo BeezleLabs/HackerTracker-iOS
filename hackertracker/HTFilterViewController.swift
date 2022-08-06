@@ -15,9 +15,12 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet private var fadeView: UIView!
     @IBOutlet private var toggleButton: UIButton!
     @IBOutlet private var popupViewHeight: NSLayoutConstraint!
+    
+    typealias FilterSections = (name: String, tags: [HTTag])
 
     var all: [HTTag] = []
     var filtered: [HTTag] = []
+    var sections: [FilterSections] = []
     weak var delegate: FilterViewControllerDelegate?
     var toggle = true
 
@@ -46,21 +49,34 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.sections[section].tags.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.all.count
+        return self.sections.count
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 2.0
     }
 
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 40
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let filterHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FilterHeader") as? FilterHeaderView ?? FilterHeaderView(reuseIdentifier: "FilterHeader")
+
+        filterHeader.bind(sections[section].name)
+
+        return filterHeader
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
 
-        let tag = self.all[indexPath.section]
+        NSLog("Schedule: checking filter section \(indexPath.section) and row \(indexPath.row)")
+        let tag = self.sections[indexPath.section].tags[indexPath.row]
         cell.textLabel?.text = tag.label
 
         if filtered.contains(tag) {
@@ -74,15 +90,15 @@ class HTFilterViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let eventType = self.all[indexPath.section]
+            let tag = self.sections[indexPath.section].tags[indexPath.row]
             if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
-                if let index = filtered.firstIndex(of: eventType) {
+                if let index = filtered.firstIndex(of: tag) {
                     filtered.remove(at: index)
                 }
             } else {
                 cell.accessoryType = .checkmark
-                filtered.append(eventType)
+                filtered.append(tag)
             }
             delegate?.filterList(filteredTags: filtered)
         }

@@ -22,6 +22,9 @@
 		5D02761620FC0F0600E5ED6A /* HTFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */; };
 		5D027620210160F400E5ED6A /* HTNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */; };
 		5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */; };
+		5D10448A289F045900CDE03F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D104488289F045900CDE03F /* FilterCell.swift */; };
+		5D10448B289F045900CDE03F /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D104489289F045900CDE03F /* FilterCell.xib */; };
+		5D10448D289F135A00CDE03F /* FilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10448C289F135A00CDE03F /* FilterHeaderView.swift */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
 		5D47A2B220EEB7DD0015401B /* ht2019.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D47A2B020EEB7DD0015401B /* ht2019.xcdatamodeld */; };
@@ -126,6 +129,9 @@
 		5D02761520FC0F0600E5ED6A /* HTFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTFilterViewController.swift; sourceTree = "<group>"; };
 		5D02761F210160F400E5ED6A /* HTNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTNewsTableViewController.swift; sourceTree = "<group>"; };
 		5D02762A210B826400E5ED6A /* HTVendorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTVendorTableViewController.swift; sourceTree = "<group>"; };
+		5D104488289F045900CDE03F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		5D104489289F045900CDE03F /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		5D10448C289F135A00CDE03F /* FilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderView.swift; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5D47A2B120EEB7DD0015401B /* ht2018.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ht2018.xcdatamodel; sourceTree = "<group>"; };
@@ -290,6 +296,9 @@
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
+				5D104488289F045900CDE03F /* FilterCell.swift */,
+				5D104489289F045900CDE03F /* FilterCell.xib */,
+				5D10448C289F135A00CDE03F /* FilterHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -522,6 +531,7 @@
 				8315ED1F1F18F0C2001F2DA8 /* EventCell.xib in Resources */,
 				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
+				5D10448B289F045900CDE03F /* FilterCell.xib in Resources */,
 				5DB4E0A8284941CB0012F6F4 /* Hacked-KerX.ttf in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 			);
@@ -590,6 +600,7 @@
 				5D02762B210B826400E5ED6A /* HTVendorTableViewController.swift in Sources */,
 				78F5F5371EEE35DD00560B81 /* ScheduleHelper.swift in Sources */,
 				83679CE7210CF5F7000CADE4 /* HTHamburgerMenuTableViewController.swift in Sources */,
+				5D10448A289F045900CDE03F /* FilterCell.swift in Sources */,
 				49730E501E2D1E330029438C /* DateFormatterUtility.swift in Sources */,
 				83679CE4210CED71000CADE4 /* HTHamburgerMenuViewController.swift in Sources */,
 				5DF186582890BE3E00FC810E /* LocationView.swift in Sources */,
@@ -603,6 +614,7 @@
 				3C46F498287ED5DB00A09389 /* ColorUtility.swift in Sources */,
 				2AD66B1724D84A470061E985 /* HTEventTypeTableViewController.swift in Sources */,
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
+				5D10448D289F135A00CDE03F /* FilterHeaderView.swift in Sources */,
 				83679CEA210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift in Sources */,
 				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,
 				786FBC321EBD1127004F7A5F /* HTEventsNavViewController.swift in Sources */,

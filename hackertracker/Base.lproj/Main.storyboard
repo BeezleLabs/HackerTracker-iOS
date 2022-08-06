@@ -144,7 +144,7 @@
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="618-1m-hz5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZZ-F8-XA3">
                                 <rect key="frame" x="41.5" y="862" width="331" height="400"/>
@@ -1051,7 +1051,7 @@
                     <color key="sectionIndexBackgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <prototypes>
                         <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="64" id="anO-zV-0wP" customClass="EventCell" customModule="hackertracker" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="44.5" width="375" height="64"/>
+                            <rect key="frame" x="0.0" y="44" width="375" height="64"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="anO-zV-0wP" id="R9e-i0-5aa">
                                 <rect key="frame" x="0.0" y="0.0" width="346.5" height="64"/>
@@ -1715,7 +1715,7 @@
         <image name="bubble.left" catalog="system" width="128" height="110"/>
         <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="calendar-active" width="128" height="128"/>
+        <image name="calendar-active" width="40" height="40"/>
         <image name="calendar-inactive" width="40" height="40"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="doc" catalog="system" width="115" height="128"/>

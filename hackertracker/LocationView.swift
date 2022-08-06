@@ -100,13 +100,13 @@ func circleStatus(location: HTLocationModel) -> Color {
 func heirCircle(heirDepth: Int) -> CGFloat {
     switch heirDepth {
     case 1:
-        return 20
+        return 18
     case 2:
-        return 17
+        return 15
     case 3:
-        return 14
+        return 12
     case 4:
-        return 11
+        return 10
     case 5:
         return 8
     default:

@@ -183,7 +183,10 @@ class BaseScheduleTableViewController: UITableViewController {
 }
 
 class HTScheduleTableViewController: BaseScheduleTableViewController, FilterViewControllerDelegate, EventCellDelegate, HTConferenceTableViewControllerDelegate, EventDetailDelegate { // swiftlint:disable:this type_body_length
+    typealias FilterSections = (name: String, tags: [HTTag])
+
     var filterView: HTFilterViewController?
+    var filterSections: [FilterSections] = []
 
     var tagsToken: UpdateToken?
 
@@ -280,6 +283,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
         fvc.delegate = self
         fvc.all = allTags
         fvc.filtered = filteredTags
+        fvc.sections = filterSections
         present(fvc, animated: false)
     }
 
@@ -288,21 +292,18 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
             switch result {
             case .success(let tagTypeList):
                 self.allTags.removeAll()
-                for tagType in tagTypeList where tagType.label.lowercased().contains("event category") {
+                self.filterSections.removeAll()
+                for tagType in tagTypeList where tagType.isBrowsable {
+                    NSLog("Schedule: Adding tagType \(tagType.label) \(tagType.sortOrder)")
                     self.allTags.reserveCapacity(tagType.tags.count)
-                    for tag in tagType.tags {
-                        var insertIndex = 0
-                        for curTag in self.allTags {
-                            if curTag.sortOrder > tag.sortOrder {
-                                break
-                            }
-                            insertIndex += 1
-                        }
-                        self.allTags.insert(tag, at: insertIndex)
-                        // self.allTags.append(tag)
+                    let myTags = tagType.tags.sorted {
+                        return $0.sortOrder < $1.sortOrder
                     }
+                    self.allTags += myTags
+                    self.filterSections.append((name: tagType.label, tags: myTags))
                 }
                 self.filteredTags = self.allTags
+                NSLog("Schedule: filterSections \(self.filterSections)")
             case .failure:
                 // TODO: Properly log failure
                 break
