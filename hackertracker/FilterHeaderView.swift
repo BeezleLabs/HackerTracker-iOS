@@ -9,7 +9,6 @@
 import UIKit
 
 class FilterHeaderView: UITableViewHeaderFooterView {
-
     private let nameLabel = UILabel()
 
     override init(reuseIdentifier: String?) {

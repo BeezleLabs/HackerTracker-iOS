@@ -12,7 +12,7 @@ class FilterCell: UITableViewCell {
     @IBOutlet private var filterDot: UIView!
     @IBOutlet private var filterLabel: UILabel!
     @IBOutlet private var filterCheck: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +23,4 @@ class FilterCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

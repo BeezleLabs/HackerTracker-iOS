@@ -164,7 +164,7 @@ class FSConferenceDataController {
         let start = inDate
         let end = calendar.date(byAdding: .day, value: 1, to: start) ?? Date()
 
-        query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThan: start).whereField("begin_timestamp", isLessThan: end).order(by: "begin_timestamp", descending: descending).limit(to: limit ?? Int.max)
+        query = document(forConference: conference).collection("events").whereField("begin_timestamp", isGreaterThanOrEqualTo: start).whereField("begin_timestamp", isLessThan: end).order(by: "begin_timestamp", descending: descending).limit(to: limit ?? Int.max)
 
         return requestEvents(forConference: conference, query: query, updateHandler: updateHandler)
     }

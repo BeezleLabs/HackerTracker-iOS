@@ -294,7 +294,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                 self.allTags.removeAll()
                 self.filterSections.removeAll()
                 for tagType in tagTypeList where tagType.isBrowsable {
-                    NSLog("Schedule: Adding tagType \(tagType.label) \(tagType.sortOrder)")
                     self.allTags.reserveCapacity(tagType.tags.count)
                     let myTags = tagType.tags.sorted {
                         return $0.sortOrder < $1.sortOrder
@@ -303,7 +302,6 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
                     self.filterSections.append((name: tagType.label, tags: myTags))
                 }
                 self.filteredTags = self.allTags
-                NSLog("Schedule: filterSections \(self.filterSections)")
             case .failure:
                 // TODO: Properly log failure
                 break
