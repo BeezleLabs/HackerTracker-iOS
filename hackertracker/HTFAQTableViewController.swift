@@ -43,17 +43,30 @@ class HTFAQTableViewController: UITableViewController {
         A: \(faqs[indexPath.row].answer)
         """
 
-        let messageText = NSMutableAttributedString(
-            string: body,
-            attributes: [
-                .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
-                .font: UIFont.preferredFont(forTextStyle: .body),
-                .foregroundColor: UIColor.black,
-            ]
-        )
-
-        let popup = UIAlertController(title: "FAQ", message: "", preferredStyle: UIAlertController.Style.alert)
-        popup.setValue(messageText, forKey: "attributedMessage")
+        let popup = UIAlertController(title: nil, message: "", preferredStyle: UIAlertController.Style.alert)
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            popup.view.tintColor = .white
+            let messageText = NSMutableAttributedString(
+                string: body,
+                attributes: [
+                    .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                    .font: UIFont.preferredFont(forTextStyle: .body),
+                    .foregroundColor: UIColor.white,
+                ]
+            )
+            popup.setValue(messageText, forKey: "attributedMessage")
+        } else {
+            popup.view.tintColor = .black
+            let messageText = NSMutableAttributedString(
+                string: body,
+                attributes: [
+                    .paragraphStyle: NSParagraphStyle.leftAlignedParagraph,
+                    .font: UIFont.preferredFont(forTextStyle: .body),
+                    .foregroundColor: UIColor.black,
+                ]
+            )
+            popup.setValue(messageText, forKey: "attributedMessage")
+        }
 
         let doneItem = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil)
         popup.addAction(doneItem)

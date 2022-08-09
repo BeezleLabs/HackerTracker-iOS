@@ -25,6 +25,8 @@
 		5D10448A289F045900CDE03F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D104488289F045900CDE03F /* FilterCell.swift */; };
 		5D10448B289F045900CDE03F /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D104489289F045900CDE03F /* FilterCell.xib */; };
 		5D10448D289F135A00CDE03F /* FilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10448C289F135A00CDE03F /* FilterHeaderView.swift */; };
+		5D10449028A1B2B500CDE03F /* SelectScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10448E28A1B2B500CDE03F /* SelectScreenCell.swift */; };
+		5D10449128A1B2B500CDE03F /* SelectScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D10448F28A1B2B500CDE03F /* SelectScreenCell.xib */; };
 		5D34252C1AE20F8D003562AE /* HTEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */; };
 		5D34252E1AE2B45E003562AE /* HTMyScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */; };
 		5D47A2B220EEB7DD0015401B /* ht2019.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D47A2B020EEB7DD0015401B /* ht2019.xcdatamodeld */; };
@@ -132,6 +134,8 @@
 		5D104488289F045900CDE03F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		5D104489289F045900CDE03F /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		5D10448C289F135A00CDE03F /* FilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderView.swift; sourceTree = "<group>"; };
+		5D10448E28A1B2B500CDE03F /* SelectScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectScreenCell.swift; sourceTree = "<group>"; };
+		5D10448F28A1B2B500CDE03F /* SelectScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectScreenCell.xib; sourceTree = "<group>"; };
 		5D34252B1AE20F8D003562AE /* HTEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTEventDetailViewController.swift; sourceTree = "<group>"; };
 		5D34252D1AE2B45E003562AE /* HTMyScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMyScheduleTableViewController.swift; sourceTree = "<group>"; };
 		5D47A2B120EEB7DD0015401B /* ht2018.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ht2018.xcdatamodel; sourceTree = "<group>"; };
@@ -287,6 +291,9 @@
 				49730E4A1E2929BC0029438C /* EventCell.swift */,
 				8315ED1E1F18F0C2001F2DA8 /* EventCell.xib */,
 				834713D51F1818240092C2FE /* EventDateHeaderView.swift */,
+				5D104488289F045900CDE03F /* FilterCell.swift */,
+				5D104489289F045900CDE03F /* FilterCell.xib */,
+				5D10448C289F135A00CDE03F /* FilterHeaderView.swift */,
 				5DB48CDB2899E141003B0BB7 /* HelpView.swift */,
 				5DF186572890BE3E00FC810E /* LocationView.swift */,
 				8345F2D21F1297D4006761BE /* MapLocationView.swift */,
@@ -294,11 +301,10 @@
 				B568B6641F1F3FAB0092CE4A /* scene.sks */,
 				8315ED1A1F18222E001F2DA8 /* ScheduleEmptyStateView.swift */,
 				8315ED1C1F1822AF001F2DA8 /* ScheduleEmptyStateView.xib */,
+				5D10448E28A1B2B500CDE03F /* SelectScreenCell.swift */,
+				5D10448F28A1B2B500CDE03F /* SelectScreenCell.xib */,
 				83E74C391ED7AB580078E5FB /* UpdateCell.swift */,
 				83E74C3A1ED7AB580078E5FB /* UpdateCell.xib */,
-				5D104488289F045900CDE03F /* FilterCell.swift */,
-				5D104489289F045900CDE03F /* FilterCell.xib */,
-				5D10448C289F135A00CDE03F /* FilterHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 				83679CEB210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.xib in Resources */,
 				5DA268541D06006400249C63 /* LaunchScreen.storyboard in Resources */,
 				5D10448B289F045900CDE03F /* FilterCell.xib in Resources */,
+				5D10449128A1B2B500CDE03F /* SelectScreenCell.xib in Resources */,
 				5DB4E0A8284941CB0012F6F4 /* Hacked-KerX.ttf in Resources */,
 				5DD642691AC3C62300ED3256 /* Images.xcassets in Resources */,
 			);
@@ -614,6 +621,7 @@
 				3C46F498287ED5DB00A09389 /* ColorUtility.swift in Sources */,
 				2AD66B1724D84A470061E985 /* HTEventTypeTableViewController.swift in Sources */,
 				B5449CAF1F1ADE97003DE448 /* HTEmptyDetailViewController.swift in Sources */,
+				5D10449028A1B2B500CDE03F /* SelectScreenCell.swift in Sources */,
 				5D10448D289F135A00CDE03F /* FilterHeaderView.swift in Sources */,
 				83679CEA210CFB9A000CADE4 /* HTHamburgerHeaderTableViewCell.swift in Sources */,
 				8345F2D31F1297D4006761BE /* MapLocationView.swift in Sources */,

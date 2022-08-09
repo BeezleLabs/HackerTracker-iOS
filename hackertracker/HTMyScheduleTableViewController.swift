@@ -29,6 +29,10 @@ class HTMyScheduleTableViewController: BaseScheduleTableViewController, HTConfer
 
         let tvb = navigationItem.titleView as! UIButton
         tvb.addTarget(self, action: #selector(displayConferencePicker(sender:)), for: .touchUpInside)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem()
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: "star.fill")
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

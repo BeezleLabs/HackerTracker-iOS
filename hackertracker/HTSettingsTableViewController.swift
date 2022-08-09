@@ -9,9 +9,20 @@
 import UIKit
 
 class HTSettingsTableViewController: UITableViewController {
+    var initialTab = "Information"
+    // var startSwitch: UISegmentedControl?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.backgroundGray
+        self.tableView.register(UINib(nibName: "SelectScreenCell", bundle: nil), forCellReuseIdentifier: "selectScreenCell")
+
+        // startSwitch = UISegmentedControl(items: ["Information", "Schedule", "Bookmarks"])
+        // startSwitch.selectedSegmentIndex = 1
+        /* startSwitch.backgroundColor = .black
+        startSwitch.selectedSegmentTintColor = .white
+        startSwitch.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
+        startSwitch.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal) */
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(returnFromSettings(notification:)),
@@ -28,6 +39,7 @@ class HTSettingsTableViewController: UITableViewController {
     enum SettingsCells: Int, CaseIterable {
         case localTime = 0
         case notification
+        case startScreen
     }
 
     override func numberOfSections(in _: UITableView) -> Int {
@@ -39,13 +51,31 @@ class HTSettingsTableViewController: UITableViewController {
         switch section {
         case .localTime: return 1
         case .notification: return 1
+        case .startScreen: return 2
         }
     }
 
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = SettingsCells.allCases[indexPath.section]
         switch section {
+        case .startScreen:
+            switch indexPath.row {
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "selectScreenCell", for: indexPath)
+
+                cell.backgroundColor = .clear
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+
+                cell.textLabel?.text = "Start Screen"
+                cell.textLabel?.textColor = UIColor.white
+                cell.textLabel?.font = .boldSystemFont(ofSize: 18)
+                cell.backgroundColor = .clear
+                cell.selectionStyle = .none
+                return cell
+            }
         case .localTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = "Display Local Time"
@@ -55,6 +85,7 @@ class HTSettingsTableViewController: UITableViewController {
             preferLocalTime.isOn = UserDefaults.standard.bool(forKey: "PreferLocalTime")
             cell.accessoryView = preferLocalTime
             cell.backgroundColor = UIColor.clear
+            cell.selectionStyle = .none
             return cell
         case .notification:
             let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
@@ -72,6 +103,7 @@ class HTSettingsTableViewController: UITableViewController {
             notificationSetting.isOn = UserDefaults.standard.bool(forKey: "Notifications")
             cell.accessoryView = notificationSetting
             cell.backgroundColor = UIColor.clear
+            cell.selectionStyle = .none
 
             if let status = NotificationUtility.status {
                 switch status {

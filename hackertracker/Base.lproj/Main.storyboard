@@ -1051,7 +1051,7 @@
                     <color key="sectionIndexBackgroundColor" red="0.1779046474" green="0.1779046474" blue="0.1779046474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <prototypes>
                         <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="64" id="anO-zV-0wP" customClass="EventCell" customModule="hackertracker" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="44" width="375" height="64"/>
+                            <rect key="frame" x="0.0" y="44.5" width="375" height="64"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="anO-zV-0wP" id="R9e-i0-5aa">
                                 <rect key="frame" x="0.0" y="0.0" width="346.5" height="64"/>
@@ -1574,16 +1574,12 @@
                             </tableViewCell>
                         </prototypes>
                         <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="zH7-tc-eYD" id="w7P-Pa-Ben"/>
-                            <outlet property="delegate" destination="zH7-tc-eYD" id="TOd-9r-FvI"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="rgI-pO-W2L"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Exk-m9-S8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2946" y="-696"/>
+            <point key="canvasLocation" x="-2946.376811594203" y="-696.42857142857144"/>
         </scene>
         <!--Events Nav View Controller-->
         <scene sceneID="Bp4-xX-P0w">
@@ -1706,7 +1702,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="d8H-Jh-Jqg"/>
-        <segue reference="e3h-Nv-O2c"/>
+        <segue reference="M7t-3x-HF9"/>
         <segue reference="XQt-9W-ade"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1715,7 +1711,7 @@
         <image name="bubble.left" catalog="system" width="128" height="110"/>
         <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="calendar-active" width="40" height="40"/>
+        <image name="calendar-active" width="128" height="128"/>
         <image name="calendar-inactive" width="40" height="40"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="doc" catalog="system" width="115" height="128"/>

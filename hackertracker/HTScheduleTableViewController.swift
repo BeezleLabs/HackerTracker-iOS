@@ -332,7 +332,7 @@ class HTScheduleTableViewController: BaseScheduleTableViewController, FilterView
 
     override func emptyState() -> UIView {
         if let emptyState = Bundle.main.loadNibNamed("ScheduleEmptyStateView", owner: self, options: nil)?.first as? ScheduleEmptyStateView {
-            emptyState.bind(description: "No events for this date yet. Pull down to refresh or check back later.", image: #imageLiteral(resourceName: "skull-active"))
+            emptyState.bind(description: "No data in current data set.\nLoading...", image: #imageLiteral(resourceName: "skull-active"))
             return emptyState
         }
         return UIView()

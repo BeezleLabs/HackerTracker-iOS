@@ -39,6 +39,7 @@ class HTInitViewController: UIViewController, HTConferenceTableViewControllerDel
                 }
             }
         } else {
+            UserDefaults.standard.set("Information", forKey: "startScreen")
             displayConferencePicker()
         }
     }
