@@ -111,10 +111,14 @@ class HTMapsViewController: UIViewController, UIScrollViewDelegate {
     @IBAction private func mapChanged(_ sender: UISegmentedControl) {
         guard !mapViews.isEmpty else { return }
 
-        for index in 0..<AnonymousSession.shared.currentConference.maps.count {
+        for mapView in mapViews {
+            mapView.isHidden = true
+            mapView.isUserInteractionEnabled = false
+        }
+        /* for index in 0..<AnonymousSession.shared.currentConference.maps.count {
                 mapViews[index].isHidden = true
                 mapViews[index].isUserInteractionEnabled = false
-        }
+        } */
         NSLog("switching to segment \(sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "")")
         mapViews[sender.selectedSegmentIndex].isHidden = false
         mapViews[sender.selectedSegmentIndex].isUserInteractionEnabled = true

@@ -134,7 +134,7 @@ class Animation {
             pixellation = 1.0 - progress
         }
 
-        if let stripedImage = applyStripeFilter(progress: stripProgress),
+        /* if let stripedImage = applyStripeFilter(progress: stripProgress),
             let blendedStripes = applyBlendFilter(with: originalInputCIImage, backgroundImage: nil, mask: stripedImage),
             let linearBumpedStripes = applyLinearBumpFilter(on: blendedStripes, progress: stripProgress),
 
@@ -144,7 +144,7 @@ class Animation {
             let combinedImage = applyBlendFilter(with: linearBumpedStripes, backgroundImage: exposureImage, mask: stripProgress > 0 ? combinedMask : nil),
             let cgImage = context.createCGImage(combinedImage, from: extent) {
             image = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
-        }
+        } */
 
         if progress >= 1.0 {
             stopPlaying()
