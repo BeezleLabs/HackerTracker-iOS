@@ -25,6 +25,7 @@ class BaseScheduleTableViewController: UITableViewController {
     var filteredTagIds: [Int] = []
     var firstLoad = true
     var touchNav: UITapGestureRecognizer! // swiftlint:disable:this implicitly_unwrapped_optional
+    var scrollToggle: Bool = true
 
     var eventTokens: [UpdateToken?] = []
 
@@ -78,7 +79,13 @@ class BaseScheduleTableViewController: UITableViewController {
         let curDate = Date()
         // Debug below to jump to next events for LOCOMOCOSEC schedule
         // let curDate = DateFormatterUtility.shared.iso8601Formatter.date(from: "2022-06-28T11:43:01.000-0700")!
+        if scrollToggle == false {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            scrollToggle = true
+            return
+        }
         if !self.eventSections.isEmpty {
+            scrollToggle = false
             fullloop: for sectionIndex in 0..<self.eventSections.count {
                 if !self.eventSections[sectionIndex].events.isEmpty {
                     for eventIndex in 0..<self.eventSections[sectionIndex].events.count {
@@ -89,8 +96,8 @@ class BaseScheduleTableViewController: UITableViewController {
                             break fullloop
                         }
                     }
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                    break fullloop
+                    // self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                    // break fullloop
                 } else {
                     break fullloop
                 }
